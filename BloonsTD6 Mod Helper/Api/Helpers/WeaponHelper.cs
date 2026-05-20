@@ -1,3 +1,4 @@
+using System;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
@@ -8,6 +9,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// A wrapper around WeaponModels for making them easier to create
 /// </summary>
+[Obsolete("Switch to WeaponModel.Create(new(){ ... })")]
 public class WeaponHelper : ModelHelper<WeaponModel>
 {
     /// Default 1

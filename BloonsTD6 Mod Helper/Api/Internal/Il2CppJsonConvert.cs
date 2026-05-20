@@ -330,7 +330,7 @@ public static class Il2CppJsonConvert
             !type.IsAssignableTo(typeof(Il2CppAssets.Scripts.ObjectId)) &&
             !(type.IsGenericType && type.GenericTypeArguments.Any(t => !AllowedMemberType(t)));
 
-        protected bool AllowedMember(MemberInfo member) =>
+        protected virtual bool AllowedMember(MemberInfo member) =>
             AllowedMemberType(member.GetUnderlyingType()) &&
             member.Name != nameof(Model.childDependants) &&
             member.Name != nameof(Model.ImplementationType);

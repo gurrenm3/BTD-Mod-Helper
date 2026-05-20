@@ -13,6 +13,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// A wrapper around ProjectileModels for making them easier to create
 /// </summary>
+[Obsolete("Switch to ProjectileModel.Create(new(){ ... })")]
 public class ProjectileHelper : ModelHelper<ProjectileModel>
 {
     /// <summary>

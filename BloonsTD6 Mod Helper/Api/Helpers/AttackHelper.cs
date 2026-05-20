@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
@@ -10,6 +11,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// A wrapper around AttackModels for making them easier to create
 /// </summary>
+[Obsolete("Switch to AttackModel.Create(new(){ ... })")]
 public class AttackHelper : ModelHelper<AttackModel>
 {
     /// <summary>

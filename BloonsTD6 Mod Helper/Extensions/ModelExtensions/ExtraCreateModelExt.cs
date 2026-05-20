@@ -1,163 +1,262 @@
+using System.Linq;
 using Il2CppAssets.Scripts.Models.Audio;
+using Il2CppAssets.Scripts.Models.GenericBehaviors;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Filters;
+using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Models.Towers.Weapons;
 using Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors;
+using Il2CppAssets.Scripts.Simulation.SMath;
 
-// ReSharper disable UnusedType.Global
 namespace BTD_Mod_Helper.Extensions;
 
-/// <summary>
-/// Extra extensions on arguments
-/// </summary>
-public static class ExtraCreateModelExt
+// ReSharper disable InconsistentNaming
+// ReSharper disable LocalVariableHidesMember
+// ReSharper disable RedundantExtendsListEntry
+// ReSharper disable UnusedType.Global
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
+public class ModelArgs<T> where T : Il2CppAssets.Scripts.Models.Model
 {
-    extension(CreateSoundOnProjectileCreatedModel model)
+    public string name { get; set; } = "";
+
+    internal virtual void OnCreate(T result)
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+    }
+}
+
+public partial class CreateDamageModelExt
+{
+    public partial class Args : ModelArgs<DamageModel>
+    {
+        public BloonProperties? immuneBloons { get; set; } = null;
+
+        internal override void OnCreate(DamageModel result)
         {
-            get => model.sound1;
-            set
+            if (immuneBloons != null)
             {
-                model.sound1 = value;
-                model.sound2 = value;
-                model.sound3 = value;
-                model.sound4 = value;
-                model.sound5 = value;
+                result.immuneBloonProperties = immuneBloons.Value;
+                result.immuneBloonPropertiesOriginal = immuneBloons.Value;
             }
         }
     }
+}
 
-    extension(CreateCreateSoundOnProjectileCreatedModelExt.Args args)
+public partial class CreateAttackModelExt
+{
+    public partial class Args : ModelArgs<AttackModel>
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+        public bool CanSeeCamo { get; set; } = false;
+        public WeaponModel weapon { get; set; } = null;
+        public FilterModel[] filters { get; set; } = null;
+
+        internal override void OnCreate(AttackModel result)
         {
-            get => args.sound1;
-            set
-            {
-                args.sound1 = value;
-                args.sound2 = value;
-                args.sound3 = value;
-                args.sound4 = value;
-                args.sound5 = value;
-            }
+            CreateAttackModelExt.OnCreate(result, CanSeeCamo, weapon, filters);
         }
     }
 
-    extension(CreateSoundOnProjectileExhaustModel model)
+    internal static void OnCreate(AttackModel result, bool canSeeCamo, WeaponModel weapon, FilterModel[] filters)
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+        if (!result.HasBehavior(out AttackFilterModel filter))
         {
-            get => model.sound1;
-            set
+            filter = new AttackFilterModel("", null);
+            result.AddBehavior(filter);
+        }
+        filter.filters ??= filters ?? new Il2CppReferenceArray<FilterModel>(0);
+
+        var camoFilter = filter.filters.OfIl2CppType<FilterInvisibleModel>().FirstOrDefault();
+
+        if (camoFilter == null)
+        {
+            camoFilter = new FilterInvisibleModel("", !canSeeCamo, false);
+            filter.AddChildDependant(camoFilter);
+        }
+        else
+        {
+            camoFilter.isActive = canSeeCamo;
+        }
+
+        if (weapon != null)
+        {
+            var weapons = result.weapons ?? new Il2CppReferenceArray<WeaponModel>(0);
+            weapons = weapons.AddTo(weapon);
+            result.weapons = weapons;
+            result.AddChildDependant(weapon);
+        }
+    }
+}
+
+public partial class CreateAttackAirUnitModelExt
+{
+    public partial class Args : ModelArgs<AttackAirUnitModel>
+    {
+        public bool CanSeeCamo { get; set; } = false;
+        public WeaponModel weapon { get; set; } = null;
+        public FilterModel[] filters { get; set; } = null;
+
+        internal override void OnCreate(AttackAirUnitModel result)
+        {
+            CreateAttackModelExt.OnCreate(result, CanSeeCamo, weapon, filters);
+        }
+    }
+}
+
+public partial class CreateWeaponModelExt
+{
+    public partial class Args : ModelArgs<WeaponModel>
+    {
+        public Vector3? eject { get; set; } = null;
+
+        internal override void OnCreate(WeaponModel result)
+        {
+            if (eject.HasValue)
             {
-                model.sound1 = value;
-                model.sound2 = value;
-                model.sound3 = value;
-                model.sound4 = value;
-                model.sound5 = value;
+                result.ejectX = eject.Value.x;
+                result.ejectY = eject.Value.y;
+                result.ejectZ = eject.Value.z;
             }
         }
     }
+}
 
-    extension(CreateCreateSoundOnProjectileExhaustModelExt.Args args)
+public partial class CreateProjectileModelExt
+{
+    public partial class Args : ModelArgs<ProjectileModel>
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+        public bool CanHitCamo { get; set; } = false;
+
+        internal override void OnCreate(ProjectileModel result)
         {
-            get => args.sound1;
-            set
+            result.displayModel ??= new DisplayModel("ProjectileDisplay", result.display, 0, DisplayCategory.Projectile);
+
+            if (!result.HasBehavior<DisplayModel>())
             {
-                args.sound1 = value;
-                args.sound2 = value;
-                args.sound3 = value;
-                args.sound4 = value;
-                args.sound5 = value;
+                result.AddBehavior(result.displayModel);
+            }
+
+            if (!result.HasBehavior(out ProjectileFilterModel filter))
+            {
+                filter = new ProjectileFilterModel("", null);
+                result.AddBehavior(filter);
+            }
+            filter.filters ??= result.filters ?? new Il2CppReferenceArray<FilterModel>(0);
+
+            var camoFilter = filter.filters.OfIl2CppType<FilterInvisibleModel>().FirstOrDefault();
+
+            if (camoFilter == null)
+            {
+                camoFilter = new FilterInvisibleModel("", !CanHitCamo, false);
+                filter.AddChildDependant(camoFilter);
+            }
+            else
+            {
+                camoFilter.isActive = CanHitCamo;
+            }
+
+            result.filters = filter.filters;
+            result.AddChildDependants(result.filters);
+
+            result.UpdateCollisionPassList();
+
+            if (string.IsNullOrEmpty(result.id))
+            {
+                result.id = result.name.Replace(nameof(ProjectileModel) + "_", "");
             }
         }
     }
+}
 
-    extension(CreateSoundOnProjectileExpireModel model)
+public partial class CreateTowerModelExt
+{
+    public partial class Args : ModelArgs<TowerModel>
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+        internal override void OnCreate(TowerModel result)
         {
-            get => model.sound1;
-            set
+            result.UpdateTargetProviders();
+        }
+    }
+}
+
+public partial class CreateCreateSoundOnProjectileExhaustModelExt
+{
+    public partial class Args : ModelArgs<CreateSoundOnProjectileExhaustModel>
+    {
+        public SoundModel sound { get; set; } = null;
+
+        internal override void OnCreate(CreateSoundOnProjectileExhaustModel result)
+        {
+            if (sound != null)
             {
-                model.sound1 = value;
-                model.sound2 = value;
-                model.sound3 = value;
-                model.sound4 = value;
-                model.sound5 = value;
+                result.sound1 = sound;
+                result.sound2 = sound;
+                result.sound3 = sound;
+                result.sound4 = sound;
+                result.sound5 = sound;
             }
         }
     }
+}
 
-    extension(CreateCreateSoundOnProjectileExpireModelExt.Args args)
+public partial class CreateCreateSoundOnProjectileCreatedModelExt
+{
+    public partial class Args : ModelArgs<CreateSoundOnProjectileCreatedModel>
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+        public SoundModel sound { get; set; } = null;
+
+        internal override void OnCreate(CreateSoundOnProjectileCreatedModel result)
         {
-            get => args.sound1;
-            set
+            if (sound != null)
             {
-                args.sound1 = value;
-                args.sound2 = value;
-                args.sound3 = value;
-                args.sound4 = value;
-                args.sound5 = value;
+                result.sound1 = sound;
+                result.sound2 = sound;
+                result.sound3 = sound;
+                result.sound4 = sound;
+                result.sound5 = sound;
             }
         }
     }
+}
 
-    extension(CreateCreateSoundOnProjectileCollisionModelExt.Args args)
+public partial class CreateCreateSoundOnProjectileExpireModelExt
+{
+    public partial class Args : ModelArgs<CreateSoundOnProjectileExpireModel>
     {
-        /// <summary>
-        /// Combined getter/setter for all the sound fields
-        /// </summary>
-        public SoundModel sound
+        public SoundModel sound { get; set; } = null;
+
+        internal override void OnCreate(CreateSoundOnProjectileExpireModel result)
         {
-            get => args.sound1;
-            set
+            if (sound != null)
             {
-                args.sound1 = value;
-                args.sound2 = value;
-                args.sound3 = value;
-                args.sound4 = value;
-                args.sound5 = value;
+                result.sound1 = sound;
+                result.sound2 = sound;
+                result.sound3 = sound;
+                result.sound4 = sound;
+                result.sound5 = sound;
             }
         }
     }
+}
 
-    extension(CreateDamageModelExt.Args args)
+public partial class CreateCreateSoundOnProjectileCollisionModelExt
+{
+    public partial class Args : ModelArgs<CreateSoundOnProjectileCollisionModel>
     {
-        /// <summary>
-        /// Combined getter/setter for both immuneBloonProperties and immuneBloonPropertiesOriginal
-        /// </summary>
-        public BloonProperties immuneBloons
+        public SoundModel sound { get; set; } = null;
+
+        internal override void OnCreate(CreateSoundOnProjectileCollisionModel result)
         {
-            get => args.immuneBloonProperties;
-            set
+            if (sound != null)
             {
-                args.immuneBloonProperties = value;
-                args.immuneBloonPropertiesOriginal = value;
+                result.sound1 = sound;
+                result.sound2 = sound;
+                result.sound3 = sound;
+                result.sound4 = sound;
+                result.sound5 = sound;
             }
         }
     }
-
 }

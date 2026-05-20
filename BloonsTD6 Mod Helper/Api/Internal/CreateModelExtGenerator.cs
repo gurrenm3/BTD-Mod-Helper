@@ -8,6 +8,7 @@ using Il2CppAssets.Scripts;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Effects;
 using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Unity;
@@ -29,7 +30,9 @@ internal static class CreateModelExtGenerator
         [(typeof(DamageModel), nameof(DamageModel.distributeToChildren))] = "true",
         [(typeof(DamageModel), nameof(DamageModel.createPopEffect))] = "true",
         [(typeof(EffectModel), nameof(EffectModel.scale))] = "1",
-        [(typeof(DamageModifierModel), "damageMultiplier")] = "1"
+        [(typeof(DamageModifierModel), "damageMultiplier")] = "1",
+        [(typeof(ProjectileModel), nameof(ProjectileModel.vsBlockerRadius))] = "0",
+        [(typeof(AttackModel), nameof(AttackModel.addsToSharedGrid))] = "true"
     };
 
     public static void Generate()
@@ -85,11 +88,6 @@ internal static class CreateModelExtGenerator
               #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
               namespace BTD_Mod_Helper.Extensions;
-
-              public class ModelArgs<T> where T : Il2CppAssets.Scripts.Models.Model
-              {
-                  public string name { get; set; } = "";
-              }
 
               {{modelTypeDict.Select(GenerateFor).Join(delimiter: "\n\n")}}
 
@@ -303,6 +301,7 @@ internal static class CreateModelExtGenerator
                          {
                              var result = new {{type.RealFullName}}({{paramDefaultValues.Join(delimiter: ", ")}});
                              {{remainingProperties.Select(p => $"if (args.{p.Name} != default) result.{p.Name} = {propDefaultValues[p]};").Join(delimiter: "\n            ")}}
+                             args.OnCreate(result);
                              return result;   
                          }
                      }

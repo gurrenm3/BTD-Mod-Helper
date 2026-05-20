@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Legends;
@@ -121,7 +122,13 @@ public static class GameModelExporter
             !type.IsAssignableTo(typeof(LegendsData)) &&
             !type.IsAssignableTo(typeof(LegendsTileAssetData)) &&
             !type.IsAssignableTo(typeof(FrontierLevelData)) &&
+            !type.IsAssignableTo(typeof(LegendsDataModel)) &&
+            !type.IsAssignableTo(typeof(LocalizationManager)) &&
+            !type.IsAssignableTo(typeof(FrontierGameSaveData)) &&
             base.AllowedMemberType(type);
+
+        protected override bool AllowedMember(MemberInfo member) =>
+            base.AllowedMember(member) && !member.Name.Contains("RecruitRefreshCost");
     }
 
     private static JObject CreateResourceMap()

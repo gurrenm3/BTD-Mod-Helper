@@ -7,11 +7,6 @@
 
 namespace BTD_Mod_Helper.Extensions;
 
-public class ModelArgs<T> where T : Il2CppAssets.Scripts.Models.Model
-{
-    public string name { get; set; } = "";
-}
-
 public static partial class CreateAbilityCooldownAreaBuffModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Map.AbilityCooldownAreaBuffModel) 
@@ -33,6 +28,7 @@ public static partial class CreateAbilityCooldownAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.AbilityCooldownAreaBuffModel(args.name, args.mutatorId, args.priority, args.buffIndicatorModel, args.multiplier, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -54,6 +50,7 @@ public static partial class CreateAbilityCooldownPercentageModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AbilityCooldownPercentageModModel(args.name, args.cooldownPercentageReduction);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -76,6 +73,7 @@ public static partial class CreateAbilityCooldownScaleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityCooldownScaleModel(args.name, args.coolDownSpeedScale, args.mutatorId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -115,6 +113,7 @@ public static partial class CreateAbilityCooldownScaleSupportModelExt
             if (args.appliesToOwningTower != default) result.appliesToOwningTower = args.appliesToOwningTower;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -136,6 +135,7 @@ public static partial class CreateAbilityCooldownTimeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AbilityCooldownTimeModModel(args.name, args.cooldownTimeReduction);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -158,6 +158,7 @@ public static partial class CreateAbilityCooldownZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.AbilityCooldownZoneModel(args.name, args.multiplier);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -181,6 +182,7 @@ public static partial class CreateAbilityCreateTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AbilityCreateTowerModel(args.name, args.towerModel, args.isAirBasedTower, args.trackCirclePosition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -204,6 +206,7 @@ public static partial class CreateAbilityDamageAllModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AbilityDamageAllModel(args.name, args.damage, args.tags, args.inclusive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -264,6 +267,7 @@ public static partial class CreateAbilityModelExt
             if (args.CooldownSpeedScale != default) result.CooldownSpeedScale = args.CooldownSpeedScale;
             if (args.AnimationOffset != default) result.AnimationOffset = args.AnimationOffset;
             if (args.Cooldown != default) result.Cooldown = args.Cooldown;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -287,6 +291,7 @@ public static partial class CreateAbilityReduceCooldownOnLivesLostModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AbilityReduceCooldownOnLivesLostModel(args.name, args.reductionSeconds, args.delaySeconds, args.startDelayed);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -311,6 +316,7 @@ public static partial class CreateAbilityRefreshOnTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AbilityRefreshOnTriggerModel(args.triggerId, args.abilityIds);
             if (args.AllAbilities != default) result.AllAbilities = args.AllAbilities;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -336,6 +342,7 @@ public static partial class CreateAbilityTriggerEclipseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AbilityTriggerEclipseModel(args.name, args.fadeInDuration, args.darkDuration, args.darkAmount, args.fadeOutDuration, args.colour);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -368,6 +375,7 @@ public static partial class CreateAbsorbTowerBuffsActionModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.AbsorbTowerBuffsActionModel(args.name, args.actionId, args.towerFreezeDuration, args.radius, args.ignoredBuffs, args.buffsAlwaysRemoved, args.buffsThatDontHeal, args.towersWhichAreDestroyed, args.towerFreezeDisplayAsset, args.triggerName);
             if (args.towerFreezeDurationFrames != default) result.towerFreezeDurationFrames = args.towerFreezeDurationFrames;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -402,6 +410,7 @@ public static partial class CreateAccelerateModelExt
             if (args.turnRateChangeFrames != default) result.turnRateChangeFrames = args.turnRateChangeFrames;
             if (args.maxTurnRateFrames != default) result.maxTurnRateFrames = args.maxTurnRateFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -423,6 +432,7 @@ public static partial class CreateAcidPoolEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.AcidPoolEmissionModel(args.name, args.alwaysPoolOnCount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -444,6 +454,7 @@ public static partial class CreateAcidPoolModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AcidPoolModModel(args.name, args.additionalTime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -477,6 +488,7 @@ public static partial class CreateAcidPoolModelExt
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.LifespanIfMisses != default) result.LifespanIfMisses = args.LifespanIfMisses;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -499,6 +511,7 @@ public static partial class CreateAcidicMixtureCheckModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AcidicMixtureCheckModel(args.name, args.maxCount, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -520,6 +533,7 @@ public static partial class CreateAcidicMixtureModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AcidicMixtureModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -541,6 +555,7 @@ public static partial class CreateActivateAbilitiesOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateAbilitiesOnAbilityModel(args.name, args.abilityToFind);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -564,6 +579,7 @@ public static partial class CreateActivateAbilityAfterIntervalModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ActivateAbilityAfterIntervalModel(args.name, args.abilityModel, args.interval);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -585,6 +601,7 @@ public static partial class CreateActivateAbilityOnRoundStartModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ActivateAbilityOnRoundStartModel(args.name, args.abilityModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -621,6 +638,7 @@ public static partial class CreateActivateAttackCollisionSupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -642,6 +660,7 @@ public static partial class CreateActivateAttackCreateTowerPlacementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateAttackCreateTowerPlacementModel(args.name, args.attacks);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -663,6 +682,7 @@ public static partial class CreateActivateAttackModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ActivateAttackModModel(args.name, args.additionalTime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -695,6 +715,7 @@ public static partial class CreateActivateAttackModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateAttackModel(args.name, args.lifespan, args.processOnActivate, args.attacks, args.cancelIfNoTargets, args.turnOffExisting, args.endOnRoundEnd, args.endOnDefeatScreen, args.isOneShot, args.isSaved);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -719,6 +740,7 @@ public static partial class CreateActivateAttackSwitchModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateAttackSwitchModel(args.name, args.lifespanFrames, args.firstAttack, args.secondAttack, args.processOnActivate);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -740,6 +762,7 @@ public static partial class CreateActivateControlledZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateControlledZoneModel(args.name, args.zoneId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -777,6 +800,7 @@ public static partial class CreateActivateDamageModifierSupportZoneModelExt
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
             if (args.buffLocsName != default) result.buffLocsName = args.buffLocsName;
             if (args.buffIconName != default) result.buffIconName = args.buffIconName;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -815,6 +839,7 @@ public static partial class CreateActivateIgnoreStunSupportZoneModelExt
             if (args.stunMutators != default) result.stunMutators = args.stunMutators;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -836,6 +861,7 @@ public static partial class CreateActivateMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateMutatorModel(args.name, args.towerMutatorModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -873,6 +899,7 @@ public static partial class CreateActivatePierceSupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -911,6 +938,7 @@ public static partial class CreateActivateRangeSupportZoneModelExt
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
             if (args.buffLocsName != default) result.buffLocsName = args.buffLocsName;
             if (args.buffIconName != default) result.buffIconName = args.buffIconName;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -948,6 +976,7 @@ public static partial class CreateActivateRateSupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -982,6 +1011,7 @@ public static partial class CreateActivateSlowZoneOnAbilityModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateSlowZoneOnAbilityModel(args.name, args.lifetime, args.zoneRadius, args.mutationId, args.isUnique, args.filters, args.speedScale, args.speedChange, args.bindRadiusToTowerRange, args.radiusOffset, args.bloonTag, args.inclusive);
             if (args.bloonTags != default) result.bloonTags = args.bloonTags;
             if (args.slowMutator != default) result.slowMutator = args.slowMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1019,6 +1049,7 @@ public static partial class CreateActivateSpreadSupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1040,6 +1071,7 @@ public static partial class CreateActivateTechBotModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateTechBotModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1080,6 +1112,7 @@ public static partial class CreateActivateTempTargetPrioSupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1119,6 +1152,7 @@ public static partial class CreateActivateTowerDamageSupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1155,6 +1189,7 @@ public static partial class CreateActivateVisibilitySupportZoneModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1192,6 +1227,7 @@ public static partial class CreateAddAbilityBehaviorsPerkModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddAbilityBehaviorsPerkModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1213,6 +1249,7 @@ public static partial class CreateAddAbilityToTowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AddAbilityToTowerModModel(args.name, args.abilityModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1245,6 +1282,7 @@ public static partial class CreateAddAcidicMixtureToProjectileModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddAcidicMixtureToProjectileModel(args.name, args.mutationId, args.cap, args.towerBehaviors, args.weapBehaviors, args.projBehaviors, args.assetId, args.ignoreList, args.buffLocsName, args.buffIconName);
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1267,6 +1305,7 @@ public static partial class CreateAddArtifactToSimulationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddArtifactToSimulationModel(args.artifactIds, args.enableOptions);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1304,6 +1343,7 @@ public static partial class CreateAddAttackBehaviorsPerkModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddAttackBehaviorsPerkModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1329,6 +1369,7 @@ public static partial class CreateAddAttackTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.AddAttackTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.attackModel, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1353,6 +1394,7 @@ public static partial class CreateAddBehaviorModifierForTagModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorModifierForTagModel(args.name, args.tag, args.mutatorId, args.mutatorMultiplier);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1382,6 +1424,7 @@ public static partial class CreateAddBehaviorToBloonInZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddBehaviorToBloonInZoneModel(args.name, args.zoneRadius, args.mutationId, args.isUnique, args.behaviors, args.filters, args.overlayType, args.bindRadiusToTowerRange, args.radiusOffset, args._mutator);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1425,6 +1468,7 @@ public static partial class CreateAddBehaviorToBloonModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutators != default) result.mutators = args.mutators;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1450,6 +1494,7 @@ public static partial class CreateAddBehaviorToTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.AddBehaviorToTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.lifespan, args.behaviors);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1489,6 +1534,7 @@ public static partial class CreateAddBehaviorToTowerSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1530,6 +1576,7 @@ public static partial class CreateAddBehaviorToTowerTypeSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1553,6 +1600,7 @@ public static partial class CreateAddBehaviorsToBloonModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AddBehaviorsToBloonModModel(args.name, args.targets, args.excludeMoabs, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1574,6 +1622,7 @@ public static partial class CreateAddBehaviourToBloonMutationModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AddBehaviourToBloonMutationModModel(args.name, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1621,6 +1670,7 @@ public static partial class CreateAddBerserkerBrewToProjectileModelExt
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.blocker != default) result.blocker = args.blocker;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1645,6 +1695,7 @@ public static partial class CreateAddBloonBehaviorForTimeActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.AddBloonBehaviorForTimeActionModel(args.name, args.actionId, args.behaviorToAdd, args.time);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1666,6 +1717,7 @@ public static partial class CreateAddBloonRushesModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.AddBloonRushesModModel(args.name, args.bloonRushes);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1702,6 +1754,7 @@ public static partial class CreateAddBonusDamagePerHitToBloonModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1726,6 +1779,7 @@ public static partial class CreateAddCashOnProjectileExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddCashOnProjectileExpireModel(args.name, args.cashToAdd, args.textAssetId, args.textLifeSpan);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1763,6 +1817,7 @@ public static partial class CreateAddControlledZoneBehaviorsPerkModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddControlledZoneBehaviorsPerkModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1785,6 +1840,7 @@ public static partial class CreateAddCorvusManaModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddCorvusManaModel(args.name, args.amountOnEmit);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1809,6 +1865,7 @@ public static partial class CreateAddEventHookModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddEventHookModel(args.name, args.onHookStartCondition, args.onHookEndConditions, args.requireAllTriggersWithinRound, args.isAnalyticsDisabled);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1831,6 +1888,7 @@ public static partial class CreateAddFreeTowerAfterRoundsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddFreeTowerAfterRoundsModel(args.name, args.towerId, args.rounds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1869,6 +1927,7 @@ public static partial class CreateAddGravityToEntityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddGravityToEntityModel(args.name, args.mass, args.velocityX, args.velocityY, args.velocityZ, args.accellerationX, args.accellerationY, args.accellerationZ, args.gravityX, args.gravityY, args.gravityZ, args.impulseX, args.impulseY, args.impulseZ, args.impulseOverridesVelocity, args.canImpulseIfNotGrounded, args.tiltBasedOnVelocity, args.maxTiltAngle, args.groundPlaneY);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1891,6 +1950,7 @@ public static partial class CreateAddHeatActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.AddHeatActionModel(args.name, args.heatPercent, args.actionId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1913,6 +1973,7 @@ public static partial class CreateAddHeatToBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddHeatToBloonModel(args.name, args.heatAmount);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1943,6 +2004,7 @@ public static partial class CreateAddMakeshiftAreaModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddMakeshiftAreaModel(args.name, args.points, args.newAreaType, args.filterInTowerSizes, args.renderHeightOffset, args.ignoreZAxisTowerCollision, args.filterOutSpecificTowers, args.destroyTowersOnAreaWhenSold, args.filterInTowerSets, args.dontDestroyTowersWhenAreaChanges, args.lockedArea);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1965,6 +2027,7 @@ public static partial class CreateAddMapAssetsEventModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddMapAssetsEventModel(args.disableAmbientMapFx, args.fXPrefabs);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -1987,6 +2050,7 @@ public static partial class CreateAddOverlayToBloonModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AddOverlayToBloonModModel(args.name, args.overlayType, args.excludeMoabs);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2024,6 +2088,7 @@ public static partial class CreateAddProjectileBehaviorsPerkModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddProjectileBehaviorsPerkModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2045,6 +2110,7 @@ public static partial class CreateAddSimBehaviorToSimModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddSimBehaviorToSimModModel(args.name, args.models);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2067,6 +2133,7 @@ public static partial class CreateAddSlowImmunityToBloonModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AddSlowImmunityToBloonModModel(args.name, args.targets, args.excludeMoabs);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2090,6 +2157,7 @@ public static partial class CreateAddSoundToShopMenuModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddSoundToShopMenuModel(args.name, args.openShopSound, args.heroVoiceSound1, args.heroVoiceSound2);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2122,6 +2190,7 @@ public static partial class CreateAddTagToBloonModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2163,6 +2232,7 @@ public static partial class CreateAddTowerBehaviorSimBehaviorModelExt
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.modelName != default) result.modelName = args.modelName;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2204,6 +2274,7 @@ public static partial class CreateAddTowerBehaviorToFirstPlacedTowerSimBehaviorM
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.modelName != default) result.modelName = args.modelName;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2241,6 +2312,7 @@ public static partial class CreateAddTowerBehaviorsPerkModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddTowerBehaviorsPerkModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2266,6 +2338,7 @@ public static partial class CreateAddTowerToTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.AddTowerToTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.towerModel, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2303,6 +2376,7 @@ public static partial class CreateAddWeaponBehaviorsPerkModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.AddWeaponBehaviorsPerkModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.replaceScriptNames, args.replaceScriptIds, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.behaviorModels != default) result.behaviorModels = args.behaviorModels;
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2329,6 +2403,7 @@ public static partial class CreateAddbehaviorToWeaponModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddbehaviorToWeaponModel(args.name, args.mutationId, args.lifespan, args.behaviors);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2352,6 +2427,7 @@ public static partial class CreateAdoraEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.AdoraEmissionModel(args.name, args.count, args.angleBetween, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2373,6 +2449,7 @@ public static partial class CreateAdoraSunGodDarkMapTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.AdoraSunGodDarkMapTriggerModel(args.name);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2419,6 +2496,7 @@ public static partial class CreateAdoraSunGodTransformationModelExt
             if (args.weaponDelayFrames != default) result.weaponDelayFrames = args.weaponDelayFrames;
             if (args._regularMutator != default) result._regularMutator = args._regularMutator;
             if (args._darkMutator != default) result._darkMutator = args._darkMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2457,6 +2535,7 @@ public static partial class CreateAdoraTrackTargetModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2498,6 +2577,7 @@ public static partial class CreateAdoraTransformSoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AdoraTransformSoundModel(args.name, args.newSelectSound01, args.newSelectSound02, args.newSelectSound03, args.newSelectSound04, args.newSelectSound05, args.newSelectSound06, args.newSelectAltSound01, args.newSelectAltSound02, args.newLeakSound01, args.newLeakSound02, args.newMoabDestroyedSound01, args.newMoabDestroyedSound02, args.newMoabWarningSound, args.newBfbWarningSound, args.newZomgWarningSound, args.newDdtWarningSound, args.newBadWarningSound, args.newUltimate3Sound, args.newUltimate7Sound, args.newUltimate10Sound, args.transformSound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2519,6 +2599,7 @@ public static partial class CreateAdvanceRoundActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.AdvanceRoundActionModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2544,6 +2625,7 @@ public static partial class CreateAfterRoundTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.AfterRoundTriggerModel(args.name, args.round, args.everyNthRound, args.usePrimeNumbers, args.triggerOnceIfRoundMissed);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2565,6 +2647,7 @@ public static partial class CreateAgeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AgeModModel(args.name, args.additionalTime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2594,6 +2677,7 @@ public static partial class CreateAgeModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2628,6 +2712,7 @@ public static partial class CreateAgeRandomModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2653,6 +2738,7 @@ public static partial class CreateAgeingDestroyModelExt
             var result = new Il2CppAssets.Scripts.Models.Behaviors.AgeingDestroyModel(args.name, args.time, args.useRoundTime);
             if (args.timeFrames != default) result.timeFrames = args.timeFrames;
             if (args.Time != default) result.Time = args.Time;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2699,6 +2785,7 @@ public static partial class CreateAggressionModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2726,6 +2813,7 @@ public static partial class CreateAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel(args.name, args.display, args.behaviors, args.displayScale, args.isAirUnitSelectable, args.selectableRadius, args.blocksPlacement, args.blockingRadius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2749,6 +2837,7 @@ public static partial class CreateAllBloonSpeedModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.AllBloonSpeedModModel(args.name, args.speedMod, args.bloonTags);
             if (args.tagsList != default) result.tagsList = args.tagsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2771,6 +2860,7 @@ public static partial class CreateAlternateAnimationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AlternateAnimationModel(args.name, args.states, args.originState);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2793,6 +2883,7 @@ public static partial class CreateAlternateArcModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AlternateArcModModel(args.name, args.increase, args.shotCount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2815,6 +2906,7 @@ public static partial class CreateAlternateBloonsSplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.AlternateBloonsSplitterModel(args.name, args.paths, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2839,6 +2931,7 @@ public static partial class CreateAlternateProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AlternateProjectileModel(args.name, args.projectile, args.emissionModel, args.interval, args.alternateAnimation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2862,6 +2955,7 @@ public static partial class CreateAlternateRoundMultiPathSplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.AlternateRoundMultiPathSplitterModel(args.name, args.paths, args.groupPaths, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2887,6 +2981,7 @@ public static partial class CreateAlternateRoundSplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.AlternateRoundSplitterModel(args.name, args.paths, args.doesNotLoop, args.roundsPerPath, args.currentRoundOffset, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2914,6 +3009,7 @@ public static partial class CreateAlternatingArcEmissionModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.AlternatingArcEmissionModel(args.name, args.count, args.angle, args.useParentRotation, args.behaviors);
             if (args.offsetStart != default) result.offsetStart = args.offsetStart;
             if (args.sliceSize != default) result.sliceSize = args.sliceSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2944,6 +3040,7 @@ public static partial class CreateAlternatingEjectEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AlternatingEjectEffectModel(args.secondAssetId, args.secondEffectModel, args.secondEffectLifespan, args.name, args.effectModel, args.lifespan, args.fullscreen, args.rotateToWeapon, args.useEjectPoint, args.useEmittedFrom, args.useMainAttackRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2965,6 +3062,7 @@ public static partial class CreateAmbidextrousRangsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AmbidextrousRangsModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -2999,6 +3097,7 @@ public static partial class CreateAmbushPointsSettingModelExt
             if (args.pointSwitchDistanceSquared != default) result.pointSwitchDistanceSquared = args.pointSwitchDistanceSquared;
             if (args.minimumPointDistanceSquared != default) result.minimumPointDistanceSquared = args.minimumPointDistanceSquared;
             if (args.lineDelayFrames != default) result.lineDelayFrames = args.lineDelayFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3020,6 +3119,7 @@ public static partial class CreateAmbushTechModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.AmbushTechModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3042,6 +3142,7 @@ public static partial class CreateAmbushTechModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AmbushTechModel(args.name, args.displayPath, args.radius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3066,6 +3167,7 @@ public static partial class CreateAmmoBeltModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AmmoBeltModel(args.name, args.startCount, args.maxCount, args.regenRate);
             if (args.regenRateFrames != default) result.regenRateFrames = args.regenRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3111,6 +3213,7 @@ public static partial class CreateAncestralMightModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3133,6 +3236,7 @@ public static partial class CreateAngleToMapCenterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AngleToMapCenterModel(args.name, args.range, args.offset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3154,6 +3258,7 @@ public static partial class CreateAnimDamageStateModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.AnimDamageStateModel(args.name, args.numOfAnimStates);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3175,6 +3280,7 @@ public static partial class CreateAnimateAirUnitOnFireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AnimateAirUnitOnFireModel(args.name, args.animationState);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3199,6 +3305,7 @@ public static partial class CreateAnimateOnBeastHandlerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AnimateOnBeastHandlerModel(args.name, args.animationStateMinParent, args.animationStateMaxParent, args.animationStateMinContributor, args.animationStateMaxContributor);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3221,6 +3328,7 @@ public static partial class CreateAnimateOnCollideModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AnimateOnCollideModel(args.name, args.animationState);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3246,6 +3354,7 @@ public static partial class CreateAnimateParentTowerOnCollideModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AnimateParentTowerOnCollideModel(args.name, args.animationState, args.minTimeBetween);
             if (args.minTimeBetweenFrames != default) result.minTimeBetweenFrames = args.minTimeBetweenFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3268,6 +3377,7 @@ public static partial class CreateAnimationSpecialEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Props.Behaviors.AnimationSpecialEffectModel(args.name, args.framesToWait, args.isParticleEffect);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3291,6 +3401,7 @@ public static partial class CreateAnimationStateOverrideModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AnimationStateOverrideModel(args.name, args.stateFrom, args.stateTo, args.overrideWith);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3319,6 +3430,7 @@ public static partial class CreateAnniversaryChallengeQuestModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AnniversaryChallengeQuestModel(args.targetBloonName, args.badSpeedMutliplier, args.badScaleMutliplier, args.badHealthMutliplier, args.numAllowedLeaks, args.numRoundsBeforeSpawningTarget);
             if (args.destroyOnDegradeModel != default) result.destroyOnDegradeModel = args.destroyOnDegradeModel;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3340,6 +3452,7 @@ public static partial class CreateApopalypseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ApopalypseModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3362,6 +3475,7 @@ public static partial class CreateApplyModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ApplyModModel(args.name, args.mod, args.target);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3388,6 +3502,7 @@ public static partial class CreateApplyTowerFreezeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.ApplyTowerFreezeModel(args.name, args.stunFrequencyRounds, args.stunDurationRounds, args.ignoreList, args.towerStunEffect, args.freezeSound);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3411,6 +3526,7 @@ public static partial class CreateApplyTowerSetImmunityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.ApplyTowerSetImmunityModel(args.name, args.actionId, args.id, args.immunities);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3442,6 +3558,7 @@ public static partial class CreateArcEmissionModelExt
             if (args.offsetStart != default) result.offsetStart = args.offsetStart;
             if (args.sliceSize != default) result.sliceSize = args.sliceSize;
             if (args.count != default) result.count = args.count;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3469,6 +3586,7 @@ public static partial class CreateArcaneMetamorphosisModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ArcaneMetamorphosisModel(args.name, args.manaPerSecond, args.displayDegreePaths, args.effectTowerModel, args.effectSubtowerModel, args.effectEndTowerModel, args.effectEndSubtowerModel, args.endAnimationState);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3509,6 +3627,7 @@ public static partial class CreateAreaModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.AreaModel(args.name, args.polygon, args.holes, args.height, args.type, args.renderHeightOffset, args.filterInTowerSizes, args.filterInTowerSets, args.filterOutSpecificTowers, args.isBlocker, args.isDisabled, args.isInputBlocking, args.pivotPoint, args.buffs, args.blockerCircles, args.customAreaCategoryLayerId, args.doesNotHighlight, args.lockedArea);
             if (args.id != default) result.id = args.id;
             if (args.ignoreZAxisTowerCollision != default) result.ignoreZAxisTowerCollision = args.ignoreZAxisTowerCollision;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3553,6 +3672,7 @@ public static partial class CreateAreaTextureModelExt
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3586,6 +3706,7 @@ public static partial class CreateArriveAtTargetModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ArriveAtTargetModel(args.name, args.timeToTake, args.curveSamples, args.filterCollisionWhileMoving, args.expireOnArrival, args.altSpeed, args.stopOnTargetReached, args.keepUpdatingTargetPos, args.rotateToTarget, args.maxTurnAngle, args.positionAboveMoabTypes);
             if (args.curve != default) result.curve = args.curve;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3609,6 +3730,7 @@ public static partial class CreateArtilleryCommandModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ArtilleryCommandModel(args.name, args.givesBuff, args.buffFrames, args.otherTowerEffectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3630,6 +3752,7 @@ public static partial class CreateAssetPathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Effects.AssetPathModel(args.name, args.assetPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3665,6 +3788,7 @@ public static partial class CreateAttackAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackAirUnitModel(args.name, args.weapons, args.range, args.behaviors, args.targetProvider, args.offsetX, args.offsetY, args.offsetZ, args.attackThroughWalls, args.fireWithoutTarget, args.framesBeforeRetarget, args.addsToSharedGrid, args.sharedGridRange, args.displayAirUnitModel, args.disableOnCreate);
             if (args.drawRangeCircle != default) result.drawRangeCircle = args.drawRangeCircle;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3694,6 +3818,7 @@ public static partial class CreateAttackBloonOnEntranceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AttackBloonOnEntranceModel(args.name, args.projectileModel, args.emissionModel, args.throwOffsetX, args.throwOffsetY, args.throwOffsetZ, args.ejectEffectModel, args.animationState, args.bloonTags);
             if (args.bloonTagsList != default) result.bloonTagsList = args.bloonTagsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3715,6 +3840,7 @@ public static partial class CreateAttackFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackFilterModel(args.name, args.filters);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3736,6 +3862,7 @@ public static partial class CreateAttackMinimumRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AttackMinimumRangeModel(args.name, args.minimumRange);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3770,6 +3897,7 @@ public static partial class CreateAttackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel(args.name, args.weapons, args.range, args.behaviors, args.targetProvider, args.offsetX, args.offsetY, args.offsetZ, args.attackThroughWalls, args.fireWithoutTarget, args.framesBeforeRetarget, args.addsToSharedGrid, args.sharedGridRange, args.drawRangeCircle, args.disableOnCreate);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3792,6 +3920,7 @@ public static partial class CreateAttunementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.CorvusSpells.PassiveBonuses.AttunementModel(args.name, args.maxSpeedMultiplier, args.maxDamageMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3813,6 +3942,7 @@ public static partial class CreateAutoActivateAbilitiesModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AutoActivateAbilitiesModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3837,6 +3967,7 @@ public static partial class CreateAutoTargetTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.AutoTargetTrackModel(args.name, args.radius, args.isSelectable, args.isOnSubTower, args.maxOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3859,6 +3990,7 @@ public static partial class CreateAwardCashOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AwardCashOnRoundModel(args.round, args.cashAmount);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3880,6 +4012,7 @@ public static partial class CreateBadImmunityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BadImmunityModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3904,6 +4037,7 @@ public static partial class CreateBalanceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.CorvusSpells.PassiveBonuses.BalanceModel(args.name, args.maxGenerationManaPoolThreshold, args.maxGenerationRate, args.minGenerationManaPoolThreshold, args.minGenerationRate);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3925,6 +4059,7 @@ public static partial class CreateBananaBonusCashZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BananaBonusCashZoneModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3970,6 +4105,7 @@ public static partial class CreateBananaCashIncreaseSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -3996,6 +4132,7 @@ public static partial class CreateBananaCentralBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BananaCentralBuffModel(args.name, args.multiplier, args.mutatorId, args.buffLocsName, args.buffIconName, args.isGlobalRange);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4021,6 +4158,7 @@ public static partial class CreateBananaFarmerCamoBananasModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BananaFarmerCamoBananasModel(args.name, args.camoBananaWeaponModel, args.camoBananaFarmCount);
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.buffIndicatorModel != default) result.buffIndicatorModel = args.buffIndicatorModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4042,6 +4180,7 @@ public static partial class CreateBananaFarmerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.BananaFarmerModModel(args.name, args.rangeMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4093,6 +4232,7 @@ public static partial class CreateBananaFarmerRegrowBananasModelExt
             if (args.buffIconName != default) result.buffIconName = args.buffIconName;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4117,6 +4257,7 @@ public static partial class CreateBananaFarmerRegrowBananasWeaponBehaviorModelEx
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BananaFarmerRegrowBananasWeaponBehaviorModel(args.name, args.regrowBananaPeelModel, args.regrowPerBanana, args.createProjectileOnPickupModel, args.createProjectileOnExpireModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4139,6 +4280,7 @@ public static partial class CreateBananaPeelLimitProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BananaPeelLimitProjectileModel(args.name, args.projectileId, args.bananasRequired);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4163,6 +4305,7 @@ public static partial class CreateBankDepositsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.BankDepositsModModel(args.name, args.depositPercent, args.towerSelectionMenuThemeId, args.displayPath, args.displayLifetime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4186,6 +4329,7 @@ public static partial class CreateBankDepositsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BankDepositsModel(args.name, args.depositPercent, args.displayPath, args.displayLifetime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4207,6 +4351,7 @@ public static partial class CreateBankModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.BankModModel(args.name, args.additionalCapacity);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4234,6 +4379,7 @@ public static partial class CreateBankModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BankModel(args.name, args.capacity, args.interest, args.assetId, args.fullBankAssetId, args.lifespan, args.autoCollect, args.collectAnimation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4280,6 +4426,7 @@ public static partial class CreateBeastHandlerLeashModelExt
             if (args.buffIndicatorMicroraptor != default) result.buffIndicatorMicroraptor = args.buffIndicatorMicroraptor;
             if (args.buffIndicatorGyrfalcon != default) result.buffIndicatorGyrfalcon = args.buffIndicatorGyrfalcon;
             if (args.mutatorsOfStackCount != default) result.mutatorsOfStackCount = args.mutatorsOfStackCount;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4303,6 +4450,7 @@ public static partial class CreateBeastHandlerPetDisplayStepModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetDisplayStepModel(args.name, args.display, args.projectileDisplay, args.percent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4341,6 +4489,7 @@ public static partial class CreateBeastHandlerPetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetModel(args.name, args.tier, args.path, args.requiredCount, args.canMove, args.rotateWhenMoved, args.basePower, args.maxPower, args.enableContribution, args.cooldownScaleRange, args.pierceRange, args.damageRange, args.destroyTimeScaleRangePiranha, args.thrashKnockbackLifetimeRange, args.stunBonusDivideMicroraptor, args.damageRangeGrappleGyrfalcon, args.speedRangeGyrfalcon, args.displayStepModels, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.genericIcon));
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4362,6 +4511,7 @@ public static partial class CreateBeastHandlerUpgradeLockModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerUpgradeLockModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4384,6 +4534,7 @@ public static partial class CreateBerserkerBrewCheckModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BerserkerBrewCheckModel(args.name, args.maxCount, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4405,6 +4556,7 @@ public static partial class CreateBerserkerBrewModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BerserkerBrewModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4428,6 +4580,7 @@ public static partial class CreateBigSqueezeFortifiedEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BigSqueezeFortifiedEffectModel(args.name, args.randomRotation, args.effectModel);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4465,6 +4618,7 @@ public static partial class CreateBiohackModelExt
             if (args.behaviorMutator != default) result.behaviorMutator = args.behaviorMutator;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4491,6 +4645,7 @@ public static partial class CreateBlastapopoulosRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BlastapopoulosRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4514,6 +4669,7 @@ public static partial class CreateBlockerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.BlockerModel(args.name, args.parentId, args.circle, args.isDisabled);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4553,6 +4709,7 @@ public static partial class CreateBloodSacrificeModelExt
             if (args.buffDurationFrames != default) result.buffDurationFrames = args.buffDurationFrames;
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutators != default) result.mutators = args.mutators;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4574,6 +4731,7 @@ public static partial class CreateBloonBehaviorTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Triggers.BloonBehaviorTriggerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4595,6 +4753,7 @@ public static partial class CreateBloonDeathEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BloonDeathEffectModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4617,6 +4776,7 @@ public static partial class CreateBloonDistanceRateBonusModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BloonDistanceRateBonusModel(args.name, args.rateBonusPerRange, args.rangeMax);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4642,6 +4802,7 @@ public static partial class CreateBloonEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.BloonEmissionModel(args.name, args.time, args.bloon, args.isCustomBossEmission, args.towerSetImmunity);
             if (args.emissionIndex != default) result.emissionIndex = args.emissionIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4666,6 +4827,7 @@ public static partial class CreateBloonGroupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.BloonGroupModel(args.name, args.bloon, args.start, args.end, args.count);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4688,6 +4850,7 @@ public static partial class CreateBloonHealthModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.BloonHealthModel(args.name, args.healthMod, args.bloonTag);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4709,6 +4872,7 @@ public static partial class CreateBloonLosesPropertiesModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Mod.BloonLosesPropertiesModModel(args.name, args.propertiesToRemove);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4788,6 +4952,7 @@ public static partial class CreateBloonModelExt
             if (args.childBloonModels != default) result.childBloonModels = args.childBloonModels;
             if (args.Speed != default) result.Speed = args.Speed;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4819,6 +4984,7 @@ public static partial class CreateBloonSlapModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4840,6 +5006,7 @@ public static partial class CreateBloonSpawnEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BloonSpawnEffectModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4863,6 +5030,7 @@ public static partial class CreateBloonSpeedModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.BloonSpeedModModel(args.name, args.speedMultiplier, args.tags);
             if (args.tagsList != default) result.tagsList = args.tagsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4890,6 +5058,7 @@ public static partial class CreateBloonSpeedUpZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BloonSpeedUpZoneModel(args.name, args.speedMultiplier, args.range, args.effectModel, args.effectRadius, args.overlayType, args.affectsSelf);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4913,6 +5082,7 @@ public static partial class CreateBloonTagOnlySplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.BloonTagOnlySplitterModel(args.name, args.paths, args.tagOnlyPath, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4949,6 +5119,7 @@ public static partial class CreateBloonVariantModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.BloonVariantModel(args.id, args.affectedBasicTypes, args.affectedProperties, args.affectedLegendsBloons, args.affectedBloonsInLegend, args.addTags, args.addBloonOverlays, args.addBloonBehaviorModels, args.addBloonTriggerModels, args.addBloonActionModels, args.addMutators, args.applyToChildren, args.dontShowInSandbox, args.dontShowInSandboxOnRelease);
             if (args.bloonIdPrefix != default) result.bloonIdPrefix = args.bloonIdPrefix;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -4982,6 +5153,7 @@ public static partial class CreateBloonariusRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BloonariusRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions, args.strongSpawns, args.weakSpawns, args.bleedSpawns, args.strongAmount, args.weakAmount, args.bleedAmount, args.bleedFrequency);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5005,6 +5177,7 @@ public static partial class CreateBloonsInRangeAttackSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BloonsInRangeAttackSpeedModel(args.name, args.rateIncreasePerStack, args.bloonsPerStack, args.maxStacks);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5030,6 +5203,7 @@ public static partial class CreateBloonsPoppedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.BloonsPoppedTriggerModel(args.name, args.position, args.requiredBloons, args.radius, args.cooldown);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5051,6 +5225,7 @@ public static partial class CreateBloonsRegrowRegenRateModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Mod.RegrowRegenRateModModel(args.name, args.regrowRegenRateMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5073,6 +5248,7 @@ public static partial class CreateBonusCashPerRoundModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.BonusCashPerRoundModModel(args.name, args.roundMultiple, args.baseCash);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5095,6 +5271,7 @@ public static partial class CreateBonusCashPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.BonusCashPerRoundModel(args.name, args.roundMultiple, args.baseCash);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5119,6 +5296,7 @@ public static partial class CreateBonusCashZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BonusCashZoneModel(args.name, args.multiplier, args.stackName, args.groupName, args.stackLimit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5140,6 +5318,7 @@ public static partial class CreateBonusLivesOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.BonusLivesOnAbilityModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5168,6 +5347,7 @@ public static partial class CreateBonusProjectileAfterIntervalModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BonusProjectileAfterIntervalModel(args.name, args.interval, args.projectileModel, args.emissionModel, args.useTowerPosition, args.cooldown);
             if (args.expInterval != default) result.expInterval = args.expInterval;
             if (args.cooldownFrames != default) result.cooldownFrames = args.cooldownFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5215,6 +5395,7 @@ public static partial class CreateBoostArtifactModelExt
             if (args.isSheriffArtifact != default) result.isSheriffArtifact = args.isSheriffArtifact;
             if (args.merchantCostMultiplier != default) result.merchantCostMultiplier = args.merchantCostMultiplier;
             if (args.isQuestArtifact != default) result.isQuestArtifact = args.isQuestArtifact;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5241,6 +5422,7 @@ public static partial class CreateBossRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BossRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5280,6 +5462,7 @@ public static partial class CreateBossRushManagerModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.BossRushManagerModel(args.targetBloonName, args.badSpeedMutliplier, args.badScaleMutliplier, args.badHealthMutliplier, args.numAllowedLeaks, args.numRoundsBeforeSpawningTarget, args.bossCashReward, args.bossCashRewardMultiplier, args.maxCashScalingLevel, args.milestoneTierFrequency, args.rushBehaviors, args.dontReplaceOnMilestone, args.useTrackLengthBasedBossSpeed, args.mapLengthSpeedMultiplier, args.baseBossHealth, args.baseBossShield, args.maxKills);
             if (args.destroyOnDegradeModel != default) result.destroyOnDegradeModel = args.destroyOnDegradeModel;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5310,6 +5493,7 @@ public static partial class CreateBottleHotSauceBehaviorModelExt
             if (args.towerId != default) result.towerId = args.towerId;
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5331,6 +5515,7 @@ public static partial class CreateBouncingDartsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.BouncingDartsModModel(args.name, args.targets);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5372,6 +5557,7 @@ public static partial class CreateBountyHunterZoneModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5396,6 +5582,7 @@ public static partial class CreateBrewTargettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.BrewTargettingModel(args.name, args.towerIgnoreList, args.ignoreMutationsByOrder, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5428,6 +5615,7 @@ public static partial class CreateBrickellFreezeMinesAbilityBuffModelExt
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5454,6 +5642,7 @@ public static partial class CreateBrickellFreezeOtherMinesModelExt
             if (args.freezeDurationFrames != default) result.freezeDurationFrames = args.freezeDurationFrames;
             if (args.FreezeDuration != default) result.FreezeDuration = args.FreezeDuration;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5483,6 +5672,7 @@ public static partial class CreateBroadcastSignalActionModelExt
             if (args.DurationFramesTotal != default) result.DurationFramesTotal = args.DurationFramesTotal;
             if (args.DurationFramesPerIteration != default) result.DurationFramesPerIteration = args.DurationFramesPerIteration;
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5507,6 +5697,7 @@ public static partial class CreateBuffBloonSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BuffBloonSpeedModel(args.name, args.speedBoost, args.debuffInRadius, args.speedBoostOverlayGroup);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5531,6 +5722,7 @@ public static partial class CreateBuffBloonsInRadiusActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.BuffBloonsInRadiusActionModel(args.name, args.actionId, args.radius, args.speedMultiplier);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5555,6 +5747,7 @@ public static partial class CreateBuffIconPerTowerInRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BuffIconPerTowerInRangeModel(args.name, args.towerIdFilter, args.buffLocsName, args.buffLocsFullName, args.rangeOverride);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5584,6 +5777,7 @@ public static partial class CreateBuffIndicatorModelExt
             var result = new Il2CppAssets.Scripts.Models.GenericBehaviors.BuffIndicatorModel(args.name, args.buffName, args.iconName, args.globalRange, args.maxStackSize, args.onlyShowBuffIfMutated, args.dontShowX);
             if (args.stackable != default) result.stackable = args.stackable;
             if (args._fullName != default) result._fullName = args._fullName;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5608,6 +5802,7 @@ public static partial class CreateBurstWeaponBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponBehaviorModel(args.name, args.interval, args.count, args.alwaysEmptyClip);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5629,6 +5824,7 @@ public static partial class CreateCallToArmsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CallToArmsModModel(args.name, args.additionalTime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5658,6 +5854,7 @@ public static partial class CreateCallToArmsModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CallToArmsModel(args.name, args.lifespan, args.multiplier, args.useRadius, args.buffLocsName, args.buffIconName, args._mutator);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5683,6 +5880,7 @@ public static partial class CreateCamoDetectAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.CamoDetectAreaBuffModel(args.name, args.mutatorId, args.priority, args.buffIndicatorModel, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5704,6 +5902,7 @@ public static partial class CreateCamoTrapModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.CamoTrapModModel(args.name, args.pierceIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5725,6 +5924,7 @@ public static partial class CreateCamoTrapModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.CamoTrapModel(args.name, args.projectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5750,6 +5950,7 @@ public static partial class CreateCanBuffIndicatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CanBuffIndicatorModel(args.name, args.buffLocsName, args.buffIconName, args.isDisabled, args.isGlobalRange, args.maxStackSize);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5771,6 +5972,7 @@ public static partial class CreateCantBeReflectedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CantBeReflectedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5800,6 +6002,7 @@ public static partial class CreateCapReceivedDamageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CapReceivedDamageModel(args.name, args.cap, args.damageTypes, args.useOriginalType, args.maxHits, args.overlayToRemoveWhenNotCapping, args.soundsWhenDamageCapped, args.soundWhenNoLongerCapped, args.effectWhenNoLongerCapped);
             if (args._mutator != default) result._mutator = args._mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5840,6 +6043,7 @@ public static partial class CreateCarpetBombAbilityModelExt
             if (args.pointSwitchDistanceSquared != default) result.pointSwitchDistanceSquared = args.pointSwitchDistanceSquared;
             if (args.minPathDistanceSquared != default) result.minPathDistanceSquared = args.minPathDistanceSquared;
             if (args.lineDelayFrames != default) result.lineDelayFrames = args.lineDelayFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5863,6 +6067,7 @@ public static partial class CreateCarryProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CarryProjectileModel(args.name, args.projectile, args.emission, args.tower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5887,6 +6092,7 @@ public static partial class CreateCashBoostModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CashBoostModel(args.name, args.lifespanFrames, args.multiplier, args.range, args.filterTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5908,6 +6114,7 @@ public static partial class CreateCashDropModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.CashDropModel(args.name, args.projectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5930,6 +6137,7 @@ public static partial class CreateCashIncreaseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CashIncreaseModModel(args.name, args.additionalAmount, args.percentIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5952,6 +6160,7 @@ public static partial class CreateCashIncreaseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CashIncreaseModel(args.name, args.increase, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -5974,6 +6183,7 @@ public static partial class CreateCashModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CashModModel(args.name, args.percentBonus, args.bonusMultiplierBuff);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6006,6 +6216,7 @@ public static partial class CreateCashModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CashModel(args.name, args.minimum, args.maximum, args.bonusMultiplier, args.salvage, args.noTransformCash, args.distributeSalvage, args.forceCreateProjectile, args.isDoubleable, args.distributeBonusIncome, args.emittedByCashEarnedMultiplier, args.isPowerCash);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6027,6 +6238,7 @@ public static partial class CreateCashPerRoundModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CashPerRoundModModel(args.name, args.additionalMoney);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6056,6 +6268,7 @@ public static partial class CreateCashPerTowerInRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CashPerTowerInRangeModel(args.name, args.towerIds, args.baseCash, args.extraCashPerTier, args.rangeIncrease, args.maxCashGeneration, args.badPopMultiplier, args.bossSkullMultiplier, args.textAssetId, args.textLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6077,6 +6290,7 @@ public static partial class CreateCashRushGameModeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.CashRushGameModeModel(args.cashGoal);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6109,6 +6323,7 @@ public static partial class CreateCashbackZoneModelExt
             if (args.baseIdsArray != default) result.baseIdsArray = args.baseIdsArray;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6138,6 +6353,7 @@ public static partial class CreateCenterElipsePatternModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel(args.name, args.widthRadius, args.heightRadius, args.isSelectable, args.reverse, args.display, args.displayCount, args.isOnSubTower, args.canSelectPoint, args.pointDisplay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6166,6 +6382,7 @@ public static partial class CreateCentralMarketBuffModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CentralMarketBuffModel(args.name, args.multiplier, args.mutatorId, args.buffLocsName, args.buffIconName, args.maxStackCount);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6187,6 +6404,7 @@ public static partial class CreateCeramicShockModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CeramicShockModModel(args.name, args.slowModelToUse);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6210,6 +6428,7 @@ public static partial class CreateChangeDamageTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ChangeDamageTypeModel(args.name, args.lifespanFrames, args.cantBeAbsorbed, args.immuneBloonProperties);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6233,6 +6452,7 @@ public static partial class CreateChangeEmitProjectileActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.ChangeEmitProjectileActionModel(args.name, args.mapEventName, args.newProjectileModel);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6255,6 +6475,7 @@ public static partial class CreateChangeGrowTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChangeGrowTypeModel(args.name, args.bloon, args.regenTo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6282,6 +6503,7 @@ public static partial class CreateChangeProjectileDisplayModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ChangeProjectileDisplayModel(args.name, args.lifespan, args.displayPath, args.projectileModel, args.mutatorId);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6311,6 +6533,7 @@ public static partial class CreateChangeProjectilePerEmitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ChangeProjectilePerEmitModel(args.name, args.originalProjectileModel, args.changedProjectileModel, args.forProjectileCount, args.animationState, args.animationStateBeforeChangedProjectile, args.effectBeforeChangedProjectileModel, args.effectMarkerX, args.effectMarkerY, args.effectMarkerZ);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6336,6 +6559,7 @@ public static partial class CreateChangeSimTimeElapsedTriggerActionModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.ChangeSimTimeElapsedTriggerActionModel(args.name, args.mapEventName, args.timeReduction);
             if (args.timeReductionFrames != default) result.timeReductionFrames = args.timeReductionFrames;
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6360,6 +6584,7 @@ public static partial class CreateChangeSpeedBasedOnCurrentHealthModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChangeSpeedBasedOnCurrentHealthModel(args.name, args.pointAHealth, args.pointBHealth, args.pointASpeedMultiplier, args.pointBSpeedMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6381,6 +6606,7 @@ public static partial class CreateCheckAdoraCanFireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CheckAdoraCanFireModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6403,6 +6629,7 @@ public static partial class CreateCheckAirUnitOverTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CheckAirUnitOverTrackModel(args.name, args.futureTime);
             if (args.futureTimeFrames != default) result.futureTimeFrames = args.futureTimeFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6425,6 +6652,7 @@ public static partial class CreateCheckAmmoBeltModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CheckAmmoBeltModel(args.name, args.fireRate);
             if (args.fireRateFrames != default) result.fireRateFrames = args.fireRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6446,6 +6674,7 @@ public static partial class CreateCheckIsOverTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CheckIsOverTrackModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6467,6 +6696,7 @@ public static partial class CreateCheckTargetsWithoutOffsetsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CheckTargetsWithoutOffsetsModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6488,6 +6718,7 @@ public static partial class CreateCheckTempleCanFireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CheckTempleCanFireModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6511,6 +6742,7 @@ public static partial class CreateCheckTempleUnderLevelModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.Conditions.Behaviors.CheckTempleUnderLevelModel(args.name, args.cost, args.towerSet, args.templeType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6532,6 +6764,7 @@ public static partial class CreateChimpsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ChimpsModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6554,6 +6787,7 @@ public static partial class CreateChipMapBasedObjectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChipMapBasedObjectModel(args.name, args.chipTag);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6578,6 +6812,7 @@ public static partial class CreateChurchillBaseRotationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ChurchillBaseRotationModel(args.name, args.rotationSpeed, args.animationMovingClockwise, args.animationMovingAntiClockwise, args.animationStateNotMoving);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6602,6 +6837,7 @@ public static partial class CreateCircleFootprintModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CircleFootprintModel(args.name, args.radius, args.doesntBlockTowerPlacement, args.ignoresPlacementCheck, args.ignoresTowerOverlap);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6624,6 +6860,7 @@ public static partial class CreateCircleMovementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CircleMovementModel(args.name, args.radius, args.speed);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6650,6 +6887,7 @@ public static partial class CreateCirclePatternCloseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CirclePatternCloseModel(args.name, args.radius, args.isSelectable, args.reverse, args.display, args.displayCount, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6676,6 +6914,7 @@ public static partial class CreateCirclePatternFirstModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CirclePatternFirstModel(args.name, args.radius, args.isSelectable, args.reverse, args.display, args.displayCount, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6702,6 +6941,7 @@ public static partial class CreateCirclePatternLastModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CirclePatternLastModel(args.name, args.radius, args.isSelectable, args.reverse, args.display, args.displayCount, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6728,6 +6968,7 @@ public static partial class CreateCirclePatternModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CirclePatternModel(args.name, args.radius, args.isSelectable, args.reverse, args.display, args.displayCount, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6754,6 +6995,7 @@ public static partial class CreateCirclePatternStrongModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CirclePatternStrongModel(args.name, args.radius, args.isSelectable, args.reverse, args.display, args.displayCount, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6778,6 +7020,7 @@ public static partial class CreateClearHitBloonsModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ClearHitBloonsModel(args.name, args.interval);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6802,6 +7045,7 @@ public static partial class CreateClearHitBloonsWhenNoLongerCollidingModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ClearHitBloonsWhenNoLongerCollidingModel(args.name, args.interval);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6826,6 +7070,7 @@ public static partial class CreateClearProjectileHitListModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ClearProjectileHitListModel(args.name, args.rate);
             if (args.rateFrames != default) result.rateFrames = args.rateFrames;
             if (args.Rate != default) result.Rate = args.Rate;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6850,6 +7095,7 @@ public static partial class CreateCloseTargetTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CloseTargetTrackModel(args.name, args.radius, args.isSelectable, args.isOnSubTower, args.maxOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6871,6 +7117,7 @@ public static partial class CreateColdFrontModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ColdFrontModModel(args.name, args.freeze);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6902,6 +7149,7 @@ public static partial class CreateCollectCashZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CollectCashZoneModel(args.name, args.attractRange, args.collectRange, args.lerpMultiplier, args.towerFilter, args.useTowerRange, args.countCollectedCash, args.animateTower, args.rotate, args.onlyAttractsCamo, args.minEmitWaitTime);
             if (args.minEmitWaitTimeFrames != default) result.minEmitWaitTimeFrames = args.minEmitWaitTimeFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6923,6 +7171,7 @@ public static partial class CreateCollectCreatedProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CollectCreatedProjectileModel(args.name, args.projectileId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6944,6 +7193,7 @@ public static partial class CreateCollectFromBankModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CollectFromBankModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6968,6 +7218,7 @@ public static partial class CreateCollideExtraPierceReductionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideExtraPierceReductionModel(args.name, args.bloonTag, args.extraAmount, args.destroyProjectileIfPierceNotEnough);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -6990,6 +7241,7 @@ public static partial class CreateCollideOnlyWithTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideOnlyWithTargetModel(args.name, args.collideWithFirstIfInvalidTarget);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7011,6 +7263,7 @@ public static partial class CreateCollisionGroupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Physics.CollisionGroupModel(args.name, args.collisionGroup);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7035,6 +7288,7 @@ public static partial class CreateColorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ColorModel(args.name, args.red, args.green, args.blue, args.alpha);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7062,6 +7316,7 @@ public static partial class CreateComancheDefenceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ComancheDefenceModel(args.name, args.towerModel, args.reinforcementCount, args.durationFrames, args.cooldownFrames, args.immediate, args.sound, args.maxActivationsPerRound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7088,6 +7343,7 @@ public static partial class CreateComeOnEverybodyModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ComeOnEverybodyModModel(args.name, args.discountMultiplier, args.rateMultiplier, args.buffLocsNameRate, args.buffIconNameRate, args.buffLocsNamePrice, args.buffIconNamePrice);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7117,6 +7373,7 @@ public static partial class CreateComeOnEverybodyModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.ComeOnEverybodyModel(args.name, args.discountMultiplier, args.rateMultiplier, args.buffLocsNameRate, args.buffIconNameRate, args.buffLocsNamePrice, args.buffIconNamePrice);
             if (args.rateMutator != default) result.rateMutator = args.rateMutator;
             if (args.priceMutator != default) result.priceMutator = args.priceMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7138,6 +7395,7 @@ public static partial class CreateConditionalModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.Conditions.ConditionalModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7161,6 +7419,7 @@ public static partial class CreateControlledDamageModifierZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledDamageModifierZoneModel(args.name, args.mutatorId, args.filters, args.damageModifierModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7184,6 +7443,7 @@ public static partial class CreateControlledDamageTypeZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledDamageTypeZoneModel(args.name, args.mutatorId, args.filters, args.immuneBloonProperties);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7206,6 +7466,7 @@ public static partial class CreateControlledEffectZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledEffectZoneModel(args.name, args.towerEffect);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7228,6 +7489,7 @@ public static partial class CreateControlledRateZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledRateZoneModel(args.name, args.mutatorId, args.rateMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7251,6 +7513,7 @@ public static partial class CreateControlledSheriffMoraleDrainModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledSheriffMoraleDrainModel(args.name, args.drainAmount, args.drainRate);
             if (args.drainRateFrames != default) result.drainRateFrames = args.drainRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7274,6 +7537,7 @@ public static partial class CreateControlledSheriffMoraleFillModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledSheriffMoraleFillModel(args.name, args.fillAmount, args.fillRate);
             if (args.fillRateFrames != default) result.fillRateFrames = args.fillRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7296,6 +7560,7 @@ public static partial class CreateControlledSlowZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledSlowZoneModel(args.name, args.mutatorId, args.slowMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7321,6 +7586,7 @@ public static partial class CreateControlledStaminaDrainZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledStaminaDrainZoneModel(args.name, args.drainAmount, args.drainRate, args.affectSelf, args.affectOthers);
             if (args.drainRateFrames != default) result.drainRateFrames = args.drainRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7342,6 +7608,7 @@ public static partial class CreateControlledZoneBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledZoneBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7368,6 +7635,7 @@ public static partial class CreateControlledZoneControllerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledZoneControllerModel(args.name, args.zoneId, args.behaviors, args.lifespan, args.effectOnEnable, args.effectOnDisable);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7390,6 +7658,7 @@ public static partial class CreateCoopAreaLayoutModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.CoopAreaLayoutModel(args.areaModels, args.areaLayoutType);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7414,6 +7683,7 @@ public static partial class CreateCoopAreaModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.CoopAreaModel(args.areaIndex, args.polygon, args.holes, args.marker);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7435,6 +7705,7 @@ public static partial class CreateCoopPlayerIndicatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.CoopPlayerIndicatorModel(args.displayModel);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7461,6 +7732,7 @@ public static partial class CreateCorvusOnSpellEndEffectsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.CorvusSpells.OnEnd.CorvusOnSpellEndEffectsModel(args.name, args.spellType, args.stateOnCorvus, args.stateOnSpirit, args.effectOnCorvusModel, args.effectOnSpiritModel, args.soundModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7483,6 +7755,7 @@ public static partial class CreateCorvusSpellProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CorvusSpellProjectileModel(args.name, args.spellType);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7504,6 +7777,7 @@ public static partial class CreateCorvusSplitProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CorvusSplitProjectileModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7526,6 +7800,7 @@ public static partial class CreateCreateAreaActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.CreateAreaActionModel(args.name, args.areaName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7548,6 +7823,7 @@ public static partial class CreateCreateAreasActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.CreateAreasActionModel(args.name, args.areaNames);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7573,6 +7849,7 @@ public static partial class CreateCreateEffectActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateEffectActionModel(args.name, args.actionId, args.effect, args.scale, args.lifespan, args.followBloonTransform);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7597,6 +7874,7 @@ public static partial class CreateCreateEffectAfterTimeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectAfterTimeModel(args.name, args.effectModel, args.lifespan, args.useRoundTime);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7620,6 +7898,7 @@ public static partial class CreateCreateEffectFollowProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectFollowProjectileModel(args.name, args.effectModel, args.offset);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7643,6 +7922,7 @@ public static partial class CreateCreateEffectFromCollisionToCollisionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectFromCollisionToCollisionModel(args.name, args.effectModel, args.effectLength);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7668,6 +7948,7 @@ public static partial class CreateCreateEffectOnAbilityEndModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateEffectOnAbilityEndModel(args.name, args.effectModel, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7689,6 +7970,7 @@ public static partial class CreateCreateEffectOnAbilityModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CreateEffectOnAbilityModModel(args.name, args.additionalLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7715,6 +7997,7 @@ public static partial class CreateCreateEffectOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateEffectOnAbilityModel(args.name, args.effectModel, args.randomRotation, args.centerEffect, args.destroyOnEnd, args.useAttackTransform, args.canSave);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7738,6 +8021,7 @@ public static partial class CreateCreateEffectOnAirUnitDestroyModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnAirUnitDestroyModel(args.name, args.effectModel, args.rotation, args.scale);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7762,6 +8046,7 @@ public static partial class CreateCreateEffectOnAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnAirUnitModel(args.name, args.effectModel, args.rotation, args.scale, args.displayCategory);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7799,6 +8084,7 @@ public static partial class CreateCreateEffectOnBloonOverTimeModelExt
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.initialDelayFrames != default) result.initialDelayFrames = args.initialDelayFrames;
             if (args.Interval != default) result.Interval = args.Interval;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7821,6 +8107,7 @@ public static partial class CreateCreateEffectOnContactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnContactModel(args.name, args.effectModel);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7848,6 +8135,7 @@ public static partial class CreateCreateEffectOnExhaustFractionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnExhaustFractionModel(args.name, args.effectModel, args.lifespan, args.fullscreen, args.fraction, args.durationFraction, args.randomRotation);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7874,6 +8162,7 @@ public static partial class CreateCreateEffectOnExhaustedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnExhaustedModel(args.name, args.assetId, args.lifespan, args.fullscreen, args.randomRotation, args.effectModel);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7895,6 +8184,7 @@ public static partial class CreateCreateEffectOnExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnExpireModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7919,6 +8209,7 @@ public static partial class CreateCreateEffectOnGeraldoItemModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.CreateEffectOnGeraldoItemModel(args.name, args.effectId, args.lifespan, args.fullScreen, args.useCenterPosition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7942,6 +8233,7 @@ public static partial class CreateCreateEffectOnParentOnAttackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CreateEffectOnParentOnAttackModel(args.name, args.effectModel, args.exitEffectModel, args.cancelIfTowerHidden);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7963,6 +8255,7 @@ public static partial class CreateCreateEffectOnPlaceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnPlaceModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -7986,6 +8279,7 @@ public static partial class CreateCreateEffectOnPopModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateEffectOnPopModel(args.name, args.effectModel, args.ignoreSameFrameDegrade, args.tower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8007,6 +8301,7 @@ public static partial class CreateCreateEffectOnPowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Effects.CreateEffectOnPowerModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8028,6 +8323,7 @@ public static partial class CreateCreateEffectOnRoundEndModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnRoundEndModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8049,6 +8345,7 @@ public static partial class CreateCreateEffectOnSellModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnSellModel(args.name, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8071,6 +8368,7 @@ public static partial class CreateCreateEffectOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateEffectOnUpgradeModel(args.name, args.effectModel, args.createOnAirUnit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8099,6 +8397,7 @@ public static partial class CreateCreateEffectProjectileAfterTimeModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectProjectileAfterTimeModel(args.name, args.effectModel, args.time, args.repeat, args.isBuffedByRate, args.useTargetPosition);
             if (args.timeFrames != default) result.timeFrames = args.timeFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8121,6 +8420,7 @@ public static partial class CreateCreateEffectWhileAttackingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CreateEffectWhileAttackingModel(args.name, args.effectModel, args.exitEffectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8170,6 +8470,7 @@ public static partial class CreateCreateGreatWhiteEffectModelExt
             if (args.bloonDestroyedDisplayModel != default) result.bloonDestroyedDisplayModel = args.bloonDestroyedDisplayModel;
             if (args.emissionModel != default) result.emissionModel = args.emissionModel;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8196,6 +8497,7 @@ public static partial class CreateCreateHandDragObjectActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.CreateHandDragObjectActionModel(args.name, args.handDragId, args.startPosition, args.endPosition, args.hasEndHandDrag, args.towerToDragId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8222,6 +8524,7 @@ public static partial class CreateCreateLightningEffectModelExt
             if (args.displayPaths != default) result.displayPaths = args.displayPaths;
             if (args.displayLengths != default) result.displayLengths = args.displayLengths;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8245,6 +8548,7 @@ public static partial class CreateCreateNearbyWaterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateNearbyWaterModel(args.name, args.radius, args.areaHeightOffset, args.freezeAsset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8271,6 +8575,7 @@ public static partial class CreateCreatePlacementCircleActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.CreatePlacementCircleActionModel(args.name, args.placementId, args.position, args.radius, args.blockPlacementOutsideCircle, args.hideOverlayIcon);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8294,6 +8599,7 @@ public static partial class CreateCreateProjectileOnAbilityActivateModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateProjectileOnAbilityActivateModel(args.name, args.projectile, args.emission, args.chance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8319,6 +8625,7 @@ public static partial class CreateCreateProjectileOnBlockerCollideModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnBlockerCollideModel(args.name, args.projectile, args.emission, args.assetId, args.displayLifetime);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8345,6 +8652,7 @@ public static partial class CreateCreateProjectileOnContactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnContactModel(args.name, args.projectile, args.emission, args.passOnCollidedWith, args.dontCreateAtBloon, args.passOnDirectionToContact);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8373,6 +8681,7 @@ public static partial class CreateCreateProjectileOnExhaustFractionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustFractionModel(args.name, args.projectile, args.emission, args.fraction, args.durationfraction, args.canCreateInBetweenRounds, args.collideOnSubProjectile, args.passOnCollidedWith);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8404,6 +8713,7 @@ public static partial class CreateCreateProjectileOnExhaustPierceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExhaustPierceModel(args.name, args.projectile, args.emission, args.pierceInterval, args.count, args.minimumTimeDifferenceInFrames, args.destroyProjectile, args.assetId, args.displayLifetime, args.displayFullscreen, args.useBloonPosition);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8429,6 +8739,7 @@ public static partial class CreateCreateProjectileOnExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnExpireModel(args.name, args.projectile, args.emission, args.useRotation, args.useTargetPosition);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8460,6 +8771,7 @@ public static partial class CreateCreateProjectileOnIntervalModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnIntervalModel(args.name, args.projectile, args.emission, args.intervalFrames, args.onlyIfHasTarget, args.range, args.targetType, args.isBuffedByRate, args.useRawWeaponRate, args.onlyEmitOnce, args.effect);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8485,6 +8797,7 @@ public static partial class CreateCreateProjectileOnPickupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectileOnPickupModel(args.name, args.projectile, args.emission, args.useRotation, args.useTowerPosition);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8511,6 +8824,7 @@ public static partial class CreateCreateProjectileOnTowerDestroyModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateProjectileOnTowerDestroyModel(args.name, args.projectileModel, args.emissionModel, args.conditions, args.useTowerRotation, args.setAgeZeroOnSell, args.ignoreSubTowers);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8550,6 +8864,7 @@ public static partial class CreateCreateProjectilesAlongPathWhenCloseModelExt
             if (args.projectileLandingEffectDelayFrames != default) result.projectileLandingEffectDelayFrames = args.projectileLandingEffectDelayFrames;
             if (args.projectileCreationDelayFrames != default) result.projectileCreationDelayFrames = args.projectileCreationDelayFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8580,6 +8895,7 @@ public static partial class CreateCreateProjectilesInAreaModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectilesInAreaModel(args.name, args.projectileModel, args.emissionModel, args.intervalFrames, args.range, args.effectAtProjectileModel, args.effectBeforeProjectileModel, args.delayBeforeEffectFrames, args.initialDelayFrames, args.maxProjectileCount);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8610,6 +8926,7 @@ public static partial class CreateCreateProjectilesOnTrackOnExhaustFractionModel
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectilesOnTrackOnExhaustFractionModel(args.name, args.projectile, args.emission, args.fraction, args.durationfraction, args.canCreateInBetweenRounds, args.collideOnSubProjectile, args.passOnCollidedWith, args.range, args.amtOfEmissions);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8636,6 +8953,7 @@ public static partial class CreateCreateProjectilesOnTrackOnExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateProjectilesOnTrackOnExpireModel(args.name, args.projectile, args.emission, args.useRotation, args.count, args.range);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8682,6 +9000,7 @@ public static partial class CreateCreatePropModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreatePropModel(args.name, args.propModel, args.isCollidable, args.zHeight, args.count, args.skipProjectileIndexs, args.optionalSkippedPropReplacement, args.spacing, args.overrideRotation, args.overriddenRotation, args.overrideDirection, args.overriddenDirection, args.isArcEmission, args.arcEmissionAngle, args.arcEmissionOffset, args.randomizeEachPropScale, args.scaleMinX, args.scaleMaxX, args.scaleMinY, args.scaleMaxY, args.offsetAfterRotation, args.randomizeEachPropOffset, args.offsetMinX, args.offsetMaxX, args.offsetMinY, args.offsetMaxY);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8710,6 +9029,7 @@ public static partial class CreateCreatePropsOnBloonActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreatePropsOnBloonActionModel(args.name, args.actionId, args.rockCircleRadius, args.rockAmount, args.rockDuration, args.rockPropId, args.expireEffect, args.expireEffectDuration, args.propScale);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8735,6 +9055,7 @@ public static partial class CreateCreateRandomSoundOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateRandomSoundOnAbilityModel(args.name, args.sound, args.sound2, args.sound3, args.sound4, args.sound5);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8761,6 +9082,7 @@ public static partial class CreateCreateRopeEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateRopeEffectModel(args.name, args.assetId, args.endAssetId, args.spriteSpacing, args.spriteOffset, args.spriteRadius);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8784,6 +9106,7 @@ public static partial class CreateCreateSequencedTypedTowerCurrentIndexModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateSequencedTypedTowerCurrentIndexModel(args.name, args.onlyAllowOneTowerPerType, args.towers, args.projectileDisplays);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8807,6 +9130,7 @@ public static partial class CreateCreateSoundOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateSoundOnAbilityModel(args.name, args.sound, args.heroSound, args.heroSound2);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8830,6 +9154,7 @@ public static partial class CreateCreateSoundOnActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnActionModel(args.name, args.actionId, args.sounds, args.delay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8852,6 +9177,7 @@ public static partial class CreateCreateSoundOnAttachedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnAttachedModel(args.name, args.sound, args.altSound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8875,6 +9201,7 @@ public static partial class CreateCreateSoundOnBloonDestroyedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnBloonDestroyedModel(args.name, args.sound1, args.sound2, args.tag);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8900,6 +9227,7 @@ public static partial class CreateCreateSoundOnBloonEnterTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnBloonEnterTrackModel(args.name, args.moabSound, args.bfbSound, args.ddtSound, args.zomgSound, args.badSound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8922,6 +9250,7 @@ public static partial class CreateCreateSoundOnBloonLeakModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnBloonLeakModel(args.name, args.sound1, args.sound2);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8943,6 +9272,7 @@ public static partial class CreateCreateSoundOnBreakArmourModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnBreakArmourModel(args.name, args.sounds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8965,6 +9295,7 @@ public static partial class CreateCreateSoundOnDamageArmourModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnDamageArmourModel(args.name, args.sounds, args.limit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -8986,6 +9317,7 @@ public static partial class CreateCreateSoundOnDamageBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnDamageBloonModel(args.name, args.sounds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9012,6 +9344,7 @@ public static partial class CreateCreateSoundOnDelayedCollisionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnDelayedCollisionModel(args.name, args.delay, args.sound1, args.sound2, args.sound3, args.sound4);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9033,6 +9366,7 @@ public static partial class CreateCreateSoundOnEndOfRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnEndOfRoundModel(args.name, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9054,6 +9388,7 @@ public static partial class CreateCreateSoundOnGeraldoItemModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.CreateSoundOnGeraldoItemModel(args.name, args.soundId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9075,6 +9410,7 @@ public static partial class CreateCreateSoundOnMonkeyMoneyActivatedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnMonkeyMoneyActivatedModel(args.name, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9097,6 +9433,7 @@ public static partial class CreateCreateSoundOnPickupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnPickupModel(args.name, args.sound);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9118,6 +9455,7 @@ public static partial class CreateCreateSoundOnPowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Effects.CreateSoundOnPowerModel(args.name, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9144,6 +9482,7 @@ public static partial class CreateCreateSoundOnProjectileCollisionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileCollisionModel(args.name, args.sound1, args.sound2, args.sound3, args.sound4, args.sound5);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9177,6 +9516,7 @@ public static partial class CreateCreateSoundOnProjectileCreatedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateSoundOnProjectileCreatedModel(args.name, args.sound1, args.sound2, args.sound3, args.sound4, args.sound5, args.altSound1, args.altSound2, args.altSound3, args.altSound4, args.altSound5, args.type, args.altType, args.projectileId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9203,6 +9543,7 @@ public static partial class CreateCreateSoundOnProjectileExhaustModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileExhaustModel(args.name, args.sound1, args.sound2, args.sound3, args.sound4, args.sound5);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9230,6 +9571,7 @@ public static partial class CreateCreateSoundOnProjectileExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateSoundOnProjectileExpireModel(args.name, args.sound1, args.sound2, args.sound3, args.sound4, args.sound5, args.limiter);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9258,6 +9600,7 @@ public static partial class CreateCreateSoundOnSelectedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnSelectedModel(args.name, args.sound1, args.sound2, args.sound3, args.sound4, args.sound5, args.sound6, args.altSound1, args.altSound2);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9279,6 +9622,7 @@ public static partial class CreateCreateSoundOnSellModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnSellModel(args.name, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9300,6 +9644,7 @@ public static partial class CreateCreateSoundOnSpawnBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnSpawnBloonModel(args.name, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9321,6 +9666,7 @@ public static partial class CreateCreateSoundOnTowerExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnTowerExpireModel(args.name, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9360,6 +9706,7 @@ public static partial class CreateCreateSoundOnTowerPlaceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnTowerPlaceModel(args.name, args.sound1, args.sound2, args.waterSound1, args.waterSound2, args.heroSound1, args.heroSound2, args.reactSound1, args.reactSoundAlt1, args.reactSound2, args.reactSoundAlt2, args.reactSound3, args.reactSoundAlt3, args.towerType1, args.towerSkin1, args.towerType2, args.towerSkin2, args.towerType3, args.towerSkin3, args.reactDelay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9389,6 +9736,7 @@ public static partial class CreateCreateSoundOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateSoundOnUpgradeModel(args.name, args.sound, args.sound1, args.sound2, args.sound3, args.sound4, args.sound5, args.sound6, args.sound7, args.sound8);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9413,6 +9761,7 @@ public static partial class CreateCreateTextEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateTextEffectModel(args.name, args.assetId, args.lifespan, args.useTowerPosition);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9446,6 +9795,7 @@ public static partial class CreateCreateTowerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.CreateTowerActionModel(args.name, args.releaseOriginX, args.releaseOriginY, args.reverseReleaseOriginX, args.reverseReleaseOriginY, args.towerId, args.minDistance, args.maxDistance, args.pointDistance, args.idealDistanceWithinTrack, args.delay, args.forceReleaseMarker, args.rotationY);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9479,6 +9829,7 @@ public static partial class CreateCreateTowerActionSimBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.CreateTowerActionSimBehaviorModel(args.name, args.releaseOriginX, args.releaseOriginY, args.reverseReleaseOriginX, args.reverseReleaseOriginY, args.towerId, args.minDistance, args.maxDistance, args.pointDistance, args.idealDistanceWithinTrack, args.delay, args.forceReleaseMarker, args.rotationY);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9507,6 +9858,7 @@ public static partial class CreateCreateTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateTowerModel(args.name, args.tower, args.height, args.positionAtTarget, args.destroySubTowersOnCreateNewTower, args.useProjectileRotation, args.useParentTargetPriority, args.carryMutatorsFromDestroyedTower);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9528,6 +9880,7 @@ public static partial class CreateCreateTowersInSequenceAbilityIconModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateTowersInSequenceAbilityIconModel(args.name, args.icons);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9549,6 +9902,7 @@ public static partial class CreateCreateTowersInSequenceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateTowersInSequenceModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9570,6 +9924,7 @@ public static partial class CreateCreateTypedTowerCurrentIndexModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateTypedTowerCurrentIndexModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9599,6 +9954,7 @@ public static partial class CreateCreateTypedTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateTypedTowerModel(args.name, args.crushingTower, args.boomTower, args.coldTower, args.energyTower, args.crushingDisplay, args.boomDisplay, args.coldDisplay, args.energyDisplay);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9620,6 +9976,7 @@ public static partial class CreateCreditPopsToParentTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CreditPopsToParentTowerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9643,6 +10000,7 @@ public static partial class CreateCritModifierInZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CritModifierInZoneModel(args.name, args.critAdditive, args.critMultiplier, args.isGlobal);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9668,6 +10026,7 @@ public static partial class CreateCritMultiplierModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritMultiplierModel(args.name, args.damage, args.lower, args.upper, args.displayModel, args.distributeToChildren);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9693,6 +10052,7 @@ public static partial class CreateCritRollModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritRollModel(args.name, args.damageAdditive, args.damageMultiplier, args.chance, args.display, args.critSound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9719,6 +10079,7 @@ public static partial class CreateCritRollWithDistanceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritRollWithDistanceModel(args.name, args.damageAdditive, args.damageMultiplier, args.chance, args.display, args.critSound, args.bonusPerDistance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9745,6 +10106,7 @@ public static partial class CreateCrossTheStreamsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CrossTheStreamsModModel(args.name, args.projectile, args.effectModel, args.rate, args.positionRandomness, args.endPointOffset);
             if (args.rateFrames != default) result.rateFrames = args.rateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9771,6 +10133,7 @@ public static partial class CreateCrossTheStreamsSimBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.CrossTheStreamsSimBehaviorModel(args.name, args.projectileModel, args.effectModel, args.rateFrames, args.positionRandomness, args.endPointOffset);
             if (args.emissionModel != default) result.emissionModel = args.emissionModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9793,6 +10156,7 @@ public static partial class CreateCtAddDamageForBloonTagModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtAddDamageForBloonTagModModel(args.name, args.tag, args.extraDamage);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9815,6 +10179,7 @@ public static partial class CreateCtAddDamageForBloonTypeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtAddDamageForBloonTypeModModel(args.name, args.type, args.extraDamage);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9837,6 +10202,7 @@ public static partial class CreateCtAddHeroLevelsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtAddHeroLevelsModModel(args.name, args.extraLevels, args.levelsWithEmpoweredHeroes);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9859,6 +10225,7 @@ public static partial class CreateCtAddLayersAndDurationToFreezeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtAddLayersAndDurationToFreezeModModel(args.name, args.extraLayers, args.extraDuration);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9881,6 +10248,7 @@ public static partial class CreateCtAddPowersModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtAddPowersModModel(args.name, args.power, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9907,6 +10275,7 @@ public static partial class CreateCtApplyFireDotModModelExt
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtApplyFireDotModModel(args.name, args.damagePerTick, args.timeBetweenTicks, args.totalDuration);
             if (args.sharpProperty != default) result.sharpProperty = args.sharpProperty;
             if (args.fireProperty != default) result.fireProperty = args.fireProperty;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9928,6 +10297,7 @@ public static partial class CreateCtAttackAnyTileModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtAttackAnyTileModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9949,6 +10319,7 @@ public static partial class CreateCtConditionalTowerDiscountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtConditionalTowerDiscountModModel(args.name, args.condition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9970,6 +10341,7 @@ public static partial class CreateCtEmptyModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtEmptyModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -9993,6 +10365,7 @@ public static partial class CreateCtGlobalTowerDiscountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtGlobalTowerDiscountModModel(args.name, args.towerIds, args.costReduction);
             if (args.mutatedUpgrades != default) result.mutatedUpgrades = args.mutatedUpgrades;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10014,6 +10387,7 @@ public static partial class CreateCtIncreasedProjectileLifespanModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtIncreasedProjectileLifespanModModel(args.name, args.increasedLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10035,6 +10409,7 @@ public static partial class CreateCtIncreasedProjectilePierceModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtIncreasedProjectilePierceModModel(args.name, args.extraPierce);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10056,6 +10431,7 @@ public static partial class CreateCtRemoveBloonTypeFromTowerFilterExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtRemoveBloonTypeFromTowerFilter(args.name, args.bloonType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10078,6 +10454,7 @@ public static partial class CreateCtRestoreLivesPerRoundModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtRestoreLivesPerRoundModModel(args.name, args.livesRestored, args.maxLivesAboveStartingLives);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10099,6 +10476,7 @@ public static partial class CreateCtShieldTileModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtShieldTileModModel(args.name, args.duration);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10121,6 +10499,7 @@ public static partial class CreateCtTowerDiscountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtTowerDiscountModModel(args.name, args.towerIds, args.discountAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10143,6 +10522,7 @@ public static partial class CreateCtTowerLimitsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtTowerLimitsModModel(args.name, args.extraIndividualTowers, args.extraTotalTowers);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10164,6 +10544,7 @@ public static partial class CreateCtTowerRangeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtTowerRangeModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10185,6 +10566,7 @@ public static partial class CreateCtViewAllTileDetailsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtViewAllTileDetailsModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10224,6 +10606,7 @@ public static partial class CreateCustomMushroomGrottoRemoveableModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.CustomMushroomGrottoRemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10266,6 +10649,7 @@ public static partial class CreateCustomRemoveableModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.CustomRemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.removeableAreaData, args.onTriggerFramesToWait);
             if (args.disableInGameTypes != default) result.disableInGameTypes = args.disableInGameTypes;
             if (args.ids != default) result.ids = args.ids;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10290,6 +10674,7 @@ public static partial class CreateCycleAnimationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CycleAnimationModel(args.name, args.minAnimationState, args.maxAnimationState, args.loopMode, args.randomize);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10315,6 +10700,7 @@ public static partial class CreateCycleAreasActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.CycleAreasActionModel(args.name, args.areaNames, args.invert, args.fromStartingRound, args.roundsPerRotate);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10336,6 +10722,7 @@ public static partial class CreateDamageAllModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.DamageAllModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10362,6 +10749,7 @@ public static partial class CreateDamageAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.DamageAreaBuffModel(args.name, args.increase, args.mutatorId, args.priority, args.buffIndicatorModel, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10387,6 +10775,7 @@ public static partial class CreateDamageBasedAttackSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DamageBasedAttackSpeedModel(args.name, args.damageThreshold, args.maxTimeInFramesWithoutDamage, args.increasePerThreshold, args.maxStacks, args.damageCap);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10416,6 +10805,7 @@ public static partial class CreateDamageBloonsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.DamageBloonsActionModel(args.name, args.damage, args.range, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10440,6 +10830,7 @@ public static partial class CreateDamageBloonsInRadiusActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.DamageBloonsInRadiusActionModel(args.name, args.actionId, args.explosionRadius, args.explosionDamage, args.explosionFx);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10471,6 +10862,7 @@ public static partial class CreateDamageInRingRadiusModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageInRingRadiusModel(args.name, args.damage, args.maxDamage, args.distributeToChildren, args.overrideDistributeBlocker, args.createPopEffect, args.innerRingRadius, args.immuneBloonProperties, args.immuneBloonPropertiesOriginal, args.ignoreImmunityDestroy, args.ignoreDamageMultipliers);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10493,6 +10885,7 @@ public static partial class CreateDamageIncreaseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DamageIncreaseModModel(args.name, args.amount, args.optionalDamageScriptIds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10523,6 +10916,7 @@ public static partial class CreateDamageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModel(args.name, args.damage, args.maxDamage, args.distributeToChildren, args.overrideDistributeBlocker, args.createPopEffect, args.immuneBloonProperties, args.immuneBloonPropertiesOriginal, args.ignoreImmunityDestroy, args.ignoreDamageMultipliers);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10552,6 +10946,7 @@ public static partial class CreateDamageModifierForBloonStateModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateModel(args.name, args.bloonState, args.damageMultiplier, args.damageAdditive, args.mustIncludeAllStates, args.applyOverMaxDamage, args.mustBeModified);
             if (args.bloonStates != default) result.bloonStates = args.bloonStates;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10576,6 +10971,7 @@ public static partial class CreateDamageModifierForBloonTypeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DamageModifierForBloonTypeModModel(args.name, args.percentBonus, args.additiveBonus, args.withTag, args.percentMultiplierOverride);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10601,6 +10997,7 @@ public static partial class CreateDamageModifierForBloonTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonTypeModel(args.name, args.bloonId, args.damageMultiplier, args.damageAdditive, args.includeChildren);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10626,6 +11023,7 @@ public static partial class CreateDamageModifierForCashAmountModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForCashAmountModel(args.name, args.damageMultiplier, args.damageAdditive, args.cashThreshold, args.stackId);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10652,6 +11050,7 @@ public static partial class CreateDamageModifierForModifiersModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForModifiersModel(args.name, args.modifier, args.damageMultiplier, args.damageAddative);
             if (args.modifiers != default) result.modifiers = args.modifiers;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10675,6 +11074,7 @@ public static partial class CreateDamageModifierForRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForRoundModel(args.name, args.damagePerRound, args.roundCap);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10698,6 +11098,7 @@ public static partial class CreateDamageModifierForTagModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DamageModifierForTagModModel(args.name, args.bloonTag, args.multiplierAdditive, args.addative);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10727,6 +11128,7 @@ public static partial class CreateDamageModifierForTagModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForTagModel(args.name, args.tag, args.damageMultiplier, args.damageAddative, args.mustIncludeAllTags, args.applyOverMaxDamage, args.ignoreTag);
             if (args.tags != default) result.tags = args.tags;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10750,6 +11152,7 @@ public static partial class CreateDamageModifierInZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DamageModifierInZoneModel(args.name, args.damageAdditive, args.damageMultiplier, args.isGlobal);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10776,6 +11179,7 @@ public static partial class CreateDamageModifierPrimordialWrathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierPrimordialWrathModel(args.name, args.rbeThreshold, args.damageMultiplier, args.maxDamageMultiplier, args.extraRbePerBossSkull, args.active);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10815,6 +11219,7 @@ public static partial class CreateDamageModifierSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10836,6 +11241,7 @@ public static partial class CreateDamageModifierUnstableConcoctionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierUnstableConcoctionModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10860,6 +11266,7 @@ public static partial class CreateDamageModifierWrathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierWrathModel(args.name, args.rbeThreshold, args.damage, args.maxDamageBoost);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10906,6 +11313,7 @@ public static partial class CreateDamageOverTimeCustomModelExt
             if (args.initialDelayFrames != default) result.initialDelayFrames = args.initialDelayFrames;
             if (args.distributeToChildren != default) result.distributeToChildren = args.distributeToChildren;
             if (args.Interval != default) result.Interval = args.Interval;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10946,6 +11354,7 @@ public static partial class CreateDamageOverTimeDurationSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -10997,6 +11406,7 @@ public static partial class CreateDamageOverTimeForTagModelExt
             if (args.overrideDistributionBlocker != default) result.overrideDistributionBlocker = args.overrideDistributionBlocker;
             if (args.distributeToChildren != default) result.distributeToChildren = args.distributeToChildren;
             if (args.Interval != default) result.Interval = args.Interval;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11019,6 +11429,7 @@ public static partial class CreateDamageOverTimeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DamageOverTimeModModel(args.name, args.timeReductionAmount, args.damageIncreaseAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11061,6 +11472,7 @@ public static partial class CreateDamageOverTimeModelExt
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.initialDelayFrames != default) result.initialDelayFrames = args.initialDelayFrames;
             if (args.Interval != default) result.Interval = args.Interval;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11087,6 +11499,7 @@ public static partial class CreateDamageOverTimeZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DamageOverTimeZoneModel(args.behaviorModel, args.name, args.range, args.isGlobal, args.filterInvisible, args.onlyAffectOnscreen, args.mutatorId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11111,6 +11524,7 @@ public static partial class CreateDamagePercentOfMaxModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamagePercentOfMaxModel(args.name, args.percent, args.tags, args.damageBloonsOffscreenOnly);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11132,6 +11546,7 @@ public static partial class CreateDamageReductionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DamageReductionModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11154,6 +11569,7 @@ public static partial class CreateDamageStateModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DamageStateModel(args.name, args.displayPath, args.healthPercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11194,6 +11610,7 @@ public static partial class CreateDamageSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11218,6 +11635,7 @@ public static partial class CreateDamageTakenTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DamageTakenTriggerModel(args.name, args.actionId, args.amount, args.repeatCount, args.chance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11243,6 +11661,7 @@ public static partial class CreateDamageTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.DamageTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.damage, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11269,6 +11688,7 @@ public static partial class CreateDamageTypeAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.DamageTypeAreaBuffModel(args.name, args.mutatorId, args.priority, args.buffIndicatorModel, args.immuneBloonProperties, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11290,6 +11710,7 @@ public static partial class CreateDamageTypeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DamageTypeModModel(args.name, args.canHitbloonProperties);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11331,6 +11752,7 @@ public static partial class CreateDamageTypeSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11355,6 +11777,7 @@ public static partial class CreateDamageUpModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DamageUpModel(args.name, args.lifespanFrames, args.additionalDamage, args.projectileDisplay);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11378,6 +11801,7 @@ public static partial class CreateDamageUpPerAbilityActivateModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.DamageUpPerAbilityActivateModel(args.name, args.abilityName, args.percentPerAbility, args.activationMax);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11399,6 +11823,7 @@ public static partial class CreateDamageUpPerAbilityActivateModifierModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageUpPerAbilityActivateModifierModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11435,6 +11860,7 @@ public static partial class CreateDamageUpTagTowersModelExt
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.damageModifierForTagModel != default) result.damageModifierForTagModel = args.damageModifierForTagModel;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11466,6 +11892,7 @@ public static partial class CreateDamageUpTowersModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11490,6 +11917,7 @@ public static partial class CreateDarkDungeonsFireTriggerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.DarkDungeonsFireTriggerActionModel(args.name, args.statue, args.fire, args.activationDuration);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11513,6 +11941,7 @@ public static partial class CreateDarkDungeonsStatueActiveTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.DarkDungeonsStatueActiveTriggerModel(args.name);
             if (args.onActive != default) result.onActive = args.onActive;
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11539,6 +11968,7 @@ public static partial class CreateDarkDungeonsStatueModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.DarkDungeonsStatueModel(args.name, args.cost, args.createTowerModel, args.statueActiveTriggerModel);
             if (args.OnFireActivated != default) result.OnFireActivated = args.OnFireActivated;
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11565,6 +11995,7 @@ public static partial class CreateDarkshiftModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DarkshiftModel(args.name, args.restrictToTowerRadius, args.placementZoneAssetRadius, args.placementZoneAsset, args.darkshiftSound, args.disappearEffectModel, args.reappearEffectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11586,6 +12017,7 @@ public static partial class CreateDartTimeBloonBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DartTimeBloonBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11607,6 +12039,7 @@ public static partial class CreateDartTimeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.DartTimeModModel(args.name, args.durationIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11635,6 +12068,7 @@ public static partial class CreateDartTimeModelExt
             if (args.dartTimeBloonBehaviorModel != default) result.dartTimeBloonBehaviorModel = args.dartTimeBloonBehaviorModel;
             if (args.bloonTimeSlowMutator != default) result.bloonTimeSlowMutator = args.bloonTimeSlowMutator;
             if (args.towerTimeSlowMutator != default) result.towerTimeSlowMutator = args.towerTimeSlowMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11656,6 +12090,7 @@ public static partial class CreateDartlingMaintainLastPosModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DartlingMaintainLastPosModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11685,6 +12120,7 @@ public static partial class CreateDashForwardsActionModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.DashForwardsActionModel(args.name, args.actionId, args.dashDistance, args.actionIds, args.speedMultiplier, args.dashAnimationName, args.setSpeed);
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.setSpeedMutator != default) result.setSpeedMutator = args.setSpeedMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11706,6 +12142,7 @@ public static partial class CreateDeActivateControlledZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DeActivateControlledZoneModel(args.name, args.zoneId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11727,6 +12164,7 @@ public static partial class CreateDeflationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.DeflationModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11756,6 +12194,7 @@ public static partial class CreateDelayBloonChildrenSpawningModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11784,6 +12223,7 @@ public static partial class CreateDelayedShutoffModelExt
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.shutoffTimeFrames != default) result.shutoffTimeFrames = args.shutoffTimeFrames;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11808,6 +12248,7 @@ public static partial class CreateDepletionToCashModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DepletionToCashModel(args.name, args.minimum, args.maximum, args.salvage);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11830,6 +12271,7 @@ public static partial class CreateDeployModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DeployModel(args.name, args.activateSound, args.dropOffSound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11853,6 +12295,7 @@ public static partial class CreateDesperadoMarkModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DesperadoMarkModel(args.name, args.tower, args.desperadoDamageMultiplier, args.popCashMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11875,6 +12318,7 @@ public static partial class CreateDestroyAreaActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.DestroyAreaActionModel(args.name, args.areaName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11897,6 +12341,7 @@ public static partial class CreateDestroyAreasActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.DestroyAreasActionModel(args.name, args.areaNames);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11925,6 +12370,7 @@ public static partial class CreateDestroyBloonsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.DestroyBloonsActionModel(args.name, args.range, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11946,6 +12392,7 @@ public static partial class CreateDestroyChildTowersOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DestroyChildTowersOnUpgradeModel(args.name, args.towerId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11967,6 +12414,7 @@ public static partial class CreateDestroyIfTargetLostModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DestroyIfTargetLostModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -11988,6 +12436,7 @@ public static partial class CreateDestroyOnAbilityEndModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Behaviors.DestroyOnAbilityEndModel(args.name, args.ability);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12009,6 +12458,7 @@ public static partial class CreateDestroyOnDegradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DestroyOnDegradeModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12030,6 +12480,7 @@ public static partial class CreateDestroyProjectileIfModelChangedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DestroyProjectileIfModelChangedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12051,6 +12502,7 @@ public static partial class CreateDestroyProjectileIfTowerDestroyedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DestroyProjectileIfTowerDestroyedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12073,6 +12525,7 @@ public static partial class CreateDestroyProjectilesActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.DestroyProjectilesActionModel(args.name, args.range);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12098,6 +12551,7 @@ public static partial class CreateDestroyProjectilesInRadiusActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DestroyProjectilesInRadiusActionModel(args.name, args.actionId, args.radius, args.destroyedItemEffect, args.destroyedItemEffectTime, args.ignorePowerProjectiles);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12120,6 +12574,7 @@ public static partial class CreateDestroyPropsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.DestroyPropsActionModel(args.name, args.range);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12142,6 +12597,7 @@ public static partial class CreateDestroySelfActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DestroySelfActionModel(args.name, args.actionId, args.destroyDelay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12167,6 +12623,7 @@ public static partial class CreateDestroyTowersActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.DestroyTowersActionModel(args.name, args.range, args.towerId, args.triggerEffect, args.effectOnTrigger);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12189,6 +12646,7 @@ public static partial class CreateDestroyWhenHitImmuneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DestroyWhenHitImmuneModel(args.name, args.getsDestroyed);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12214,6 +12672,7 @@ public static partial class CreateDetectCamoOnAbilityModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DetectCamoOnAbilityModel(args.name, args.lifespan, args.mutatorId);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12237,6 +12696,7 @@ public static partial class CreateDetonateEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DetonateEffectModel(args.name, args.effectMutationIds, args.damagePerSecondRemaining);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12262,6 +12722,7 @@ public static partial class CreateDialogueDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.DialogueDataModel(args.dialogueId, args.dialogue, args.dialogueType, args.disableBackgroundTint, args.disableSimulationPause);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12300,6 +12761,7 @@ public static partial class CreateDiamondbackBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DiamondbackBehaviorModel(args.name, args.headSegmentBloonId, args.middleSegmentBloonId, args.tailSegmentBloonId, args.numOfMiddleSegments, args.segmentSpacing, args.extraHeadSpacing, args.extraTailSpacing, args.tailShieldRegenerateTime, args.tailShieldBrokenActionId, args.tailShieldRegenerateActionId, args.repairTraverseEffect, args.skullInvulnerableTime, args.bloonBleedHealthPercent, args.skullActionId, args.tailShieldDamageStates, args.tailShieldMaxHealthPercent, args.tailDamageMultiplier);
             if (args.playIntro != default) result.playIntro = args.playIntro;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12333,6 +12795,7 @@ public static partial class CreateDiamondbackRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DiamondbackRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions, args.dashSpeed, args.dashDistance, args.segmentKillTrigger, args.segmentRestoreTrigger, args.middleSegments, args.baseTailHealth, args.tailHealthMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12354,6 +12817,7 @@ public static partial class CreateDisableContinueModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.DisableContinueModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12375,6 +12839,7 @@ public static partial class CreateDisableDisplaysOnBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DisableDisplaysOnBloonModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12396,6 +12861,7 @@ public static partial class CreateDisableMonkeyKnowledgeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.DisableMonkeyKnowledgeModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12417,6 +12883,7 @@ public static partial class CreateDisablePropsOnLayerOnLoadModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.EditorLayerBehaviors.DisablePropsOnLayerOnLoadModel(args.layerId);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12438,6 +12905,7 @@ public static partial class CreateDisableSellTowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.DisableSellTowerModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12461,6 +12929,7 @@ public static partial class CreateDisableTowersInRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Props.Behaviors.DisableTowersInRangeModel(args.name, args.range, args.disabledTowerOverlayDisplay);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12482,6 +12951,7 @@ public static partial class CreateDisablerTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Data.Behaviors.Towers.DisablerTowerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12505,6 +12975,7 @@ public static partial class CreateDisallowTowersUntilOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.DisallowTowersUntilOnRoundModel(args.round, args.disallowTowerPurchasing, args.disallowHeroPurchasing);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12527,6 +12998,7 @@ public static partial class CreateDiscountZoneModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DiscountZoneModModel(args.name, args.additionalMultiplier, args.specificScriptId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12565,6 +13037,7 @@ public static partial class CreateDiscountZoneModelExt
             if (args.towerBaseIdList != default) result.towerBaseIdList = args.towerBaseIdList;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12588,6 +13061,7 @@ public static partial class CreateDisplayModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DisplayModModel(args.name, args.scaleReverseToBaseValueMultiplier, args.baseValueAdditive, args.baseValueMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12617,6 +13091,7 @@ public static partial class CreateDisplayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel(args.name, args.display, args.layer, args.category, args.positionOffset, args.scale, args.ignoreRotation, args.delayedReveal, args.isAnimationPaused);
             if (args.animationChanges != default) result.animationChanges = args.animationChanges;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12645,6 +13120,7 @@ public static partial class CreateDistanceBasedCritModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DistanceBasedCritModel(args.name, args.critDamageBonusMult, args.baseCritChance, args.bonusCritChancePerDistance, args.happyCurveInfluence, args.textDisplayReference, args.textLifespan, args.text);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12670,6 +13146,7 @@ public static partial class CreateDistributeCashModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DistributeCashModel(args.name, args.cash, args.additionalCash, args.multiplier, args.additive, args.giveNoCash);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12695,6 +13172,7 @@ public static partial class CreateDistributeToChildrenBloonModifierModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DistributeToChildrenBloonModifierModel(args.name, args.bloonTag, args._mutator);
             if (args.bloonTags != default) result.bloonTags = args.bloonTags;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12718,6 +13196,7 @@ public static partial class CreateDistributeToChildrenSetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DistributeToChildrenSetModel(args.name, args.layers, args._mutator);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12739,6 +13218,7 @@ public static partial class CreateDontDestroyOnContinueModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DontDestroyOnContinueModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12760,6 +13240,7 @@ public static partial class CreateDoorGunnerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.DoorGunnerModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12785,6 +13266,7 @@ public static partial class CreateDoorGunnerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel(args.name, args.selectionObjectPath, args.isSelectableGameObject, args.activateSound, args.pickupSound);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12809,6 +13291,7 @@ public static partial class CreateDrainLivesActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DrainLivesActionModel(args.name, args.actionId, args.livesDrained, args.display, args.displayLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12830,6 +13313,7 @@ public static partial class CreateDrawSubtowerRangeCircleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DrawSubtowerRangeCircleModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12864,6 +13348,7 @@ public static partial class CreateDreadbloonRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.DreadbloonRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions, args.baseArmour, args.armourMultiplier, args.rockBloonBaseHealth, args.rockBloonHealthMultiplier, args.rockBloonAmount, args.rockBloonSpawnDelay, args.armouredSpeedMultiplier, args.damageReduction);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12897,6 +13382,7 @@ public static partial class CreateDroneIdleModelExt
             if (args.outOfRangeRepositionTimeFrames != default) result.outOfRangeRepositionTimeFrames = args.outOfRangeRepositionTimeFrames;
             if (args.idleRepositionTimeMinFrames != default) result.idleRepositionTimeMinFrames = args.idleRepositionTimeMinFrames;
             if (args.idleRepositionTimeMaxFrames != default) result.idleRepositionTimeMaxFrames = args.idleRepositionTimeMaxFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12934,6 +13420,7 @@ public static partial class CreateDroneSupportModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DroneSupportModel(args.name, args.droneModel, args.count, args.spawnDelay, args.spawnAnimState, args.spawnMarkerStartsX, args.spawnMarkerStartsY, args.spawnMarkerEndsX, args.spawnMarkerEndsY, args.spawnIndexRotation, args.effectAtSpawn, args.updateTargetType, args.effectOnDisplayChanged, args.createDroneUpgradeEffect, args.ignoreTargetingTime);
             if (args.spawnDelayFrames != default) result.spawnDelayFrames = args.spawnDelayFrames;
             if (args.ignoreTargetingFrames != default) result.ignoreTargetingFrames = args.ignoreTargetingFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12960,6 +13447,7 @@ public static partial class CreateDroneSwarmModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DroneSwarmModel(args.name, args.duration, args.droneSupportModel, args.droneEndRadius);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
             if (args.droneEndRadiusSquared != default) result.droneEndRadiusSquared = args.droneEndRadiusSquared;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -12981,6 +13469,7 @@ public static partial class CreateDruidOfWrathBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DruidOfWrathBuffModel(args.name, args.newPopCount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13012,6 +13501,7 @@ public static partial class CreateDruidVengeanceEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.DruidVengeanceEffectModel(args.name, args.damageModifierWrathModel, args.smallGlowEffectModel, args.mediumGlowEffectModel, args.epicGlowEffectModel, args.defaultProjectilePath, args.weakProjectilePath, args.mediumProjectilePath, args.epicProjectilePath, args.smallGlowEffectStacks, args.mediumGlowEffectStacks, args.epicGlowEffectStacks);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13042,6 +13532,7 @@ public static partial class CreateDuplicateProjectilePerEmitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.DuplicateProjectilePerEmitModel(args.name, args.originalProjectileModel, args.forProjectileCount, args.additionalProjectiles, args.angleOffset, args.animationState, args.animationStateBeforeChangedProjectile, args.effectBeforeDuplicatedProjectileModel, args.effectMarkerX, args.effectMarkerY, args.effectMarkerZ);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13079,6 +13570,7 @@ public static partial class CreateDynamiteBloonBehaviorModelExt
             if (args.fuseDurationFrames != default) result.fuseDurationFrames = args.fuseDurationFrames;
             if (args.emission != default) result.emission = args.emission;
             if (args.stunTowersInRadiusActionModel != default) result.stunTowersInRadiusActionModel = args.stunTowersInRadiusActionModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13100,6 +13592,7 @@ public static partial class CreateEatBloonModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.EatBloonModModel(args.name, args.additionalTrapAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13134,6 +13627,7 @@ public static partial class CreateEatBloonModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EatBloonModel(args.name, args.rbeCapacity, args.rbeCashMultiplier, args.projectile, args.emission, args.animationStateOpen, args.animationStateClosed, args.timeUntilClose, args.effectOnEatModel, args.bloonTrapOpenSound, args.bloonTrapCloseSound, args.noSpawnCash);
             if (args.timeUntilCloseFrames != default) result.timeUntilCloseFrames = args.timeUntilCloseFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13175,6 +13669,7 @@ public static partial class CreateEchoModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13212,6 +13707,7 @@ public static partial class CreateEditorItemModelExt
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13235,6 +13731,7 @@ public static partial class CreateEffectModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.EffectModModel(args.name, args.scaleReverseToBaseValueMultiplier, args.baseValueAdditive, args.baseValueMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13265,6 +13762,7 @@ public static partial class CreateEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Effects.EffectModel(args.name, args.assetId, args.scale, args.lifespan, args.fullscreen, args.useCenterPosition, args.useTransformPosition, args.useTransfromRotation, args.destroyOnTransformDestroy, args.alwaysUseAge, args.useRoundTime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13286,6 +13784,7 @@ public static partial class CreateEffectOnPopModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.EffectOnPopModel(args.name, args.effect);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13307,6 +13806,7 @@ public static partial class CreateEjectAnimationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EjectAnimationModel(args.name, args.animationState);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13334,6 +13834,7 @@ public static partial class CreateEjectEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EjectEffectModel(args.name, args.effectModel, args.lifespan, args.fullscreen, args.rotateToWeapon, args.useEjectPoint, args.useEmittedFrom, args.useMainAttackRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13357,6 +13858,7 @@ public static partial class CreateEjectEffectWithOffsetsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EjectEffectWithOffsetsModel(args.name, args.assetId, args.effectModel, args.rotateToWeapon);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13382,6 +13884,7 @@ public static partial class CreateEjectMultipleTestEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EjectMultipleTestEffectModel(args.name, args.assetId, args.lifespan, args.count, args.fullscreen, args.rotateToWeapon);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13405,6 +13908,7 @@ public static partial class CreateEjectPositionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.EjectPositionModel(args.x, args.y, args.z);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13446,6 +13950,7 @@ public static partial class CreateEmberModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13467,6 +13972,7 @@ public static partial class CreateEmergencyUnlockModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.EmergencyUnlockModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13496,6 +14002,7 @@ public static partial class CreateEmergencyUnlockModelExt
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13517,6 +14024,7 @@ public static partial class CreateEmergencyUnlockSimBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.EmergencyUnlockSimBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13538,6 +14046,7 @@ public static partial class CreateEmissionArcCountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.EmissionArcCountModModel(args.name, args.additionalCount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13559,6 +14068,7 @@ public static partial class CreateEmissionArcRotationOffDisplayDirectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionArcRotationOffDisplayDirectionModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13580,6 +14090,7 @@ public static partial class CreateEmissionArcRotationOffTowerDirectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionArcRotationOffTowerDirectionModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13603,6 +14114,7 @@ public static partial class CreateEmissionAtClosestPathSegmentModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionAtClosestPathSegmentModel(args.name, args.count, args.spacing, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13626,6 +14138,7 @@ public static partial class CreateEmissionAtLastPathSegmentModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionAtLastPathSegmentModel(args.name, args.sequentialPaths, args.startingAnimState, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13647,6 +14160,7 @@ public static partial class CreateEmissionCamoIfTargetIsCamoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionCamoIfTargetIsCamoModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13672,6 +14186,7 @@ public static partial class CreateEmissionClosestOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionClosestOffsetModel(args.name, args.rotateProjectileWithTower, args.throwMarkerOffsetModels, args.behaviors, args.animationOriginState, args.effectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13693,6 +14208,7 @@ public static partial class CreateEmissionMaxProjectileRadiusModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionMaxProjectileRadiusModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13716,6 +14232,7 @@ public static partial class CreateEmissionOverTimeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionOverTimeModel(args.name, args.count, args.timeBetween, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13739,6 +14256,7 @@ public static partial class CreateEmissionPositionOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionPositionOffsetModel(args.name, args.minOffset, args.maxOffset, args.yOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13760,6 +14278,7 @@ public static partial class CreateEmissionRandomCountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.EmissionRandomCountModModel(args.name, args.additionalCount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13781,6 +14300,7 @@ public static partial class CreateEmissionRotationOffAlternateDisplayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffAlternateDisplayModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13803,6 +14323,7 @@ public static partial class CreateEmissionRotationOffBloonDirectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffBloonDirectionModel(args.name, args.useAirUnitPosition, args.dontSetAfterEmit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13824,6 +14345,7 @@ public static partial class CreateEmissionRotationOffDisplayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffDisplayModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13845,6 +14367,7 @@ public static partial class CreateEmissionRotationOffDisplayOnEmitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffDisplayOnEmitModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13869,6 +14392,7 @@ public static partial class CreateEmissionRotationOffProjectileDirectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffProjectileDirectionModel(args.name, args.startingOffset, args.angleInBetween, args.alwaysCentre, args.useTransformRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13890,6 +14414,7 @@ public static partial class CreateEmissionRotationOffTowerDirectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffTowerDirectionModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13911,6 +14436,7 @@ public static partial class CreateEmissionRotationOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationOffsetModel(args.name, args.offsetRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13932,6 +14458,7 @@ public static partial class CreateEmissionRotationZeroModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.EmissionRotationZeroModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13958,6 +14485,7 @@ public static partial class CreateEmissionWithOffsetsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionWithOffsetsModel(args.name, args.throwMarkerOffsetModels, args.projectileCount, args.rotateProjectileWithTower, args.behaviors, args.randomRotationCone, args.spreadProjectilesAcrossMarkers);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -13979,6 +14507,7 @@ public static partial class CreateEmissionsPerRoundFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EmissionsPerRoundFilterModel(args.name, args.count);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14002,6 +14531,7 @@ public static partial class CreateEmitFromSharedTowersModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmitFromSharedTowersModel(args.name, args.isUsingSharedRange, args.sharedTowerTypes, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14025,6 +14555,7 @@ public static partial class CreateEmitOnDamageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageModel(args.name, args.emission, args.projectile);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14051,6 +14582,7 @@ public static partial class CreateEmitOnDestroyModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.EmitOnDestroyModel(args.name, args.projectile, args.emission, args.effectModel, args.tower, args.sound1, args.sound2);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14076,6 +14608,7 @@ public static partial class CreateEmitOnPopModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.EmitOnPopModel(args.name, args.projectile, args.emission, args.pierceOverride, args.ignoreSameFrameDegrade, args.tower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14109,6 +14642,7 @@ public static partial class CreateEmitProjectileActionModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.EmitProjectileActionModel(args.name, args.projectileModel, args.emissionModel, args.positionX, args.positionY, args.positionZ, args.delay, args.setDirection, args.emitRotationDegrees, args.targetPriority, args.targetRange);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14133,6 +14667,7 @@ public static partial class CreateEnablePathTargetZoneActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.EnablePathTargetZoneActionModel(args.name, args.position, args.range, args.enableOnInit);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14164,6 +14699,7 @@ public static partial class CreateEncryptedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.EncryptedTriggerModel(args.name, args.primaryArea, args.militaryArea, args.militaryWaterArea, args.magicArea, args.supportArea, args.middleArea, args.primaryGrave, args.militaryGrave, args.magicGrave, args.supportGrave);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14188,6 +14724,7 @@ public static partial class CreateEndOfRoundClearBypassModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EndOfRoundClearBypassModel(args.name, args.gameModes);
             if (args.gameModesList != default) result.gameModesList = args.gameModesList;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14209,6 +14746,7 @@ public static partial class CreateEndRoundModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.EndRoundModModel(args.name, args.round);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14230,6 +14768,7 @@ public static partial class CreateEnduranceRaceModeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.EnduranceRaceModeModel(args.timeInSeconds);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14251,6 +14790,7 @@ public static partial class CreateEnergisingTotemAnimStateModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.EnergisingTotemAnimStateModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14275,6 +14815,7 @@ public static partial class CreateEnergisingTotemBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.EnergisingTotemBehaviorModel(args.name, args.rounds, args.monkeyMoneyCost, args.animationStates, args.effectModels);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14296,6 +14837,7 @@ public static partial class CreateEntityActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.EntityActionModel(args.name, args.entityEventIndex);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14319,6 +14861,7 @@ public static partial class CreateEntityEventModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.EntityEventModel(args.name, args.entityEventIndex, args.requiresAllTriggers, args.maxActivationLimit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14348,6 +14891,7 @@ public static partial class CreateEntityModelExt
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14369,6 +14913,7 @@ public static partial class CreateEntityTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.EntityTriggerModel(args.name, args.entityEventIndex);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14395,6 +14940,7 @@ public static partial class CreateEruptionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.EruptionModel(args.name, args.projectileLifespanMult, args.display, args.projectileToSwapDisplay, args.projectileDisplay, args.subProjectileToSwapDisplay, args.subProjectileDisplay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14417,6 +14963,7 @@ public static partial class CreateExperiencePointsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ExperiencePointsModel(args.name, args.amount);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14438,6 +14985,7 @@ public static partial class CreateExpireProjectileAtScreenEdgeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ExpireProjectileAtScreenEdgeModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14459,6 +15007,7 @@ public static partial class CreateExpireProjectileOnBossSpawnedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ExpireProjectileOnBossSpawnedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14480,6 +15029,7 @@ public static partial class CreateExpireProjectileOnParentDestroyedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ExpireProjectileOnParentDestroyedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14505,6 +15055,7 @@ public static partial class CreateExpireTowerAfterAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ExpireTowerAfterAbilityModel(args.name, args.timeFrames, args.rounds, args.useRoundTime, args.effectModel, args.sound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14527,6 +15078,7 @@ public static partial class CreateEziliSupportModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.EziliSupportModel(args.name, args.necroPierceMultiplier, args.necroPierceMutator);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14551,6 +15103,7 @@ public static partial class CreateFadeProjectileModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FadeProjectileModel(args.name, args.startFadingAt);
             if (args.startFadingAtFrames != default) result.startFadingAtFrames = args.startFadingAtFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14575,6 +15128,7 @@ public static partial class CreateFallToGroundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FallToGroundModel(args.name, args.timeToTake, args.expireOnContact, args.groundOffset);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14600,6 +15154,7 @@ public static partial class CreateFarTargetTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FarTargetTrackModel(args.name, args.radius, args.isSelectable, args.isOnSubTower, args.maxOffset, args.donutRadius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14622,6 +15177,7 @@ public static partial class CreateFastUpgradesGameModeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FastUpgradesGameModeModel(args.maxTier, args.fastUpgradesModeType);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14655,6 +15211,7 @@ public static partial class CreateFertilizerBehaviorModelExt
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.FertilizerBehaviorModel(args.name, args.cashScale, args.cashIncrement, args.rounds, args.path1TierLimit, args.path2TierLimit, args.path3TierLimit, args.buffDisplayPath, args.buffLocsName, args.buffIconName, args.effectAtTowerId);
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14691,6 +15248,7 @@ public static partial class CreateFighterMovementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.FighterMovementModel(args.name, args.maxSpeed, args.turningSpeed, args.minDistanceToTargetBeforeFlyover, args.distanceOfFlyover, args.bankAngleMax, args.bankSmoothness, args.rollTotalTime, args.rollRunUpDistance, args.rollTimeBeforeNext, args.rollChancePerSecondPassed, args.loopTotalTime, args.loopRunUpDistance, args.loopTimeBeforeNext, args.loopChancePerSecondPassed, args.loopRadius, args.loopModelScale);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14714,6 +15272,7 @@ public static partial class CreateFighterPilotPatternCloseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FighterPilotPatternCloseModel(args.name, args.isSelectable, args.offsetDistance, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14737,6 +15296,7 @@ public static partial class CreateFighterPilotPatternFirstModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FighterPilotPatternFirstModel(args.name, args.isSelectable, args.offsetDistance, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14760,6 +15320,7 @@ public static partial class CreateFighterPilotPatternLastModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FighterPilotPatternLastModel(args.name, args.isSelectable, args.offsetDistance, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14783,6 +15344,7 @@ public static partial class CreateFighterPilotPatternStrongModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FighterPilotPatternStrongModel(args.name, args.isSelectable, args.offsetDistance, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14805,6 +15367,7 @@ public static partial class CreateFigureEightMovementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.FigureEightMovementModel(args.name, args.radius, args.speed);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14832,6 +15395,7 @@ public static partial class CreateFigureEightPatternModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FigureEightPatternModel(args.name, args.radius, args.rotated, args.isSelectable, args.display, args.displayCount, args.isOnSubTower, args.useTowerPosition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14853,6 +15417,7 @@ public static partial class CreateFilterAllExceptTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterAllExceptTargetModel(args.name, args.cantbePaused);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14874,6 +15439,7 @@ public static partial class CreateFilterAllModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterAllModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14896,6 +15462,7 @@ public static partial class CreateFilterAlternateWeaponTargetAngleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterAlternateWeaponTargetAngleModel(args.name, args.fieldOfView, args.baseTowerRotationOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14917,6 +15484,7 @@ public static partial class CreateFilterBadImmunityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterBadImmunityModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14939,6 +15507,7 @@ public static partial class CreateFilterBloonIfDamageTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterBloonIfDamageTypeModel(args.name, args.ifCantHitBloonProperties, args.damageModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14962,6 +15531,7 @@ public static partial class CreateFilterBloonsToWithinAngleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterBloonsToWithinAngleModel(args.name, args.originDegrees, args.angleDegrees, args.useTowerOrigin);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -14983,6 +15553,7 @@ public static partial class CreateFilterCollisionWhileMovingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterCollisionWhileMovingModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15006,6 +15577,7 @@ public static partial class CreateFilterFractionOfBloonTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FilterFractionOfBloonTypeModel(args.name, args.fraction, args.bloon);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15027,6 +15599,7 @@ public static partial class CreateFilterFrozenBloonsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterFrozenBloonsModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15048,6 +15621,7 @@ public static partial class CreateFilterGlueLevelModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterGlueLevelModel(args.name, args.glueLevel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15069,6 +15643,7 @@ public static partial class CreateFilterIfAttackHasTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterIfAttackHasTargetModel(args.name, args.attackName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15090,6 +15665,7 @@ public static partial class CreateFilterInBaseTowerIdModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterInBaseTowerIdModel(args.name, args.baseIds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15111,6 +15687,7 @@ public static partial class CreateFilterInOwnedByModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterInOwnedByModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15133,6 +15710,7 @@ public static partial class CreateFilterInSetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterInSetModel(args.name, args.towerSets);
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15159,6 +15737,7 @@ public static partial class CreateFilterInTowerTiersModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterInTowerTiersModel(args.name, args.path1MinTier, args.path1MaxTier, args.path2MinTier, args.path2MaxTier, args.path3MinTier, args.path3MaxTier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15183,6 +15762,7 @@ public static partial class CreateFilterInTowerUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterInTowerUpgradeModel(args.name, args.path1, args.path2, args.path3, args.includeAbove);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15205,6 +15785,7 @@ public static partial class CreateFilterInvisibleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterInvisibleModel(args.name, args.isActive, args.ignoreBroadPhase);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15227,6 +15808,7 @@ public static partial class CreateFilterInvisibleSubIntelModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterInvisibleSubIntelModel(args.name, args.isActive, args.ignoreBroadPhase);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15248,6 +15830,7 @@ public static partial class CreateFilterMarkedToPopModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterMarkedToPopModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15269,6 +15852,7 @@ public static partial class CreateFilterMoabModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterMoabModel(args.name, args.flip);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15292,6 +15876,7 @@ public static partial class CreateFilterMutatedTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterMutatedTargetModel(args.name, args.mutationId, args.inverse);
             if (args.mutationIds != default) result.mutationIds = args.mutationIds;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15313,6 +15898,7 @@ public static partial class CreateFilterOfftrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterOfftrackModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15334,6 +15920,7 @@ public static partial class CreateFilterOnlyCamoInModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterOnlyCamoInModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15355,6 +15942,7 @@ public static partial class CreateFilterOutBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterOutBloonModel(args.name, args.bloonId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15376,6 +15964,7 @@ public static partial class CreateFilterOutOffscreenModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterOutOffscreenModel(args.name, args.includeBloonRadius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15398,6 +15987,7 @@ public static partial class CreateFilterOutTagModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterOutTagModel(args.name, args.tag, args.disableWhenSupportMutatorIDs);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15422,6 +16012,7 @@ public static partial class CreateFilterOveridingMutatedTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterOveridingMutatedTargetModel(args.name, args.mutationOverideOrder, args.highestPriorityMutationId, args.defaultMutationId);
             if (args.mutationId != default) result.mutationId = args.mutationId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15443,6 +16034,7 @@ public static partial class CreateFilterParagonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterParagonModel(args.name, args.inclusive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15464,6 +16056,7 @@ public static partial class CreateFilterParentTowerRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterParentTowerRangeModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15485,6 +16078,7 @@ public static partial class CreateFilterProjectileCollisionIfTowerPausedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FilterProjectileCollisionIfTowerPausedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15506,6 +16100,7 @@ public static partial class CreateFilterSubTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterSubTowerModel(args.name, args.inclusive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15530,6 +16125,7 @@ public static partial class CreateFilterTargetAngleFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FilterTargetAngleFilterModel(args.name, args.fieldOfView, args.baseTowerRotationOffset, args.shareFilterTargets, args.minTimeBetweenFilterTargetsFrames);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15553,6 +16149,7 @@ public static partial class CreateFilterTargetAngleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterTargetAngleModel(args.name, args.fieldOfView, args.baseTowerRotationOffset, args.ignoreTowerRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15576,6 +16173,7 @@ public static partial class CreateFilterTowerBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterTowerBehaviorModel(args.name, args.towerBehaviors, args.isInclusive, args.requiresAllBehaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15598,6 +16196,7 @@ public static partial class CreateFilterTowerByPlaceableAreaModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterTowerByPlaceableAreaModel(args.name, args.areaTypes, args.exclusive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15619,6 +16218,7 @@ public static partial class CreateFilterTowerParentModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterTowerParentModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15640,6 +16240,7 @@ public static partial class CreateFilterWithChanceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithChanceModel(args.name, args.filterChance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15671,6 +16272,7 @@ public static partial class CreateFilterWithTagModelExt
             if (args.growTag != default) result.growTag = args.growTag;
             if (args.fortifiedTag != default) result.fortifiedTag = args.fortifiedTag;
             if (args.hasMoabTag != default) result.hasMoabTag = args.hasMoabTag;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15693,6 +16295,7 @@ public static partial class CreateFilterWithTagsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Filters.FilterWithTagsModel(args.name, args.tags, args.inclusive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15734,6 +16337,7 @@ public static partial class CreateFinalStrikeModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.FinalStrikeModel(args.name, args.countdown, args.launchRate, args.textEffectDisplay, args.projectileModel, args.emissionModel, args.throwOffsetX, args.throwOffsetY, args.throwOffsetZ, args.effectDuringCountdownModel, args.launchEffectModel, args.launchEjectEffectModel, args.countdownAnimationStateSubmerged, args.countdownAnimationStateUnsubmerged, args.launchAnimationStateSubmerged, args.launchAnimationStateUnsubmerged, args.nukeCountDownSoundModel, args.nukeLaunchSoundModel, args.missileLaunchTime);
             if (args.countdownFrames != default) result.countdownFrames = args.countdownFrames;
             if (args.launchRateFrames != default) result.launchRateFrames = args.launchRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15757,6 +16361,7 @@ public static partial class CreateFindDeploymentLocationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FindDeploymentLocationModel(args.name, args.searchRadius, args.pointDistance, args.towerModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15778,6 +16383,7 @@ public static partial class CreateFireAlternateWeaponModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireAlternateWeaponModel(args.name, args.weaponId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15799,6 +16405,7 @@ public static partial class CreateFireFromAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireFromAirUnitModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15820,6 +16427,7 @@ public static partial class CreateFireWhenAlternateWeaponIsReadyModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FireWhenAlternateWeaponIsReadyModel(args.name, args.weaponId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15860,6 +16468,7 @@ public static partial class CreateFireballActionModelExt
             if (args.magmaPoolMutator != default) result.magmaPoolMutator = args.magmaPoolMutator;
             if (args.stunMutator != default) result.stunMutator = args.stunMutator;
             if (args.magmaDebuffMutator != default) result.magmaDebuffMutator = args.magmaDebuffMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15886,6 +16495,7 @@ public static partial class CreateFirstPlacedTowerDiscountModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FirstPlacedTowerDiscountModel(args.name, args.discountMultiplier, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets);
             if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15913,6 +16523,7 @@ public static partial class CreateFlagshipAttackSpeedIncreaseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FlagshipAttackSpeedIncreaseModel(args.name, args.attackSpeedIncrease, args.buffLocsName, args.buffIconName, args.isGlobalRange, args.onlyAffectParagon, args.dontAffectSelf);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15941,6 +16552,7 @@ public static partial class CreateFlightBoostAbilityModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.FlightBoostAbilityModel(args.name, args.lifespan, args.moveSpeedMultiplier, args.effectDuringWorkshopModel, args.effectDuringHeroModel, args.animationStateOnEnd);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args._mutator != default) result._mutator = args._mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15964,6 +16576,7 @@ public static partial class CreateFlipFollowPathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.FlipFollowPathModel(args.name, args.flipTowerDisplayX, args.flipTowerDisplayY, args.effectOnFlip);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -15985,6 +16598,7 @@ public static partial class CreateFollowCursorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.FollowCursorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16014,6 +16628,7 @@ public static partial class CreateFollowPathModelExt
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
             if (args.Speed != default) result.Speed = args.Speed;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16036,6 +16651,7 @@ public static partial class CreateFollowTouchSettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.FollowTouchSettingModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16059,6 +16675,7 @@ public static partial class CreateFootprintModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.FootprintModel(args.name, args.doesntBlockTowerPlacement, args.ignoresPlacementCheck, args.ignoresTowerOverlap);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16102,6 +16719,7 @@ public static partial class CreateFootprintZoneModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16124,6 +16742,7 @@ public static partial class CreateFreePowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.FreePowerModModel(args.name, args.basePowerID, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16146,6 +16765,7 @@ public static partial class CreateFreePowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FreePowerModel(args.name, args.basePowerID, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16170,6 +16790,7 @@ public static partial class CreateFreeTowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.FreeTowerModModel(args.name, args.baseTowerID, args.charges, args.mutuallyExclusiveWith, args.priority);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16194,6 +16815,7 @@ public static partial class CreateFreeTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FreeTowerModel(args.name, args.baseTowerID, args.charges, args.mutuallyExclusiveWith, args.priority);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16236,6 +16858,7 @@ public static partial class CreateFreeUpgradeSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16260,6 +16883,7 @@ public static partial class CreateFreeplayBloonGroupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.FreeplayBloonGroupModel(args.name, args.score, args.bounds, args.group);
             if (args.bloonEmissions_ != default) result.bloonEmissions_ = args.bloonEmissions_;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16301,6 +16925,7 @@ public static partial class CreateFreezeDurationSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16324,6 +16949,7 @@ public static partial class CreateFreezeImmunityRemovalModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.FreezeImmunityRemovalModel(args.name, args.damageModel, args.mutators);
             if (args.mutatorsList != default) result.mutatorsList = args.mutatorsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16345,6 +16971,7 @@ public static partial class CreateFreezeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.FreezeModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16384,6 +17011,7 @@ public static partial class CreateFreezeModelExt
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16410,6 +17038,7 @@ public static partial class CreateFreezeModifierForTagsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FreezeModifierForTagsModel(args.name, args.tags, args.freezeId, args.freezeTimeMultiplier, args.resetToUnmodified, args.preventMutation);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16433,6 +17062,7 @@ public static partial class CreateFreezeModifierModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.FreezeModifierModModel(args.name, args.durationModifier, args.durationAdd, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16454,6 +17084,7 @@ public static partial class CreateFreezeMutationModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.FreezeMutationModModel(args.name, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16478,6 +17109,7 @@ public static partial class CreateFreezeNearbyWaterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.FreezeNearbyWaterModel(args.name, args.radius, args.areaHeightOffset, args.freezeAsset, args.displayPriority);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16502,6 +17134,7 @@ public static partial class CreateFrontierBossManagerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierBossManagerModel(args.name, args.upgradeCostMultipliers, args.boss, args.tier, args.isFinalBossGame);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16533,6 +17166,7 @@ public static partial class CreateFrontierGiveRewardsOnHitChanceModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrontierGiveRewardsOnHitChanceModel(args.name, args.applyOnlyIfDamaged, args.parentDamageModel, args.chance, args.bananiteGain, args.moraleGain, args.triggerCap, args.triggerKey, args.collideThisFrame);
             if (args.ignoreParentDamageModel != default) result.ignoreParentDamageModel = args.ignoreParentDamageModel;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16567,6 +17201,7 @@ public static partial class CreateFrontierMapArtifactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Artifacts.FrontierMapArtifactModel(args.name, args.tier, args.baseId, args.artifactBehaviors, args.nameLocKey, args.descriptionLocKey, args.descriptionParams, args.icon, args.rarityFrameType, args.isBossArtifact, args.isQuestArtifact, args.isSheriffArtifact, args.merchantCostMultiplier, args.maxCopies);
             if (args.monkeyKnowledgeModModels != default) result.monkeyKnowledgeModModels = args.monkeyKnowledgeModModels;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16588,6 +17223,7 @@ public static partial class CreateFrontierQuestModeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierQuestModeModel();
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16631,6 +17267,7 @@ public static partial class CreateFrostboundModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16656,6 +17293,7 @@ public static partial class CreateFrozenBurialModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.FrozenBurialModel(args.name, args.icewallSpacing, args.icewallDelay, args.timePerIcewall, args.icewallProjectile, args.emission);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16681,6 +17319,7 @@ public static partial class CreateFrozenCascadeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.FrozenCascadeModel(args.name, args.towerId, args.maxExplosions, args.timeScale, args.emission, args.projectile);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16705,6 +17344,7 @@ public static partial class CreateGainCashActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.GainCashActionModel(args.name, args.amount, args.showText, args.textAssetId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16727,6 +17367,7 @@ public static partial class CreateGainLivesActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.GainLivesActionModel(args.name, args.amount);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16749,6 +17390,7 @@ public static partial class CreateGainSheriffMoraleOnBloonDestroyedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GainSheriffMoraleOnBloonDestroyedModel(args.name, args.moraleGain, args.onlySelf);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16771,6 +17413,7 @@ public static partial class CreateGainShieldPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GainShieldPerRoundModel(args.name, args.shieldAmount, args.maxShield);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16794,6 +17437,7 @@ public static partial class CreateGameplayBloonHealthModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.BloonHealthModModel(args.name, args.multiplier, args.addition);
             if (args.targets != default) result.targets = args.targets;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16816,6 +17460,7 @@ public static partial class CreateGameplayModsRegrowRegenRateModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.RegrowRegenRateModModel(args.name, args.regrowRegenRateMultiplier, args.bloonTag);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16843,6 +17488,7 @@ public static partial class CreateGenerateArmourActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.GenerateArmourActionModel(args.name, args.actionId, args.id, args.tags, args.amount, args.properties, args.speedMultiplier);
             if (args.slowMutator != default) result.slowMutator = args.slowMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16868,6 +17514,7 @@ public static partial class CreateGenerateShieldActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.GenerateShieldActionModel(args.name, args.actionId, args.id, args.amount, args.tags);
             if (args.tagsArray != default) result.tagsArray = args.tagsArray;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16892,6 +17539,7 @@ public static partial class CreateGenericTowerBehaviorBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GenericTowerBehaviorBuffModel(args.name, args.buffLocsName, args.buffIconName, args.isGlobalRange, args.maxStackSize);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16925,6 +17573,7 @@ public static partial class CreateGeraldoChangeTowerBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.GeraldoChangeTowerBehaviorModel(args.name, args.targetTowerBaseId, args.path1TierMax, args.path2TierMax, args.path3TierMax, args.resultingTowerName, args.effectAtTowerId, args.upgradedTowerName, args.upgradedTowerUnlockedAt, args.resultingPath1TierMax, args.resultingPath2TierMax, args.resultingPath3TierMax, args.upgradeBlockId);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16950,6 +17599,7 @@ public static partial class CreateGeraldoChangeTowerUpgradeLockModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GeraldoChangeTowerUpgradeLockModel(args.name, args.path1Max, args.path2Max, args.path3Max, args.blockId);
             if (args.pathMaxes != default) result.pathMaxes = args.pathMaxes;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -16974,6 +17624,7 @@ public static partial class CreateGeraldoCreateProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.GeraldoCreateProjectileModel(args.name, args.projectileModel, args.projectileModelUpgrades, args.projectileModelUpgradeAtLevels, args.randomRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17014,6 +17665,7 @@ public static partial class CreateGeraldoItemModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.GeraldoItemModel(args.name, args.locsId, args.behaviorModels, args.cost, args.canBeActivatedBetweenRounds, args.defaultIcon, args.towerId, args.onlyReplenishIfNonePlaced, args.showBuffsForTower, args.startingQuantity, args.maxQuantity, args.roundsToReplenish, args.amountToReplenish, args.levelUnlockedAt, args.bannedForModes, args.maxPurchases, args.showGeraldoRangeCircle, args.blockPurchaseIfTowerPlaced, args.defaultIconSwaps, args.iconSwapLevels);
             if (args.bannedForModesList != default) result.bannedForModesList = args.bannedForModesList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17036,6 +17688,7 @@ public static partial class CreateGeraldoUpgradeTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.GeraldoUpgradeTowerModel(args.name, args.level, args.towerId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17065,6 +17718,7 @@ public static partial class CreateGiveCashOnBloonHitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GiveCashOnBloonHitModel(args.name, args.cash, args.textAssetId, args.sound, args.extraCashOnPop, args.popSoundEffect, args.pitchShiftSound, args.pitchStart, args.pitchChangePerHit, args.pitchEnd);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17086,6 +17740,7 @@ public static partial class CreateGiveLifeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GiveLifeModel(args.name, args.lifeToGive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17109,6 +17764,7 @@ public static partial class CreateGiveTowerCountActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.GiveTowerCountActionModel(args.name, args.amount, args.towerId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17131,6 +17787,7 @@ public static partial class CreateGlassBloonBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GlassBloonBehaviorModel(args.name, args.reflectRadius, args.reflectProjectileSounds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17152,6 +17809,7 @@ public static partial class CreateGlobalCostModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.GlobalCostModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17173,6 +17831,7 @@ public static partial class CreateGlobalRangeCircleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GlobalRangeCircleModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17195,6 +17854,7 @@ public static partial class CreateGlobalSpeedModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.GlobalSpeedModModel(args.name, args.multiplier, args.addition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17216,6 +17876,7 @@ public static partial class CreateGlueTrapModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.GlueTrapModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17237,6 +17898,7 @@ public static partial class CreateGlueTrapModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.GlueTrapModel(args.name, args.projectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17275,6 +17937,7 @@ public static partial class CreateGoldenBloonModelExt
             if (args.invulnerableTimeFrames != default) result.invulnerableTimeFrames = args.invulnerableTimeFrames;
             if (args.cantJumpTimeFrames != default) result.cantJumpTimeFrames = args.cantJumpTimeFrames;
             if (args.speedIncreaseTimeFrames != default) result.speedIncreaseTimeFrames = args.speedIncreaseTimeFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17297,6 +17960,7 @@ public static partial class CreateGorgonStormModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.GorgonStormModModel(args.name, args.slowModel, args.moabModifierModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17321,6 +17985,7 @@ public static partial class CreateGrabBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GrabBloonModel(args.name, args.grabDuration, args.projectile, args.emission);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17347,6 +18012,7 @@ public static partial class CreateGrantCamoDetectForAbilityModModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.GrantCamoDetectForAbilityModModel(args.name, args.lifespan, args.mutatorId, args.useAbilityDuration);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17368,6 +18034,7 @@ public static partial class CreateGrappleEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.GrappleEmissionModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17391,6 +18058,7 @@ public static partial class CreateGreatWhiteDisplayStepModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GreatWhiteDisplayStepModel(args.name, args.portalEffectDisplay, args.noGrabEffectDisplay, args.percent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17437,6 +18105,7 @@ public static partial class CreateGreatWhiteEffectModelExt
             if (args.exitAnimationTimeFrames != default) result.exitAnimationTimeFrames = args.exitAnimationTimeFrames;
             if (args.playRetreatAnimationAtFrames != default) result.playRetreatAnimationAtFrames = args.playRetreatAnimationAtFrames;
             if (args.thrashingProjectileRateFrames != default) result.thrashingProjectileRateFrames = args.thrashingProjectileRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17458,6 +18127,7 @@ public static partial class CreateGreatWhiteLimitProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.GreatWhiteLimitProjectileModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17484,6 +18154,7 @@ public static partial class CreateGroundZeroBombBuffModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.GroundZeroBombBuffModel(args.name, args.damageIncrease, args.lifespan, args._mutator);
             if (args.towerMutatorModel != default) result.towerMutatorModel = args.towerMutatorModel;
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17505,6 +18176,7 @@ public static partial class CreateGrowBlockModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowBlockModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17528,6 +18200,7 @@ public static partial class CreateGrowModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GrowModel(args.name, args.rate, args.growToId, args.overrideChildWithColor);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17599,6 +18272,7 @@ public static partial class CreateGyrfalconPatternModelExt
             if (args.moveWithAirUnitModel != default) result.moveWithAirUnitModel = args.moveWithAirUnitModel;
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.isOnSubTower != default) result.isOnSubTower = args.isOnSubTower;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17620,6 +18294,7 @@ public static partial class CreateHasSpellcastProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.HasSpellcastProjectileModel(args.name, args.projectile);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17642,6 +18317,7 @@ public static partial class CreateHasUpgradeableProjectilesModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.HasUpgradeableProjectilesModel(args.name, args.upgradeIndicatorId, args.projectiles);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17684,6 +18360,7 @@ public static partial class CreateHasteModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17710,6 +18387,7 @@ public static partial class CreateHauntModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.HauntModel(args.name, args.tower, args.bonusEnergyDamage, args.manaPerRbe, args.projectileOnDestroyModel, args.effectModel);
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17733,6 +18411,7 @@ public static partial class CreateHealBloonActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.HealBloonActionModel(args.name, args.healPercent, args.healAdditive, args.actionId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17757,6 +18436,7 @@ public static partial class CreateHealOnTowerSellActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.HealOnTowerSellActionModel(args.name, args.actionId, args.healAmount, args.healPercentForHighestTier, args.effectAtTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17781,6 +18461,7 @@ public static partial class CreateHealSelfActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.HealSelfActionModel(args.name, args.actionId, args.healAmount, args.healPercent, args.bossSkullIncreasePercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17805,6 +18486,7 @@ public static partial class CreateHealthPercentTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.HealthPercentTriggerModel(args.name, args.repeatFirst, args.percentageValues, args.actionIds, args.preventFallthrough);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17826,6 +18508,7 @@ public static partial class CreateHealthPotionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.HealthPotionModel(args.name, args.healAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17850,6 +18533,7 @@ public static partial class CreateHealthyBananasModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.HealthyBananasModModel(args.name, args.marketplaceLives, args.centralMarketLives, args.displayPath, args.displayLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17880,6 +18564,7 @@ public static partial class CreateHeatItUpDamageBuffModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17904,6 +18589,7 @@ public static partial class CreateHeightOffsetProjectileModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.HeightOffsetProjectileModel(args.name, args.samples);
             if (args.curve != default) result.curve = args.curve;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17925,6 +18611,7 @@ public static partial class CreateHeliGroupOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Behaviors.HeliGroupOffsetModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17968,6 +18655,7 @@ public static partial class CreateHeliMovementModelExt
             if (args.movementForceEndSquared != default) result.movementForceEndSquared = args.movementForceEndSquared;
             if (args.slowdownRadiusMaxSquared != default) result.slowdownRadiusMaxSquared = args.slowdownRadiusMaxSquared;
             if (args.slowdownRadiusMinSquared != default) result.slowdownRadiusMinSquared = args.slowdownRadiusMinSquared;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -17989,6 +18677,7 @@ public static partial class CreateHeroCostToLevelModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.HeroCostToLevelModModel(args.name, args.costMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18016,6 +18705,7 @@ public static partial class CreateHeroDetailsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.TowerSets.HeroDetailsModel(args.towerId, args.towerIndex, args.upgradeMax, args.towerCount, args.visiblePlayerLevel, args.monkeyMoneyCost, args.newestHero);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18038,6 +18728,7 @@ public static partial class CreateHeroModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroModel(args.name, args.xpScale, args.costPerXpToLevel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18059,6 +18750,7 @@ public static partial class CreateHeroXPBonusModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.Mods.HeroXPBonusModModel(args.name, args.percentMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18080,6 +18772,7 @@ public static partial class CreateHeroXPBonusModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.HeroXPBonusModel(args.name, args.xpBonus);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18106,6 +18799,7 @@ public static partial class CreateHeroXpAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.HeroXpAreaBuffModel(args.name, args.mutatorId, args.priority, args.buffIndicatorModel, args.multiplier, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18129,6 +18823,7 @@ public static partial class CreateHeroXpInjectionModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.HeroXpInjectionModModel(args.name, args.amount, args.levels, args.subtractHeroCost);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18152,6 +18847,7 @@ public static partial class CreateHeroXpInjectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.HeroXpInjectionModel(args.name, args.amount, args.levels, args.subtractHeroCost);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18174,6 +18870,7 @@ public static partial class CreateHeroXpPerRoundModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.HeroXpPerRoundModModel(args.name, args.additionalXpBonus, args.applyGlobally);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18195,6 +18892,7 @@ public static partial class CreateHeroXpPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroXpPerRoundModel(args.name, args.additionalXpPerRound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18235,6 +18933,7 @@ public static partial class CreateHeroXpScaleSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18258,6 +18957,7 @@ public static partial class CreateHexManagerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.HexManagerModel(args.name, args.hex, args.overlayType);
             if (args.mutators != default) result.mutators = args.mutators;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18287,6 +18987,7 @@ public static partial class CreateHexModelExt
             if (args.payloadCount != default) result.payloadCount = args.payloadCount;
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.totalIntervalFrames != default) result.totalIntervalFrames = args.totalIntervalFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18308,6 +19009,7 @@ public static partial class CreateHideAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.HideAbilityModel(args.name, args.hideAbility);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18329,6 +19031,7 @@ public static partial class CreateHideAttackDisplayIfPausedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.HideAttackDisplayIfPausedModel(args.name, args.animationStateOnReveal);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18351,6 +19054,7 @@ public static partial class CreateHighlightAbilitiesOnTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.HighlightAbilitiesOnTriggerModel(args.triggerId, args.abilityIds);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18372,6 +19076,7 @@ public static partial class CreateHintMessageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.HintMessageModel(args.name, args.hint);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18397,6 +19102,7 @@ public static partial class CreateHookConditionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.HookConditionModel(args.name, args.eventTriggers, args.eventActions, args.entityEventIndex, args.requiresAllTriggers, args.maxActivationLimit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18418,6 +19124,7 @@ public static partial class CreateIgnoreAllMutatorsTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.IgnoreAllMutatorsTowerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18439,6 +19146,7 @@ public static partial class CreateIgnoreBlockersModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.IgnoreBlockersModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18463,6 +19171,7 @@ public static partial class CreateIgnoreCollisionAfterCollideModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.IgnoreCollisionAfterCollideModel(args.name, args.timeAfterCollide);
             if (args.timeAfterCollideFrames != default) result.timeAfterCollideFrames = args.timeAfterCollideFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18485,6 +19194,7 @@ public static partial class CreateIgnoreDmgImmunityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.IgnoreDmgImmunityModel(args.name, args.removeBloonProperties, args.chance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18506,6 +19216,7 @@ public static partial class CreateIgnoreImmunityForBloonTypeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.IgnoreImmunityForBloonTypeModModel(args.name, args.bloonProperties);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18527,6 +19238,7 @@ public static partial class CreateIgnoreInsufficientPierceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.IgnoreInsufficientPierceModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18548,6 +19260,7 @@ public static partial class CreateIgnoreThrowMarkerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.IgnoreThrowMarkerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18569,6 +19282,7 @@ public static partial class CreateIgnoreTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.IgnoreTowerModel(args.name, args.ignoreId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18590,6 +19304,7 @@ public static partial class CreateIgnoreTowersBlockerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.IgnoreTowersBlockerModel(args.name, args.filteredTowers);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18612,6 +19327,7 @@ public static partial class CreateImfLoanCollectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.ImfLoanCollectionModel(args.name, args.collectionRate, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18634,6 +19350,7 @@ public static partial class CreateImfLoanModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ImfLoanModModel(args.name, args.additionalLoanAmount, args.interestRateDecreaseAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18659,6 +19376,7 @@ public static partial class CreateImfLoanModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ImfLoanModel(args.name, args.amount, args.incomeRecoveryRate, args.assetId, args.lifespan);
             if (args.imfLoanCollection != default) result.imfLoanCollection = args.imfLoanCollection;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18683,6 +19401,7 @@ public static partial class CreateImmunityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ImmunityModel(args.name, args.lifespan, args.excludeTags, args.effectModel);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18704,6 +19423,7 @@ public static partial class CreateImpoppableModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ImpoppableModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18725,6 +19445,7 @@ public static partial class CreateIncomeSetModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.IncomeSetModModel(args.name, args.incomesetName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18747,6 +19468,7 @@ public static partial class CreateIncomeSetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.IncomeSetModel(args.name, args.thresholds, args.finalMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18771,6 +19493,7 @@ public static partial class CreateIncreaseAttackSpeedWhileAttackingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.IncreaseAttackSpeedWhileAttackingModel(args.name, args.maxTimeWithoutAttacking, args.increasePerAttack, args.maxStacks, args.maxTimeInFramesWithoutAttacking);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18803,6 +19526,7 @@ public static partial class CreateIncreaseBloonWorthModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.IncreaseBloonWorthModel(args.name, args.mutatorId, args.cash, args.cashMultiplier, args.filter, args.charges, args.overlayType, args.duration, args.bloonPropertiesToRemove, args._mutator);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18825,6 +19549,7 @@ public static partial class CreateIncreaseBloonWorthSimBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.IncreaseBloonWorthSimBehaviorModel(args.name, args.cashScale, args.isUnique);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18850,6 +19575,7 @@ public static partial class CreateIncreaseBloonWorthWithTierModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.IncreaseBloonWorthWithTierModel(args.name, args.mutatorId, args.cashPerTier, args.overlayType, args._mutator);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18871,6 +19597,7 @@ public static partial class CreateIncreaseDamageFromAllTypesModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.IncreaseDamageFromAllTypesModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18894,6 +19621,7 @@ public static partial class CreateIncreaseDamageFromTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.IncreaseDamageFromTypeModel(args.name, args.amount, args.damageTypes, args.useOriginalType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18918,6 +19646,7 @@ public static partial class CreateIncreasePierceConsumptionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.IncreasePierceConsumptionModel(args.name, args.addition, args.damageTypes, args.useOriginalType, args.fullDepletionEffectModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18939,6 +19668,7 @@ public static partial class CreateIncreaseRangeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.IncreaseRangeModModel(args.name, args.additionalFrames);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18964,6 +19694,7 @@ public static partial class CreateIncreaseRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.IncreaseRangeModel(args.name, args.lifespanFrames, args.multiplier, args.addative, args.endOnDefeatScreen);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -18989,6 +19720,7 @@ public static partial class CreateIncreaseTowerWorthOverRoundsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.IncreaseTowerWorthOverRoundsModel(args.name, args.bracket1PercentPerRound, args.bracket2PercentPerRound, args.bracket3PercentPerRound, args.bracket2Round, args.bracket3Round);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19012,6 +19744,7 @@ public static partial class CreateIncreaseWorthTextEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.IncreaseWorthTextEffectModel(args.name, args.assetId, args.lifespan, args.displayFullPayout);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19034,6 +19767,7 @@ public static partial class CreateIncrementCaveMonkeyHitsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.IncrementCaveMonkeyHitsActionModel(args.name, args.amount);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19056,6 +19790,7 @@ public static partial class CreateInstaTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.InstaTowerModel(args.name, args.baseTowerModel, args.towerModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19077,6 +19812,7 @@ public static partial class CreateInstantDamageEmissionBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.Behaviors.InstantDamageEmissionBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19098,6 +19834,7 @@ public static partial class CreateInstantDamageEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.InstantDamageEmissionModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19122,6 +19859,7 @@ public static partial class CreateInstantModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.InstantModel(args.name, args.destroyIfInvalid, args.ignoreTargetZ, args.dontFollowTarget);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19144,6 +19882,7 @@ public static partial class CreateInteractableClickSequenceTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.InteractableClickSequenceTriggerModel(args.name, args.interactableClickSequenceName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19169,6 +19908,7 @@ public static partial class CreateInteractableClickTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.InteractableClickTriggerModel(args.name, args.interactableName, args.cooldownDuration);
             if (args.cooldownDurationFrames != default) result.cooldownDurationFrames = args.cooldownDurationFrames;
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19203,6 +19943,7 @@ public static partial class CreateItemArtifactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Artifacts.ItemArtifactModel(args.name, args.tier, args.baseId, args.artifactBehaviors, args.nameLocKey, args.descriptionLocKey, args.descriptionParams, args.icon, args.rarityFrameType, args.isBossArtifact, args.isQuestArtifact, args.isSheriffArtifact, args.instaTowerToGive, args.merchantCostMultiplier);
             if (args.monkeyKnowledgeModModels != default) result.monkeyKnowledgeModModels = args.monkeyKnowledgeModModels;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19241,6 +19982,7 @@ public static partial class CreateJarOfPicklesBehaviorModelExt
             if (args.fortModifier != default) result.fortModifier = args.fortModifier;
             if (args.fortModifierV2 != default) result.fortModifierV2 = args.fortModifierV2;
             if (args.mutators != default) result.mutators = args.mutators;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19270,6 +20012,7 @@ public static partial class CreateJuggernautModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.JuggernautModel(args.name, args.rangeAdditive, args.rangeMultiplier, args.damageAdditive, args.damageMultiplier, args.upgradeCostAdditive, args.upgradeCostMultiplier, args.xpAmountMultiplier, args.sizeAdditive, args.sizeMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19307,6 +20050,7 @@ public static partial class CreateJungleVineEffectModelExt
             if (args.bloonEffectDisplayModel != default) result.bloonEffectDisplayModel = args.bloonEffectDisplayModel;
             if (args.frontEffectDisplayModel != default) result.frontEffectDisplayModel = args.frontEffectDisplayModel;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19329,6 +20073,7 @@ public static partial class CreateJungleVineLimitProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.JungleVineLimitProjectileModel(args.name, args.limit, args.delayInFrames);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19350,6 +20095,7 @@ public static partial class CreateKeepInBoundsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KeepInBoundsModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19371,6 +20117,7 @@ public static partial class CreateKeepTowerZAtTerrainHeightModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.KeepTowerZAtTerrainHeightModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19392,6 +20139,7 @@ public static partial class CreateKineticChargeDisplayBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.KineticChargeDisplayBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19431,6 +20179,7 @@ public static partial class CreateKineticChargeProjectileModelExt
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
             if (args.bloonDisplayMutator != default) result.bloonDisplayMutator = args.bloonDisplayMutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19452,6 +20201,7 @@ public static partial class CreateKnockbackModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.KnockbackModModel(args.name, args.percentMultiplierAdded);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19483,6 +20233,7 @@ public static partial class CreateKnockbackModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19509,6 +20260,7 @@ public static partial class CreateKnowledgeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Knowledge.KnowledgeModel(args.name, args.idx, args.category, args.investmentRequired, args.monkeyMoneyCost, args.prerequisiteIds, args.mod);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19539,6 +20291,7 @@ public static partial class CreateLatchToBloonModelExt
             if (args.postBloonDestroyTimeFrames != default) result.postBloonDestroyTimeFrames = args.postBloonDestroyTimeFrames;
             if (args.slowMutator != default) result.slowMutator = args.slowMutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19560,6 +20313,7 @@ public static partial class CreateLeakDangerAttackSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.LeakDangerAttackSpeedModel(args.name, args.maxRateIncreasePercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19596,6 +20350,7 @@ public static partial class CreateLeapingSwordModelExt
             if (args.landDelayFrames != default) result.landDelayFrames = args.landDelayFrames;
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
             if (args.finishingEffectDelayFrames != default) result.finishingEffectDelayFrames = args.finishingEffectDelayFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19617,6 +20372,7 @@ public static partial class CreateLerpEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.LerpEmissionModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19641,6 +20397,7 @@ public static partial class CreateLifeBasedAttackSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.LifeBasedAttackSpeedModel(args.name, args.ratePerLife, args.lifeCap, args.baseRateIncrease, args.saveId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19665,6 +20422,7 @@ public static partial class CreateLifeRegenModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.LifeRegenModel(args.name, args.regenAmount, args.overRegenAmount, args.lifespan, args.assetId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19692,6 +20450,7 @@ public static partial class CreateLightningModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningModel(args.name, args.splits, args.emissionModel, args.splitRange, args.delay);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19720,6 +20479,7 @@ public static partial class CreateLightningSplitOnContactModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningSplitOnContactModel(args.name, args.targets, args.projectileModel, args.emissionModel, args.splitRange, args.delay);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19741,6 +20501,7 @@ public static partial class CreateLimitByHauntSpellModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.LimitByHauntSpellModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19766,6 +20527,7 @@ public static partial class CreateLimitProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.LimitProjectileModel(args.name, args.projectileId, args.limit, args.delayInFrames, args.limitByDestroyedPriorProjectile, args.globalForPlayer);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19799,6 +20561,7 @@ public static partial class CreateLineEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.LineEffectModel(args.name, args.lineDisplayPath, args.lineDisplayLength, args.effectAtEnd, args.effectAtStart, args.isLineDisplayEndless, args.useDisplayLengthSpeed, args.displayLengthSpeed, args.useWeaponEjectForDisplay, args.useRotateToPointer, args.ignoreBlockers, args.useLineProjectileEmissionShowEffect, args.effectDuration);
             if (args.displayLengthPerFrame != default) result.displayLengthPerFrame = args.displayLengthPerFrame;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19843,6 +20606,7 @@ public static partial class CreateLineProjectileEmissionModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.LineProjectileEmissionModel(args.name, args.useTargetAsEndPoint, args.behaviors, args.displayPath, args.displayLength, args.displayLifetime, args.ignoreBlockers, args.effectAtEndModel, args.effectAtStartModel, args.effectAtEndRate, args.dontUseTowerPosition, args.useTowerRotation, args.useLengthSpeed, args.lengthSpeed, args.projectileInitialHitModel, args.projectileAtEndModel, args.emissionAtEndModel, args.endProjectileSharesPierce, args.effectAtCollision, args.maxCollisionEffects, args.emitFromTarget, args.emitFromTargetLength);
             if (args.effectAtEndRateFrames != default) result.effectAtEndRateFrames = args.effectAtEndRateFrames;
             if (args.lengthPerFrame != default) result.lengthPerFrame = args.lengthPerFrame;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19867,6 +20631,7 @@ public static partial class CreateLinearRoundBasedCostModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.LinearRoundBasedCostModel(args.name, args.costIncrease, args.costIncrease, args.firstRoundForIncrease, args.roundsBetweenIncreases);
             if (args.defaultCost != default) result.defaultCost = args.defaultCost;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19900,6 +20665,7 @@ public static partial class CreateLinearTravelModelExt
             if (args.Speed != default) result.Speed = args.Speed;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19924,6 +20690,7 @@ public static partial class CreateLinkDisplayScaleToTowerRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.LinkDisplayScaleToTowerRangeModel(args.name, args.displayPath, args.baseTowerRange, args.displayRadius, args.hideIfAttackPausedId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19948,6 +20715,7 @@ public static partial class CreateLinkProjectileRadiusToTowerRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.LinkProjectileRadiusToTowerRangeModel(args.name, args.projectileModel, args.baseTowerRange, args.projectileRadiusOffset, args.displayRadius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19972,6 +20740,7 @@ public static partial class CreateLivesLowerThanTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.LivesLowerThanTriggerModel(args.name, args.lives, args.usePercent, args.percent);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -19993,6 +20762,7 @@ public static partial class CreateLivesModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.LivesModModel(args.name, args.percentBonus);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20017,6 +20787,7 @@ public static partial class CreateLivesModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LivesModel(args.name, args.minimum, args.maximum, args.salvage);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20039,6 +20810,7 @@ public static partial class CreateLoadAlchemistBrewInfoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.LoadAlchemistBrewInfoModel(args.name, args.addBerserkerBrewToProjectileModel, args.addAcidicMixtureToProjectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20062,6 +20834,7 @@ public static partial class CreateLockInPlaceSettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.LockInPlaceSettingModel(args.name, args.isSelectable, args.isOnSubTower, args.display);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20083,6 +20856,7 @@ public static partial class CreateLockTowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.LockTowerModModel(args.name, args.towerToLock);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20104,6 +20878,7 @@ public static partial class CreateLockTowerSetModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.LockTowerSetModModel(args.name, args.towerSetToLock);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20136,6 +20911,7 @@ public static partial class CreateLongArmOfLightModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20158,6 +20934,7 @@ public static partial class CreateLoseCashActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.LoseCashActionModel(args.name, args.amount);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20179,6 +20956,7 @@ public static partial class CreateLoseGameActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.LoseGameActionModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20202,6 +20980,7 @@ public static partial class CreateLoseLivesActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.LoseLivesActionModel(args.name, args.amount, args.showLivesDrainedMessage);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20245,6 +21024,7 @@ public static partial class CreateLychBossSuperScriptModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.LychBossSuperScriptModel(args.name, args.preventFallthrough, args.drainInterval, args.drainInitialInterval, args.drainEtherealExitInterval, args.drainActionIds, args.regrowInterval, args.regrowDrainInterval, args.regrowInitialInterval, args.regrowEtherealExitInterval, args.regrowActionIds, args.tombstoneInterval, args.tombstoneInitialInterval, args.tombstoneEtherealExitInterval, args.tombstoneActionIds, args.tombstoneHealthOverride, args.tombstoneMoabHealthOverride, args.tombstoneBfbHealthOverride, args.tombstoneZomgHealthOverride, args.tombstoneSpawnSpeedModifier, args.etherealHealthPercentageValues, args.etherealEnterActionIds, args.etherealExitActionIds);
             if (args.totalKills != default) result.totalKills = args.totalKills;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20282,6 +21062,7 @@ public static partial class CreateLychRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.LychRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions, args.etherealKillTrigger, args.tombstoneStartingHealth, args.tombstoneHealthMod, args.tombstoneMoabStartingHealth, args.tombstoneBfbStartingHealth, args.tombstoneZomgStartingHealth, args.tombstoneMoabHealthMod, args.tombstoneBfbHealthMod, args.tombstoneZomgHealthMod, args.lychSoulStartingHealth, args.lychSoulHealthMod);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20310,6 +21091,7 @@ public static partial class CreateLychTombstoneSpawnActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.LychTombstoneSpawnActionModel(args.name, args.actionId, args.bloonType, args.spawnCount, args.spawnOverTime, args.spawnDistAhead, args.spawnTrackMin, args.spawnTrackMax, args.bossName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20334,6 +21116,7 @@ public static partial class CreateMagmaPoolModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MagmaPoolModel(args.name, args.radius, args.rateMultiplier, args.rangeMultiplier);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20356,6 +21139,7 @@ public static partial class CreateMagusPerfectusGraveyardModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.MagusPerfectusGraveyardModel(args.name, args.graveyardManaChange, args.roundUntilManaDecay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20387,6 +21171,7 @@ public static partial class CreateMagusPerfectusGraveyardStateManagerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MagusPerfectusGraveyardStateManagerModel(args.name, args.maxManaStoredInGraveyard, args.attackManagerStates, args.rateBonusThreshold, args.rateMultplierAmount, args.graveyardDisplay1, args.graveyardDisplay2, args.textDisplayPrefab, args.switchAttackToGenerateSound, args.switchAttackToConsumeSound, args.phoenixDisabledPrefabs);
             if (args.rateMutator != default) result.rateMutator = args.rateMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20422,6 +21207,7 @@ public static partial class CreateMakeTowerModModelGlobalModModelExt
             var result = new Il2CppAssets.Scripts.Models.Perks.Mods.MakeTowerModModelGlobalModModel(args.name, args.addOnlyIfScriptsExists, args.dontAddIfScriptsExists, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseSets, args.tiers, args.tiersMustBeEqual, args.inverseTiers, args.ignoreSubTowers, args.ignorePowerTowers, args.modelNameToAddTo);
             if (args.towerSet != default) result.towerSet = args.towerSet;
             if (args.mods != default) result.mods = args.mods;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20465,6 +21251,7 @@ public static partial class CreateMalevolenceModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20489,6 +21276,7 @@ public static partial class CreateManageMainHudActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ManageMainHudActionModel(args.name, args.homeButton, args.autoStartSetting, args.autoPlayButtonInteractable);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20523,6 +21311,7 @@ public static partial class CreateManageShopPanelModelExt
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ManageShopPanelModel(args.name, args.playButton, args.powerButton, args.showGoButtonAnimation, args.towersUpgradesButton, args.settingDisableAutoplay, args.settingDisableSelectingOtherTowers, args.settingDisableAutoplay, args.setSelectedTowerButton, args.lockTowerButtonSelectionIndex, args.unlockTowerIndex, args.toggleTowerUpgradesButtonAnimation, args.towersUpgradesButtonInteractable);
             if (args.playButtonInteractable != default) result.playButtonInteractable = args.playButtonInteractable;
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20550,6 +21339,7 @@ public static partial class CreateManageTowerUpgradesPanelActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ManageTowerUpgradesPanelActionModel(args.name, args.lockTowerUpgrades, args.lockTowerPurchases, args.lockHeroPurchases, args.toggleGlowUpgradePath1, args.toggleGlowUpgradePath2, args.toggleGlowUpgradePath3);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20571,6 +21361,7 @@ public static partial class CreateMapActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.MapActionModel(args.name);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20604,6 +21395,7 @@ public static partial class CreateMapArtifactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Artifacts.MapArtifactModel(args.name, args.tier, args.baseId, args.artifactBehaviors, args.nameLocKey, args.descriptionLocKey, args.descriptionParams, args.icon, args.rarityFrameType, args.isBossArtifact, args.isQuestArtifact, args.isSheriffArtifact, args.merchantCostMultiplier);
             if (args.monkeyKnowledgeModModels != default) result.monkeyKnowledgeModModels = args.monkeyKnowledgeModModels;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20627,6 +21419,7 @@ public static partial class CreateMapBorderReboundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.MapBorderReboundModel(args.name, args.changeRotation, args.clearCollidedWith);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20651,6 +21444,7 @@ public static partial class CreateMapEditorAreaDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorAreaDataModel(args.name, args.areaData, args.nodes, args.layerInWorldIndex, args.categoryLayerId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20674,6 +21468,7 @@ public static partial class CreateMapEditorBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorBehaviorModel(args.placementEffect, args.placementEffectLarge, args.sellEffect);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20698,6 +21493,7 @@ public static partial class CreateMapEditorPathDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorPathDataModel(args.name, args.pathNodes, args.layer, args.orderInLayer, args.pathWidth);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20720,6 +21516,7 @@ public static partial class CreateMapEditorPowerDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorPowerDataModel(args.name, args.powerModel, args.positionData);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20748,6 +21545,7 @@ public static partial class CreateMapEditorPropDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorPropDataModel(args.name, args.propModel, args.positionalData, args.disablePlacementOnLoad, args.isAnimatorEnabled, args.isSightAndPlacementBlockingDisabled, args.groupLayer, args.isCustomProp, args.isGameEditorProp);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20774,6 +21572,7 @@ public static partial class CreateMapEditorStampDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorStampDataModel(args.name, args.stampTextureModel, args.positionalData, args.disablePlacementOnLoad, args.layer, args.orderInLayer, args.stampLayer);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20812,6 +21611,7 @@ public static partial class CreateMapEditorTowerDataModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorTowerDataModel(args.name, args.towerModel, args.positionalData, args.isHero, args.maxHeroLevel, args.currentHeroLevel, args.path1NumBlockedTiers, args.path2NumBlockedTiers, args.path3NumBlockedTiers, args.currPath1Tier, args.currPath2Tier, args.currPath3Tier, args.isNotSelectable, args.isNotUpgradable, args.isNotSellable, args.disablePlacementOnLoad, args.targetType, args.lockTargetTypeSwitching, args.frontierId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20835,6 +21635,7 @@ public static partial class CreateMapEventActiveActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.MapEventActiveActionModel(args.name, args.mapEventName, args.setToActive);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20865,6 +21666,7 @@ public static partial class CreateMapEventModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.MapEventModel(args.name, args.oneTimeEvent, args.allTriggersRequired, args.inactiveByDefault, args.triggers, args.actions, args.unityActions, args.trackArrowsOnTrigger, args.trackArrowDistanceOverride, args.trackArrowAmountOverride);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20892,6 +21694,7 @@ public static partial class CreateMapGizmoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.MapGizmoModel(args.name, args.areaName, args.position, args.behaviors, args.activateActions, args.deactivateActions, args.refreshCooldownsActions, args.timeDisplay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20916,6 +21719,7 @@ public static partial class CreateMapItemVsProjectileBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.MapItemVsProjectileBehaviorModel(args.name, args.collisionMarkerX, args.collisionMarkerY, args.collisionRadius, args.projectileChipTag);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20952,6 +21756,7 @@ public static partial class CreateMapModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.MapModel(args.mapName, args.areas, args.blockers, args.coopAreaLayouts, args.paths, args.removeables, args.gizmos, args.regenRemovables, args.mapDifficulty, args.spawner, args.mapEvents, args.mapWideBloonSpeed, args.simBehaviors, args.bossSpawnDistanceOverride, args.trackArrowDistanceOverride, args.trackArrowAmtOverride);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -20994,6 +21799,7 @@ public static partial class CreateMapTextureModelExt
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21015,6 +21821,7 @@ public static partial class CreateMapTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.MapTriggerModel(args.name);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21039,6 +21846,7 @@ public static partial class CreateMarkedToPopModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MarkedToPopModel(args.name, args.markingAttackModel, args.executionAttackModel, args.markingTimeFrames, args.executionTimeMaxFrames);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21060,6 +21868,7 @@ public static partial class CreateMarkedToPopProjectileBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.MarkedToPopProjectileBehaviorModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21083,6 +21892,7 @@ public static partial class CreateMaxHealthModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.MaxHealthModModel(args.name, args.multiplier, args.addition, args.set);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21104,6 +21914,7 @@ public static partial class CreateMerchantShipModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MerchantShipModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21130,6 +21941,7 @@ public static partial class CreateMermonkeyTranceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MermonkeyTranceModel(args.name, args.durationFrames, args.orbitRadius, args.bloonOrbitSpeedMultiplier, args.cooldownFrames, args.radiusBloonSizeMultiplier, args.moabOrbitSpeed);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21151,6 +21963,7 @@ public static partial class CreateMinibossImmunityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MinibossImmunityModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21198,6 +22011,7 @@ public static partial class CreateMoabBarrageBloonBehaviorModelExt
             if (args.randomDelayMaxFrames != default) result.randomDelayMaxFrames = args.randomDelayMaxFrames;
             if (args.InitialDelay != default) result.InitialDelay = args.InitialDelay;
             if (args.Interval != default) result.Interval = args.Interval;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21223,6 +22037,7 @@ public static partial class CreateMoabBarrageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MoabBarrageModel(args.name, args.durationFrames, args.damageOverTimeModel, args.targets, args.mutatorId);
             if (args.mutators != default) result.mutators = args.mutators;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21245,6 +22060,7 @@ public static partial class CreateMoabMineModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.MoabMineModModel(args.name, args.damageIncrease, args.damageBossIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21266,6 +22082,7 @@ public static partial class CreateMoabMineModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.MoabMineModel(args.name, args.projectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21289,6 +22106,7 @@ public static partial class CreateMoabOnlySplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.MoabOnlySplitterModel(args.name, args.paths, args.moabOnlyPath, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21314,6 +22132,7 @@ public static partial class CreateMoabShoveZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MoabShoveZoneModel(args.name, args.range, args.moabPushSpeedScaleCap, args.bfbPushSpeedScaleCap, args.zomgPushSpeedScaleCap, args.filterInvisibleModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21346,6 +22165,7 @@ public static partial class CreateMoabTakedownModelExt
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
             if (args._bloonWorthMutator != default) result._bloonWorthMutator = args._bloonWorthMutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21367,6 +22187,7 @@ public static partial class CreateModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.ModModel(args.name, args.mutatorMods);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21388,6 +22209,7 @@ public static partial class CreateModifyAllCashModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ModifyAllCashModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21409,6 +22231,7 @@ public static partial class CreateModifyPopCashModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ModifyPopCashModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21430,6 +22253,7 @@ public static partial class CreateModifyRoundCashModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ModifyRoundCashModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21451,6 +22275,7 @@ public static partial class CreateModifyTowerCashModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ModifyTowerCashModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21491,6 +22316,7 @@ public static partial class CreateMonkeyBankerModelExt
             if (args.buffIconName != default) result.buffIconName = args.buffIconName;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21512,6 +22338,7 @@ public static partial class CreateMonkeyBoostModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.MonkeyBoostModModel(args.name, args.durationIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21537,6 +22364,7 @@ public static partial class CreateMonkeyBoostModelExt
             var result = new Il2CppAssets.Scripts.Models.Powers.MonkeyBoostModel(args.name, args.rateScale, args.duration);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
             if (args.Duration != default) result.Duration = args.Duration;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21577,6 +22405,7 @@ public static partial class CreateMonkeyCityIncomeSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21601,6 +22430,7 @@ public static partial class CreateMonkeyCityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MonkeyCityModel(args.name, args.roundsTillMultiplier, args.towerId, args.multiplier, args.mutatorId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21654,6 +22484,7 @@ public static partial class CreateMonkeyFanClubModelExt
             if (args.leaderDisplayModel != default) result.leaderDisplayModel = args.leaderDisplayModel;
             if (args.endDisplayModel != default) result.endDisplayModel = args.endDisplayModel;
             if (args.ignoreWithMutatorsList != default) result.ignoreWithMutatorsList = args.ignoreWithMutatorsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21676,6 +22507,7 @@ public static partial class CreateMonkeyMoneyModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.MonkeyMoneyModModel(args.name, args.changeBase, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21719,6 +22551,7 @@ public static partial class CreateMonkeySubParagonSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21760,6 +22593,7 @@ public static partial class CreateMonkeyTempleModelExt
             if (args.weaponDelayFrames != default) result.weaponDelayFrames = args.weaponDelayFrames;
             if (args.checkForThereCanOnlyBeOne != default) result.checkForThereCanOnlyBeOne = args.checkForThereCanOnlyBeOne;
             if (args.tcbooMutator != default) result.tcbooMutator = args.tcbooMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21785,6 +22619,7 @@ public static partial class CreateMonkeyopolisModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MonkeyopolisModel(args.name, args.filterTower, args.valueRequiredForCrate, args.cashFromCrate, args.baseIncome, args.cratesPerRound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21808,6 +22643,7 @@ public static partial class CreateMonkeyopolisUpgradeCostModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MonkeyopolisUpgradeCostModel(args.name, args.costPerFarm, args.path, args.towerFilter);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21830,6 +22666,7 @@ public static partial class CreateMorphBloonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.MorphBloonModel(args.name, args.bloonId);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21877,6 +22714,7 @@ public static partial class CreateMorphTowerModelExt
             if (args.morthTowerSelf != default) result.morthTowerSelf = args.morthTowerSelf;
             if (args.morthTowerNotSelf != default) result.morthTowerNotSelf = args.morthTowerNotSelf;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21898,6 +22736,7 @@ public static partial class CreateMortarBurnyStuffAffectBlackModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Mod.MortarBurnyStuffAffectBlackModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21927,6 +22766,7 @@ public static partial class CreateMoveBackModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21950,6 +22790,7 @@ public static partial class CreateMoveToBossModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MoveToBossModel(args.name, args.speedMultiplier, args.offsetMin, args.offsetMax);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21971,6 +22812,7 @@ public static partial class CreateMoveWithAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MoveWithAirUnitModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -21996,6 +22838,7 @@ public static partial class CreateMoveWithAnimatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MoveWithAnimatorModel(args.name, args.startPos, args.startRotation, args.animCurveId, args.animationLength, args.animateToTrackPosition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22022,6 +22865,7 @@ public static partial class CreateMoveWithWindModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MoveWithWindModel(args.name, args.distanceMin, args.distanceMax, args.distanceScaleForTags, args.distanceScaleForTagsTags, args.speedMultiplier);
             if (args.distanceScaleForTagsTagsList != default) result.distanceScaleForTagsTagsList = args.distanceScaleForTagsTagsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22052,6 +22896,7 @@ public static partial class CreateMovingPlatformActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.MovingPlatformActionModel(args.name, args.areaNames, args.animator, args.animClip, args.startingState, args.triggerNumToStateNum, args.stateTimes, args.xPosCurve, args.zPosCurve, args.yRotCurve);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22074,6 +22919,7 @@ public static partial class CreateMultiEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.MultiEmissionModel(args.name, args.secondaryProjectileModel, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22099,6 +22945,7 @@ public static partial class CreateMultiHookManagerModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MultiHookManagerModel(args.name, args.minTimeBetweenHooks, args.reloadTime);
             if (args.minTimeBetweenHooksFrames != default) result.minTimeBetweenHooksFrames = args.minTimeBetweenHooksFrames;
             if (args.reloadTimeFrames != default) result.reloadTimeFrames = args.reloadTimeFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22121,6 +22968,7 @@ public static partial class CreateMultiInstantEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.MultiInstantEmissionModel(args.name, args.amount, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22145,6 +22993,7 @@ public static partial class CreateMultipleTrackEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.MultipleTrackEmissionModel(args.name, args.count, args.offset, args.behaviors);
             if (args.offsetStart != default) result.offsetStart = args.offsetStart;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22171,6 +23020,7 @@ public static partial class CreateMushroomGrottoMainLightModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.MushroomGrottoMainLightModel(args.name, args.position, args.startingRadius, args.activatedRadius, args.requiredSubLightsCount, args.cost);
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22195,6 +23045,7 @@ public static partial class CreateMushroomGrottoSubLightModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.MushroomGrottoSubLightModel(args.name, args.position, args.activatedRadius, args.cost);
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22216,6 +23067,7 @@ public static partial class CreateMusicModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.MusicModel(args.name, args.musicTrackNames);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22239,6 +23091,7 @@ public static partial class CreateMutateCreateProjectileOnExhaustPierceOnAbility
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MutateCreateProjectileOnExhaustPierceOnAbilityModel(args.name, args.lifespanFrames, args.countIncrease, args.targetCPOEPId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22263,6 +23116,7 @@ public static partial class CreateMutateDamageOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MutateDamageOnAbilityModel(args.name, args.lifespanFrames, args.damageIncrease, args.targetDamageId);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22295,6 +23149,7 @@ public static partial class CreateMutateProjectileOnAbilityModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MutateProjectileOnAbilityModel(args.name, args.lifespanFrames, args.mutatorId, args.damageIncrease, args.cantBeAbsorbed, args.mutatorPriority, args.projectileBehaviorModel, args.projectileModel, args.buffDisplayPath, args.initialEffect);
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22320,6 +23175,7 @@ public static partial class CreateMutateRemoveAllAttacksOnAbilityActivateModelEx
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MutateRemoveAllAttacksOnAbilityActivateModel(args.name, args.lifespan, args.excludeAbilityAttacks);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22346,6 +23202,7 @@ public static partial class CreateMutationImunityDefExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.MutationImunityDef(args.name, args.mutationIds, args.effectScale, args.modifyEffectScale, args.durationScale, args.modifyDurationScale, args.preventMutation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22372,6 +23229,7 @@ public static partial class CreateMutationImunityTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MutationImunityTowerModel(args.name, args.mutationIds, args.effectScale, args.modifyEffectScale, args.durationScale, args.modifyDurationScale, args.preventMutation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22393,6 +23251,7 @@ public static partial class CreateNavalUpgradesModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.NavalUpgradesModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22414,6 +23273,7 @@ public static partial class CreateNecroEmissionFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.NecroEmissionFilterModel(args.name, args.isPriceOfDakrnessEmission);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22449,6 +23309,7 @@ public static partial class CreateNecromancerEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.NecromancerEmissionModel(args.name, args.maxRbeStored, args.maxRbeSpawnedPerSecond, args.minBloonsSpawnedPerWave, args.maxBloonsSpawnedPerWave, args.maxPiercePerBloon, args.maxPathRandomRange, args.maxPathOffset, args.behaviors, args.pierceMutators, args.damageMutators, args.rateStackMax, args.rateRbePerStack, args.damageStackMax, args.damageRbePerStack, args.roundsBeforeDecay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22476,6 +23337,7 @@ public static partial class CreateNecromancerTargetTrackWithinRangeModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.NecromancerTargetTrackWithinRangeModel(args.name, args.isSelectable, args.isOnSubTower, args.display, args.displayInvalid);
             if (args.maxOffset != default) result.maxOffset = args.maxOffset;
             if (args.onlyTargetPathsWithBloons != default) result.onlyTargetPathsWithBloons = args.onlyTargetPathsWithBloons;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22497,6 +23359,7 @@ public static partial class CreateNecromancerZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.NecromancerZoneModel(args.name, args.attackUsedForRangeModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22519,6 +23382,7 @@ public static partial class CreateNoAmbushSettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.NoAmbushSettingModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22561,6 +23425,7 @@ public static partial class CreateNourishmentModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22594,6 +23459,7 @@ public static partial class CreateObynBuffModelExt
             if (args.damageModifierMainAttack != default) result.damageModifierMainAttack = args.damageModifierMainAttack;
             if (args.damageModifierBramble != default) result.damageModifierBramble = args.damageModifierBramble;
             if (args.buffIndicatorModel != default) result.buffIndicatorModel = args.buffIndicatorModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22635,6 +23501,7 @@ public static partial class CreateObynGlobalSupportModelExt
             if (args.damageTypeMutator != default) result.damageTypeMutator = args.damageTypeMutator;
             if (args.abilityCooldownMutator != default) result.abilityCooldownMutator = args.abilityCooldownMutator;
             if (args.tornadoRateMutator != default) result.tornadoRateMutator = args.tornadoRateMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22657,6 +23524,7 @@ public static partial class CreateOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.OffsetModel(args.name, args.range, args.angleOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22681,6 +23549,7 @@ public static partial class CreateOffsetToTrackTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.OffsetToTrackTargetModel(args.name, args.trackOffset, args.attackModel, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22704,6 +23573,7 @@ public static partial class CreateOnAbilityUsedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnAbilityUsedTriggerModel(args.name, args.towerIds, args.abilityIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22732,6 +23602,7 @@ public static partial class CreateOnBloonDamagedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBloonDamagedTriggerModel(args.name, args.range, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22760,6 +23631,7 @@ public static partial class CreateOnBloonDestroyedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBloonDestroyedTriggerModel(args.name, args.range, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22783,6 +23655,7 @@ public static partial class CreateOnBloonInRangeOfHeroDialogueTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.OnBloonInRangeOfHeroDialogueTriggerModel(args.hero, args.bloonType, args.dialogueModel);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22810,6 +23683,7 @@ public static partial class CreateOnBloonLeakedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBloonLeakedTriggerModel(args.name, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22838,6 +23712,7 @@ public static partial class CreateOnBloonPoppedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBloonPoppedTriggerModel(args.name, args.range, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22865,6 +23740,7 @@ public static partial class CreateOnBloonSpawnedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBloonSpawnedTriggerModel(args.name, args.bloonIds, args.camoOnly, args.regrowOnly, args.fortifiedOnly, args.moabOnly, args.inverseChecks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22887,6 +23763,7 @@ public static partial class CreateOnBossDefeatedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBossDefeatedTriggerModel(args.name, args.tier);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22910,6 +23787,7 @@ public static partial class CreateOnBossHealedTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBossHealedTriggerModel(args.name);
             if (args.towerIds != default) result.towerIds = args.towerIds;
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22931,6 +23809,7 @@ public static partial class CreateOnBossSpawnedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnBossSpawnedTriggerModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22952,6 +23831,7 @@ public static partial class CreateOnCashChangedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnCashChangedTriggerModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22974,6 +23854,7 @@ public static partial class CreateOnCloseSceneTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnCloseSceneTriggerModel(args.name, args.sceneName);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -22999,6 +23880,7 @@ public static partial class CreateOnDamagedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.OnDamagedTriggerModel(args.name, args.actionIds, args.cooldown, args.chance, args.dontRepeat, args.filterProperties);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23020,6 +23902,7 @@ public static partial class CreateOnGeraldoItemPurchasedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnGeraldoItemPurchasedTriggerModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23041,6 +23924,7 @@ public static partial class CreateOnLivesGainedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnLivesGainedTriggerModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23062,6 +23946,7 @@ public static partial class CreateOnLivesLostTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnLivesLostTriggerModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23083,6 +23968,7 @@ public static partial class CreateOnMapCreatedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.OnMapCreatedTriggerModel(args.name);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23105,6 +23991,7 @@ public static partial class CreateOnMapLoadedWithActiveRegenRemovableTriggerMode
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.OnMapLoadedWithActiveRegenRemovableTriggerModel(args.name, args.applyActionsWhenInactiveOnLoad);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23128,6 +24015,7 @@ public static partial class CreateOnMatchReadyTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnMatchReadyTriggerModel(args.triggerOnLoadedSave);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23150,6 +24038,7 @@ public static partial class CreateOnMonkeyKnowledgePurchaseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.OnMonkeyKnowledgePurchaseModModel(args.name, args.towers, args.xpToAdd);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23172,6 +24061,7 @@ public static partial class CreateOnOpenSceneTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnOpenSceneTriggerModel(args.name, args.sceneName);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23195,6 +24085,7 @@ public static partial class CreateOnPlacementCircleInteractionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnPlacementCircleInteractionModel(args.name, args.placementIdsToCheck, args.requireTowerPlacedInCircle);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23217,6 +24108,7 @@ public static partial class CreateOnPowerActivatedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnPowerActivatedTriggerModel(args.name, args.powerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23244,6 +24136,7 @@ public static partial class CreateOnProjectileHitTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.OnProjectileHitTriggerModel(args.name, args.collisionMarkerX, args.collisionMarkerY, args.collisionRadius, args.hitRangeMin, args.hitRangeMax, args.projectileChipTag);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23266,6 +24159,7 @@ public static partial class CreateOnPropAddedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnPropAddedTriggerModel(args.name, args.propIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23288,6 +24182,7 @@ public static partial class CreateOnPropDestroyedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnPropDestroyedTriggerModel(args.name, args.propIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23317,6 +24212,7 @@ public static partial class CreateOnRecieveSignalTriggerModelExt
             if (args.WaitDurationFramesTotal != default) result.WaitDurationFramesTotal = args.WaitDurationFramesTotal;
             if (args.ShouldScheduleReset != default) result.ShouldScheduleReset = args.ShouldScheduleReset;
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23340,6 +24236,7 @@ public static partial class CreateOnRoundEndedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnRoundEndedTriggerModel(args.name, args.onRound, args.everyXRounds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23363,6 +24260,7 @@ public static partial class CreateOnRoundStartedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnRoundStartedTriggerModel(args.name, args.onRound, args.everyXRounds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23390,6 +24288,7 @@ public static partial class CreateOnTimePassedTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTimePassedTriggerModel(args.name, args.time, args.roundTimeOnly, args.resetOnTrigger, args.resetOnRoundStart);
             if (args.timeFrames != default) result.timeFrames = args.timeFrames;
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23412,6 +24311,7 @@ public static partial class CreateOnTowerAbilitiesChangedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerAbilitiesChangedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23434,6 +24334,7 @@ public static partial class CreateOnTowerAttackTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerAttackTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23456,6 +24357,7 @@ public static partial class CreateOnTowerDestroyedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerDestroyedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23478,6 +24380,7 @@ public static partial class CreateOnTowerPlacedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerPlacedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23500,6 +24403,7 @@ public static partial class CreateOnTowerRangeTransformedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerRangeTransformedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23522,6 +24426,7 @@ public static partial class CreateOnTowerSelectedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerSelectedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23544,6 +24449,7 @@ public static partial class CreateOnTowerSoldTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerSoldTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23567,6 +24473,7 @@ public static partial class CreateOnTowerTargetTypeChangedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerTargetTypeChangedTriggerModel(args.name, args.towerIds, args.targetType);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23589,6 +24496,7 @@ public static partial class CreateOnTowerTransformedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerTransformedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23612,6 +24520,7 @@ public static partial class CreateOnTowerUpgradeUnlockedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerUpgradeUnlockedTriggerModel(args.name, args.towerIds, args.path);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23637,6 +24546,7 @@ public static partial class CreateOnTowerUpgradedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerUpgradedTriggerModel(args.name, args.towerIds, args.selectedPath, args.tier, args.includeTiersAbove);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23659,6 +24569,7 @@ public static partial class CreateOnTowerXpUpdatedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Triggers.OnTowerXpUpdatedTriggerModel(args.name, args.towerIds);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23682,6 +24593,7 @@ public static partial class CreateOrbitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.OrbitModel(args.name, args.projectile, args.count, args.range);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23707,6 +24619,7 @@ public static partial class CreateOrbitingTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.OrbitingTowerModel(args.name, args.rotationDegreesPerFrame, args.radius, args.ignoreRotation, args.offset, args.dontUseParentOrigin);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23728,6 +24641,7 @@ public static partial class CreateOrderedPrefabReferencesModelExt
         {
             var result = new Il2CppAssets.Scripts.Data.Behaviors.Towers.OrderedPrefabReferencesModel(args.prefabReferences);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23756,6 +24670,7 @@ public static partial class CreateOverchargeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.OverchargeModel(args.name, args.mutationId, args.maxStacks, args.durationPerStack, args.stacksLostPerDuration, args.rateModifierPerStack, args.projectileDisplay, args.buffLocsName, args.buffLocsFullName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23795,6 +24710,7 @@ public static partial class CreateOverclockModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.OverclockModel(args.name, args.lifespanFrames, args.rateModifier, args.villageRangeModifier, args.mutatorId, args.mutatorSaveId, args.maxStacks, args.selectionObjectPath, args.buffDisplayPath, args.initialEffect, args.tierBasedDurationMultiplier, args.paragonDurationMultiplier, args.buffLocsName, args.buffIconName, args.isParagonMode, args.paragonZoneRange, args.paragonZoneLifespanFrames);
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23821,6 +24737,7 @@ public static partial class CreateOverclockPermanentModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.OverclockPermanentModel(args.name, args.rateModifier, args.villageRangeModifier, args.maxStacks, args.mutatorsByStack, args.buffLocsName, args.buffIconName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23865,6 +24782,7 @@ public static partial class CreateOverheatTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.OverheatTriggerModel(args.name, args.projectileExplosionEffect, args.maxHeatLevel, args.heatEffectCooldown, args.heatEffectDuration, args.immuneHeat, args.damagedHeat, args.heatIdleDelay, args.abilityCooldownAddition, args.passiveHeatReduction, args.idleHeatReduction, args.iceHeatReduction, args.projectileBurnLifespan, args.heatDecayStrength, args.stunDuration, args.abilityCooldownHeatModifier, args.abilityTowerFilter, args.stunEffect, args.animTriggerId, args.fillHeatOnSpawn, args.fullscreenEffect, args.sounds);
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.mutatorStun != default) result.mutatorStun = args.mutatorStun;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23908,6 +24826,7 @@ public static partial class CreateOverloadModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23929,6 +24848,7 @@ public static partial class CreateOverrideCamoDetectionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.OverrideCamoDetectionModel(args.name, args.detectCamo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23950,6 +24870,7 @@ public static partial class CreatePaintStripperModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.PaintStripperModModel(args.name, args.removeTagsFromExcludeList);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23974,6 +24895,7 @@ public static partial class CreateParagonAssetSwapModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonAssetSwapModel(args.name, args.displayToSwap, args.newDisplay, args.displayDegree, args.applyToAllAbove);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -23995,6 +24917,7 @@ public static partial class CreateParagonAssetSwapPerDegreeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonAssetSwapPerDegreeModel(args.name, args.displayDegrees);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24018,6 +24941,7 @@ public static partial class CreateParagonOfPowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ParagonOfPowerModModel(args.name, args.rateMultiplier, args.buffLocsName, args.buffIconName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24042,6 +24966,7 @@ public static partial class CreateParagonOfPowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.ParagonOfPowerModel(args.name, args.rateMultiplier, args.buffLocsName, args.buffIconName);
             if (args.rateMutator != default) result.rateMutator = args.rateMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24066,6 +24991,7 @@ public static partial class CreateParagonOverlaySwapModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonOverlaySwapModel(args.name, args.overlayType, args.mutatorId, args.displayDegree, args.applyToAllAbove);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24087,6 +25013,7 @@ public static partial class CreateParagonSacrificeBonusModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonSacrificeBonusModel(args.name, args.bonus);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24138,6 +25065,7 @@ public static partial class CreateParagonTowerModelExt
             if (args.effectsStartMovingAtFrame != default) result.effectsStartMovingAtFrame = args.effectsStartMovingAtFrame;
             if (args.effectsDontStartMovingAtFrame != default) result.effectsDontStartMovingAtFrame = args.effectsDontStartMovingAtFrame;
             if (args.effectScaleDownTimeFrames != default) result.effectScaleDownTimeFrames = args.effectScaleDownTimeFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24164,6 +25092,7 @@ public static partial class CreateParallelEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.ParallelEmissionModel(args.name, args.count, args.spreadLength, args.yOffset, args.linear, args.behaviors);
             if (args.offsetStart != default) result.offsetStart = args.offsetStart;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24189,6 +25118,7 @@ public static partial class CreatePatBuffIndicatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PatBuffIndicatorModel(args.name, args.buffLocsName, args.buffIconName, args.isDisabled, args.isGlobalRange, args.maxStackSize);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24212,6 +25142,7 @@ public static partial class CreatePathActiveActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.PathActiveActionModel(args.name, args.setActiveToo, args.pathName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24243,6 +25174,7 @@ public static partial class CreatePathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.PathModel(args.name, args.points, args.isActive, args.isHidden, args.spawnPoint, args.leakPoint, args.entryModel, args.exitModel, args.isCustomPath, args.customPathWidth, args.hideTrackArrows);
             if (args.pathId != default) result.pathId = args.pathId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24266,6 +25198,7 @@ public static partial class CreatePathMovementFromScreenCenterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementFromScreenCenterModel(args.name, args.speed, args.ignoreTargetType);
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24289,6 +25222,7 @@ public static partial class CreatePathMovementFromScreenCenterPatternModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.PathMovementFromScreenCenterPatternModel(args.name, args.radius, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24323,6 +25257,7 @@ public static partial class CreatePathMovementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PathMovementModel(args.name, args.speed, args.rotation, args.bankRotation, args.bankRotationMul, args.ignoreTargetType, args.catchUpSpeed, args.takeOffTime, args.takeOffExponent, args.takeOffAnimTime, args.takeOffScale, args.takeOffScaleExponent, args.takeOffPitch, args.takeOffPitchExponent, args.fixedPathSupplierId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24345,6 +25280,7 @@ public static partial class CreatePathSpawnerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.PathSpawnerModel(args.name, args.forwardSplitter, args.reverseSplitter);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24367,6 +25303,7 @@ public static partial class CreatePathTierMaxModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.TowerSets.Mods.PathTierMaxModModel(args.name, args.path, args.tier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24401,6 +25338,7 @@ public static partial class CreatePatrolPointsSettingModelExt
             if (args.pointSwitchDistanceSquared != default) result.pointSwitchDistanceSquared = args.pointSwitchDistanceSquared;
             if (args.minimumPointDistanceSquared != default) result.minimumPointDistanceSquared = args.minimumPointDistanceSquared;
             if (args.lineDelayFrames != default) result.lineDelayFrames = args.lineDelayFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24424,6 +25362,7 @@ public static partial class CreatePatsBigSqueezeWindModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PatsBigSqueezeWindModel(args.name, args.startLocation, args.framesToWait, args.mutatorId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24450,6 +25389,7 @@ public static partial class CreatePauseAllOtherAttacksModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.PauseAllOtherAttacksModel(args.name, args.lifespan, args.endOnRoundEnd, args.endOnDefeatScreen);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24472,6 +25412,7 @@ public static partial class CreatePauseOtherAttacksModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.PauseOtherAttacksModel(args.name, args.duration);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24494,6 +25435,7 @@ public static partial class CreatePauseTimeTriggerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PauseTimeTriggerActionModel(args.name, args.triggerName, args.setPaused);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24519,6 +25461,7 @@ public static partial class CreatePerRoundCashBonusTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PerRoundCashBonusTowerModel(args.name, args.cashPerRound, args.cashRoundBonusMultiplier, args.lifespan, args.assetId, args.distributeCash);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24542,6 +25485,7 @@ public static partial class CreatePerformActionsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PerformActionsActionModel(args.name, args.actionId, args.canRepeat, args.actionIds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24564,6 +25508,7 @@ public static partial class CreatePetCreateEffectOnPlaceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateEffectOnPlaceModel(args.name, args.Effect, args.Lifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24586,6 +25531,7 @@ public static partial class CreatePetCreateEffectOnSellModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateEffectOnSellModel(args.name, args.Effect, args.Lifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24612,6 +25558,7 @@ public static partial class CreatePetCreateSoundOnIdleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateSoundOnIdleModel(args.name, args.sound1Id, args.sound2Id, args.sound3Id, args.sound4Id, args.idleMin, args.idleMax);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24634,6 +25581,7 @@ public static partial class CreatePetCreateSoundOnPlaceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateSoundOnPlaceModel(args.name, args.soundId, args.delay);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24657,6 +25605,7 @@ public static partial class CreatePetModelSyncedExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetModelSynced(args.name, args.isFlying, args.display, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24680,6 +25629,7 @@ public static partial class CreatePetModelUnsyncedExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetModelUnsynced(args.name, args.isFlying, args.display, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24701,6 +25651,7 @@ public static partial class CreatePetRabbitBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.PetRabbitBehaviorModel(args.name, args.petRabbitBaseTowerModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24724,6 +25675,7 @@ public static partial class CreatePetRabbitMergeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PetRabbitMergeModel(args.name, args.wererabbitTowerId, args.mergeAmountRequired, args.effectDuringMergeId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24747,6 +25699,7 @@ public static partial class CreatePetTerrainHandlerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.PetTerrainHandlerModel(args.name, args.LandHeightOffset, args.WaterHeightOffset, args.MoveSpeed);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24781,6 +25734,7 @@ public static partial class CreatePhayzeBehaviorModelExt
             if (args.camoMutator != default) result.camoMutator = args.camoMutator;
             if (args.speedMutator != default) result.speedMutator = args.speedMutator;
             if (args.camoDetectionTowerMutator != default) result.camoDetectionTowerMutator = args.camoDetectionTowerMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24815,6 +25769,7 @@ public static partial class CreatePhayzeRushBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PhayzeRushBehaviorModel(args.name, args.baseHealth, args.healthMultiplier, args.speedMultiplier, args.onKillActions, args.onMilestoneActions, args.onLivesLostActions, args.baseArmour, args.armourMultiplier, args.timeTriggerBase, args.timeTriggerMultiplier, args.minTimeTriggerMultiplier, args.armouredSpeedMultiplier, args.dashSpeed, args.dashDistance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24837,6 +25792,7 @@ public static partial class CreatePhayzeTimerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PhayzeTimerActionModel(args.name, args.restore, args.actionId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24868,6 +25824,7 @@ public static partial class CreatePhoenixRebirthModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.PhoenixRebirthModel(args.name, args.duration, args.effectTowerModel, args.effectSubtowerModel, args.effectEndSubtowerModel, args.disabledSubTowers, args.projectileExplosionModel, args.manaPerZombieZOMG, args.maxZombieZOMGs, args.zombieBFBsPerZOMG, args.projectileZOMG, args.projectileBFB);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24894,6 +25851,7 @@ public static partial class CreatePickupModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PickupModel(args.name, args.collectRadius, args.delay, args.isCamoPickup);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24920,6 +25878,7 @@ public static partial class CreatePierceAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.PierceAreaBuffModel(args.name, args.pierce, args.mutatorId, args.priority, args.buffIndicatorModel, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24943,6 +25902,7 @@ public static partial class CreatePierceFromLivesGainedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.PierceFromLivesGainedModel(args.name, args.piercePercentPerLife, args.lifeCap, args.saveId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -24984,6 +25944,7 @@ public static partial class CreatePiercePercentageSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25024,6 +25985,7 @@ public static partial class CreatePierceSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25049,6 +26011,7 @@ public static partial class CreatePierceTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.PierceTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.pierce, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25083,6 +26046,7 @@ public static partial class CreatePierceUpTowersModelExt
             if (args.displayModel != default) result.displayModel = args.displayModel;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25116,6 +26080,7 @@ public static partial class CreatePlaceAlongTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PlaceAlongTrackModel(args.name, args.objectToPlace1Path, args.objectToPlace2Path, args.objectToPlace3Path, args.objectToPlace4Path, args.spacingMin, args.spacingMax, args.scaleMin, args.scaleMax, args.rotationMin, args.rotationMax, args.offsetMin, args.offsetMax);
             if (args.objectsToPlacePath != default) result.objectsToPlacePath = args.objectsToPlacePath;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25153,6 +26118,7 @@ public static partial class CreatePlaceProjectileAtModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.PlaceProjectileAtModel(args.name, args.projectileModel, args.emissionModel, args.areaTypes, args.placementRadius, args.rangeCircleRadius, args.delay, args.effectAtLocationModel, args.soundOnPlaceModel, args.effectAtTowerModel, args.effectAtTowerPosX, args.effectAtTowerPosY, args.effectAtTowerPosZ, args.useRandomRotation, args.placingDisplayPath);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.mockTowerModel != default) result.mockTowerModel = args.mockTowerModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25175,6 +26141,7 @@ public static partial class CreatePlacementAreaTypeHeightSettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PlacementBehaviors.PlacementAreaTypeHeightSettingModel(args.name, args.landHeight, args.waterHeight);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25197,6 +26164,7 @@ public static partial class CreatePlacementAreaTypeRangeBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PlacementBehaviors.PlacementAreaTypeRangeBuffModel(args.name, args.rangeMultiplier);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25220,6 +26188,7 @@ public static partial class CreatePlayAnimTriggerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PlayAnimTriggerActionModel(args.name, args.actionId, args.triggerName, args.pauseMovementDuration);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25242,6 +26211,7 @@ public static partial class CreatePlayAnimationIndexModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PlayAnimationIndexModel(args.name, args.placeAnimation, args.upgradeAnimation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25266,6 +26236,7 @@ public static partial class CreatePlayMovieClipActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.PlayMovieClipActionModel(args.name, args.clipName, args.clipPrefab, args.forceStartRoundOnEndAnimation);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25288,6 +26259,7 @@ public static partial class CreatePlaySoundActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.PlaySoundActionModel(args.name, args.sound);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25310,6 +26282,7 @@ public static partial class CreatePointEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.PointEmissionModel(args.name, args.checkLineOfSight, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25339,6 +26312,7 @@ public static partial class CreatePopEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.PopEffectModel(args.name, args.displayAssetId, args.soundEffect1Id, args.soundEffect2Id, args.soundEffect3Id, args.soundEffect4Id, args.soundEffectGroupID, args.soundEffectGroupLimit, args.soundEffectTimeDelay, args.soundEffectTimeDelayFF);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25368,6 +26342,7 @@ public static partial class CreatePoplustSupportModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PoplustSupportModel(args.name, args.mutatorId, args.maxStacks, args.ratePercentIncrease, args.piercePercentIncrease, args.buffLocsName, args.buffIconName);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25392,6 +26367,7 @@ public static partial class CreatePowerDetailsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.PowerSets.PowerDetailsModel(args.powerId, args.powerIndex, args.powerCount, args.mods);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25413,6 +26389,7 @@ public static partial class CreatePowerModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.PowerModModel(args.name, args.costDecrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25452,6 +26429,7 @@ public static partial class CreatePowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.PowerModel(args.name, args.cost, args.canBeActivatedBetweenRounds, args.icon, args.quantity, args.behaviors, args.mods, args.tower, args.isHidden, args.linkedToAchievement, args.showBuffsForTower, args.saveImmediately, args.storeNavigateToId, args.orderPriority, args.alwaysPlaceAtScreenCentre, args.animatedIcon, args.showAsNew, args.isDisabledByGameMode, args.availableInMode);
             if (args.Cost != default) result.Cost = args.Cost;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25498,6 +26476,7 @@ public static partial class CreatePowerProModelExt
             if (args.powerProTowerModels != default) result.powerProTowerModels = args.powerProTowerModels;
             if (args.availableInMode != default) result.availableInMode = args.availableInMode;
             if (args.Cost != default) result.Cost = args.Cost;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25519,6 +26498,7 @@ public static partial class CreatePowerProTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PowerProTowerModel(args.name, args.powerId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25547,6 +26527,7 @@ public static partial class CreatePowerProUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Upgrades.PowerProUpgradeModel(args.name, args.cost, args.xpCost, args.icon, args.path, args.tier, args.locked, args.confirmation, args.localizedNameOverride);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25569,6 +26550,7 @@ public static partial class CreatePowerProUpgradePathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Upgrades.PowerProUpgradePathModel(args.upgrade, args.tower);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25590,6 +26572,7 @@ public static partial class CreatePowerProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PowerProjectileModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25612,6 +26595,7 @@ public static partial class CreatePreBloonSpawnTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.PreBloonSpawnTriggerModel(args.name, args.bloonTag);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25644,6 +26628,7 @@ public static partial class CreatePreEmptiveStrikeLauncherModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PreEmptiveStrikeLauncherModel(args.name, args.projectileModel, args.emissionModel, args.throwOffsetX, args.throwOffsetY, args.throwOffsetZ, args.throwOffsetSecondX, args.throwOffsetSecondY, args.throwOffsetSecondZ, args.ejectEffectModel, args.animationState, args.animationStateSecond, args.isStunned);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25666,6 +26651,7 @@ public static partial class CreatePreGamePrepModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.PreGamePrepModModel(args.name, args.distFromEdgeOfMap, args.projectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25688,6 +26674,7 @@ public static partial class CreatePreGamePrepModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.PreGamePrepModel(args.name, args.projectileModel, args.distFromEdgeOfMap);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25714,6 +26701,7 @@ public static partial class CreatePriceAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.PriceAreaBuffModel(args.name, args.multiplier, args.mutatorId, args.priority, args.buffIndicatorModel, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25767,6 +26755,7 @@ public static partial class CreatePrimordialWrathModelExt
             if (args.buffLocsFullName != default) result.buffLocsFullName = args.buffLocsFullName;
             if (args.depletionAsMultiplier != default) result.depletionAsMultiplier = args.depletionAsMultiplier;
             if (args.cashGenBuffIndicatorModel != default) result.cashGenBuffIndicatorModel = args.cashGenBuffIndicatorModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25792,6 +26781,7 @@ public static partial class CreatePrinceOfDarknessEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.PrinceOfDarknessEmissionModel(args.name, args.minPiercePerBloon, args.maxPathRandomRange, args.maxPathOffset, args.alternateProjectile, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25818,6 +26808,7 @@ public static partial class CreatePrinceOfDarknessZombieBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PrinceOfDarknessZombieBuffModel(args.name, args.damageIncrease, args.distanceMultiplier, args.buffLocsName, args.buffIconName, args.isGlobalRange);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25839,6 +26830,7 @@ public static partial class CreatePrioritiseRotationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.PrioritiseRotationModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25862,6 +26854,7 @@ public static partial class CreateProjectileBlockerCollisionReboundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ProjectileBlockerCollisionReboundModel(args.name, args.clearCollidedWith, args.changeRotation);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25884,6 +26877,7 @@ public static partial class CreateProjectileCreateEffectOnEmitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ProjectileCreateEffectOnEmitModel(args.name, args.effectModel);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25906,6 +26900,7 @@ public static partial class CreateProjectileFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ProjectileFilterModel(args.name, args.filters);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25928,6 +26923,7 @@ public static partial class CreateProjectileHeightModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ProjectileHeightModel(args.name, args.heightEase);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -25962,6 +26958,7 @@ public static partial class CreateProjectileLifespanSupportModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ProjectileLifespanSupportModel(args.name, args.isUnique, args.multiplier, args.mutatorId, args.filters, args.isGlobal, args.isCustomRadius, args.customRadius, args.appliesToOwningTower, args.buffLocsName, args.buffIconName, args.maxStackSize, args.onlyShowBuffIfMutated, args.onlyAffectParagon);
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26008,6 +27005,7 @@ public static partial class CreateProjectileModelExt
             if (args.hasDamageModifiers != default) result.hasDamageModifiers = args.hasDamageModifiers;
             if (args.checkCollisionIntervalFrames != default) result.checkCollisionIntervalFrames = args.checkCollisionIntervalFrames;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26044,6 +27042,7 @@ public static partial class CreateProjectileOverTimeModelExt
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.initialDelayFrames != default) result.initialDelayFrames = args.initialDelayFrames;
             if (args.Interval != default) result.Interval = args.Interval;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26066,6 +27065,7 @@ public static partial class CreateProjectilePierceModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ProjectilePierceModModel(args.name, args.amount, args.minTier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26088,6 +27088,7 @@ public static partial class CreateProjectileRadiusModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ProjectileRadiusModModel(args.name, args.additiveAmount, args.multiplierAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26131,6 +27132,7 @@ public static partial class CreateProjectileRadiusSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26152,6 +27154,7 @@ public static partial class CreateProjectileRangeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ProjectileRangeModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26173,6 +27176,7 @@ public static partial class CreateProjectileRangePercentageModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ProjectileRangePercentageModModel(args.name, args.percentIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26195,6 +27199,7 @@ public static partial class CreateProjectileSetAnimationOnContactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ProjectileSetAnimationOnContactModel(args.name, args.onContactAnimationId);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26221,6 +27226,7 @@ public static partial class CreateProjectileSizeTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.ProjectileSizeTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.sizeModifier, args.assetSizeModifier, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26242,6 +27248,7 @@ public static partial class CreateProjectileSpeedModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ProjectileSpeedModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26283,6 +27290,7 @@ public static partial class CreateProjectileSpeedSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26308,6 +27316,7 @@ public static partial class CreateProjectileSpeedTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.ProjectileSpeedTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.speedModifier, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26329,6 +27338,7 @@ public static partial class CreateProjectileTrackTargetModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ProjectileTrackTargetModModel(args.name, args.multiplierTurnRate);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26350,6 +27360,7 @@ public static partial class CreateProjectileZeroRotationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ProjectileZeroRotationModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26377,6 +27388,7 @@ public static partial class CreateProjectilesCreateEffectOnExpireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnExpireModel(args.name, args.assetId, args.lifespan, args.fullscreen, args.randomRotation, args.effectModel, args.useTargetPosition);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26399,6 +27411,7 @@ public static partial class CreatePropAssetChangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Props.PropAssetChangeModel(args.name, args.offsets, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26420,6 +27433,7 @@ public static partial class CreatePropBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Props.Behaviors.PropBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26483,6 +27497,7 @@ public static partial class CreatePropModelExt
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26505,6 +27520,7 @@ public static partial class CreatePropRemoveableCostModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Props.PropRemoveableCostModel(args.removalCost, args.removalCostLoc);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26535,6 +27551,7 @@ public static partial class CreatePropSpawningChallengeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.PropSpawningChallengeModel(args.groupLayerSpawners, args.propIdsToTrack, args.defeatOnMaxPropsReached, args.victoryOnMinPropsReached, args.showPropCountUi, args.maxSpawnCount, args.propRemovalCost, args.hudIcon, args.propRemovalCostLoc, args.defeatLoc);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26576,6 +27593,7 @@ public static partial class CreatePsiBloonBehaviorModelExt
             if (args.trembleSpeedFrames != default) result.trembleSpeedFrames = args.trembleSpeedFrames;
             if (args.trembleFramesThresholdMin != default) result.trembleFramesThresholdMin = args.trembleFramesThresholdMin;
             if (args.trembleFramesThresholdMax != default) result.trembleFramesThresholdMax = args.trembleFramesThresholdMax;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26616,6 +27634,7 @@ public static partial class CreatePsiEffectModelExt
             if (args.maxDurationFrames != default) result.maxDurationFrames = args.maxDurationFrames;
             if (args.mutators != default) result.mutators = args.mutators;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26637,6 +27656,7 @@ public static partial class CreatePsiLimitProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.PsiLimitProjectileModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26668,6 +27688,7 @@ public static partial class CreatePsiPsionicScreamModelExt
             if (args.windMutators != default) result.windMutators = args.windMutators;
             if (args.psiEffectMutators != default) result.psiEffectMutators = args.psiEffectMutators;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26694,6 +27715,7 @@ public static partial class CreatePursuitSettingCustomModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.PursuitSettingCustomModel(args.name, args.isSelectable, args.pursuitDistance, args.isOnSubTower, args.initialTargetType, args.useParentForClose, args.mustBeInRangeOfParent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26717,6 +27739,7 @@ public static partial class CreatePursuitSettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.PursuitSettingModel(args.name, args.isSelectable, args.pursuitDistance, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26738,6 +27761,7 @@ public static partial class CreatePushBackIncreaseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.PushBackIncreaseModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26766,6 +27790,7 @@ public static partial class CreatePushBackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PushBackModel(args.name, args.pushAmount, args.tag, args.multiplierMOAB, args.multiplierBFB, args.multiplierDDT, args.multiplierZOMG, args.onlyIfDamaged);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26787,6 +27812,7 @@ public static partial class CreatePyrotechnicsSupportFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.PyrotechnicsSupportFilterModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26829,6 +27855,7 @@ public static partial class CreatePyrotechnicsSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26852,6 +27879,7 @@ public static partial class CreateQuickEntryModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.QuickEntryModel(args.name, args.speedMultiplier, args.percentOfTrack);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26874,6 +27902,7 @@ public static partial class CreateRandomAngleOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.RandomAngleOffsetModel(args.name, args.minOffset, args.maxOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26907,6 +27936,7 @@ public static partial class CreateRandomArcEmissionModelExt
             if (args.sliceSize != default) result.sliceSize = args.sliceSize;
             if (args.useProjectileRotation != default) result.useProjectileRotation = args.useProjectileRotation;
             if (args.useAirUnitRotation != default) result.useAirUnitRotation = args.useAirUnitRotation;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26930,6 +27960,7 @@ public static partial class CreateRandomDisplayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RandomDisplayModel(args.name, args.displayPaths, args.applyRandomRotation);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26959,6 +27990,7 @@ public static partial class CreateRandomEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomEmissionModel(args.name, args.count, args.angle, args.startOffset, args.behaviors, args.useSpeedMultiplier, args.speedMultiplierMin, args.speedMultiplierMax, args.ejectPointRandomness, args.useMainAttackRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -26984,6 +28016,7 @@ public static partial class CreateRandomPositionBasicModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RandomPositionBasicModel(args.name, args.minRadius, args.maxRadius, args.mapBorder, args.useTerrainHeight);
             if (args.isOnSubTower != default) result.isOnSubTower = args.isOnSubTower;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27017,6 +28050,7 @@ public static partial class CreateRandomPositionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RandomPositionModel(args.name, args.minDistance, args.maxDistance, args.targetRadius, args.isSelectable, args.pointDistance, args.dontUseTowerPosition, args.isOnSubTower, args.areaType, args.useInverted, args.ignoreTerrain, args.idealDistanceWithinTrack, args.towerSet);
             if (args.targetRadiusSquared != default) result.targetRadiusSquared = args.targetRadiusSquared;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27043,6 +28077,7 @@ public static partial class CreateRandomRangeTravelStraitModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RandomRangeTravelStraitModel(args.name, args.speed, args.minRange, args.maxRange);
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27065,6 +28100,7 @@ public static partial class CreateRandomRateModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.RandomRateModel(args.name, args.offsetRate);
             if (args.offsetRateFrames != default) result.offsetRateFrames = args.offsetRateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27086,6 +28122,7 @@ public static partial class CreateRandomRotationEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomRotationEmissionModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27107,6 +28144,7 @@ public static partial class CreateRandomRotationWeaponBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.RandomRotationWeaponBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27130,6 +28168,7 @@ public static partial class CreateRandomSpeedOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.RandomSpeedOffsetModel(args.name, args.minOffset, args.maxOffset);
             if (args.mutators != default) result.mutators = args.mutators;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27156,6 +28195,7 @@ public static partial class CreateRandomTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RandomTargetModel(args.name, args.isSelectable, args.isOnSubTower, args.keepTargetUntilInvalid, args.ignoreOtherRandomTargets, args.targetPathIfNoBloon, args.canTargetMoab);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27179,6 +28219,7 @@ public static partial class CreateRandomTargetSpreadModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.RandomTargetSpreadModel(args.name, args.spread, args.behaviors, args.throwMarkerOffsets);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27201,6 +28242,7 @@ public static partial class CreateRandomTargetTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RandomTargetTrackModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27231,6 +28273,7 @@ public static partial class CreateRandomTeleportInRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RandomTeleportInRangeModel(args.name, args.minDistance, args.maxDistance, args.isSelectable, args.pointDistance, args.ignoreTerrain, args.idealDistanceWithinTrack, args.teleportSound, args.disappearEffectModel, args.reappearEffectModel);
             if (args.targetRadiusSquared != default) result.targetRadiusSquared = args.targetRadiusSquared;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27257,6 +28300,7 @@ public static partial class CreateRangeAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.RangeAreaBuffModel(args.name, args.multiplier, args.mutatorId, args.priority, args.buffIndicatorModel, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27279,6 +28323,7 @@ public static partial class CreateRangeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.RangeModModel(args.name, args.multiplier, args.additive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27301,6 +28346,7 @@ public static partial class CreateRangeReductionZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.RangeReductionZoneModel(args.name, args.rangeMultiplier);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27342,6 +28388,7 @@ public static partial class CreateRangeSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27367,6 +28414,7 @@ public static partial class CreateRangeTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.RangeTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.rangeIncrease, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27391,6 +28439,7 @@ public static partial class CreateRangeUpFromUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RangeUpFromUpgradeModel(args.name, args.rangePerUpgrade, args.upgradeTier, args.upgradePath, args.towerBaseId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27422,6 +28471,7 @@ public static partial class CreateRangeUpTowersModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27448,6 +28498,7 @@ public static partial class CreateRateAreaBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.RateAreaBuffModel(args.name, args.multiplier, args.mutatorId, args.priority, args.buffIndicatorModel, args.filterInTowerSets);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27470,6 +28521,7 @@ public static partial class CreateRateBasedAnimationOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.RateBasedAnimationOffsetModel(args.name, args.baseRate, args.offset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27512,6 +28564,7 @@ public static partial class CreateRateSupportBombExpertModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27552,6 +28605,7 @@ public static partial class CreateRateSupportExplosiveModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27593,6 +28647,7 @@ public static partial class CreateRateSupportModelExt
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27634,6 +28689,7 @@ public static partial class CreateReanimateMoabsActionModelExt
             if (args.timeUntilBloonsMoveFrames != default) result.timeUntilBloonsMoveFrames = args.timeUntilBloonsMoveFrames;
             if (args.pauseMutator != default) result.pauseMutator = args.pauseMutator;
             if (args.pauseAndInvulnerableMutator != default) result.pauseAndInvulnerableMutator = args.pauseAndInvulnerableMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27676,6 +28732,7 @@ public static partial class CreateRecoveryModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27701,6 +28758,7 @@ public static partial class CreateRectangleFootprintModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RectangleFootprintModel(args.name, args.xWidth, args.yWidth, args.doesntBlockTowerPlacement, args.ignoresPlacementCheck, args.ignoresTowerOverlap);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27730,6 +28788,7 @@ public static partial class CreateRecurringRangsModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.RecurringRangsModModel(args.id, args.name, args.newPath, args.newEasePath, args.path1TierMin, args.path1TierMax, args.path2TierMin, args.path2TierMax, args.path3TierMin, args.path3TierMax);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27757,6 +28816,7 @@ public static partial class CreateRedeployModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.RedeployModel(args.name, args.selectionObjectPath, args.isSelectableGameObject, args.activateSound, args.pickupSound, args.dropOffSound, args.isDoorGunnerActive);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27786,6 +28846,7 @@ public static partial class CreateRedirectBloonSpawnActionModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.RedirectBloonSpawnActionModel(args.name, args.duration, args.rounds, args.portalAsset, args.actionId, args.rotatePortalToBloon, args.portalExpiryEffect);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
             if (args.redirectBloonSpawningModel != default) result.redirectBloonSpawningModel = args.redirectBloonSpawningModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27811,6 +28872,7 @@ public static partial class CreateRedirectBloonSpawningModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RedirectBloonSpawningModel(args.name, args.duration, args.rounds, args.portalAsset, args.portalExpiryEffect);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27832,6 +28894,7 @@ public static partial class CreateReduceCostModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.ReduceCostModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27858,6 +28921,7 @@ public static partial class CreateReflectProjectilesInRadiusActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.ReflectProjectilesInRadiusActionModel(args.name, args.actionId, args.lifespan, args.innerRadius, args.outerRadius, args.reflectionDamper, args.onlyIfImmune);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27879,6 +28943,7 @@ public static partial class CreateRefreshHeroCooldownsOnRoundEndModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RefreshHeroCooldownsOnRoundEndModel();
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27906,6 +28971,7 @@ public static partial class CreateRefreshMutatorsOnBloonModelExt
             if (args.mutatorIds != default) result.mutatorIds = args.mutatorIds;
             if (args.mutatorKeys != default) result.mutatorKeys = args.mutatorKeys;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27931,6 +28997,7 @@ public static partial class CreateRefreshPierceModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RefreshPierceModel(args.name, args.interval, args.isBuffedByRate);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27960,6 +29027,7 @@ public static partial class CreateRegenRemovableModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.RegenRemovableModel(args.name, args.isActive, args.position, args.costFormula, args.setInactiveOnRemoved, args.costMultiplier, args.popupTextLocKey);
             if (args.areaId != default) result.areaId = args.areaId;
             if (args.OnRemoved != default) result.OnRemoved = args.OnRemoved;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -27983,6 +29051,7 @@ public static partial class CreateRejuvPotionBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.GeraldoItems.RejuvPotionBehaviorModel(args.name, args.livesGained, args.textEffectId, args.textEffectLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28008,6 +29077,7 @@ public static partial class CreateReloadTimeTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.ReloadTimeTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.multiplier, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28031,6 +29101,7 @@ public static partial class CreateRemovableActiveActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.RemovableActiveActionModel(args.name, args.setActiveToo, args.removeableName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28062,6 +29133,7 @@ public static partial class CreateRemovableCostMultiplierModModelExt
             if (args.roundRemoveableDurationAdditive != default) result.roundRemoveableDurationAdditive = args.roundRemoveableDurationAdditive;
             if (args.mapGizmoCooldownMultiplier != default) result.mapGizmoCooldownMultiplier = args.mapGizmoCooldownMultiplier;
             if (args.mapGizmoCostMultiplier != default) result.mapGizmoCostMultiplier = args.mapGizmoCostMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28083,6 +29155,7 @@ public static partial class CreateRemoveAbilityModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.RemoveAbilityModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28107,6 +29180,7 @@ public static partial class CreateRemoveAllDotActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.RemoveAllDotActionModel(args.name, args.actionId, args.effect, args.effectOffsetY, args.effectLifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28128,6 +29202,7 @@ public static partial class CreateRemoveAllHandDragObjectsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.RemoveAllHandDragObjectsActionModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28150,6 +29225,7 @@ public static partial class CreateRemoveAllMutatorsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.RemoveAllMutatorsActionModel(args.name, args.actionId, args.mutatorsToIgnoreList);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28171,6 +29247,7 @@ public static partial class CreateRemoveAllPlacementCirclesActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.RemoveAllPlacementCirclesActionModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28199,6 +29276,7 @@ public static partial class CreateRemoveBloonModifiersModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RemoveBloonModifiersModel(args.name, args.cleanseRegen, args.cleanseCamo, args.cleanseLead, args.cleanseFortified, args.cleanseOnlyIfDamaged, args.bloonTagExcludeList, args.bloonTagExplicitList);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28229,6 +29307,7 @@ public static partial class CreateRemoveDamageTypeModifierModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.removeAll != default) result.removeAll = args.removeAll;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28251,6 +29330,7 @@ public static partial class CreateRemoveHandDragObjectActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.RemoveHandDragObjectActionModel(args.name, args.placementId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28272,6 +29352,7 @@ public static partial class CreateRemoveManaShieldModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.RemoveManaShieldModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28297,6 +29378,7 @@ public static partial class CreateRemoveMutatorOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RemoveMutatorOnUpgradeModel(args.name, args.mutatorId, args.firstPath, args.secondPath, args.thirdPath);
             if (args.paths != default) result.paths = args.paths;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28319,6 +29401,7 @@ public static partial class CreateRemoveMutatorWhenBehaviorDestroyedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RemoveMutatorWhenBehaviorDestroyedModel(args.name, args.mutatorIds);
             if (args.mutatorIdsList != default) result.mutatorIdsList = args.mutatorIdsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28345,6 +29428,7 @@ public static partial class CreateRemoveMutatorsFromBloonModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RemoveMutatorsFromBloonModel(args.name, args.key, args.collisionPass, args.mutatorIds);
             if (args.keys != default) result.keys = args.keys;
             if (args.mutatorIdList != default) result.mutatorIdList = args.mutatorIdList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28366,6 +29450,7 @@ public static partial class CreateRemovePermaBrewModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RemovePermaBrewModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28388,6 +29473,7 @@ public static partial class CreateRemovePlacementCircleActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.RemovePlacementCircleActionModel(args.name, args.placementId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28411,6 +29497,7 @@ public static partial class CreateRemovePropsOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RemovePropsOnRoundModel(args.round, args.propIndexs, args.disableRemoveableEffects);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28434,6 +29521,7 @@ public static partial class CreateRemoveRemoveablesOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RemoveRemoveablesOnRoundModel(args.round, args.removeableIds, args.disableRemoveableEffects);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28473,6 +29561,7 @@ public static partial class CreateRemoveableModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.RemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28495,6 +29584,7 @@ public static partial class CreateRemoveableSoldTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.RemoveableSoldTriggerModel(args.name, args.removableName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28520,6 +29610,7 @@ public static partial class CreateRepeatableTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.RepeatableTriggerModel(args.name, args.repeatDelay, args.triggeredBy);
             if (args.repeatDelayFrames != default) result.repeatDelayFrames = args.repeatDelayFrames;
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28563,6 +29654,7 @@ public static partial class CreateRepelModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28584,6 +29676,7 @@ public static partial class CreateResetAgeOnContactModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ResetAgeOnContactModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28605,6 +29698,7 @@ public static partial class CreateResetRateOnInitialiseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ResetRateOnInitialiseModel(args.name, args.weaponModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28626,6 +29720,7 @@ public static partial class CreateRestockGeraldoInventoryOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RestockGeraldoInventoryOnUpgradeModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28647,6 +29742,7 @@ public static partial class CreateRetargetIncreaseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.RetargetIncreaseModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28676,6 +29772,7 @@ public static partial class CreateRetargetOnContactDelayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RetargetOnContactDelayModel(args.name, args.distance, args.maxBounces, args.delayFrames, args.onlyIfFirstBloonDestroyed, args.displayPath, args.displayLength, args.displayLifetime, args.displayLengthScale);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28705,6 +29802,7 @@ public static partial class CreateRetargetOnContactModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RetargetOnContactModel(args.name, args.distance, args.minDistance, args.maxBounces, args.targetType, args.delay, args.expireIfNoTargetFound);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28750,6 +29848,7 @@ public static partial class CreateRetributionBloonBehaviorModelExt
             if (args.hitLineDisplayDurationFrames != default) result.hitLineDisplayDurationFrames = args.hitLineDisplayDurationFrames;
             if (args.popLineDisplayDurationFrames != default) result.popLineDisplayDurationFrames = args.popLineDisplayDurationFrames;
             if (args.stunMutator != default) result.stunMutator = args.stunMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28771,6 +29870,7 @@ public static partial class CreateReverseModeTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.ReverseModeTriggerModel(args.name);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28792,6 +29892,7 @@ public static partial class CreateReverseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.ReverseModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28825,6 +29926,7 @@ public static partial class CreateRingleaderBloonBehaviorModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.RingleaderBloonBehaviorModel(args.name, args.barrierHealth, args.barrierRestoreTime, args.barrierEffectModel, args.bloonsSpeedCap, args.bloonOverlayType, args.barrierRadius, args.barrierEffectRadius, args.barrierBreakSound, args.barrierRestoreSound, args.absorbProjectileSounds);
             if (args.barrierRestoreTimeFrames != default) result.barrierRestoreTimeFrames = args.barrierRestoreTimeFrames;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28846,6 +29948,7 @@ public static partial class CreateRoadSpikesModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.RoadSpikesModel(args.name, args.projectileModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28867,6 +29970,7 @@ public static partial class CreateRoadSpikesPierceModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.RoadSpikesPierceModModel(args.name, args.addition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28891,6 +29995,7 @@ public static partial class CreateRogueGameManagerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RogueGameManagerModel(args.name, args.upgradeCostMultipliers, args.boss, args.stage, args.isFinalBossGame);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28912,6 +30017,7 @@ public static partial class CreateRogueQuestModeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RogueQuestModeModel();
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -28975,6 +30081,7 @@ public static partial class CreateRosaliaMovementModelExt
             if (args.slowdownRadiusMinSquared != default) result.slowdownRadiusMinSquared = args.slowdownRadiusMinSquared;
             if (args.jumpUpTimeFrames != default) result.jumpUpTimeFrames = args.jumpUpTimeFrames;
             if (args.jumpDownTimeFrames != default) result.jumpDownTimeFrames = args.jumpDownTimeFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29002,6 +30109,7 @@ public static partial class CreateRotateAreaActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.RotateAreaActionModel(args.name, args.areaName, args.rotation, args.duration, args.rotationActions, args.startSound, args.stopSound);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29026,6 +30134,7 @@ public static partial class CreateRotateModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.RotateModel(args.name, args.angle);
             if (args.rotationFrames != default) result.rotationFrames = args.rotationFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29047,6 +30156,7 @@ public static partial class CreateRotateSideToTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateSideToTargetModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29068,6 +30178,7 @@ public static partial class CreateRotateToDefaultPositionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateToDefaultPositionModel(args.name, args.rotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29090,6 +30201,7 @@ public static partial class CreateRotateToDefaultPositionTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RotateToDefaultPositionTowerModel(args.name, args.rotation, args.onlyOnReachingTier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29111,6 +30223,7 @@ public static partial class CreateRotateToMiddleOfTargetsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateToMiddleOfTargetsModel(args.name, args.onlyRotateDuringThrow);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29132,6 +30245,7 @@ public static partial class CreateRotateToParentModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateToParentModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29157,6 +30271,7 @@ public static partial class CreateRotateToPointerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateToPointerModel(args.name, args.rate, args.rotateTower, args.rotateOnlyOnEmit, args.weaponEjectZ);
             if (args.rateFrames != default) result.rateFrames = args.rateFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29187,6 +30302,7 @@ public static partial class CreateRotateToTargetAirUnitModelExt
             if (args.additionalRotation != default) result.additionalRotation = args.additionalRotation;
             if (args.rotateTower != default) result.rotateTower = args.rotateTower;
             if (args.useMainAttackRotation != default) result.useMainAttackRotation = args.useMainAttackRotation;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29217,6 +30333,7 @@ public static partial class CreateRotateToTargetAttackOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateToTargetAttackOffsetModel(args.name, args.onlyRotateDuringThrow, args.useThrowMarkerHeight, args.rotateOnlyOnThrow, args.additionalRotation, args.rotateTower, args.useMainAttackRotation, args.ignoreParentRotationTime, args.startRotation, args.alwaysIgnoreParentRotation);
             if (args.ignoreParentRotationFrames != default) result.ignoreParentRotationFrames = args.ignoreParentRotationFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29243,6 +30360,7 @@ public static partial class CreateRotateToTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.RotateToTargetModel(args.name, args.onlyRotateDuringThrow, args.useThrowMarkerHeight, args.rotateOnlyOnThrow, args.additionalRotation, args.rotateTower, args.useMainAttackRotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29265,6 +30383,7 @@ public static partial class CreateRoundBasedAttackSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RoundBasedAttackSpeedModel(args.name, args.maxWeaponAttackSpeed, args.bonusAttackSpeedPerRoundPercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29287,6 +30406,7 @@ public static partial class CreateRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.RoundModel(args.name, args.groups);
             if (args.emissions_ != default) result.emissions_ = args.emissions_;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29332,6 +30452,7 @@ public static partial class CreateRoundRemoveableModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.RoundRemoveableModel(args.name, args.activateWhileRemovingName, args.durationRounds, args.cashReward, args.cashTextAssetId, args.cashTextLifespan, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.objectPosition, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29354,6 +30475,7 @@ public static partial class CreateRoundRemoveableStartedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.RoundRemoveableStartedTriggerModel(args.name, args.removableName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29375,6 +30497,7 @@ public static partial class CreateRoundSetModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.RoundSetModModel(args.name, args.roundsetName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29397,6 +30520,7 @@ public static partial class CreateRoundSetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Rounds.RoundSetModel(args.name, args.rounds, args.linkedIncomeSet);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29420,6 +30544,7 @@ public static partial class CreateRuleSplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.RuleSplitterModel(args.name, args.paths, args.splitterRules, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29448,6 +30573,7 @@ public static partial class CreateRushChallengeManagerModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RushChallengeManagerModel(args.targetBloonName, args.badSpeedMutliplier, args.badScaleMutliplier, args.badHealthMutliplier, args.numAllowedLeaks, args.numRoundsBeforeSpawningTarget);
             if (args.destroyOnDegradeModel != default) result.destroyOnDegradeModel = args.destroyOnDegradeModel;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29484,6 +30610,7 @@ public static partial class CreateSaudaAfflictionDamageModifierModelExt
             if (args.lv11ExcludeTagsList != default) result.lv11ExcludeTagsList = args.lv11ExcludeTagsList;
             if (args.lv19BloonTagsList != default) result.lv19BloonTagsList = args.lv19BloonTagsList;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29505,6 +30632,7 @@ public static partial class CreateSavedSubTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SavedSubTowerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29529,6 +30657,7 @@ public static partial class CreateScaleDamageWithTimeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ScaleDamageWithTimeModel(args.name, args.maxDamage, args.scalePerSecond, args.baseDamage);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29553,6 +30682,7 @@ public static partial class CreateScaleHeroXpWithTowerCountModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ScaleHeroXpWithTowerCountModel(args.name, args.towerIds, args.tier, args.percentPerTower, args.maxPercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29577,6 +30707,7 @@ public static partial class CreateScaleProjectileModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ScaleProjectileModel(args.name, args.samples);
             if (args.curve != default) result.curve = args.curve;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29605,6 +30736,7 @@ public static partial class CreateScaleProjectileOverTimeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ScaleProjectileOverTimeModel(args.name, args.baseScale, args.maxScale, args.scalePerSecond, args.effectModel, args.bonusProjectileModel, args.emission, args.effectOffset);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29631,6 +30763,7 @@ public static partial class CreateSeasonPerkModelExt
             var result = new Il2CppAssets.Scripts.Data.SocialSeasons.SeasonPerkModel(args.title, args.description, args.icon, args.modModel);
             if (args.idx != default) result.idx = args.idx;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29668,6 +30801,7 @@ public static partial class CreateSeeInvisibilityPotionBehaviorModelExt
             if (args.camoModifier != default) result.camoModifier = args.camoModifier;
             if (args.mutators != default) result.mutators = args.mutators;
             if (args.effectMutator != default) result.effectMutator = args.effectMutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29689,6 +30823,7 @@ public static partial class CreateSelectParentOnSelectedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SelectParentOnSelectedModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29714,6 +30849,7 @@ public static partial class CreateSelectPlacedTowerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SelectPlacedTowerActionModel(args.name, args.tower, args.selectTowerAtPosition, args.showTowerSelectionPanel, args.giftTowerXp);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29736,6 +30872,7 @@ public static partial class CreateSelectedDifficultyRatingModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SelectedDifficultyRatingModModel(args.name, args.addition, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29763,6 +30900,7 @@ public static partial class CreateSelfStackingSupportCompoundingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SelfStackingSupportCompoundingModel(args.name, args.mutatorId, args.maxStacks, args.buffLocsName, args.buffIconName, args.filters, args.isGlobalRange);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29785,6 +30923,7 @@ public static partial class CreateSelfStackingSupportModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SelfStackingSupportModel(args.name, args.mutatorId, args.maxStacks);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29816,6 +30955,7 @@ public static partial class CreateSellIncreaseZoneModelExt
             if (args.buffIconName != default) result.buffIconName = args.buffIconName;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29838,6 +30978,7 @@ public static partial class CreateSellMultiplierModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.SellMultiplierModModel(args.name, args.multiplier, args.addition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29860,6 +31001,7 @@ public static partial class CreateSellRegenRemovableActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.SellRegenRemovableActionModel(args.name, args.regenRemovableName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29882,6 +31024,7 @@ public static partial class CreateSellRemoveableActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.SellRemoveableActionModel(args.name, args.removeableName);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29903,6 +31046,7 @@ public static partial class CreateSellStackedTowersModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SellStackedTowersModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29926,6 +31070,7 @@ public static partial class CreateSellTowersActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SellTowersActionModel(args.name, args.range, args.towerId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29950,6 +31095,7 @@ public static partial class CreateSellTowersInRadiusActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SellTowersInRadiusActionModel(args.name, args.actionId, args.radius, args.towerSellEffect, args.towerSellEffectTime);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29971,6 +31117,7 @@ public static partial class CreateSellTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SellTriggerModel(args.name, args.actionIds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -29994,6 +31141,7 @@ public static partial class CreateSendAnalyticsActionModelExt
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SendAnalyticsActionModel(args.analyticsId);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30020,6 +31168,7 @@ public static partial class CreateSendBloonActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SendBloonActionModel(args.name, args.bloonId, args.camo, args.regrow, args.fortified, args.startingDist);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30041,6 +31190,7 @@ public static partial class CreateSendToBankModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SendToBankModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30064,6 +31214,7 @@ public static partial class CreateSetAreaActiveActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.SetAreaActiveActionModel(args.name, args.areaName, args.isActive);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30088,6 +31239,7 @@ public static partial class CreateSetHealthForBloonModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.SetHealthForBloonModModel(args.name, args.round, args.bloonId, args.healthMultiplier, args.gameMode);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30109,6 +31261,7 @@ public static partial class CreateSetHeroLevelOnPlaceModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SetHeroLevelOnPlaceModModel(args.name, args.level);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30132,6 +31285,7 @@ public static partial class CreateSetHeroLevelOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SetHeroLevelOnRoundModel(args.roundArr, args.tower, args.levelArr);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30156,6 +31310,7 @@ public static partial class CreateSetImmuneActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetImmuneActionModel(args.name, args.actionId, args.set, args.sound);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30180,6 +31335,7 @@ public static partial class CreateSetInvulnerableActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetInvulnerableActionModel(args.name, args.actionId, args.set, args.sound);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30204,6 +31360,7 @@ public static partial class CreateSetMaxHealthOfBloonBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SetMaxHealthOfBloonBehaviorModel(args.name, args.bloonId, args.healthMultiplier, args.round);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30227,6 +31384,7 @@ public static partial class CreateSetPositionActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetPositionActionModel(args.name, args.actionId, args.distance, args.speed);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30250,6 +31408,7 @@ public static partial class CreateSetRegenRemovableActiveActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.SetRegenRemovableActiveActionModel(args.name, args.regenRemovable, args.isActive);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30276,6 +31435,7 @@ public static partial class CreateSetSpeedPercentActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetSpeedPercentActionModel(args.name, args.actionId, args.percent, args.revert, args.time, args.distance);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30299,6 +31459,7 @@ public static partial class CreateSetSpriteFromPierceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SetSpriteFromPierceModel(args.name, args.sprites, args.loopMode);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30320,6 +31481,7 @@ public static partial class CreateSetTargetIndexFromBaseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.SetTargetIndexFromBaseModel(args.name, args.indexOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30344,6 +31506,7 @@ public static partial class CreateSetTargetPriorityOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SetTargetPriorityOnUpgradeModel(args.name, args.firstPath, args.secondPath, args.thirdPath, args.targetTypeId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30365,6 +31528,7 @@ public static partial class CreateSetTriggerOnAirUnitFireModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.SetTriggerOnAirUnitFireModel(args.name, args.triggerState);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30400,6 +31564,7 @@ public static partial class CreateSharpeningStoneBehaviorModelExt
             if (args.sharpProperty != default) result.sharpProperty = args.sharpProperty;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.mutatorGreater != default) result.mutatorGreater = args.mutatorGreater;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30421,6 +31586,7 @@ public static partial class CreateSheRaTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.SheRaTargetModel(args.name);
             if (args.isOnSubTower != default) result.isOnSubTower = args.isOnSubTower;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30442,6 +31608,7 @@ public static partial class CreateSheriffAutoGiddyUpModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SheriffAutoGiddyUpModel(args.name, args.moraleTriggerPercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30463,6 +31630,7 @@ public static partial class CreateShieldPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.ShieldPerRoundModel(args.name, args.shieldPerRound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30487,6 +31655,7 @@ public static partial class CreateShopPowerDetailsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Power.ShopPowerDetailsModel(args.powerId, args.powerIndex, args.powerCount, args.mods);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30513,6 +31682,7 @@ public static partial class CreateShopTowerDetailsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.TowerSets.ShopTowerDetailsModel(args.towerId, args.towerIndex, args.pathOneMax, args.pathTwoMax, args.pathThreeMax, args.towerCount);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30534,6 +31704,7 @@ public static partial class CreateShowCashIconInsteadModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ShowCashIconInsteadModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30555,6 +31726,7 @@ public static partial class CreateShowDamageTextModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ShowDamageTextModel(args.name, args.showText);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30577,6 +31749,7 @@ public static partial class CreateShowDialogueActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ShowDialogueActionModel(args.name, args.dialogue);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30601,6 +31774,7 @@ public static partial class CreateShowDisplayForTerrainModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ShowDisplayForTerrainModel(args.name, args.areaType, args.displayAssetName, args.scaleOn, args.scaleOff);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30624,6 +31798,7 @@ public static partial class CreateShowGlowOnTowerButtonActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ShowGlowOnTowerButtonActionModel(args.name, args.tower, args.showGlowOnTowerButton);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30647,6 +31822,7 @@ public static partial class CreateShowPopupHintActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ShowPopupHintActionModel(args.name, args.showOrDismissHint, args.hintIndex);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30672,6 +31848,7 @@ public static partial class CreateShowTextOnHitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel(args.name, args.assetId, args.lifespan, args.useTowerPosition, args.text);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30723,6 +31900,7 @@ public static partial class CreateSilasApplyRimeModelExt
             if (args._mutator != default) result._mutator = args._mutator;
             if (args._freezeMutator != default) result._freezeMutator = args._freezeMutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30760,6 +31938,7 @@ public static partial class CreateSilasIceFragmentsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SilasIceFragmentsModel(args.name, args.iceFragmentProjectileModel, args.iceFragmentLevel, args.innerOrbitRotationTime, args.innerOrbitDistance, args.maxInnerOrbitShards, args.isInnerOrbitCounterClockwise, args.innerOrbitMinimumTowerTier, args.middleOrbitRotationTime, args.middleOrbitDistance, args.maxMiddleOrbitShards, args.isMiddleOrbitCounterClockwise, args.middleOrbitMinimumTowerTier, args.outerOrbitRotationTime, args.outerOrbitDistance, args.maxOuterOrbitShards, args.isOuterOrbitCounterClockwise, args.outerOrbitMinimumTowerTier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30781,6 +31960,7 @@ public static partial class CreateSilasIceMonkeyUpgradeLockModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SilasIceMonkeyUpgradeLockModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30821,6 +32001,7 @@ public static partial class CreateSilasTrackTargetModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30842,6 +32023,7 @@ public static partial class CreateSimNecromancerGraveyardManagerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SimNecromancerGraveyardManagerModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30866,6 +32048,7 @@ public static partial class CreateSimPowerDiscountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.SimPowerDiscountModModel(args.name, args.power, args.multiplier, args.subtraction, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30890,6 +32073,7 @@ public static partial class CreateSimPowerDiscountModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SimPowerDiscountModel(args.name, args.powers, args.multiplier, args.subtraction, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30916,6 +32100,7 @@ public static partial class CreateSimTimeElapsedTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.SimTimeElapsedTriggerModel(args.name, args.time, args.rounds, args.useRoundTime);
             if (args.timeFrames != default) result.timeFrames = args.timeFrames;
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30941,6 +32126,7 @@ public static partial class CreateSimTowerDiscountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.SimTowerDiscountModModel(args.name, args.tower, args.useAllHeroes, args.multiplier, args.subtraction, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30965,6 +32151,7 @@ public static partial class CreateSimTowerDiscountModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SimTowerDiscountModel(args.name, args.towers, args.multiplier, args.subtraction, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -30987,6 +32174,7 @@ public static partial class CreateSimulationBehaviorsBonusLivesPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.BonusLivesPerRoundModel(args.name, args.livesRestored, args.maxLivesAboveStartingLives);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31010,6 +32198,7 @@ public static partial class CreateSimulationEventModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SimulationEventModel(args.entityEventIndex, args.requiresAllTriggers, args.maxActivationLimit);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31031,6 +32220,7 @@ public static partial class CreateSingleEmissionAtTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmissionAtTowerModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31052,6 +32242,7 @@ public static partial class CreateSingleEmissionDisplayOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmissionDisplayOffsetModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31073,6 +32264,7 @@ public static partial class CreateSingleEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmissionModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31095,6 +32287,7 @@ public static partial class CreateSingleEmmisionTowardsTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmmisionTowardsTargetModel(args.name, args.behaviors, args.offset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31116,6 +32309,7 @@ public static partial class CreateSkimBloonsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SkimBloonsModel(args.name, args.skimAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31137,6 +32331,7 @@ public static partial class CreateSkinBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Skins.SkinBehaviorModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31169,6 +32364,7 @@ public static partial class CreateSlowBloonsZoneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SlowBloonsZoneModel(args.name, args.zoneRadius, args.mutationId, args.isUnique, args.filters, args.speedScale, args.speedChange, args.bindRadiusToTowerRange, args.radiusOffset, args.bloonTag, args.inclusive, args._mutator);
             if (args.bloonTags != default) result.bloonTags = args.bloonTags;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31219,6 +32415,7 @@ public static partial class CreateSlowForBloonModelExt
             if (args.chance != default) result.chance = args.chance;
             if (args.dontRemoveOnBloonDegrade != default) result.dontRemoveOnBloonDegrade = args.dontRemoveOnBloonDegrade;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31268,6 +32465,7 @@ public static partial class CreateSlowMaimMoabModelExt
             if (args._ddtMutator != default) result._ddtMutator = args._ddtMutator;
             if (args._badMutator != default) result._badMutator = args._badMutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31314,6 +32512,7 @@ public static partial class CreateSlowMinusAbilityDurationModelExt
             if (args.chance != default) result.chance = args.chance;
             if (args.dontRemoveOnBloonDegrade != default) result.dontRemoveOnBloonDegrade = args.dontRemoveOnBloonDegrade;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31360,6 +32559,7 @@ public static partial class CreateSlowModelExt
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.Multiplier != default) result.Multiplier = args.Multiplier;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31382,6 +32582,7 @@ public static partial class CreateSlowModifierForTagModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SlowModifierForTagModModel(args.name, args.slowModifier, args.tag);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31410,6 +32611,7 @@ public static partial class CreateSlowModifierForTagModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SlowModifierForTagModel(args.name, args.tag, args.slowId, args.slowMultiplier, args.resetToUnmodified, args.preventMutation, args.lifespanOverride, args.makeNotTag);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31433,6 +32635,7 @@ public static partial class CreateSlowModifierModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SlowModifierModModel(args.name, args.durationModifier, args.slowModifier, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31454,6 +32657,7 @@ public static partial class CreateSlowMutationModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SlowMutationModModel(args.name, args.mutationId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31498,6 +32702,7 @@ public static partial class CreateSlowOnPopModelExt
             if (args.chance != default) result.chance = args.chance;
             if (args.dontRemoveOnBloonDegrade != default) result.dontRemoveOnBloonDegrade = args.dontRemoveOnBloonDegrade;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31524,6 +32729,7 @@ public static partial class CreateSlowTowersOnPopModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SlowTowersOnPopModel(args.name, args.duration, args.rateMultiplier, args.radius, args.ignoreSameFrameDegrade, args.tower);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31548,6 +32754,7 @@ public static partial class CreateSmartTargetTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.SmartTargetTrackModel(args.name, args.radius, args.isSelectable, args.isOnSubTower, args.maxOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31590,6 +32797,7 @@ public static partial class CreateSoulBarrierModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31613,6 +32821,7 @@ public static partial class CreateSoulbindManagerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SoulbindManagerModel(args.name, args.createEffectOnTowerSold, args.assetId, args.lifespan);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31636,6 +32845,7 @@ public static partial class CreateSoulbindModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SoulbindModel(args.name, args.selectionObjectPath, args.soulbindEffectOnTargetModel, args.soulbindEffectOnBoundTargetsId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31657,6 +32867,7 @@ public static partial class CreateSoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Audio.SoundModel(args.name, args.assetId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31691,6 +32902,7 @@ public static partial class CreateSpawnBloonsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SpawnBloonsActionModel(args.name, args.actionId, args.bloonType, args.spawnCount, args.spawnOverTime, args.spawnDistAhead, args.spawnTrackMin, args.spawnTrackMax, args.animCurveIds, args.moabAnimCurveIds, args.animationLength, args.invulnerableWhileAnimating, args.healthPercentOfSelf, args.healthOverride, args.bossName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31715,6 +32927,7 @@ public static partial class CreateSpawnBloonsOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SpawnBloonsOnRoundModel(args.bloonId, args.count, args.distanceAlongTrack, args.round);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31741,6 +32954,7 @@ public static partial class CreateSpawnBloonsUntilArmourBreaksActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.SpawnBloonsUntilArmourBreaksActionModel(args.name, args.actionId, args.performActionOnSpawn, args.bloonType, args.timeBetweenSpawns, args.inheritImmunityFromParent, args.initialSpawnPackSize);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31762,6 +32976,7 @@ public static partial class CreateSpawnChildrenModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SpawnChildrenModel(args.name, args.children);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31786,6 +33001,7 @@ public static partial class CreateSpawnDeathAnimModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SpawnDeathAnimModel(args.name, args.spawnAnimTrigLabel, args.spawnAnimLength, args.deathAnimTrigLabel, args.deathAnimLength);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31809,6 +33025,7 @@ public static partial class CreateSpawnEffectActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SpawnEffectActionModel(args.name, args.prefabReference, args.lifespan);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31832,6 +33049,7 @@ public static partial class CreateSpawnPowerAtLocationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SpawnPowerAtLocationModel(args.powerId, args.enableOptions, args.location);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31854,6 +33072,7 @@ public static partial class CreateSpawnPropActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SpawnPropActionModel(args.name, args.propName);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31879,6 +33098,7 @@ public static partial class CreateSpawnPropOnRoundOrTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SpawnPropOnRoundOrTriggerModel(args.triggerId, args.prePlacePropIndexs, args.rounds);
             if (args.AllAbilities != default) result.AllAbilities = args.AllAbilities;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31911,6 +33131,7 @@ public static partial class CreateSpawnTombstoneBloonsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.SpawnTombstoneBloonsActionModel(args.name, args.actionId, args.bloonTypePerTombstoneTier, args.spawnCount, args.spawnOverTime, args.spawnDistAhead, args.spawnTrackMin, args.spawnTrackMax, args.animCurveIds, args.moabAnimCurveIds, args.animationLength, args.invulnerableWhileAnimating, args.bossName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31934,6 +33155,7 @@ public static partial class CreateSpawnTowerActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.SpawnTowerActionModel(args.name, args.towerId, args.tiers);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31959,6 +33181,7 @@ public static partial class CreateSpawnTowerOnRoundModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SpawnTowerOnRoundModel(args.triggerId, args.prePlaceTowerIndexs, args.rounds);
             if (args.AllAbilities != default) result.AllAbilities = args.AllAbilities;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -31984,6 +33207,7 @@ public static partial class CreateSpawnZombieOnBloonDestroyedModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SpawnZombieOnBloonDestroyedModel(args.name, args.graveyardManaCost, args.zombieProjectile);
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32026,6 +33250,7 @@ public static partial class CreateSpearModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32057,6 +33282,7 @@ public static partial class CreateSpeedUpTowersModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32107,6 +33333,7 @@ public static partial class CreateSpikeParagonDamageZoneModelExt
             if (args.amountPerFrame != default) result.amountPerFrame = args.amountPerFrame;
             if (args.minScaleVector != default) result.minScaleVector = args.minScaleVector;
             if (args.maxScaleVector != default) result.maxScaleVector = args.maxScaleVector;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32131,6 +33358,7 @@ public static partial class CreateSpikeaggedonModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SpikeaggedonModel(args.name, args.projectileModel, args.effectDuringFiring, args.explodeProjectilesAnimationState);
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32153,6 +33381,7 @@ public static partial class CreateSpinModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.SpinModel(args.name, args.rotationPerSecond);
             if (args.rotationPerFrame != default) result.rotationPerFrame = args.rotationPerFrame;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32217,6 +33446,7 @@ public static partial class CreateSpiritOfTheForestModelExt
             if (args.amountPerFrame != default) result.amountPerFrame = args.amountPerFrame;
             if (args.minScaleVector != default) result.minScaleVector = args.minScaleVector;
             if (args.maxScaleVector3 != default) result.maxScaleVector3 = args.maxScaleVector3;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32239,6 +33469,7 @@ public static partial class CreateSpiritTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SpiritTowerModel(args.name, args.playLevelUpEffect, args.effectOnUpgrade);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32295,6 +33526,7 @@ public static partial class CreateSpiritTowerMovementModelExt
             if (args.DelayUntilNoTargetRetreat != default) result.DelayUntilNoTargetRetreat = args.DelayUntilNoTargetRetreat;
             if (args.DelayBetweenIdleMin != default) result.DelayBetweenIdleMin = args.DelayBetweenIdleMin;
             if (args.DelayBetweenIdleMax != default) result.DelayBetweenIdleMax = args.DelayBetweenIdleMax;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32316,6 +33548,7 @@ public static partial class CreateSpiritTowerSupportModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SpiritTowerSupportModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32337,6 +33570,7 @@ public static partial class CreateSpiritualWillModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.CorvusSpells.PassiveBonuses.SpiritualWillModel(args.name, args.manaPerSecond);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32359,6 +33593,7 @@ public static partial class CreateSplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.SplitterModel(args.name, args.paths, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32380,6 +33615,7 @@ public static partial class CreateSpreadPercentageModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SpreadPercentageModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32402,6 +33638,7 @@ public static partial class CreateStaminaPotionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.StaminaPotionModel(args.name, args.staminaAmount, args.staminaMaxPercent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32445,6 +33682,7 @@ public static partial class CreateStaminaTraitArtifactModelExt
             if (args.isTemporary != default) result.isTemporary = args.isTemporary;
             if (args.monkeyKnowledgeModModels != default) result.monkeyKnowledgeModModels = args.monkeyKnowledgeModModels;
             if (args.merchantCostMultiplier != default) result.merchantCostMultiplier = args.merchantCostMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32486,6 +33724,7 @@ public static partial class CreateStampTextureModelExt
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32508,6 +33747,7 @@ public static partial class CreateStandoffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.StandoffModel(args.name, args.maxRateIncrease, args.rateDecreasePerBloon);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32529,6 +33769,7 @@ public static partial class CreateStartMapTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.StartMapTriggerModel(args.name);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32558,6 +33799,7 @@ public static partial class CreateStartOfRoundRateBuffModelExt
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.Duration != default) result.Duration = args.Duration;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32579,6 +33821,7 @@ public static partial class CreateStartRoundActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.StartRoundActionModel(args.name);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32604,6 +33847,7 @@ public static partial class CreateStartRoundTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.StartRoundTriggerModel(args.name, args.round, args.everyNthRound, args.usePrimeNumbers, args.countFromStartRound);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32627,6 +33871,7 @@ public static partial class CreateStartingCashModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingCashModModel(args.name, args.changeBase, args.addition, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32649,6 +33894,7 @@ public static partial class CreateStartingHealthModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingHealthModModel(args.name, args.multiplier, args.addition);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32670,6 +33916,7 @@ public static partial class CreateStartingRoundModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.StartingRoundModModel(args.name, args.round);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32693,6 +33940,7 @@ public static partial class CreateStartingShieldModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.StartingShieldModModel(args.name, args.startingShield, args.maxShield, args.shieldPerRound);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32735,6 +33983,7 @@ public static partial class CreateStormModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32756,6 +34005,7 @@ public static partial class CreateStrikeDownTheFalseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.StrikeDownTheFalseModModel(args.name, args.script);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32782,6 +34032,7 @@ public static partial class CreateStripChildrenModelExt
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.destroyOnDegradeModel != default) result.destroyOnDegradeModel = args.destroyOnDegradeModel;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32819,6 +34070,7 @@ public static partial class CreateStunImmunitySupportModelExt
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32846,6 +34098,7 @@ public static partial class CreateStunTowersInRadiusActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.StunTowersInRadiusActionModel(args.name, args.actionId, args.radius, args.stunDuration, args.paragonStunTimeMultiplier, args.towerStunEffect, args.blockTowerSelling);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32886,6 +34139,7 @@ public static partial class CreateSubCommanderSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32910,6 +34164,7 @@ public static partial class CreateSubTowerFilterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.SubTowerFilterModel(args.name, args.baseSubTowerId, args.maxNumberOfSubTowers, args.checkForPreExisting);
             if (args.baseSubTowerIds != default) result.baseSubTowerIds = args.baseSubTowerIds;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32934,6 +34189,7 @@ public static partial class CreateSubmergeEffectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SubmergeEffectModel(args.name, args.effectModel, args.baseTowerRange, args.projectileModel, args.displayRadius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32975,6 +34231,7 @@ public static partial class CreateSubmergeModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SubmergeModel(args.name, args.submergeAttackModel, args.abilityCooldownSpeedScale, args.abilityCooldownSpeedScaleGlobal, args.heroXpScale, args.attackDisplayPath, args.submergeDepth, args.submergeSpeed, args.submergeSound, args.emergeSound, args.buffLocsName, args.buffIconName, args.supportMutatorPriority, args.monkeySubParagonSupportModel, args.abilityCooldownSpeedScaleParagon, args.animateOnSubmerge, args.animateOnExitSubmerge, args.submergeEffectModel, args.unsubmergeEffectModel);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -32997,6 +34254,7 @@ public static partial class CreateSubmergedTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.SubmergedTargetModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33018,6 +34276,7 @@ public static partial class CreateSuperMonkeyStormModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.SuperMonkeyStormModModel(args.name, args.damageIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33039,6 +34298,7 @@ public static partial class CreateSupportMaxRangeModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.SupportMaxRangeModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33076,6 +34336,7 @@ public static partial class CreateSupportRemoveFilterOutTagModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33105,6 +34366,7 @@ public static partial class CreateSupportShinobiTacticsModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportShinobiTacticsModel(args.name, args.mutatorId, args.maxStacks, args.multiplier, args.buffLocsName, args.buffIconName, args.filters);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33134,6 +34396,7 @@ public static partial class CreateSupportStackCounterModelExt
             if (args.maxStacks != default) result.maxStacks = args.maxStacks;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.isGlobalRange != default) result.isGlobalRange = args.isGlobalRange;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33162,6 +34425,7 @@ public static partial class CreateSupportStackingRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SupportStackingRangeModel(args.name, args.mutatorId, args.maxStacks, args.rangeMultiplier, args.buffLocsName, args.buffIconName, args.filters, args.isGlobalRange);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33202,6 +34466,7 @@ public static partial class CreateSupportTowerPlacementZoneModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33225,6 +34490,7 @@ public static partial class CreateSuspendTowersOnAreaActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.SuspendTowersOnAreaActionModel(args.name, args.areaName, args.isUnsuspendAction);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33271,6 +34537,7 @@ public static partial class CreateSwapProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.SwapProjectileModel(args.name, args.projectileModelA, args.projectileModelB, args.projectileAAnimation, args.projectileBAnimation, args.emitBoth, args.emitBothAnimation, args.ejectXForA, args.ejectYForA, args.ejectZForA, args.ejectXForB, args.ejectYForB, args.ejectZForB, args.swapToBAnimationState, args.swapToAAnimationState, args.swapProjASound1, args.swapProjASound2, args.swapProjBSound1, args.swapProjBSound2, args.projASound1, args.projASound2, args.projASound3, args.projASound4, args.projBSound1, args.projBSound2, args.projBSound3, args.projBSound4);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33297,6 +34564,7 @@ public static partial class CreateSwitchAnimStateForBloonTypeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.SwitchAnimStateForBloonTypeModel(args.name, args.nonMoabsAnimId, args.moabAnimId, args.bfbAnimId, args.zomgAnimId, args.ddtAnimId, args.badAnimId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33326,6 +34594,7 @@ public static partial class CreateSwitchDisplayModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SwitchDisplayModel(args.name, args.lifespan, args.excludeSubTowers, args.display, args.createEffectOnSwitchBackModel, args.resetOnDefeatScreen, args.animationStateOnActivate);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33348,6 +34617,7 @@ public static partial class CreateSwitchMusicTrackTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.SwitchMusicTrackTriggerModel(args.triggerId, args.musicId);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33369,6 +34639,7 @@ public static partial class CreateSwitchProjectileDisplayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.SwitchProjectileDisplayModel(args.name, args.sprites);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33390,6 +34661,7 @@ public static partial class CreateSwitchTargetSupplierOnUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SwitchTargetSupplierOnUpgradeModel(args.name, args.targetSupplierName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33426,6 +34698,7 @@ public static partial class CreateSwordChargeModelExt
             if (args.endDelayFrames != default) result.endDelayFrames = args.endDelayFrames;
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
             if (args.chargeEffectDestroyDelayFrames != default) result.chargeEffectDestroyDelayFrames = args.chargeEffectDestroyDelayFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33449,6 +34722,7 @@ public static partial class CreateSyncCamoDetectionWithTowerModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SyncCamoDetectionWithTowerModel(args.name);
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33470,6 +34744,7 @@ public static partial class CreateSyncProjectileMovementToTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.SyncProjectileMovementToTowerModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33498,6 +34773,7 @@ public static partial class CreateSyncTargetPriorityWithSubTowersModelExt
             if (args.isSelectable != default) result.isSelectable = args.isSelectable;
             if (args.ignoreTowers != default) result.ignoreTowers = args.ignoreTowers;
             if (args.placeOnlyForTowers != default) result.placeOnlyForTowers = args.placeOnlyForTowers;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33520,6 +34796,7 @@ public static partial class CreateSyphonFundingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SyphonFundingModel(args.name, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33541,6 +34818,7 @@ public static partial class CreateSyphonManaFromGraveyardsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SyphonManaFromGraveyardsModel(args.name, args.percent);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33570,6 +34848,7 @@ public static partial class CreateSyphonModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.SyphonModel(args.name, args.mutationId, args.multiplier, args.charges, args.lifespan, args.ignoreTags, args.overlayType);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33591,6 +34870,7 @@ public static partial class CreateTCBOOModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TCBOOModModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33626,6 +34906,7 @@ public static partial class CreateTakeAimModelExt
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.immunitiesGrantedList != default) result.immunitiesGrantedList = args.immunitiesGrantedList;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33647,6 +34928,7 @@ public static partial class CreateTargetCamoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCamoModel(args.name, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33669,6 +34951,7 @@ public static partial class CreateTargetCloseAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseAirUnitModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33691,6 +34974,7 @@ public static partial class CreateTargetCloseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33713,6 +34997,7 @@ public static partial class CreateTargetClosePrioCamoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetClosePrioCamoModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33740,6 +35025,7 @@ public static partial class CreateTargetCloseSharedRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetCloseSharedRangeModel(args.name, args.isSelectable, args.isSharedRangeEnabled, args.isOnSubTower, args.isGlobalRange, args.shareLineOfSight, args.isGettingRangeFromSpecificTower, args.specificTowerType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33764,6 +35050,7 @@ public static partial class CreateTargetDesperadoCloseModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetDesperadoCloseModel(args.name, args.isSelectable, args.isOnSubTower, args.canTargetMarked, args.canPrioritiseCamo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33788,6 +35075,7 @@ public static partial class CreateTargetDesperadoFirstModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetDesperadoFirstModel(args.name, args.isSelectable, args.isOnSubTower, args.canTargetMarked, args.canPrioritiseCamo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33812,6 +35100,7 @@ public static partial class CreateTargetDesperadoLastModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetDesperadoLastModel(args.name, args.isSelectable, args.isOnSubTower, args.canTargetMarked, args.canPrioritiseCamo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33836,6 +35125,7 @@ public static partial class CreateTargetDesperadoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetDesperadoModel(args.name, args.isSelectable, args.isOnSubTower, args.canTargetMarked, args.canPrioritiseCamo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33860,6 +35150,7 @@ public static partial class CreateTargetDesperadoStrongModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetDesperadoStrongModel(args.name, args.isSelectable, args.isOnSubTower, args.canTargetMarked, args.canPrioritiseCamo);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33882,6 +35173,7 @@ public static partial class CreateTargetDivideAndConquerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetDivideAndConquerModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33905,6 +35197,7 @@ public static partial class CreateTargetEliteTargettingModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetEliteTargettingModel(args.name, args.isSelectable, args.isOnSubTower, args.percentageThroughMap);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33931,6 +35224,7 @@ public static partial class CreateTargetExpensiveFriendlyModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetExpensiveFriendlyModel(args.name, args.ignoreList, args.ignorePrevious, args.previousId, args.useRange, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33953,6 +35247,7 @@ public static partial class CreateTargetFirstAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstAirUnitModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33975,6 +35270,7 @@ public static partial class CreateTargetFirstModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -33997,6 +35293,7 @@ public static partial class CreateTargetFirstPrioCamoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstPrioCamoModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34024,6 +35321,7 @@ public static partial class CreateTargetFirstSharedRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstSharedRangeModel(args.name, args.isSelectable, args.isSharedRangeEnabled, args.isOnSubTower, args.isGlobalRange, args.shareLineOfSight, args.isGettingRangeFromSpecificTower, args.specificTowerType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34048,6 +35346,7 @@ public static partial class CreateTargetFirstWithPreferenceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFirstWithPreferenceModel(args.name, args.isSelectable, args.isOnSubTower, args.priorityBloonTags);
             if (args.priorityBloonTagsList != default) result.priorityBloonTagsList = args.priorityBloonTagsList;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34073,6 +35372,7 @@ public static partial class CreateTargetFriendlyModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetFriendlyModel(args.name, args.ignoreList, args.isSelectable, args.isOnSubTower, args.mutationId, args.mustHaveWeapon);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34099,6 +35399,7 @@ public static partial class CreateTargetGrapplableModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetGrapplableModel(args.name, args.grappleEmissionModel, args.isSelectable, args.isOnSubTower, args.hooks, args.zomgHooksRequired, args.badHooksRequired);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34121,6 +35422,7 @@ public static partial class CreateTargetInFrontOfAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetInFrontOfAirUnitModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34144,6 +35446,7 @@ public static partial class CreateTargetIndependantModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetIndependantModel(args.name, args.isSelectable, args.targetProvider, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34166,6 +35469,7 @@ public static partial class CreateTargetLastAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetLastAirUnitModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34188,6 +35492,7 @@ public static partial class CreateTargetLastModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetLastModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34210,6 +35515,7 @@ public static partial class CreateTargetLastPrioCamoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetLastPrioCamoModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34237,6 +35543,7 @@ public static partial class CreateTargetLastSharedRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetLastSharedRangeModel(args.name, args.isSelectable, args.isSharedRangeEnabled, args.isOnSubTower, args.isGlobalRange, args.shareLineOfSight, args.isGettingRangeFromSpecificTower, args.specificTowerType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34259,6 +35566,7 @@ public static partial class CreateTargetLeftHandModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetLeftHandModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34282,6 +35590,7 @@ public static partial class CreateTargetMoabModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetMoabModel(args.name, args.isSelectable, args.findStrongest, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34304,6 +35613,7 @@ public static partial class CreateTargetOppositeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetOppositeModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34328,6 +35638,7 @@ public static partial class CreateTargetPointerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetPointerModel(args.name, args.isSelectable, args.isOnSubTower, args.customName, args.setOnAttached);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34350,6 +35661,7 @@ public static partial class CreateTargetRightHandModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetRightHandModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34381,6 +35693,7 @@ public static partial class CreateTargetSelectedPointModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSelectedPointModel(args.name, args.isSelectable, args.isOnSubTower, args.display, args.scale, args.customName, args.lockToInsideTowerRange, args.startWithClosestTrackPoint, args.displayInvalid, args.alwaysShowTarget, args.projectileToExpireOnTargetChangeModel, args.useTerrainHeight);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34412,6 +35725,7 @@ public static partial class CreateTargetSelectedPointOrDefaultModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSelectedPointOrDefaultModel(args.name, args.isSelectable, args.isOnSubTower, args.display, args.scale, args.customName, args.lockToInsideTowerRange, args.startWithClosestTrackPoint, args.displayInvalid, args.alwaysShowTarget, args.projectileToExpireOnTargetChangeModel, args.useTerrainHeight);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34434,6 +35748,7 @@ public static partial class CreateTargetStrongAirUnitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongAirUnitModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34456,6 +35771,7 @@ public static partial class CreateTargetStrongModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34478,6 +35794,7 @@ public static partial class CreateTargetStrongPrioCamoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongPrioCamoModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34505,6 +35822,7 @@ public static partial class CreateTargetStrongSharedRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetStrongSharedRangeModel(args.name, args.isSelectable, args.isSharedRangeEnabled, args.isOnSubTower, args.isGlobalRange, args.shareLineOfSight, args.isGettingRangeFromSpecificTower, args.specificTowerType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34527,6 +35845,7 @@ public static partial class CreateTargetSuppliedPositionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSuppliedPositionModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34570,6 +35889,7 @@ public static partial class CreateTargetSupplierSupportModelExt
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
             if (args.onlyAffectParagon != default) result.onlyAffectParagon = args.onlyAffectParagon;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34594,6 +35914,7 @@ public static partial class CreateTargetTagModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetTagModel(args.name, args.tag, args.isSelectable, args.findStrongest, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34618,6 +35939,7 @@ public static partial class CreateTargetTrackModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetTrackModel(args.name, args.isSelectable, args.isOnSubTower, args.maxOffset, args.onlyTargetPathsWithBloons);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34643,6 +35965,7 @@ public static partial class CreateTargetTrackOrDefaultAcidPoolModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetTrackOrDefaultAcidPoolModel(args.name, args.radius, args.isSelectable, args.useTowerRange, args.isOnSubTower, args.isActive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34670,6 +35993,7 @@ public static partial class CreateTargetTrackOrDefaultModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetTrackOrDefaultModel(args.name, args.radius, args.isSelectable, args.useTowerRange, args.forceTargetTrack, args.isOnSubTower, args.useClosestTrack, args.maxTrackOffset);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34694,6 +36018,7 @@ public static partial class CreateTargetWererabbitModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetWererabbitModel(args.name, args.timeUntilIdle, args.isSelectable, args.isOnSubTower);
             if (args.timeUntilIdleFrames != default) result.timeUntilIdleFrames = args.timeUntilIdleFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34716,6 +36041,7 @@ public static partial class CreateTargetZoneDefenceModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetZoneDefenceModel(args.name, args.isSelectable, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34737,6 +36063,7 @@ public static partial class CreateTargetedPineapplesModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TargetedPineapplesModModel(args.name, args.checkAirUnitOverTrackScript);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34763,6 +36090,7 @@ public static partial class CreateTechAmbushBotSpawnerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TechAmbushBotSpawnerModel(args.name, args.tower, args.targetDisplay, args.targetDisplayInvalid, args.withinTowerRange, args.spawnCooldown, args.towerLimit);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34800,6 +36128,7 @@ public static partial class CreateTechBotLinkModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechBotLinkModel(args.name, args.selectionObjectPath, args.isSelectableGameObject, args.activateSound, args.confirmSound, args.activatedTowerAbilityEffectModel, args.lineDisplayPath, args.lineDotOffset, args.lineDotSpacing, args.activateAnimationState, args.linkAnimationState, args.idleAnimationState, args.travelEffectModel, args.travelEffectSpeed, args.ambushTechActive, args.linkedTowerMax, args.radius, args.activateInRadius);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34821,6 +36150,7 @@ public static partial class CreateTechBotTriggerToggleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TechBotTriggerToggleModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34842,6 +36172,7 @@ public static partial class CreateTechBotUnlinkModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechBotUnlinkModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34866,6 +36197,7 @@ public static partial class CreateTechLinkAbilityProjectileDamageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkAbilityProjectileDamageModel(args.name, args.isUnique, args.abilityDamageModifier, args.mutatorPriority, args.displayPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34893,6 +36225,7 @@ public static partial class CreateTechLinkActivateRadiusModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkActivateRadiusModel(args.name, args.cooldownReductionTimer, args.cooldownReductionChance, args.cooldownReductionAmount, args.towersSkipCooldownPercent);
             if (args.cooldownReductionFrames != default) result.cooldownReductionFrames = args.cooldownReductionFrames;
             if (args.cooldownReduceCountFrames != default) result.cooldownReduceCountFrames = args.cooldownReduceCountFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34919,6 +36252,7 @@ public static partial class CreateTechLinkActivateTowerDamageModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkActivateTowerDamageModel(args.name, args.isUnique, args.lifespan, args.abilityDamageModifier, args.mutatorPriority, args.displayPath);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34943,6 +36277,7 @@ public static partial class CreateTechLinkCooldownScaleModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkCooldownScaleModel(args.name, args.isUnique, args.abilityCooldownSpeedScale, args.mutatorPriority, args.displayPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34965,6 +36300,7 @@ public static partial class CreateTechLinkTriggerUnlinkedAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkTriggerUnlinkedAbilityModel(args.name, args.isUnique, args.displayPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -34988,6 +36324,7 @@ public static partial class CreateTempleTowerMutatorGroupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TempleTowerMutatorGroupModel(args.name, args.mutators, args.cost, args.towerSet);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35011,6 +36348,7 @@ public static partial class CreateTempleTowerMutatorGroupTierOneModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TempleTowerMutatorGroupTierOneModel(args.name, args.mutators, args.cost, args.towerSet);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35034,6 +36372,7 @@ public static partial class CreateTempleTowerMutatorGroupTierTwoModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TempleTowerMutatorGroupTierTwoModel(args.name, args.mutators, args.cost, args.towerSet);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35063,6 +36402,7 @@ public static partial class CreateTheBlazingSunModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.TheBlazingSunModel(args.name, args.maxStacks, args.stacksToBurn, args.burnBehaviorModel, args.attackSpeedPerStack, args.debuffExpiresAfterFrames, args.burnBehaviorArea, args.ejectEffectModel, args.ejectEffectOverheatModel);
             if (args.emission != default) result.emission = args.emission;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35084,6 +36424,7 @@ public static partial class CreateThriveModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.Mods.ThriveModModel(args.name, args.cashMultiplierIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35106,6 +36447,7 @@ public static partial class CreateThriveModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Powers.ThriveModel(args.name, args.cashScale, args.increaseBloonWorthSimBehaviorModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35132,6 +36474,7 @@ public static partial class CreateThrowBloonsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ThrowBloonsActionModel(args.name, args.actionId, args.addCamo, args.speedMultiplier, args.offsetMin, args.offsetMax);
             if (args._mutator != default) result._mutator = args._mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35156,6 +36499,7 @@ public static partial class CreateThrowMarkerOffsetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ThrowMarkerOffsetModel(args.name, args.ejectX, args.ejectY, args.ejectZ, args.rotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35180,6 +36524,7 @@ public static partial class CreateTierFiveCountModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TierFiveCountModModel(args.name, args.towerBaseId, args.path, args.tier, args.maxCountAdditive);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35203,6 +36548,7 @@ public static partial class CreateTimeTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.TimeTriggerModel(args.name, args.interval, args.triggerImmediately, args.actionIds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35227,6 +36573,7 @@ public static partial class CreateTinyTornadoesModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TinyTornadoesModModel(args.name, args.projectileModel, args.emissionModel, args.emissionBehaviorModel);
             if (args._projectileModelHeartOfOak != default) result._projectileModelHeartOfOak = args._projectileModelHeartOfOak;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35252,6 +36599,7 @@ public static partial class CreateToggleAbilityCooldownOnTriggerModelExt
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.ToggleAbilityCooldownOnTriggerModel(args.triggerId, args.abilityIds, args.unpauseAtRoundEnd);
             if (args.AllAbilities != default) result.AllAbilities = args.AllAbilities;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35276,6 +36624,7 @@ public static partial class CreateToggleEffectWhileAbilityActiveModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ToggleEffectWhileAbilityActiveModel(args.name, args.effectActiveModel, args.effectNotActiveModel, args.randomRotation, args.centerEffect);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35301,6 +36650,7 @@ public static partial class CreateToggleMapEditorLayerModelExt
             var result = new Il2CppAssets.Scripts.Models.MapEditorBehaviors.EditorLayerBehaviors.ToggleMapEditorLayerModel(args.layerId, args.layerType, args.isVisible);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35325,6 +36675,7 @@ public static partial class CreateToggleSplitterActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.ToggleSplitterActionModel(args.name, args.setActive, args.pathsToActivate, args.pathsToDeactivate);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35347,6 +36698,7 @@ public static partial class CreateToggleSplitterModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Spawners.ToggleSplitterModel(args.name, args.paths, args.overriddenBossPath);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35370,6 +36722,7 @@ public static partial class CreateToggleTowerUpgradeScreenActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.ToggleTowerUpgradeScreenActionModel(args.name, args.tower, args.toggleModifier);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35396,6 +36749,7 @@ public static partial class CreateTombstoneSpawnerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.TombstoneSpawnerModel(args.name, args.actionId, args.spawnInterval, args.spawnInitialInterval, args.spawnActionIds, args.rushActionIds, args.rushTier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35420,6 +36774,7 @@ public static partial class CreateTowerBasedShopItemModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.TowerBasedShopItemModel(args.name, args.locsId, args.defaultIcon, args.defaultIconSwaps, args.iconSwapLevels);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35444,6 +36799,7 @@ public static partial class CreateTowerBehaviorBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerBehaviorBuffModel(args.name, args.buffLocsName, args.buffIconName, args.isGlobalRange, args.maxStackSize);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35466,6 +36822,7 @@ public static partial class CreateTowerCreateParagonTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerCreateParagonTowerModel(args.name, args.towerModels, args.isAirBasedTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35492,6 +36849,7 @@ public static partial class CreateTowerCreateProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerCreateProjectileModel(args.name, args.projectileModel, args.emissionModel, args.interval, args.useRoundTime, args.chance);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35515,6 +36873,7 @@ public static partial class CreateTowerCreateProjectileOnCritModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerCreateProjectileOnCritModel(args.name, args.projectileModel, args.emissionModel, args.chance);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35546,6 +36905,7 @@ public static partial class CreateTowerCreateProjectileOnProjectileExhaustModelE
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerCreateProjectileOnProjectileExhaustModel(args.id, args.projectileModel, args.emissionModel, args.effectModel, args.onlyCreateIfScriptsExists, args.dontCreateIfScriptsExist, args.useTowerPosition, args.useChance, args.chance, args.cooldown, args.sound);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35568,6 +36928,7 @@ public static partial class CreateTowerCreateTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerCreateTowerModel(args.name, args.towerModel, args.isAirBasedTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35591,6 +36952,7 @@ public static partial class CreateTowerDetailsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.TowerSets.TowerDetailsModel(args.towerId, args.towerIndex, args.towerCount);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35612,6 +36974,7 @@ public static partial class CreateTowerExpireModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TowerExpireModModel(args.name, args.aditionalTimeBonus);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35639,6 +37002,7 @@ public static partial class CreateTowerExpireModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerExpireModel(args.name, args.lifespan, args.rounds, args.expireOnRoundComplete, args.expireOnDefeatScreen);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35660,6 +37024,7 @@ public static partial class CreateTowerExpireOnParentDestroyedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerExpireOnParentDestroyedModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35681,6 +37046,7 @@ public static partial class CreateTowerExpireOnParentUpgradedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerExpireOnParentUpgradedModel(args.name, args.parentTowerUpgradeTier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35702,6 +37068,7 @@ public static partial class CreateTowerHasStaminaModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Condition.TowerHasStaminaModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35728,6 +37095,7 @@ public static partial class CreateTowerInAreaTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.TowerInAreaTriggerModel(args.name, args.areaModel, args.towerId, args.tiers, args.mutatorIds, args.mustIncludeAllMutators);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35817,6 +37185,7 @@ public static partial class CreateTowerModelExt
             if (args.towerSize != default) result.towerSize = args.towerSize;
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35838,6 +37207,7 @@ public static partial class CreateTowerMutatorGroupModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerMutatorGroupModel(args.name, args.mutators);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35863,6 +37233,7 @@ public static partial class CreateTowerPlacedTriggerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.TowerPlacedTriggerModel(args.name, args.towerId, args.tiers, args.mutatorIds, args.mustIncludeAllMutators);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35884,6 +37255,7 @@ public static partial class CreateTowerRadiusModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRadiusModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35907,6 +37279,7 @@ public static partial class CreateTowerSellModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TowerSellModModel(args.name, args.mutltiplier, args.additional, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35930,6 +37303,7 @@ public static partial class CreateTowerSellModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerSellModel(args.name, args.multiplier, args.additional, args.charges);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35954,6 +37328,7 @@ public static partial class CreateTowerTierRestrictionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.TowerTierRestrictionModel(args.name, args.towerBaseId, args.path, args.tier, args.maxCountModifier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -35980,6 +37355,7 @@ public static partial class CreateTowerUpgradeBlockerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerUpgradeBlockerModel(args.name, args.path1Max, args.path2Max, args.path3Max, args.blockId, args.blockAllUpgrades);
             if (args.pathMaxes != default) result.pathMaxes = args.pathMaxes;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36001,6 +37377,7 @@ public static partial class CreateTowerXpModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TowerXpModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36022,6 +37399,7 @@ public static partial class CreateTowersBloonHealthModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.BloonHealthModModel(args.name, args.percentageHealthReduced);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36045,6 +37423,7 @@ public static partial class CreateTowersBonusLivesPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.BonusLivesPerRoundModel(args.name, args.amount, args.lifespan, args.assetId);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36084,6 +37463,7 @@ public static partial class CreateTrackArrowModelExt
             if (args.rateFrames != default) result.rateFrames = args.rateFrames;
             if (args.subRateFrames != default) result.subRateFrames = args.subRateFrames;
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36108,6 +37488,7 @@ public static partial class CreateTrackBloonDistanceTraveledOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.TrackBloonDistanceTraveledOnRoundModel(args.roundArr, args.bloonNameArr, args.triggerIdsArr, args.percTraveledArr);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36144,6 +37525,7 @@ public static partial class CreateTrackManuallyGivenTargetModelExt
             if (args.accelerationSpeedFrames != default) result.accelerationSpeedFrames = args.accelerationSpeedFrames;
             if (args.projectileLifeSpanFrames != default) result.projectileLifeSpanFrames = args.projectileLifeSpanFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36178,6 +37560,7 @@ public static partial class CreateTrackTargetModelExt
             if (args.turnRatePerFrame != default) result.turnRatePerFrame = args.turnRatePerFrame;
             if (args.TurnRate != default) result.TurnRate = args.TurnRate;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36223,6 +37606,7 @@ public static partial class CreateTrackTargetOrOrbitTowerModelExt
             if (args.tagsToIgnore != default) result.tagsToIgnore = args.tagsToIgnore;
             if (args.SearchDelay != default) result.SearchDelay = args.SearchDelay;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36247,6 +37631,7 @@ public static partial class CreateTrackTargetSharedRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.TrackTargetSharedRangeModel(args.name, args.sharedRangeEnabled, args.turnRate, args.reaquireTargetDelay);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36280,6 +37665,7 @@ public static partial class CreateTrackTargetWithinTimeModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.TrackTargetWithinTimeModel(args.name, args.distance, args.trackNewTargets, args.constantlyAquireNewTarget, args.maxSeekAngle, args.ignoreSeekAngle, args.TurnRate, args.overrideRotation, args.timeInFrames, args.useLifetimeAsDistance, args.expireOnContactTarget);
             if (args.turnRatePerFrame != default) result.turnRatePerFrame = args.turnRatePerFrame;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36321,6 +37707,7 @@ public static partial class CreateTrackTextureModelExt
             if (args.cachedThrowMarkerHeight != default) result.cachedThrowMarkerHeight = args.cachedThrowMarkerHeight;
             if (args.RadiusSquared != default) result.RadiusSquared = args.RadiusSquared;
             if (args.IsSubEntity != default) result.IsSubEntity = args.IsSubEntity;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36352,6 +37739,7 @@ public static partial class CreateTradeEmpireBuffModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TradeEmpireBuffModel(args.name, args.cashPerRoundPerMechantship, args.cashPerRoundPerFavouredTrades, args.maxMerchantmanCapBonus, args.buffLocsName, args.buffIconName, args.isGlobalRange, args.damageBuff, args.ceramicDamageBuff, args.moabDamageBuff, args.mutatorId);
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36392,6 +37780,7 @@ public static partial class CreateTraitArtifactModelExt
             if (args.frontierIds != default) result.frontierIds = args.frontierIds;
             if (args.monkeyKnowledgeModModels != default) result.monkeyKnowledgeModModels = args.monkeyKnowledgeModModels;
             if (args.merchantCostMultiplier != default) result.merchantCostMultiplier = args.merchantCostMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36438,6 +37827,7 @@ public static partial class CreateTrampleModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36469,6 +37859,7 @@ public static partial class CreateTranceBloonModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.TranceBloonModel(args.name, args.speedMultiplier, args.duration, args.orbitRadius, args.radiusBloonSizeMultiplier, args.cooldown, args.fakeDamage, args.moabOrbitSpeed, args.maxDotDamage);
             if (args.mutator != default) result.mutator = args.mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36494,6 +37885,7 @@ public static partial class CreateTranceTotemSpawnerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TranceTotemSpawnerModel(args.name, args.tower, args.targetDisplay, args.targetDisplayInvalid, args.withinTowerRange, args.spawnCooldown);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36516,6 +37908,7 @@ public static partial class CreateTransformModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Behaviors.TransformModel(args.name, args.position, args.rotation);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36537,6 +37930,7 @@ public static partial class CreateTransformTowerXpModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TransformTowerXpModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36569,6 +37963,7 @@ public static partial class CreateTravelAlongPathModelExt
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36606,6 +38001,7 @@ public static partial class CreateTravelCurvyModelExt
             if (args.Speed != default) result.Speed = args.Speed;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36637,6 +38033,7 @@ public static partial class CreateTravelStraitModelExt
             if (args.Speed != default) result.Speed = args.Speed;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36679,6 +38076,7 @@ public static partial class CreateTravelStraitSlowdownModelExt
             if (args.Speed != default) result.Speed = args.Speed;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36710,6 +38108,7 @@ public static partial class CreateTravelTowardsEmitTowerModelExt
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36745,6 +38144,7 @@ public static partial class CreateTrickyTracksTrainControllerModelExt
             if (args.waitFrames != default) result.waitFrames = args.waitFrames;
             if (args.cooldownFrames != default) result.cooldownFrames = args.cooldownFrames;
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36768,6 +38168,7 @@ public static partial class CreateTrickyTracksTrainSenderModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.TrickyTracksTrainSenderModel(args.name, args.trainPath, args.senderIndex);
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36790,6 +38191,7 @@ public static partial class CreateTriggerBehaviorsOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.TriggerBehaviorsOnRoundModel(args.roundArr, args.triggerIdArr);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36813,6 +38215,7 @@ public static partial class CreateTriggerDialogueOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.TriggerDialogueOnRoundModel(args.dialogueData, args.round, args.saveSeen);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36836,6 +38239,7 @@ public static partial class CreateTriggerEventHooksActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.TriggerEventHooksActionModel(args.name, args.eventHookIds, args.toggleEventHooks);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36859,6 +38263,7 @@ public static partial class CreateTriggerGameModeBehaviorsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.TriggerGameModeBehaviorsModel(args.triggerInfinitHealthMode, args.triggerInfinitRoundsMode, args.showCurrentRoundNum);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36880,6 +38285,7 @@ public static partial class CreateTriggerIceFragmentsModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.TriggerIceFragmentsModel(args.name, args.useTowerRange);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36903,6 +38309,7 @@ public static partial class CreateTriggerMapActionsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.TriggerMapActionsActionModel(args.name, args.actions, args.unityActions);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36924,6 +38331,7 @@ public static partial class CreateTriggerVictoryOnBossDefeatModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.QuestBehaviors.TriggerVictoryOnBossDefeatModel();
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36945,6 +38353,7 @@ public static partial class CreateTurboDurationIncreaseModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.TurboDurationIncreaseModModel(args.name, args.amount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36974,6 +38383,7 @@ public static partial class CreateTurboModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TurboModel(args.name, args.lifespan, args.multiplier, args.projectileDisplay, args.extraDamage, args.projectileRadiusScaleBonus, args.dontRemoveMutatorOnDestroy);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -36999,6 +38409,7 @@ public static partial class CreateUCAVModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.UCAVModel(args.name, args.duration, args.uavTowerModel, args.ucavTowerModel, args.effectAtTowerEndModel);
             if (args.durationFrames != default) result.durationFrames = args.durationFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37030,6 +38441,7 @@ public static partial class CreateUnstableConcoctionSplashModelExt
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.UnstableConcoctionSplashModel(args.name, args.projectile, args.emission, args.tower, args.baseIdToBloonDmg, args.defaultBloonDmg, args.baseIdToMoabDmg, args.bossToMoabDmg, args.defaultMoabDmg);
             if (args.pierceOverride != default) result.pierceOverride = args.pierceOverride;
             if (args.ignoreSameFrameDegrade != default) result.ignoreSameFrameDegrade = args.ignoreSameFrameDegrade;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37053,6 +38465,7 @@ public static partial class CreateUpgradeCostModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Gameplay.Mods.UpgradeCostModModel(args.name, args.amountReduced, args.percentageReduced, args.upgradeName);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37081,6 +38494,7 @@ public static partial class CreateUpgradeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradeModel(args.name, args.cost, args.xpCost, args.icon, args.path, args.tier, args.locked, args.confirmation, args.localizedNameOverride);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37103,6 +38517,7 @@ public static partial class CreateUpgradePathModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel(args.upgrade, args.tower);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37124,6 +38539,7 @@ public static partial class CreateUpgradeTowerOnRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.UpgradeTowerOnRoundModel(args.upgradeOnRoundData);
             if (args.name != default) result.name = args.name;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37149,6 +38565,7 @@ public static partial class CreateUpgradeTowersActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.UpgradeTowersActionModel(args.name, args.amount, args.range, args.towerId, args.path);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37171,6 +38588,7 @@ public static partial class CreateUpgradeableProjectileModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.UpgradeableProjectileModel(args.name, args.cost);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37192,6 +38610,7 @@ public static partial class CreateUseAttackRotationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.UseAttackRotationModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37213,6 +38632,7 @@ public static partial class CreateUseParentEjectModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.UseParentEjectModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37234,6 +38654,7 @@ public static partial class CreateUseParentVisibilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.UseParentVisibilityModel(args.name);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37255,6 +38676,7 @@ public static partial class CreateUsePresetTargetModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.UsePresetTargetModel(args.name, args.isOnSubTower);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37276,6 +38698,7 @@ public static partial class CreateUseTowerRangeModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.UseTowerRangeModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37305,6 +38728,7 @@ public static partial class CreateVagrantWeaponBehaviorModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.VagrantWeaponBehaviorModel(args.name, args.noTowersRateBonus, args.towerRangeBonusReduction, args.bloonInRangeAttackSpeedBuff, args.maxBloonAttackSpeedBuff, args.buffLocsName, args.buffLocsFullName);
             if (args.buffDisplay != default) result.buffDisplay = args.buffDisplay;
             if (args._mutator != default) result._mutator = args._mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37337,6 +38761,7 @@ public static partial class CreateVigilanteTowerBehaviorModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.VigilanteTowerBehaviorModel(args.name, args.loseLifeAttackSpeedBuff, args.loseLifeRangeBuff, args.loseLifeBuffDurationFrames, args.loseLifeBuffCooldownFrames, args.buffLocsName, args.buffDisplay, args.oneHealthHighestBloon, args.bloonLeakValueModifier, args.abilityCooldownScale);
             if (args.buffDisplayModel != default) result.buffDisplayModel = args.buffDisplayModel;
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37368,6 +38793,7 @@ public static partial class CreateVineRuptureModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.VineRuptureModel(args.name, args.effectModel, args.interval, args.projectileModel, args.projectileModelHardThorns, args.sound1, args.sound2, args.sound3, args.sound4);
             if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
             if (args.emission != default) result.emission = args.emission;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37405,6 +38831,7 @@ public static partial class CreateVisibilitySupportModelExt
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.maxStackSize != default) result.maxStackSize = args.maxStackSize;
             if (args.onlyShowBuffIfMutated != default) result.onlyShowBuffIfMutated = args.onlyShowBuffIfMutated;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37445,6 +38872,7 @@ public static partial class CreateVisionModelExt
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
             if (args.defaultIconSwaps != default) result.defaultIconSwaps = args.defaultIconSwaps;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37468,6 +38896,7 @@ public static partial class CreateWaitForSecondsActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.WaitForSecondsActionModel(args.name, args.delayTime, args.actionId, args.actionIds);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37495,6 +38924,7 @@ public static partial class CreateWallOfTreesModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WallOfTreesModel(args.name, args.rbeCapacity, args.rbeCashMultiplier, args.projectile, args.emission, args.animationStateSpawnIn, args.onlyDamageLastBloon);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37524,6 +38954,7 @@ public static partial class CreateWanderModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Pets.WanderModel(args.name, args.StayInArea, args.Speed, args.InnerRadius, args.OuterRadius, args.IdleTimeMin, args.IdleTimeMax, args.MotionCurve, args.startAtTower, args.useSyncedRandom);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37545,6 +38976,7 @@ public static partial class CreateWeaponClearProjectileHitListModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.WeaponClearProjectileHitListModModel(args.name, args.reductionAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37566,6 +38998,7 @@ public static partial class CreateWeaponCreateTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.WeaponCreateTowerModel(args.name, args.towers);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37611,6 +39044,7 @@ public static partial class CreateWeaponModelExt
             if (args.customStartCooldownFrames != default) result.customStartCooldownFrames = args.customStartCooldownFrames;
             if (args.modelName != default) result.modelName = args.modelName;
             if (args.Rate != default) result.Rate = args.Rate;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37632,6 +39066,7 @@ public static partial class CreateWeaponRateAnimationSpeedModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WeaponRateAnimationSpeedModel(args.name);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37653,6 +39088,7 @@ public static partial class CreateWeaponRateMinModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.WeaponRateMinModel(args.name, args.min);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37674,6 +39110,7 @@ public static partial class CreateWeaponReloadPercentageModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.WeaponReloadPercentageModModel(args.name, args.multiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37696,6 +39133,7 @@ public static partial class CreateWeaponReloadPercentageOnTargetPrioModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.WeaponReloadPercentageOnTargetPrioModModel(args.name, args.multiplier, args.targetType);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37719,6 +39157,7 @@ public static partial class CreateWeaponReloadPercentageOnTargetPrioModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.WeaponReloadPercentageOnTargetPrioModel(args.name, args.multiplier, args.targetType);
             if (args.mutator != default) result.mutator = args.mutator;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37740,6 +39179,7 @@ public static partial class CreateWeaponReloadReductionModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.WeaponReloadReductionModModel(args.name, args.reductionAmount);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37761,6 +39201,7 @@ public static partial class CreateWererabbitEmissionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.WererabbitEmissionModel(args.name, args.behaviors);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37783,6 +39224,7 @@ public static partial class CreateWinGameActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.WinGameActionModel(args.name, args.amount);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37808,6 +39250,7 @@ public static partial class CreateWindChanceTowerMutatorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mutators.WindChanceTowerMutatorModel(args.name, args.conditionalId, args.mutationId, args.windChance, args.lifespan);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37829,6 +39272,7 @@ public static partial class CreateWindModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.WindModModel(args.name, args.chanceIncrease);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37862,6 +39306,7 @@ public static partial class CreateWindModelExt
             if (args.distanceScaleForTagsTagsList != default) result.distanceScaleForTagsTagsList = args.distanceScaleForTagsTagsList;
             if (args._mutator != default) result._mutator = args._mutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37904,6 +39349,7 @@ public static partial class CreateWindyZoneModelExt
             if (args.stunDurationMoabFrames != default) result.stunDurationMoabFrames = args.stunDurationMoabFrames;
             if (args.stunDurationBfbFrames != default) result.stunDurationBfbFrames = args.stunDurationBfbFrames;
             if (args.stunDurationZomgFrames != default) result.stunDurationZomgFrames = args.stunDurationZomgFrames;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37925,6 +39371,7 @@ public static partial class CreateWingmonkeyModModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.WingmonkeyModModel(args.name, args.wingmonkeyPatternModel);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37956,6 +39403,7 @@ public static partial class CreateWingmonkeyPatternModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.WingmonkeyPatternModel(args.name, args.maxSpeed, args.turningSpeed, args.minDistanceToTargetBeforeFlyover, args.distanceOfFlyover, args.bankAngleMax, args.bankSmoothness, args.updateDelay, args.maximumAdjacentTargetAngle, args.overshootDistance, args.useGrouping);
             if (args.isOnSubTower != default) result.isOnSubTower = args.isOnSubTower;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -37978,6 +39426,7 @@ public static partial class CreateWingmonkeySimulationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.WingmonkeySimulationModel(args.name, args.spacingX, args.spacingY);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38001,6 +39450,7 @@ public static partial class CreateWobbleMeshDisplayModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.WobbleMeshDisplayModel(args.name, args.min, args.max, args.time);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38029,6 +39479,7 @@ public static partial class CreateWorkshopPowerCoreModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.WorkshopPowerCoreModel(args.name, args.duration, args.firstUseCost, args.roundCost, args.roundsPerCostTier, args.costPerTimesUsed, args.normalPathNames, args.extendedPathNames);
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38056,6 +39507,7 @@ public static partial class CreateWorkshopReverseMotorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.WorkshopReverseMotorModel(args.name, args.duration, args.firstUseCost, args.roundCost, args.roundsPerCostTier, args.costPerTimesUsed, args.globalMapSpeedSet);
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38077,6 +39529,7 @@ public static partial class CreateWorthReductionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.WorthReductionModel(args.name, args.worthMultiplier);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38100,6 +39553,7 @@ public static partial class CreateWrappedMovementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Behaviors.WrappedMovementModel(args.name, args.start, args.end);
             if (args.speed != default) result.speed = args.speed;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38121,6 +39575,7 @@ public static partial class CreateZeroRotationModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.ZeroRotationModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38142,6 +39597,7 @@ public static partial class CreateZeroRotationOnAbilityModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ZeroRotationOnAbilityModel(args.name);
             
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38166,6 +39622,7 @@ public static partial class CreateZigZagModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ZigZagModel(args.name, args.maxOffset, args.zigZagSpeed, args.useEmissionIndex);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
             return result;   
         }
     }
@@ -38191,6 +39648,7 @@ public static partial class CreateZombieBloonBehaviorModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ZombieBloonBehaviorModel(args.name, args.timeUntilRevive, args.tombstoneAssetId, args.resurrectEffectModel, args.resurrectSoundEffect);
             if (args._mutator != default) result._mutator = args._mutator;
+            args.OnCreate(result);
             return result;   
         }
     }

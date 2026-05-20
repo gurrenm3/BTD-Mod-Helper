@@ -1,4 +1,5 @@
-﻿using Il2CppAssets.Scripts.Models;
+﻿using System;
+using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 namespace BTD_Mod_Helper.Api.Helpers;
@@ -6,6 +7,7 @@ namespace BTD_Mod_Helper.Api.Helpers;
 /// <summary>
 /// A wrapper around AbilityModels for making them easier to create
 /// </summary>
+[Obsolete("Switch to AbilityModel.Create(new(){ ... })")]
 public class AbilityHelper : ModelHelper<AbilityModel>
 {
     /// Default name
