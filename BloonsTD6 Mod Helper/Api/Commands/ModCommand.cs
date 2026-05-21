@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -108,7 +109,49 @@ public abstract class ModCommand : ModContent
     /// Runs this command
     /// </summary>
     /// <returns>Whether this command successfully executed</returns>
-    public abstract bool Execute(ref string resultText);
+    public virtual bool Execute(ref string resultText)
+    {
+        return true;
+    }
+
+    /// <summary>
+    /// Class that represents the output of a ModCommand execution. This gets passed by reference between Coroutines
+    /// </summary>
+    public class Output
+    {
+        /// <summary>
+        /// Whether the command has succeeded. True by default; users will need to actively specify a failure.
+        /// </summary>
+        public bool success;
+
+        /// <summary>
+        /// Custom result text to display to the user, if not null
+        /// </summary>
+        public string resultText;
+
+        /// <summary>
+        /// Exception that caused the command to fail, if any
+        /// </summary>
+        public Exception exception;
+    }
+
+    /// <summary>
+    /// Runs this command as a coroutine
+    /// </summary>
+    /// <param name="output">Output object to modify with success, result text, exception</param>
+    public virtual IEnumerator Execute(Output output)
+    {
+        try
+        {
+            output.success = Execute(ref output.resultText);
+        }
+        catch (Exception e)
+        {
+            output.exception = e;
+        }
+        yield break;
+    }
+
 
     /// <summary>
     /// Fails the command and displays which subbcommands are available to the user
@@ -130,31 +173,24 @@ public abstract class ModCommand : ModContent
         return false;
     }
 
-    internal bool ExecuteInternal(out string resultText)
+    internal IEnumerator ExecuteInternal(Output output)
     {
         if (!Available)
         {
-            resultText = "Command not available";
-            return false;
+            output.success = false;
+            output.resultText = "Command not available";
+            yield break;
         }
 
-        resultText = "";
-        try
+        output.success = true; // If user doesn't specify otherwise, assume success
+        yield return Execute(output);
+
+        output.resultText ??= output.success ? "Command succeeded." : "Command failed.";
+
+        if (output.exception != null)
         {
-            if (Execute(ref resultText))
-            {
-                if (string.IsNullOrEmpty(resultText)) resultText = "Command succeeded.";
-                return true;
-            }
+            ModHelper.Error(output.exception);
         }
-        catch (Exception e)
-        {
-            ModHelper.Error(e);
-        }
-
-        if (string.IsNullOrEmpty(resultText)) resultText = "Command failed.";
-
-        return false;
     }
 
     /// <summary>

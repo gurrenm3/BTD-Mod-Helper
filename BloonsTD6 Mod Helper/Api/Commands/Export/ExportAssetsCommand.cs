@@ -17,14 +17,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
     public override string Command => "assets";
     public override string Help => "Exports all the addressable png assets in the game";
 
-    public override bool Execute(ref string resultText)
-    {
-        MelonCoroutines.Start(ExportAllImages());
-        resultText = "Starting coroutine for exporting assets, check console for details";
-        return true;
-    }
-
-    public static IEnumerator ExportAllImages()
+    public override IEnumerator Execute(Output output)
     {
         var total = 0;
 
@@ -47,8 +40,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
             try
             {
                 sprite.Result.TrySaveToPNG(path);
-                ReportProgress(ref total);
-                // ModHelper.Msg($"Successfully saved {path}");
+                output.resultText = $"Exported {++total} images so far...";
             }
             catch (Exception e)
             {
@@ -85,8 +77,7 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
                 try
                 {
                     sprite.TrySaveToPNG(path);
-                    ReportProgress(ref total);
-                    // ModHelper.Msg($"Successfully saved {path}");
+                    output.resultText = $"Exported {++total} images so far...";
                 }
                 catch (Exception e)
                 {
@@ -96,16 +87,6 @@ internal class ExportAssetsCommand : ModCommand<ExportCommand>
             }
         }
 
-        ModHelper.Msg("All assets exported.");
-    }
-
-    public static void ReportProgress(ref int howMany)
-    {
-        howMany++;
-
-        if (howMany % 500 == 0)
-        {
-            ModHelper.Msg($"Exported {howMany} images so far...");
-        }
+        output.resultText = "All assets exported.";
     }
 }

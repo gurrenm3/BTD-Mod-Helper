@@ -70,7 +70,7 @@ internal class TitleScreen_Start
 
         ModHelper.PerformHook(mod => mod.OnTitleScreen());
 
-        ConsoleHandler.RunCommandsFromArgs();
         ConsoleHandler.SetupMelonConsole();
+        ConsoleHandler.RunCommandsFromArgs().StartCoroutine();
     }
 }

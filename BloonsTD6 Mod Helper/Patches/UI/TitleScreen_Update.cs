@@ -1,4 +1,5 @@
 using Il2CppAssets.Scripts.Unity.Scenes;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using UnityEngine;
 namespace BTD_Mod_Helper.Patches.UI;
 
@@ -6,14 +7,15 @@ namespace BTD_Mod_Helper.Patches.UI;
 internal static class TitleScreen_Update
 {
     private static int keyHeldCount;
-    
+
     [HarmonyPostfix]
     internal static void Postfix(TitleScreen __instance)
     {
         keyHeldCount = Input.GetKey(KeyCode.Space) ? keyHeldCount + 1 : 0;
 
-        if (!(Input.GetKeyDown(KeyCode.Space) || keyHeldCount > 30)) return;
-        
+        if (!(Input.GetKeyDown(KeyCode.Space) || keyHeldCount > 30) ||
+            PopupScreen.instance.Exists()?.IsPopupActive() == true) return;
+
         if (__instance.OpenAnimationFinished || __instance.SkipAnimations)
         {
             if (!__instance.playButtonClicked)

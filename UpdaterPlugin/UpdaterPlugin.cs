@@ -36,6 +36,8 @@ public class UpdaterPlugin : MelonPlugin
 
     public override void OnPreInitialization()
     {
+        if (Environment.GetCommandLineArgs().Contains("--modhelper.offline")) return;
+
         try
         {
             if (File.Exists(ModHelperSettings))
@@ -66,6 +68,8 @@ public class UpdaterPlugin : MelonPlugin
 
     public override void OnPreModsLoaded()
     {
+        if (Environment.GetCommandLineArgs().Contains("--modhelper.offline")) return;
+
         VersionCompat.safeToGetVersionFromUnity = true;
         var start = DateTimeOffset.Now;
         try

@@ -13,14 +13,14 @@
         <!--btd6.targets settings-->
         <DontReferenceModHelper>true</DontReferenceModHelper> <!--Ignoring the reference to itself from btd6.targets-->
         <ProjectName>Btd6ModHelper</ProjectName> <!--Just rename the DLL that gets put in mods without renaming the Assembly-->
+        <DontCopyLaunchSettings>true</DontCopyLaunchSettings> <!--Custom launchSettings for Mod Helper-->
+        <IncludeLibs>Octokit;Ookii.Dialogs.WinForms;FuzzySharp;NfdSharp;NAudio;NAudio.Wasapi;NAudio.Core;NAudio.WinMM;NAudio.Vorbis;NVorbis;CommandLine;TextCopy</IncludeLibs>
 
         <!--Documentation Settings-->
         <DocumentationFile>bin\Debug\Btd6ModHelper.xml</DocumentationFile>
         <Platforms>AnyCPU</Platforms>
 
         <DefineConstants>MOD_HELPER</DefineConstants>
-
-        <IncludeLibs>Octokit,Ookii.Dialogs.WinForms,FuzzySharp,NfdSharp,NAudio,NAudio.Wasapi,NAudio.Core,NAudio.WinMM,NAudio.Vorbis,NVorbis,CommandLine,TextCopy</IncludeLibs>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug' Or '$(CI)' != ''">
@@ -41,8 +41,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="nfd.dll"/>
         <EmbeddedResource Include="btd6.targets"/>
+        <EmbeddedResource Include="Resources\nfd.dll"/>
+        <EmbeddedResource Include="Resources\launchSettings.json"/>
         <Compile Condition="'$(Configuration)' != 'Debug'" Remove="Api/Internal/JsonTowers/**/*"/>
         <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings"/>
     </ItemGroup>
@@ -50,4 +51,11 @@
     <!--Use the btd6.targets from the Mod Sources folder if this is placed there, otherwise use the included one-->
     <Import Condition="Exists('..\..\btd6.targets')" Project="..\..\btd6.targets"/>
     <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
+
+    <!--Copy changes of mod helper files to Mod Sources without having to rerun game-->
+    <Target Name="SyncModSourcesFiles" AfterTargets="Build"
+            Condition="'$(BloonsTD6)' == 'C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6'">
+        <Copy Condition="Exists('..\..\btd6.targets')" SourceFiles="btd6.targets" DestinationFiles="..\..\btd6.targets" SkipUnchangedFiles="true"/>
+        <Copy Condition="Exists('..\..\launchSettings.json')" SourceFiles="Resources\launchSettings.json" DestinationFiles="..\..\launchSettings.json" SkipUnchangedFiles="true"/>
+    </Target>
 </Project>

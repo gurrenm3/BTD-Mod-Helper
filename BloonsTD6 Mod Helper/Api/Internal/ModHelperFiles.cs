@@ -8,7 +8,7 @@ namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class ModHelperFiles
 {
-    public static void CreateTargetsFile(string path)
+    public static void CreateSourcesFiles(string path)
     {
         if (!Directory.Exists(path))
         {
@@ -22,22 +22,19 @@ internal static class ModHelperFiles
             }
         }
 
-        var targets = Path.Combine(path, "btd6.targets");
-        using var fs = new StreamWriter(targets);
-        using var stream =
-            ModHelper.MainAssembly.GetManifestResourceStream("BTD_Mod_Helper.btd6.targets");
-        using var reader = new StreamReader(stream!);
-        var text = reader.ReadToEnd().Replace(
-            @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6",
-            MelonEnvironment.GameRootDirectory);
-        fs.Write(text);
+        foreach (var file in new[] {"btd6.targets", "launchSettings.json"})
+        {
+            var text = ModHelper.MainAssembly.GetEmbeddedText(file)
+                .Replace(@"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6", MelonEnvironment.GameRootDirectory);
+            File.WriteAllText(Path.Combine(path, file), text);
+        }
     }
 
     private static bool downloaded;
 
     internal static void DownloadDocumentationXml(Action onComplete = null)
     {
-        if (downloaded) return;
+        if (downloaded || Environment.GetCommandLineArgs().Contains("--modhelper.offline")) return;
 
         const string url =
             $"https://github.com/{ModHelper.RepoOwner}/{ModHelper.RepoName}/releases/download/{ModHelper.Version}/{ModHelper.XmlName}";

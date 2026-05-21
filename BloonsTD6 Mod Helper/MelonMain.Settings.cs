@@ -323,7 +323,7 @@ internal partial class MelonMain
             category = ModMaking,
             description = "The folder where you keep the source codes for Mods",
             customValidation = Directory.Exists,
-            onSave = ModHelperFiles.CreateTargetsFile
+            onSave = ModHelperFiles.CreateSourcesFiles
         };
 
     public static readonly ModSettingHotkey QuickEditTowerModel = new(KeyCode.Backslash, HotkeyModifier.Shift)

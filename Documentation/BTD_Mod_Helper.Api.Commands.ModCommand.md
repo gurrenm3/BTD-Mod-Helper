@@ -135,6 +135,26 @@ Closes the command console
 protected static void CloseConsole();
 ```
 
+<a name='BTD_Mod_Helper.Api.Commands.ModCommand.Execute(BTD_Mod_Helper.Api.Commands.ModCommand.Output)'></a>
+
+## ModCommand.Execute(Output) Method
+
+Runs this command as a coroutine
+
+```csharp
+public virtual System.Collections.IEnumerator Execute(BTD_Mod_Helper.Api.Commands.ModCommand.Output output);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Commands.ModCommand.Execute(BTD_Mod_Helper.Api.Commands.ModCommand.Output).output'></a>
+
+`output` [Output](BTD_Mod_Helper.Api.Commands.ModCommand.Output.md 'BTD_Mod_Helper.Api.Commands.ModCommand.Output')
+
+Output object to modify with success, result text, exception
+
+#### Returns
+[System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
+
 <a name='BTD_Mod_Helper.Api.Commands.ModCommand.Execute(string)'></a>
 
 ## ModCommand.Execute(string) Method
@@ -142,7 +162,7 @@ protected static void CloseConsole();
 Runs this command
 
 ```csharp
-public abstract bool Execute(ref string resultText);
+public virtual bool Execute(ref string resultText);
 ```
 #### Parameters
 

@@ -6,6 +6,8 @@
         <ManagedFolder>$(BloonsTD6)\MelonLoader\net6</ManagedFolder>
         <OutputFolder Condition="'$(OutputFolder)' == ''">Mods</OutputFolder>
         <PlatformTarget>x64</PlatformTarget>
+        <RunCommand>$(BloonsTD6)\BloonsTD6.exe</RunCommand>
+        <RunWorkingDirectory>$(BloonsTD6)</RunWorkingDirectory>
     </PropertyGroup>
 
     <!--References to MelonLoader dependencies-->
@@ -64,6 +66,15 @@
         </Reference>
     </ItemGroup>
 
+    <!--Other mod dependencies, listed in <Dependencies> as a list of dll names without extension-->
+    <ItemGroup Condition="'$(Dependencies)' != ''">
+        <Reference Include="$([System.Text.RegularExpressions.Regex]::Replace($(Dependencies), '\s*[%2C;]\s*', ';'))" Private="false">
+            <SpecificVersion>False</SpecificVersion>
+            <HintPath Condition="Exists('$(BloonsTD6)\Mods\%(Identity).dll')">$(BloonsTD6)\Mods\%(Identity).dll</HintPath>
+            <HintPath Condition="!Exists('$(BloonsTD6)\Mods\%(Identity).dll')">$(BloonsTD6)\Disabled Mods\%(Identity).dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
     <!--Automatic embeds-->
     <ItemGroup Condition="'$(AutoEmbed)' != 'false'">
         <EmbeddedResource Include="**/*.png"/>
@@ -104,15 +115,24 @@
               DestinationFiles="$(BloonsTD6)\$(OutputFolder)\$(ProjectName).xml"/>
     </Target>
 
+    <!--Keep launchSettings.json up to date with the one from Mod Sources, unless the mod author sets DontCopyLaunchSettings-->
+    <Target Name="SyncLaunchSettings" BeforeTargets="PrepareForBuild"
+            Condition="Exists('$(MSBuildThisFileDirectory)launchSettings.json') AND '$(DontCopyLaunchSettings)' == ''">
+        <MakeDir Directories="$(ProjectDir)Properties"/>
+        <Copy SourceFiles="$(MSBuildThisFileDirectory)launchSettings.json"
+              DestinationFiles="$(ProjectDir)Properties\launchSettings.json"
+              SkipUnchangedFiles="true"/>
+    </Target>
+
     <!-- ILRepack support -->
 
     <ItemGroup Condition="$(IncludeLibs) != ''">
-        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.29"/>
+        <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.29" GeneratePathProperty="true">
+            <ExcludeAssets>build</ExcludeAssets> <!-- Ignore ILRepack.Lib.MSBuild.Task.targets, define task manually below -->
+        </PackageReference>
     </ItemGroup>
 
-    <PropertyGroup Condition="$(IncludeLibs) != ''">
-        <ILRepackTargetsFile>$(MSBuildThisFileFullPath)</ILRepackTargetsFile>
-    </PropertyGroup>
+    <UsingTask Condition="$(IncludeLibs) != ''" TaskName="ILRepack" AssemblyFile="$(PkgILRepack_Lib_MSBuild_Task)\build\ILRepack.Lib.MSBuild.Task.dll"/>
 
     <Target Name="Definitons" Condition="$(IncludeLibs) != ''">
         <ItemGroup>
@@ -120,7 +140,7 @@
             <InputAssemblies Include="@(AssemblyFile)"/>
 
             <IncludedAssemblies Include="@(ReferencePathWithRefAssemblies)"
-                                Condition="$([System.String]::new(',$(IncludeLibs),').Contains(',%(filename),'))"/>
+                                Condition="$([System.String]::new(';$([System.Text.RegularExpressions.Regex]::Replace($(IncludeLibs), '\s*[%2C;]\s*', ';'));').Contains(';%(filename);'))"/>
             <InputAssemblies Include="@(IncludedAssemblies)"/>
         </ItemGroup>
     </Target>

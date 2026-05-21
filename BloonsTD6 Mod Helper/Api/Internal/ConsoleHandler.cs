@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -219,15 +220,17 @@ internal static class ConsoleHandler
 
     public static void ProcessCommand() => ProcessCommand(Console.Text);
 
-    public static bool ProcessCommand(string text)
+    public static void ProcessCommand(string text) => ProcessCommand(text, new ModCommand.Output()).StartCoroutine();
+
+    public static IEnumerator ProcessCommand(string text, ModCommand.Output output)
     {
-        if (string.IsNullOrWhiteSpace(text)) return true;
+        if (string.IsNullOrWhiteSpace(text)) yield break;
         SpotInHistory = -1;
         ConsoleHistory.Insert(0, text);
 
         Console?.input.InputField.SetText("");
         Console?.input.InputField.ForceLabelUpdate();
-        Console?.Results = "";
+        Console?.Results = "Command in progress...";
 
         var tokens = text.SplitRespectingQuotes();
 
@@ -237,23 +240,50 @@ internal static class ConsoleHandler
         {
             ModHelper.Error("No Command Found");
             Console?.Results = Highlight("No Command Found", ErrorColor);
-            return false;
+            yield break;
         }
 
         if (c.Parse(tokens[1..], out var parsedCommand, out var errors))
         {
-            var success = parsedCommand.ExecuteInternal(out var resultText);
-            Highlight(ref resultText, success ? SuccessColor : ErrorColor);
-            Console?.Results = resultText;
-            return success;
+            yield return ProcessCommand(parsedCommand, output);
         }
-
-        foreach (var error in errors)
+        else
         {
-            ModHelper.Error(error);
-            Console?.Results += Highlight(error.ToString(), ErrorColor);
+            foreach (var error in errors)
+            {
+                ModHelper.Error(error);
+                Console?.Results += Highlight(error.ToString(), ErrorColor);
+            }
         }
-        return false;
+    }
+
+    public static IEnumerator ProcessCommand(ModCommand command, ModCommand.Output output)
+    {
+        Console?.run.Button.interactable = false;
+        Console?.input.InputField.interactable = false;
+
+        var liveResults = LiveResults(output).StartCoroutine();
+
+        yield return command.ExecuteInternal(output);
+
+        MelonCoroutines.Stop(liveResults);
+
+        Console?.Results = Highlight(output.resultText, output.success ? SuccessColor : ErrorColor);
+
+        Console?.run.Button.interactable = false;
+        Console?.input.InputField.interactable = true;
+    }
+
+    private static IEnumerator LiveResults(ModCommand.Output output)
+    {
+        while (true)
+        {
+            if (!string.IsNullOrWhiteSpace(output.resultText))
+            {
+                Console?.Results = output.resultText;
+            }
+            yield return null;
+        }
     }
 
     public static void UpdateSuggestions()
@@ -372,16 +402,17 @@ internal static class ConsoleHandler
 
     internal static bool Errors { get; set; }
 
-    internal static void RunCommandsFromArgs()
+    internal static bool FailFast { get; private set; }
+    internal static bool QuitAfter { get; private set; }
+
+    internal static IEnumerator RunCommandsFromArgs()
     {
         var args = Environment.GetCommandLineArgs();
         var modHelper = args.IndexOf("--modhelper.run");
-        if (modHelper < 0) return;
+        if (modHelper < 0) yield break;
 
         var remaining = args.Skip(modHelper + 1).ToArray();
 
-        var quitAfter = false;
-        var failFast = false;
         var commandStart = 0;
         while (commandStart < remaining.Length &&
                remaining[commandStart].Length > 1 &&
@@ -392,8 +423,8 @@ internal static class ConsoleHandler
             {
                 switch (c)
                 {
-                    case 'e': failFast = true; break;
-                    case 'q': quitAfter = true; break;
+                    case 'e': FailFast = true; break;
+                    case 'q': QuitAfter = true; break;
                 }
             }
             commandStart++;
@@ -402,24 +433,26 @@ internal static class ConsoleHandler
         foreach (var command in remaining.Skip(commandStart).Join(delimiter: " ").Split(" && "))
         {
             Errors = false;
-            var success = false;
-            try
+            var output = new ModCommand.Output();
+            yield return ProcessCommand(command, output);
+
+            if (output.success)
             {
-                success = ProcessCommand(command);
+                ModHelper.Msg(output.resultText);
             }
-            catch (Exception e)
+            else
             {
-                ModHelper.Error(e);
+                ModHelper.Error(output.resultText);
             }
 
-            if ((!success || Errors) && failFast)
+            if ((!output.success || Errors) && FailFast)
             {
                 Application.Quit(1);
-                return;
+                yield break;
             }
         }
 
-        if (quitAfter)
+        if (QuitAfter)
         {
             Application.Quit(0);
         }
@@ -452,11 +485,7 @@ internal static class ConsoleHandler
 
             ModHelper.Msg("MelonLoader console input unlocked. You can type stuff here now!");
         }
-        else
-        {
-            ModHelper.Warning("Couldn't unlock console input");
-            return;
-        }
+        else return;
 
         Task.Run(() =>
         {

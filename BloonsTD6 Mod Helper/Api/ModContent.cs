@@ -175,7 +175,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
             var instances = new List<ModContent>();
             foreach (var modContent in content)
             {
-                modContent.mod = instance.mod;
+                modContent.mod ??= instance.mod;
                 if (instance.GetType().IsInstanceOfType(modContent))
                 {
                     instances.Add(modContent);

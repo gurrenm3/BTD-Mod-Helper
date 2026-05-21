@@ -4,6 +4,7 @@ using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors;
+using Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions;
 using Il2CppAssets.Scripts.Models.Towers.Filters;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
@@ -118,6 +119,11 @@ public partial class CreateWeaponModelExt
                 result.ejectX = eject.Value.x;
                 result.ejectY = eject.Value.y;
                 result.ejectZ = eject.Value.z;
+            }
+
+            if (result.emission == null)
+            {
+                result.SetEmission(new SingleEmissionModel("", null));
             }
         }
     }

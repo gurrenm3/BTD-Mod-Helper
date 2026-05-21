@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
@@ -18,6 +20,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 #if DEBUG
 using BTD_Mod_Helper.Api.Internal.JsonTowers;
@@ -45,9 +48,16 @@ internal partial class MelonMain : BloonsTD6Mod
 
         try
         {
-            ModHelperGithub.Init();
-            Task.Run(ModHelperGithub.GetVerifiedModders);
-            ModHelperGithub.populatingMods = Task.Run(() => ModHelperGithub.PopulateMods(!PopulateOnStartup));
+            if (!Environment.GetCommandLineArgs().Contains("--modhelper.offline"))
+            {
+                ModHelperGithub.Init();
+                Task.Run(ModHelperGithub.GetVerifiedModders);
+                ModHelperGithub.populatingMods = Task.Run(() => ModHelperGithub.PopulateMods(!PopulateOnStartup));
+            }
+            else
+            {
+                Game.EnableOfflineMode();
+            }
         }
         catch (Exception e)
         {
@@ -73,8 +83,8 @@ internal partial class MelonMain : BloonsTD6Mod
 
         try
         {
-            // Create the targets file for mod sources
-            ModHelperFiles.CreateTargetsFile(ModSourcesFolder);
+            // Create the files for mod sources
+            ModHelperFiles.CreateSourcesFiles(ModSourcesFolder);
         }
         catch (Exception e)
         {
@@ -229,6 +239,62 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             ModSettingsHandler.SaveModSettings(this, true, false);
             ModWindow.saveSettingsAfterGame = false;
+        }
+    }
+
+    private static readonly List<MelonBase> UnregisteredMelons = [];
+
+    public override void OnEarlyInitialize()
+    {
+        var args = Environment.GetCommandLineArgs();
+
+        if (args.Contains("--modhelper.noaudio"))
+        {
+            AudioListener.pause = true;
+            AudioListener.volume = 0f;
+        }
+
+        if (args.FirstOrDefault(arg => arg.StartsWith("--modhelper.only")) is not { } modHelperOnly) return;
+
+        var allowedModsString = "";
+
+        if (modHelperOnly.Contains('='))
+        {
+            allowedModsString = modHelperOnly.Split('=').Last();
+        }
+        else if (args.Length > args.IndexOf(modHelperOnly) + 1)
+        {
+            var nextArg = args[args.IndexOf(modHelperOnly) + 1];
+            if (!nextArg.StartsWith("-"))
+            {
+                allowedModsString = nextArg;
+            }
+        }
+
+        var allowedMods = allowedModsString.Trim('"', '\'').Split(',', ';');
+
+        foreach (var loadedAssembly in MelonAssembly.LoadedAssemblies)
+        {
+            foreach (var melon in loadedAssembly.LoadedMelons)
+            {
+                if (melon == this || melon.Registered || allowedMods.Contains(melon.GetName())) continue;
+
+                typeof(MelonBase)
+                    .GetProperty(nameof(Registered), BindingFlags.Instance | BindingFlags.Public)!
+                    .SetValue(melon, true);
+
+                UnregisteredMelons.Add(melon);
+            }
+        }
+    }
+
+    public override void OnLateInitializeMelon()
+    {
+        foreach (var melon in UnregisteredMelons)
+        {
+            typeof(MelonBase)
+                .GetProperty(nameof(Registered), BindingFlags.Instance | BindingFlags.Public)!
+                .SetValue(melon, false);
         }
     }
 }

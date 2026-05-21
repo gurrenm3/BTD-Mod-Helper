@@ -28,6 +28,7 @@
 | [ModGameMenu&lt;T&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') | Generic class for creating a ModGameMenu with the given type as it's base menu |
 | [ModLoadTask](BTD_Mod_Helper.Api.ModLoadTask.md 'BTD_Mod_Helper.Api.ModLoadTask') | Class for a Coroutine style task that runs during the BTD6 loading screen |
 | [ModMenuData](BTD_Mod_Helper.Api.ModMenuData.md 'BTD_Mod_Helper.Api.ModMenuData') | Class to be passed in to the Open methods of Screens |
+| [ModTest](BTD_Mod_Helper.Api.ModTest.md 'BTD_Mod_Helper.Api.ModTest') | Defines a test task for a mod |
 | [MoreAccessTools](BTD_Mod_Helper.Api.MoreAccessTools.md 'BTD_Mod_Helper.Api.MoreAccessTools') | Further methods along the lines of Harmony's [HarmonyLib.AccessTools](https://docs.microsoft.com/en-us/dotnet/api/HarmonyLib.AccessTools 'HarmonyLib.AccessTools') |
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |
@@ -80,6 +81,7 @@
 | [ExportCommand](BTD_Mod_Helper.Api.Commands.ExportCommand.md 'BTD_Mod_Helper.Api.Commands.ExportCommand') | Root command for exporting information to files |
 | [GenerateCommand](BTD_Mod_Helper.Api.Commands.GenerateCommand.md 'BTD_Mod_Helper.Api.Commands.GenerateCommand') | Root command for generating source code files for mods |
 | [ModCommand](BTD_Mod_Helper.Api.Commands.ModCommand.md 'BTD_Mod_Helper.Api.Commands.ModCommand') | Defines a command that can be run from within the Mod Helper developer console |
+| [ModCommand.Output](BTD_Mod_Helper.Api.Commands.ModCommand.Output.md 'BTD_Mod_Helper.Api.Commands.ModCommand.Output') | Class that represents the output of a ModCommand execution. This gets passed by reference between Coroutines |
 | [ModCommand&lt;T&gt;](BTD_Mod_Helper.Api.Commands.ModCommand_T_.md 'BTD_Mod_Helper.Api.Commands.ModCommand<T>') | Defines a ModCommand that is a subcommand of the specified other command |
 | [OpenCommand](BTD_Mod_Helper.Api.Commands.OpenCommand.md 'BTD_Mod_Helper.Api.Commands.OpenCommand') | Commands for opening specific files / folders |
 | [TestCommand](BTD_Mod_Helper.Api.Commands.TestCommand.md 'BTD_Mod_Helper.Api.Commands.TestCommand') | Root command where test related actions are |

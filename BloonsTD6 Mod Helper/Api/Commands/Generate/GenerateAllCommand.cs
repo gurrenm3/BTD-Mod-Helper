@@ -1,6 +1,6 @@
 #if DEBUG
 using System.Linq;
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Generate;
 
 internal class GenerateAllCommand : ModCommand<GenerateCommand>
 {
