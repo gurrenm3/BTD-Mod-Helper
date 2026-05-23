@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "Blo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdaterPlugin", "UpdaterPlugin\UpdaterPlugin.csproj", "{BCD644C3-83BB-447A-80FF-F9C78FF8C1CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunner", "TestRunner\TestRunner.csproj", "{5CDA223F-58BE-4770-85FC-64A602AA25EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BCD644C3-83BB-447A-80FF-F9C78FF8C1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCD644C3-83BB-447A-80FF-F9C78FF8C1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCD644C3-83BB-447A-80FF-F9C78FF8C1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CDA223F-58BE-4770-85FC-64A602AA25EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CDA223F-58BE-4770-85FC-64A602AA25EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CDA223F-58BE-4770-85FC-64A602AA25EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CDA223F-58BE-4770-85FC-64A602AA25EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
