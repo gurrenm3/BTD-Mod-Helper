@@ -430,6 +430,8 @@ internal static class ConsoleHandler
             commandStart++;
         }
 
+        var fails = 0;
+
         foreach (var command in remaining.Skip(commandStart).Join(delimiter: " ").Split(" && "))
         {
             Errors = false;
@@ -445,16 +447,19 @@ internal static class ConsoleHandler
                 ModHelper.Error(output.resultText);
             }
 
-            if ((!output.success || Errors) && FailFast)
-            {
-                Application.Quit(1);
-                yield break;
-            }
+            if (output.success && !Errors) continue;
+
+            fails++;
+
+            if (!FailFast) continue;
+
+            Application.Quit(1);
+            yield break;
         }
 
         if (QuitAfter)
         {
-            Application.Quit(0);
+            Application.Quit(fails);
         }
     }
 

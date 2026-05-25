@@ -6,13 +6,16 @@
 Class for adding in a new Bloon to the game
 
 ```csharp
-public abstract class ModBloon : BTD_Mod_Helper.Api.NamedModContent
+public abstract class ModBloon : BTD_Mod_Helper.Api.NamedModContent,
+BTD_Mod_Helper.Api.Testing.IHasDefaultTest
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModBloon
 
 Derived  
 &#8627; [ModBloon&lt;T&gt;](BTD_Mod_Helper.Api.Bloons.ModBloon_T_.md 'BTD_Mod_Helper.Api.Bloons.ModBloon<T>')
+
+Implements [IHasDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.BaseBloon'></a>
@@ -183,6 +186,21 @@ public virtual float Scale { get; }
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.UseDefaultTest'></a>
+
+## ModBloon.UseDefaultTest Property
+
+Allow ModHelper to automatically register a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for this content
+
+```csharp
+public virtual bool UseDefaultTest { get; }
+```
+
+Implements [UseDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md#BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest')
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.UseIconAsDisplay'></a>
 

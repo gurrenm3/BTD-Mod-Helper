@@ -7,7 +7,8 @@ Class for adding a custom Tower to the game. Use alongside [ModUpgrade](BTD_Mod_
 and optionally [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay') to define custom displays for it.
 
 ```csharp
-public abstract class ModTower : BTD_Mod_Helper.Api.NamedModContent
+public abstract class ModTower : BTD_Mod_Helper.Api.NamedModContent,
+BTD_Mod_Helper.Api.Testing.IHasDefaultTest
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModTower
@@ -18,6 +19,8 @@ Derived
 &#8627; [ModSubTower](BTD_Mod_Helper.Api.Towers.ModSubTower.md 'BTD_Mod_Helper.Api.Towers.ModSubTower')  
 &#8627; [ModTower&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModTower_T_.md 'BTD_Mod_Helper.Api.Towers.ModTower<T>')  
 &#8627; [ModVanillaParagon](BTD_Mod_Helper.Api.Towers.ModVanillaParagon.md 'BTD_Mod_Helper.Api.Towers.ModVanillaParagon')
+
+Implements [IHasDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest')
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.MAGIC'></a>
@@ -350,6 +353,21 @@ Whether this Tower should display 2-dimensionally, and search for png images
 ```csharp
 public virtual bool Use2DModel { get; }
 ```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.UseDefaultTest'></a>
+
+## ModTower.UseDefaultTest Property
+
+Allow ModHelper to automatically register a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for this content
+
+```csharp
+public virtual bool UseDefaultTest { get; }
+```
+
+Implements [UseDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md#BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

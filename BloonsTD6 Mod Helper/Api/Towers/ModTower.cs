@@ -4,6 +4,7 @@ using System.Linq;
 using BTD_Mod_Helper.Api.Attributes;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.Testing;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -23,9 +24,8 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// Class for adding a custom Tower to the game. Use alongside <see cref="ModUpgrade" /> to define its upgrades,
 /// and optionally <see cref="ModTowerDisplay" /> to define custom displays for it.
 /// </summary>
-public abstract class ModTower : NamedModContent
+public abstract class ModTower : NamedModContent, IHasDefaultTest
 {
-
     /// <summary>
     /// The string to use for the Primary tower set
     /// </summary>
@@ -196,6 +196,9 @@ public abstract class ModTower : NamedModContent
     /// Set to true to disable the default handling of ModUpgrades for this tower controlling its <see cref="TowerModel.upgrades"/> and <see cref="TowerModel.appliedUpgrades"/>
     /// </summary>
     public virtual bool DontApplyModUpgrades => false;
+
+    /// <inheritdoc />
+    public virtual bool UseDefaultTest => true;
 
     /// <summary>
     /// Whether this tower should be unlocked or not
@@ -554,7 +557,7 @@ public abstract class ModTower : NamedModContent
     /// <param name="tower">The current tower</param>
     protected virtual void Tick(int ticks, Simulation sim, Tower tower)
     {
-        
+
     }
 
     /// <inheritdoc/>

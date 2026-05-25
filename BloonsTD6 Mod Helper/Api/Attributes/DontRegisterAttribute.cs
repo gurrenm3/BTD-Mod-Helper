@@ -6,6 +6,4 @@ namespace BTD_Mod_Helper.Api.Attributes;
 /// Use <see cref="DontLoadAttribute"/> for skipping the loading phase as well
 /// </summary>
 [AttributeUsage(AttributeTargets.Class)]
-public class DontRegisterAttribute : Attribute
-{
-}
+public class DontRegisterAttribute : Attribute;

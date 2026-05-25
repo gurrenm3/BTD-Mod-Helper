@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Display;
+using BTD_Mod_Helper.Api.Testing;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Bloons.Behaviors;
@@ -16,7 +17,7 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// <summary>
 /// Class for adding in a new Bloon to the game
 /// </summary>
-public abstract class ModBloon : NamedModContent
+public abstract class ModBloon : NamedModContent, IHasDefaultTest
 {
     internal static readonly Dictionary<string, ModBloon> Cache = [];
 
@@ -110,6 +111,8 @@ public abstract class ModBloon : NamedModContent
     /// </summary>
     public virtual float Scale => 1f;
 
+    /// <inheritdoc />
+    public virtual bool UseDefaultTest => true;
 
     internal BloonModel BaseBloonModel => Game.instance.model.GetBloon(BaseBloon);
 
@@ -240,9 +243,9 @@ public abstract class ModBloon : NamedModContent
     /// <param name="bloon">The current bloon</param>
     protected virtual void Tick(int ticks, Simulation sim, Bloon bloon)
     {
-        
+
     }
-    
+
     /// <inheritdoc/>
     /// There is another Tick method for Mod Upgrades with a Bloon parameter. Override this if you don't want that to run.
     protected sealed override void Tick(int ticks, Simulation sim)

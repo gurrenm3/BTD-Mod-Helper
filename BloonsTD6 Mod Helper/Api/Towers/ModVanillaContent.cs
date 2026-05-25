@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BTD_Mod_Helper.Api.Testing;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 namespace BTD_Mod_Helper.Api.Towers;
@@ -6,7 +7,7 @@ namespace BTD_Mod_Helper.Api.Towers;
 /// <summary>
 /// Class for changing Vanilla content within the game
 /// </summary>
-public abstract class ModVanillaContent : ModContent
+public abstract class ModVanillaContent : ModContent, IHasDefaultTest
 {
     /// <summary>
     /// Whether this should only modify the Towers In-Game, or also affect the default GameModel outside a game
@@ -33,6 +34,9 @@ public abstract class ModVanillaContent : ModContent
     /// Whether this should apply or not. Useful for ModSettings
     /// </summary>
     public virtual bool ShouldApply => true;
+
+    /// <inheritdoc />
+    public virtual bool UseDefaultTest => true;
 
     internal abstract string TypeName { get; }
 

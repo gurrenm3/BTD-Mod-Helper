@@ -199,6 +199,21 @@ public virtual bool TowerInventoryEnabled { get; }
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModFakeTower.UseDefaultTest'></a>
+
+## ModFakeTower.UseDefaultTest Property
+
+Allow ModHelper to automatically register a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for this content
+
+```csharp
+public override bool UseDefaultTest { get; }
+```
+
+Implements [UseDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md#BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest')
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Towers.ModFakeTower.CanPlaceAt(Vector2,Tower,string)'></a>

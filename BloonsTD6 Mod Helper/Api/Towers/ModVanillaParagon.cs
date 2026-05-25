@@ -89,6 +89,9 @@ public abstract class ModVanillaParagon : ModTower
     /// </summary>
     public sealed override string Name => BaseTowerModel.baseId;
 
+    /// <inheritdoc />
+    public override bool UseDefaultTest => false;
+
     /// <summary>
     /// Tower gets modified in the Paragon upgrade
     /// </summary>

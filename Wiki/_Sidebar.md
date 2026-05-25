@@ -23,6 +23,7 @@
 - [Custom Menu Screens](/wiki/Custom-Menu-Screens)
 - [Custom Byte Loaders](/wiki/Custom-Byte-Loaders)
 - [Localization](/wiki/Localization)
+- [Automated Testing](/wiki/Automated-Testing)
 
 ##### **BTD Modding Info**
 - [BTD6 Internal Structure](/wiki/BTD6-Internal-Structure)

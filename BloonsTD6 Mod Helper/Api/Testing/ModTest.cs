@@ -1,20 +1,25 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Commands;
 using BTD_Mod_Helper.Api.Commands.Test;
+using BTD_Mod_Helper.Patches.Towers;
+using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Simulation.Tracking;
 using Il2CppAssets.Scripts.SimulationTests;
+using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.Scenes;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Main;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using Il2CppSystem.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace BTD_Mod_Helper.Api;
+namespace BTD_Mod_Helper.Api.Testing;
 
 /// <summary>
 /// Defines a test task for a mod
@@ -41,6 +46,15 @@ public abstract class ModTest : ModContent
     /// </summary>
     public bool Failed => !Completed || Exception is not null;
 
+    /// <summary>
+    /// The current UnityToSimulation, either from the Simulation Test <see cref="Environment"/> or the current game
+    /// </summary>
+    public UnityToSimulation Bridge => Environment?.simulation ?? UnityToSimulation.Current;
+
+    /// <summary>
+    /// Whether this test is available for purposes like running every test added by a mod
+    /// </summary>
+    public virtual bool IsAvailable => true;
 
     internal class AssertException(string message) : Exception(message);
 
@@ -90,11 +104,13 @@ public abstract class ModTest : ModContent
 
     internal class Cmd(ModTest test) : ModCommand
     {
-        public override string Command => test.Name;
+        public override string Command => test.Id;
 
         public override string Help => $"Runs {test.Name}";
 
         public override ModCommand ParentCommand => TestModCommand.TestModCommands[mod];
+
+        public override bool IsAvailable => test.IsAvailable;
 
         public override IEnumerator Execute(Output output)
         {
@@ -138,6 +154,22 @@ public abstract class ModTest : ModContent
     {
         Assert(Equals(o1, o2), message ?? "Objects are not equal");
     }
+
+    /// <summary>
+    /// Throws an <see cref="AssertException"/> if the given object is null
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="message">Optional message describing the failure</param>
+    public T AssertNotNull<T>(T obj, string message = "")
+    {
+        if (obj == null)
+        {
+            Throw(new AssertException(message ?? "Condition was false"));
+        }
+
+        return obj;
+    }
+
 
     /// <summary>
     /// Throws an <see cref="AssertException"/> if the given action does not throw an exception
@@ -342,6 +374,15 @@ public abstract class ModTest : ModContent
     /// </summary>
     public static readonly string DefaultMode = "Sandbox";
 
+    private static void SetupBridge(UnityToSimulation bridge)
+    {
+        bridge.IsImmediateMode = true;
+
+        var simEntity = bridge.Simulation.entity;
+        simEntity.RemoveBehavior(simEntity.GetBehavior<AnalyticsTrackerSim>());
+        simEntity.RemoveBehavior(simEntity.GetBehavior<AnalyticsTrackerSimManager>());
+    }
+
     /// <summary>
     /// Loads the game into a real match of BTD6
     /// </summary>
@@ -357,7 +398,9 @@ public abstract class ModTest : ModContent
         if (string.IsNullOrEmpty(InGameData.Editable.selectedMode))
             InGameData.Editable.selectedMode = DefaultMode;
 
-        return Timeout(Il2CppAssets.Scripts.Unity.UI_New.UI.instance.LoadGameEnumerator(), 10);
+        yield return Timeout(Il2CppAssets.Scripts.Unity.UI_New.UI.instance.LoadGameEnumerator(), 10);
+
+        SetupBridge(UnityToSimulation.Current);
     }
 
     /// <summary>
@@ -366,7 +409,8 @@ public abstract class ModTest : ModContent
     public SimulationTestEnvironment Environment { get; private set; }
 
     /// <summary>
-    /// Sets up a <see cref="SimulationTestEnvironment"/> to use for tests, storing it at <see cref="Environment"/>
+    /// Sets up a <see cref="SimulationTestEnvironment"/> to use for test, storing it at <see cref="Environment"/>
+    /// Used for testing matches without actually starting a real game
     /// </summary>
     public IEnumerator SetupSimEnvironment(Action<SimulationTest> setupTest = null)
     {
@@ -394,9 +438,7 @@ public abstract class ModTest : ModContent
 
         Environment = loadSim.Result;
 
-        var simEntity = Environment.simulation.Simulation.entity;
-        simEntity.RemoveBehavior(simEntity.GetBehavior<AnalyticsTrackerSim>());
-        simEntity.RemoveBehavior(simEntity.GetBehavior<AnalyticsTrackerSimManager>());
+        SetupBridge(UnityToSimulation.Current);
     }
 
     /// <summary>
@@ -407,6 +449,85 @@ public abstract class ModTest : ModContent
         Environment.Dispose();
         Environment = null;
     }
+
+    /// <summary>
+    /// Helper to create a tower model at a specific location. Ignores placement/inventory checks and cost
+    /// </summary>
+    /// <param name="bridge">UnityToSimulation</param>
+    /// <param name="at">tower coordinates</param>
+    /// <param name="towerModel">TowerModel to use</param>
+    /// <param name="ignoreInventoryChecks">place regardless of TowerInventory restrictions</param>
+    /// <param name="ignorePlacementChecks">place regardless of placement restrictions</param>
+    /// <param name="costOverride">override purchase cost, -1 to not override (default</param>
+    /// <returns>Created TowerToSimulation</returns>
+    public static TowerToSimulation CreateTowerAt(UnityToSimulation bridge, Vector2 at, TowerModel towerModel,
+        bool ignoreInventoryChecks = true, bool ignorePlacementChecks = true, int costOverride = -1)
+    {
+        var towers = bridge.GetAllTowers().ToArray();
+
+        var towerInventory = bridge.Simulation.GetTowerInventory(bridge.MyPlayerNumber);
+        if (ignoreInventoryChecks && !towerInventory.HasInventory(towerModel))
+        {
+            // For some reason the ignoreInventoryChecks parameter doesn't actually do anything for the base method
+            TowerInventory_HasInventory.overrideValue = true;
+        }
+
+        bridge.CreateTowerAt(at, towerModel, ObjectId.Invalid, false, new Action<bool>(success => { }),
+            ignoreInventoryChecks: ignoreInventoryChecks, ignorePlacementChecks: ignorePlacementChecks,
+            costOverride: costOverride);
+
+        TowerInventory_HasInventory.overrideValue = null;
+
+        if (bridge.actions.Count > 0)
+        {
+            ModHelper.Warning("It failed because the CreateTowerAt action could not be immediately performed");
+        }
+
+        return bridge.GetAllTowers().ToArray().Except(towers).FirstOrDefault();
+    }
+
+    /// <summary>
+    /// Upgrades a tower on a specified path
+    /// </summary>
+    /// <param name="bridge">UnityToSimulation bridge</param>
+    /// <param name="tower">The tower to upgrade</param>
+    /// <param name="path">The upgrade path index</param>
+    /// <return>True if the upgrade was successful, false otherwise</return>
+    public static bool UpgradeTower(UnityToSimulation bridge, ObjectId tower, int path)
+    {
+        var result = false;
+        bridge.UpgradeTower(tower, path, 0, new Action<bool>(success => result = success));
+        return result;
+    }
+
+    /// <inheritdoc cref="UpgradeTower(UnityToSimulation,ObjectId,int)"/>
+    public static bool UpgradeTower(UnityToSimulation bridge, TowerToSimulation tower, int path) =>
+        UpgradeTower(bridge, tower.Id, path);
+
+    /// <inheritdoc cref="UpgradeTower(UnityToSimulation,ObjectId,int)"/>
+    public static bool UpgradeTower(UnityToSimulation bridge, Tower tower, int path) =>
+        UpgradeTower(bridge, tower.Id, path);
+
+    /// <summary>
+    /// Upgrades a tower to being a paragon
+    /// </summary>
+    /// <param name="bridge">UnityToSimulation bridge</param>
+    /// <param name="tower">The tower to upgrade</param>
+    /// <return>True if the upgrade was successful, false otherwise</return>
+    public static bool UpgradeTowerParagon(UnityToSimulation bridge, ObjectId tower)
+    {
+        var result = false;
+        bridge.UpgradeTowerParagon(tower, 0, new Action<bool>(success => result = success));
+        return result;
+    }
+
+    /// <inheritdoc cref="UpgradeTowerParagon(UnityToSimulation,ObjectId)"/>
+    public static bool UpgradeTowerParagon(UnityToSimulation bridge, TowerToSimulation tower) =>
+        UpgradeTowerParagon(bridge, tower.Id);
+
+    /// <inheritdoc cref="UpgradeTowerParagon(UnityToSimulation,ObjectId)"/>
+    public static bool UpgradeTowerParagon(UnityToSimulation bridge, Tower tower) =>
+        UpgradeTowerParagon(bridge, tower.Id);
 
     #endregion
 }

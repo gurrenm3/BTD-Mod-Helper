@@ -68,7 +68,7 @@
 
     <!--Other mod dependencies, listed in <Dependencies> as a list of dll names without extension-->
     <ItemGroup Condition="'$(Dependencies)' != ''">
-        <Reference Include="$([System.Text.RegularExpressions.Regex]::Replace($(Dependencies), '\s*[%2C;]\s*', ';'))" Private="false">
+        <Reference Include="$(Dependencies)" Private="false">
             <SpecificVersion>False</SpecificVersion>
             <HintPath Condition="Exists('$(BloonsTD6)\Mods\%(Identity).dll')">$(BloonsTD6)\Mods\%(Identity).dll</HintPath>
             <HintPath Condition="!Exists('$(BloonsTD6)\Mods\%(Identity).dll')">$(BloonsTD6)\Disabled Mods\%(Identity).dll</HintPath>

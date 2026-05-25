@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Testing;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Rounds;
@@ -11,7 +12,7 @@ namespace BTD_Mod_Helper.Api.Bloons;
 /// <summary>
 /// Class for a custom RoundSet
 /// </summary>
-public abstract class ModRoundSet : NamedModContent
+public abstract class ModRoundSet : NamedModContent, IHasDefaultTest
 {
     internal static readonly Dictionary<string, ModRoundSet> Cache = new();
 
@@ -77,6 +78,9 @@ public abstract class ModRoundSet : NamedModContent
     /// <br/>
     /// </summary>
     public virtual bool Rounds1Index => true;
+
+    /// <inheritdoc />
+    public virtual bool UseDefaultTest => true;
 
     /// <inheritdoc />
     public override void Register()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.Testing;
 
 namespace BTD_Mod_Helper.Api.Commands.Test;
 
@@ -51,7 +52,7 @@ internal class TestModCommand : ModCommand<TestCommand>
                 yield break;
             }
 
-            var modTests = mod.Content.OfType<ModTest>().ToArray();
+            var modTests = mod.Content.OfType<ModTest>().Where(test => test.IsAvailable).ToArray();
 
             ModHelper.Msg($"Running {modTests.Length} test(s)");
 

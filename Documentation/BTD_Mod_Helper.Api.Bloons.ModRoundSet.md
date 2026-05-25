@@ -6,10 +6,13 @@
 Class for a custom RoundSet
 
 ```csharp
-public abstract class ModRoundSet : BTD_Mod_Helper.Api.NamedModContent
+public abstract class ModRoundSet : BTD_Mod_Helper.Api.NamedModContent,
+BTD_Mod_Helper.Api.Testing.IHasDefaultTest
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModRoundSet
+
+Implements [IHasDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.AddToOverrideMenu'></a>
@@ -142,6 +145,21 @@ Whether to use 1-Indexed rounds in ModifyRoundsModels methods instead of 0 index
 ```csharp
 public virtual bool Rounds1Index { get; }
 ```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModRoundSet.UseDefaultTest'></a>
+
+## ModRoundSet.UseDefaultTest Property
+
+Allow ModHelper to automatically register a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for this content
+
+```csharp
+public virtual bool UseDefaultTest { get; }
+```
+
+Implements [UseDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md#BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

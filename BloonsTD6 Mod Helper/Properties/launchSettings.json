@@ -1,35 +1,40 @@
 {
   "profiles": {
     "BloonsTD6": {
-      "commandName": "Project",
+      "commandName": "Executable",
       "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
       "workingDirectory": "$(BloonsTD6)",
       "commandLineArgs": "moddingDev"
     },
     "BloonsTD6 (ML Debug)": {
-      "commandName": "Project",
+      "commandName": "Executable",
       "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
       "workingDirectory": "$(BloonsTD6)",
       "commandLineArgs": "moddingDev --melonloader.debug"
     },
-    "BloonsTD6 (Test)": {
-      "commandName": "Project",
+    "BloonsTD6 (Only Mod Helper)": {
+      "commandName": "Executable",
       "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
       "workingDirectory": "$(BloonsTD6)",
-      "commandLineArgs": "moddingDev --modhelper.only --modhelper.noaudio --modhelper.run -q test mod Btd6ModHelper"
+      "commandLineArgs": "moddingDev --modhelper.only"
     },
-
-    "BloonsTD6 (Generate All)": {
-      "commandName": "Project",
+    "BloonsTD6 (Tests)": {
+      "commandName": "Executable",
       "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
       "workingDirectory": "$(BloonsTD6)",
-      "commandLineArgs": "moddingDev -batchmode --modhelper.only --modhelper.noaudio --modhelper.run -q generate all"
+      "commandLineArgs": "moddingDev -batchmode --modhelper.offline --modhelper.only --modhelper.noaudio --modhelper.run -q test mod Btd6ModHelper"
+    },
+    "BloonsTD6 (Generate All)": {
+      "commandName": "Executable",
+      "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
+      "workingDirectory": "$(BloonsTD6)",
+      "commandLineArgs": "moddingDev -batchmode --modhelper.offline --modhelper.only --modhelper.noaudio --modhelper.run -q generate all"
     },
     "BloonsTD6 (Export GameData)": {
-      "commandName": "Project",
+      "commandName": "Executable",
       "executablePath": "$(BloonsTD6)/BloonsTD6.exe",
       "workingDirectory": "$(BloonsTD6)",
-      "commandLineArgs": "moddingDev -batchmode --modhelper.only --modhelper.noaudio --modhelper.run -q export gamedata --clean"
+      "commandLineArgs": "moddingDev -batchmode --modhelper.offline --modhelper.only --modhelper.noaudio --modhelper.run -q export gamedata --clean"
     }
   }
 }

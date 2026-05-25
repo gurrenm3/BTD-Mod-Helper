@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BTD_Mod_Helper.Api.Testing;
 using Il2CppAssets.Scripts.Models.Bloons;
 using Il2CppAssets.Scripts.Models.Effects;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
@@ -18,7 +19,7 @@ namespace BTD_Mod_Helper.Api.Display;
 /// <summary>
 /// A custom Display that is a copy of an existing Display that can be modified
 /// </summary>
-public abstract class ModDisplay : ModContent
+public abstract class ModDisplay : ModContent, IHasDefaultTest
 {
     internal static readonly Dictionary<string, ModDisplay> Cache = new();
 
@@ -71,6 +72,9 @@ public abstract class ModDisplay : ModContent
     /// The DisplayCategory to use for the DisplayModel
     /// </summary>
     public virtual DisplayCategory DisplayCategory => DisplayCategory.Default;
+
+    /// <inheritdoc />
+    public virtual bool UseDefaultTest => true;
 
     /// <inheritdoc />
     public override void Register()

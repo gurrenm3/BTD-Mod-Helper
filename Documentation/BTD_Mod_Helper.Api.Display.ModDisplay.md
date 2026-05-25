@@ -6,7 +6,8 @@
 A custom Display that is a copy of an existing Display that can be modified
 
 ```csharp
-public abstract class ModDisplay : BTD_Mod_Helper.Api.ModContent
+public abstract class ModDisplay : BTD_Mod_Helper.Api.ModContent,
+BTD_Mod_Helper.Api.Testing.IHasDefaultTest
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; ModDisplay
@@ -17,6 +18,8 @@ Derived
 &#8627; [ModCustomDisplay](BTD_Mod_Helper.Api.Display.ModCustomDisplay.md 'BTD_Mod_Helper.Api.Display.ModCustomDisplay')  
 &#8627; [ModDisplay2D](BTD_Mod_Helper.Api.Display.ModDisplay2D.md 'BTD_Mod_Helper.Api.Display.ModDisplay2D')  
 &#8627; [ModTowerDisplay](BTD_Mod_Helper.Api.Display.ModTowerDisplay.md 'BTD_Mod_Helper.Api.Display.ModTowerDisplay')
+
+Implements [IHasDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest')
 ### Fields
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Bloon2dDisplay'></a>
@@ -149,6 +152,21 @@ public virtual float Scale { get; }
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Display.ModDisplay.UseDefaultTest'></a>
+
+## ModDisplay.UseDefaultTest Property
+
+Allow ModHelper to automatically register a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for this content
+
+```csharp
+public virtual bool UseDefaultTest { get; }
+```
+
+Implements [UseDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md#BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest')
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Display.ModDisplay.Apply(AssetPathModel)'></a>

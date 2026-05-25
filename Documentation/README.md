@@ -28,7 +28,6 @@
 | [ModGameMenu&lt;T&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') | Generic class for creating a ModGameMenu with the given type as it's base menu |
 | [ModLoadTask](BTD_Mod_Helper.Api.ModLoadTask.md 'BTD_Mod_Helper.Api.ModLoadTask') | Class for a Coroutine style task that runs during the BTD6 loading screen |
 | [ModMenuData](BTD_Mod_Helper.Api.ModMenuData.md 'BTD_Mod_Helper.Api.ModMenuData') | Class to be passed in to the Open methods of Screens |
-| [ModTest](BTD_Mod_Helper.Api.ModTest.md 'BTD_Mod_Helper.Api.ModTest') | Defines a test task for a mod |
 | [MoreAccessTools](BTD_Mod_Helper.Api.MoreAccessTools.md 'BTD_Mod_Helper.Api.MoreAccessTools') | Further methods along the lines of Harmony's [HarmonyLib.AccessTools](https://docs.microsoft.com/en-us/dotnet/api/HarmonyLib.AccessTools 'HarmonyLib.AccessTools') |
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |
@@ -45,7 +44,7 @@
 | :--- | :--- |
 | [AudioNameAttribute](BTD_Mod_Helper.Api.Attributes.AudioNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.AudioNameAttribute') | Marks that this string is the name of an embedded audio resource |
 | [BundleNameAttribute](BTD_Mod_Helper.Api.Attributes.BundleNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.BundleNameAttribute') | Marks that this string is the name of an embedded bundle resource |
-| [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') | Signals that this ModContent should not be automatically loaded by Mod Helper.<br/>Will also skip the Registration phase |
+| [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') | Signals that this ModContent should not be automatically loaded by Mod Helper.<br/>Will also skip the Registration phase unless it's loaded manually |
 | [DontRegisterAttribute](BTD_Mod_Helper.Api.Attributes.DontRegisterAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontRegisterAttribute') | Signals that this ModContent should not be automatically registered by Mod Helper.<br/>Use [DontLoadAttribute](BTD_Mod_Helper.Api.Attributes.DontLoadAttribute.md 'BTD_Mod_Helper.Api.Attributes.DontLoadAttribute') for skipping the loading phase as well |
 | [ResourceNameAttribute](BTD_Mod_Helper.Api.Attributes.ResourceNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.ResourceNameAttribute') | Marks that this string is the name of an embedded resource |
 | [SpriteNameAttribute](BTD_Mod_Helper.Api.Attributes.SpriteNameAttribute.md 'BTD_Mod_Helper.Api.Attributes.SpriteNameAttribute') | Marks that this string is the name of an embedded sprite resource |
@@ -310,6 +309,27 @@
 | Classes | |
 | :--- | :--- |
 | [ModGameMode](BTD_Mod_Helper.Api.Scenarios.ModGameMode.md 'BTD_Mod_Helper.Api.Scenarios.ModGameMode') | Class for a custom GameMode that will be added to the modes screen when starting a new match |
+
+<a name='BTD_Mod_Helper.Api.Testing'></a>
+
+## BTD_Mod_Helper.Api.Testing Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ModBloonTest](BTD_Mod_Helper.Api.Testing.ModBloonTest.md 'BTD_Mod_Helper.Api.Testing.ModBloonTest') | Runs a set of default tests for a ModBloon |
+| [ModBloonTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModBloonTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModBloonTest<T>') | Runs a set of default tests for a ModBloon |
+| [ModContentDefaultTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>') | A default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for a particular kind of [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') |
+| [ModDisplayTest](BTD_Mod_Helper.Api.Testing.ModDisplayTest.md 'BTD_Mod_Helper.Api.Testing.ModDisplayTest') | Runs a set of default tests for ModDisplays |
+| [ModGameModeTest](BTD_Mod_Helper.Api.Testing.ModGameModeTest.md 'BTD_Mod_Helper.Api.Testing.ModGameModeTest') | Runs a set of default tests for a ModGameMode |
+| [ModRoundSetTest](BTD_Mod_Helper.Api.Testing.ModRoundSetTest.md 'BTD_Mod_Helper.Api.Testing.ModRoundSetTest') | Runs a set of default tests for a ModRoundSet |
+| [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') | Defines a test task for a mod |
+| [ModTowerTest](BTD_Mod_Helper.Api.Testing.ModTowerTest.md 'BTD_Mod_Helper.Api.Testing.ModTowerTest') | Runs a set of default tests for a ModTower |
+| [ModTowerTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModTowerTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModTowerTest<T>') | Runs a set of default tests for a ModTower |
+| [ModVanillaContentTest](BTD_Mod_Helper.Api.Testing.ModVanillaContentTest.md 'BTD_Mod_Helper.Api.Testing.ModVanillaContentTest') | Tests the ModVanillaContent within a mod |
+
+| Interfaces | |
+| :--- | :--- |
+| [IHasDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest') | Indicates this type has a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') available for it |
 
 <a name='BTD_Mod_Helper.Api.Towers'></a>
 

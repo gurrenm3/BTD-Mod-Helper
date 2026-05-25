@@ -95,6 +95,9 @@ public abstract class ModFakeTower : ModTower
     /// </summary>
     public virtual bool HighlightTowers => false;
 
+    /// <inheritdoc />
+    public override bool UseDefaultTest => false;
+
     /// <summary>
     /// Controls whether the fake tower can be placed at a particular location
     /// </summary>

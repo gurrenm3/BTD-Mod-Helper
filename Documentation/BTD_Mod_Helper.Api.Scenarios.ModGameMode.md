@@ -6,10 +6,13 @@
 Class for a custom GameMode that will be added to the modes screen when starting a new match
 
 ```csharp
-public abstract class ModGameMode : BTD_Mod_Helper.Api.NamedModContent
+public abstract class ModGameMode : BTD_Mod_Helper.Api.NamedModContent,
+BTD_Mod_Helper.Api.Testing.IHasDefaultTest
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModGameMode
+
+Implements [IHasDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ApplyChallengeRules'></a>
@@ -90,6 +93,21 @@ public virtual SpriteReference IconReference { get; }
 
 #### Property Value
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.UseDefaultTest'></a>
+
+## ModGameMode.UseDefaultTest Property
+
+Allow ModHelper to automatically register a default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for this content
+
+```csharp
+public bool UseDefaultTest { get; }
+```
+
+Implements [UseDefaultTest](BTD_Mod_Helper.Api.Testing.IHasDefaultTest.md#BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest 'BTD_Mod_Helper.Api.Testing.IHasDefaultTest.UseDefaultTest')
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyBaseGameModeModel(ModModel)'></a>

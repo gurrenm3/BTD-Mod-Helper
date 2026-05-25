@@ -115,7 +115,7 @@ Users will be warned if the Tag used for release does not match the version you 
 
 ## Experimental: [Monorepo](https://en.wikipedia.org/wiki/Monorepo) support
 
-Many modders have ended up making a ton of mods and host all of them within one GitHub repository. I, doombubbles, did this myself to start out with and have since regretted it, as I was just doing it to mimic what others were doing and I no longer think the monorepo structure makes sense all things considered for multiple independent mods. Still, I wanted to add rudimentary support for existing monorepos, even though I myself am migrating my mods out of one.
+Many modders have ended up making a ton of mods and host all of them within one GitHub repository. I, doombubbles, did this myself to start out with and have since moved away from it, since I no longer think the monorepo structure makes sense all things considered for multiple independent mods. Still, I wanted to add rudimentary support for existing monorepos, even though I myself migrated my mods out of one.
 
 To set up a Mono Repo:
 - Use the `btd6-mods` GitHub topic instead of `btd6-mod`

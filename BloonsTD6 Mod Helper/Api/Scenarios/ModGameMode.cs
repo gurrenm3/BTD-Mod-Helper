@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Testing;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
@@ -13,7 +14,7 @@ namespace BTD_Mod_Helper.Api.Scenarios;
 /// <summary>
 /// Class for a custom GameMode that will be added to the modes screen when starting a new match
 /// </summary>
-public abstract class ModGameMode : NamedModContent
+public abstract class ModGameMode : NamedModContent, IHasDefaultTest
 {
     internal static readonly Dictionary<string, ModGameMode> Cache = new();
 
@@ -53,6 +54,9 @@ public abstract class ModGameMode : NamedModContent
     /// Whether this Game Mode should always apply custom challenge rules to the match via a DailyChallengeModel
     /// </summary>
     public virtual bool ApplyChallengeRules => false;
+
+    /// <inheritdoc />
+    public bool UseDefaultTest => true;
 
     /// <inheritdoc />
     public override void RegisterText(Il2CppSystem.Collections.Generic.Dictionary<string, string> textTable)
