@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Towers;
 namespace BTD_Mod_Helper.Api.Enums;
@@ -5,6 +6,7 @@ namespace BTD_Mod_Helper.Api.Enums;
 /// <summary>
 /// Enum-like class for the different tower set types
 /// </summary>
+[Obsolete("BTD6 switched to having it's own TowerSet enum class")]
 public static class TowerSetType
 {
     /// <summary>

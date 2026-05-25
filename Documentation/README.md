@@ -28,6 +28,7 @@
 | [ModGameMenu&lt;T&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') | Generic class for creating a ModGameMenu with the given type as it's base menu |
 | [ModLoadTask](BTD_Mod_Helper.Api.ModLoadTask.md 'BTD_Mod_Helper.Api.ModLoadTask') | Class for a Coroutine style task that runs during the BTD6 loading screen |
 | [ModMenuData](BTD_Mod_Helper.Api.ModMenuData.md 'BTD_Mod_Helper.Api.ModMenuData') | Class to be passed in to the Open methods of Screens |
+| [ModSourceFileGenerator](BTD_Mod_Helper.Api.ModSourceFileGenerator.md 'BTD_Mod_Helper.Api.ModSourceFileGenerator') | ModContent class for code/data generators that write files into a mod project's source code.<br/>per output. |
 | [MoreAccessTools](BTD_Mod_Helper.Api.MoreAccessTools.md 'BTD_Mod_Helper.Api.MoreAccessTools') | Further methods along the lines of Harmony's [HarmonyLib.AccessTools](https://docs.microsoft.com/en-us/dotnet/api/HarmonyLib.AccessTools 'HarmonyLib.AccessTools') |
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |
@@ -183,7 +184,6 @@
 | Classes | |
 | :--- | :--- |
 | [ModHelperSprites](BTD_Mod_Helper.Api.Enums.ModHelperSprites.md 'BTD_Mod_Helper.Api.Enums.ModHelperSprites') | Texture GUIDs for the couple sprites added by ModHelper |
-| [RoundSetType](BTD_Mod_Helper.Api.Enums.RoundSetType.md 'BTD_Mod_Helper.Api.Enums.RoundSetType') | In game IDs for the round sets included in BTD6 |
 | [TowerSetType](BTD_Mod_Helper.Api.Enums.TowerSetType.md 'BTD_Mod_Helper.Api.Enums.TowerSetType') | Enum-like class for the different tower set types |
 
 | Enums | |
@@ -321,7 +321,9 @@
 | [ModContentDefaultTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>') | A default [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') for a particular kind of [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') |
 | [ModDisplayTest](BTD_Mod_Helper.Api.Testing.ModDisplayTest.md 'BTD_Mod_Helper.Api.Testing.ModDisplayTest') | Runs a set of default tests for ModDisplays |
 | [ModGameModeTest](BTD_Mod_Helper.Api.Testing.ModGameModeTest.md 'BTD_Mod_Helper.Api.Testing.ModGameModeTest') | Runs a set of default tests for a ModGameMode |
+| [ModGameModeTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModGameModeTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModGameModeTest<T>') | Runs a set of default tests for a ModGameMode |
 | [ModRoundSetTest](BTD_Mod_Helper.Api.Testing.ModRoundSetTest.md 'BTD_Mod_Helper.Api.Testing.ModRoundSetTest') | Runs a set of default tests for a ModRoundSet |
+| [ModRoundSetTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModRoundSetTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModRoundSetTest<T>') | Runs a set of default tests for a ModRoundSet |
 | [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') | Defines a test task for a mod |
 | [ModTowerTest](BTD_Mod_Helper.Api.Testing.ModTowerTest.md 'BTD_Mod_Helper.Api.Testing.ModTowerTest') | Runs a set of default tests for a ModTower |
 | [ModTowerTest&lt;T&gt;](BTD_Mod_Helper.Api.Testing.ModTowerTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModTowerTest<T>') | Runs a set of default tests for a ModTower |

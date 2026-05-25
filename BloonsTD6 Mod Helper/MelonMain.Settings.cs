@@ -348,7 +348,7 @@ internal partial class MelonMain
                       "If you have JetBrains Rider, you can put its bin folder in your Path environment variable and do \"rider64 --wait\"."
     };
 
-    internal static readonly ModSettingFolder ModHelperSourceFolder = new("")
+    internal static readonly ModSettingFolder ModHelperSourceFolder = new(Path.Combine(ModSourcesFolder, "BTD Mod Helper"))
     {
         category = ModMaking,
         description = "Location of Mod Helper Source code for development purposes"

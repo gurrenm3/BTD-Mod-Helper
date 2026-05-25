@@ -27,6 +27,7 @@ Derived
 &#8627; [ModHook&lt;TN,TM&gt;](BTD_Mod_Helper.Api.Hooks.ModHook_TN,TM_.md 'BTD_Mod_Helper.Api.Hooks.ModHook<TN,TM>')  
 &#8627; [ModByteLoader](BTD_Mod_Helper.Api.ModByteLoader.md 'BTD_Mod_Helper.Api.ModByteLoader')  
 &#8627; [ModGameMenu](BTD_Mod_Helper.Api.ModGameMenu.md 'BTD_Mod_Helper.Api.ModGameMenu')  
+&#8627; [ModSourceFileGenerator](BTD_Mod_Helper.Api.ModSourceFileGenerator.md 'BTD_Mod_Helper.Api.ModSourceFileGenerator')  
 &#8627; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent')  
 &#8627; [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest')  
 &#8627; [ModBaseTsmTheme](BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme.md 'BTD_Mod_Helper.Api.Towers.ModBaseTsmTheme')  
