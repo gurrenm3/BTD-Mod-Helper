@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
@@ -15,36 +14,22 @@ namespace BTD_Mod_Helper.Api.Internal;
 /// </summary>
 internal class PreLoadResourcesTask : ModLoadTask
 {
+    public override bool RunsPreRegistrationPhase => true;
+
     private const int BytesPerFrame = 100000;
 
     private int currentByteTotal;
 
     private bool? showProgressBar;
 
-    public PreLoadResourcesTask()
-    {
-        Instance = this;
-        mod = ModHelper.Main;
-    }
-
     public override string DisplayName => "Pre-loading mod resources...";
 
     public override bool ShowProgressBar => showProgressBar ??=
-                                                ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values)
-                                                    .Sum(bytes => bytes.Length) >
-                                                BytesPerFrame * 5;
-
-    internal static PreLoadResourcesTask Instance { get; private set; }
+        ModHelper.Mods.SelectMany(bloonsMod => bloonsMod.Resources.Values)
+            .Sum(bytes => bytes.Length) >
+        BytesPerFrame * 5;
 
     private static GameObject resizedSpritesParent;
-
-    /// <summary>
-    /// Don't load this like a normal task
-    /// </summary>
-    /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
-
-    public static bool Complete { get; private set; }
 
     public override IEnumerator Coroutine()
     {
@@ -115,8 +100,6 @@ internal class PreLoadResourcesTask : ModLoadTask
         {
             PreloadResizedSprite(guid, orig, scale, square);
         }
-
-        Complete = true;
     }
 
     internal static void PreloadResizedSprite(string guid, string origGuid, Vector2 scale, bool square)

@@ -4,6 +4,9 @@
 - Added [ModMutator](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Mutator)
 - Added [ModCustomInput](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Input)
 - Added [ModTest](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Automated-Testing) for Automated Testing support
+- Revamped the `ModLoadTask` system: coroutine based load tasks are back to being visualized in the BTD6 initial loading screen in a future-proof way
+  - Users will now see "Modded Step X of Y..." for Mod Content registration and other tasks after the base Steps are complete
+  - The "Use Old Loading" mod helper setting returns if you want to fallback to the original way
 - Marked Obsolete the `AttackHelper`, `WeaponHelper`, `ProjectileHelper`, and `AbilityHelper` classes in favor of the
   `AttackModel.Create`,`WeaponModel.Create`,`ProjectileModel.Create`, and `AttackModel.Create` extensions, which now have the same / more conviences as the Helper classes
 - Updated `ModCommand` to support a Coroutines being a valid main Execute method with `public override IEnumerator Execute(Output output) { ... }`

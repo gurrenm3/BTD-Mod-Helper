@@ -36,7 +36,7 @@ public static class SpriteResizer
 
         var result = $"{ModContent.HijackSpriteAtlas}[{guid}]";
 
-        if (PreLoadResourcesTask.Complete)
+        if (ModContent.GetInstance<PreLoadResourcesTask>().Complete)
         {
             // late setup the resized sprite for the cache
             TaskScheduler.ScheduleTask(() => PreLoadResourcesTask.PreloadResizedSprite(guid, spriteGuid, scale, square));

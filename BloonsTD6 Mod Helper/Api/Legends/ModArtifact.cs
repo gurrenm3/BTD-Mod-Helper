@@ -264,17 +264,6 @@ public abstract class ModArtifact : NamedModContent
 
     }
 
-    internal static void FixVanillaArtifactDependants()
-    {
-        if (!ModHelper.Mods.Any(mod => mod.UsesArtifactDependants)) return;
-
-        ModHelper.Msg("Fixing vanilla artifact dependants");
-        foreach (var artifact in GameData.Instance.artifactsData.artifactDatas.Values())
-        {
-            FixDependants(artifact.ArtifactModel());
-        }
-    }
-
     internal static void FixDependants(Model model)
     {
         if (model == null || model.childDependants is {Count: > 0}) return;

@@ -1,9 +1,7 @@
-using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
-using BTD_Mod_Helper.Api.Legends;
 using BTD_Mod_Helper.Api.ModOptions;
 using BTD_Mod_Helper.Api.Scenarios;
 using Il2CppAssets.Scripts.Data;
@@ -14,7 +12,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 #if DEBUG
-using BTD_Mod_Helper.Api.Internal.JsonTowers;
 #endif
 
 namespace BTD_Mod_Helper.Patches.UI;
@@ -34,27 +31,8 @@ internal class TitleScreen_Start
             LocalizationManager.Instance.textTable = LocalizationManager.Instance.defaultTable;
         }
 
-
-        ModArtifact.FixVanillaArtifactDependants();
-
-        if (ModHelper.FallbackToOldLoading)
-        {
-            ModByteLoader.currentLoadTask?.Wait();
-            ModContent.GetContent<ModByteLoader>().Where(loader => !loader.Loaded).Do(loader => loader.LoadAllBytes());
-
-#if DEBUG
-            JsonTowers.LoadTask?.Wait();
-            JsonTowers.ProcessAll(Game.instance.model);
-#endif
-
-            PreLoadResourcesTask.Instance.RunSync();
-
-            ModHelper.Mods
-                .Where(mod => mod.Content.Count > 0)
-                .OrderBy(mod => mod.Priority)
-                .Select(mod => mod.LoadContentTask)
-                .Do(task => task.RunSync());
-        }
+        // Runs all load tasks synchronously that haven't already completed
+        ModLoadTask.RunAllSync();
 
         NamedModContent.RegisterAllText();
         LocalizationHelper.Initialize();

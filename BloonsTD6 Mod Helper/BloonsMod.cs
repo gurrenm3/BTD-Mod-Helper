@@ -76,8 +76,6 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// </summary>
     public virtual bool UsesArtifactDependants => false;
 
-    internal ModLoadTask LoadContentTask => field ??= new ModContentTask {mod = this};
-
     /// <summary>
     /// The path that this mod would most likely be at in the Mod Sources folder
     /// </summary>

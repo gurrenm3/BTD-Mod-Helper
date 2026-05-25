@@ -12,6 +12,19 @@ public abstract class ModLoadTask : BTD_Mod_Helper.Api.NamedModContent
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') &#129106; ModLoadTask
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.ModLoadTask.Complete'></a>
+
+## ModLoadTask.Complete Property
+
+Whether the Load Task has completed yet
+
+```csharp
+public bool Complete { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModLoadTask.Description'></a>
 
 ## ModLoadTask.Description Property
@@ -53,6 +66,32 @@ public float Progress { get; set; }
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
+<a name='BTD_Mod_Helper.Api.ModLoadTask.RunsPreRegistrationPhase'></a>
+
+## ModLoadTask.RunsPreRegistrationPhase Property
+
+Whether this load task needs to run before the Registration phase of ModContent
+
+```csharp
+public virtual bool RunsPreRegistrationPhase { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.ModLoadTask.ShouldRun'></a>
+
+## ModLoadTask.ShouldRun Property
+
+Whether this load task should run at all on this launch of the game
+
+```csharp
+public virtual bool ShouldRun { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.ModLoadTask.ShowProgressBar'></a>
 
 ## ModLoadTask.ShowProgressBar Property
@@ -79,3 +118,13 @@ public abstract System.Collections.IEnumerator Coroutine();
 
 #### Returns
 [System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
+
+<a name='BTD_Mod_Helper.Api.ModLoadTask.RunSync()'></a>
+
+## ModLoadTask.RunSync() Method
+
+Runs the load task coroutine synchronously
+
+```csharp
+public virtual void RunSync();
+```

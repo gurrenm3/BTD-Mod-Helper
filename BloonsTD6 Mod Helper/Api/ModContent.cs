@@ -72,7 +72,7 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// loading.
     /// </summary>
     /// <exclude />
-    public virtual int RegisterPerFrame => 20;
+    public virtual int RegisterPerFrame => 999;
 
     #region IComparable<ModContent> Members
 

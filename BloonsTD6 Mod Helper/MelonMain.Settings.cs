@@ -69,16 +69,16 @@ internal partial class MelonMain
         icon = CleansingFoamUpgradeIcon
     };
 
-    /*public static readonly ModSettingBool UseOldLoading = new(false)
+    public static readonly ModSettingBool UseOldLoading = new(false)
     {
         description =
             "Switches back to the old system of loading all mod content all at once as soon as the Title Screen is reached " +
             "(causing the game to hang until finished), instead of the new method of adding new load tasks alongside the vanilla ones. " +
-            "Depending on the mods use this could be slightly faster, but less robust.",
+            "Depending on the mods use this could be slightly faster, but leads to a laggier visual experience.",
         category = General,
         requiresRestart = true,
         icon = RetroTechbotIcon
-    };*/
+    };
 
     public static readonly ModSettingBool EnableModHelperLocalization = new(true)
     {

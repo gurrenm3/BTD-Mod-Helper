@@ -3,36 +3,29 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.Attributes;
-using BTD_Mod_Helper.Api.Testing;
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
 /// Initial task to register ModContent from other mods
 /// </summary>
 [DontLoad]
-internal class ModContentTask : ModLoadTask
+internal class RegisterModContentTask : ModLoadTask
 {
-    private float? total;
-
-    /// <inheritdoc />
     public override string DisplayName => $"Registering ModContent for {mod.Info.Name}...";
 
     public override bool ShowProgressBar => Total > 5;
 
+    private float? total;
     public float Total => total ??= mod.Content.Sum(content => 1f / content.RegisterPerFrame);
 
     /// <summary>
-    /// Registers ModContent from other mods
+    /// Registers ModContent from all mods
     /// </summary>
     public override IEnumerator Coroutine()
     {
-        if (ModHelper.FallbackToOldLoading)
-        {
-            ModHelper.Log(DisplayName);
-        }
         var current = 0f;
 
-        // ReSharper disable once ForCanBeConvertedToForeach allow new content to be added while registering
+        // ReSharper disable once ForCanBeConvertedToForeach --- allow new content to be added while registering
         for (var i = 0; i < mod.Content.Count; i++)
         {
             var modContent = mod.Content[i];
@@ -74,6 +67,7 @@ internal class ModContentTask : ModLoadTask
             {
                 modContent.rollbackActions.Clear();
             }
+
             Progress += weight / Total;
         }
     }

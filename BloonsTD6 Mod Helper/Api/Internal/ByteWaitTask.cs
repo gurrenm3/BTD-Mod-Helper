@@ -1,32 +1,20 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
-/// Initial task to register ModContent from other mods
+/// Task to wait for any <see cref="ModByteLoader"/>s that haven't finished by the time load tasks begun
 /// </summary>
 internal class ByteWaitTask : ModLoadTask
 {
+    public override bool RunsPreRegistrationPhase => true;
 
-    public ByteWaitTask()
-    {
-        Instance = this;
-        mod = ModHelper.Main;
-    }
+    public override bool ShouldRun => GetContent<ModByteLoader>().Any(loader => !loader.Loaded);
 
-    /// <inheritdoc />
     public override string DisplayName => "Waiting for ByteLoaders...";
 
-    public override bool ShowProgressBar => GetContent<ModByteLoader>().Any();
-
-    internal static ByteWaitTask Instance { get; private set; }
-
-    /// <summary>
-    /// Don't load this like a normal task
-    /// </summary>
-    /// <returns></returns>
-    public override IEnumerable<ModContent> Load() => Enumerable.Empty<ModContent>();
+    public override bool ShowProgressBar => true;
 
     /// <summary>
     /// Wait for the bytes to all be loaded
@@ -43,5 +31,11 @@ internal class ByteWaitTask : ModLoadTask
             }
             yield return null;
         }
+    }
+
+    public override void RunSync()
+    {
+        ModByteLoader.currentLoadTask?.Wait();
+        GetContent<ModByteLoader>().Where(loader => !loader.Loaded).Do(loader => loader.LoadAllBytes());
     }
 }

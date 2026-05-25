@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using MelonLoader.InternalUtils;
 using MelonLoader.Utils;
+using UnityEngine;
 using Directory = System.IO.Directory;
 using Path = System.IO.Path;
 
@@ -31,8 +32,6 @@ public static class ModHelper
     internal const string Author = "doombubbles and gurrenm3";
     internal const string Branch = "master";
     internal const string UpdaterVersion = "1.0.7";
-
-    private static bool fallBackToOldLoading = true;
 
     /// <summary>
     /// The current installed version of Mod Helper
@@ -92,8 +91,8 @@ public static class ModHelper
 
     internal static bool FallbackToOldLoading
     {
-        set => fallBackToOldLoading = value;
-        get => fallBackToOldLoading /*|| MelonMain.UseOldLoading*/;
+        get => field || MelonMain.UseOldLoading || Application.isBatchMode;
+        set;
     }
 
     internal static string MyGithubUsername => MelonMain.GitHubUsername;
