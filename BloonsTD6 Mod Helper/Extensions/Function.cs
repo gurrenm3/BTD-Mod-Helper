@@ -3,7 +3,7 @@ namespace BTD_Mod_Helper.Extensions;
 
 /// <summary>
 /// </summary>
-public delegate void Function();
+public delegate void Function(); // TODO when enough breaking changes, get rid of this
 
 /// <summary>
 /// </summary>

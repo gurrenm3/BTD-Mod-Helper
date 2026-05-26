@@ -173,6 +173,7 @@ internal partial class MelonMain : BloonsTD6Mod
     {
         inGame.gameObject.AddComponent<Instances>();
         TaskScheduler.ScheduleTask(Schedule_InGame_Loaded, () => !InGame.instance);
+        ModContent.TickingContent = null;
     }
 
     public override void OnLoadSettings(JObject settings)

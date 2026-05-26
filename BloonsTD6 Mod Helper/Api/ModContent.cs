@@ -200,9 +200,15 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     }
 
     /// <summary>
-    /// If <see cref="Tick"/> should run. False by default
+    /// If <see cref="Tick"/> should run. False by default. Re-evaluated for ModContent once at the start of each new game
     /// </summary>
     public virtual bool DoesTick => false;
+
+    internal static ModContent[] TickingContent
+    {
+        get => field ??= AllContent.Where(content => content.DoesTick).ToArray();
+        set;
+    }
 
     /// <summary>
     /// Runs each tick of the simulation assuming <see cref="DoesTick"/> is true (false by default).
@@ -211,12 +217,12 @@ public abstract partial class ModContent : IModContent, IComparable<ModContent>
     /// <param name="sim">The current simulation.</param>
     protected virtual void Tick(int ticks, Simulation sim)
     {
-        
+
     }
 
     internal static void TickAll(Simulation sim)
     {
-        foreach (var content in AllContent.Where(content => content.DoesTick))
+        foreach (var content in TickingContent)
         {
             try
             {

@@ -166,6 +166,9 @@ public abstract class ModArtifact : NamedModContent
     internal virtual string InstaDescription(int tier) => "";
 
     /// <inheritdoc />
+    public override int RegisterPerFrame => 5;
+
+    /// <inheritdoc />
     public override void Register()
     {
         if (MinTier < Common) throw new ArgumentException($"StartsAtTier must be >= {Common}");

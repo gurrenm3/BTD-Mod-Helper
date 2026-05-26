@@ -225,7 +225,7 @@ public static partial class CreateAbilityModelExt
         public string modelName { get; set; } = "";
         public string displayName { get; set; } = "";
         public string description { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public bool activateOnPreLeak { get; set; } = default;
         public bool activateOnLeak { get; set; } = default;
@@ -365,7 +365,7 @@ public static partial class CreateAbsorbTowerBuffsActionModelExt
         public string[] buffsAlwaysRemoved { get; set; } = default;
         public string[] buffsThatDontHeal { get; set; } = default;
         public string[] towersWhichAreDestroyed { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerFreezeDisplayAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerFreezeDisplayAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string triggerName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.AbsorbTowerBuffsActionModel.TowerFreezeMutator mutator { get; set; } = default;
         public string actionId { get; set; } = "";
@@ -1270,7 +1270,7 @@ public static partial class CreateAddAcidicMixtureToProjectileModelExt
         public Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[] towerBehaviors { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel[] weapBehaviors { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel[] projBehaviors { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string ignoreList { get; set; } = "";
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
@@ -1652,7 +1652,7 @@ public static partial class CreateAddBerserkerBrewToProjectileModelExt
         public Il2CppAssets.Scripts.Models.Towers.Weapons.WeaponBehaviorModel[] weapBehaviors { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[] towerBehaviors { get; set; } = default;
         public string[] ignoreMutationsByOrder { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
         public string mutatorsToRemove { get; set; } = "";
@@ -1771,7 +1771,7 @@ public static partial class CreateAddCashOnProjectileExpireModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddCashOnProjectileExpireModel>
     {
         public int cashToAdd { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float textLifeSpan { get; set; } = 0;
         public int collisionPass { get; set; } = 0;
         
@@ -2474,14 +2474,14 @@ public static partial class CreateAdoraSunGodTransformationModelExt
         public float weaponDelay { get; set; } = 0;
         public int weaponDelayFrames { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference portraitRef { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference portraitRef { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel newDisplayDarkPath { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel projectileDisplayDarkPath { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel bolDisplayDarkPath { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel bolProjectileDisplayDarkPath { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel laolProjectileDisplayDarkPath { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDarkModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference portraitDarkRef { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference portraitDarkRef { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel beamHitDisplayDarkPath { get; set; } = default;
         public int upgradeAnimationDarkPath { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.LongArmOfLightModel longArmOfLightBehaviorModel { get; set; } = default;
@@ -2756,13 +2756,13 @@ public static partial class CreateAggressionModelExt
     {
         public float sizeMultiplier { get; set; } = 0;
         public float rehitCooldownMultiplier { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displaySwap { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displaySwap { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.CorvusSpells.AggressionModel.DiplayMutator displayMutator { get; set; } = default;
         public int ongoingManaCost { get; set; } = 0;
         public float manaDrainInterval { get; set; } = 0;
         public bool reapplyOnUpgrade { get; set; } = default;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -2774,7 +2774,7 @@ public static partial class CreateAggressionModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.AggressionModel(Args args)
@@ -2802,7 +2802,7 @@ public static partial class CreateAirUnitModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.AirUnitModel>
     {
         public Il2CppAssets.Scripts.Models.Towers.TowerBehaviorModel[] behaviors { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayScale { get; set; } = 0;
         public bool isAirUnitSelectable { get; set; } = default;
         public float selectableRadius { get; set; } = 0;
@@ -3025,7 +3025,7 @@ public static partial class CreateAlternatingEjectEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AlternatingEjectEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference secondAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference secondAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel secondEffectModel { get; set; } = default;
         public float secondEffectLifespan { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectModel { get; set; } = default;
@@ -3085,8 +3085,8 @@ public static partial class CreateAmbushPointsSettingModelExt
         public float minimumPointDistanceSquared { get; set; } = 0;
         public float dotSpacing { get; set; } = 0;
         public float dotOffset { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lineDelay { get; set; } = 0;
         public int lineDelayFrames { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
@@ -3135,7 +3135,7 @@ public static partial class CreateAmbushTechModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AmbushTechModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float radius { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AmbushTechModel(Args args)
@@ -3185,12 +3185,12 @@ public static partial class CreateAncestralMightModelExt
     {
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel attack { get; set; } = default;
         public float absorptionDuration { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference withEchoSwap { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference withEchoSwap { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.CorvusSpells.AncestralMightModel.EchoMutator displayMutator { get; set; } = default;
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -3202,7 +3202,7 @@ public static partial class CreateAncestralMightModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.AncestralMightModel(Args args)
@@ -3494,8 +3494,8 @@ public static partial class CreateApplyTowerFreezeModelExt
         public int stunFrequencyRounds { get; set; } = 0;
         public int stunDurationRounds { get; set; } = 0;
         public string[] ignoreList { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference freezeSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference freezeSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.StunTowersInRadiusActionModel.TowerFreezeMutator mutator { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.ApplyTowerFreezeModel(Args args)
@@ -3652,9 +3652,9 @@ public static partial class CreateAreaTextureModelExt
         public bool isPremiumItem { get; set; } = default;
         public bool isGroupedWithVarients { get; set; } = default;
         public Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData itemVarientData { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 0;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -3746,7 +3746,7 @@ public static partial class CreateAssetPathModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Effects.AssetPathModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Effects.AssetPathModel(Args args)
         {
@@ -4198,11 +4198,11 @@ public static partial class CreateBananaFarmerRegrowBananasModelExt
     {
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel regrowBananaSkinModel { get; set; } = default;
         public int regrowPerBanana { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel activateSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel confirmSound { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lineDotOffset { get; set; } = 0;
         public float lineDotSpacing { get; set; } = 0;
         public bool isBananaIntelligenceBureau { get; set; } = default;
@@ -4298,7 +4298,7 @@ public static partial class CreateBankDepositsModModelExt
     {
         public float depositPercent { get; set; } = 0;
         public string towerSelectionMenuThemeId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Mods.BankDepositsModModel(Args args)
@@ -4322,7 +4322,7 @@ public static partial class CreateBankDepositsModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.BankDepositsModel>
     {
         public float depositPercent { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.BankDepositsModel(Args args)
@@ -4369,8 +4369,8 @@ public static partial class CreateBankModelExt
     {
         public float capacity { get; set; } = 0;
         public float interest { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference fullBankAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference fullBankAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public bool autoCollect { get; set; } = default;
         public int collectAnimation { get; set; } = 0;
@@ -4401,15 +4401,15 @@ public static partial class CreateBeastHandlerLeashModelExt
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.AttackModel spawnerAttackModelSecond { get; set; } = default;
         public int moveAnimationState { get; set; } = 0;
         public bool rotateToLeashedTower { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference contributedToLineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference contributedFromLineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference contributedToLineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference contributedFromLineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float contributionDotOffset { get; set; } = 0;
         public float contributionDotSpacing { get; set; } = 0;
         public float contributionDotSpeed { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffedTextDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference mergedTextDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference powerTextDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference validMergeTargetObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffedTextDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference mergedTextDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference powerTextDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference validMergeTargetObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetModel piranhaPetModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetModel microraptorPetModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetModel gyrfalconPetModel { get; set; } = default;
@@ -4442,8 +4442,8 @@ public static partial class CreateBeastHandlerPetDisplayStepModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetDisplayStepModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference projectileDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference projectileDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float percent { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetDisplayStepModel(Args args)
@@ -4483,7 +4483,7 @@ public static partial class CreateBeastHandlerPetModelExt
         public int damageRangeGrappleGyrfalcon { get; set; } = 0;
         public float speedRangeGyrfalcon { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetDisplayStepModel[] displayStepModels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference genericIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference genericIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.BeastHandlerPetModel(Args args)
         {
@@ -4686,15 +4686,15 @@ public static partial class CreateBloodSacrificeModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.BloodSacrificeModel>
     {
         public float xpMultiplier { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectAtSacrificeModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference activateSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference confirmSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference activateSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference confirmSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public float rateBonusMultiplier { get; set; } = 0;
         public float rangeBonusMultiplier { get; set; } = 0;
         public float buffDuration { get; set; } = 0;
         public int buffDurationFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
@@ -4890,8 +4890,8 @@ public static partial class CreateBloonModelExt
     {
         public string id { get; set; } = "";
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2Cpp.BloonOverlayClass overlayClass { get; set; } = default;
         public string[] tags { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
@@ -4912,8 +4912,8 @@ public static partial class CreateBloonModelExt
         public bool isSaved { get; set; } = default;
         public bool isImmuneToSlow { get; set; } = default;
         public bool isBossSegment { get; set; } = default;
-        public Il2CppSystem.Nullable<float> totalLeakDamage { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> storedLayers { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
+        public float? totalLeakDamage { get; set; } = default;
+        public float? storedLayers { get; set; } = default;
         public float radius { get; set; } = 0;
         public float danger { get; set; } = 0;
         public int maxHealth { get; set; } = 0;
@@ -4935,7 +4935,7 @@ public static partial class CreateBloonModelExt
         public Il2Cpp.BloonBasicTypeFlag basicTypeFlags { get; set; } = default;
         public Il2Cpp.BloonKind propertyFlags { get; set; } = default;
         public bool isFixedMaxHealth { get; set; } = false;
-        public Il2CppSystem.Nullable<bool> isRock { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
+        public bool? isRock { get; set; } = default;
         public bool updateChildBloonModels { get; set; } = default;
         public Il2CppSystem.Collections.Generic.List<Il2CppAssets.Scripts.Models.Bloons.BloonModel> childBloonModels { get; set; } = default;
         public float Speed { get; set; } = 0;
@@ -4943,11 +4943,11 @@ public static partial class CreateBloonModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.BloonModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Bloons.BloonModel(args.id, args.baseId, args.speed, args.radius, args.display, args.damageDisplayStates, args.icon, args.behaviors, args.overlayClass, args.tags, args.mods, args.collisionGroup, args.danger, args.hasChildrenWithDifferentTotalHealths, args.layerNumber, args.isCamo, args.isGrow, args.isFortified, args.depletionEffects, args.isMoab, args.isBoss, args.bloonProperties, args.leakDamage, args.leakDamageSet, args.maxHealth, args.distributeDamageToChildren, args.isInvulnerable, args.bonusDamagePerHit, args.disallowCosmetics, args.isSaved, args.currentOverlays, args.dontShowInSandbox, args.dontShowInSandboxOnRelease, args.alwaysRecordsDamage, args.isImmuneToSlow, args.isBossSegment, args.basicTypeFlags, args.propertyFlags, args.armourMultiplier, args.legendsType, args.variantName, args.variantPrefix, args.isFixedMaxHealth);
-            if (args.totalLeakDamage != default) result.totalLeakDamage = args.totalLeakDamage;
-            if (args.storedLayers != default) result.storedLayers = args.storedLayers;
+            if (args.totalLeakDamage != default) result.totalLeakDamage = Il2CppSystem.Nullable<float>.Unbox(args.totalLeakDamage!.Value);
+            if (args.storedLayers != default) result.storedLayers = Il2CppSystem.Nullable<float>.Unbox(args.storedLayers!.Value);
             if (args.coopMultiplier != default) result.coopMultiplier = args.coopMultiplier;
             if (args.speedFrames != default) result.speedFrames = args.speedFrames;
-            if (args.isRock != default) result.isRock = args.isRock;
+            if (args.isRock != default) result.isRock = Il2CppSystem.Nullable<bool>.Unbox(args.isRock!.Value);
             if (args.updateChildBloonModels != default) result.updateChildBloonModels = args.updateChildBloonModels;
             if (args.childBloonModels != default) result.childBloonModels = args.childBloonModels;
             if (args.Speed != default) result.Speed = args.Speed;
@@ -5381,7 +5381,7 @@ public static partial class CreateBoostArtifactModelExt
         public Il2CppAssets.Scripts.Models.ModModel monkeyKnowledgeModModels { get; set; } = default;
         public bool isBossArtifact { get; set; } = default;
         public bool isSheriffArtifact { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string rarityFrameType { get; set; } = "";
         public int merchantCostMultiplier { get; set; } = 0;
         public bool isQuestArtifact { get; set; } = default;
@@ -5448,7 +5448,7 @@ public static partial class CreateBossRushManagerModelExt
         public float mapLengthSpeedMultiplier { get; set; } = 0;
         public int baseBossHealth { get; set; } = 0;
         public int baseBossShield { get; set; } = 0;
-        public Il2CppSystem.Nullable<int> maxKills { get; set; } = Il2CppSystem.Nullable<int>.Unbox(0);
+        public int? maxKills { get; set; } = default;
         public string targetBloonName { get; set; } = "";
         public float badHealthMutliplier { get; set; } = 0;
         public float badSpeedMutliplier { get; set; } = 0;
@@ -5459,7 +5459,7 @@ public static partial class CreateBossRushManagerModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.BossRushManagerModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.BossRushManagerModel(args.targetBloonName, args.badSpeedMutliplier, args.badScaleMutliplier, args.badHealthMutliplier, args.numAllowedLeaks, args.numRoundsBeforeSpawningTarget, args.bossCashReward, args.bossCashRewardMultiplier, args.maxCashScalingLevel, args.milestoneTierFrequency, args.rushBehaviors, args.dontReplaceOnMilestone, args.useTrackLengthBasedBossSpeed, args.mapLengthSpeedMultiplier, args.baseBossHealth, args.baseBossShield, args.maxKills);
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.BossRushManagerModel(args.targetBloonName, args.badSpeedMutliplier, args.badScaleMutliplier, args.badHealthMutliplier, args.numAllowedLeaks, args.numRoundsBeforeSpawningTarget, args.bossCashReward, args.bossCashRewardMultiplier, args.maxCashScalingLevel, args.milestoneTierFrequency, args.rushBehaviors, args.dontReplaceOnMilestone, args.useTrackLengthBasedBossSpeed, args.mapLengthSpeedMultiplier, args.baseBossHealth, args.baseBossShield, Il2CppSystem.Nullable<int>.Unbox(args.maxKills));
             if (args.destroyOnDegradeModel != default) result.destroyOnDegradeModel = args.destroyOnDegradeModel;
             if (args.name != default) result.name = args.name;
             args.OnCreate(result);
@@ -5479,10 +5479,10 @@ public static partial class CreateBottleHotSauceBehaviorModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GeraldoItems.BottleHotSauceBehaviorModel>
     {
         public string towerId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public int v2At { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.GeraldoItems.BottleHotSauceBehaviorModel.BottleHotSauceMutator mutator { get; set; } = default;
@@ -6018,10 +6018,10 @@ public static partial class CreateCarpetBombAbilityModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CarpetBombAbilityModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayGreenIndicator { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayRedIndicator { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference bombersPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayGreenIndicator { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayRedIndicator { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference bombersPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmissionModel singleEmissionModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel { get; set; } = default;
         public float pointSwitchDistance { get; set; } = 0;
@@ -6259,7 +6259,7 @@ public static partial class CreateCashPerTowerInRangeModelExt
         public float[] extraCashPerTier { get; set; } = default;
         public float rangeIncrease { get; set; } = 0;
         public float maxCashGeneration { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float textLifespan { get; set; } = 0;
         public float badPopMultiplier { get; set; } = 0;
         public float bossSkullMultiplier { get; set; } = 0;
@@ -6343,10 +6343,10 @@ public static partial class CreateCenterElipsePatternModelExt
         public float heightRadius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool reverse { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool canSelectPoint { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference pointDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference pointDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool isOnSubTower { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.CenterElipsePatternModel(Args args)
@@ -6879,7 +6879,7 @@ public static partial class CreateCirclePatternCloseModelExt
         public float radius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool reverse { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
         
@@ -6906,7 +6906,7 @@ public static partial class CreateCirclePatternFirstModelExt
         public float radius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool reverse { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
         
@@ -6933,7 +6933,7 @@ public static partial class CreateCirclePatternLastModelExt
         public float radius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool reverse { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
         
@@ -6960,7 +6960,7 @@ public static partial class CreateCirclePatternModelExt
         public float radius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool reverse { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
         
@@ -6987,7 +6987,7 @@ public static partial class CreateCirclePatternStrongModelExt
         public float radius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool reverse { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
         
@@ -7459,7 +7459,7 @@ public static partial class CreateControlledEffectZoneModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledEffectZoneModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledEffectZoneModel.TowerEffectTraitMutator mutator { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.ControlledEffectZoneModel(Args args)
@@ -7839,7 +7839,7 @@ public static partial class CreateCreateEffectActionModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateEffectActionModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float scale { get; set; } = 0;
         public float lifespan { get; set; } = 0;
         public bool followBloonTransform { get; set; } = default;
@@ -8064,17 +8064,17 @@ public static partial class CreateCreateEffectOnBloonOverTimeModelExt
     {
         public int intervalFrames { get; set; } = 0;
         public float interval { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public bool triggerImmediate { get; set; } = default;
         public bool rotateEffectWithBloon { get; set; } = default;
         public float initialDelay { get; set; } = 0;
         public int initialDelayFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound3 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound4 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound5 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound3 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound4 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound5 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public float Interval { get; set; } = 0;
         public Il2CppAssets.Scripts.ObjectId tower { get; set; } = default;
         
@@ -8152,7 +8152,7 @@ public static partial class CreateCreateEffectOnExhaustedModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnExhaustedModel>
     {
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.Fullscreen fullscreen { get; set; } = default;
         public bool randomRotation { get; set; } = default;
@@ -8200,7 +8200,7 @@ public static partial class CreateCreateEffectOnGeraldoItemModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GeraldoItems.CreateEffectOnGeraldoItemModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public bool fullScreen { get; set; } = default;
         public bool useCenterPosition { get; set; } = default;
@@ -8436,8 +8436,8 @@ public static partial class CreateCreateGreatWhiteEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateGreatWhiteEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference bloonDestroyedDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference bloonDestroyedDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel bloonDestroyedDisplayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel retreatEffectModel { get; set; } = default;
@@ -8542,7 +8542,7 @@ public static partial class CreateCreateNearbyWaterModelExt
     {
         public float radius { get; set; } = 0;
         public float areaHeightOffset { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference freezeAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference freezeAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.CreateNearbyWaterModel(Args args)
         {
@@ -8617,7 +8617,7 @@ public static partial class CreateCreateProjectileOnBlockerCollideModelExt
     {
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public int collisionPass { get; set; } = 0;
         
@@ -8703,7 +8703,7 @@ public static partial class CreateCreateProjectileOnExhaustPierceModelExt
         public int count { get; set; } = 0;
         public int minimumTimeDifferenceInFrames { get; set; } = 0;
         public bool destroyProjectile { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public bool displayFullscreen { get; set; } = default;
         public bool useBloonPosition { get; set; } = default;
@@ -9020,7 +9020,7 @@ public static partial class CreateCreatePropsOnBloonActionModelExt
         public int rockAmount { get; set; } = 0;
         public float rockDuration { get; set; } = 0;
         public int rockPropId { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference expireEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference expireEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float expireEffectDuration { get; set; } = 0;
         public float propScale { get; set; } = 0;
         public string actionId { get; set; } = "";
@@ -9071,8 +9071,8 @@ public static partial class CreateCreateRopeEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateRopeEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference endAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference endAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float spriteSpacing { get; set; } = 0;
         public float spriteOffset { get; set; } = 0;
         public float spriteRadius { get; set; } = 0;
@@ -9382,7 +9382,7 @@ public static partial class CreateCreateSoundOnGeraldoItemModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GeraldoItems.CreateSoundOnGeraldoItemModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.GeraldoItems.CreateSoundOnGeraldoItemModel(Args args)
         {
@@ -9638,7 +9638,7 @@ public static partial class CreateCreateSoundOnSpawnBloonModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnSpawnBloonModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.CreateSoundOnSpawnBloonModel(Args args)
         {
@@ -9752,7 +9752,7 @@ public static partial class CreateCreateTextEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateTextEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public bool useTowerPosition { get; set; } = default;
         public int collisionPass { get; set; } = 0;
@@ -9944,10 +9944,10 @@ public static partial class CreateCreateTypedTowerModelExt
         public Il2CppAssets.Scripts.Models.Towers.TowerModel boomTower { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerModel coldTower { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerModel energyTower { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference crushingDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference boomDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference coldDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference energyDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference crushingDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference boomDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference coldDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference energyDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int collisionPass { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateTypedTowerModel(Args args)
@@ -10045,7 +10045,7 @@ public static partial class CreateCritRollModelExt
         public float damageAdditive { get; set; } = 0;
         public float damageMultiplier { get; set; } = 0;
         public float chance { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel critSound { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritRollModel(Args args)
@@ -10072,7 +10072,7 @@ public static partial class CreateCritRollWithDistanceModelExt
         public float damageAdditive { get; set; } = 0;
         public float damageMultiplier { get; set; } = 0;
         public float chance { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel critSound { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CritRollWithDistanceModel(Args args)
@@ -10593,18 +10593,18 @@ public static partial class CreateCustomMushroomGrottoRemoveableModelExt
         public bool denySellIfStackedTowers { get; set; } = default;
         public bool destroyArea { get; set; } = default;
         public string modPathId { get; set; } = "";
-        public Il2CppSystem.Nullable<float> modPathBloonHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathBloonScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<bool> modPathBloonInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
-        public Il2CppSystem.Nullable<bool> modPathMoabInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
+        public float? modPathBloonHeightOffset { get; set; } = default;
+        public float? modPathMoabHeightOffset { get; set; } = default;
+        public float? modPathBloonScale { get; set; } = default;
+        public float? modPathMoabScale { get; set; } = default;
+        public bool? modPathBloonInvulnerability { get; set; } = default;
+        public bool? modPathMoabInvulnerability { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GameType[] disableInGameTypes { get; set; } = default;
         public Il2CppSystem.Collections.Generic.List<Il2CppAssets.Scripts.ObjectId> ids { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.CustomMushroomGrottoRemoveableModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.CustomMushroomGrottoRemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
+            var result = new Il2CppAssets.Scripts.Models.Map.CustomMushroomGrottoRemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonScale), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabScale), Il2CppSystem.Nullable<bool>.Unbox(args.modPathBloonInvulnerability), Il2CppSystem.Nullable<bool>.Unbox(args.modPathMoabInvulnerability), args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
             args.OnCreate(result);
             return result;   
@@ -10635,18 +10635,18 @@ public static partial class CreateCustomRemoveableModelExt
         public bool denySellIfStackedTowers { get; set; } = default;
         public bool destroyArea { get; set; } = default;
         public string modPathId { get; set; } = "";
-        public Il2CppSystem.Nullable<float> modPathBloonHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathBloonScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<bool> modPathBloonInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
-        public Il2CppSystem.Nullable<bool> modPathMoabInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
+        public float? modPathBloonHeightOffset { get; set; } = default;
+        public float? modPathMoabHeightOffset { get; set; } = default;
+        public float? modPathBloonScale { get; set; } = default;
+        public float? modPathMoabScale { get; set; } = default;
+        public bool? modPathBloonInvulnerability { get; set; } = default;
+        public bool? modPathMoabInvulnerability { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GameType[] disableInGameTypes { get; set; } = default;
         public Il2CppSystem.Collections.Generic.List<Il2CppAssets.Scripts.ObjectId> ids { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.CustomRemoveableModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.CustomRemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.removeableAreaData, args.onTriggerFramesToWait);
+            var result = new Il2CppAssets.Scripts.Models.Map.CustomRemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonScale), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabScale), Il2CppSystem.Nullable<bool>.Unbox(args.modPathBloonInvulnerability), Il2CppSystem.Nullable<bool>.Unbox(args.modPathMoabInvulnerability), args.removeableAreaData, args.onTriggerFramesToWait);
             if (args.disableInGameTypes != default) result.disableInGameTypes = args.disableInGameTypes;
             if (args.ids != default) result.ids = args.ids;
             args.OnCreate(result);
@@ -10823,7 +10823,7 @@ public static partial class CreateDamageBloonsInRadiusActionModelExt
     {
         public float explosionRadius { get; set; } = 0;
         public float explosionDamage { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference explosionFx { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference explosionFx { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string actionId { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.Actions.DamageBloonsInRadiusActionModel(Args args)
@@ -11291,7 +11291,7 @@ public static partial class CreateDamageOverTimeCustomModelExt
         public Il2Cpp.BloonProperties immuneBloonPropertiesOriginal { get; set; } = default;
         public float interval { get; set; } = 0;
         public int intervalFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public bool triggerImmediate { get; set; } = default;
         public bool rotateEffectWithBloon { get; set; } = default;
@@ -11377,7 +11377,7 @@ public static partial class CreateDamageOverTimeForTagModelExt
         public Il2Cpp.BloonProperties immuneBloonPropertiesOriginal { get; set; } = default;
         public float interval { get; set; } = 0;
         public int intervalFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public bool triggerImmediate { get; set; } = default;
         public bool rotateEffectWithBloon { get; set; } = default;
@@ -11451,7 +11451,7 @@ public static partial class CreateDamageOverTimeModelExt
         public Il2Cpp.BloonProperties immuneBloonPropertiesOriginal { get; set; } = default;
         public float interval { get; set; } = 0;
         public int intervalFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public bool triggerImmediate { get; set; } = default;
         public bool rotateEffectWithBloon { get; set; } = default;
@@ -11562,7 +11562,7 @@ public static partial class CreateDamageStateModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.DamageStateModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float healthPercent { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.DamageStateModel(Args args)
@@ -11986,7 +11986,7 @@ public static partial class CreateDarkshiftModelExt
     {
         public bool restrictToTowerRadius { get; set; } = default;
         public float placementZoneAssetRadius { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placementZoneAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placementZoneAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel darkshiftSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel disappearEffectModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel reappearEffectModel { get; set; } = default;
@@ -12542,7 +12542,7 @@ public static partial class CreateDestroyProjectilesInRadiusActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.DestroyProjectilesInRadiusActionModel>
     {
         public float radius { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference destroyedItemEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference destroyedItemEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float destroyedItemEffectTime { get; set; } = 0;
         public bool ignorePowerProjectiles { get; set; } = default;
         public string actionId { get; set; } = "";
@@ -12748,7 +12748,7 @@ public static partial class CreateDiamondbackBehaviorModelExt
         public float tailShieldRegenerateTime { get; set; } = 0;
         public string tailShieldBrokenActionId { get; set; } = "";
         public string tailShieldRegenerateActionId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference repairTraverseEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference repairTraverseEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float skullInvulnerableTime { get; set; } = 0;
         public float bloonBleedHealthPercent { get; set; } = 0;
         public string skullActionId { get; set; } = "";
@@ -12922,7 +12922,7 @@ public static partial class CreateDisableTowersInRangeModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Props.Behaviors.DisableTowersInRangeModel>
     {
         public int range { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference disabledTowerOverlayDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference disabledTowerOverlayDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Props.Behaviors.DisableTowersInRangeModel.SuspendTowerMutator mutator { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Props.Behaviors.DisableTowersInRangeModel(Args args)
@@ -13077,7 +13077,7 @@ public static partial class CreateDisplayModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int layer { get; set; } = 0;
         public Il2CppAssets.Scripts.Simulation.SMath.Vector3 positionOffset { get; set; } = default;
         public float scale { get; set; } = 1f;
@@ -13111,7 +13111,7 @@ public static partial class CreateDistanceBasedCritModelExt
         public float baseCritChance { get; set; } = 0;
         public float bonusCritChancePerDistance { get; set; } = 0;
         public float happyCurveInfluence { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textDisplayReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textDisplayReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float textLifespan { get; set; } = 0;
         public string text { get; set; } = "";
         public int collisionPass { get; set; } = 0;
@@ -13256,8 +13256,8 @@ public static partial class CreateDoorGunnerModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel activateSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel pickupSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel.DoorGunnerMutator mutator { get; set; } = default;
@@ -13283,7 +13283,7 @@ public static partial class CreateDrainLivesActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.DrainLivesActionModel>
     {
         public int livesDrained { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifespan { get; set; } = 0;
         public string actionId { get; set; } = "";
         
@@ -13489,10 +13489,10 @@ public static partial class CreateDruidVengeanceEffectModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel smallGlowEffectModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel mediumGlowEffectModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel epicGlowEffectModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference defaultProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference weakProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference mediumProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference epicProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference defaultProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference weakProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference mediumProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference epicProjectilePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int smallGlowEffectStacks { get; set; } = 0;
         public int mediumGlowEffectStacks { get; set; } = 0;
         public int epicGlowEffectStacks { get; set; } = 0;
@@ -13558,7 +13558,7 @@ public static partial class CreateDynamiteBloonBehaviorModelExt
         public float shakeIntensity { get; set; } = 0;
         public float fuseEffectRadius { get; set; } = 0;
         public float towerStunDuration { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel fuseIgnitedSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel explosionSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.SingleEmissionModel emission { get; set; } = default;
@@ -13647,7 +13647,7 @@ public static partial class CreateEchoModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -13659,7 +13659,7 @@ public static partial class CreateEchoModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.EchoModel(Args args)
@@ -13690,9 +13690,9 @@ public static partial class CreateEditorItemModelExt
         public bool isPremiumItem { get; set; } = default;
         public bool isGroupedWithVarients { get; set; } = default;
         public Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData itemVarientData { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = default;
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 5f;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -13747,7 +13747,7 @@ public static partial class CreateEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Effects.EffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float scale { get; set; } = 1;
         public float lifespan { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.Fullscreen fullscreen { get; set; } = default;
@@ -13850,7 +13850,7 @@ public static partial class CreateEjectEffectWithOffsetsModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EjectEffectWithOffsetsModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectModel { get; set; } = default;
         public bool rotateToWeapon { get; set; } = default;
         
@@ -13874,7 +13874,7 @@ public static partial class CreateEjectMultipleTestEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.EjectMultipleTestEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public int count { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.Fullscreen fullscreen { get; set; } = default;
@@ -13928,7 +13928,7 @@ public static partial class CreateEmberModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -13940,7 +13940,7 @@ public static partial class CreateEmberModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.Instant.EmberModel(Args args)
@@ -13992,7 +13992,7 @@ public static partial class CreateEmergencyUnlockModelExt
         public float duration { get; set; } = 0;
         public int durationFrames { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel activateSound { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.EmergencyUnlockModel.EmergencyUnlockMutator mutator { get; set; } = default;
         
@@ -14878,7 +14878,7 @@ public static partial class CreateEntityModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Entities.EntityModel>
     {
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 6f;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -14930,7 +14930,7 @@ public static partial class CreateEruptionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.EruptionModel>
     {
         public float projectileLifespanMult { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel projectileToSwapDisplay { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel projectileDisplay { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel subProjectileToSwapDisplay { get; set; } = default;
@@ -15199,11 +15199,11 @@ public static partial class CreateFertilizerBehaviorModelExt
         public int path1TierLimit { get; set; } = 0;
         public int path2TierLimit { get; set; } = 0;
         public int path3TierLimit { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GeraldoItems.FertilizerBehaviorModel.FertilizerMutator mutator { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.GeraldoItems.FertilizerBehaviorModel(Args args)
@@ -15386,7 +15386,7 @@ public static partial class CreateFigureEightPatternModelExt
         public float radius { get; set; } = 0;
         public bool isSelectable { get; set; } = default;
         public bool rotated { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayCount { get; set; } = 0;
         public bool useTowerPosition { get; set; } = default;
         public bool isOnSubTower { get; set; } = default;
@@ -16315,7 +16315,7 @@ public static partial class CreateFinalStrikeModelExt
         public int countdownFrames { get; set; } = 0;
         public float launchRate { get; set; } = 0;
         public int launchRateFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textEffectDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textEffectDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emissionModel { get; set; } = default;
         public float throwOffsetX { get; set; } = 0;
@@ -16443,9 +16443,9 @@ public static partial class CreateFireballActionModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.FireballActionModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference fireballDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference magmaPoolDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference fireballDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference magmaPoolDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference[] sounds { get; set; } = default;
         public float projectileSpeed { get; set; } = 0;
         public float stunDuration { get; set; } = 0;
@@ -17102,7 +17102,7 @@ public static partial class CreateFreezeNearbyWaterModelExt
     {
         public float radius { get; set; } = 0;
         public float areaHeightOffset { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference freezeAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference freezeAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayPriority { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.FreezeNearbyWaterModel(Args args)
@@ -17192,7 +17192,7 @@ public static partial class CreateFrontierMapArtifactModelExt
         public Il2CppAssets.Scripts.Models.ModModel monkeyKnowledgeModModels { get; set; } = default;
         public bool isBossArtifact { get; set; } = default;
         public bool isSheriffArtifact { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string rarityFrameType { get; set; } = "";
         public int merchantCostMultiplier { get; set; } = 0;
         public bool isQuestArtifact { get; set; } = default;
@@ -17244,7 +17244,7 @@ public static partial class CreateFrostboundModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -17256,7 +17256,7 @@ public static partial class CreateFrostboundModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.Instant.FrostboundModel(Args args)
@@ -17337,7 +17337,7 @@ public static partial class CreateGainCashActionModelExt
     {
         public float amount { get; set; } = 0;
         public bool showText { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int entityEventIndex { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Entities.Events.Actions.GainCashActionModel(Args args)
@@ -17560,7 +17560,7 @@ public static partial class CreateGeraldoChangeTowerBehaviorModelExt
         public int path2TierMax { get; set; } = 0;
         public int path3TierMax { get; set; } = 0;
         public string resultingTowerName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string upgradedTowerName { get; set; } = "";
         public int upgradedTowerUnlockedAt { get; set; } = 0;
         public int resultingPath1TierMax { get; set; } = 0;
@@ -17658,7 +17658,7 @@ public static partial class CreateGeraldoItemModelExt
         public string blockPurchaseIfTowerPlaced { get; set; } = "";
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.GeraldoItems.GeraldoItemModel(Args args)
@@ -17705,7 +17705,7 @@ public static partial class CreateGiveCashOnBloonHitModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.GiveCashOnBloonHitModel>
     {
         public float cash { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel sound { get; set; } = default;
         public float extraCashOnPop { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel popSoundEffect { get; set; } = default;
@@ -17914,8 +17914,8 @@ public static partial class CreateGoldenBloonModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.GoldenBloonModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference damageFX { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference rewardText { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference damageFX { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference rewardText { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float rewardTextLifeTime { get; set; } = 0;
         public float invulnerableTime { get; set; } = 0;
         public float cantJumpTime { get; set; } = 0;
@@ -18050,8 +18050,8 @@ public static partial class CreateGreatWhiteDisplayStepModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.GreatWhiteDisplayStepModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference portalEffectDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference noGrabEffectDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference portalEffectDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference noGrabEffectDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float percent { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.GreatWhiteDisplayStepModel(Args args)
@@ -18228,8 +18228,8 @@ public static partial class CreateGyrfalconPatternModelExt
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel grabProjectileModel { get; set; } = default;
         public float grappleDamageRate { get; set; } = 0;
         public int grappleDamageRateFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectPointDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectPointDisplayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectPointDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectPointDisplayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int leadPiercePenalty { get; set; } = 0;
         public int ceramicPiercePenalty { get; set; } = 0;
         public int moabPiercePenalty { get; set; } = 0;
@@ -18338,7 +18338,7 @@ public static partial class CreateHasteModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -18350,7 +18350,7 @@ public static partial class CreateHasteModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.HasteModel(Args args)
@@ -18429,7 +18429,7 @@ public static partial class CreateHealOnTowerSellActionModelExt
     {
         public int healAmount { get; set; } = 0;
         public float healPercentForHighestTier { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTower { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTower { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string actionId { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.HealOnTowerSellActionModel(Args args)
@@ -18526,7 +18526,7 @@ public static partial class CreateHealthyBananasModModelExt
     {
         public int marketplaceLives { get; set; } = 0;
         public int centralMarketLives { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifespan { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Mods.HealthyBananasModModel(Args args)
@@ -19368,7 +19368,7 @@ public static partial class CreateImfLoanModelExt
     {
         public float amount { get; set; } = 0;
         public float incomeRecoveryRate { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.SimulationBehaviors.ImfLoanCollectionModel imfLoanCollection { get; set; } = default;
         
@@ -19736,7 +19736,7 @@ public static partial class CreateIncreaseWorthTextEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.IncreaseWorthTextEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public bool displayFullPayout { get; set; } = default;
         
@@ -19934,7 +19934,7 @@ public static partial class CreateItemArtifactModelExt
         public Il2CppAssets.Scripts.Models.ModModel monkeyKnowledgeModModels { get; set; } = default;
         public bool isBossArtifact { get; set; } = default;
         public bool isSheriffArtifact { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string rarityFrameType { get; set; } = "";
         public int merchantCostMultiplier { get; set; } = 0;
         public bool isQuestArtifact { get; set; } = default;
@@ -19962,10 +19962,10 @@ public static partial class CreateJarOfPicklesBehaviorModelExt
         public float attackSpeedScale { get; set; } = 0;
         public int damageIncrease { get; set; } = 0;
         public int rounds { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public int bonusFortDamageAt { get; set; } = 0;
         public int bonusFortDamage { get; set; } = 0;
@@ -20028,8 +20028,8 @@ public static partial class CreateJungleVineEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.JungleVineEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayFrontAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayBackAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayFrontAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayBackAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.Fullscreen fullscreen { get; set; } = default;
         public float destroyAfterPopTime { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel sound1 { get; set; } = default;
@@ -20416,7 +20416,7 @@ public static partial class CreateLifeRegenModelExt
         public float regenAmount { get; set; } = 0;
         public float overRegenAmount { get; set; } = 0;
         public float lifespan { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.LifeRegenModel(Args args)
         {
@@ -20681,7 +20681,7 @@ public static partial class CreateLinkDisplayScaleToTowerRangeModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.LinkDisplayScaleToTowerRangeModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float baseTowerRange { get; set; } = 0;
         public float displayRadius { get; set; } = 0;
         public string hideIfAttackPausedId { get; set; } = "";
@@ -20827,7 +20827,7 @@ public static partial class CreateLockInPlaceSettingModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.LockInPlaceSettingModel>
     {
         public bool isSelectable { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool isOnSubTower { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.LockInPlaceSettingModel(Args args)
@@ -21159,9 +21159,9 @@ public static partial class CreateMagusPerfectusGraveyardStateManagerModelExt
         public Il2CppSystem.Collections.Generic.Dictionary<string, Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStringArray> attackManagerStates { get; set; } = default;
         public float rateBonusThreshold { get; set; } = 0;
         public float rateMultplierAmount { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference graveyardDisplay1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference graveyardDisplay2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference graveyardDisplay1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference graveyardDisplay2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textDisplayPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel switchAttackToGenerateSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel switchAttackToConsumeSound { get; set; } = default;
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference[] phoenixDisabledPrefabs { get; set; } = default;
@@ -21229,7 +21229,7 @@ public static partial class CreateMalevolenceModelExt
         public float manaDrainInterval { get; set; } = 0;
         public bool reapplyOnUpgrade { get; set; } = default;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -21241,7 +21241,7 @@ public static partial class CreateMalevolenceModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.Continuous.MalevolenceModel(Args args)
@@ -21386,7 +21386,7 @@ public static partial class CreateMapArtifactModelExt
         public Il2CppAssets.Scripts.Models.ModModel monkeyKnowledgeModModels { get; set; } = default;
         public bool isBossArtifact { get; set; } = default;
         public bool isSheriffArtifact { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string rarityFrameType { get; set; } = "";
         public int merchantCostMultiplier { get; set; } = 0;
         public bool isQuestArtifact { get; set; } = default;
@@ -21460,9 +21460,9 @@ public static partial class CreateMapEditorBehaviorModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorBehaviorModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placementEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placementEffectLarge { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference sellEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placementEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placementEffectLarge { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference sellEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.MapEditorBehaviors.MapEditorBehaviorModel(Args args)
         {
@@ -21779,9 +21779,9 @@ public static partial class CreateMapTextureModelExt
         public bool isPremiumItem { get; set; } = default;
         public bool isGroupedWithVarients { get; set; } = default;
         public Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData itemVarientData { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 0;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -21994,11 +21994,11 @@ public static partial class CreateMoabBarrageBloonBehaviorModelExt
         public float randomDelayMax { get; set; } = 0;
         public int randomDelayMaxFrames { get; set; } = 0;
         public int numOfMissiles { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound3 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound4 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound5 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound3 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound4 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound5 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public float InitialDelay { get; set; } = 0;
         public float Interval { get; set; } = 0;
         public Il2CppAssets.Scripts.ObjectId tower { get; set; } = default;
@@ -22155,7 +22155,7 @@ public static partial class CreateMoabTakedownModelExt
         public float additive { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.IncreaseWorthTextEffectModel increaseWorthTextEffectModel { get; set; } = default;
         public float destroyBloonRadius { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayAtEjectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayAtEjectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.MoabTakedownModel.BloonWorthMutator _bloonWorthMutator { get; set; } = default;
         public int collisionPass { get; set; } = 0;
         
@@ -22453,13 +22453,13 @@ public static partial class CreateMonkeyFanClubModelExt
         public float range { get; set; } = 0;
         public float reloadModifier { get; set; } = 0;
         public Il2Cpp.BloonProperties immuneBloonProperties { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference originDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerOriginDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectLeaderId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectOnOtherId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference originDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerOriginDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectLeaderId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectOnOtherId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float bonusPierce { get; set; } = 0;
         public float projectileRadius { get; set; } = 0;
         public int bonusDamage { get; set; } = 0;
@@ -23139,7 +23139,7 @@ public static partial class CreateMutateProjectileOnAbilityModelExt
         public int mutatorPriority { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileBehaviorModel projectileBehaviorModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel initialEffect { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.MutateProjectileOnAbilityModel.ProjectileMutator mutator { get; set; } = default;
@@ -23325,8 +23325,8 @@ public static partial class CreateNecromancerTargetTrackWithinRangeModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.NecromancerTargetTrackWithinRangeModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool isSelectable { get; set; } = default;
         public float maxOffset { get; set; } = 0;
         public bool onlyTargetPathsWithBloons { get; set; } = default;
@@ -23403,7 +23403,7 @@ public static partial class CreateNourishmentModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -23415,7 +23415,7 @@ public static partial class CreateNourishmentModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.NourishmentModel(Args args)
@@ -24692,8 +24692,8 @@ public static partial class CreateOverclockModelExt
         public string mutatorId { get; set; } = "";
         public string mutatorSaveId { get; set; } = "";
         public int maxStacks { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel initialEffect { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public string buffLocsName { get; set; } = "";
@@ -24753,9 +24753,9 @@ public static partial class CreateOverheatTriggerModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.OverheatTriggerModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference projectileExplosionEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference stunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference fullscreenEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference projectileExplosionEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference stunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference fullscreenEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference[] sounds { get; set; } = default;
         public float maxHeatLevel { get; set; } = 0;
         public float heatEffectCooldown { get; set; } = 0;
@@ -24803,7 +24803,7 @@ public static partial class CreateOverloadModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -24815,7 +24815,7 @@ public static partial class CreateOverloadModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.OverloadModel(Args args)
@@ -24886,8 +24886,8 @@ public static partial class CreateParagonAssetSwapModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.ParagonAssetSwapModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayToSwap { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference newDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayToSwap { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference newDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int displayDegree { get; set; } = 0;
         public bool applyToAllAbove { get; set; } = default;
         
@@ -25047,7 +25047,7 @@ public static partial class CreateParagonTowerModelExt
         public int effectsDontStartMovingAtFrame { get; set; } = 0;
         public float investmentEffectHeight { get; set; } = 0;
         public float investmentEffectDestYOffset { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference degreeTextEffectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference degreeTextEffectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float degreeTextEffectLifespan { get; set; } = 0;
         public bool changeAttackDisplay { get; set; } = default;
         public bool changeAirUnitDisplay { get; set; } = default;
@@ -25326,8 +25326,8 @@ public static partial class CreatePatrolPointsSettingModelExt
         public float minimumPointDistanceSquared { get; set; } = 0;
         public float dotSpacing { get; set; } = 0;
         public float dotOffset { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lineDelay { get; set; } = 0;
         public int lineDelayFrames { get; set; } = 0;
         public bool isOnSubTower { get; set; } = default;
@@ -25454,7 +25454,7 @@ public static partial class CreatePerRoundCashBonusTowerModelExt
         public float cashPerRound { get; set; } = 0;
         public float cashRoundBonusMultiplier { get; set; } = 0;
         public float lifespan { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool distributeCash { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.PerRoundCashBonusTowerModel(Args args)
@@ -25501,7 +25501,7 @@ public static partial class CreatePetCreateEffectOnPlaceModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateEffectOnPlaceModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference Effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference Effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float Lifespan { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateEffectOnPlaceModel(Args args)
@@ -25524,7 +25524,7 @@ public static partial class CreatePetCreateEffectOnSellModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateEffectOnSellModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference Effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference Effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float Lifespan { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateEffectOnSellModel(Args args)
@@ -25547,10 +25547,10 @@ public static partial class CreatePetCreateSoundOnIdleModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateSoundOnIdleModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound1Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound2Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound3Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound4Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound1Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound2Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound3Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound4Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public int idleMin { get; set; } = 0;
         public int idleMax { get; set; } = 0;
         
@@ -25574,7 +25574,7 @@ public static partial class CreatePetCreateSoundOnPlaceModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateSoundOnPlaceModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public float delay { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Pets.PetCreateSoundOnPlaceModel(Args args)
@@ -25599,7 +25599,7 @@ public static partial class CreatePetModelSyncedExt
     {
         public Il2CppAssets.Scripts.Models.Towers.Pets.PetBehaviorModel[] behaviors { get; set; } = default;
         public bool isFlying { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Pets.PetModelSynced(Args args)
         {
@@ -25623,7 +25623,7 @@ public static partial class CreatePetModelUnsyncedExt
     {
         public Il2CppAssets.Scripts.Models.Towers.Pets.PetBehaviorModel[] behaviors { get; set; } = default;
         public bool isFlying { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Pets.PetModelUnsynced(Args args)
         {
@@ -25669,7 +25669,7 @@ public static partial class CreatePetRabbitMergeModelExt
     {
         public string wererabbitTowerId { get; set; } = "";
         public int mergeAmountRequired { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectDuringMergeId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectDuringMergeId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.PetRabbitMergeModel(Args args)
         {
@@ -25721,7 +25721,7 @@ public static partial class CreatePhayzeBehaviorModelExt
         public string enterCamoImmunityAnimationName { get; set; } = "";
         public string exitCamoImmunityAnimationName { get; set; } = "";
         public string exitCamoAnimationName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference camoRemovalTowerDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference camoRemovalTowerDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel camoRemovalTowerDisplayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.PhayzeBehaviorModel.AddCamoMutator camoMutator { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetSpeedPercentActionModel.SpeedPercentMutator speedMutator { get; set; } = default;
@@ -26034,7 +26034,7 @@ public static partial class CreatePierceUpTowersModelExt
         public string mutatorId { get; set; } = "";
         public int priority { get; set; } = 0;
         public bool useTowerPosition { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayToAddPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayToAddPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceUpTowersModel.PierceUpMutator mutator { get; set; } = default;
         public int collisionPass { get; set; } = 0;
@@ -26062,10 +26062,10 @@ public static partial class CreatePlaceAlongTrackModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.PlaceAlongTrackModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4Path { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference[] objectsToPlacePath { get; set; } = default;
         public float spacingMin { get; set; } = 0;
         public float spacingMax { get; set; } = 0;
@@ -26228,7 +26228,7 @@ public static partial class CreatePlayMovieClipActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Entities.Events.Actions.PlayMovieClipActionModel>
     {
         public string clipName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference clipPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference clipPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool forceStartRoundOnEndAnimation { get; set; } = default;
         public int entityEventIndex { get; set; } = 0;
         
@@ -26298,11 +26298,11 @@ public static partial class CreatePopEffectModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.PopEffectModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect1Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect2Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect3Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect4Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect1Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect2Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect3Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference soundEffect4Id { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public string soundEffectGroupID { get; set; } = "";
         public int soundEffectGroupLimit { get; set; } = 0;
         public int soundEffectTimeDelay { get; set; } = 0;
@@ -26407,7 +26407,7 @@ public static partial class CreatePowerModelExt
     {
         public int cost { get; set; } = 0;
         public bool canBeActivatedBetweenRounds { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Powers.PowerBehaviorModel[] behaviors { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Mods.ApplyModModel[] mods { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerModel tower { get; set; } = default;
@@ -26420,7 +26420,7 @@ public static partial class CreatePowerModelExt
         public string storeNavigateToId { get; set; } = "";
         public int orderPriority { get; set; } = 0;
         public bool alwaysPlaceAtScreenCentre { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference animatedIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference animatedIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool showAsNew { get; set; } = default;
         public string availableInMode { get; set; } = "";
         public int Cost { get; set; } = 0;
@@ -26452,7 +26452,7 @@ public static partial class CreatePowerProModelExt
         public bool isDisabledInBossRush { get; set; } = default;
         public int cost { get; set; } = 0;
         public bool canBeActivatedBetweenRounds { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Powers.PowerBehaviorModel[] behaviors { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Mods.ApplyModModel[] mods { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerModel tower { get; set; } = default;
@@ -26465,7 +26465,7 @@ public static partial class CreatePowerProModelExt
         public string storeNavigateToId { get; set; } = "";
         public int orderPriority { get; set; } = 0;
         public bool alwaysPlaceAtScreenCentre { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference animatedIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference animatedIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool showAsNew { get; set; } = default;
         public string availableInMode { get; set; } = "";
         public int Cost { get; set; } = 0;
@@ -26516,7 +26516,7 @@ public static partial class CreatePowerProUpgradeModelExt
     {
         public int cost { get; set; } = 0;
         public int xpCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public int path { get; set; } = 0;
         public int tier { get; set; } = 0;
         public int locked { get; set; } = 0;
@@ -26735,8 +26735,8 @@ public static partial class CreatePrimordialWrathModelExt
         public string treeSubtowerId { get; set; } = "";
         public string buffLocsName { get; set; } = "";
         public string buffLocsFullName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference iconActive { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference iconNotActive { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference iconActive { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference iconNotActive { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel mainProjectile { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.AssetPathModel wrathProjectileDisplay { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel subtowerProjectile { get; set; } = default;
@@ -26974,7 +26974,7 @@ public static partial class CreateProjectileModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string id { get; set; } = "";
         public float maxPierce { get; set; } = -1f;
         public float pierce { get; set; } = 1f;
@@ -27025,7 +27025,7 @@ public static partial class CreateProjectileOverTimeModelExt
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emissionModel { get; set; } = default;
         public int intervalFrames { get; set; } = 0;
         public float interval { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLifetime { get; set; } = 0;
         public bool triggerImmediate { get; set; } = default;
         public bool rotateEffectWithBloon { get; set; } = default;
@@ -27376,7 +27376,7 @@ public static partial class CreateProjectilesCreateEffectOnExpireModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateEffectOnExpireModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Effects.Fullscreen fullscreen { get; set; } = default;
         public bool randomRotation { get; set; } = default;
@@ -27471,9 +27471,9 @@ public static partial class CreatePropModelExt
         public bool isPremiumItem { get; set; } = default;
         public bool isGroupedWithVarients { get; set; } = default;
         public Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData itemVarientData { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 5f;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -27544,7 +27544,7 @@ public static partial class CreatePropSpawningChallengeModelExt
         public int maxSpawnCount { get; set; } = 0;
         public int propRemovalCost { get; set; } = 0;
         public string propRemovalCostLoc { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference hudIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference hudIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string defeatLoc { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.PropSpawningChallengeModel(Args args)
@@ -28667,7 +28667,7 @@ public static partial class CreateReanimateMoabsActionModelExt
         public float maxTimeSince { get; set; } = 0;
         public int maxTimeSinceFrames { get; set; } = 0;
         public int maxRbe { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference reanimationEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference reanimationEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float pauseMovementDuration { get; set; } = 0;
         public float speedMultiplier { get; set; } = 0;
         public float healthMultiplier { get; set; } = 0;
@@ -28710,7 +28710,7 @@ public static partial class CreateRecoveryModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -28722,7 +28722,7 @@ public static partial class CreateRecoveryModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.Instant.RecoveryModel(Args args)
@@ -28804,8 +28804,8 @@ public static partial class CreateRedeployModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.RedeployModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel activateSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel pickupSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel dropOffSound { get; set; } = default;
@@ -28835,7 +28835,7 @@ public static partial class CreateRedirectBloonSpawnActionModelExt
         public float duration { get; set; } = 0;
         public int rounds { get; set; } = 0;
         public int durationFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference portalAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference portalAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool rotatePortalToBloon { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel portalExpiryEffect { get; set; } = default;
         public Il2CppAssets.Scripts.Models.SimulationBehaviors.RedirectBloonSpawningModel redirectBloonSpawningModel { get; set; } = default;
@@ -28865,7 +28865,7 @@ public static partial class CreateRedirectBloonSpawningModelExt
         public float duration { get; set; } = 0;
         public int durationFrames { get; set; } = 0;
         public int rounds { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference portalAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference portalAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel portalExpiryEffect { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.RedirectBloonSpawningModel(Args args)
@@ -29044,7 +29044,7 @@ public static partial class CreateRejuvPotionBehaviorModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GeraldoItems.RejuvPotionBehaviorModel>
     {
         public int livesGained { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textEffectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference textEffectId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float textEffectLifespan { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.GeraldoItems.RejuvPotionBehaviorModel(Args args)
@@ -29171,7 +29171,7 @@ public static partial class CreateRemoveAllDotActionModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.RemoveAllDotActionModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float effectOffsetY { get; set; } = 0;
         public float effectLifespan { get; set; } = 0;
         public string actionId { get; set; } = "";
@@ -29548,18 +29548,18 @@ public static partial class CreateRemoveableModelExt
         public bool denySellIfStackedTowers { get; set; } = default;
         public bool destroyArea { get; set; } = default;
         public string modPathId { get; set; } = "";
-        public Il2CppSystem.Nullable<float> modPathBloonHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathBloonScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<bool> modPathBloonInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
-        public Il2CppSystem.Nullable<bool> modPathMoabInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
+        public float? modPathBloonHeightOffset { get; set; } = default;
+        public float? modPathMoabHeightOffset { get; set; } = default;
+        public float? modPathBloonScale { get; set; } = default;
+        public float? modPathMoabScale { get; set; } = default;
+        public bool? modPathBloonInvulnerability { get; set; } = default;
+        public bool? modPathMoabInvulnerability { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GameType[] disableInGameTypes { get; set; } = default;
         public Il2CppSystem.Collections.Generic.List<Il2CppAssets.Scripts.ObjectId> ids { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.RemoveableModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.RemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
+            var result = new Il2CppAssets.Scripts.Models.Map.RemoveableModel(args.name, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonScale), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabScale), Il2CppSystem.Nullable<bool>.Unbox(args.modPathBloonInvulnerability), Il2CppSystem.Nullable<bool>.Unbox(args.modPathMoabInvulnerability), args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
             args.OnCreate(result);
             return result;   
@@ -29631,7 +29631,7 @@ public static partial class CreateRepelModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -29643,7 +29643,7 @@ public static partial class CreateRepelModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.RepelModel(Args args)
@@ -29762,7 +29762,7 @@ public static partial class CreateRetargetOnContactDelayModelExt
         public int maxBounces { get; set; } = 0;
         public int delayFrames { get; set; } = 0;
         public bool onlyIfFirstBloonDestroyed { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float displayLength { get; set; } = 0;
         public float displayLifetime { get; set; } = 0;
         public float displayLengthScale { get; set; } = 0;
@@ -29823,8 +29823,8 @@ public static partial class CreateRetributionBloonBehaviorModelExt
         public int hitStunDurationFrames { get; set; } = 0;
         public float popStunDuration { get; set; } = 0;
         public int popStunDurationFrames { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference hitLineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference popLineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference hitLineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference popLineDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float hitLineDisplayLength { get; set; } = 0;
         public float popLineDisplayLength { get; set; } = 0;
         public float hitLineDisplayDuration { get; set; } = 0;
@@ -29835,7 +29835,7 @@ public static partial class CreateRetributionBloonBehaviorModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel hitEffectAtTower { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel popEffectAtBloon { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel popEffectAtTower { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunAsset { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.StunTowersInRadiusActionModel.TowerFreezeMutator stunMutator { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel[] zapSounds { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel popSound { get; set; } = default;
@@ -30057,14 +30057,14 @@ public static partial class CreateRosaliaMovementModelExt
         public int jumpDownAnimationState { get; set; } = 0;
         public float jumpBlockerRadius { get; set; } = 0;
         public float jumpSpeedScale { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference idleLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference idleGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference jumpingLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference jumpingGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference hoveringLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference hoveringGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference flightBoostLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference flightBoostGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference idleLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference idleGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference jumpingLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference jumpingGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference hoveringLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference hoveringGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference flightBoostLaserPrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference flightBoostGrenadePrefab { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float noTargetSlowdownDistance { get; set; } = 0;
         public float noTargetVelocityScale { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel jumpSound1 { get; set; } = default;
@@ -30426,7 +30426,7 @@ public static partial class CreateRoundRemoveableModelExt
         public int durationRounds { get; set; } = 0;
         public int cashReward { get; set; } = 0;
         public Il2CppAssets.Scripts.Simulation.SMath.Vector3 objectPosition { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference cashTextAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference cashTextAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float cashTextLifespan { get; set; } = 0;
         public bool isActive { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Map.AreaType defaultType { get; set; } = default;
@@ -30439,18 +30439,18 @@ public static partial class CreateRoundRemoveableModelExt
         public bool denySellIfStackedTowers { get; set; } = default;
         public bool destroyArea { get; set; } = default;
         public string modPathId { get; set; } = "";
-        public Il2CppSystem.Nullable<float> modPathBloonHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabHeightOffset { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathBloonScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<float> modPathMoabScale { get; set; } = Il2CppSystem.Nullable<float>.Unbox(0);
-        public Il2CppSystem.Nullable<bool> modPathBloonInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
-        public Il2CppSystem.Nullable<bool> modPathMoabInvulnerability { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
+        public float? modPathBloonHeightOffset { get; set; } = default;
+        public float? modPathMoabHeightOffset { get; set; } = default;
+        public float? modPathBloonScale { get; set; } = default;
+        public float? modPathMoabScale { get; set; } = default;
+        public bool? modPathBloonInvulnerability { get; set; } = default;
+        public bool? modPathMoabInvulnerability { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GameType[] disableInGameTypes { get; set; } = default;
         public Il2CppSystem.Collections.Generic.List<Il2CppAssets.Scripts.ObjectId> ids { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.RoundRemoveableModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.RoundRemoveableModel(args.name, args.activateWhileRemovingName, args.durationRounds, args.cashReward, args.cashTextAssetId, args.cashTextLifespan, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.objectPosition, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, args.modPathBloonHeightOffset, args.modPathMoabHeightOffset, args.modPathBloonScale, args.modPathMoabScale, args.modPathBloonInvulnerability, args.modPathMoabInvulnerability, args.disableInGameTypes);
+            var result = new Il2CppAssets.Scripts.Models.Map.RoundRemoveableModel(args.name, args.activateWhileRemovingName, args.durationRounds, args.cashReward, args.cashTextAssetId, args.cashTextLifespan, args.objecName, args.isActive, args.defaultType, args.removealCost, args.menuName, args.menuDescription, args.position, args.objectPosition, args.denySellIfStackedTowers, args.destroyArea, args.textKey, args.modPathId, Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabHeightOffset), Il2CppSystem.Nullable<float>.Unbox(args.modPathBloonScale), Il2CppSystem.Nullable<float>.Unbox(args.modPathMoabScale), Il2CppSystem.Nullable<bool>.Unbox(args.modPathBloonInvulnerability), Il2CppSystem.Nullable<bool>.Unbox(args.modPathMoabInvulnerability), args.disableInGameTypes);
             if (args.ids != default) result.ids = args.ids;
             args.OnCreate(result);
             return result;   
@@ -30755,7 +30755,7 @@ public static partial class CreateSeasonPerkModelExt
         public int idx { get; set; } = 0;
         public string title { get; set; } = "";
         public string description { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.ModModel modModel { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Data.SocialSeasons.SeasonPerkModel(Args args)
@@ -30780,11 +30780,11 @@ public static partial class CreateSeeInvisibilityPotionBehaviorModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GeraldoItems.SeeInvisibilityPotionBehaviorModel>
     {
         public int rounds { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public int upgradeV2At { get; set; } = 0;
         public int roundsUpgradedTo { get; set; } = 0;
         public float upgradedRangeScale { get; set; } = 0;
@@ -31087,7 +31087,7 @@ public static partial class CreateSellTowersInRadiusActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.SellTowersInRadiusActionModel>
     {
         public float radius { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerSellEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerSellEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float towerSellEffectTime { get; set; } = 0;
         public string actionId { get; set; } = "";
         
@@ -31302,7 +31302,7 @@ public static partial class CreateSetImmuneActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetImmuneActionModel>
     {
         public bool set { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetImmuneActionModel.ImmunityMutator mutator { get; set; } = default;
         public string actionId { get; set; } = "";
         
@@ -31327,7 +31327,7 @@ public static partial class CreateSetInvulnerableActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetInvulnerableActionModel>
     {
         public bool set { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference sound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.SetInvulnerableActionModel.InvulnerableMutator mutator { get; set; } = default;
         public string actionId { get; set; } = "";
         
@@ -31545,12 +31545,12 @@ public static partial class CreateSharpeningStoneBehaviorModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.GeraldoItems.SharpeningStoneBehaviorModel>
     {
         public float pierceIncrease { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffIconName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public Il2Cpp.BloonProperties sharpProperty { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference effectAtTowerId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float bonusPierceAtLevel { get; set; } = 0;
         public float bonusPierce { get; set; } = 0;
         public int rounds { get; set; } = 0;
@@ -31838,7 +31838,7 @@ public static partial class CreateShowTextOnHitModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ShowTextOnHitModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public bool useTowerPosition { get; set; } = default;
         public string text { get; set; } = "";
@@ -32775,7 +32775,7 @@ public static partial class CreateSoulBarrierModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -32787,7 +32787,7 @@ public static partial class CreateSoulBarrierModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.SoulBarrierModel(Args args)
@@ -32814,7 +32814,7 @@ public static partial class CreateSoulbindManagerModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.SoulbindManagerModel>
     {
         public Il2CppAssets.Scripts.Models.Effects.EffectModel createEffectOnTowerSold { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.SoulbindManagerModel(Args args)
@@ -32837,9 +32837,9 @@ public static partial class CreateSoulbindModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SoulbindModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel soulbindEffectOnTargetModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference soulbindEffectOnBoundTargetsId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference soulbindEffectOnBoundTargetsId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SoulbindModel(Args args)
         {
@@ -32861,7 +32861,7 @@ public static partial class CreateSoundModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Audio.SoundModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Audio.SoundModel(Args args)
         {
@@ -33017,7 +33017,7 @@ public static partial class CreateSpawnEffectActionModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Entities.Events.Actions.SpawnEffectActionModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference prefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference prefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lifespan { get; set; } = 0;
         public int entityEventIndex { get; set; } = 0;
         
@@ -33228,7 +33228,7 @@ public static partial class CreateSpearModelExt
         public float manaDrainInterval { get; set; } = 0;
         public bool reapplyOnUpgrade { get; set; } = default;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -33240,7 +33240,7 @@ public static partial class CreateSpearModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.SpearModel(Args args)
@@ -33298,10 +33298,10 @@ public static partial class CreateSpikeParagonDamageZoneModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.SpikeParagonDamageZoneModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4 { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference[] objectsToPlace { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.DamageOverTimeZoneModel damageOverTimeZoneModel { get; set; } = default;
         public float spacingMin { get; set; } = 0;
@@ -33397,20 +33397,20 @@ public static partial class CreateSpiritOfTheForestModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.SpiritOfTheForestModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4FarPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference[] objectsToPlaceFar { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4MiddlePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference[] objectsToPlaceMiddle { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace1ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace2ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace3ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference objectToPlace4ClosePath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference[] objectsToPlaceClose { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.DamageOverTimeZoneModel damageOverTimeZoneModelFar { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.DamageOverTimeZoneModel damageOverTimeZoneModelMiddle { get; set; } = default;
@@ -33657,7 +33657,7 @@ public static partial class CreateStaminaTraitArtifactModelExt
         public int staminaRequirement { get; set; } = 0;
         public int removalStaminaRequirement { get; set; } = 0;
         public Il2CppSystem.Collections.Generic.List<int> frontierIds { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference traitModifierIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference traitModifierIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public int rarity { get; set; } = 0;
         public string[] excludedTowerTypes { get; set; } = default;
         public bool isTemporary { get; set; } = default;
@@ -33670,7 +33670,7 @@ public static partial class CreateStaminaTraitArtifactModelExt
         public Il2CppAssets.Scripts.Models.ModModel monkeyKnowledgeModModels { get; set; } = default;
         public bool isBossArtifact { get; set; } = default;
         public bool isSheriffArtifact { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string rarityFrameType { get; set; } = "";
         public int merchantCostMultiplier { get; set; } = 0;
         public bool isQuestArtifact { get; set; } = default;
@@ -33698,15 +33698,15 @@ public static partial class CreateStampTextureModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.MapEditorBehaviors.StampTextureModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference sprite { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference sprite { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public int id { get; set; } = 0;
         public bool isNewItem { get; set; } = default;
         public bool isPremiumItem { get; set; } = default;
         public bool isGroupedWithVarients { get; set; } = default;
         public Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData itemVarientData { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 0;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -33961,7 +33961,7 @@ public static partial class CreateStormModelExt
         public float manaDrainInterval { get; set; } = 0;
         public bool reapplyOnUpgrade { get; set; } = default;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -33973,7 +33973,7 @@ public static partial class CreateStormModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.StormModel(Args args)
@@ -34089,7 +34089,7 @@ public static partial class CreateStunTowersInRadiusActionModelExt
         public float radius { get; set; } = 0;
         public float stunDuration { get; set; } = 0;
         public float paragonStunTimeMultiplier { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerStunEffect { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool blockTowerSelling { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.StunTowersInRadiusActionModel.TowerFreezeMutator mutator { get; set; } = default;
         public string actionId { get; set; } = "";
@@ -34211,7 +34211,7 @@ public static partial class CreateSubmergeModelExt
         public float submergeDepth { get; set; } = 0;
         public float submergeSpeed { get; set; } = 0;
         public float heroXpScale { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference attackDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference attackDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel submergeSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel emergeSound { get; set; } = default;
         public int supportMutatorPriority { get; set; } = 0;
@@ -34580,7 +34580,7 @@ public static partial class CreateSwitchDisplayModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SwitchDisplayModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool excludeSubTowers { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel createEffectOnSwitchBackModel { get; set; } = default;
         public bool resetOnDefeatScreen { get; set; } = default;
@@ -34889,8 +34889,8 @@ public static partial class CreateTakeAimModelExt
         public int lifespanFrames { get; set; } = 0;
         public float rangeModifier { get; set; } = 0;
         public float spreadModifier { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel initialEffect { get; set; } = default;
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
         public string buffLocsName { get; set; } = "";
@@ -35678,12 +35678,12 @@ public static partial class CreateTargetSelectedPointModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSelectedPointModel>
     {
         public bool isSelectable { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float scale { get; set; } = 0;
         public string customName { get; set; } = "";
         public bool lockToInsideTowerRange { get; set; } = default;
         public bool startWithClosestTrackPoint { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool alwaysShowTarget { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileToExpireOnTargetChangeModel { get; set; } = default;
         public bool useTerrainHeight { get; set; } = default;
@@ -35710,12 +35710,12 @@ public static partial class CreateTargetSelectedPointOrDefaultModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack.Behaviors.TargetSelectedPointOrDefaultModel>
     {
         public bool isSelectable { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float scale { get; set; } = 0;
         public string customName { get; set; } = "";
         public bool lockToInsideTowerRange { get; set; } = default;
         public bool startWithClosestTrackPoint { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool alwaysShowTarget { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectileToExpireOnTargetChangeModel { get; set; } = default;
         public bool useTerrainHeight { get; set; } = default;
@@ -36081,8 +36081,8 @@ public static partial class CreateTechAmbushBotSpawnerModelExt
     {
         public Il2CppAssets.Scripts.Models.Towers.TowerModel tower { get; set; } = default;
         public bool withinTowerRange { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float spawnCooldown { get; set; } = 0;
         public int towerLimit { get; set; } = 0;
         
@@ -36106,12 +36106,12 @@ public static partial class CreateTechBotLinkModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechBotLinkModel>
     {
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference activateSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference confirmSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference selectionObjectPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference activateSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference confirmSound { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.AudioClipReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel activatedTowerAbilityEffectModel { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference lineDisplayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float lineDotOffset { get; set; } = 0;
         public float lineDotSpacing { get; set; } = 0;
         public int activateAnimationState { get; set; } = 0;
@@ -36191,7 +36191,7 @@ public static partial class CreateTechLinkAbilityProjectileDamageModelExt
         public bool isUnique { get; set; } = default;
         public float abilityDamageModifier { get; set; } = 0;
         public int mutatorPriority { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkAbilityProjectileDamageModel(Args args)
         {
@@ -36246,7 +36246,7 @@ public static partial class CreateTechLinkActivateTowerDamageModelExt
         public float lifespan { get; set; } = 0;
         public float lifespanFrames { get; set; } = 0;
         public int mutatorPriority { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkActivateTowerDamageModel(Args args)
         {
@@ -36271,7 +36271,7 @@ public static partial class CreateTechLinkCooldownScaleModelExt
         public bool isUnique { get; set; } = default;
         public float abilityCooldownSpeedScale { get; set; } = 0;
         public int mutatorPriority { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkCooldownScaleModel(Args args)
         {
@@ -36294,7 +36294,7 @@ public static partial class CreateTechLinkTriggerUnlinkedAbilityModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkTriggerUnlinkedAbilityModel>
     {
         public bool isUnique { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference displayPath { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.TechLinkTriggerUnlinkedAbilityModel(Args args)
         {
@@ -36767,7 +36767,7 @@ public static partial class CreateTowerBasedShopItemModelExt
     {
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.TowerBasedShopItemModel(Args args)
@@ -37119,17 +37119,17 @@ public static partial class CreateTowerModelExt
         public int[] tiers { get; set; } = default;
         public Il2CppAssets.Scripts.Models.TowerSets.TowerSet towerSet { get; set; } = default;
         public string towerTheme { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference icon3D { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference portrait { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference instaIcon { get; set; } = default;
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference icon3D { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference portrait { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference instaIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Map.AreaType[] areaTypes { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Mods.ApplyModModel[] mods { get; set; } = default;
         public bool ignoreTowerForSelection { get; set; } = false;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.FootprintModel footprint { get; set; } = default;
         public bool dontDisplayUpgrades { get; set; } = false;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference emoteSpriteSmall { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference emoteSpriteLarge { get; set; } = default;
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference emoteSpriteSmall { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference emoteSpriteLarge { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public bool doesntRotate { get; set; } = false;
         public bool hideInfoButton { get; set; } = false;
         public Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel[] upgrades { get; set; } = default;
@@ -37142,7 +37142,7 @@ public static partial class CreateTowerModelExt
         public bool showPowerTowerBuffs { get; set; } = false;
         public float animationSpeed { get; set; } = 1f;
         public string towerSelectionMenuThemeId { get; set; } = "Default";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference secondarySelectionMenu { get; set; } = default;
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference secondarySelectionMenu { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public bool ignoreCoopAreas { get; set; } = false;
         public bool ignoreAreaChanges { get; set; } = false;
         public bool canAlwaysBeSold { get; set; } = false;
@@ -37154,8 +37154,8 @@ public static partial class CreateTowerModelExt
         public string geraldoItemName { get; set; } = default;
         public float sellbackModifierAdd { get; set; } = 0f;
         public string skinName { get; set; } = default;
-        public Il2CppSystem.Nullable<bool> isBeastHandlerPet { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
-        public Il2CppSystem.Nullable<bool> selectParentOnSelected { get; set; } = Il2CppSystem.Nullable<bool>.Unbox(default);
+        public bool? isBeastHandlerPet { get; set; } = default;
+        public bool? selectParentOnSelected { get; set; } = default;
         public bool dontAddMutatorsFromParent { get; set; } = false;
         public bool showBuffs { get; set; } = true;
         public bool destroyTowerOnRedistribution { get; set; } = false;
@@ -37167,7 +37167,7 @@ public static partial class CreateTowerModelExt
         public int frontierId { get; set; } = -1;
         public Il2CppAssets.Scripts.Models.Towers.TowerModel.TowerSize towerSize { get; set; } = default;
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 0.7f;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -37177,8 +37177,8 @@ public static partial class CreateTowerModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.TowerModel(args.name, args.baseId, args.towerSet, args.towerTheme, args.display, args.cost, args.radius, args.range, args.ignoreBlockers, args.isGlobalRange, args.tier, args.tiers, args.appliedUpgrades, args.upgrades, args.paragonUpgrade, args.behaviors, args.areaTypes, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.icon), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference>.Unbox(args.icon3D), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.portrait), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.instaIcon), args.mods, args.ignoreTowerForSelection, args.isSubTower, args.isBakable, args.footprint, args.dontDisplayUpgrades, args.powerName, args.animationSpeed, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.emoteSpriteSmall), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.emoteSpriteLarge), args.doesntRotate, args.showPowerTowerBuffs, args.towerSelectionMenuThemeId, args.ignoreCoopAreas, args.canAlwaysBeSold, args.blockSelling, args.isParagon, args.sellbackModifierAdd, args.geraldoItemName, args.ignoreMaxSellPercent, args.isStunned, args.ignoreStun, args.dontAddMutatorsFromParent, args.displayScale, args.showBuffs, args.destroyTowerOnRedistribution, args.secondarySelectionMenu, args.useAirUnitHeight, args.skinName, args.frontierId, args.ignoreAreaChanges, args.hideInfoButton);
             if (args.targetTypes != default) result.targetTypes = args.targetTypes;
-            if (args.isBeastHandlerPet != default) result.isBeastHandlerPet = args.isBeastHandlerPet;
-            if (args.selectParentOnSelected != default) result.selectParentOnSelected = args.selectParentOnSelected;
+            if (args.isBeastHandlerPet != default) result.isBeastHandlerPet = Il2CppSystem.Nullable<bool>.Unbox(args.isBeastHandlerPet!.Value);
+            if (args.selectParentOnSelected != default) result.selectParentOnSelected = Il2CppSystem.Nullable<bool>.Unbox(args.selectParentOnSelected!.Value);
             if (args.beastHandlerLeashMutationId != default) result.beastHandlerLeashMutationId = args.beastHandlerLeashMutationId;
             if (args.loadedFromSave != default) result.loadedFromSave = args.loadedFromSave;
             if (args._powerProTowerModel != default) result._powerProTowerModel = args._powerProTowerModel;
@@ -37417,7 +37417,7 @@ public static partial class CreateTowersBonusLivesPerRoundModelExt
     {
         public int amount { get; set; } = 0;
         public float lifespan { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference assetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.BonusLivesPerRoundModel(Args args)
         {
@@ -37687,9 +37687,9 @@ public static partial class CreateTrackTextureModelExt
         public bool isPremiumItem { get; set; } = default;
         public bool isGroupedWithVarients { get; set; } = default;
         public Il2CppAssets.Scripts.Models.MapEditorBehaviors.ItemVarientData itemVarientData { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string baseId { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Model[] behaviors { get; set; } = default;
         public float radius { get; set; } = 0;
         public float cachedThrowMarkerHeight { get; set; } = 0;
@@ -37756,7 +37756,7 @@ public static partial class CreateTraitArtifactModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Artifacts.TraitArtifactModel>
     {
         public Il2CppSystem.Collections.Generic.List<int> frontierIds { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference traitModifierIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference traitModifierIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public int rarity { get; set; } = 0;
         public string[] excludedTowerTypes { get; set; } = default;
         public bool isTemporary { get; set; } = default;
@@ -37769,7 +37769,7 @@ public static partial class CreateTraitArtifactModelExt
         public Il2CppAssets.Scripts.Models.ModModel monkeyKnowledgeModModels { get; set; } = default;
         public bool isBossArtifact { get; set; } = default;
         public bool isSheriffArtifact { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public string rarityFrameType { get; set; } = "";
         public int merchantCostMultiplier { get; set; } = 0;
         public bool isQuestArtifact { get; set; } = default;
@@ -37803,7 +37803,7 @@ public static partial class CreateTrampleModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -37815,7 +37815,7 @@ public static partial class CreateTrampleModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.Instant.TrampleModel(Args args)
@@ -37877,8 +37877,8 @@ public static partial class CreateTranceTotemSpawnerModelExt
     {
         public Il2CppAssets.Scripts.Models.Towers.TowerModel tower { get; set; } = default;
         public bool withinTowerRange { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference targetDisplayInvalid { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public float spawnCooldown { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.TranceTotemSpawnerModel(Args args)
@@ -38483,7 +38483,7 @@ public static partial class CreateUpgradeModelExt
     {
         public int cost { get; set; } = 0;
         public int xpCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference icon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public int path { get; set; } = 0;
         public int tier { get; set; } = 0;
         public int locked { get; set; } = 0;
@@ -38718,7 +38718,7 @@ public static partial class CreateVagrantWeaponBehaviorModelExt
         public float towerRangeBonusReduction { get; set; } = 0;
         public float bloonInRangeAttackSpeedBuff { get; set; } = 0;
         public float maxBloonAttackSpeedBuff { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string buffLocsName { get; set; } = "";
         public string buffLocsFullName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.VagrantWeaponBehaviorModel.Mutator _mutator { get; set; } = default;
@@ -38749,7 +38749,7 @@ public static partial class CreateVigilanteTowerBehaviorModelExt
         public int loseLifeBuffDurationFrames { get; set; } = 0;
         public int loseLifeBuffCooldownFrames { get; set; } = 0;
         public string buffLocsName { get; set; } = "";
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference buffDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string oneHealthHighestBloon { get; set; } = "";
         public float bloonLeakValueModifier { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel buffDisplayModel { get; set; } = default;
@@ -38850,7 +38850,7 @@ public static partial class CreateVisionModelExt
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference placingPrefabReference { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Simulation.Corvus.TowerManager.CorvusSpellType spellType { get; set; } = default;
         public int unlocksAtLevel { get; set; } = 0;
         public int corvusAnimationState { get; set; } = 0;
@@ -38862,7 +38862,7 @@ public static partial class CreateVisionModelExt
         public Il2CppAssets.Scripts.Models.Effects.EffectModel effectDuringSpiritModel { get; set; } = default;
         public string locsId { get; set; } = "";
         public int[] iconSwapLevels { get; set; } = default;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference defaultIcon { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference[] defaultIconSwaps { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.Instant.VisionModel(Args args)
@@ -39639,7 +39639,7 @@ public static partial class CreateZombieBloonBehaviorModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.ZombieBloonBehaviorModel>
     {
         public float timeUntilRevive { get; set; } = 0;
-        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference tombstoneAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference("");
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference tombstoneAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Effects.EffectModel resurrectEffectModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel resurrectSoundEffect { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Bloons.Behaviors.ZombieBloonBehaviorModel.TombstoneMutator _mutator { get; set; } = default;

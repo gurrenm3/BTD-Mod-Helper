@@ -15,6 +15,7 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.Linq;
+using DBNull = Il2CppSystem.DBNull;
 namespace BTD_Mod_Helper.Api.Internal.Generators;
 
 internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
@@ -80,17 +81,17 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
 
         sb.Append(
             $"""
-              // If it has errors after a BTD6 update, delete it and regenerate it using the `generate creates` command in game
+             // If it has errors after a BTD6 update, delete it and regenerate it using the `generate creates` command in game
 
-              // ReSharper disable InconsistentNaming
-              // ReSharper disable PreferConcreteValueOverDefault
-              #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+             // ReSharper disable InconsistentNaming
+             // ReSharper disable PreferConcreteValueOverDefault
+             #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-              namespace {Namespace};
+             namespace {Namespace};
 
-              {modelTypeDict.Select(GenerateFor).Join(delimiter: "\n\n")}
+             {modelTypeDict.Select(GenerateFor).Join(delimiter: "\n\n")}
 
-              """);
+             """);
     }
 
     private static string GenerateFor(KeyValuePair<string, Type> nameAndType)
@@ -158,9 +159,9 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
 
                 defaultValue = $"args.{property.Name}";
 
-                if (param.ParameterType.IsIl2CppNullable() && !property.PropertyType.IsIl2CppNullable())
+                if (param.ParameterType.IsIl2CppNullable())
                 {
-                    defaultValue = $"Il2CppSystem.Nullable<{property.PropertyType.RealFullName}>.Unbox({defaultValue})";
+                    defaultValue = $"{param.ParameterType.RealFullName}.Unbox({defaultValue})";
                 }
                 propDefaultValues[property] = defaultValue;
             }
@@ -189,53 +190,44 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
 
             if (!usingOverride)
             {
-                if (param?.HasDefaultValue == true && !propType.IsIl2CppNullable())
+                if (propType == typeof(PrefabReference) ||
+                    propType == typeof(AudioClipReference) ||
+                    propType == typeof(SpriteReference) ||
+                    propType == typeof(AudioSourceReference) ||
+                    propType == typeof(AnimationClipReference))
+                {
+                    defaultValue = $$"""new {{propType.RealFullName}} { guidRef = "" }""";
+                }
+                else if (param?.HasDefaultValue == true &&
+                         !propType.IsIl2CppNullable() &&
+                         !param.ParameterType.IsIl2CppNullable())
                 {
                     defaultValue = DefaultValue(param.DefaultValue);
                 }
-                else
+                else if (propType == typeof(string))
                 {
-                    if (propType.IsIl2CppNullable())
-                    {
-                        propType = propType.GenericTypeArguments.First();
-                    }
-
-                    if (propType == typeof(string))
-                    {
-                        defaultValue = "\"\"";
-                    }
-                    else if (propType == typeof(int) ||
-                             propType == typeof(int?) ||
-                             propType == typeof(long) ||
-                             propType == typeof(long?) ||
-                             propType == typeof(float) ||
-                             propType == typeof(float?) ||
-                             propType == typeof(double) ||
-                             propType == typeof(double?))
-                    {
-                        defaultValue = "0";
-                    }
-                    else if (propType == typeof(PrefabReference) ||
-                             propType == typeof(AudioClipReference) ||
-                             propType == typeof(SpriteReference) ||
-                             propType == typeof(AudioSourceReference) ||
-                             propType == typeof(AnimationClipReference))
-                    {
-                        defaultValue = $"new {propType.RealFullName}(\"\")";
-                    }
-                    else if (prop.Name == "scale")
-                    {
-                        defaultValue = "1";
-                    }
+                    defaultValue = "\"\"";
                 }
-
-                if (prop.PropertyType.IsIl2CppNullable())
+                else if (propType == typeof(int) ||
+                         propType == typeof(int?) ||
+                         propType == typeof(long) ||
+                         propType == typeof(long?) ||
+                         propType == typeof(float) ||
+                         propType == typeof(float?) ||
+                         propType == typeof(double) ||
+                         propType == typeof(double?))
                 {
-                    defaultValue = $"Il2CppSystem.Nullable<{propType.RealFullName}>.Unbox({defaultValue})";
+                    defaultValue = "0";
                 }
             }
 
             propertyDefaultValues[prop] = defaultValue;
+
+            if (propType.IsIl2CppNullable())
+            {
+                propDefaultValues[prop] =
+                    $"{propType.RealFullName}.Unbox({propDefaultValues[prop]}{(propType.GenericTypeArguments.First() is {IsValueType: true} ? "!.Value" : "")})";
+            }
         }
 
 
@@ -265,6 +257,11 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
                     {
                         argType = genType.RealFullName + "[]";
                     }
+                }
+                else if (prop.PropertyType.IsIl2CppNullable())
+                {
+                    var nullableType = prop.PropertyType.GenericTypeArguments.First();
+                    argType = nullableType.RealFullName + (nullableType.IsValueType ? "?" : "");
                 }
             }
             else if (prop.PropertyType == typeof(TargetType) && paramType == typeof(string))

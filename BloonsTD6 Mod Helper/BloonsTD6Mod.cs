@@ -393,7 +393,7 @@ public abstract class BloonsTD6Mod : BloonsMod
     public virtual void OnBloonModelUpdated(Bloon bloon, Model model)
     {
     }
-    
+
     /// <summary>
     /// Called after a new bloon emission is added to the spawner
     /// <br />
