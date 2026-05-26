@@ -117,7 +117,10 @@ public abstract class ModLoadTask : NamedModContent
 
     internal static IEnumerator RunAll()
     {
+        yield return null; // ensure running on main thread right from start
+
         DoubleCheckLocalizationTable();
+
         foreach (var loadTask in AllLoadTasks)
         {
             if (loadTask.Complete) continue;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using BTD_Mod_Helper.Api.Legends;
@@ -21,7 +22,14 @@ internal class ArtifactDependantsTask : ModLoadTask
         for (var i = 0; i < artifacts.Length; i++)
         {
             var artifact = artifacts[i];
-            ModArtifact.FixDependants(artifact.ArtifactModel());
+            try
+            {
+                ModArtifact.FixDependants(artifact.ArtifactModel());
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
             if (i % 5 == 0)
             {
                 yield return null;

@@ -69,7 +69,7 @@ public BloonsMod mod;
 
 ## ModContent.DoesTick Property
 
-If [Tick(int, Simulation)](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.Tick(int,Simulation) 'BTD_Mod_Helper.Api.ModContent.Tick(int, Simulation)') should run. False by default
+If [Tick(int, Simulation)](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.Tick(int,Simulation) 'BTD_Mod_Helper.Api.ModContent.Tick(int, Simulation)') should run. False by default. Re-evaluated for ModContent once at the start of each new game
 
 ```csharp
 public virtual bool DoesTick { get; }

@@ -1,24 +1,3 @@
 <!--Mod Browser Message Start-->
 
-- Added [ModTsmTheme and ModVanillaTsmTheme](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-TSM-Theme)
-- Added [ModMutator](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Mutator)
-- Added [ModCustomInput](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Making-a-Custom-Input)
-- Added [ModTest](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Automated-Testing) for Automated Testing support
-- Revamped the `ModLoadTask` system: coroutine based load tasks are back to being visualized in the BTD6 initial loading screen in a future-proof way
-  - Users will now see "Modded Step X of Y..." for Mod Content registration and other tasks after the base Steps are complete
-  - The "Use Old Loading" mod helper setting returns if you want to fallback to the original way
-- Marked Obsolete the `AttackHelper`, `WeaponHelper`, `ProjectileHelper`, and `AbilityHelper` classes in favor of the
-  `AttackModel.Create`,`WeaponModel.Create`,`ProjectileModel.Create`, and `AttackModel.Create` extensions, which now have the same / more conviences as the Helper classes
-- Updated `ModCommand` to support a Coroutines being a valid main Execute method with `public override IEnumerator Execute(Output output) { ... }`
-  - Can set `output.success` (defaults to true) and `output.resultText` (which will update live)
-- Updated btd6.targets with some new features
-  - New csproj property `<Dependencies>` that can be set in an `<ItemGroup>` like `<Dependencies>PathsPlusPlus;UltimateCrosspathing</Dependencies>` whcih automatically references dll from mods folder (or disabled mods folder if not found)
-  - Keeps mod launchSettings.json up to date automatically, unless you add csproj property `<DontCopyLaunchSettings>true</DontCopyLaunchSettings>`
-- Added a number of new command lines arguments for mod makers
-  - `--modhelper.only=ModA,ModB`/`--modhelper.only ModA,ModB` load the game with only the specified mod(s) loaded (and Mod Helper)
-  - `--modhelper.noaudio` disables all game audio, primarily meant to be used alongside `-batchmode` to run the game headlessly
-  - `--modhelper.offline` to put the game in offline mode and not run mod helper browser or updater plugin functionality
-  - `--modhelper.run [-q?] [-e?] [command] [&& another command ...] ` runs a ModCommand after the game loads
-    - `-q` make the game quit automatically after running the command, exit code 0 for success or 1 for failure
-    - `-e` if specifying multiple commands with `&&`, stop whenever the first one fails
-    - Should be the last argument
+- Fixed a `ModLoadTask` issue that could make the "Pre-loading mod resources..." task crash
