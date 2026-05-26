@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Internal;
+using Il2CppNinjaKiwi.Localization;
 using Math = Il2CppAssets.Scripts.Simulation.SMath.Math;
 
 namespace BTD_Mod_Helper.Api;
@@ -103,8 +104,20 @@ public abstract class ModLoadTask : NamedModContent
         }
     }
 
+    private static void DoubleCheckLocalizationTable()
+    {
+        // Fix some peoples' textTable sometimes not being initialized by this point
+        if (LocalizationManager.Instance.textTable == null)
+        {
+            ModHelper.Warning(
+                "The text table is null, replacing with default. This usually means a mod messed up the game's localization manager somehow");
+            LocalizationManager.Instance.textTable = LocalizationManager.Instance.defaultTable;
+        }
+    }
+
     internal static IEnumerator RunAll()
     {
+        DoubleCheckLocalizationTable();
         foreach (var loadTask in AllLoadTasks)
         {
             if (loadTask.Complete) continue;
@@ -120,6 +133,7 @@ public abstract class ModLoadTask : NamedModContent
 
     internal static void RunAllSync()
     {
+        DoubleCheckLocalizationTable();
         foreach (var loadTask in AllLoadTasks)
         {
             if (loadTask.Complete) continue;
