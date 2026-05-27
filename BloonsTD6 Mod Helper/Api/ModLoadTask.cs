@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Internal;
@@ -12,6 +13,8 @@ namespace BTD_Mod_Helper.Api;
 /// </summary>
 public abstract class ModLoadTask : NamedModContent
 {
+    private static readonly object LoadTaskLock = new();
+
     /// <summary>
     /// All necessary LoadTasks for this Launch of the game. Caches result of the first call.
     /// </summary>
@@ -19,21 +22,24 @@ public abstract class ModLoadTask : NamedModContent
     {
         get
         {
-            if (field != null) return field;
+            lock (LoadTaskLock)
+            {
+                if (field != null) return field;
 
-            var list = new List<ModLoadTask>();
-            field = list.AsReadOnly();
+                var list = new List<ModLoadTask>();
+                field = list.AsReadOnly();
 
-            list.AddRange(GetContent<ModLoadTask>().Where(task => task.ShouldRun && task.RunsPreRegistrationPhase));
+                list.AddRange(GetContent<ModLoadTask>().Where(task => task.ShouldRun && task.RunsPreRegistrationPhase));
 
-            list.AddRange(ModHelper.Mods
-                .Where(mod => mod.Content.Count > 0)
-                .OrderBy(mod => mod.Priority)
-                .Select(mod => new RegisterModContentTask {mod = mod}));
+                list.AddRange(ModHelper.Mods
+                    .Where(mod => mod.Content.Count > 0)
+                    .OrderBy(mod => mod.Priority)
+                    .Select(mod => new RegisterModContentTask {mod = mod}));
 
-            list.AddRange(GetContent<ModLoadTask>().Where(task => task.ShouldRun && !task.RunsPreRegistrationPhase));
+                list.AddRange(GetContent<ModLoadTask>().Where(task => task.ShouldRun && !task.RunsPreRegistrationPhase));
 
-            return list;
+                return list;
+            }
         }
     }
 
@@ -126,7 +132,10 @@ public abstract class ModLoadTask : NamedModContent
             if (loadTask.Complete) continue;
             CurrentTask = loadTask;
             ModHelper.Msg(loadTask.DisplayName);
-            yield return loadTask.Coroutine();
+
+            var task = loadTask.Coroutine;
+            yield return task.CatchErrors();
+
             loadTask.Complete = true;
 
             yield return null;

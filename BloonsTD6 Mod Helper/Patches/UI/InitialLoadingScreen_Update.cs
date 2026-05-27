@@ -35,6 +35,9 @@ internal static class InitialLoadingScreen_Update
         }
         else if (begun && ModLoadTask.AllLoadTasks.All(loadTask => loadTask.Complete))
         {
+            __instance.SetMainText("Modded " +
+                                   LocalizationManager.Instance.Format("Loading Step",
+                                       ModLoadTask.AllLoadTasks.Count, ModLoadTask.AllLoadTasks.Count));
             __instance.SetProgressBarVisible(false);
         }
     }
