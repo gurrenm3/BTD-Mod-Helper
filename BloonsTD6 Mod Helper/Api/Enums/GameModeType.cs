@@ -28,6 +28,8 @@ public static class GameModeType
     public const string Reverse = "Reverse";
     public const string Sandbox = "Sandbox";
     public const string Tutorial = "Tutorial";
+    public const string BloonsTD6ModHelperDumbMode = "BloonsTD6 Mod Helper-DumbMode";
+    public const string None = "";
 
     public static readonly Dictionary<string, string> ByName;
     static GameModeType()
@@ -56,6 +58,8 @@ public static class GameModeType
             ["Reverse"] = Reverse,
             ["Sandbox"] = Sandbox,
             ["Tutorial"] = Tutorial,
+            ["BloonsTD6ModHelperDumbMode"] = BloonsTD6ModHelperDumbMode,
+            ["None"] = None,
         };
     }
 }

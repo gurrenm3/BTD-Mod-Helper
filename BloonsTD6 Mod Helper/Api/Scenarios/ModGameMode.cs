@@ -5,6 +5,7 @@ using BTD_Mod_Helper.Api.Testing;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Difficulty;
 using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
@@ -89,6 +90,10 @@ public abstract class ModGameMode : NamedModContent, IHasDefaultTest
             GameData.Instance.mods = GameData.Instance.mods.AddTo(model);
             Game.instance.model.AddChildDependant(model);
             Cache[Id] = this;
+            ModeType.allModes = ModeType.allModes.AddTo(Id);
+            if (Difficulty == DifficultyType.Easy) ModeType.easyModes = ModeType.easyModes.AddTo(Id);
+            if (Difficulty == DifficultyType.Medium) ModeType.mediumModes = ModeType.mediumModes.AddTo(Id);
+            if (Difficulty == DifficultyType.Hard) ModeType.hardModes = ModeType.hardModes.AddTo(Id);
         }
         finally
         {
