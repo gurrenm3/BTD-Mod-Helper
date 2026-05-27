@@ -65,3 +65,21 @@ public static System.Collections.IEnumerator CatchErrors(this System.Collections
 
 #### Returns
 [System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
+
+<a name='BTD_Mod_Helper.Extensions.CoroutineExtensions.CatchErrors(thisSystem.Func_System.Collections.IEnumerator_)'></a>
+
+## CoroutineExtensions.CatchErrors(this Func<IEnumerator>) Method
+
+Catches errors on a coroutine and logs them
+
+```csharp
+public static System.Collections.IEnumerator CatchErrors(this System.Func<System.Collections.IEnumerator> createCoroutine);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.CoroutineExtensions.CatchErrors(thisSystem.Func_System.Collections.IEnumerator_).createCoroutine'></a>
+
+`createCoroutine` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
+#### Returns
+[System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')

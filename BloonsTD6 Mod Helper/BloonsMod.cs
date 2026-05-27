@@ -67,6 +67,7 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <br />
     /// For example, using mods in public co-op
     /// </summary>
+    [Obsolete("No longer used")]
     public virtual bool CheatMod => true;
 
     /// <summary>
@@ -102,6 +103,16 @@ public abstract class BloonsMod : MelonMod, IModSettings
 
     /// <inheritdoc cref="Call" />
     public T Call<T>(string operation, params object[] parameters) => (T) Call(operation, parameters);
+
+    /// <summary>
+    /// Makes all custom audio be as loud as it can be without peeking, which is how BTD6 sounds tend to be
+    /// </summary>
+    public virtual bool NormalizeAllAudioVolume => true;
+
+    /// <summary>
+    /// Ids of modded audio clips that should have their sound normalized
+    /// </summary>
+    public static readonly HashSet<string> NormalizeAudioVolume = [];
 
     /// <summary>
     /// Manually adds new ModContent to the mod. Does not directly call <see cref="ModContent.Load()" /> or

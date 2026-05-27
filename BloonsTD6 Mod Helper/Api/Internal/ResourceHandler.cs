@@ -96,7 +96,18 @@ public static class ResourceHandler
             try
             {
                 using var stream = mod.GetAssembly().GetManifestResourceStream(fileName)!;
+                using var waveStream = GetWaveStream(stream, extension);
 
+                if (mod.NormalizeAllAudioVolume)
+                {
+                    BloonsMod.NormalizeAudioVolume.Add(id);
+                }
+
+                var audioClip = CreateAudioClip(waveStream, id);
+                if (audioClip != null)
+                {
+                    mod.AudioClips[name] = audioClip;
+                }
             }
             catch (Exception e)
             {
@@ -150,9 +161,8 @@ public static class ResourceHandler
     public static WaveStream GetWaveStream(Stream stream, string extension) => extension.Replace(".", "") switch
     {
         "wav" => new WaveFileReader(stream),
-        "mp3" => new Mp3FileReader(stream),
         "ogg" => new VorbisWaveReader(stream),
-        "flac" or "wma" or "aac" or "m4a" => new StreamMediaFoundationReader(stream),
+        "mp3" or "flac" or "wma" or "aac" or "m4a" => new StreamMediaFoundationReader(stream),
         _ => throw new FormatException($"Invalid for audio extension {extension}")
     };
 
@@ -162,9 +172,8 @@ public static class ResourceHandler
     public static WaveStream GetWaveStream(string filePath) => Path.GetExtension(filePath).Replace(".", "") switch
     {
         "wav" => new WaveFileReader(filePath),
-        "mp3" => new Mp3FileReader(filePath),
         "ogg" => new VorbisWaveReader(filePath),
-        "flac" or "wma" or "aac" or "m4a" => new MediaFoundationReader(filePath),
+        "mp3" or "flac" or "wma" or "aac" or "m4a" => new MediaFoundationReader(filePath),
         _ => throw new FormatException($"Invalid for audio extension {Path.GetExtension(filePath)}")
     };
 
@@ -208,6 +217,24 @@ public static class ResourceHandler
             var result = new float[count];
             Array.Copy(array, result, count);
             ArrayPool<float>.Shared.Return(array);
+
+            if (BloonsMod.NormalizeAudioVolume.Contains(id))
+            {
+                var peak = 0f;
+                for (var i = 0; i < count; i++)
+                {
+                    var abs = Math.Abs(result[i]);
+                    if (abs > peak) peak = abs;
+                }
+                if (peak is > 0f and < 0.99f)
+                {
+                    var scale = 0.99f / peak;
+                    for (var i = 0; i < count; i++)
+                    {
+                        result[i] *= scale;
+                    }
+                }
+            }
 
             var format = reader.WaveFormat;
             var audioClip = AudioClip.Create(id, result.Length / format.Channels, format.Channels, format.SampleRate, false);

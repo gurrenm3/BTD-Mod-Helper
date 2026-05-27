@@ -17,6 +17,20 @@ Derived
 &#8627; [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod')
 
 Implements [IModSettings](BTD_Mod_Helper.Api.Data.IModSettings.md 'BTD_Mod_Helper.Api.Data.IModSettings'), [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent')
+### Fields
+
+<a name='BTD_Mod_Helper.BloonsMod.NormalizeAudioVolume'></a>
+
+## BloonsMod.NormalizeAudioVolume Field
+
+Ids of modded audio clips that should have their sound normalized
+
+```csharp
+public static readonly HashSet<string> NormalizeAudioVolume;
+```
+
+#### Field Value
+[System.Collections.Generic.HashSet&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.HashSet-1 'System.Collections.Generic.HashSet`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.HashSet-1 'System.Collections.Generic.HashSet`1')
 ### Properties
 
 <a name='BTD_Mod_Helper.BloonsMod.AudioClips'></a>
@@ -99,6 +113,19 @@ public string ModSourcesPath { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.BloonsMod.NormalizeAllAudioVolume'></a>
+
+## BloonsMod.NormalizeAllAudioVolume Property
+
+Makes all custom audio be as loud as it can be without peeking, which is how BTD6 sounds tend to be
+
+```csharp
+public virtual bool NormalizeAllAudioVolume { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.BloonsMod.OptionalPatches'></a>
 
