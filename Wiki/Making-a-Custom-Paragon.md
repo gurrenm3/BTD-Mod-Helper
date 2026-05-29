@@ -44,7 +44,7 @@ public class GodKingOfSpades : ModParagonUpgrade<CardMonkey>
     public override string Description => "Sometimes the hand of fate must be forced...";
     public override string DisplayName => "God-King of Spades";
 
-    // This is getting its Icon and Portrait from GodKingOfSpades-Icon.png and GodKingOfSpace-Portrait.png, so no other overriding needed
+    // This is getting its Icon and Portrait from GodKingOfSpades-Icon.png and GodKingOfSpades-Portrait.png, so no other overriding needed
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
@@ -129,4 +129,4 @@ public class CardMonkeyParagonDisplay : ModTowerDisplay<CardMonkey>
 
 ***
 
-# Congratulations! You know have all the required information on the Mod Helper's role in making custom Paragons for your custom towers. Now you just gotta get into the nitty gritty with behaviors, or not, if you're satisfied with 555 mode.
+# Congratulations! You now have all the required information on the Mod Helper's role in making custom Paragons for your custom towers. Now you just gotta get into the nitty gritty with behaviors, or not, if you're satisfied with 555 mode.

@@ -1,4 +1,4 @@
-Certain mods that have a big task that needs to performed when the game starts (such as Ultimate Crosspathing) can make use of Custom Load Tasks to add those tasks to the game's queue of tasks that run like Coroutines in Unity, happening over the course of multiple frames so that the game doesn't lock up.
+Certain mods that have a big task that needs to be performed when the game starts (such as Ultimate Crosspathing) can make use of Custom Load Tasks to add those tasks to the game's queue of tasks that run like Coroutines in Unity, happening over the course of multiple frames so that the game doesn't lock up.
 
 # [ModLoadTask](/docs/BTD_Mod_Helper.Api.ModLoadTask)
 
@@ -20,13 +20,13 @@ It'll then finish its execution for that frame and wait for the next one, where 
 
 ## Reliability
 
-The `ModLoadTask` system relies on some complex patching behind the scenes that's subject to breakage when NK updates. Because of this, the Mod Helper automatically detects if the necessary patches were successful on startup, and if they weren't, it falls back to synchronously running the LoadTasks in one very laggy from on the Title Screen like the old days.
+The `ModLoadTask` system relies on some complex patching behind the scenes that's subject to breakage when NK updates. Because of this, the Mod Helper automatically detects if the necessary patches were successful on startup, and if they weren't, it falls back to synchronously running the LoadTasks in one very laggy frame on the Title Screen like the old days.
 
 The fact that you used a Load Task should never be the lone reason why your mod doesn't work.
 
 ## Example
 
-This task is used internally within the Mod Helper itself to wait for all the [ModByteLoader](/docs/BTD_Mod_Helper.Api.ModByteLoader)s to be finished before continuing with other Load tasks. Show cases how you can use your yield statements even inside loops.
+This task is used internally within the Mod Helper itself to wait for all the [ModByteLoader](/docs/BTD_Mod_Helper.Api.ModByteLoader)s to be finished before continuing with other Load tasks. Showcases how you can use your yield statements even inside loops.
 
 ```cs
 internal class ByteWaitTask : ModLoadTask

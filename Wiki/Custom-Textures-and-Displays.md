@@ -28,7 +28,7 @@ If you're working in a class that extends `ModContent`, then you can use some of
 
 For all of those methods, the `name` parameter is the file name of your image without the .png file extension. 
 
-If you're working somewhere outside of a class extending `ModContent`, then you'll use the equivalent static `ModContent` methods like `ModContent.GetTexture<T>(string name)` where T is your `BloonsTD6Mod` extending class. You have to specify the Mod class for these static methods in order for it get to the correct internal ID for it.
+If you're working somewhere outside of a class extending `ModContent`, then you'll use the equivalent static `ModContent` methods like `ModContent.GetTexture<T>(string name)` where T is your `BloonsTD6Mod` extending class. You have to specify the Mod class for these static methods in order for it to get to the correct internal ID for it.
 
 # ModDisplay
 
@@ -42,9 +42,9 @@ When you create your own class that extends `ModDisplay`, it will prompt you to 
 
 `ModifyDisplayNode(UnityDisplayNode node)`: Code to modify your base display node however you like.
 
-The most two most common things you'd do for a simple modified node would be:
+The two most common things you'd do for a simple modified node would be:
 
-```Set2DTexture(node, Name);``` to set a 2D Display Models texture to be the a .png with the same name as your `ModDisplay` class.
+```Set2DTexture(node, Name);``` to set a 2D Display Models texture to be a .png with the same name as your `ModDisplay` class.
 
 or
 
@@ -78,7 +78,7 @@ The `ModCustomDisplay` class (or `ModTowerCustomDisplay`) is what will let you u
 
 `PrefabName`: The name of your Prefab within the bundle (case sensitive)
 
-Other class members you you can utilize are
+Other class members you can utilize are
 
 `MaterialName`: Set this to automatically apply a material from your bundle with the given name to your display
 

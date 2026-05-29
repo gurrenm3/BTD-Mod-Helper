@@ -21,7 +21,7 @@ If too many violations occur to be reasonably dealt with, the option for users t
 - If you're not a verified modder on either of the two major BTD6 modding Discord servers, the user will need to have manually enabled the "Show Unverified Mod Browser Content" setting
 
 For it to be a valid `ModHelperData` file, it must either:
-1. Be `ModHelperData.json` a json file (optionally embedded in your project) that defined the `ModHelperData` fields in a standard one level json object like
+1. Be `ModHelperData.json` a json file (optionally embedded in your project) that defines the `ModHelperData` fields in a standard one level json object like
 ```json5
 {
     "Name": "Template Mod",
@@ -80,9 +80,9 @@ If you do use the *.cs way, you can also then directly use the values in your Me
 
 `Version` (string): The current version of your mod. Must follow proper [semantic versioning](https://semver.org/) guidelines for updating to work.
 
-`RepoName` (string) and `RepoOwner` (string): Must match the GitHub repo that your hosting the mod at, and are used in game to determine mod updates through the GitHub API.
+`RepoName` (string) and `RepoOwner` (string): Must match the GitHub repo that you're hosting the mod at, and are used in game to determine mod updates through the GitHub API.
 
-`WorksOnVersion` (string): As of BTD6 v34 and the switch to MelonLoader 6.0, a string value is required here that's semantically at/above "34" to signify that your mod is compatible with the latest versions of the game. Usage of this field may expand in the future, so it's recommended to keep it relatively up to date it alongside your ModHelperData.
+`WorksOnVersion` (string): As of BTD6 v34 and the switch to MelonLoader 6.0, a string value is required here that's semantically at/above "34" to signify that your mod is compatible with the latest versions of the game. Usage of this field may expand in the future, so it's recommended to keep it relatively up to date alongside your ModHelperData.
 
 
 ### Optional
@@ -95,7 +95,7 @@ If you do use the *.cs way, you can also then directly use the values in your Me
 
 `Author` (string): If you want something different to show up as the Author of your mod than the `RepoOwner`, define that here.
 
-`ManualDownload` (bool): If your release asset to be downloaded through users' browser rather than trying to download the release asset in game.
+`ManualDownload` (bool): If you want your release asset to be downloaded through users' browser rather than trying to download the release asset in game.
 
 `ZipName` (string): If you want to upload your mod DLL inside a zip file, specify the correct name of the zip file (extension included) here. NOTE: If you do not include a DllName to look for inside the zip, it will override to being `ManualDownload`. If you have multiple files / folders needing to be downloaded in your Zip, it will need to be a `ManualDownload` one way or another based on current Mod Helper capability.
 
@@ -103,11 +103,11 @@ If you do use the *.cs way, you can also then directly use the values in your Me
 
 `SubPath` (string): See Experimental: MonoRepo support below 
 
-`Dependencies` (string): Comma separated list of strings for what other dependencies from the Mod Browser this mod has (other than Mod Helper). Reference mods using the "owner/repository" format, using the GitHub owner name (not the mod's display Author) and the GitHub repository name (not the mod's display name). Example: "doombubbles/paths-plus-plus" or  "doombubbles/paths-plus-plus,doombubbles/ultimate-crosspathing"
+`Dependencies` (string): Comma separated list of strings for what other dependencies from the Mod Browser this mod has (other than Mod Helper). Reference mods using the "owner/repository" format, using the GitHub owner name (not the mod's display Author) and the GitHub repository name (not the mod's display name). Example: "doombubbles/paths-plus-plus" or "doombubbles/paths-plus-plus,doombubbles/ultimate-crosspathing"
 
 ## Updating
 
-If an installed mod has `ModHelperData.cs` in their code or `ModHelperData.json` / `ModHelperData.txt` included as an embedded resource, it will be used to populate that mods information in the Mods Screen.
+If an installed mod has `ModHelperData.cs` in their code or `ModHelperData.json` / `ModHelperData.txt` included as an embedded resource, it will be used to populate that mod's information in the Mods Screen.
 
 If it has both a valid `RepoOwner` and `RepoName`, it will check the mod's current version against the version specified in that Repo's `ModHelperData`. If it's an update, this will be indicated to the user and they will then have the option to fetch the latest GitHub release for the repository. The title and message of this release will be shown to the user and, if they accept, they'll download the release artifact specified by `DllName` or `ZipName` or just the first dll file included.
 

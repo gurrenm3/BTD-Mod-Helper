@@ -18,7 +18,7 @@ The new, easy way of doing dependencies is to utilize the `btd6.targets` file. W
 ![csproj editing screenshot](images/csproj-editing.png)
 
 <details>
-<summary>The Old / Manual Way of doing dependecies</summary>
+<summary>The Old / Manual Way of doing dependencies</summary>
 <br>
 
 ![Screenshot of Visual Studio Reference Adding](images/vs-reference-adding.png)
@@ -30,7 +30,7 @@ Required
 * "...\BloonsTD6\MelonLoader\Managed\Assembly-CSharp.dll"
 * "...\Mods\BloonsTD6 Mod Helper.dll"
 
-Reccomended
+Recommended
 * "...\BloonsTD6\MelonLoader\Managed\Il2CppSystem.dll"
 * "...\BloonsTD6\MelonLoader\Managed\mscorlib.dll"
 * "...\BloonsTD6\MelonLoader\Managed\Il2Cppmscorlib.dll"

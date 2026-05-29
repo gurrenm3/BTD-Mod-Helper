@@ -2,7 +2,7 @@
 
 ## ModGameMenu
 
-`ModGameMenu`s integrate with the default game menus more smoothly by mimicking an existing menu and editing it rather than completely starting from scratch. For example, the Mod Helper Settings screen mimics the HotKeys screen, the Mods screen mimics the Extra Settings screen, and the Mod Browser mimics the Challenge Browser. This can be helpful because sometimes you may want to reuse those existing elements, but comes with the caveat that **your custom menu can't be opened if the menu its mimicking is already open**.
+`ModGameMenu`s integrate with the default game menus more smoothly by mimicking an existing menu and editing it rather than completely starting from scratch. For example, the Mod Helper Settings screen mimics the HotKeys screen, the Mods screen mimics the Extra Settings screen, and the Mod Browser mimics the Challenge Browser. This can be helpful because sometimes you may want to reuse those existing elements, but comes with the caveat that **your custom menu can't be opened if the menu it's mimicking is already open**.
 
 ### Required Properties
 
@@ -26,7 +26,7 @@
 
 </details>
 
-`OnMenuOpened()`: This method must be overriden, and it's what lets you modify/remove the elements of your base screen and add all the custom elements you want. Use the `GameMenu` property as your entry point to the Unity scene. For more information about creating UI here, see [Custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-UI%2C-Menus).
+`OnMenuOpened()`: This method must be overridden, and it's what lets you modify/remove the elements of your base screen and add all the custom elements you want. Use the `GameMenu` property as your entry point to the Unity scene. For more information about creating UI here, see [Custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-UI%2C-Menus).
 
 ### Other Properties
 

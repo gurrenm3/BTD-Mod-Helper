@@ -18,7 +18,7 @@ Similarly to `Game.instance`, you can use `InGame.instance` in any of your .cs f
 
 ## UnityToSimulation (aka the "bridge")
 
-The `UnityToSimulation` class found at `InGame.instance.bridge` controls the interaction between the simulation (all of the information about the current state) and Unity (the engine powering the visualization of the game. This has more methods for handling / manipulating current match information, so if you didn't find what you were looking for in `InGame.instance`, this is another good place to look.
+The `UnityToSimulation` class found at `InGame.instance.bridge` controls the interaction between the simulation (all of the information about the current state) and Unity (the engine powering the visualization of the game). This has more methods for handling / manipulating current match information, so if you didn't find what you were looking for in `InGame.instance`, this is another good place to look.
 
 Also in this class `InGame.instance.bridge.Model` or (`InGame.instance.GetGameModel()` with our extension method) is another `GameModel` class. Read more to see why this is.
 

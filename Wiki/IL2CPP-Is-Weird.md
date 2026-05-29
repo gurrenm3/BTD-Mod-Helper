@@ -2,7 +2,7 @@ Things that people need to know about IL2CPP
 
 ## IL2CPP Overview
 
-Moderns Bloons games are coded in C# (as you hopefully know at this point) yet are able to played cross-platform on Mac, IOS, Android etc despite that not being C#'s strong suit. This is accomplished by pretty much turning the C# Intermediary Language into C++, which is more compatible overall. Hence why it's called "IL2CPP".
+Modern Bloons games are coded in C# (as you hopefully know at this point) yet are able to be played cross-platform on Mac, IOS, Android etc despite that not being C#'s strong suit. This is accomplished by pretty much turning the C# Intermediary Language into C++, which is more compatible overall. Hence why it's called "IL2CPP".
 
 ## Why It Matters
 

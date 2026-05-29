@@ -1,4 +1,4 @@
-Certain mods that generate a lot of new TowerModels or other GameModel information (e.g. such as Ultimate Crosspathing) would rather generate all taht information once, export it, and load it each time the game starts rather than generating it new each time. This is where ModByteLoaders come in. They wrap the native BloonsTD6 FlatFileCodeGen system that the game itself uses to save and load the actual GameModel.
+Certain mods that generate a lot of new TowerModels or other GameModel information (e.g. such as Ultimate Crosspathing) would rather generate all that information once, export it, and load it each time the game starts rather than generating it new each time. This is where ModByteLoaders come in. They wrap the native BloonsTD6 FlatFileCodeGen system that the game itself uses to save and load the actual GameModel.
 
 ## [ModByteLoader](/docs/BTD_Mod_Helper.Api.ModByteLoader)
 

@@ -26,7 +26,7 @@ Add an Icon (512x512) for your Game Mode to use in the round changer by using in
 
 ## Example
 
-This is a Game Mode to go alongside a custom All Regrow round set. It has a base of `GameModeType.None` because the properties of Medium difficulty apply by default unless manually overriden.
+This is a Game Mode to go alongside a custom All Regrow round set. It has a base of `GameModeType.None` because the properties of Medium difficulty apply by default unless manually overridden.
 
 ```cs
 public class AllRegrowMode : ModGameMode

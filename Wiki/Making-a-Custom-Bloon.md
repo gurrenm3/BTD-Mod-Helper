@@ -16,7 +16,7 @@ If you want to add a `ModBloon` to the game in a natural way, consider [Making a
 
 `KeepBaseId`: If you're making a custom Bloon that's supposed to be an extension of a vanilla Bloon, like a Fortified Red Bloon, then set this to true to make sure your Bloon still counts as a vanilla Red Bloon.
 
-`UseIconAsDisplay`: Whether your Bloon's icon should just be it's display instead of having a separate (potentially 3D) ModDisplay. This will default to true if you make a MOAB class bloon.
+`UseIconAsDisplay`: Whether your Bloon's icon should just be its display instead of having a separate (potentially 3D) ModDisplay. This will default to true if you make a MOAB class bloon.
 
 `DamageStates`: An array of display ids for your Bloon to have as it gets damaged. This is in order from least damaged to most damaged, and it will automatically evenly space the displays out between 100% and 0% health.
 

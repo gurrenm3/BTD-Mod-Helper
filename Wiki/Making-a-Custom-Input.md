@@ -20,7 +20,7 @@ A CustomInput is BTD6's mechanism for temporarily taking over the player's curso
 
 `EnterInputMode(CustomInput customInput)` / `ExitInputMode(CustomInput customInput)`: Hooks for when the custom input mode is entered / exited.
 
-`GetCantActivateMessage(CustomInput customInput)`: Returns the defaul of null to allow the CustomInput to activate normally. Return an error string to prevent the input from activating and instead display the error.
+`GetCantActivateMessage(CustomInput customInput)`: Returns the default of null to allow the CustomInput to activate normally. Return an error string to prevent the input from activating and instead display the error.
 
 ## Activating a Custom Input
 

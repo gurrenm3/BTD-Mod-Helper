@@ -1,6 +1,6 @@
 **This guide assumes that you already have at least a basic knowledge of C#, and have set up a modding environment as explained on this wiki. Without both of those things being true, this likely won't be a very useful resource for you.**
 
-Making a custom hero is very much like [Making a Custom Tower](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Tower). You should be familiar with the information in that guide before reading this one, as some repeated information will be ommitted.
+Making a custom hero is very much like [Making a Custom Tower](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Making-a-Custom-Tower). You should be familiar with the information in that guide before reading this one, as some repeated information will be omitted.
 
 The tl;dr of making a custom Hero is that you just make a custom Tower, but use the `ModHero` and `ModLevel` classes in place of `ModTower` and `ModUpgrade`. If you're someone who likes flying by the seat of your IDE's autocomplete, then that might be as much information as you need to get started.
 
@@ -85,7 +85,7 @@ public class IndustrialFarmer : ModHero
 Like with `ModUpgrade`s, you'll want to declare these classes using your `ModHero` class's name as the type parameter to specify it's for them
 
 ```cs
-public class CustomLevel2 : ModHeroLevel<MyCutomHero>
+public class CustomLevel2 : ModHeroLevel<MyCustomHero>
 {
     ...
 }
@@ -97,7 +97,7 @@ public class CustomLevel2 : ModHeroLevel<MyCutomHero>
 
 ## Optional Properties
 
-`AbilityName`: If this upgrade adds an ability, then you must indicate the `DisplayName` field of its `AbilityModel` hero
+`AbilityName`: If this upgrade adds an ability, then you must indicate the `DisplayName` field of its `AbilityModel`
 
 `AbilityDescription`: What you want the displayed description of the ability to be
 

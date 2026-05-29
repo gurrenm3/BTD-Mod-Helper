@@ -8,7 +8,7 @@ Also, all mod setting classes use a cool C# feature called Implicit Operators. T
 
 But, in the couple situations where that won't work, you can always use their `GetValue()` method.
 
-**New with 3.0**, `ModSetting`s can also be given an `icon` and a `description` that will be shown. You can also specify `requiresRestart` to make it visually apparent that a setting's affect only applies after a restart.
+**New with 3.0**, `ModSetting`s can also be given an `icon` and a `description` that will be shown. You can also specify `requiresRestart` to make it visually apparent that a setting's effect only applies after a restart.
 
 For further customization, there's also a `modifyOption` parameter you can pass a function in to that will let you manually change the visuals, maybe with the new [custom UI](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Custom-UI%2C-Menus/_edit) features.
 
@@ -50,14 +50,14 @@ A `ModSettingHotkey` creates a customizable hotkey. You create it with a default
 
 ## ModSettingCategory
 
-A special type of `ModSetting` that you can define and then sat as the `category` property of other `ModSetting`s. You can decided whether it should be `collapsed` by default or not, and can still give it a `displayName` and `icon` like all others. The `order` field can help you position the category in relation to other settings and categories.
+A special type of `ModSetting` that you can define and then set as the `category` property of other `ModSetting`s. You can decide whether it should be `collapsed` by default or not, and can still give it a `displayName` and `icon` like all others. The `order` field can help you position the category in relation to other settings and categories.
 
 ## Examples
 
 ```cs
 public class Main : BloonsTD6Mod
 {
-    public static readonly ModSettingInt Cost = 500;  // implict operator in action
+    public static readonly ModSettingInt Cost = 500;  // implicit operator in action
 
     public static readonly ModSettingDouble Range = new(50.0)
     {

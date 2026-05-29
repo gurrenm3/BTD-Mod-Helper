@@ -31,7 +31,7 @@ A `ModSettingString` holds a string, obviously. You can use `validation` to make
 ```cs
 public class Main : BloonsTD6Mod
 {
-    private static readonly ModSettingInt Cost = 500;  // implict operator in action
+    private static readonly ModSettingInt Cost = 500;  // implicit operator in action
 
     private static readonly ModSettingDouble Range = new ModSettingDouble(50.0)
     {

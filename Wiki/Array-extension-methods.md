@@ -46,9 +46,9 @@ The above will be true for the rest of this page
 | `Duplicate<T>(arr)`                      | duplicates the `arr`                                                                              |
 | `DuplicateAs<TSource, TCast>(arr)`       | returns a new `arr` where every item inside will be attempted to be casted to whatever `TCast` is |
 | `GetItemOfType<TSource, TCast>(arr)`     | returns the first item of `arr` that can be casted to `TCast`                                     |
-| `GetItemsOfType<TSource, TCast>(arr)`    | returns the every item of `arr` that can be casted to `TCast` in an `arr`                         |
+| `GetItemsOfType<TSource, TCast>(arr)`    | returns every item of `arr` that can be casted to `TCast` in an `arr`                             |
 | `HasItemsOfType<TSource, TCast>(arr)`    | returns whether `arr` has an object that can be casted to `TCast`                                 |
-| `RemoveItem<TSource, TCast>(arr, obj)`   | returns an `arr` where one item is equal to `obj` is removed                                      |
+| `RemoveItem<TSource, TCast>(arr, obj)`   | returns an `arr` where the item equal to `obj` is removed                                         |
 | `RemoveItemOfType<TSource, TCast>(arr)`  | returns an `arr` where one item which can be type-casted to `TCast` is removed                    |
 | `RemoveItemsOfType<TSource, TCast>(arr)` | returns an `arr` where every item which can be type-casted to `TCast` is removed                  |
 
@@ -104,4 +104,4 @@ as well as other methods
 
 `(Il2CppSystem.Collections)`
 
-eaxctly the same methods as `Il2CppGenericIEnumerable` without `GetEnumeratorCollections<T>(arr)`
+exactly the same methods as `Il2CppGenericIEnumerable` without `GetEnumeratorCollections<T>(arr)`

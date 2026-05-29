@@ -20,14 +20,14 @@ If you ever download the source code of another person's mod who used btd6.targe
 
 ## Properties
 
-`btd6.targets` defines many useful MSBuild propertes
+`btd6.targets` defines many useful MSBuild properties
 
 | Property                             | Default                                                   | What it does                                                                                                                                    |
 |--------------------------------------|-----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | `BloonsTD6`                          | `C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6` | Absolute path to your BTD6 install. Auto-set by Mod Helper when it regenerates the file.                                                        |
 | `Il2CppAssemblies`                   | `$(BloonsTD6)\MelonLoader\Il2CppAssemblies`               | Folder of generated Il2Cpp proxy DLLs.                                                                                                          |
 | `ManagedFolder`                      | `$(BloonsTD6)\MelonLoader\net6`                           | MelonLoader's managed runtime folder.                                                                                                           |
-| `OutputFolder`                       | `Mods`                                                    | Subfolder under `$(BloonsTD6)` that the post-build step copies your DLL into. Could be overriden to something like "Plugins" or "Disabled Mods" |
+| `OutputFolder`                       | `Mods`                                                    | Subfolder under `$(BloonsTD6)` that the post-build step copies your DLL into. Could be overridden to something like "Plugins" or "Disabled Mods" |
 | `RunCommand` / `RunWorkingDirectory` | `$(BloonsTD6)\BloonsTD6.exe` / `$(BloonsTD6)`             | Make `dotnet run` launch the game with the working directory set to the install folder.                                                         |
 
 ## References
@@ -72,7 +72,7 @@ All of these are set inside a `<PropertyGroup>` in your `.csproj`, before the `<
 
 # ILRepack support
 
-If your mod depends on NuGet packages or other libararies that aren't already shipped with Mod Helper or the game, list their *assembly* names (without `.dll`) in `<IncludeLibs>`. `btd6.targets` then:
+If your mod depends on NuGet packages or other libraries that aren't already shipped with Mod Helper or the game, list their *assembly* names (without `.dll`) in `<IncludeLibs>`. `btd6.targets` then:
 
 - **In Debug builds**: copies each named DLL into `$(BloonsTD6)\UserLibs\` so MelonLoader loads it alongside your mod.
 - **In Release builds**: runs [ILRepack](https://github.com/gluck/il-repack) to merge them directly into your mod's DLL, so you can ship a single self-contained `.dll`.
@@ -93,4 +93,4 @@ If your mod depends on NuGet packages or other libararies that aren't already sh
 
 - The post-build copy works even while the game is running, because it moves the live DLL aside before overwriting. You still need to restart the game to pick up your new code, though.
 - If you've added a `<Dependencies>` mod and it isn't being found at build time, double-check that the dependency's DLL actually exists in `$(BloonsTD6)\Mods` (or `$(BloonsTD6)\Disabled Mods`)
-- The default `<Optimize>false</Optimize>` you'll see in generated csprojs keeps stack traces helpful, and also avoids some weird runtimes errors that can occasionally crop up. Luckily, the performance difference is negligible
+- The default `<Optimize>false</Optimize>` you'll see in generated csprojs keeps stack traces helpful, and also avoids some weird runtime errors that can occasionally crop up. Luckily, the performance difference is negligible

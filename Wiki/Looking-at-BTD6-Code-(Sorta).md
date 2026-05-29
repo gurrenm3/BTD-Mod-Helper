@@ -30,7 +30,7 @@ we're limited in what we can see through this method.
 * The actual code within method bodies
 * The places where methods get called
 
-When you look around the code, you'll basically as see the same pattern of Method stub used, which is basically: Convert
+When you look around the code, you'll basically see the same pattern of Method stub used, which is basically: Convert
 parameters to C++y forms, call the particular C++ compiled native method, manually raise necessary exceptions.
 
 Needless to say, that information isn't really useful. This is not a method that will let you get an understanding of

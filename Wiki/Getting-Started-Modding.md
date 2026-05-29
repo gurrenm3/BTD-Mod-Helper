@@ -25,8 +25,8 @@ Feel free to use either, they will both work well, but Rider does have the Doomb
 
 Rider used to cost money after 30 days, but now it's free!
 
-User the installer for Rider as normal. When you get to the Installation Options step, it's recommended to check the
-boxes for all the file association as well as for adding the "bin" to the PATH.
+Use the installer for Rider as normal. When you get to the Installation Options step, it's recommended to check the
+boxes for all the file associations as well as for adding the "bin" to the PATH.
 
 ![Rider Install](images/rider-install.png)
 
@@ -54,7 +54,7 @@ To build your mod to its DLL file, press the Build Solution button within your I
 ![Rider Build](images/rider-build.png)
 
 If everything is set up correctly, this will build your mod and copy the DLL automatically to your BTD6 mods folder.
-You'll need to do this each time after you make changes to your mods's code in order for the changes to apply in game.
+You'll need to do this each time after you make changes to your mod's code in order for the changes to apply in game.
 
 ## Debugging your Mod
 

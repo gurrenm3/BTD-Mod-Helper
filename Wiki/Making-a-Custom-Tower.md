@@ -123,7 +123,7 @@ By default, `ModUpgrade`s will be applied in tier order 1 - 5, doing Top -> Midd
 
 ## Portrait and Icon
 
-The Icon associated with your Upgrade and the Portrait for your Tower when this is its strongest upgrade are defaulted to being .png files named `UpradeClass`-Portrait and `UpradeClass`-Icon where `UpradeClass` is the name of your class that extends `ModUpgrade`.
+The Icon associated with your Upgrade and the Portrait for your Tower when this is its strongest upgrade are defaulted to being .png files named `UpgradeClass`-Portrait and `UpgradeClass`-Icon where `UpgradeClass` is the name of your class that extends `ModUpgrade`.
 
 If you want to change this, then you can override the `Portrait` / `Icon` properties.
 
@@ -179,7 +179,7 @@ The first thing you need to do is to add `public override bool Use2DModel => tru
 
 Then, you'll decide if you want to override the `Get2DTexture(int[] tiers)` method in your `ModTower` class.
 
-`Get2DTexture` takes in an `int[3]` and returns the file name of a the correct texture to display for the tower (no directory path or .png).
+`Get2DTexture` takes in an `int[3]` and returns the file name of the correct texture to display for the tower (no directory path or .png).
 
 By default, if you had a `ModTower` CardMonkey with tiers 2-3-0, it would try (in order): CardMonkey-230, CardMonkey-X3X, CardMonkey-2XX, CardMonkey.
 
@@ -189,7 +189,7 @@ If you want to provide different functionality for getting the png file name for
 
 `ModTowerDisplays` are a special type of `ModDisplay` you can use that will automatically apply themselves to your Tower, so you don't have to deal with manually applying different displays in your `ModUpgrade` code.
 
-Before you even start this, make sure you've read through [how to use normal ModDisplays](). Once you understand that, then this should be very straightforward.
+Before you even start this, make sure you've read through [how to use normal ModDisplays](/wiki/Custom-Textures-and-Displays#moddisplay). Once you understand that, then this should be very straightforward.
 
 Instead of extending `ModDisplay` with your class, extend `ModTowerDisplay<TowerClass>` where `TowerClass` is your class that extends `ModTower`.
 
@@ -226,7 +226,7 @@ namespace CardMonkey.Displays.Tier5
             
             node.RemoveBone("SuperMonkeyRig:Dart");  // remove the boomerang from his hand
             
-            // Name in this case is just 'TFDisplay' so it will find 'TFDiplay.png'
+            // Name in this case is just 'TFDisplay' so it will find 'TFDisplay.png'
             SetMeshTexture(node, Name);
         }
     }
@@ -278,6 +278,6 @@ Using a tool like Paint.net to change the hue would be a good way to get them ho
 
 ***
 
-**Congratulations! You know have all the required information on the Mod Helper's role in making a fully featured Custom Tower. 
+**Congratulations! You now have all the required information on the Mod Helper's role in making a fully featured Custom Tower. 
 It's actual functionality will come down to how you edit the Models within the `ModifyBaseTower` and `ApplyUpgrade` methods, which means interacting with Ninja Kiwi's own systems. 
 The Mod Helper's extensions can make that easier.**

@@ -13,7 +13,7 @@ For creating custom UI, it's highly recommended that you use the [UnityExplorer]
 
 ## The Info struct
 
-All methods of creating a ModHelper Component involve creating an `Info` object for it that defines the properties of it's Unity `RectTransform` like it's positions, scale, anchor, pivot etc. To make best use of these objects, it helps to have at least a basic understanding of [Unity UI Layout](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIBasicLayout.html)
+All methods of creating a ModHelper Component involve creating an `Info` object for it that defines the properties of its Unity `RectTransform` like its positions, scale, anchor, pivot etc. To make best use of these objects, it helps to have at least a basic understanding of [Unity UI Layout](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/UIBasicLayout.html)
 
 ### Some tips about creating Info objects:
 - Sometimes it'll be easier to create an `Info` struct with the C# object initialization syntax

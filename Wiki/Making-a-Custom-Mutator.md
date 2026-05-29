@@ -10,7 +10,7 @@ A Mutator is BTD6's mechanism for layering changes on top of a `TowerModel` or `
 
 ## Common Overrides
 
-`IsUnique`: Whether only one instance of this mutator can be applied to at a time to an entity. Defaults to true.
+`IsUnique`: Whether only one instance of this mutator can be applied at a time to an entity. Defaults to true.
 
 `CantBeAbsorbed`: Whether the mutator is immune to effects like Lych's absorb. Defaults to false.
 
@@ -74,7 +74,7 @@ public class HonoraryParagonIcon : ModBuffIcon
 
 # [ModMutator&lt;T&gt;](/docs/BTD_Mod_Helper.Api.Towers.ModMutator_T_)
 
-If you want to use statically typed custom data, you can use `ModMutator<T>` isntead of passing raw JSON around. `T` is a struct/record/class that gets serialized to/from JSON for you, and the `Mutate` method receives it strongly typed.
+If you want to use statically typed custom data, you can use `ModMutator<T>` instead of passing raw JSON around. `T` is a struct/record/class that gets serialized to/from JSON for you, and the `Mutate` method receives it strongly typed.
 
 ## Example
 
@@ -110,5 +110,5 @@ if (timed != null)
 
 # Tips
 
-- Mutators are *re*-applied whenever the model is rebuilt (e.g. on upgrade), so they work better for custom effects than 
+- Mutators are *re*-applied whenever the model is rebuilt (e.g. on upgrade), so they work better for custom effects than directly editing `tower.towerModel`
 - Look at exported game data "Buffs" folder for examples of vanilla buff indicators

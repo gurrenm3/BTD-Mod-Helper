@@ -1,7 +1,7 @@
 ## Overview
 The `ModContent` class was added by the Mod Helper to manage the different custom elements of people's mods that the helper loads, like `ModTower`, `ModUpgrade`, `ModDisplay`, etc.
 
-All the different `ModContent` classes that you put in your mod will be automatically handled by the Mod Helper, which included being given a unique internal ID so that you don't have to worry about overlap with other mods.
+All the different `ModContent` classes that you put in your mod will be automatically handled by the Mod Helper, which includes being given a unique internal ID so that you don't have to worry about overlap with other mods.
 
 Because of this, the `ModContent` class comes with many static methods that you can use to access the different loaded elements.
 

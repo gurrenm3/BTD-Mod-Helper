@@ -4,7 +4,7 @@ explained on this wiki.**
 Adding custom Artifacts that appear in the Rogue Legends game mode is done via creating classes that extend from
 `ModItemArtifact` for permanent in-game-affecting artifacts, `ModBoostArtifact` for temporary in-game-affecting
 artifacts, or`ModMapArtifact` for permanent out-of-game-affecting artifacts.
-All of these classes extend from `ModArtifact` and have the same core methods and properties that should be overriden.
+All of these classes extend from `ModArtifact` and have the same core methods and properties that should be overridden.
 
 ## Notes
 

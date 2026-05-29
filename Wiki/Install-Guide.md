@@ -22,7 +22,7 @@ the [instructions here](https://melonwiki.xyz/#/?id=automated-installation) for 
 installer. By default, your BloonsTD6 folder will be located somewhere
 like `C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6`. If that's not correct, you can right click the game in
 your Steam library and select "Manage" > "Browse Local Files" to see where they are. For Epic, the default install path
-is or `C:\Program Files\Epic Games\BloonsTD6`.
+is `C:\Program Files\Epic Games\BloonsTD6`.
 
 ### Linux
 
@@ -116,7 +116,7 @@ from the actual path that Steam or Epic considers it to be installed at.
 
 ## Uninstalling
 
-To restore your BTD6 install to completely clean state so that it no longer recognizes you as a modder, you must do ALL
+To restore your BTD6 install to a completely clean state so that it no longer recognizes you as a modder, you must do ALL
 of:
 
 ### MelonLoader files

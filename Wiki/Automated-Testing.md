@@ -1,6 +1,6 @@
 **This guide assumes that you already have at least a basic knowledge of C#, and have set up a modding environment as explained on this wiki.**
 
-Mod Helper adds some features to enable easier automated testing of mod projects. This can be particularly helpful since BTD6 is an actively developed game where mods will break often, so being able to check if your mod stills works as expected after an update with only 1 click is handy.
+Mod Helper adds some features to enable easier automated testing of mod projects. This can be particularly helpful since BTD6 is an actively developed game where mods will break often, so being able to check if your mod still works as expected after an update with only 1 click is handy.
 
 Using Mod Helper's `ModContent` classes like `ModTower` will automatically register some tests for you, [see below for more details on that](#default-modcontent-tests). For making your own tests, see the following:
 
@@ -100,8 +100,8 @@ For most kinds of `ModContent`, Mod Helper ships a generic [ModContentDefaultTes
 
 | Subclass                                                                        | Default behaviour                                                                                                    |
 |---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| [ModTowerTest](/docs/BTD_Mod_Helper.Api.Testing.ModTowerTest)                   | Places one of your tower and walks every upgrade on every path. Paragons get paragon-upgraded too.                   |
-| [ModBloonTest](/docs/BTD_Mod_Helper.Api.Testing.ModBloonTest)                   | Spawns one of your bloon and destroys it.                                                                            |
+| [ModTowerTest](/docs/BTD_Mod_Helper.Api.Testing.ModTowerTest)                   | Places one of your towers and walks every upgrade on every path. Paragons get paragon-upgraded too.                  |
+| [ModBloonTest](/docs/BTD_Mod_Helper.Api.Testing.ModBloonTest)                   | Spawns one of your bloons and destroys it.                                                                           |
 | [ModRoundSetTest](/docs/BTD_Mod_Helper.Api.Testing.ModRoundSetTest)             | Forces the round set, loads in, asserts the model picked up the override.                                            |
 | [ModDisplayTest](/docs/BTD_Mod_Helper.Api.Testing.ModDisplayTest)               | One sweep across every `ModDisplay` you've registered, calling `SpawnEffect` to test the `ModifyDisplayNode` method. |
 | [ModGameModeTest](/docs/BTD_Mod_Helper.Api.Testing.ModGameModeTest)             | Loads into a game using the mode.                                                                                    |
