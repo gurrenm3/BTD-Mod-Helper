@@ -684,6 +684,25 @@ public static string GetDisplayGUID<T>()
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetDisplayReference_T_()'></a>
+
+## ModContent.GetDisplayReference<T>() Method
+
+Gets the PrefabReference for a specific ModDisplay
+
+```csharp
+public static PrefabReference GetDisplayReference<T>()
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetDisplayReference_T_().T'></a>
+
+`T`
+
+#### Returns
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetId(BTD_Mod_Helper.BloonsMod,string)'></a>
 
 ## ModContent.GetId(BloonsMod, string) Method
@@ -846,6 +865,25 @@ public static BTD_Mod_Helper.BloonsMod GetMod(string name);
 
 #### Returns
 [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetPrefabReference_T_()'></a>
+
+## ModContent.GetPrefabReference<T>() Method
+
+Gets the PrefabReference for a specific ModDisplay
+
+```csharp
+public static PrefabReference GetPrefabReference<T>()
+    where T : BTD_Mod_Helper.Api.Display.ModDisplay;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetPrefabReference_T_().T'></a>
+
+`T`
+
+#### Returns
+[Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
 <a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,float)'></a>
 

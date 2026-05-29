@@ -27,6 +27,7 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
         [(typeof(DamageModel), nameof(DamageModel.distributeToChildren))] = "true",
         [(typeof(DamageModel), nameof(DamageModel.createPopEffect))] = "true",
         [(typeof(EffectModel), nameof(EffectModel.scale))] = "1",
+        [(typeof(EffectModel), nameof(EffectModel.lifespan))] = "1",
         [(typeof(DamageModifierModel), "damageMultiplier")] = "1",
         [(typeof(ProjectileModel), nameof(ProjectileModel.vsBlockerRadius))] = "0",
         [(typeof(AttackModel), nameof(AttackModel.addsToSharedGrid))] = "true"

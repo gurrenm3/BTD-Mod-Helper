@@ -440,8 +440,10 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// <param name="clipNames">Names of audio clips within this mod</param>
     public void RegisterRandomizedAudioClip(string name, params string[] clipNames)
     {
-        ResourceHandler.RandomAudioClipIds[ModContent.GetId(this, name)] = clipNames
-            .Select(clipName => AudioClips[clipName])
-            .ToArray();
+        var id = ModContent.GetId(this, name);
+        if (!ResourceHandler.RandomAudioClipIds.ContainsKey(id))
+        {
+            ResourceHandler.RandomAudioClipIds[id] = clipNames.Select(clipName => AudioClips[clipName]).ToArray();
+        }
     }
 }

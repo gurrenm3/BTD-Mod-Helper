@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <IsRoslynComponent>true</IsRoslynComponent>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <RootNamespace>BTD_Mod_Helper.SourceGenerators</RootNamespace>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+        <!--NuGet package metadata-->
+        <PackageId>Btd6ModHelper.SourceGenerators</PackageId>
+        <Version>1.0.1</Version>
+        <Authors>doombubbles</Authors>
+        <Description>Source generators for BTD6 Mod Helper mods (auto-generated ModResources class for embedded resources).</Description>
+        <PackageTags>btd6;bloons;modding;source-generator;analyzer</PackageTags>
+        <PackageProjectUrl>https://github.com/doombubbles/BTD-Mod-Helper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/doombubbles/BTD-Mod-Helper</RepositoryUrl>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+        <!--Roslyn-analyzer packaging conventions-->
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <!--Pack the generator dll into analyzers/dotnet/cs so consumers load it as a Roslyn analyzer.-->
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+        <None Include="README.md" Pack="true" PackagePath="\" Visible="true"/>
+    </ItemGroup>
+</Project>

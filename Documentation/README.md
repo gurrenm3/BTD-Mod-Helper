@@ -149,9 +149,15 @@
 
 | Classes | |
 | :--- | :--- |
+| [AudioClipResource&lt;T&gt;](BTD_Mod_Helper.Api.Data.AudioClipResource_T_.md 'BTD_Mod_Helper.Api.Data.AudioClipResource<T>') | An embedded audio clip resource belonging to mod [T](BTD_Mod_Helper.Api.Data.AudioClipResource_T_.md#BTD_Mod_Helper.Api.Data.AudioClipResource_T_.T 'BTD_Mod_Helper.Api.Data.AudioClipResource<T>.T'). |
+| [BundleResource&lt;T&gt;](BTD_Mod_Helper.Api.Data.BundleResource_T_.md 'BTD_Mod_Helper.Api.Data.BundleResource<T>') | An embedded asset bundle resource belonging to mod [T](BTD_Mod_Helper.Api.Data.BundleResource_T_.md#BTD_Mod_Helper.Api.Data.BundleResource_T_.T 'BTD_Mod_Helper.Api.Data.BundleResource<T>.T'). |
+| [JsonResource&lt;T&gt;](BTD_Mod_Helper.Api.Data.JsonResource_T_.md 'BTD_Mod_Helper.Api.Data.JsonResource<T>') | An embedded JSON resource belonging to mod [T](BTD_Mod_Helper.Api.Data.JsonResource_T_.md#BTD_Mod_Helper.Api.Data.JsonResource_T_.T 'BTD_Mod_Helper.Api.Data.JsonResource<T>.T'). |
 | [ModMultiTextOverride](BTD_Mod_Helper.Api.Data.ModMultiTextOverride.md 'BTD_Mod_Helper.Api.Data.ModMultiTextOverride') | A bunch of ModTextOverrides that all share the same Active condition and don't require any on the fly determinations of<br/>their text |
 | [ModSettings](BTD_Mod_Helper.Api.Data.ModSettings.md 'BTD_Mod_Helper.Api.Data.ModSettings') | Another class outside of the main BloonsTD6Mod class that ModSettings can be defined in. Rules otherwise work the same<br/>way |
 | [ModTextOverride](BTD_Mod_Helper.Api.Data.ModTextOverride.md 'BTD_Mod_Helper.Api.Data.ModTextOverride') | Class for dynamically overriding In-Game text in a way that's compatible with other mods |
+| [RandomizedAudioClipResource&lt;T&gt;](BTD_Mod_Helper.Api.Data.RandomizedAudioClipResource_T_.md 'BTD_Mod_Helper.Api.Data.RandomizedAudioClipResource<T>') | Randomized audio clip amongst a number of variants |
+| [Resource](BTD_Mod_Helper.Api.Data.Resource.md 'BTD_Mod_Helper.Api.Data.Resource') | Base class for an embedded resource referenced by name. |
+| [SpriteResource&lt;T&gt;](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md 'BTD_Mod_Helper.Api.Data.SpriteResource<T>') | An embedded sprite resource belonging to mod [T](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md#BTD_Mod_Helper.Api.Data.SpriteResource_T_.T 'BTD_Mod_Helper.Api.Data.SpriteResource<T>.T'). |
 
 | Interfaces | |
 | :--- | :--- |

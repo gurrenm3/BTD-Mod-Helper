@@ -434,16 +434,24 @@ public abstract partial class ModContent
     /// <summary>
     /// Gets the ID for the given ModBloon
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
     public static string BloonID<T>() where T : ModBloon => GetInstance<T>().Id;
 
     /// <summary>
     /// Gets the GUID (thing that should be used in the display field for things) for a specific ModDisplay
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
     public static string GetDisplayGUID<T>() where T : ModDisplay => GetInstance<T>().Id;
+
+    /// <summary>
+    /// Gets the PrefabReference for a specific ModDisplay
+    /// </summary>
+    public static PrefabReference GetDisplayReference<T>() where T : ModDisplay =>
+        CreatePrefabReference(GetDisplayGUID<T>());
+
+    /// <summary>
+    /// Gets the PrefabReference for a specific ModDisplay
+    /// </summary>
+    public static PrefabReference GetPrefabReference<T>() where T : ModDisplay =>
+        CreatePrefabReference(GetDisplayGUID<T>());
 
     /// <summary>
     /// Gets an AudioClip from a mod by its name (no file extension included)

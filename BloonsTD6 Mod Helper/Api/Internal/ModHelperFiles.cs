@@ -24,9 +24,10 @@ internal static class ModHelperFiles
 
         foreach (var file in new[] {"btd6.targets", "launchSettings.json"})
         {
-            var text = ModHelper.MainAssembly.GetEmbeddedText(file)
-                .Replace(@"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6", MelonEnvironment.GameRootDirectory);
-            File.WriteAllText(Path.Combine(path, file), text);
+            using var stream = ModHelper.MainAssembly.GetEmbeddedResource(file);
+            if (stream == null) continue;
+            using var fileStream = File.Create(Path.Combine(path, file));
+            stream.CopyTo(fileStream);
         }
     }
 

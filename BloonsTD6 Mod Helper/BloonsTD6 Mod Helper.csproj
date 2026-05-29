@@ -53,7 +53,7 @@
     <Import Condition="!Exists('..\..\btd6.targets')" Project="btd6.targets"/>
 
     <!--Copy changes of mod helper files to Mod Sources without having to rerun game-->
-    <Target Name="SyncModSourcesFiles" AfterTargets="Build"
+    <Target Name="SyncModSourcesFiles" BeforeTargets="Compile"
             Condition="'$(BloonsTD6)' == 'C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6'">
         <Copy Condition="Exists('..\..\btd6.targets')" SourceFiles="btd6.targets" DestinationFiles="..\..\btd6.targets" SkipUnchangedFiles="true"/>
         <Copy Condition="Exists('..\..\launchSettings.json')" SourceFiles="Resources\launchSettings.json" DestinationFiles="..\..\launchSettings.json" SkipUnchangedFiles="true"/>
