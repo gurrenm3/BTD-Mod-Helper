@@ -344,6 +344,13 @@ public abstract class ModTower : NamedModContent, IHasDefaultTest
     public virtual float Get2DScale(params int[] tiers) => 1f;
 
     /// <summary>
+    /// Allows you to perform one-time actions in game when a ModUpgrade is applied to a tower
+    /// </summary>
+    public virtual void OnUpgraded(Tower tower, ModUpgrade upgrade)
+    {
+    }
+
+    /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers
     /// <br />
     /// Looks for the highest tier <see cref="ModUpgrade" /> this tower has that defined a

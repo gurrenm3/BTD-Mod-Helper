@@ -1,4 +1,5 @@
-﻿using Il2CppAssets.Scripts.Models.Towers;
+﻿using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Simulation.Towers;
 namespace BTD_Mod_Helper.Patches.Towers;
 
@@ -29,6 +30,11 @@ internal class TowerManager_UpgradeTower
         if (__state != null)
         {
             ModHelper.PerformHook(mod => mod.OnTowerUpgraded(tower, __state, def));
+            if (ModUpgrade.Cache.TryGetValue(__state, out var modUpgrade))
+            {
+                modUpgrade.OnUpgraded(tower);
+                modUpgrade.Tower?.OnUpgraded(tower, modUpgrade);
+            }
         }
     }
 }

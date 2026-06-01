@@ -49,6 +49,30 @@ Unless you set `<AutoEmbed>false</AutoEmbed>`, every asset under your project fo
 
 These are what `ModContent.GetSprite(...)`, `ModContent.GetAudioClip(...)`, etc. look up at runtime.
 
+## Source generators
+
+`btd6.targets` automatically references the `Btd6ModHelper.SourceGenerators` NuGet package, which emits a strongly-typed `ModResources` class so you can reference your embedded resources by field instead of by string literal:
+
+```cs
+tower.icon = ModResources.MyTowerIcon;          // SpriteResource<MyMod> -> SpriteReference
+sound.audioClip = ModResources.MySound;         // AudioClipResource<MyMod> -> AudioClipReference
+```
+
+For every auto-embedded resource with a known extension, a field is generated on `ModResources`:
+
+| Extension                                               | Generated type                  |
+|---------------------------------------------------------|---------------------------------|
+| `.png`, `.jpg`                                          | `SpriteResource<TMod>`          |
+| `.wav`, `.mp3`, `.ogg`, `.flac`, `.aac`, `.wma`, `.m4a` | `AudioClipResource<TMod>`       |
+| `.bundle`                                               | `BundleResource<TMod>`          |
+| `.json`                                                 | `JsonResource<TMod>`            |
+
+Each resource type has implicit conversions to the corresponding game type (`SpriteReference`, `AudioClipReference`, `AssetBundle`, `JObject`, etc.) so they drop into existing APIs directly.
+
+A series of numbered audio clips (`pop1.wav`, `pop2.wav`, `pop3.wav`, …) also gets a `RandomizedAudioClipResource<TMod>` field named after the shared base (`pop`), unless an audio clip with that exact base name already exists.
+
+Set `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj to opt out of using the generator.
+
 ## Post-build steps
 
 `MoveDllToMods` / `MoveXmlToMods` copy your built DLL and optional XML doc file into `$(BloonsTD6)\$(OutputFolder)`. Before overwriting, the previous version of the DLL is moved aside to `$(BloonsTD6)\BTD6ModHelper\Old Mods\` so a running game can still finish using it.
@@ -68,6 +92,7 @@ All of these are set inside a `<PropertyGroup>` in your `.csproj`, before the `<
 | `<DontCopyLaunchSettings>true</DontCopyLaunchSettings>` | Stop overwriting your `Properties/launchSettings.json` on build.                                                                                       |
 | `<JustMelonloader>true</JustMelonloader>`               | Drop the Il2Cpp / Unity reference set. Useful for plugins (like `UpdaterPlugin`) that live in MelonLoader's plugin folder instead of as a regular mod. |
 | `<AutoEmbed>false</AutoEmbed>`                          | Disable the auto-embedded `.png`/`.wav`/etc resources if you want to manage embeds manually.                                                           |
+| `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` | Skip the `Btd6ModHelper.SourceGenerators` package and stop generating the `ModResources` class. See [Source generators](#source-generators).    |
 | `<IncludeLibs>NugetPkg1;NugetPkg2</IncludeLibs>`        | See [ILRepack support](#ilrepack-support) below.                                                                                                       |
 
 # ILRepack support

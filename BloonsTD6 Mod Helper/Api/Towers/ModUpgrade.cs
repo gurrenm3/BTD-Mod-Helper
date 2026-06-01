@@ -139,7 +139,7 @@ public abstract class ModUpgrade : NamedModContent
     /// <summary>
     /// The tower that this is an upgrade for
     /// </summary>
-    public abstract ModTower Tower { get; }
+    public virtual ModTower Tower { get; }
 
     /// <summary>
     /// Whether this upgrade should be unlocked or not
@@ -169,7 +169,10 @@ public abstract class ModUpgrade : NamedModContent
     {
         upgradeModel = GetUpgradeModel();
 
-        AssignToModTower();
+        if (Tower != null)
+        {
+            AssignToModTower();
+        }
 
         try
         {
@@ -272,16 +275,21 @@ public abstract class ModUpgrade : NamedModContent
     public virtual UpgradeModel GetUpgradeModel()
     {
         return upgradeModel ??= new UpgradeModel(Id, Cost, XpCost, IconReference ?? DefaultIcon,
-                   Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
+            Path, Tier - 1, 0, NeedsConfirmation ? Id : "", "");
     }
 
     /// <summary>
     /// Allows you to dynamically allow an upgrade to not be purchasable based on the InGame values of a Tower
     /// </summary>
-    /// <param name="tower"></param>
-    /// <returns>If </returns>
     public virtual bool RestrictUpgrading(Tower tower) => false;
-    
+
+    /// <summary>
+    /// Allows you to perform one-time actions in game when this upgrade is applied to a tower
+    /// </summary>
+    public virtual void OnUpgraded(Tower tower)
+    {
+    }
+
     /// <summary>
     /// Runs each tick of the simulation for each tower placed down with this upgrade applied regardless if it is the current highest tier in the path or not. Be sure to override <see cref="ModContent.DoesTick"/> to true as it is false by default.
     /// </summary>
@@ -290,14 +298,15 @@ public abstract class ModUpgrade : NamedModContent
     /// <param name="tower">The current tower</param>
     protected virtual void Tick(int ticks, Simulation sim, Tower tower)
     {
-        
+
     }
-    
+
     /// <inheritdoc/>
     /// There is another Tick method for Mod Towers/Upgrades with a Tower parameter. Override this if you don't want that to run.
     protected override void Tick(int ticks, Simulation sim)
     {
-        foreach (var tower in sim.towerManager.GetTowers().ToList().Where(tower => tower != null && tower.towerModel.IsModUpgradeApplied(this)))
+        foreach (var tower in sim.towerManager.GetTowers().ToList()
+                     .Where(tower => tower != null && tower.towerModel.IsModUpgradeApplied(this)))
         {
             Tick(ticks, sim, tower);
         }

@@ -137,11 +137,12 @@ public partial class CreateProjectileModelExt
 
         internal override void OnCreate(ProjectileModel result)
         {
-            result.displayModel ??= new DisplayModel("ProjectileDisplay", result.display, 0, DisplayCategory.Projectile);
-
-            if (!result.HasBehavior<DisplayModel>())
+            if (result.display is not null &&
+                !string.IsNullOrEmpty(result.display.AssetGUID) &&
+                !result.HasBehavior<DisplayModel>())
             {
-                result.AddBehavior(result.displayModel);
+                result.AddBehavior(result.displayModel ??
+                                   new DisplayModel("ProjectileDisplay", result.display, 0, DisplayCategory.Projectile));
             }
 
             if (!result.HasBehavior(out ProjectileFilterModel filter))

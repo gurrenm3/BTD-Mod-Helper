@@ -18,6 +18,8 @@ internal class RegisterModContentTask : ModLoadTask
     private float? total;
     public float Total => total ??= mod.Content.Sum(content => 1f / content.RegisterPerFrame);
 
+    internal override MelonLogger.Instance Logger => GetInstance<MelonMain>().LoggerInstance;
+
     /// <summary>
     /// Registers ModContent from all mods
     /// </summary>

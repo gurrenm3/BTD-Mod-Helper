@@ -93,6 +93,8 @@ public abstract class ModLoadTask : NamedModContent
     /// <returns></returns>
     public abstract IEnumerator Coroutine();
 
+    internal virtual MelonLogger.Instance Logger => mod.LoggerInstance;
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -131,7 +133,7 @@ public abstract class ModLoadTask : NamedModContent
         {
             if (loadTask.Complete) continue;
             CurrentTask = loadTask;
-            ModHelper.Msg(loadTask.DisplayName);
+            loadTask.Logger.Msg(loadTask.DisplayName);
 
             var task = loadTask.Coroutine;
             yield return task.CatchErrors();
@@ -150,7 +152,7 @@ public abstract class ModLoadTask : NamedModContent
         {
             if (loadTask.Complete) continue;
             CurrentTask = loadTask;
-            ModHelper.Msg(loadTask.DisplayName);
+            loadTask.Logger.Msg(loadTask.DisplayName);
             loadTask.RunSync();
             loadTask.Complete = true;
         }
