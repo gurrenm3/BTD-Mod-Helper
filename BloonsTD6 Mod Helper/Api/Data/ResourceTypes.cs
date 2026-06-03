@@ -15,11 +15,6 @@ public abstract class Resource(string name)
     /// The resource's file name without extension.
     /// </summary>
     public string Name { get; } = name;
-
-    /// <summary>
-    /// Implicit conversion to the resource's name.
-    /// </summary>
-    public static implicit operator string(Resource resource) => resource.Name;
 }
 
 /// <summary>
@@ -38,14 +33,14 @@ public class SpriteResource<T>(string name) : Resource(name) where T : BloonsMod
     public static implicit operator SpriteReference(SpriteResource<T> resource) => resource.SpriteReference;
 
     /// <summary>
-    /// The loaded <see cref="UnityEngine.Sprite"/> for this resource.
+    /// Creates a <see cref="UnityEngine.Sprite"/> from this resource.
     /// </summary>
-    public virtual Sprite Sprite => ModContent.GetSprite<T>(Name);
+    public virtual Sprite GetSprite(float pixelsPerUnit = 10) => ModContent.GetSprite<T>(Name, pixelsPerUnit);
 
     /// <summary>
-    /// Implicit conversion to <see cref="UnityEngine.Sprite"/>.
+    /// Implicit conversion to the resource's guid.
     /// </summary>
-    public static implicit operator Sprite(SpriteResource<T> resource) => resource.Sprite;
+    public static implicit operator string(SpriteResource<T> resource) => resource.SpriteReference.AssetGUID;
 }
 
 /// <summary>
@@ -72,6 +67,11 @@ public class AudioClipResource<T>(string name) : Resource(name) where T : Bloons
     /// Implicit conversion to <see cref="SoundModel"/>.
     /// </summary>
     public static implicit operator SoundModel(AudioClipResource<T> resource) => resource.Sound;
+
+    /// <summary>
+    /// Implicit conversion to the resource's guid.
+    /// </summary>
+    public static implicit operator string(AudioClipResource<T> resource) => resource.AudioClipReference.AssetGUID;
 }
 
 /// <summary>
@@ -89,6 +89,11 @@ public class JsonResource<T>(string name) : Resource(name) where T : BloonsMod
     /// Implicit conversion to <see cref="JObject"/>.
     /// </summary>
     public static implicit operator JObject(JsonResource<T> resource) => resource.Json;
+
+    /// <summary>
+    /// Implicit conversion to the resource's name
+    /// </summary>
+    public static implicit operator string(JsonResource<T> resource) => resource.Name;
 }
 
 /// <summary>
@@ -105,6 +110,11 @@ public class BundleResource<T>(string name) : Resource(name) where T : BloonsMod
     /// Implicit conversion to <see cref="AssetBundle"/>.
     /// </summary>
     public static implicit operator AssetBundle(BundleResource<T> resource) => resource.Bundle;
+
+    /// <summary>
+    /// Implicit conversion to the resource's name
+    /// </summary>
+    public static implicit operator string(BundleResource<T> resource) => resource.Name;
 }
 
 /// <summary>

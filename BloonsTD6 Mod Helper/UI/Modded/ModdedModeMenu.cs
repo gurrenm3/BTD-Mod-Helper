@@ -69,6 +69,8 @@ internal class ModdedModeMenu
 
             var matchScale = newButton.AddComponent<MatchScale>();
             matchScale.transformToCopy = proto.transform;
+
+            modGameMode.ModifyModeButton(modeButton);
         }
     }
 
@@ -94,8 +96,6 @@ internal class ModdedModeMenu
         modeScreen.hardModes.TranslateScaled(up);
     }
 
-    #region Nested type: ModeScreen_Open
-
     [HarmonyPatch(typeof(ModeScreen), nameof(ModeScreen.Open))]
     internal static class ModeScreen_Open
     {
@@ -117,6 +117,4 @@ internal class ModdedModeMenu
             MakeScrollable(__instance, maxCount);
         }
     }
-
-    #endregion
 }

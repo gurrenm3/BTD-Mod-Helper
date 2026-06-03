@@ -9,7 +9,9 @@ using Il2CppAssets.Scripts.Models.Difficulty;
 using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
+using UnityEngine;
 namespace BTD_Mod_Helper.Api.Scenarios;
 
 /// <summary>
@@ -149,6 +151,14 @@ public abstract class ModGameMode : NamedModContent, IHasDefaultTest
     public virtual void ModifyChallengeRules(DailyChallengeModel challengeModel)
     {
 
+    }
+
+    /// <summary>
+    /// Make any modifications to the button for this mode on the Mode Screen
+    /// </summary>
+    /// <param name="modeButton">mode button</param>
+    public virtual void ModifyModeButton(ModeButton modeButton)
+    {
     }
 
     internal static void ModifyDefaultGameModes(GameData gameData)
