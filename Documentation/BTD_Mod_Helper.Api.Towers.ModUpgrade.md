@@ -216,7 +216,7 @@ public abstract int Tier { get; }
 The tower that this is an upgrade for
 
 ```csharp
-public abstract BTD_Mod_Helper.Api.Towers.ModTower Tower { get; }
+public virtual BTD_Mod_Helper.Api.Towers.ModTower Tower { get; }
 ```
 
 #### Property Value
@@ -352,6 +352,21 @@ public virtual void LateApplyUpgrade(TowerModel towerModel);
 
 `towerModel` [Il2CppAssets.Scripts.Models.Towers.TowerModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.TowerModel 'Il2CppAssets.Scripts.Models.Towers.TowerModel')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.OnUpgraded(Tower)'></a>
+
+## ModUpgrade.OnUpgraded(Tower) Method
+
+Allows you to perform one-time actions in game when this upgrade is applied to a tower
+
+```csharp
+public virtual void OnUpgraded(Tower tower);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.OnUpgraded(Tower).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.RestrictUpgrading(Tower)'></a>
 
 ## ModUpgrade.RestrictUpgrading(Tower) Method
@@ -368,8 +383,7 @@ public virtual bool RestrictUpgrading(Tower tower);
 `tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-If
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModUpgrade.ShouldAcquireUpgrade(ProfileModel)'></a>
 

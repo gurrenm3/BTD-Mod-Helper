@@ -46,22 +46,3 @@ public string Name { get; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-### Operators
-
-<a name='BTD_Mod_Helper.Api.Data.Resource.op_Implicitstring(BTD_Mod_Helper.Api.Data.Resource)'></a>
-
-## Resource.implicit operator string(Resource) Operator
-
-Implicit conversion to the resource's name.
-
-```csharp
-public static string implicit operator string(BTD_Mod_Helper.Api.Data.Resource resource);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Data.Resource.op_Implicitstring(BTD_Mod_Helper.Api.Data.Resource).resource'></a>
-
-`resource` [Resource](BTD_Mod_Helper.Api.Data.Resource.md 'BTD_Mod_Helper.Api.Data.Resource')
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

@@ -99,3 +99,21 @@ public static SoundModel implicit operator SoundModel(BTD_Mod_Helper.Api.Data.Au
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Audio.SoundModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Audio.SoundModel 'Il2CppAssets.Scripts.Models.Audio.SoundModel')
+
+<a name='BTD_Mod_Helper.Api.Data.AudioClipResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.AudioClipResource_T_)'></a>
+
+## AudioClipResource<T>.implicit operator string(AudioClipResource<T>) Operator
+
+Implicit conversion to the resource's guid.
+
+```csharp
+public static string implicit operator string(BTD_Mod_Helper.Api.Data.AudioClipResource<T> resource);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Data.AudioClipResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.AudioClipResource_T_).resource'></a>
+
+`resource` [BTD_Mod_Helper.Api.Data.AudioClipResource&lt;](BTD_Mod_Helper.Api.Data.AudioClipResource_T_.md 'BTD_Mod_Helper.Api.Data.AudioClipResource<T>')[T](BTD_Mod_Helper.Api.Data.AudioClipResource_T_.md#BTD_Mod_Helper.Api.Data.AudioClipResource_T_.T 'BTD_Mod_Helper.Api.Data.AudioClipResource<T>.T')[&gt;](BTD_Mod_Helper.Api.Data.AudioClipResource_T_.md 'BTD_Mod_Helper.Api.Data.AudioClipResource<T>')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

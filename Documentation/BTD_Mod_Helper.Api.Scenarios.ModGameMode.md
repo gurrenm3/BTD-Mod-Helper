@@ -160,3 +160,20 @@ public virtual void ModifyGameModel(GameModel gameModel);
 <a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyGameModel(GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyModeButton(ModeButton)'></a>
+
+## ModGameMode.ModifyModeButton(ModeButton) Method
+
+Make any modifications to the button for this mode on the Mode Screen
+
+```csharp
+public virtual void ModifyModeButton(ModeButton modeButton);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.ModifyModeButton(ModeButton).modeButton'></a>
+
+`modeButton` [Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect.ModeButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect.ModeButton 'Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect.ModeButton')
+
+mode button

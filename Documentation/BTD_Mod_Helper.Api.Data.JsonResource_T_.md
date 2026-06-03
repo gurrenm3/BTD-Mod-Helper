@@ -65,3 +65,21 @@ public static JObject implicit operator JObject(BTD_Mod_Helper.Api.Data.JsonReso
 
 #### Returns
 [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
+
+<a name='BTD_Mod_Helper.Api.Data.JsonResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.JsonResource_T_)'></a>
+
+## JsonResource<T>.implicit operator string(JsonResource<T>) Operator
+
+Implicit conversion to the resource's name
+
+```csharp
+public static string implicit operator string(BTD_Mod_Helper.Api.Data.JsonResource<T> resource);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Data.JsonResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.JsonResource_T_).resource'></a>
+
+`resource` [BTD_Mod_Helper.Api.Data.JsonResource&lt;](BTD_Mod_Helper.Api.Data.JsonResource_T_.md 'BTD_Mod_Helper.Api.Data.JsonResource<T>')[T](BTD_Mod_Helper.Api.Data.JsonResource_T_.md#BTD_Mod_Helper.Api.Data.JsonResource_T_.T 'BTD_Mod_Helper.Api.Data.JsonResource<T>.T')[&gt;](BTD_Mod_Helper.Api.Data.JsonResource_T_.md 'BTD_Mod_Helper.Api.Data.JsonResource<T>')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

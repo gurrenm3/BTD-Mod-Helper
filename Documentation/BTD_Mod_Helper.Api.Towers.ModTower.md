@@ -675,6 +675,25 @@ public virtual void ModifyTowerModelForMatch(TowerModel towerModel, System.Colle
 
 `gameModes` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.OnUpgraded(Tower,BTD_Mod_Helper.Api.Towers.ModUpgrade)'></a>
+
+## ModTower.OnUpgraded(Tower, ModUpgrade) Method
+
+Allows you to perform one-time actions in game when a ModUpgrade is applied to a tower
+
+```csharp
+public virtual void OnUpgraded(Tower tower, BTD_Mod_Helper.Api.Towers.ModUpgrade upgrade);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.OnUpgraded(Tower,BTD_Mod_Helper.Api.Towers.ModUpgrade).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.OnUpgraded(Tower,BTD_Mod_Helper.Api.Towers.ModUpgrade).upgrade'></a>
+
+`upgrade` [ModUpgrade](BTD_Mod_Helper.Api.Towers.ModUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModUpgrade')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.ShouldUnlockTower(ProfileModel)'></a>
 
 ## ModTower.ShouldUnlockTower(ProfileModel) Method

@@ -65,3 +65,21 @@ public static AssetBundle implicit operator AssetBundle(BTD_Mod_Helper.Api.Data.
 
 #### Returns
 [UnityEngine.AssetBundle](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AssetBundle 'UnityEngine.AssetBundle')
+
+<a name='BTD_Mod_Helper.Api.Data.BundleResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.BundleResource_T_)'></a>
+
+## BundleResource<T>.implicit operator string(BundleResource<T>) Operator
+
+Implicit conversion to the resource's name
+
+```csharp
+public static string implicit operator string(BTD_Mod_Helper.Api.Data.BundleResource<T> resource);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Data.BundleResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.BundleResource_T_).resource'></a>
+
+`resource` [BTD_Mod_Helper.Api.Data.BundleResource&lt;](BTD_Mod_Helper.Api.Data.BundleResource_T_.md 'BTD_Mod_Helper.Api.Data.BundleResource<T>')[T](BTD_Mod_Helper.Api.Data.BundleResource_T_.md#BTD_Mod_Helper.Api.Data.BundleResource_T_.T 'BTD_Mod_Helper.Api.Data.BundleResource<T>.T')[&gt;](BTD_Mod_Helper.Api.Data.BundleResource_T_.md 'BTD_Mod_Helper.Api.Data.BundleResource<T>')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

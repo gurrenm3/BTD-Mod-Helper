@@ -34,19 +34,6 @@ public SpriteResource(string name);
 `name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Properties
 
-<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.Sprite'></a>
-
-## SpriteResource<T>.Sprite Property
-
-The loaded [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite') for this resource.
-
-```csharp
-public virtual Sprite Sprite { get; }
-```
-
-#### Property Value
-[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
-
 <a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.SpriteReference'></a>
 
 ## SpriteResource<T>.SpriteReference Property
@@ -59,25 +46,26 @@ public virtual SpriteReference SpriteReference { get; }
 
 #### Property Value
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
-### Operators
+### Methods
 
-<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.op_ImplicitSprite(BTD_Mod_Helper.Api.Data.SpriteResource_T_)'></a>
+<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.GetSprite(float)'></a>
 
-## SpriteResource<T>.implicit operator Sprite(SpriteResource<T>) Operator
+## SpriteResource<T>.GetSprite(float) Method
 
-Implicit conversion to [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite').
+Creates a [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite') from this resource.
 
 ```csharp
-public static Sprite implicit operator Sprite(BTD_Mod_Helper.Api.Data.SpriteResource<T> resource);
+public virtual Sprite GetSprite(float pixelsPerUnit=10f);
 ```
 #### Parameters
 
-<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.op_ImplicitSprite(BTD_Mod_Helper.Api.Data.SpriteResource_T_).resource'></a>
+<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.GetSprite(float).pixelsPerUnit'></a>
 
-`resource` [BTD_Mod_Helper.Api.Data.SpriteResource&lt;](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md 'BTD_Mod_Helper.Api.Data.SpriteResource<T>')[T](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md#BTD_Mod_Helper.Api.Data.SpriteResource_T_.T 'BTD_Mod_Helper.Api.Data.SpriteResource<T>.T')[&gt;](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md 'BTD_Mod_Helper.Api.Data.SpriteResource<T>')
+`pixelsPerUnit` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Returns
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+### Operators
 
 <a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.op_ImplicitSpriteReference(BTD_Mod_Helper.Api.Data.SpriteResource_T_)'></a>
 
@@ -96,3 +84,21 @@ public static SpriteReference implicit operator SpriteReference(BTD_Mod_Helper.A
 
 #### Returns
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')
+
+<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.SpriteResource_T_)'></a>
+
+## SpriteResource<T>.implicit operator string(SpriteResource<T>) Operator
+
+Implicit conversion to the resource's guid.
+
+```csharp
+public static string implicit operator string(BTD_Mod_Helper.Api.Data.SpriteResource<T> resource);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Data.SpriteResource_T_.op_Implicitstring(BTD_Mod_Helper.Api.Data.SpriteResource_T_).resource'></a>
+
+`resource` [BTD_Mod_Helper.Api.Data.SpriteResource&lt;](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md 'BTD_Mod_Helper.Api.Data.SpriteResource<T>')[T](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md#BTD_Mod_Helper.Api.Data.SpriteResource_T_.T 'BTD_Mod_Helper.Api.Data.SpriteResource<T>.T')[&gt;](BTD_Mod_Helper.Api.Data.SpriteResource_T_.md 'BTD_Mod_Helper.Api.Data.SpriteResource<T>')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
