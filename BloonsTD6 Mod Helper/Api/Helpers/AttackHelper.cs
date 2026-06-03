@@ -177,7 +177,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, true, 0, null, false)
+            }, null, 0, 0, 0, false, false, 0, true, 0, null, false, false)
         : new AttackModel(name,
             new Il2CppReferenceArray<WeaponModel>(0), 0, new[]
             {
@@ -185,7 +185,7 @@ public class AttackHelper : ModelHelper<AttackModel>
                 {
                     new FilterInvisibleModel("", true, false)
                 })
-            }, null, 0, 0, 0, false, false, 0, true, 0, false, false))
+            }, null, 0, 0, 0, false, false, 0, true, 0, false, false, false))
     {
     }
 

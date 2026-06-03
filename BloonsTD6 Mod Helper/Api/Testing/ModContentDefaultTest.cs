@@ -28,7 +28,7 @@ public abstract class ModContentDefaultTest<T> : ModTest where T : ModContent, I
     public virtual bool OneTestToRuleThemAll => false;
 
     /// <inheritdoc />
-    public override bool IsAvailable => OneTestToRuleThemAll || Content is not null;
+    public override bool IsAvailable => OneTestToRuleThemAll && AllContent is not null || Content is not null;
 
     /// <inheritdoc />
     public override void Register()

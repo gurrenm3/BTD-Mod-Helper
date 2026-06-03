@@ -2,10 +2,9 @@
 using Il2CppAssets.Scripts.Unity.UI_New.Main.HeroSelect;
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch(typeof(HeroUpgradeDetails), nameof(HeroUpgradeDetails.BindDetails))]
-internal class HeroUpgradeDetails_BindDetails
+[HarmonyPatch(typeof(HeroUpgradeDetails), nameof(HeroUpgradeDetails.BindHeroDetails))]
+internal class HeroUpgradeDetails_BindHeroDetails
 {
-
     [HarmonyPostfix]
     internal static void Postfix(HeroUpgradeDetails __instance, string heroIdToUse)
     {

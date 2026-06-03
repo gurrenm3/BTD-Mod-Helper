@@ -1,5 +1,6 @@
 <!--Mod Browser Message Start-->
 
+- Fixes for BTD6 v55
 - Added `OnUpgraded` overrides for `ModUpgrade` and `ModTower`
 - `ModGameMode`s will now once again show up as options for being used on Custom Maps and Challenges (though you can't share a challenge of a custom mode)
 - `btd6.targets` now has new functionality using C# Source Generators to populate an internal `ModResources` class with strongly typed entries for all your embedded resources
