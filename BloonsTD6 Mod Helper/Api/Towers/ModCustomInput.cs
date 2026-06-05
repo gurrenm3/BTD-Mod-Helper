@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using Il2CppAssets.Scripts;
+using Il2CppAssets.Scripts.Models.Towers;
+using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity.Bridge;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using UnityEngine;
@@ -30,7 +33,11 @@ public abstract class ModCustomInput : ModContent
         {
             active = true,
             inputManager = inputManager,
-            tower = tower,
+            tower = tower ??
+                    new TowerToSimulation(inputManager.Bridge, new Tower
+                    {
+                        Id = ObjectId.Invalid, towerModel = TowerModel.Create()
+                    }),
             buttonId = buttonId
         };
         ActiveInput = this;

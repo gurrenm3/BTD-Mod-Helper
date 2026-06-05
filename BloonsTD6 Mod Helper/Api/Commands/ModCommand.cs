@@ -76,18 +76,22 @@ public abstract class ModCommand : ModContent
     /// <summary>
     /// Optional arguments for this command
     /// </summary>
-    public IEnumerable<OptionAttribute> Options => GetType()
+    public IEnumerable<OptionAttribute> Options => OptionInfos.Select(t => t.Attr);
+
+    private (OptionAttribute Attr, bool TakesValue)[] OptionInfos => field ??= GetType()
         .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-        .Select(p => p.GetCustomAttribute<OptionAttribute>())
-        .Where(s => s != null);
+        .Select(p => (Attr: p.GetCustomAttribute<OptionAttribute>(), TakesValue: p.PropertyType != typeof(bool)))
+        .Where(t => t.Attr != null)
+        .ToArray();
 
     /// <summary>
     /// Positional values for this command
     /// </summary>
-    public IEnumerable<ValueAttribute> Values => GetType()
+    public IEnumerable<ValueAttribute> Values => field ??= GetType()
         .GetProperties(BindingFlags.Public | BindingFlags.Instance)
         .Select(p => p.GetCustomAttribute<ValueAttribute>())
-        .Where(s => s != null);
+        .Where(s => s != null)
+        .ToArray();
 
     /// <inheritdoc />
     public override void Register()
@@ -223,6 +227,63 @@ public abstract class ModCommand : ModContent
         errors = errs;
 
         return success;
+    }
+
+    /// <summary>
+    /// Manually specify some suggested values for a [Value] at the given index within your command
+    /// </summary>
+    /// <param name="index"><see cref="ValueAttribute.Index"/></param>
+    /// <returns>list of suggested values</returns>
+    public virtual IEnumerable<string> SuggestionsForValue(int index)
+    {
+        yield break;
+    }
+
+    internal bool TryMatchOption(string token, out bool consumesNextToken)
+    {
+        consumesNextToken = false;
+        if (token == null || !token.StartsWith("-")) return false;
+
+        var name = token.TrimStart('-');
+        var eq = name.IndexOf('=');
+        var hasInlineValue = eq >= 0;
+        if (hasInlineValue) name = name[..eq];
+        if (name.Length == 0) return false;
+
+        var match = OptionInfos.FirstOrDefault(t =>
+            t.Attr.LongName == name ||
+            !string.IsNullOrEmpty(t.Attr.ShortName) && t.Attr.ShortName == name);
+        if (match.Attr == null) return false;
+
+        consumesNextToken = match.TakesValue && !hasInlineValue;
+        return true;
+    }
+
+    internal int ActiveValueIndex(string[] args, bool textEndsWithSpace)
+    {
+        var positional = 0;
+        var skipNext = false;
+
+        for (var i = 0; i < args.Length; i++)
+        {
+            var inProgress = i == args.Length - 1 && !textEndsWithSpace;
+
+            if (skipNext)
+            {
+                skipNext = false;
+                continue;
+            }
+
+            if (TryMatchOption(args[i], out var consumesNext))
+            {
+                skipNext = consumesNext && !inProgress;
+                continue;
+            }
+
+            if (!inProgress) positional++;
+        }
+
+        return positional;
     }
 }
 

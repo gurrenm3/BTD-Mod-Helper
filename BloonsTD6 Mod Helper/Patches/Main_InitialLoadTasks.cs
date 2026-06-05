@@ -1,8 +1,8 @@
 using System;
-using System.Linq;
 using BTD_Mod_Helper.Api;
 using Il2CppSystem.Threading;
 using Il2CppSystem.Threading.Tasks;
+
 namespace BTD_Mod_Helper.Patches;
 
 [HarmonyPatch(typeof(Il2CppAssets.Scripts.Main), nameof(Il2CppAssets.Scripts.Main.InitialLoadTasks))]
@@ -14,13 +14,19 @@ internal static class Main_InitialLoadTasks
         if (ModHelper.FallbackToOldLoading) return;
         try
         {
-            __result = __result.ContinueWith(new Action<Task>(_ =>
+            __result = __result.ContinueWith(new Action<Task>(void (_) =>
             {
-                ModLoadTask.RunAll().StartCoroutine();
-
-                while (ModLoadTask.AllLoadTasks.Any(loadTask => !loadTask.Complete))
+                try
                 {
-                    Thread.Sleep(50);
+                    var waitHandle = new ManualResetEvent(false);
+
+                    ModLoadTask.RunAll(waitHandle).StartCoroutine();
+
+                    waitHandle.WaitOne();
+                }
+                catch (Exception e)
+                {
+                    ModHelper.Error(e);
                 }
             }));
         }

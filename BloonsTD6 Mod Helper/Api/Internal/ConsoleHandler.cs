@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Commands;
 using BTD_Mod_Helper.Api.Components;
@@ -249,10 +250,14 @@ internal static class ConsoleHandler
         }
         else
         {
+            if (Console?.Results == "Command in progress...")
+            {
+                Console.Results = "";
+            }
             foreach (var error in errors)
             {
                 ModHelper.Error(error);
-                Console?.Results += Highlight(error.ToString(), ErrorColor);
+                Console?.Results += Highlight(error.ToString(), ErrorColor) + "\n";
             }
         }
     }
@@ -284,6 +289,7 @@ internal static class ConsoleHandler
             }
             yield return null;
         }
+        // ReSharper disable once IteratorNeverReturns
     }
 
     public static void UpdateSuggestions()
@@ -305,6 +311,7 @@ internal static class ConsoleHandler
                  c.IsAvailable &&
                  text.Length > tokens[0].Length)
         {
+            var consumed = 1;
             for (var i = 1; i < tokens.Length; i++)
             {
                 if (c.SubCommands.TryGetValue(tokens[i], out var subCommand) &&
@@ -312,11 +319,30 @@ internal static class ConsoleHandler
                     (text.EndsWith(" ") || i < tokens.Length - 1))
                 {
                     c = subCommand;
+                    consumed++;
                 }
                 else break;
             }
+
             CurrentSuggestions.AddRange(c.SubCommands.Values.Select(sub => sub.Suggestion));
-            CurrentSuggestions.AddRange(c.Values.OrderBy(v => v.Index).Select(SuggestionLine));
+
+            if (c.Values.Any())
+            {
+                var activeIndex = c.ActiveValueIndex(tokens[consumed..], text.EndsWith(" "));
+                var valueRows = c.Values.OrderBy(v => v.Index).Select(SuggestionLine).ToList();
+
+                var active = c.Values.ElementAtOrDefault(Math.Max(0, activeIndex));
+                if (active != null)
+                {
+                    var extras = c.SuggestionsForValue(active.Index)
+                        .Select(s => new Suggestion(s, "    - " + s, IsValueSuggestion: true));
+                    var insertAt = Math.Min(Math.Max(0, activeIndex) + 1, valueRows.Count);
+                    valueRows.InsertRange(insertAt, extras);
+                }
+
+                CurrentSuggestions.AddRange(valueRows);
+            }
+
             CurrentSuggestions.AddRange(c.Options.OrderBy(o => o.LongName).Select(SuggestionLine));
         }
         else if (tokens.Length == 1)
@@ -332,11 +358,55 @@ internal static class ConsoleHandler
                          CurrentSuggestions.Any(s => s.Text == tokens.Last() || s.AltText == tokens.Last());
         if (!exactMatch && tokens.Length > 0 && !text.EndsWith(" "))
         {
+            var last = tokens.Last();
+            var valueMatch = new Regex(@"\b" + Regex.Escape(last), RegexOptions.IgnoreCase);
             CurrentSuggestions.RemoveAll(s =>
-                !s.Text.StartsWith(tokens.Last()) && !(s.AltText != null && s.AltText.StartsWith(tokens.Last())));
+                !valueMatch.IsMatch(s.Text) && !(s.AltText != null && valueMatch.IsMatch(s.AltText)));
         }
 
-        Console.Suggestions = CurrentSuggestions.Select(suggestion => suggestion.SuggestionLine).Join(delimiter: "\n");
+        var valueSuggestions = CurrentSuggestions.Where(s => s.IsValueSuggestion).ToList();
+        var lastToken = !text.EndsWith(" ") ? tokens.LastOrDefault() : null;
+        var selected = lastToken == null ? -1 : valueSuggestions.FindIndex(s => s.Text == lastToken);
+
+        var (start, end) = (0, valueSuggestions.Count);
+        if (valueSuggestions.Count > ValueSuggestionDisplayLimit)
+        {
+            start = Math.Max(0, Math.Max(0, selected) - ValueSuggestionDisplayLimit / 2);
+            end = Math.Min(valueSuggestions.Count, start + ValueSuggestionDisplayLimit);
+            start = end - ValueSuggestionDisplayLimit;
+        }
+
+        var lines = new List<string>();
+        var valueIdx = 0;
+        var addedBefore = false;
+        var addedAfter = false;
+        foreach (var s in CurrentSuggestions)
+        {
+            if (s.IsValueSuggestion)
+            {
+                var i = valueIdx++;
+                if (i < start)
+                {
+                    if (!addedBefore)
+                    {
+                        lines.Add("    - ...");
+                        addedBefore = true;
+                    }
+                    continue;
+                }
+                if (i >= end)
+                {
+                    if (!addedAfter)
+                    {
+                        lines.Add("    - ...");
+                        addedAfter = true;
+                    }
+                    continue;
+                }
+            }
+            if (!string.IsNullOrEmpty(s.DisplayLine)) lines.Add(s.DisplayLine);
+        }
+        Console.Suggestions = lines.Join(delimiter: "\n");
     }
 
     public static void TryAutocomplete(bool invert = false)
@@ -345,29 +415,30 @@ internal static class ConsoleHandler
 
         var tokens = text.Split(" ");
 
-        if (CurrentSuggestions.Count == 0) return;
+        var completions = CurrentSuggestions.Where(s => s.IsCompletion).ToList();
+        if (completions.Count == 0) return;
 
         Suggestion desiredSuggestion;
 
         if (string.IsNullOrWhiteSpace(text))
         {
-            desiredSuggestion = CurrentSuggestions.FirstOrDefault();
+            desiredSuggestion = completions[0];
         }
         else
         {
-            var currentSuggestion = CurrentSuggestions.FirstOrDefault(suggestion =>
+            var currentSuggestion = completions.FirstOrDefault(suggestion =>
                 !text.EndsWith(" ") && tokens.LastOrDefault() == suggestion.Text);
 
             if (currentSuggestion != null)
             {
-                var index = CurrentSuggestions.IndexOf(currentSuggestion);
-                desiredSuggestion = CurrentSuggestions[(invert ? index - 1 : index + 1) % CurrentSuggestions.Count];
+                var index = completions.IndexOf(currentSuggestion);
+                var next = invert ? index - 1 + completions.Count : index + 1;
+                desiredSuggestion = completions[next % completions.Count];
             }
             else
             {
-                desiredSuggestion = CurrentSuggestions.FirstOrDefault(suggestion =>
-                    !string.IsNullOrEmpty(suggestion.Text) &&
-                    (string.IsNullOrEmpty(text) || suggestion.Text.StartsWith(tokens.Last())));
+                var matcher = new Regex(@"\b" + Regex.Escape(tokens.Last()), RegexOptions.IgnoreCase);
+                desiredSuggestion = completions.FirstOrDefault(s => matcher.IsMatch(s.Text));
             }
         }
 
@@ -389,9 +460,12 @@ internal static class ConsoleHandler
         Console.CaretPosition = Console.Text.Length;
     }
 
-    public record Suggestion(string Text, string SuggestionLine, string AltText = null)
+    public record Suggestion(string Text, string DisplayLine, string AltText = null, bool IsValueSuggestion = false)
     {
+        public bool IsCompletion => !string.IsNullOrEmpty(Text);
     }
+
+    private const int ValueSuggestionDisplayLimit = 5;
 
     public static Suggestion SuggestionLine(this OptionAttribute o) => new("--" + o.LongName,
         $"--{o.LongName}{(!string.IsNullOrEmpty(o.ShortName) ? ",-" + o.ShortName : "")} ({(o.Required ? "required" : "optional")})     {o.HelpText}",
@@ -507,6 +581,7 @@ internal static class ConsoleHandler
                     ModHelper.Error($"Console Reader Error: {ex.Message}");
                 }
             }
+            // ReSharper disable once FunctionNeverReturns
         });
     }
 

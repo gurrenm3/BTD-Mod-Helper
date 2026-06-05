@@ -322,4 +322,27 @@ public static class ModHelper
             Warning(e);
         }
     }
+
+#if DEBUG
+    internal static readonly Dictionary<string, object> Variables = [];
+
+    /// <summary>
+    /// Registers a Variable within Mod Helper that can be easily edited on the fly using the `var` command
+    /// </summary>
+    /// <param name="name">variable name</param>
+    /// <param name="defaultValue">value to use until changed</param>
+    /// <typeparam name="T">variable type</typeparam>
+    /// <returns>current variable value</returns>
+    public static T Variable<T>(string name, T defaultValue)
+    {
+        if (Variables.TryGetValue(name, out var value))
+        {
+            return (T) Convert.ChangeType(value, typeof(T));
+        }
+
+        Variables[name] = defaultValue;
+
+        return defaultValue;
+    }
+#endif
 }

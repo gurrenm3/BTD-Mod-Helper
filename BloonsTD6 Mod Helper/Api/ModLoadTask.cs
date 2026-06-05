@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppNinjaKiwi.Localization;
+using Il2CppSystem.Threading;
 using Math = Il2CppAssets.Scripts.Simulation.SMath.Math;
 
 namespace BTD_Mod_Helper.Api;
@@ -123,26 +124,33 @@ public abstract class ModLoadTask : NamedModContent
         }
     }
 
-    internal static IEnumerator RunAll()
+    internal static IEnumerator RunAll(ManualResetEvent resetEvent = null)
     {
-        yield return null; // ensure running on main thread right from start
-
-        DoubleCheckLocalizationTable();
-
-        foreach (var loadTask in AllLoadTasks)
+        try
         {
-            if (loadTask.Complete) continue;
-            CurrentTask = loadTask;
-            loadTask.Logger.Msg(loadTask.DisplayName);
+            yield return null; // ensure running on main thread right from start
 
-            var task = loadTask.Coroutine;
-            yield return task.CatchErrors();
+            DoubleCheckLocalizationTable();
 
-            loadTask.Complete = true;
+            foreach (var loadTask in AllLoadTasks)
+            {
+                if (loadTask.Complete) continue;
+                CurrentTask = loadTask;
+                loadTask.Logger.Msg(loadTask.DisplayName);
 
-            yield return null;
+                var task = loadTask.Coroutine;
+                yield return task.CatchErrors();
+
+                loadTask.Complete = true;
+
+                yield return null;
+            }
         }
-        CurrentTask = null;
+        finally
+        {
+            CurrentTask = null;
+            resetEvent?.Set();
+        }
     }
 
     internal static void RunAllSync()

@@ -1,6 +1,6 @@
-using BTD_Mod_Helper.Api.Commands.Open;
 using BTD_Mod_Helper.UI.Menus;
-namespace BTD_Mod_Helper.Api.Commands;
+
+namespace BTD_Mod_Helper.Api.Commands.Open.Screen;
 
 internal class OpenScreenModsCommand : ModCommand<OpenScreenCommand>
 {
