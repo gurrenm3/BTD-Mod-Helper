@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !RELEASELITE
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -356,3 +357,4 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         Relevance
     }
 }
+#endif

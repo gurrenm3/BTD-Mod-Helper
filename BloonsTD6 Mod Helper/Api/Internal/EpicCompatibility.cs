@@ -1,3 +1,4 @@
+#if !RELEASELITE
 using System;
 using System.IO;
 using System.Linq;
@@ -7,12 +8,15 @@ using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
+#endif
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class EpicCompatibility
 {
     internal const string GameName = "BloonsTD6-Epic";
 
+#if !RELEASELITE
     internal const string RepoName = "BTD6EpicGamesModCompat";
     private const string RepoOwner = "GrahamKracker";
     private const string DllName = $"{RepoName}.dll";
@@ -69,4 +73,5 @@ internal static class EpicCompatibility
                 CompatibilityPluginSuccess.Localize(),
                 new Action(() => MenuManager.instance.QuitGame()), "Quit", null, "Cancel", Popup.TransitionAnim.Scale));
     }
+#endif
 }

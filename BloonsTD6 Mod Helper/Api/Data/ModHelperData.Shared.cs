@@ -225,6 +225,8 @@ internal partial class ModHelperData
         return default;
     }
 
+
+#if !RELEASELITE
     internal string GetContentURL(string name)
     {
         var path = Uri.EscapeDataString(name);
@@ -395,4 +397,7 @@ internal partial class ModHelperData
 
         File.WriteAllText(filePath, json.ToString(Formatting.Indented));
     }
+
+#endif
+
 }

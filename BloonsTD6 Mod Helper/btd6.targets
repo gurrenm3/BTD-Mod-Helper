@@ -8,6 +8,7 @@
         <PlatformTarget>x64</PlatformTarget>
         <RunCommand>$(BloonsTD6)\BloonsTD6.exe</RunCommand>
         <RunWorkingDirectory>$(BloonsTD6)</RunWorkingDirectory>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 
     <!--References to MelonLoader dependencies-->
@@ -97,6 +98,8 @@
     <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false'">
         <CompilerVisibleProperty Include="RootNamespace"/>
         <CompilerVisibleProperty Include="ProjectDir"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And '$(DontReferenceModHelper)' != 'true'">
         <PackageReference Include="Btd6ModHelper.SourceGenerators" Version="1.0.1" PrivateAssets="all"/>
     </ItemGroup>
 

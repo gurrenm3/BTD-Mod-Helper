@@ -1,3 +1,4 @@
+#if !RELEASELITE
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -119,3 +120,4 @@ public abstract class ModSourceFileGenerator : ModContent
         }
     }
 }
+#endif

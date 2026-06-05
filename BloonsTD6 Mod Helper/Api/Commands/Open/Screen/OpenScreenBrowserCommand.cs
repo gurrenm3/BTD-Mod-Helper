@@ -1,7 +1,7 @@
-using BTD_Mod_Helper.Api.Commands.Open;
+#if !RELEASELITE
 using BTD_Mod_Helper.UI.Menus;
 
-namespace BTD_Mod_Helper.Api.Commands;
+namespace BTD_Mod_Helper.Api.Commands.Open.Screen;
 
 internal class OpenScreenBrowserCommand : ModCommand<OpenScreenCommand>
 {
@@ -23,3 +23,4 @@ internal class OpenScreenBrowserCommand : ModCommand<OpenScreenCommand>
         return true;
     }
 }
+#endif

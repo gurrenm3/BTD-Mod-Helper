@@ -1,3 +1,4 @@
+#if !RELEASELITE
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -214,3 +215,4 @@ internal static class TemplateMod
         fileOpener.Start();
     }
 }
+#endif

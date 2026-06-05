@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !RELEASELITE
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
@@ -306,3 +307,4 @@ internal static class ModBrowserMenuModExt
         mod.SetDescriptionShowing(false);
     }
 }
+#endif

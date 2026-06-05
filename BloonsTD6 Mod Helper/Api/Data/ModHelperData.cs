@@ -107,38 +107,43 @@ internal partial class ModHelperData
     /// </summary>
     internal MelonBase Mod { get; }
 
-    /// <summary>
-    /// Whether this mod is correctly in the Enabled mods folder
-    /// </summary>
-    internal bool Enabled => FilePath != null &&
-                             DllName != null &&
-                             FilePath == Path.Combine(EnabledFolder, DllName);
-
-    /// <summary>
-    /// Either a Mod's "Enabled" status is different from whether or not it's loaded into the game,
-    /// or the data Version matches the repo's version and not the current version
-    /// </summary>
-    internal bool RestartRequired =>
-        !this.IsUpdaterPlugin() &&
-        (Enabled == (Mod == null) ||
-         Mod != null &&
-         Version != null &&
-         Version == RepoVersion &&
-         IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion));
-
     // Values to be displayed in the GUI
     internal string DisplayName => Name.NullIfEmpty() ?? Mod?.Info.Name.NullIfEmpty() ?? RepoName ?? "No Name Provided";
 
     internal string DisplayAuthor => Author?.ToLower() == "unknown" ? RepoOwner ?? Author : Author ?? RepoOwner;
 
     internal string DisplayDescription =>
-        (Description.NullIfEmpty() ?? Repository?.Description.NullIfEmpty() ?? "No description provided.")
+        (Description.NullIfEmpty() ??
+#if !RELEASELITE
+         Repository?.Description.NullIfEmpty() ??
+#endif
+         "No description provided.")
         .Replace("\\n", "\n");
 
     internal string OldDownloadUrl { get; }
 
     internal string DisplayNameKey { get; private set; }
     internal string DisplayDescriptionKey { get; private set; }
+
+    /// <summary>
+    /// The place that the .dll file for this mod is on the local machine, if any
+    /// </summary>
+    internal string FilePath { get; private set; }
+
+    internal string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
+
+    internal string ReadmeUrl
+    {
+        get
+        {
+            if (RepoOwner == null || RepoName == null)
+                return OldDownloadUrl ?? Mod?.Info.DownloadLink;
+            if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
+                return $"https://github.com/{RepoOwner}/{RepoName}#readme";
+
+            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Branch}/{SubPath}#readme";
+        }
+    }
 
     public static void Load(MelonBase mod)
     {
@@ -231,12 +236,7 @@ internal partial class ModHelperData
             }
         }
 
-
-        LoadDisabledMods();
-    }
-
-    private static void LoadDisabledMods()
-    {
+#if !RELEASELITE
         var disabledMods = new DirectoryInfo(ModHelper.DisabledModsDirectory);
         if (disabledMods.Exists)
         {
@@ -256,34 +256,35 @@ internal partial class ModHelperData
                 try
                 {
                     var contents = File.ReadAllText(dataFile);
-                    var data = new ModHelperData();
-                    data.ReadValuesFromJson(contents);
+                    var data1 = new ModHelperData();
+                    data1.ReadValuesFromJson(contents);
 
-                    if (!data.ModInstalledLocally(out _))
+                    if (!data1.ModInstalledLocally(out _))
                     {
                         var iconFile = Path.Combine(ModHelper.DataDirectory, file.Name.Replace(".dll", ".png"));
                         if (File.Exists(iconFile))
                         {
-                            data.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
+                            data1.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
                         }
                         else
                         {
-                            data.HasNoIcon = true;
+                            data1.HasNoIcon = true;
                         }
 
-                        data.SetFilePath(file.FullName);
-                        Inactive.Add(data);
+                        data1.SetFilePath(file.FullName);
+                        Inactive.Add(data1);
                         // ModHelper.Msg($"Found disabled mod {file.FullName}");
                     }
                     // ModHelper.Msg($"{data.DisplayName} is already enabled?");
                 }
-                catch (Exception e)
+                catch (Exception e1)
                 {
                     ModHelper.Warning($"Failed to read disabled mod data {file.Name}");
-                    ModHelper.Warning(e);
+                    ModHelper.Warning(e1);
                 }
             }
         }
+#endif
     }
 
     public List<ModHelperData> FindDependents()

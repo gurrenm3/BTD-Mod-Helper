@@ -10,14 +10,15 @@ using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
 using MelonLoader.InternalUtils;
 using UnityEngine;
+#if !RELEASELITE
 using UnityEngine.Events;
+#endif
 
 namespace BTD_Mod_Helper.UI.Menus;
 
 [RegisterTypeInIl2Cpp(false)]
 internal class ModsMenuMod : ModHelperComponent
 {
-    public UnityAction toggleMod;
 
     public ModsMenuMod(IntPtr ptr) : base(ptr)
     {
@@ -27,11 +28,16 @@ internal class ModsMenuMod : ModHelperComponent
     public ModHelperImage Icon => GetDescendent<ModHelperImage>("Icon");
     public ModHelperText Name => GetDescendent<ModHelperText>("Name");
     public ModHelperText Version => GetDescendent<ModHelperText>("Version");
-    public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
     public ModHelperButton Settings => GetDescendent<ModHelperButton>("Settings");
-    public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
     public ModHelperButton Warning => GetDescendent<ModHelperButton>("Warning");
     public ModHelperText Hash => GetDescendent<ModHelperText>("Hash");
+
+#if !RELEASELITE
+    public UnityAction toggleMod;
+
+    public ModHelperButton Update => GetDescendent<ModHelperButton>("Update");
+    public ModHelperImage Restart => GetDescendent<ModHelperImage>("Restart");
+#endif
 
     public static ModsMenuMod CreateTemplate()
     {
@@ -45,8 +51,10 @@ internal class ModsMenuMod : ModHelperComponent
 
         panel.AddImage(new Info("Icon", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, new Vector2(0, 0.5f)), "");
 
+#if !RELEASELITE
         panel.AddImage(new Info("Restart", ModsMenu.Padding * 2, 0, ModsMenu.ModIconSize, ModsMenu.ModIconSize,
             new Vector2(0, 0.5f)), VanillaSprites.RestartIcon);
+#endif
 
         panel.AddText(new Info("Name", ModsMenu.ModNameWidth, ModsMenu.ModNameHeight), "Name",
             ModsMenu.FontMedium);
@@ -56,8 +64,10 @@ internal class ModsMenuMod : ModHelperComponent
             new Vector2(1, 0.5f)), "v0.0.0", ModsMenu.FontSmall);
         version.Text.fontStyle = FontStyles.SmallCaps;
 
+#if !RELEASELITE
         panel.AddButton(new Info("Update", ModsMenu.Padding / -2f, ModsMenu.Padding / -2f, ModsMenu.ModPanelHeight / 2f,
             new Vector2(1, 1)), VanillaSprites.UpgradeBtn, null);
+#endif
 
         panel.AddButton(new Info("Settings", ModsMenu.Padding / -2f, ModsMenu.Padding / 2f,
             ModsMenu.ModPanelHeight / 3f, new Vector2(1, 0)), VanillaSprites.SettingsIconSmall, null);
@@ -84,18 +94,18 @@ internal static class ModsMenuModExt
         mod.MainButton.Button.SetOnClick(() =>
         {
             ModsMenu.SetSelectedMod(modHelperData);
+#if !RELEASELITE
             switch (modHelperData.Enabled)
             {
                 case false when Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift):
                     ModsMenu.EnableSelectedMod();
-                    break;
+                    return;
                 case true when Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt):
                     ModsMenu.DisableSelectedMod();
-                    break;
-                default:
-                    MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
-                    break;
+                    return;
             }
+#endif
+            MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         });
 
         if (!modHelperData.HasNoIcon && modHelperData.GetIcon() is Sprite sprite)
@@ -105,9 +115,12 @@ internal static class ModsMenuModExt
 
         mod.Name.SetText(modHelperData.DisplayName);
         mod.Version.SetText("v" + modHelperData.Version);
+        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open(melonMod));
+
+#if !RELEASELITE
         // ReSharper disable once AsyncVoidLambda
         mod.Update.Button.SetOnClick(async () => await ModHelperGithub.DownloadLatest(modHelperData));
-        mod.Settings.Button.SetOnClick(() => ModSettingsMenu.Open(melonMod));
+#endif
 
         mod.Settings.SetActive(false);
         mod.Warning.SetActive(false);
@@ -145,6 +158,7 @@ internal static class ModsMenuModExt
 
         mod.SetActive(true);
 
+#if !RELEASELITE
         mod.toggleMod = new Action(() =>
         {
             if (modHelperData.Mod is MelonMain) return;
@@ -162,16 +176,19 @@ internal static class ModsMenuModExt
             mod.Refresh(modHelperData);
             MenuManager.instance.buttonClick3Sound.Play("ClickSounds");
         });
+#endif
     }
 
     public static void Refresh(this ModsMenuMod mod, ModHelperData modHelperData)
     {
         mod.MainButton.Image.SetSprite(GetBackground(modHelperData));
+#if !RELEASELITE
         mod.Update.SetActive(modHelperData.UpdateAvailable);
         mod.Restart.SetActive(modHelperData.RestartRequired);
         mod.Version.Text.color = modHelperData.OutOfDate
             ? Color.red
             : Color.white;
+#endif
         mod.Version.SetText("v" + modHelperData.Version);
 
         mod.Icon.SetActive(!modHelperData.HasNoIcon);
@@ -182,8 +199,10 @@ internal static class ModsMenuModExt
 
     public static string GetBackground(ModHelperData data)
     {
+#if !RELEASELITE
         if (!data.Enabled)
             return VanillaSprites.MainBGPanelGrey;
+#endif
         if (data.Mod == ModContent.GetInstance<MelonMain>())
             return VanillaSprites.MainBGPanelYellow;
         if (data.Mod?.Games.Any(attribute => attribute.Name == UnityInformationHandler.GameName) == false)

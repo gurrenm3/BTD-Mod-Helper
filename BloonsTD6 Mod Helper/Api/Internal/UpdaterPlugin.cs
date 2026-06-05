@@ -1,28 +1,33 @@
+using System.Collections.Generic;
+using BTD_Mod_Helper.Api.Data;
+using BTD_Mod_Helper.Api.ModOptions;
+#if !RELEASELITE
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.ModMenu;
-using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using Semver;
 using UnityEngine;
+#endif
 
 namespace BTD_Mod_Helper.Api.Internal;
 
 internal static class UpdaterPlugin
 {
-    private const string DllName = $"{nameof(UpdaterPlugin)}.dll";
-
     public static bool IsUpdaterPlugin(this ModHelperData data) =>
         data.Name == "Updater Plugin" && data.Author == "doombubbles";
 
     public static bool IsUpdaterPlugin(this MelonBase melon) =>
         melon.Info.Name == "Updater Plugin" && melon.Info.Author == "doombubbles";
+
+    public static readonly Dictionary<string, ModSetting> AutoUpdateSettings = new();
+
+#if !RELEASELITE
+    private const string DllName = $"{nameof(UpdaterPlugin)}.dll";
 
     public static ModHelperData Updater => field ??= ModHelperData.All.FirstOrDefault(IsUpdaterPlugin);
 
@@ -44,8 +49,6 @@ internal static class UpdaterPlugin
         installedVersion >= latestVersion;
 
     public static bool ShouldDownload => !didDownloadAlready && (Updater is null || !HasLatestVersion);
-
-    public static readonly Dictionary<string, ModSetting> AutoUpdateSettings = new();
 
     public static void CheckForUpdates()
     {
@@ -215,4 +218,5 @@ internal static class UpdaterPlugin
 
         ModSettingsHandler.LoadModSettings(mod);
     }
+#endif
 }

@@ -1,3 +1,4 @@
+#if !RELEASELITE
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -57,3 +58,4 @@ internal static class ModHelperFiles
         });
     }
 }
+#endif

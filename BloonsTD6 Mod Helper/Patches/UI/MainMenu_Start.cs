@@ -49,10 +49,5 @@ internal static class MainMenu_OnEnable
         ModsMenu.selectedMod = null;
         ModdedMonkeySelectMenu.ResetGameModel();
         ModHelper.PerformHook(mod => mod.OnMainMenu());
-
-        if (MelonMain.AutoUpdate)
-        {
-            UpdaterPlugin.CheckUpdatedMods();
-        }
     }
 }

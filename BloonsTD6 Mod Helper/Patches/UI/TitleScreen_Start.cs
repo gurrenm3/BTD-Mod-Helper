@@ -29,9 +29,11 @@ internal class TitleScreen_Start
         NamedModContent.RegisterAllText();
         LocalizationHelper.Initialize();
         ModSettingsHandler.SaveModSettings(false, false);
-        ModHelperData.SaveAll();
         ModGameMode.ModifyDefaultGameModes(GameData.Instance);
 
+#if !RELEASELITE
+        ModHelperData.SaveAll();
+#endif
 
         var gameObject = new GameObject("ModHelperQuickAccess");
         SceneManager.MoveGameObjectToScene(gameObject, Game.instance.gameObject.scene);

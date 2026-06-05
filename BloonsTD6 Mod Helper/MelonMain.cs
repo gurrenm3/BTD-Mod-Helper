@@ -50,9 +50,11 @@ internal partial class MelonMain : BloonsTD6Mod
         {
             if (!Environment.GetCommandLineArgs().Contains("--modhelper.offline"))
             {
+#if !RELEASELITE
                 ModHelperGithub.Init();
                 Task.Run(ModHelperGithub.GetVerifiedModders);
                 ModHelperGithub.populatingMods = Task.Run(() => ModHelperGithub.PopulateMods(!PopulateOnStartup));
+#endif
             }
             else
             {
@@ -83,6 +85,16 @@ internal partial class MelonMain : BloonsTD6Mod
 
         try
         {
+            FileDialogHelper.PrepareNativeDlls();
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning(e);
+        }
+
+#if !RELEASELITE
+        try
+        {
             // Create the files for mod sources
             ModHelperFiles.CreateSourcesFiles(ModSourcesFolder);
         }
@@ -93,20 +105,6 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
 
-        if (!ModHelper.IsEpic)
-        {
-            // HarmonyInstance.CreateClassProcessor(typeof(EmbeddedBrowser.SteamWebView_OnGUI), true).Patch();
-        }
-
-        try
-        {
-            FileDialogHelper.PrepareNativeDlls();
-        }
-        catch (Exception e)
-        {
-            ModHelper.Warning(e);
-        }
-
         if (AutoUpdate)
         {
             // ReSharper disable once ConstantNullCoalescingCondition
@@ -114,6 +112,7 @@ internal partial class MelonMain : BloonsTD6Mod
 
             UpdaterPlugin.PopulateSettings();
         }
+#endif
     }
 
     public override void OnUpdate()
@@ -181,7 +180,9 @@ internal partial class MelonMain : BloonsTD6Mod
         var version = settings["Version"];
         if (version == null || version.ToString() != ModHelper.Version)
         {
+#if !RELEASELITE
             ModHelperFiles.DownloadDocumentationXml(SaveModSettings);
+#endif
         }
 
         if (!settings.TryGetValue("SavedWindows", out var savedWindows)) return;
@@ -203,6 +204,7 @@ internal partial class MelonMain : BloonsTD6Mod
 
     public override void OnMainMenu()
     {
+#if !RELEASELITE
         if (ModHelper.IsEpic &&
             MelonBase.RegisteredMelons.All(melon => melon.GetName() != EpicCompatibility.RepoName))
         {
@@ -226,6 +228,12 @@ internal partial class MelonMain : BloonsTD6Mod
                         $"https://{ModHelper.RepoOwner}.github.io/{ModHelper.RepoName}/wiki/Install-Guide#recommended-version");
                 }), "OK", null, "No", Popup.TransitionAnim.Scale));
         }
+
+        if (AutoUpdate)
+        {
+            UpdaterPlugin.CheckUpdatedMods();
+        }
+#endif
 
         foreach (var renderTexture in ResourceHandler.RenderTexturesToRelease)
         {

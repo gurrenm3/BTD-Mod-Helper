@@ -25,6 +25,7 @@ internal partial class MelonMain
         icon = SettingsIcon
     };
 
+#if !RELEASELITE
     public static readonly ModSettingBool AutoUpdate = new(true)
     {
         category = General,
@@ -42,6 +43,7 @@ internal partial class MelonMain
             }
         }
     };
+#endif
 
     public static readonly ModSettingBool ShowRoundsetChanger = new(true)
     {
@@ -317,6 +319,7 @@ internal partial class MelonMain
         icon = ShareIosIcon
     };
 
+#if !RELEASELITE
     public static readonly ModSettingFolder ModSourcesFolder =
         new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BTD6 Mod Sources"))
         {
@@ -325,6 +328,13 @@ internal partial class MelonMain
             customValidation = Directory.Exists,
             onSave = ModHelperFiles.CreateSourcesFiles
         };
+
+    internal static readonly ModSettingFolder ModHelperSourceFolder = new(Path.Combine(ModSourcesFolder, "BTD Mod Helper"))
+    {
+        category = ModMaking,
+        description = "Location of Mod Helper Source code for development purposes"
+    };
+#endif
 
     public static readonly ModSettingHotkey QuickEditTowerModel = new(KeyCode.Backslash, HotkeyModifier.Shift)
     {
@@ -346,12 +356,6 @@ internal partial class MelonMain
         description = "Choose a different program/command to edit the file with other than the default notepad.\n" +
                       "If you have VSCode installed,\na good option is \"code -w -n\".\n" +
                       "If you have JetBrains Rider, you can put its bin folder in your Path environment variable and do \"rider64 --wait\"."
-    };
-
-    internal static readonly ModSettingFolder ModHelperSourceFolder = new(Path.Combine(ModSourcesFolder, "BTD Mod Helper"))
-    {
-        category = ModMaking,
-        description = "Location of Mod Helper Source code for development purposes"
     };
 
     internal static readonly ModSettingBool UnlockConsoleInput = new(false)

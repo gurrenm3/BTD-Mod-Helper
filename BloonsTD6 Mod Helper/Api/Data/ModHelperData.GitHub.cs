@@ -1,3 +1,4 @@
+#if !RELEASELITE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,19 +62,6 @@ internal partial class ModHelperData
 
     internal bool OutOfDate => UpdateAvailable || OldDownloadUrl != null;
 
-    internal string ReadmeUrl
-    {
-        get
-        {
-            if (RepoOwner == null || RepoName == null)
-                return OldDownloadUrl ?? Mod?.Info.DownloadLink;
-            if (SubPath == null || SubPath.EndsWith(".txt") || SubPath.EndsWith(".json"))
-                return $"https://github.com/{RepoOwner}/{RepoName}#readme";
-
-            return $"https://github.com/{RepoOwner}/{RepoName}/tree/{Branch}/{SubPath}#readme";
-        }
-    }
-
     internal string StarsUrl => $"https://www.github.com/{RepoOwner}/{RepoName}/stargazers";
     internal int Stars => (int) Math.Ceiling((Repository?.StargazersCount ?? 0) / splittingStarsAmongst);
 
@@ -106,8 +94,6 @@ internal partial class ModHelperData
             return null;
         }
     }
-
-    internal string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
 
     public async Task<Release> GetLatestRelease()
     {
@@ -328,3 +314,4 @@ internal partial class ModHelperData
         }
     }
 }
+#endif

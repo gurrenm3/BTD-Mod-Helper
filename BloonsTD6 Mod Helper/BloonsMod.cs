@@ -10,7 +10,6 @@ using BTD_Mod_Helper.Api.Hooks;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
 using Newtonsoft.Json.Linq;
-using Octokit;
 using UnityEngine;
 using BindingFlags = System.Reflection.BindingFlags;
 
@@ -77,11 +76,13 @@ public abstract class BloonsMod : MelonMod, IModSettings
     /// </summary>
     public virtual bool UsesArtifactDependants => false;
 
+#if !RELEASELITE
     /// <summary>
     /// The path that this mod would most likely be at in the Mod Sources folder
     /// </summary>
     public string ModSourcesPath =>
         Path.Combine(ModHelper.ModSourcesDirectory, this.GetAssembly().GetName().Name!);
+#endif
 
     /// <summary>
     /// Signifies that the game shouldn't crash / the mod shouldn't stop loading if one of its patches fails

@@ -1,3 +1,4 @@
+#if !RELEASELITE
 using System;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
 using UnityEngine;
+
 namespace BTD_Mod_Helper.Api.Data;
 
 internal partial class ModHelperData
@@ -18,12 +20,26 @@ internal partial class ModHelperData
     private static readonly string StillRequiredDependency = ModHelper.Localize(nameof(StillRequiredDependency),
         "The following enabled mods list this mod as a dependency, and may not function without it: ");
 
-    /// <summary>
-    /// The place that the .dll file for this mod is on the local machine, if any
-    /// </summary>
-    internal string FilePath { get; private set; }
-
     internal string EnabledFolder => Plugin ? MelonEnvironment.PluginsDirectory : MelonEnvironment.ModsDirectory;
+
+    /// <summary>
+    /// Whether this mod is correctly in the Enabled mods folder
+    /// </summary>
+    internal bool Enabled => FilePath != null &&
+                             DllName != null &&
+                             FilePath == Path.Combine(EnabledFolder, DllName);
+
+    /// <summary>
+    /// Either a Mod's "Enabled" status is different from whether or not it's loaded into the game,
+    /// or the data Version matches the repo's version and not the current version
+    /// </summary>
+    internal bool RestartRequired =>
+        !this.IsUpdaterPlugin() &&
+        (Enabled == (Mod == null) ||
+         Mod != null &&
+         Version != null &&
+         Version == RepoVersion &&
+         IsUpdate(Mod.Info.Version, Version, RepoWorksOnVersion));
 
     public void SetFilePath(string filePath)
     {
@@ -180,3 +196,4 @@ internal partial class ModHelperData
         }
     }
 }
+#endif

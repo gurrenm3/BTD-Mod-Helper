@@ -48,12 +48,15 @@ public static class ModHelper
     /// <summary>
     /// Directory where Mod Helper stores most of its extra info
     /// </summary>
-    public static string ModHelperDirectory => Directory.Exists(PreviousModHelperDirectory)
-        ? PreviousModHelperDirectory
-        : NewModHelperDirectory;
+    public static string ModHelperDirectory =>
+        Directory.Exists(PreviousModHelperDirectory) ? PreviousModHelperDirectory : NewModHelperDirectory;
 
     internal static string NewModHelperDirectory =>
-        Path.Combine(MelonEnvironment.GameRootDirectory, DllName.Replace(".dll", ""));
+#if RELEASELITE
+        Path.Combine(MelonEnvironment.UserDataDirectory, DllName.Replace(".dll", ""));
+#else
+        Path.Combine(MelonEnvironment.MelonBaseDirectory, DllName.Replace(".dll", ""));
+#endif
 
     internal static string PreviousModHelperDirectory =>
         Path.Combine(MelonEnvironment.ModsDirectory, Assembly.GetExecutingAssembly().GetName().Name!);
@@ -66,7 +69,7 @@ public static class ModHelper
         : NewDisabledModDirectory;
 
     internal static string PreviousDisabledModsDirectory => Path.Combine(MelonEnvironment.ModsDirectory, "Disabled");
-    internal static string NewDisabledModDirectory => Path.Combine(MelonEnvironment.GameRootDirectory, "Disabled Mods");
+    internal static string NewDisabledModDirectory => Path.Combine(MelonEnvironment.MelonBaseDirectory, "Disabled Mods");
 
     internal static string ZipTempDirectory => Path.Combine(ModHelperDirectory, "Zip Temp");
     internal static string OldModsDirectory => Path.Combine(ModHelperDirectory, "Old Mods");
@@ -74,10 +77,12 @@ public static class ModHelper
     internal static string ModSettingsDirectory => Path.Combine(ModHelperDirectory, "Mod Settings");
     internal static string ReplacedFilesDirectory => Path.Combine(ModHelperDirectory, "Replaced");
 
+#if !RELEASELITE
     /// <summary>
     /// The directory path on the user's system that's set as their Mod Sources folder
     /// </summary>
     public static string ModSourcesDirectory => MelonMain.ModSourcesFolder;
+#endif
 
     /// <summary>
     /// Gets whether this is running on net6 MelonLoader

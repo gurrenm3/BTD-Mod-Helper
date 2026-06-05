@@ -60,26 +60,18 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
     private static ModHelperText selectedModAuthor;
     private static ModHelperText selectedModVersion;
     private static ModHelperText selectedModDescription;
-    private static ModHelperButton selectedModUpdateButton;
     private static ModHelperButton selectedModSettingsButton;
+    private static ModHelperButton selectedModHomeButton;
+    private static ModHelperImage selectedModIcon;
+    private static ModHelperButton selectedModLocalization;
+
+#if !RELEASELITE
+    private static ModHelperButton selectedModUpdateButton;
     private static ModHelperButton selectedModDisableButton;
     private static ModHelperButton selectedModEnableButton;
     private static ModHelperButton selectedModDeleteButton;
-    private static ModHelperButton selectedModHomeButton;
     private static ModHelperButton updateAllButton;
-    private static ModHelperImage selectedModIcon;
     private static ModHelperImage selectedModLoadingSpinner;
-    private static ModHelperButton selectedModLocalization;
-
-    private static ModsMenuMod modTemplate;
-    private static int currentSort;
-    private static ModHelperPanel restartPanel;
-    private static Task updateTask;
-
-    private static Animator bottomGroupAnimator;
-
-
-    internal static ModHelperData selectedMod;
 
     private static readonly string[] SortOptions =
     [
@@ -89,10 +81,25 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         ModHelper.Localize("ModUpdates", "Updates")
     ];
 
-    private static bool RestartRequired => ModHelperData.All.Any(data => data.RestartRequired) ||
-                                           ModHelper.Mods.Any(bloonsMod =>
-                                               bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
-                                           );
+    private static int currentSort;
+    private static Task updateTask;
+#endif
+
+    private static ModsMenuMod modTemplate;
+    private static ModHelperPanel restartPanel;
+
+    private static Animator bottomGroupAnimator;
+
+
+    internal static ModHelperData selectedMod;
+
+    private static bool RestartRequired =>
+#if !RELEASELITE
+        ModHelperData.All.Any(data => data.RestartRequired) ||
+#endif
+        ModHelper.Mods.Any(bloonsMod =>
+            bloonsMod.ModSettings.Values.Any(setting => setting.needsRestartRightNow)
+        );
 
     internal static bool ShowHashes { get; private set; }
 
@@ -173,7 +180,9 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
     private IEnumerator CreateModPanels()
     {
+#if !RELEASELITE
         updateAllButton.gameObject.SetActive(modPanels.Keys.Any(data => data.UpdateAvailable));
+#endif
         if (RestartRequired)
         {
             restartPanel.SetActive(true);
@@ -216,6 +225,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         bottomGroupAnimator.speed = .55f;
         bottomGroupAnimator.Play("PopupSlideIn");
 
+#if !RELEASELITE
         var modBrowserButton = bottomButtonGroup.AddButton(new Info("ModBrowserButton", -225, Padding, 400)
         {
             Anchor = new Vector2(1, 0),
@@ -250,6 +260,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         createModButton.AddText(new Info("Text", 0, -200, 500, 100), CreateMod, 60f);
 
         createModButton.SetActive(InGame.instance == null);
+#endif
 
 
         restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)
@@ -304,6 +315,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modPanels.Clear();
     }
 
+#if !RELEASELITE
     /// <inheritdoc />
     public override void OnMenuUpdate()
     {
@@ -331,6 +343,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             selectedModLoadingSpinner.SetActive(updateTask is {IsCompleted: false});
         }
     }
+#endif
 
     internal static void SetSelectedMod(ModHelperData modSelected)
     {
@@ -343,12 +356,6 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         selectedModAuthor.Text.SetFaceColor(BlatantFavoritism.GetColor(modSelected.RepoOwner));
 
-        selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
-
-        selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
-                                                       bloonsMod.ModSettings.Any() ||
-                                                       modSelected.IsUpdaterPlugin());
-
         if (!modSelected.HasNoIcon && modSelected.GetIcon() is Sprite sprite)
         {
             selectedModIcon.gameObject.SetActive(true);
@@ -358,14 +365,23 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         {
             selectedModIcon.gameObject.SetActive(false);
         }
+        selectedModHomeButton.SetActive(selectedMod.ReadmeUrl != null);
+
+        selectedModSettingsButton.gameObject.SetActive(modSelected.Mod is BloonsMod bloonsMod &&
+                                                       bloonsMod.ModSettings.Any() ||
+                                                       modSelected.IsUpdaterPlugin());
+
+#if !RELEASELITE
+        selectedModUpdateButton.gameObject.SetActive(modSelected.UpdateAvailable);
+
 
         selectedModDisableButton.SetActive(modSelected.Enabled && selectedMod.Mod is not MelonMain);
         selectedModEnableButton.SetActive(!modSelected.Enabled && selectedMod.Mod is not MelonMain);
         selectedModDeleteButton.SetActive(!modSelected.Enabled && modSelected.Mod is null);
-
-        selectedModHomeButton.SetActive(selectedMod.ReadmeUrl != null);
+#endif
     }
 
+#if !RELEASELITE
     private static void SortMods(int selectedIndex)
     {
         currentSort = selectedIndex;
@@ -393,6 +409,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
 
         Refresh();
     }
+#endif
 
     private static void CreateLeftMenu(ModHelperPanel modsMenu)
     {
@@ -401,6 +418,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             VanillaSprites.MainBGPanelBlue, RectTransform.Axis.Vertical, Padding, Padding
         );
 
+#if !RELEASELITE
         var topRow = leftMenu.AddScrollPanel(new Info("TopRow")
         {
             Height = ModNameHeight,
@@ -493,6 +511,9 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
                 MenuManager.instance.buttonClickSound.Play("ClickSounds");
             }));
 
+        topRow.Mask.enabled = true;
+#endif
+
         modsList = leftMenu.AddScrollPanel(new Info("ModListScroll", InfoPreset.Flex), RectTransform.Axis.Vertical,
             VanillaSprites.BlueInsertPanelRound, Padding, Padding);
 
@@ -504,7 +525,6 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             modPanels[modHelperData] = null;
         }
 
-        topRow.Mask.enabled = true;
 
         var hashBtn = leftMenu.AddButton(new Info("HashesButton")
         {
@@ -537,13 +557,14 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             panel.Refresh(modHelperData);
         }
 
+#if !RELEASELITE
         if (updateAllButton != null)
         {
             var anyModsNeedUpdates = modPanels.Any(pair =>
                 pair.Key.UpdateAvailable && pair.Value is not null && pair.Value.gameObject.active);
             updateAllButton.gameObject.SetActive(anyModsNeedUpdates);
-
         }
+#endif
 
         restartPanel.SetActive(
             RestartRequired
@@ -593,6 +614,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         }));
 
         // ReSharper disable once AsyncVoidLambda
+#if !RELEASELITE
         selectedModUpdateButton = firstRow.AddButton(
             new Info("UpdateButton", ModNameHeight), VanillaSprites.GreenBtn, new Action(async () =>
                 await ModHelperGithub.DownloadLatest(selectedMod, false, _ => Refresh(), task => updateTask = task))
@@ -603,6 +625,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         selectedModLoadingSpinner = selectedModUpdateButton.AddImage(
             new Info("Spinner", ModNameHeight), VanillaSprites.LoadingWheel
         );
+#endif
 
 
         var secondRow = selectedModPanel.AddPanel(new Info("SecondRow")
@@ -690,7 +713,14 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             new Info("ModIcon", ModIconSize / 2f, 0, ModIconSize, ModIconSize, new Vector2(0, 0.5f)),
             GetSprite<MelonMain>("Icon"));
 
+        selectedModSettingsButton = buttonsRow.AddButton(
+            new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
+            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod)));
+        selectedModSettingsButton.AddImage(
+            new Info("Gear", ModNameHeight, ModNameHeight), VanillaSprites.SettingsIcon
+        );
 
+#if !RELEASELITE
         var middleButtons = buttonsRow.AddPanel(new Info("MiddleButtons", InfoPreset.FillParent), null,
             RectTransform.Axis.Horizontal, Padding);
         middleButtons.LayoutGroup.childAlignment = TextAnchor.MiddleCenter;
@@ -705,18 +735,14 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         );
         selectedModEnableButton.AddText(new Info("ButtonText", InfoPreset.FillParent), "Enable", FontLarge);
 
-        selectedModSettingsButton = buttonsRow.AddButton(
-            new Info("SettingsButton", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
-            VanillaSprites.BlueBtn, new Action(() => ModSettingsMenu.Open(selectedMod.Mod)));
-        selectedModSettingsButton.AddImage(
-            new Info("Gear", ModNameHeight, ModNameHeight), VanillaSprites.SettingsIcon
-        );
 
         selectedModDeleteButton = buttonsRow.AddButton(
             new Info("Delete", ModPanelHeight / -2f, 0, ModPanelHeight, ModPanelHeight, new Vector2(1, 0.5f)),
             VanillaSprites.CloseBtn, new Action(DeleteSelectedMod));
+#endif
     }
 
+#if !RELEASELITE
     private static void DeleteSelectedMod()
     {
         PopupScreen.instance.SafelyQueue(screen => screen.ShowPopup(PopupScreen.Placement.menuCenter,
@@ -761,4 +787,6 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             MelonMain.AutoUpdate.SetValueAndSave(true);
         }
     }
+#endif
+
 }

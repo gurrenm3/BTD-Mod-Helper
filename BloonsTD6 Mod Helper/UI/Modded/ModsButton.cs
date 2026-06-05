@@ -41,7 +41,11 @@ internal static class ModsButton
         modsButton.GetComponentInChildren<Button>().SetOnClick(() => ModGameMenu.Open<ModsMenu>());
 
         var indicator = modsButton.GetComponentInChildrenByName<RectTransform>("ParagonAvailable");
+#if RELEASELITE
+        indicator.gameObject.SetActive(false);
+#else
         indicator.gameObject.SetActive(ModHelperData.All.Any(data => data.UpdateAvailable));
+#endif
         indicator.Find("Glow").GetComponent<Image>().color = Color.green;
         indicator.Find("Icon").GetComponent<Image>().SetSprite(VanillaSprites.UpgradeBtn);
 

@@ -28,7 +28,6 @@
 | [ModGameMenu&lt;T&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') | Generic class for creating a ModGameMenu with the given type as it's base menu |
 | [ModLoadTask](BTD_Mod_Helper.Api.ModLoadTask.md 'BTD_Mod_Helper.Api.ModLoadTask') | Class for a Coroutine style task that runs during the BTD6 loading screen |
 | [ModMenuData](BTD_Mod_Helper.Api.ModMenuData.md 'BTD_Mod_Helper.Api.ModMenuData') | Class to be passed in to the Open methods of Screens |
-| [ModSourceFileGenerator](BTD_Mod_Helper.Api.ModSourceFileGenerator.md 'BTD_Mod_Helper.Api.ModSourceFileGenerator') | ModContent class for code/data generators that write files into a mod project's source code.<br/>per output. |
 | [MoreAccessTools](BTD_Mod_Helper.Api.MoreAccessTools.md 'BTD_Mod_Helper.Api.MoreAccessTools') | Further methods along the lines of Harmony's [HarmonyLib.AccessTools](https://docs.microsoft.com/en-us/dotnet/api/HarmonyLib.AccessTools 'HarmonyLib.AccessTools') |
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |
@@ -414,6 +413,7 @@
 | [ArtifactModelBehaviorExt](BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt.md 'BTD_Mod_Helper.Extensions.ArtifactModelBehaviorExt') | Behavior extensions for ItemArtifactModels and BoostArtifactModels |
 | [AssemblyExt](BTD_Mod_Helper.Extensions.AssemblyExt.md 'BTD_Mod_Helper.Extensions.AssemblyExt') | Extensions for Assemblies |
 | [AssetBundleExt](BTD_Mod_Helper.Extensions.AssetBundleExt.md 'BTD_Mod_Helper.Extensions.AssetBundleExt') | Extensions for AssetBundles |
+| [AssignableExtensions](BTD_Mod_Helper.Extensions.AssignableExtensions.md 'BTD_Mod_Helper.Extensions.AssignableExtensions') | A few extensions from Octokit |
 | [AsyncOperationHandleExt](BTD_Mod_Helper.Extensions.AsyncOperationHandleExt.md 'BTD_Mod_Helper.Extensions.AsyncOperationHandleExt') | Extensions for AsyncOperationHandles |
 | [AttackBehaviorExt](BTD_Mod_Helper.Extensions.AttackBehaviorExt.md 'BTD_Mod_Helper.Extensions.AttackBehaviorExt') | Behavior extensions for attacks |
 | [AttackFilterModelExt](BTD_Mod_Helper.Extensions.AttackFilterModelExt.md 'BTD_Mod_Helper.Extensions.AttackFilterModelExt') | Extensions for AttackFilterModels |

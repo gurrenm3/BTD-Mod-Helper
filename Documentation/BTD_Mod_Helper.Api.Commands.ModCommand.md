@@ -191,3 +191,24 @@ protected bool ExplainSubcommands(out string resultText);
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Commands.ModCommand.SuggestionsForValue(int)'></a>
+
+## ModCommand.SuggestionsForValue(int) Method
+
+Manually specify some suggested values for a [Value] at the given index within your command
+
+```csharp
+public virtual System.Collections.Generic.IEnumerable<string> SuggestionsForValue(int index);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Commands.ModCommand.SuggestionsForValue(int).index'></a>
+
+`index` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+[CommandLine.ValueAttribute.Index](https://docs.microsoft.com/en-us/dotnet/api/CommandLine.ValueAttribute.Index 'CommandLine.ValueAttribute.Index')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')  
+list of suggested values

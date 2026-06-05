@@ -33,3 +33,9 @@ This package only does anything in projects that already import `btd6.targets` f
 ## Opt out
 
 Set `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj to skip the generator entirely.
+
+
+## Publish
+```
+dotnet nuget push bin/Debug/Btd6ModHelper.SourceGenerators.X.X.X.nupkg -k $(op read "op://Private/Microsoft/nuget api key")
+```
