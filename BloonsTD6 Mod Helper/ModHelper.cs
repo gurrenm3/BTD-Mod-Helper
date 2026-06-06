@@ -328,6 +328,38 @@ public static class ModHelper
         }
     }
 
+    /// <summary>
+    /// Enum describing the phases of Mod Helper's loading and registration process
+    /// </summary>
+    public enum Phase
+    {
+        /// <summary>
+        /// Before any mods or mod content have been loaded in
+        /// </summary>
+        PreLoading,
+        /// <summary>
+        /// Mods and mod content are actively being loaded
+        /// </summary>
+        Loading,
+        /// <summary>
+        /// Mods and mod content have been loaded but not yet registered
+        /// </summary>
+        PreRegistration,
+        /// <summary>
+        /// Mods and mod content are actively being registered
+        /// </summary>
+        Registration,
+        /// <summary>
+        /// Mods and mod content have been fully loaded and registered
+        /// </summary>
+        PostRegistration
+    }
+
+    /// <summary>
+    /// The current Load Phase of Mod Helper
+    /// </summary>
+    public static Phase LoadPhase { get; internal set; } = Phase.PreLoading;
+
 #if DEBUG
     internal static readonly Dictionary<string, object> Variables = [];
 

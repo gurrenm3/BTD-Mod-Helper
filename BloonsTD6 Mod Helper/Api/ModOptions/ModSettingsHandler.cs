@@ -23,7 +23,6 @@ internal static class ModSettingsHandler
             try
             {
                 CreateModSettings(mod, mod);
-                LoadModSettings(mod);
             }
             catch (Exception e)
             {
@@ -93,16 +92,13 @@ internal static class ModSettingsHandler
             {
                 if (mod is not BloonsMod bloonsMod) return;
 
-                value.displayNameKey = ModContent.Localize(bloonsMod, key + " Setting Name", value.displayName);
+                value.displayNameKey ??= ModContent.Localize(bloonsMod, key + " Setting Name", value.displayName);
                 if (!string.IsNullOrEmpty(value.description))
                 {
-                    value.descriptionKey = ModContent.Localize(bloonsMod, key + " Setting Description", value.description);
+                    value.descriptionKey ??= ModContent.Localize(bloonsMod, key + " Setting Description", value.description);
                 }
-                if (value.category is {displayNameKey: null})
-                {
-                    value.category.displayNameKey = ModContent.Localize(bloonsMod, value.category.displayName + " Category",
-                        value.category.displayName);
-                }
+                value.category?.displayNameKey ??= ModContent.Localize(bloonsMod, value.category.displayName + " Category",
+                    value.category.displayName);
             }
         }
         catch (Exception e)

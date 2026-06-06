@@ -41,8 +41,9 @@ internal partial class MelonMain : BloonsTD6Mod
         ModHelper.MigrateFolders();
         ModHelperHttp.Init();
 
-        // Create all and load default mod settings
+        // Create all statically defined Mod Settings and load them the first time
         ModSettingsHandler.InitializeModSettings();
+        ModSettingsHandler.LoadModSettings();
 
         ModHelperData.LoadAll();
 
@@ -67,9 +68,11 @@ internal partial class MelonMain : BloonsTD6Mod
         }
 
         // Load Content from other mods
+        ModHelper.LoadPhase = ModHelper.Phase.Loading;
         ModHelper.LoadAllMods();
+        ModHelper.LoadPhase = ModHelper.Phase.PreRegistration;
 
-        // Load any mod settings that were added from other types
+        // Load mod settings again for any settings added during the Load phase
         ModSettingsHandler.LoadModSettings();
 
         // Utility to patch all valid UI "Open" methods for custom UI
@@ -121,7 +124,6 @@ internal partial class MelonMain : BloonsTD6Mod
         RoundSetChanger.OnUpdate();
         ConsoleHandler.OnUpdate();
         NotificationMgr.CheckForNotifications();
-        // InitialLoadTasks_MoveNext.OnUpdate();
 
         if (Game.instance is null || InGame.instance is null)
             return;

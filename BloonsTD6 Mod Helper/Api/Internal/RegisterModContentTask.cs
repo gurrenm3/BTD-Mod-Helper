@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Reflection;
 using BTD_Mod_Helper.Api.Attributes;
+
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
@@ -25,52 +26,62 @@ internal class RegisterModContentTask : ModLoadTask
     /// </summary>
     public override IEnumerator Coroutine()
     {
-        var current = 0f;
-
-        // ReSharper disable once ForCanBeConvertedToForeach --- allow new content to be added while registering
-        for (var i = 0; i < mod.Content.Count; i++)
+        ModHelper.LoadPhase = ModHelper.Phase.Registration;
+        try
         {
-            var modContent = mod.Content[i];
 
-            if (modContent.GetType().GetCustomAttribute<DontRegisterAttribute>() != null) continue;
+            var current = 0f;
 
-            var weight = 1f / modContent.RegisterPerFrame;
-            current += weight;
-            if (current >= 1f)
+            // ReSharper disable once ForCanBeConvertedToForeach --- allow new content to be added while registering
+            for (var i = 0; i < mod.Content.Count; i++)
             {
-                current = 0;
-                yield return null;
-            }
+                var modContent = mod.Content[i];
 
-            try
-            {
-                modContent.Register();
-            }
-            catch (Exception e)
-            {
-                mod.LoadError($"Failed to register {modContent.Name}");
-                ModHelper.Error(e);
+                if (modContent.GetType().GetCustomAttribute<DontRegisterAttribute>() != null) continue;
 
-                foreach (var rollbackAction in modContent.rollbackActions)
+                var weight = 1f / modContent.RegisterPerFrame;
+                current += weight;
+                if (current >= 1f)
                 {
-                    try
+                    current = 0;
+                    yield return null;
+                }
+
+                try
+                {
+                    modContent.Register();
+                }
+                catch (Exception e)
+                {
+                    mod.LoadError($"Failed to register {modContent.Name}");
+                    ModHelper.Error(e);
+
+                    foreach (var rollbackAction in modContent.rollbackActions)
                     {
-                        rollbackAction();
-                    }
-                    catch (Exception e2)
-                    {
-                        ModHelper.Error($"Error while rolling back failed addition of {Id}");
-                        ModHelper.Error(e2);
-                        break;
+                        try
+                        {
+                            rollbackAction();
+                        }
+                        catch (Exception e2)
+                        {
+                            ModHelper.Error($"Error while rolling back failed addition of {Id}");
+                            ModHelper.Error(e2);
+                            break;
+                        }
                     }
                 }
-            }
-            finally
-            {
-                modContent.rollbackActions.Clear();
+                finally
+                {
+                    modContent.rollbackActions.Clear();
+                }
+
+                Progress += weight / Total;
             }
 
-            Progress += weight / Total;
+        }
+        finally
+        {
+            ModHelper.LoadPhase = ModHelper.Phase.PostRegistration;
         }
     }
 }

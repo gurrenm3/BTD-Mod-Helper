@@ -26,9 +26,13 @@ internal class TitleScreen_Start
         // Runs all load tasks synchronously that haven't already completed
         ModLoadTask.RunAllSync();
 
+        // Load mod settings a final time for any that were added during the Registration phase
+        ModSettingsHandler.LoadModSettings();
+        // Save all initial mod settings
+        ModSettingsHandler.SaveModSettings(false, false);
+
         NamedModContent.RegisterAllText();
         LocalizationHelper.Initialize();
-        ModSettingsHandler.SaveModSettings(false, false);
         ModGameMode.ModifyDefaultGameModes(GameData.Instance);
 
 #if !RELEASELITE
