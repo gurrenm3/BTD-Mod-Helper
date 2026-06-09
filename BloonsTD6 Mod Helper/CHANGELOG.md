@@ -1,5 +1,10 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## [Unreleased]
 
 - Made it so that the `DisableMonkeyKnowledgeModModel` will actually have an effect for `ModGameMode`s (even though it apparently has no actual effect in the base game, it's all hardcoded)
@@ -8,6 +13,13 @@
 - Improved the loading for `ModSetting`s that are manually added late into the `ModContent` Registration phase
 - Added a `ModHelper.LoadPhase` enum in case anyone needs to check what load phase ModHelper is in
   - PreLoading -> Loading -> PreRegistration -> Registration -> PostRegistration
+- Added a new Source Generator that will keep `.github/workflows/build.yml` updated with new features and populated using info from your project / ModHelperData
+  - If you don't want a GitHub actions workflow, you can delete the file and it won't be regenerated
+  - If you don't want Mod Helper to overwrite any manual changes to this file, set `<GenerateActionsWorkflow>false</GenerateActionsWorkflow>`
+- The new actions workflow now supports manually dispatching a release from GitHub
+  - Works without needing to know how to push a tag to GitHub yourself lol
+- The new actions workflow now supports using [CHANGELOG.md](https://keepachangelog.com) (and still the original LATEST.md style)
+  - You can add new sections for released versions manually or let the workflow automatically turn the Unreleased section into that version's section
 
 ## [3.6.4] - 2026-06-03
 
@@ -147,7 +159,9 @@ public override void OnTitleScreen()
   
 GetAudioClipReference<MyMod>("CustomSound")
 ```
+
 - Using the new C# 14 static extensions feature, added new static .Create() methods for many Models. These have the benefit of not breaking if the constructor for the model gets changed by an update
+
 ```csharp
 new DamageModel("", 2, 0, true, false, false, Lead | Frozen, Lead | Frozen, false, false)
 // ... now can instead do
@@ -541,8 +555,8 @@ to `Il2CppNinjaKiwi.Common.ResourceUtils`.
   - Fixed ModHero font name material reference
   - Fixed JSON settings
 - Added setting to toggle Mod Browser Populating on Startup
-    - From my personal testing, this leads to ~1s faster startup on average, in exchange for waiting 5s - 10s when you
-      first open the browser
+  - From my personal testing, this leads to ~1s faster startup on average, in exchange for waiting 5s - 10s when you
+    first open the browser
 - Added `Instances` and `Lists` classes for modders that have getters for commonly used BTD6 singleton classes and game objects
   - eg `InGame.instance.coopGame.Cast<Btd6CoopGameNetworked>().Connection.Connection.NKGI` can instead be `Instances.NKGI`
   - Also gets added as a component to a Game Object at the root of a global scene, so you can easily access fields from the default Unity Explorer window
@@ -561,8 +575,8 @@ to `Il2CppNinjaKiwi.Common.ResourceUtils`.
 - Fixed more crashes from TowerInventory / subtower interactions (thanks @Onixiya)
 - Added `AttackHelper`, `WeaponHelper` and `ProjectileHelper` that can be used to less painfully create those models
   from scratch
-    - The classes will implicitly convert themselves to their respective models
-    - Make use of the object initialization syntax; don't need to specify every single field, will use sensible defaults
+  - The classes will implicitly convert themselves to their respective models
+  - Make use of the object initialization syntax; don't need to specify every single field, will use sensible defaults
 
 ## [3.1.12] - 2023-07-26
 
@@ -604,7 +618,7 @@ to `Il2CppNinjaKiwi.Common.ResourceUtils`.
 - Added `ModTower.ModifyTowerModelForMatch` and `ModUpgrade.ApplyUpgradeForMatch` overrides for easily modifying custom
   towers on a per match basis / based on mod settings without needing a restart
 - `FileIOHelper.SaveObject` now will use `ReferenceLoopHandling.Ignore` by default
-    - (More Alchemist TowerModels will now be included in the exported game data)
+  - (More Alchemist TowerModels will now be included in the exported game data)
 - Added `ModTower.ShopTowerCount` override to easily set how many of a tower you can purchase at once in a standard game
 - Some fixes for ModBloon default displays
 
@@ -697,22 +711,29 @@ For modders, exporting game data won't fully work
 ### While LavaGang continues working to get MelonLoader compatible with the new v34 update, this is a temporary fix to allow people to more easily continue playing on v33 in the meantime (and in similar situations like this in the future).
 
 Changes:
+
 - Disables the mandatory Popup that forces you to update, so that you can keep playing
 - Doing the above will disable Mod Helper's saving fixes to prevent data corruption
 
 ### If you've already updated to v34, here is a way you can downgrade:
 
 1. Copy/paste the following into your web browser search bar and allow it to open Steam to access the console: `steam://nav/console`
-    - This can sometimes take a couple seconds to open
+
+- This can sometimes take a couple seconds to open
+
 2. Copy in the command `download_depot 960090 960091 8819303902483866961` to download the files for v33
-    - There will be no progress indicator, so just let it run for a minute or two
-    - When it's finished it'll say "Depot download complete: (path it downloaded to)"
+
+- There will be no progress indicator, so just let it run for a minute or two
+- When it's finished it'll say "Depot download complete: (path it downloaded to)"
+
 3. Optional but recommended: create a copy of your `...\Steam\steamapps\common\BloonsTD6` folder as backup
 4. Copy (not move) the newly downloaded game files from `...\Steam\steamapps\content\app_960090\depot_960091` into the
    normal game directory `...\Steam\steamapps\common\BloonsTD6`, telling it to replace the existing files
-    - If you copy instead of move you can leave the base files there to copy again if Steam ever auto-updates on you
-    - To help prevent auto-updating, you can go into the Steam properties page for BloonsTD6 and switch the Updates -> Automatic
-      Updates option to "Only update this game when I launch it"
+
+- If you copy instead of move you can leave the base files there to copy again if Steam ever auto-updates on you
+- To help prevent auto-updating, you can go into the Steam properties page for BloonsTD6 and switch the Updates -> Automatic
+  Updates option to "Only update this game when I launch it"
+
 5. Run the game as before, and noticed the inescapable Update popup is replaced with a quite escapable one about Mod Helper
    disabling saving
 
@@ -738,17 +759,17 @@ Changes:
 
 - Filter to only show mods that have the given github topic
 - Default visible options are
-    - `new-towers`: Adding new custom towers to the game
-    - `new-heroes`: Adding new custom heroes to the game
-    - `new-bloons`: Adding new custom bloons to the game
-    - `new-paragons`: Adding new paragons to base towers (modded towers that have paragons are still just `new-towers`)
-    - `utility`: Quality of life changes for how you interact with the game
-    - `tweaks`: Smaller changes / additions to base game play
-    - `expansion`: Extensive changes / additions to base game play
-    - `bosses`: Content adding or affecting bosses
-    - `modes`: Adding new game modes / round sets / other ways to play
-    - `maps`: Content adding or affecting maps
-    - `memes`: Silly changes not meant to be taken seriously
+  - `new-towers`: Adding new custom towers to the game
+  - `new-heroes`: Adding new custom heroes to the game
+  - `new-bloons`: Adding new custom bloons to the game
+  - `new-paragons`: Adding new paragons to base towers (modded towers that have paragons are still just `new-towers`)
+  - `utility`: Quality of life changes for how you interact with the game
+  - `tweaks`: Smaller changes / additions to base game play
+  - `expansion`: Extensive changes / additions to base game play
+  - `bosses`: Content adding or affecting bosses
+  - `modes`: Adding new game modes / round sets / other ways to play
+  - `maps`: Content adding or affecting maps
+  - `memes`: Silly changes not meant to be taken seriously
 - If you have "Show Unverified Mod Browser Content" enabled, then any other assigned topics people use will also be shown
 - If another topic garners enough usage it'll be added to the default list
 - Add topics to your mod through github (like the btd6-mod topic, or through `ExtraTopics` in ModHelperData)
@@ -799,8 +820,8 @@ Initial Fixes for BloonsTD6 v33.0
 - Added the `FileIOHelper` class that replicates the methods of `FileIOUtil` that've been removed in v33.0
 - Fixed the try-catching of Harmony Patches that wasn't working correctly on official release ML 0.5.5.
 - **Reverted to the old loading system** until I update our custom load tasks to the new way NK is doing it internally
-    - This means we're temporarily going back to freezing after Step 8 of 8 to wait for mods to load rather than having our
-      own steps
+  - This means we're temporarily going back to freezing after Step 8 of 8 to wait for mods to load rather than having our
+    own steps
 
 Also as a PSA about MelonLoader, if things ever seem TOO frozen on Step 8 of 8, with no more log messages appearing,
 check that you haven't accidentally clicked into the console as below, as that can stall things
@@ -840,7 +861,6 @@ The most notable 3.0 addition is a revamped <u>Mods Menu</u> and new <u>In-Game 
 See the [3.0 Update Overview](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/3.0-Update-Overview) page for a more comprehensive list of changes (there's a lot!).
 
 For modders, I've put together a [3.0 Migration Guide](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/%5B3.0%5D-Migration-Guide) page for information about how to best make use of the new features.
-
 
 Note that this is not a universal fix for every mod broken by v32.0, many mods will still need to apply similar fixes to the ones done internally in Mod Helper before they'll be working again.
 
@@ -960,11 +980,13 @@ The mod helper now also has a setting (true by default) to clean player profiles
 ## [2.2.0] - 2021-10-31
 
 **New Features:**
+
 - Paragons for Custom Towers can now be easily created
 - Monkeys menu now shows custom towers
 - Custom tower sets can be made, which also fully integrate with the Monkeys menu
 
 **Fixes:**
+
 - Lych boss no longer crashes the game
 
 Until the wiki is updated, modders interested in utilizing these new features can look at these Card Monkey commits as examples: [Custom Paragons](https://github.com/doombubbles/card-monkey/commit/3f278173eef9ccdfabe6c199a09b3c1f31e76e86) and [Custom Tower Sets](https://github.com/doombubbles/card-monkey/commit/090516ae0b3488ea19a231eea5db4beadbe3d48e)
@@ -995,6 +1017,7 @@ This update features:
 ## [2.0.4] - 2021-08-24
 
 This update features:
+
 - Improved Mod Settings GUI
 - Fix Mod Settings Button overlap with Twitch Button
 - Fix some Mod Settings bugs
@@ -1008,6 +1031,7 @@ This is a small update to version 2.0.2. There was a couple bugs remaining in it
 Make sure to only download one of the mod helpers from below, the one that's for the game you want to mod
 
 ### NOTE:
+
 #### This version requires the latest version of Melonloader
 
 ## [2.0.2] - 2021-07-28
@@ -1015,6 +1039,7 @@ Make sure to only download one of the mod helpers from below, the one that's for
 These are the latest and most updated versions of the mod helper for BTD6 and BATTD.
 
 ### **NOTE:**
+
 Only download **ONE** of the zip files. Make sure it's the one for the game you want to play mods with
 
 ## [2.0.1] - 2021-07-02
@@ -1027,11 +1052,12 @@ Only download **ONE** of the zip files. Make sure it's the one for the game you 
 ## [2.0.0] - 2021-06-29
 
 At long last, the Mod Helper 2.0 Update is ready! This is our biggest update yet, featuring:
+
 - A brand new system for making Custom Towers!
-      - Automates all the tedious bits of Tower adding
-      - Automatically generates full cross pathing
-      - Seamlessly adds the Tower Upgrades menu and even more integration (They even show up in Monkey Teams lol)
-      - Allows for 2D and 3D towers with easy complete texturing
+  - Automates all the tedious bits of Tower adding
+  - Automatically generates full cross pathing
+  - Seamlessly adds the Tower Upgrades menu and even more integration (They even show up in Monkey Teams lol)
+  - Allows for 2D and 3D towers with easy complete texturing
 - In Game Mod Settings, configurable via a Button / Menu within the Settings screen
 - Automatic custom texture registering for mods (no more dealing with URLs)
 - A shiny new Wiki with information about Getting Started with Modding, General Modding Info, and using Mod Helper features
@@ -1054,3 +1080,217 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 ## [1.0.0] - 2021-04-18
 
 Initial release of the new Mod Helper
+
+[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.4...HEAD
+
+[3.6.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.3...3.6.4
+
+[3.6.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.2...3.6.3
+
+[3.6.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.1...3.6.2
+
+[3.6.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.0...3.6.1
+
+[3.6.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.15...3.6.0
+
+[3.5.15]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.14...3.5.15
+
+[3.5.14]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.13...3.5.14
+
+[3.5.13]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.12...3.5.13
+
+[3.5.12]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.11...3.5.12
+
+[3.5.11]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.10...3.5.11
+
+[3.5.10]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.9...3.5.10
+
+[3.5.9]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.8...3.5.9
+
+[3.5.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.7...3.5.8
+
+[3.5.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.6...3.5.7
+
+[3.5.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.5...3.5.6
+
+[3.5.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.4...3.5.5
+
+[3.5.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.3...3.5.4
+
+[3.5.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.2...3.5.3
+
+[3.5.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.1...3.5.2
+
+[3.5.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.5.0...3.5.1
+
+[3.5.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.12...3.5.0
+
+[3.4.12]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.11...3.4.12
+
+[3.4.11]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.10...3.4.11
+
+[3.4.10]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.9...3.4.10
+
+[3.4.9]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.8...3.4.9
+
+[3.4.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.7...3.4.8
+
+[3.4.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.6...3.4.7
+
+[3.4.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.5...3.4.6
+
+[3.4.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.4...3.4.5
+
+[3.4.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.3...3.4.4
+
+[3.4.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.2...3.4.3
+
+[3.4.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.1...3.4.2
+
+[3.4.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.4.0...3.4.1
+
+[3.4.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.3.4...3.4.0
+
+[3.3.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.3.3...3.3.4
+
+[3.3.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.3.2...3.3.3
+
+[3.3.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.3.1...3.3.2
+
+[3.3.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.3.0...3.3.1
+
+[3.3.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.2.1...3.3.0
+
+[3.2.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.2.0...3.2.1
+
+[3.2.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.25...3.2.0
+
+[3.1.25]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.24...3.1.25
+
+[3.1.24]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.23...3.1.24
+
+[3.1.23]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.22...3.1.23
+
+[3.1.22]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.21...3.1.22
+
+[3.1.21]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.20...3.1.21
+
+[3.1.20]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.19...3.1.20
+
+[3.1.19]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.18...3.1.19
+
+[3.1.18]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.17...3.1.18
+
+[3.1.17]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.16...3.1.17
+
+[3.1.16]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.15...3.1.16
+
+[3.1.15]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.14...3.1.15
+
+[3.1.14]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.13...3.1.14
+
+[3.1.13]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.12...3.1.13
+
+[3.1.12]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.11...3.1.12
+
+[3.1.11]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.10...3.1.11
+
+[3.1.10]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.9...3.1.10
+
+[3.1.9]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.8...3.1.9
+
+[3.1.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.7...3.1.8
+
+[3.1.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.6...3.1.7
+
+[3.1.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.5...3.1.6
+
+[3.1.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.4...3.1.5
+
+[3.1.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.3...3.1.4
+
+[3.1.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.2...3.1.3
+
+[3.1.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.1...3.1.2
+
+[3.1.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.0...3.1.1
+
+[3.1.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.1.0-a1...3.1.0
+
+[3.1.0-a1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.9...3.1.0-a1
+
+[3.0.9]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.8...3.0.9
+
+[3.0.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.7...3.0.8
+
+[3.0.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.6...3.0.7
+
+[3.0.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.5...3.0.6
+
+[3.0.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.4...3.0.5
+
+[3.0.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.3...3.0.4
+
+[3.0.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.2...3.0.3
+
+[3.0.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.1...3.0.2
+
+[3.0.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.0.0...3.0.1
+
+[3.0.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.11...3.0.0
+
+[2.4.11]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.10...2.4.11
+
+[2.4.10]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.9...2.4.10
+
+[2.4.9]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.8...2.4.9
+
+[2.4.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.7...2.4.8
+
+[2.4.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.6...2.4.7
+
+[2.4.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.5...2.4.6
+
+[2.4.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.4...2.4.5
+
+[2.4.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.3...2.4.4
+
+[2.4.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.2...2.4.3
+
+[2.4.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.1...2.4.2
+
+[2.4.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.4.0...2.4.1
+
+[2.4.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.3.2...2.4.0
+
+[2.3.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.3.1...2.3.2
+
+[2.3.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.2.0...2.3.1
+
+[2.2.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.1.2...2.2.0
+
+[2.1.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.1.1...2.1.2
+
+[2.1.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.1.0...2.1.1
+
+[2.1.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.0.5...2.1.0
+
+[2.0.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.0.4...2.0.5
+
+[2.0.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.0.3...2.0.4
+
+[2.0.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.0.2...2.0.3
+
+[2.0.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.0.1...2.0.2
+
+[2.0.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/2.0.0...2.0.1
+
+[2.0.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/1.0.3...2.0.0
+
+[1.0.3]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/1.0.2...1.0.3
+
+[1.0.2]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/1.0.1...1.0.2
+
+[1.0.1]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/1.0.0...1.0.1
+
+[1.0.0]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/f914e8696a9c29dd62578651e4e530381298bb23...1.0.0

@@ -46,7 +46,7 @@ public class EpicCompatibilityGenerator : IIncrementalGenerator
             .Where(static x => x.Path is not null)
             .Collect();
 
-        context.RegisterSourceOutput(melonGameAttrs, static (ctx, attrs) =>
+        context.RegisterSourceOutput(melonGameAttrs, static (_, attrs) =>
         {
             if (attrs.IsDefaultOrEmpty) return;
 

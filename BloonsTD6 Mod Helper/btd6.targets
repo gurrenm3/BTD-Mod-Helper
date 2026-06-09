@@ -9,6 +9,7 @@
         <RunCommand>$(BloonsTD6)\BloonsTD6.exe</RunCommand>
         <RunWorkingDirectory>$(BloonsTD6)</RunWorkingDirectory>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <SourceGeneratorsVersion>1.0.1</SourceGeneratorsVersion>
     </PropertyGroup>
 
     <!--References to MelonLoader dependencies-->
@@ -98,15 +99,30 @@
     <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false'">
         <CompilerVisibleProperty Include="RootNamespace"/>
         <CompilerVisibleProperty Include="ProjectDir"/>
+        <CompilerVisibleProperty Include="AssemblyName"/>
+        <CompilerVisibleProperty Include="MSBuildProjectName"/>
+        <CompilerVisibleProperty Include="GenerateModResources"/>
+        <CompilerVisibleProperty Include="GenerateActionsWorkflow"/>
+    </ItemGroup>
+    <PropertyGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And '$(GenerateModResources)' != 'false'">
+        <AdditionalFileItemNames Condition="'$(GenerateModResources)' != 'false'">$(AdditionalFileItemNames);EmbeddedResource</AdditionalFileItemNames>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And '$(GenerateActionsWorkflow)' != 'false' And Exists('$(MSBuildProjectDirectory)\.github\workflows\build.yml')">
+        <AdditionalFiles Include="ModHelperData.*"/>
+        <AdditionalFiles Include="**/CHANGELOG.md"/>
+        <AdditionalFiles Include="**/LATEST.md"/>
+        <AdditionalFiles Include="**/thunderstore.toml"/>
+        <AdditionalFiles Include="$(MSBuildProjectDirectory)\.github\workflows\build.yml"/>
     </ItemGroup>
     <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And '$(DontReferenceModHelper)' != 'true'">
-        <PackageReference Include="Btd6ModHelper.SourceGenerators" Version="1.0.1" PrivateAssets="all"/>
+        <PackageReference Condition="!Exists('..\BTD-Mod-Helper\SourceGenerators\SourceGenerators.csproj')"
+                          Include="Btd6ModHelper.SourceGenerators" Version="$(SourceGeneratorsVersion)" PrivateAssets="all"/>
+        <ProjectReference Condition="Exists('..\BTD-Mod-Helper\SourceGenerators\SourceGenerators.csproj')"
+                          Include="..\BTD-Mod-Helper\SourceGenerators\SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <Analyzer Condition="Exists('..\BTD-Mod-Helper\SourceGenerators\bin\$(Configuration)\SourceGenerators.dll')"
+                  Include="..\BTD-Mod-Helper\SourceGenerators\bin\$(Configuration)\*.dll"
+                  Exclude="..\BTD-Mod-Helper\SourceGenerators\bin\$(Configuration)\SourceGenerators.dll;..\BTD-Mod-Helper\SourceGenerators\bin\$(Configuration)\Microsoft.CodeAnalysis*.dll;..\BTD-Mod-Helper\SourceGenerators\bin\$(Configuration)\Microsoft.CSharp.dll;..\BTD-Mod-Helper\SourceGenerators\bin\$(Configuration)\System.*.dll"/>
     </ItemGroup>
-
-    <!--Include embedded resources as additional files for source generators-->
-    <PropertyGroup Condition="'$(ModHelperSourceGenerators)' != 'false'">
-        <AdditionalFileItemNames>$(AdditionalFileItemNames);EmbeddedResource</AdditionalFileItemNames>
-    </PropertyGroup>
 
     <!--Post build events to copy dll/xml to mods folder. Works even if game is currently running-->
     <Target Name="MoveDllToMods" AfterTargets="Build" Condition="Exists('$(TargetDir)$(TargetName).dll')">

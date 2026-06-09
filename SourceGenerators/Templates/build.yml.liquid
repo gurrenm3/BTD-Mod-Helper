@@ -1,0 +1,309 @@
+# This workflow file is automatically updated by Mod Helper via btd6.targets using info from your project and ModHelperData
+# If you don't want a GitHub actions workflow, you can delete this file and it won't be regenerated
+# If you don't want Mod Helper to overwrite any manual changes to this file, set <GenerateActionsWorkflow>false</GenerateActionsWorkflow>
+name: Build
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version to release (e.g. 1.0.0), leave empty to check mod builds without pushing any new release.'
+        required: false
+        type: string
+      description:
+        description: "Description of new release, if you haven't already changed CHANGELOG.md/LATEST.md."
+        required: false
+        type: string
+
+env:
+  PROJECT_NAME: {{ projectName }}
+  DLL_NAME: {{ dllName }}
+
+  BLOONSTD6: ./BloonsTD6
+  MOD_HELPER_NAME: Btd6ModHelper
+  MOD_HELPER_REPO: gurrenm3/BTD-Mod-Helper
+
+  RELEASE_TAG: ${\{ inputs.tag || (startsWith(github.ref, 'refs/tags/') && github.ref_name) || '' }}
+  IS_RELEASE: ${\{ startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.tag != '') }}
+  RELEASE_DESC: ${\{ inputs.description || '' }}
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@master
+        with:
+          path: ${\{ env.PROJECT_NAME }}
+
+      - name: Download MelonLoader Release
+        {%- comment %}
+        if: env.MELONLOADER_BRANCH == ''
+        {% endcomment %}
+        uses: robinraju/release-downloader@v1.13
+        with:
+          token: ${\{ secrets.GITHUB_TOKEN }}
+          repository: LavaGang/MelonLoader
+          fileName: MelonLoader.x64.zip
+          latest: true
+          extract: true
+          extract-path: ${\{ env.BLOONSTD6 }}
+
+      {%- comment %}
+      - name: Download Specific MelonLoader
+        if: env.MELONLOADER_BRANCH != ''
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          github_token: ${\{ secrets.GITHUB_TOKEN }}
+          workflow: build.yml
+          branch: ${\{ env.MELONLOADER_BRANCH }}
+          name: MelonLoader.Linux.x64.CI.Release
+          repo: LavaGang/MelonLoader
+          path: ${\{ env.BLOONSTD6 }}
+      {% endcomment %}
+
+      - name: Clone Dependencies Repo
+        uses: actions/checkout@master
+        with:
+          token: ${\{ secrets.GITHUB_TOKEN }}
+          repository: doombubbles/btd6-ci-dependencies
+          ref: main
+          path: ${\{ env.BLOONSTD6 }}/MelonLoader/Il2CppAssemblies
+
+      - name: Download Latest Mod Helper
+        uses: robinraju/release-downloader@v1.13
+        if: env.MOD_HELPER_BRANCH == ''
+        with:
+          token: ${\{ secrets.GITHUB_TOKEN }}
+          repository: ${\{ env.MOD_HELPER_REPO }}
+          fileName: ${\{ env.MOD_HELPER_NAME }}.dll
+          out-file-path: ${\{ env.BLOONSTD6 }}/Mods/
+          latest: true
+
+      - name: Download Specific Mod Helper
+        uses: dawidd6/action-download-artifact@v6
+        if: env.MOD_HELPER_BRANCH != ''
+        with:
+          github_token: ${\{ secrets.GITHUB_TOKEN }}
+          workflow: build.yml
+          name: ${\{ env.MOD_HELPER_NAME }}.dll
+          branch: ${\{ env.MOD_HELPER_BRANCH }}
+          repo: ${\{ env.MOD_HELPER_REPO }}
+          path: ${\{ env.BLOONSTD6 }}/Mods/
+
+      - name: Download btd6.targets
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            choco install -y wget
+          fi
+          wget https://raw.githubusercontent.com/${\{ env.MOD_HELPER_REPO }}/master/BloonsTD6%20Mod%20Helper/btd6.targets
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      {%- assign deps = mod.Dependencies | default: "" | split: ";" %}
+      {%- for dep in deps %}
+
+      - name: Download {{ dep }}
+        uses: robinraju/release-downloader@v1.13
+        with:
+          token: ${\{ secrets.GITHUB_TOKEN }}
+          repository: {{ dep }}
+          fileName: "*.dll"
+          out-file-path: ${\{ env.BLOONSTD6 }}/Mods/
+          latest: true
+      {%- endfor %}
+
+      - name: Build
+        run: dotnet build -c Release -p:BloonsTD6="../${\{ env.BLOONSTD6 }}" "${\{ env.PROJECT_NAME }}/${\{ env.PROJECT_NAME }}.csproj"
+
+      - name: Upload Mod DLL
+        if: env.ACT != 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${\{ env.DLL_NAME }}
+          path: ${\{ env.BLOONSTD6 }}/Mods/${\{ env.DLL_NAME }}
+
+      - name: Process description input
+        if: env.IS_RELEASE == 'true' && env.RELEASE_DESC != ''
+        working-directory: ${\{ env.PROJECT_NAME }}
+        run: |
+          {%- if changelogMd %}
+          perl -i -pe 's{^## \[Unreleased\]$}{"## [Unreleased]\n\n" . $ENV{RELEASE_DESC}}e' CHANGELOG.md
+          {%- else %}
+          printf '%s\n' "$RELEASE_DESC" > LATEST.md
+          {%- endif %}
+
+      {%- if changelogMd %}
+
+      - name: Check changelog for ${\{ env.RELEASE_TAG }} section
+        id: changelog_check
+        if: env.IS_RELEASE == 'true'
+        working-directory: ${\{ env.PROJECT_NAME }}
+        run: |
+          if grep -qE "^## \[${\{ env.RELEASE_TAG }}\]" CHANGELOG.md; then
+            echo "has_section=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Read changelog entry for ${\{ env.RELEASE_TAG }}
+        id: changelog_read
+        if: steps.changelog_check.outputs.has_section == 'true'
+        uses: mindsers/changelog-reader-action@v2.4.0
+        with:
+          version: ${\{ env.RELEASE_TAG }}
+          path: ${\{ env.PROJECT_NAME }}/CHANGELOG.md
+
+      - name: Rotate changelog Unreleased section to ${\{ env.RELEASE_TAG }}
+        id: changelog_rotate
+        if: env.IS_RELEASE == 'true' && steps.changelog_check.outputs.has_section != 'true'
+        uses: baynezy/ChangeLogger.Action@1.2.4.10
+        with:
+          tag: ${\{ env.RELEASE_TAG }}
+          log-path: ${\{ env.PROJECT_NAME }}/CHANGELOG.md
+          repo-path: ${\{ env.PROJECT_NAME }}
+
+      - name: Commit changelog changes if needed
+        if: steps.changelog_rotate.outcome == 'success' && env.ACT != 'true'
+        continue-on-error: true
+        working-directory: ${\{ env.PROJECT_NAME }}
+        env:
+          DEFAULT_BRANCH: ${\{ github.event.repository.default_branch }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git stash push -m "changelog_rotate" -- CHANGELOG.md
+          git fetch origin "$DEFAULT_BRANCH"
+          git checkout "$DEFAULT_BRANCH"
+          git pull --rebase origin "$DEFAULT_BRANCH"
+          git stash pop
+          git add CHANGELOG.md
+          if git diff --cached --quiet; then
+            echo "CHANGELOG.md on $DEFAULT_BRANCH is already up to date; nothing to commit."
+          else
+            git commit -m "Release ${\{ env.RELEASE_TAG }}"
+            git push origin "$DEFAULT_BRANCH"
+            echo "RELEASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          fi
+
+      {%- endif %}
+
+      {%- if thunderstore %}
+
+      - name: Install Thunderstore CLI
+        if: env.IS_RELEASE == 'true'
+        run: |
+          dotnet tool install -g tcli --version 0.2.4
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Setup Node
+        if: env.IS_RELEASE == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Prepare README and icon for Thunderstore
+        if: env.IS_RELEASE == 'true'
+        working-directory: ${\{ env.PROJECT_NAME }}
+        env:
+          LINK_BASE: "https://github.com/${\{ github.repository }}/blob/HEAD"
+          IMAGE_BASE: "https://raw.githubusercontent.com/${\{ github.repository }}/HEAD"
+          ICON_PATH: "{{ mod.Icon | default: 'Icon.png' }}"
+          SCRIPT: |
+            import sharp from 'sharp';
+            import fs from 'fs';
+
+            const IMAGE_BASE = process.env.IMAGE_BASE;
+            const LINK_BASE = process.env.LINK_BASE;
+            const isAbsolute = (u) => /^(?:https?:)?\/\/|^\/|^mailto:|^data:/.test(u);
+            const absolutize = (url, base) => {
+              if (!url || isAbsolute(url) || url.startsWith('#')) return url;
+              return `${base}/${url.replace(/^\.\//, '')}`;
+            };
+
+            let content = fs.readFileSync('README.md', 'utf8');
+
+            // Remove <a href="….dll">…</a> download banners
+            content = content.replace(/<a\b[^>]*\bhref=(["'])[^"']*\.dll\1[^>]*>[\s\S]*?<\/a>/gi, '');
+
+            // Rewrite URLs to be absolute
+            content = content
+              .replace(/(<img\b[^>]*\bsrc=)(["'])([^"']+)\2/gi,
+                (_, p, q, u) => `${p}${q}${absolutize(u, IMAGE_BASE)}${q}`)
+              .replace(/(<a\b[^>]*\bhref=)(["'])([^"']+)\2/gi,
+                (_, p, q, u) => `${p}${q}${absolutize(u, LINK_BASE)}${q}`)
+              .replace(/(!\[[^\]]*\]\()([^\s)]+)(\s+"[^"]*")?(\))/g,
+                (_, p, u, t, e) => `${p}${absolutize(u, IMAGE_BASE)}${t || ''}${e}`)
+              .replace(/(?<!!)(\[[^\]]*\]\()([^\s)]+)(\s+"[^"]*")?(\))/g,
+                (_, p, u, t, e) => `${p}${absolutize(u, LINK_BASE)}${t || ''}${e}`);
+
+            fs.writeFileSync('README.md', content);
+
+            // Resize the mod icon to exactly 256x256 (Thunderstore requirement).
+            const iconPath = process.env.ICON_PATH;
+            if (fs.existsSync(iconPath)) {
+              const buffer = await sharp(iconPath).resize(256, 256, {fit: 'cover'}).toBuffer();
+              fs.writeFileSync(iconPath, buffer);
+              console.log(`Resized ${iconPath} to 256x256`);
+            } else {
+              console.warn(`Icon not found at ${iconPath}, skipping resize`);
+            }
+        run: |
+          npm install --no-save --silent sharp
+          node --input-type=module <<<"$SCRIPT"
+          cat README.md
+
+      - name: Build Thunderstore Package
+        if: env.IS_RELEASE == 'true'
+        working-directory: ${\{ env.PROJECT_NAME }}
+        run: |
+          tcli build --package-version ${\{ env.RELEASE_TAG }} | tee tcli.log
+          sed -i 's|\x1B\[[0-9;]*m||g' tcli.log # get rid of ansi colors
+          path=$(grep '^Output path ' tcli.log | sed 's|^Output path ||')
+          if [ -z "$path" ]; then
+            echo "tcli build did not produce an Output path" >&2
+            exit 1
+          fi
+          echo "THUNDERSTORE_PACKAGE_PATH=$path" >> "$GITHUB_ENV"
+          echo "THUNDERSTORE_PACKAGE_NAME=$(basename $path)" >> "$GITHUB_ENV"
+
+      - name: Upload Thunderstore Package
+        if: env.IS_RELEASE == 'true' && env.ACT != 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${\{ env.THUNDERSTORE_PACKAGE_NAME }}
+          path: ${\{ env.THUNDERSTORE_PACKAGE_PATH }}
+
+      - name: Publish Thunderstore Package
+        if: env.IS_RELEASE == 'true' && env.ACT != 'true'
+        env:
+          TCLI_AUTH_TOKEN: ${\{ secrets.TCLI_AUTH_TOKEN }}
+        working-directory: ${\{ env.PROJECT_NAME }}
+        run: tcli publish --file ${\{ env.THUNDERSTORE_PACKAGE_PATH }}
+
+      {%- endif %}
+
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        if: env.IS_RELEASE == 'true'
+        with:
+          tag_name: ${\{ env.RELEASE_TAG }}
+          target_commitish: ${\{ env.RELEASE_SHA || github.sha }}
+          files: ${\{ env.BLOONSTD6 }}/Mods/${\{ env.DLL_NAME }}
+          {%- if latestMd %}
+          body_path: ${\{ env.PROJECT_NAME }}/LATEST.md
+          {%- elsif changelogMd %}
+          body: ${\{ steps.changelog_read.outputs.changes || steps.changelog_rotate.outputs.release-notes || env.RELEASE_DESC }}
+          {%- endif %}
+          fail_on_unmatched_files: true
+          draft: ${\{ env.ACT == 'true' }}

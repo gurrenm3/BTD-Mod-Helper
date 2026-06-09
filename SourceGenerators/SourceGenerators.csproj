@@ -7,12 +7,13 @@
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <RootNamespace>BTD_Mod_Helper.SourceGenerators</RootNamespace>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <DefineConstants>SOURCEGEN</DefineConstants>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 
         <!--NuGet package metadata-->
         <PackageId>Btd6ModHelper.SourceGenerators</PackageId>
-        <Version>1.0.1</Version>
         <Authors>doombubbles</Authors>
-        <Description>Source generators for BTD6 Mod Helper mods (auto-generated ModResources class for embedded resources).</Description>
+        <Description>Source generators for BTD6 Mod Helper mods: a strongly-typed ModResources class for embedded resources, plus an auto-updating GitHub Actions build workflow.</Description>
         <PackageTags>btd6;bloons;modding;source-generator;analyzer</PackageTags>
         <PackageProjectUrl>https://github.com/doombubbles/BTD-Mod-Helper</PackageProjectUrl>
         <RepositoryUrl>https://github.com/doombubbles/BTD-Mod-Helper</RepositoryUrl>
@@ -27,14 +28,25 @@
         <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
 
+    <!--Get version from btd6.targets, but don't want any other properties from there-->
+    <PropertyGroup>
+        <_TargetsXml>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)\..\BloonsTD6 Mod Helper\btd6.targets'))</_TargetsXml>
+        <SourceGeneratorsVersion>$([System.Text.RegularExpressions.Regex]::Match($(_TargetsXml), '&lt;SourceGeneratorsVersion&gt;([^&lt;]+)&lt;/SourceGeneratorsVersion&gt;').Groups[1].Value)</SourceGeneratorsVersion>
+        <Version>$(SourceGeneratorsVersion)</Version>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all"/>
+        <PackageReference Include="Fluid.Core" Version="2.31.0" PrivateAssets="all" GeneratePathProperty="true"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" PrivateAssets="all" GeneratePathProperty="true"/>
     </ItemGroup>
-
-    <!--Pack the generator dll into analyzers/dotnet/cs so consumers load it as a Roslyn analyzer.-->
+    
     <ItemGroup>
-        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+        <Compile Include="..\BloonsTD6 Mod Helper\Api\Data\ModHelperData.Shared.cs"/>
+        <EmbeddedResource Include="Templates\**\*.liquid"/>
         <None Include="README.md" Pack="true" PackagePath="\" Visible="true"/>
+        <None Include="$(OutputPath)\*.dll" Exclude="$(OutputPath)\Microsoft.CodeAnalysis*.dll;$(OutputPath)\Microsoft.CSharp.dll;$(OutputPath)\System.*.dll"
+              Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
     </ItemGroup>
 </Project>

@@ -167,3 +167,8 @@ resharper_virtual_member_never_overridden_global_highlighting = none
 resharper_web_config_module_not_resolved_highlighting = warning
 resharper_web_config_type_not_resolved_highlighting = warning
 resharper_web_config_wrong_module_highlighting = warning
+
+[*.{yml,yaml,liquid}]
+indent_style = space
+indent_size = 2
+tab_width = 2

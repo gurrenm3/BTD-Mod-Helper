@@ -2,9 +2,9 @@
 
 Source generators for [BTD6 Mod Helper](https://github.com/doombubbles/BTD-Mod-Helper) mods.
 
-Auto-generates a strongly-typed `ModResources` class so you can reference your embedded resources by name without typos and without writing string literals.
+## `ModResources`
 
-## What it generates
+Auto-generates a strongly-typed `ModResources` class so you can reference your embedded resources by name without typos and without writing string literals.
 
 For every `EmbeddedResource` in your mod project with a known extension, a `static readonly` field is emitted on the `ModResources` class:
 
@@ -19,23 +19,17 @@ For every `EmbeddedResource` in your mod project with a known extension, a `stat
 
 If you have a series of numbered audio clips (`pop1.wav`, `pop2.wav`, `pop3.wav`, ...), a `RandomizedAudioClipResource<TMod>` named after the shared base (`pop`) is also generated — unless an audio clip with that exact base name already exists.
 
-## Install
+## GitHub Actions workflow
 
-```xml
+If your project already has a `.github/workflows/build.yml`, the generator will keep that file in sync with values from your `ModHelperData` (currently `PROJECT_NAME` and `DLL_NAME`).
 
-<PackageReference Include="Btd6ModHelper.SourceGenerators" Version="1.0.0" PrivateAssets="all"/>
-```
-
-`PrivateAssets="all"` keeps the generator out of your mod's runtime dependencies.
-
-This package only does anything in projects that already import `btd6.targets` from BTD6 Mod Helper — the targets file is what exposes your `EmbeddedResource` items to the generator.
+- The generator only touches files that already exist — delete `.github/workflows/build.yml` to opt out for the project.
+- Opt out at the csproj level with `<GenerateActionsWorkflow>false</GenerateActionsWorkflow>`.
 
 ## Opt out
 
-Set `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj to skip the generator entirely.
+Set `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj to skip all generators.
 
+Set `<GenerateModResources>false</GenerateModResources>` to skip just the ModResources generator.
 
-## Publish
-```
-dotnet nuget push bin/Debug/Btd6ModHelper.SourceGenerators.X.X.X.nupkg -k $(op read "op://Private/Microsoft/nuget api key")
-```
+Set `<GenerateActionsWorkflow>false</GenerateActionsWorkflow>` to skip just the workflow generator.

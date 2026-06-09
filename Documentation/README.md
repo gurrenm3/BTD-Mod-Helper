@@ -13,6 +13,10 @@
 | [BloonsTD6Mod](BTD_Mod_Helper.BloonsTD6Mod.md 'BTD_Mod_Helper.BloonsTD6Mod') | Extend this Class instead of MelonMod to gain access to dozens of easy to use built-in hooks |
 | [ModHelper](BTD_Mod_Helper.ModHelper.md 'BTD_Mod_Helper.ModHelper') | Catch-all class for non-extension static methods and accessors, as well as the ModHelperData for this mod |
 
+| Enums | |
+| :--- | :--- |
+| [ModHelper.Phase](BTD_Mod_Helper.ModHelper.Phase.md 'BTD_Mod_Helper.ModHelper.Phase') | Enum describing the phases of Mod Helper's loading and registration process |
+
 <a name='BTD_Mod_Helper.Api'></a>
 
 ## BTD_Mod_Helper.Api Namespace
@@ -28,6 +32,7 @@
 | [ModGameMenu&lt;T&gt;](BTD_Mod_Helper.Api.ModGameMenu_T_.md 'BTD_Mod_Helper.Api.ModGameMenu<T>') | Generic class for creating a ModGameMenu with the given type as it's base menu |
 | [ModLoadTask](BTD_Mod_Helper.Api.ModLoadTask.md 'BTD_Mod_Helper.Api.ModLoadTask') | Class for a Coroutine style task that runs during the BTD6 loading screen |
 | [ModMenuData](BTD_Mod_Helper.Api.ModMenuData.md 'BTD_Mod_Helper.Api.ModMenuData') | Class to be passed in to the Open methods of Screens |
+| [ModSourceFileGenerator](BTD_Mod_Helper.Api.ModSourceFileGenerator.md 'BTD_Mod_Helper.Api.ModSourceFileGenerator') | ModContent class for code/data generators that write files into a mod project's source code.<br/>per output. |
 | [MoreAccessTools](BTD_Mod_Helper.Api.MoreAccessTools.md 'BTD_Mod_Helper.Api.MoreAccessTools') | Further methods along the lines of Harmony's [HarmonyLib.AccessTools](https://docs.microsoft.com/en-us/dotnet/api/HarmonyLib.AccessTools 'HarmonyLib.AccessTools') |
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |

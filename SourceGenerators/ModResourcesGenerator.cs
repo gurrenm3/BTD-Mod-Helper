@@ -11,6 +11,10 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace BTD_Mod_Helper.SourceGenerators;
 
+/// <summary>
+/// Generates a file ModResources.g.cs filled with strongly typed entries for different embedded content within the mod.
+/// Can opt out by setting csproj property GenerateModResources to false
+/// </summary>
 [Generator(LanguageNames.CSharp)]
 public class ModResourcesGenerator : IIncrementalGenerator
 {
@@ -38,7 +42,9 @@ public class ModResourcesGenerator : IIncrementalGenerator
         {
             options.GlobalOptions.TryGetValue("build_property.RootNamespace", out var ns);
             options.GlobalOptions.TryGetValue("build_property.ProjectDir", out var dir);
+            options.GlobalOptions.TryGetValue("build_property.GenerateModResources", out var enabled);
             return (
+                Enabled: !string.Equals(enabled, "false", StringComparison.OrdinalIgnoreCase),
                 RootNamespace: string.IsNullOrWhiteSpace(ns) ? "GeneratedResources" : ns!,
                 ProjectDir: dir ?? ""
             );
@@ -71,9 +77,10 @@ public class ModResourcesGenerator : IIncrementalGenerator
             .Where(r => r.Name != null)
             .Collect();
 
-        context.RegisterSourceOutput(resources.Combine(buildContext).Combine(modType), (ctx, data) =>
+        context.RegisterSourceOutput(buildContext.Combine(modType, resources), (ctx, data) =>
         {
-            var ((entries, build), modFullName) = data;
+            var (build, modFullName, entries) = data;
+            if (!build.Enabled) return;
             if (string.IsNullOrEmpty(modFullName)) return;
 
             var distinct = entries.IsDefaultOrEmpty ? [] : entries.Distinct().ToList();

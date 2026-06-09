@@ -1,19 +1,21 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using BTD_Mod_Helper.Api.Helpers;
-using BTD_Mod_Helper.Api.ModMenu;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+#if !SOURCEGEN
+using BTD_Mod_Helper.Api.Helpers;
+using BTD_Mod_Helper.Api.ModMenu;
 using Semver;
+using System.Threading;
+using System.Threading.Tasks;
+using System.IO;
+#endif
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
-#else
+#elif !SOURCEGEN
 using BTD_Mod_Helper.Extensions;
 #endif
 
@@ -22,10 +24,10 @@ namespace BTD_Mod_Helper.Api.Data;
 [JsonObject(MemberSerialization.OptIn)]
 internal partial class ModHelperData
 {
-    private const string ModHelperDataCs = "ModHelperData.cs";
-    private const string ModHelperDataJson = "ModHelperData.json";
-    private const string ModHelperDataTxt = "ModHelperData.txt";
-    private const string ModHelperModsJson = "ModHelperMods.json";
+    internal const string ModHelperDataCs = "ModHelperData.cs";
+    internal const string ModHelperDataJson = "ModHelperData.json";
+    internal const string ModHelperDataTxt = "ModHelperData.txt";
+    internal const string ModHelperModsJson = "ModHelperMods.json";
 
 
     // From MelonLoader SemVersion
@@ -73,7 +75,6 @@ internal partial class ModHelperData
             }
             else
             {
-                ModHelper.Warning($"No set method for {propertyInfo.Name}");
                 continue;
             }
 
@@ -81,10 +82,6 @@ internal partial class ModHelperData
             if (getMethod != null)
             {
                 Getters[propertyInfo.Name] = getMethod;
-            }
-            else
-            {
-                ModHelper.Warning($"No get method for {propertyInfo.Name}");
             }
         }
     }
@@ -95,39 +92,41 @@ internal partial class ModHelperData
 
     public ModHelperData(ModHelperData other)
     {
-        foreach (var (name, getter) in Getters)
+        foreach (var name in Getters.Keys)
         {
-            var result = getter.Invoke(other, null);
+            var result = Getters[name].Invoke(other, null);
             Setters[name]?.Invoke(this, [result]);
         }
     }
 
     // These public properties are the serialized ones
-    [JsonProperty] public string Version { get; internal set; }
-    [JsonProperty] public string Name { get; internal set; }
-    [JsonProperty] public string Description { get; internal set; }
-    [JsonProperty] public string Icon { get; internal set; }
-    [JsonProperty] public string DllName { get; internal set; }
-    [JsonProperty] public string RepoName { get; internal set; }
-    [JsonProperty] public string RepoOwner { get; internal set; }
+    [JsonProperty] public string Version { get; internal set; } = null!;
+    [JsonProperty] public string Name { get; internal set; } = null!;
+    [JsonProperty] public string Description { get; internal set; } = null!;
+    [JsonProperty] public string Icon { get; internal set; } = null!;
+    [JsonProperty] public string DllName { get; internal set; } = null!;
+    [JsonProperty] public string RepoName { get; internal set; } = null!;
+    [JsonProperty] public string RepoOwner { get; internal set; } = null!;
     [JsonProperty] public bool ManualDownload { get; internal set; }
-    [JsonProperty] public string ZipName { get; internal set; }
-    [JsonProperty] public string Author { get; internal set; }
-    [JsonProperty] public string SubPath { get; internal set; }
+    [JsonProperty] public string ZipName { get; internal set; } = null!;
+    [JsonProperty] public string Author { get; internal set; } = null!;
+    [JsonProperty] public string SubPath { get; internal set; } = null!;
     [JsonProperty] public bool SquareIcon { get; internal set; }
-    [JsonProperty] public string ExtraTopics { get; internal set; }
-    [JsonProperty] public string WorksOnVersion { get; internal set; }
-    [JsonProperty] public string Dependencies { get; internal set; }
+    [JsonProperty] public string ExtraTopics { get; internal set; } = null!;
+    [JsonProperty] public string WorksOnVersion { get; internal set; } = null!;
+    [JsonProperty] public string Dependencies { get; internal set; } = null!;
     [JsonProperty] public bool Plugin { get; internal set; }
-    [JsonProperty] public string Branch { get; internal set; }
-    [JsonProperty] public string ModHelperDataUrl { get; internal set; }
-    [JsonProperty] public string DownloadUrl { get; internal set; }
-    [JsonProperty] public string Authorization { get; internal set; }
+    [JsonProperty] public string Branch { get; internal set; } = null!;
+    [JsonProperty] public string ModHelperDataUrl { get; internal set; } = null!;
+    [JsonProperty] public string DownloadUrl { get; internal set; } = null!;
+    [JsonProperty] public string Authorization { get; internal set; } = null!;
 
-    internal string DataPath { get; }
-    internal string CachedModHelperData { get; private set; }
+    internal string DataPath { get; }  = null!;
+    internal string CachedModHelperData { get; private set; }  = null!;
 
+#if !SOURCEGEN
     internal string DefaultBranch => RepoName == ModHelper.RepoName && RepoOwner == ModHelper.RepoOwner ? "master" : "main";
+#endif
 
     public void ReadValuesFromType(Type data)
     {
@@ -140,10 +139,9 @@ internal partial class ModHelperData
             {
                 Setters[fieldInfo.Name].Invoke(this, [rawConstantValue]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                ModHelper.Warning($"The {fieldInfo.Name} of {data.Assembly.FullName}'s ModHelperData failed to set");
-                ModHelper.Warning(e);
+                // ignored
             }
         }
     }
@@ -209,7 +207,7 @@ internal partial class ModHelperData
         {
             var matchGroup = match.Groups[1];
             var result = allowMultiline
-                ? matchGroup.Captures.Select(c => c.Value).Join(delimiter: "")
+                ? string.Join("", matchGroup.Captures)
                 : matchGroup.Value;
             if (typeof(T) == typeof(string))
             {
@@ -218,15 +216,15 @@ internal partial class ModHelperData
 
             if (typeof(T) == typeof(bool))
             {
-                return (T) (object) (bool.TryParse(result, out var b) ? b : default);
+                return (T) (object) (bool.TryParse(result, out var b) && b);
             }
         }
 
-        return default;
+        return default!;
     }
 
 
-#if !RELEASELITE
+#if !(RELEASELITE || SOURCEGEN)
     internal string GetContentURL(string name)
     {
         var path = Uri.EscapeDataString(name);

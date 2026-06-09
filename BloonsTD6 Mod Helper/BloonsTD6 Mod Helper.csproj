@@ -20,6 +20,7 @@
         <Platforms>AnyCPU</Platforms>
 
         <DefineConstants>MOD_HELPER</DefineConstants>
+
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)' != 'ReleaseLite'">
         <IncludeLibs>$(IncludeLibs);Octokit</IncludeLibs>
@@ -48,6 +49,8 @@
         <ProjectReference Include="..\SourceGenerators\SourceGenerators.csproj"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"/>
+        <Analyzer Include="..\SourceGenerators\bin\$(Configuration)\*.dll"
+                  Exclude="..\SourceGenerators\bin\$(Configuration)\SourceGenerators.dll;..\SourceGenerators\bin\$(Configuration)\Microsoft.CodeAnalysis*.dll;..\SourceGenerators\bin\$(Configuration)\Microsoft.CSharp.dll;..\SourceGenerators\bin\$(Configuration)\System.*.dll"/>
     </ItemGroup>
 
     <ItemGroup>

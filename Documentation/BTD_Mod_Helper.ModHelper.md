@@ -78,6 +78,19 @@ public static bool IsNet6 { get; }
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.ModHelper.LoadPhase'></a>
+
+## ModHelper.LoadPhase Property
+
+The current Load Phase of Mod Helper
+
+```csharp
+public static BTD_Mod_Helper.ModHelper.Phase LoadPhase { get; set; }
+```
+
+#### Property Value
+[Phase](BTD_Mod_Helper.ModHelper.Phase.md 'BTD_Mod_Helper.ModHelper.Phase')
+
 <a name='BTD_Mod_Helper.ModHelper.Melons'></a>
 
 ## ModHelper.Melons Property
@@ -129,6 +142,19 @@ public static System.Collections.Generic.IEnumerable<BTD_Mod_Helper.BloonsMod> M
 
 #### Property Value
 [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+
+<a name='BTD_Mod_Helper.ModHelper.ModSourcesDirectory'></a>
+
+## ModHelper.ModSourcesDirectory Property
+
+The directory path on the user's system that's set as their Mod Sources folder
+
+```csharp
+public static string ModSourcesDirectory { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 ### Methods
 
 <a name='BTD_Mod_Helper.ModHelper.Error_T_(object)'></a>
