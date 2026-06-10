@@ -139,6 +139,9 @@ export default () => {
     addMod((value) => value.Identifier === mod.Identifier, mod);
     fuse.add(mod);
     setMod(mod.Identifier, mod);
+    if (mod.PrevIdentifier) {
+      setMod(mod.PrevIdentifier, mod);
+    }
 
     return true;
   };

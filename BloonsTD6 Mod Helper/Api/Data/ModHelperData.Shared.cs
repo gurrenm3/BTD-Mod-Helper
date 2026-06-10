@@ -55,6 +55,8 @@ internal partial class ModHelperData
     private const string ModHelperDataUrlRegex = """\bModHelperDataUrl\s*=\s*"(.+)";?[\n\r]+""";
     private const string DownloadUrlRegex = """\bDownloadUrl\s*=\s*"(.+)";?[\n\r]+""";
     private const string AuthorizationRegex = """\bAuthorization\s*=\s*"(.+)";?[\n\r]+""";
+    private const string PrevRepoNameRegex = """\bPrevRepoName\s*=\s*"(.+)";?[\n\r]+""";
+    private const string PrevRepoOwnerRegex = """\bPrevRepoOwner\s*=\s*"(.+)";?[\n\r]+""";
 
     private static readonly Dictionary<string, MethodInfo> Setters;
     private static readonly Dictionary<string, MethodInfo> Getters;
@@ -120,6 +122,8 @@ internal partial class ModHelperData
     [JsonProperty] public string ModHelperDataUrl { get; internal set; } = null!;
     [JsonProperty] public string DownloadUrl { get; internal set; } = null!;
     [JsonProperty] public string Authorization { get; internal set; } = null!;
+    [JsonProperty] public string PrevRepoName { get; internal set; } = null!;
+    [JsonProperty] public string PrevRepoOwner { get; internal set; } = null!;
 
     internal string DataPath { get; }  = null!;
     internal string CachedModHelperData { get; private set; }  = null!;
@@ -193,6 +197,8 @@ internal partial class ModHelperData
         Branch = GetRegexMatch<string>(data, BranchRegex) ?? Branch;
         DownloadUrl = GetRegexMatch<string>(data, DownloadUrlRegex) ?? DownloadUrl;
         Authorization = GetRegexMatch<string>(data, AuthorizationRegex) ?? Authorization;
+        PrevRepoName = GetRegexMatch<string>(data, PrevRepoNameRegex) ?? PrevRepoName;
+        PrevRepoOwner = GetRegexMatch<string>(data, PrevRepoOwnerRegex) ?? PrevRepoOwner;
 
         if (allowRepo)
         {

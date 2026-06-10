@@ -132,6 +132,9 @@ internal partial class ModHelperData
 
     internal string Identifier => $"{RepoOwner}/{RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
 
+    internal string PrevIdentifier =>
+        $"{PrevRepoOwner ?? RepoOwner}/{PrevRepoName ?? RepoName}" + (string.IsNullOrEmpty(SubPath) ? "" : "/" + SubPath);
+
     internal string ReadmeUrl
     {
         get
@@ -165,8 +168,8 @@ internal partial class ModHelperData
     public bool ModInstalledLocally(out ModHelperData modHelperData)
     {
         var result = All.FirstOrDefault(data =>
-            data.RepoName?.Equals(RepoName) == true &&
-            data.RepoOwner?.Equals(RepoOwner) == true &&
+            (data.RepoName?.Equals(RepoName) == true || data.RepoName?.Equals(PrevRepoName) == true || data.PrevRepoName?.Equals(RepoName) == true) &&
+            (data.RepoOwner?.Equals(RepoOwner) == true || data.RepoOwner?.Equals(PrevRepoOwner) == true || data.PrevRepoOwner?.Equals(RepoOwner) == true) &&
             data.SubPath == SubPath ||
             data.DllName?.Equals(DllName) == true && RepoName == null && RepoOwner == null
         );
@@ -218,7 +221,8 @@ internal partial class ModHelperData
         {
             foreach (var dependency in modHelperData.Dependencies.Split(","))
             {
-                if (!Active.Exists(data => data.Identifier == dependency) && modHelperData.Mod is BloonsMod mod)
+                if (!Active.Exists(data => data.Identifier == dependency || data.PrevIdentifier == dependency) &&
+                    modHelperData.Mod is BloonsMod mod)
                 {
                     mod.LoadError($"Missing dependency {dependency}");
                 }
@@ -290,7 +294,8 @@ internal partial class ModHelperData
     public List<ModHelperData> FindDependents()
     {
         return Active
-            .Where(data => this != data && (data.Dependencies ?? "").Split(",").Contains(Identifier))
+            .Where(data => this != data && (data.Dependencies ?? "").Split(",").Contains(Identifier) ||
+                           (data.Dependencies ?? "").Split(",").Contains(PrevIdentifier))
             .ToList();
     }
 }

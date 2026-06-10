@@ -228,7 +228,8 @@ internal partial class ModHelperData
             {
                 try
                 {
-                    var data = ModHelperGithub.Mods.FirstOrDefault(data => data.Identifier == dependency);
+                    var data = ModHelperGithub.Mods.FirstOrDefault(data => data.Identifier == dependency) ??
+                               ModHelperGithub.Mods.FirstOrDefault(data => data.PrevIdentifier == dependency);
 
                     if (data != null &&
                         !data.ModInstalledLocally(out _) &&
@@ -255,11 +256,16 @@ internal partial class ModHelperData
         return list;
     }
 
-    public void FinalizeRepoData(string data)
+    public async Task FinalizeRepoData(string data)
     {
         if (string.IsNullOrEmpty(data)) return;
 
         ReadValues(data, false);
+
+        if (PrevRepoOwner != null || PrevRepoName != null)
+        {
+            await CheckPrev();
+        }
 
         if (RequiredRepoDataError != null)
         {
@@ -312,6 +318,25 @@ internal partial class ModHelperData
         {
             Topics.AddRange(ExtraTopics.Split(','));
         }
+    }
+
+    private async Task CheckPrev()
+    {
+        try
+        {
+            var resolved = await ModHelperGithub.Client.Repository.Get(PrevRepoOwner ?? RepoOwner, PrevRepoName ?? RepoName);
+            if (string.Equals(resolved.Owner.Login, RepoOwner, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(resolved.Name, RepoName, StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+        }
+        catch (NotFoundException)
+        {
+            // Not a valid previous repo
+        }
+        PrevRepoOwner = null;
+        PrevRepoName = null;
     }
 }
 #endif

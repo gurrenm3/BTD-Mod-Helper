@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Works without needing to know how to push a tag to GitHub yourself lol
 - The new actions workflow now supports using [CHANGELOG.md](https://keepachangelog.com) (and still the original LATEST.md style)
   - You can add new sections for released versions manually or let the workflow automatically turn the Unreleased section into that version's section
+- Added new ModHelperData fields `PrevRepoName` (string) and `PrevRepoOwner` (string)
+  - If you rename or transfer ownership of your mod repository, these values can be set to ensure that users' mods will still auto update correctly, and any other mods that list yours as a dependency will still work even before they update their `Dependencies` string.
+
 
 ## [3.6.4] - 2026-06-03
 

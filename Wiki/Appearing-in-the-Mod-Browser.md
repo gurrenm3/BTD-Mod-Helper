@@ -105,6 +105,8 @@ If you do use the *.cs way, you can also then directly use the values in your Me
 
 `Dependencies` (string): Comma separated list of strings for what other dependencies from the Mod Browser this mod has (other than Mod Helper). Reference mods using the "owner/repository" format, using the GitHub owner name (not the mod's display Author) and the GitHub repository name (not the mod's display name). Example: "doombubbles/paths-plus-plus" or "doombubbles/paths-plus-plus,doombubbles/ultimate-crosspathing"
 
+`PrevRepoName` (string) and `PrevRepoOwner` (string): If you rename or transfer ownership of your mod repository, these values can be set to ensure that users' mods will still auto update correctly, and any other mods that list yours as a dependency will still work even before they update their `Dependencies` string.
+
 ## Updating
 
 If an installed mod has `ModHelperData.cs` in their code or `ModHelperData.json` / `ModHelperData.txt` included as an embedded resource, it will be used to populate that mod's information in the Mods Screen.

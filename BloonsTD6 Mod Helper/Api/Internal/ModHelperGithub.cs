@@ -154,7 +154,7 @@ internal static class ModHelperGithub
     {
         loadTasks.Add(Task.Run(async () =>
         {
-            data.FinalizeRepoData(await data.LoadDataFromRepoAsync());
+            await data.FinalizeRepoData(await data.LoadDataFromRepoAsync());
             if (data.RepoDataSuccess && data.Mod is not MelonMain)
             {
                 mods.TryAdd(data.Identifier, data);

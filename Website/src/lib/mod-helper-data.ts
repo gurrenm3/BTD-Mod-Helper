@@ -28,6 +28,8 @@ const SquareIconRegex = "\\SquareIcon\\s*=\\s*(false|true);?[\n\r]+";
 const ExtraTopicsRegex = '\\bExtraTopics\\s*=\\s*"(.+)";?[\n\r]+';
 const WorksOnVersionRegex = '\\bWorksOnVersion\\s*=\\s*"(.+)";?[\n\r]+';
 const DependenciesRegex = '\\bDependencies\\s*=\\s*"(.+)";?[\n\r]+';
+const PrevRepoNameRegex = '\\bPrevRepoName\\s*=\\s*"(.+)";?[\n\r]+';
+const PrevRepoOwnerRegex = '\\bPrevRepoOwner\\s*=\\s*"(.+)";?[\n\r]+';
 
 const ModHelperDataCs = "ModHelperData.cs";
 const ModHelperDataJson = "ModHelperData.json";
@@ -63,6 +65,8 @@ export type ModHelperData = {
   ExtraTopics?: string;
   WorksOnVersion?: string;
   Dependencies?: string;
+  PrevRepoName?: string;
+  PrevRepoOwner?: string;
   // Not Serialized
   Repository: Repository;
   LatestRelease?: Promise<Release | null> | null;
@@ -72,6 +76,7 @@ export type ModHelperData = {
   Topics: string[];
   Identifier: string;
   CountOfMonoRepo?: number;
+  PrevIdentifier?: string;
 };
 
 type Types = {
@@ -116,15 +121,18 @@ const readValuesFromString = (
   result.ZipName = getRegexMatch("string", data, ZipRegex);
   result.Author = getRegexMatch("string", data, AuthorRegex);
   result.SubPath = getRegexMatch("string", data, SubPathRegex);
-  if (allowRepo) {
-    result.RepoName = getRegexMatch("string", data, RepoNameRegex);
-    result.RepoOwner = getRegexMatch("string", data, RepoOwnerRegex);
-  }
   result.SquareIcon = getRegexMatch("boolean", data, SquareIconRegex);
   result.ExtraTopics = getRegexMatch("string", data, ExtraTopicsRegex);
   result.WorksOnVersion = getRegexMatch("string", data, WorksOnVersionRegex);
   result.Dependencies = getRegexMatch("string", data, DependenciesRegex);
   result.Version = getRegexMatch("string", data, VersionRegex);
+  result.PrevRepoName = getRegexMatch("string", data, PrevRepoNameRegex);
+  result.PrevRepoOwner = getRegexMatch("string", data, PrevRepoOwnerRegex);
+
+  if (allowRepo) {
+    result.RepoName = getRegexMatch("string", data, RepoNameRegex);
+    result.RepoOwner = getRegexMatch("string", data, RepoOwnerRegex);
+  }
 };
 
 const readValuesFromJson = (
@@ -307,6 +315,35 @@ export const loadDataFromRepo = async (
   modHelperData.Identifier =
     `${modHelperData.RepoOwner}/${modHelperData.RepoName}` +
     (modHelperData.SubPath ? "/" + modHelperData.SubPath : "");
+
+  if (modHelperData.PrevRepoName || modHelperData.PrevRepoOwner) {
+    const prevOwner = modHelperData.PrevRepoOwner ?? modHelperData.RepoOwner;
+    const prevName = modHelperData.PrevRepoName ?? modHelperData.RepoName;
+
+    try {
+      const resolved = await getJson<{
+        owner: { login: string };
+        name: string;
+      }>(`https://api.github.com/repos/${prevOwner}/${prevName}`);
+      if (
+        resolved.owner.login.toLowerCase() ===
+          modHelperData.RepoOwner.toLowerCase() &&
+        resolved.name.toLowerCase() === modHelperData.RepoName.toLowerCase()
+      ) {
+        modHelperData.PrevIdentifier =
+          `${prevOwner}/${prevName}` +
+          (modHelperData.SubPath ? "/" + modHelperData.SubPath : "");
+      } else {
+        modHelperData.PrevRepoOwner = undefined;
+        modHelperData.PrevRepoName = undefined;
+        modHelperData.PrevIdentifier = undefined;
+      }
+    } catch {
+      modHelperData.PrevRepoOwner = undefined;
+      modHelperData.PrevRepoName = undefined;
+      modHelperData.PrevIdentifier = undefined;
+    }
+  }
 
   return modHelperData;
 };
