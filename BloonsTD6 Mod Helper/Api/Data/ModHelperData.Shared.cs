@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-#if !SOURCEGEN
+#if MOD_BROWSER
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.ModMenu;
 using Semver;
@@ -15,7 +15,7 @@ using System.IO;
 #endif
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
-#elif !SOURCEGEN
+#elif MOD_BROWSER
 using BTD_Mod_Helper.Extensions;
 #endif
 
@@ -128,7 +128,7 @@ internal partial class ModHelperData
     internal string DataPath { get; }  = null!;
     internal string CachedModHelperData { get; private set; }  = null!;
 
-#if !SOURCEGEN
+#if MOD_BROWSER
     internal string DefaultBranch => RepoName == ModHelper.RepoName && RepoOwner == ModHelper.RepoOwner ? "master" : "main";
 #endif
 
@@ -230,7 +230,7 @@ internal partial class ModHelperData
     }
 
 
-#if !(RELEASELITE || SOURCEGEN)
+#if MOD_BROWSER && !RELEASELITE
     internal string GetContentURL(string name)
     {
         var path = Uri.EscapeDataString(name);

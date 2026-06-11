@@ -1,6 +1,13 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Abstractions;
@@ -101,6 +108,42 @@ public static partial class ModTestRunner
             output,
             workingDirectory: projectDirectory,
             cancellationToken: cancellationToken);
+
+    private static readonly HttpClient HttpClient = new(new HttpClientHandler {AllowAutoRedirect = true});
+
+    /// <summary>
+    /// Downloads the DLL from the GitHub repo's latest release into <paramref name="destination"/>,
+    /// overwriting whatever's there. Uses the standard
+    /// <c>https://github.com/{owner}/{repo}/releases/latest/download/{dllName}</c> redirect.
+    /// </summary>
+    public static async Task DownloadLatestReleaseAsync(
+        string repoOwner,
+        string repoName,
+        string dllName,
+        string destination,
+        ITestOutputHelper output,
+        CancellationToken cancellationToken = default)
+    {
+        var url = $"https://github.com/{repoOwner}/{repoName}/releases/latest/download/{Uri.EscapeDataString(dllName)}";
+        output.WriteLine($"[download] {url}");
+        output.WriteLine($"[download] -> {destination}");
+
+        using var response = await HttpClient.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new InvalidOperationException(
+                $"Failed to download {url}: HTTP {(int) response.StatusCode} {response.ReasonPhrase}");
+        }
+
+        Directory.CreateDirectory(Path.GetDirectoryName(destination)!);
+        await using (var stream = await response.Content.ReadAsStreamAsync(cancellationToken))
+        await using (var file = File.Create(destination))
+        {
+            await stream.CopyToAsync(file, cancellationToken);
+        }
+
+        output.WriteLine($"[download] saved {new FileInfo(destination).Length} bytes");
+    }
 
     public static async Task<RunResult> RunAsync(
         string exe,

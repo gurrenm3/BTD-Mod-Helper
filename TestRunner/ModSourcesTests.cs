@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -46,6 +51,73 @@ public partial class ModSourcesTests(ITestOutputHelper output)
         finally
         {
             RestoreDllLocation(mod);
+        }
+    }
+
+    [SkippableTheory]
+    [MemberData(nameof(DiscoveredMods))]
+    public async Task Latest_release_tests_pass(string modName)
+    {
+        var mod = ModSourcesDiscovery.Find(modName) ??
+                  throw new InvalidOperationException(
+                      $"Mod '{modName}' no longer discoverable in {ModSourcesDiscovery.ModSourcesPath}");
+
+        var destination = ModSourcesDiscovery.DllPath(mod.Name, DllLocation.Mods);
+        string? backupPath = null;
+
+        try
+        {
+            var data = ModSourcesDiscovery.ReadModHelperData(mod.ProjectDirectory);
+            Skip.If(data is null,
+                $"No ModHelperData.* file found for '{mod.Name}'");
+            Skip.If(string.IsNullOrEmpty(data.RepoOwner) || string.IsNullOrEmpty(data.RepoName),
+                $"No RepoOwner/RepoName parsed from ModHelperData for '{mod.Name}'");
+            Skip.If(data.ManualDownload,
+                $"'{mod.Name}' is ManualDownload — released asset can't be auto-installed");
+            Skip.If(!string.IsNullOrEmpty(data.ZipName),
+                $"'{mod.Name}' releases as a zip ({data.ZipName}) — not supported by this test");
+
+            var dllName = string.IsNullOrEmpty(data.DllName) ? $"{mod.Name}.dll" : data.DllName;
+
+            if (mod.InitialDllLocation == DllLocation.Mods && File.Exists(destination))
+            {
+                backupPath = Path.Combine(Path.GetTempPath(), dllName + ".bak");
+                File.Copy(destination, backupPath, overwrite: true);
+            }
+
+            await ModTestRunner.DownloadLatestReleaseAsync(
+                data.RepoOwner, data.RepoName, dllName, destination, output);
+
+            Skip.IfNot(
+                ModSourcesDiscovery.HasLaunchProfile(mod.ProjectDirectory, ModTestRunner.DefaultLaunchProfile),
+                $"Launch profile '{ModTestRunner.DefaultLaunchProfile}' not defined in {mod.Name}/Properties/launchSettings.json");
+
+            var run = await ModTestRunner.RunTestsAsync(mod.ProjectDirectory, output);
+
+            SaveLog(mod.Name);
+            EmitSummary(run.Lines);
+
+            if (run.ExitCode != 0)
+            {
+                Assert.Fail($"Tests failed for '{mod.Name}':\n{SummariseRunFailure(run.Lines)}");
+            }
+        }
+        finally
+        {
+            RestoreDllLocation(mod);
+
+            if (backupPath != null && File.Exists(backupPath))
+            {
+                try
+                {
+                    File.Copy(backupPath, destination, overwrite: true);
+                    output.WriteLine($"[restore] {backupPath} -> {destination}");
+                }
+                finally
+                {
+                    try { File.Delete(backupPath); } catch { /* best effort */ }
+                }
+            }
         }
     }
 

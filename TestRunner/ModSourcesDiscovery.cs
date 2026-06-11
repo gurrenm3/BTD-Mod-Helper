@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Xml.Linq;
+using BTD_Mod_Helper.Api.Data;
 using Newtonsoft.Json.Linq;
 
 namespace TestRunner;
@@ -65,6 +70,28 @@ public static class ModSourcesDiscovery
 
     public static bool HasLaunchProfile(string projectDirectory, string profileName) =>
         ReadLaunchProfile(projectDirectory, profileName) != null;
+
+    internal static ModHelperData? ReadModHelperData(string projectDirectory)
+    {
+        var data = new ModHelperData();
+        try
+        {
+            var jsonPath = Path.Combine(projectDirectory, ModHelperData.ModHelperDataJson);
+            var csPath = Path.Combine(projectDirectory, ModHelperData.ModHelperDataCs);
+            var txtPath = Path.Combine(projectDirectory, ModHelperData.ModHelperDataTxt);
+
+            if (File.Exists(jsonPath)) data.ReadValuesFromJson(File.ReadAllText(jsonPath));
+            else if (File.Exists(csPath)) data.ReadValuesFromString(File.ReadAllText(csPath));
+            else if (File.Exists(txtPath)) data.ReadValuesFromString(File.ReadAllText(txtPath));
+            else return null;
+        }
+        catch
+        {
+            return null;
+        }
+
+        return data;
+    }
 
     private static IEnumerable<ModInfo> Scan()
     {

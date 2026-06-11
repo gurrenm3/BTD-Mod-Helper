@@ -19,8 +19,7 @@
         <DocumentationFile>bin\Debug\Btd6ModHelper.xml</DocumentationFile>
         <Platforms>AnyCPU</Platforms>
 
-        <DefineConstants>MOD_HELPER</DefineConstants>
-
+        <DefineConstants>$(DefineConstants);MOD_HELPER;MOD_BROWSER</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)' != 'ReleaseLite'">
         <IncludeLibs>$(IncludeLibs);Octokit</IncludeLibs>
