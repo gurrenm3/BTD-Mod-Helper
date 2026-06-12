@@ -30,6 +30,7 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
         [(typeof(EffectModel), nameof(EffectModel.lifespan))] = "1",
         [(typeof(DamageModifierModel), "damageMultiplier")] = "1",
         [(typeof(ProjectileModel), nameof(ProjectileModel.vsBlockerRadius))] = "0",
+        [(typeof(ProjectileModel), nameof(ProjectileModel.maxPierce))] = "0",
         [(typeof(AttackModel), nameof(AttackModel.addsToSharedGrid))] = "true"
     };
 

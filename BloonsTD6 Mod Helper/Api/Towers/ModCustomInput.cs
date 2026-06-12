@@ -36,7 +36,7 @@ public abstract class ModCustomInput : ModContent
             tower = tower ??
                     new TowerToSimulation(inputManager.Bridge, new Tower
                     {
-                        Id = ObjectId.Invalid, towerModel = TowerModel.Create()
+                        Id = ObjectId.Invalid, towerModel = ModTowerHelper.CreateTowerModel("")
                     }),
             buttonId = buttonId
         };

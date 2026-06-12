@@ -836,6 +836,7 @@ public static partial class CreateActivateDamageModifierSupportZoneModelExt
         public float range { get; set; } = 0;
         public float maxNumTowersModified { get; set; } = 0;
         public bool canAffectThisTower { get; set; } = default;
+        public bool oneShotInRange { get; set; } = default;
         public float lifespan { get; set; } = 0;
         public float lifespanFrames { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.DamageModifierModel damageModifierModel { get; set; } = default;
@@ -847,7 +848,7 @@ public static partial class CreateActivateDamageModifierSupportZoneModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageModifierSupportZoneModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageModifierSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.range, args.maxNumTowersModified, args.canAffectThisTower, args.lifespan, args.damageModifierModel, args.filters);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageModifierSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.range, args.maxNumTowersModified, args.canAffectThisTower, args.lifespan, args.oneShotInRange, args.damageModifierModel, args.filters);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
@@ -879,6 +880,7 @@ public static partial class CreateActivateIgnoreStunSupportZoneModelExt
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
         public bool useTowerRange { get; set; } = default;
+        public bool oneShotInRange { get; set; } = default;
         public string[] stunMutators { get; set; } = default;
         public bool showBuffIcon { get; set; } = default;
         public bool isGlobal { get; set; } = default;
@@ -887,7 +889,7 @@ public static partial class CreateActivateIgnoreStunSupportZoneModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateIgnoreStunSupportZoneModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateIgnoreStunSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateIgnoreStunSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange, args.oneShotInRange);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.stunMutators != default) result.stunMutators = args.stunMutators;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
@@ -1040,6 +1042,7 @@ public static partial class CreateActivateRateSupportZoneModelExt
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
         public bool useTowerRange { get; set; } = default;
+        public bool oneShotInRange { get; set; } = default;
         public bool showBuffIcon { get; set; } = default;
         public bool isGlobal { get; set; } = default;
         public string buffLocsName { get; set; } = "";
@@ -1047,7 +1050,7 @@ public static partial class CreateActivateRateSupportZoneModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRateSupportZoneModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRateSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.rateModifier, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRateSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.rateModifier, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.oneShotInRange, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
@@ -8776,10 +8779,11 @@ public static partial class CreateCreateProjectileOnAbilityActivateModelExt
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
         public float chance { get; set; } = 0;
+        public bool followTower { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateProjectileOnAbilityActivateModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateProjectileOnAbilityActivateModel(args.name, args.projectile, args.emission, args.chance);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CreateProjectileOnAbilityActivateModel(args.name, args.projectile, args.emission, args.chance, args.followTower);
             
             args.OnCreate(result);
             return result;   
@@ -27408,7 +27412,7 @@ public static partial class CreateProjectileModelExt
     {
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference display { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public string id { get; set; } = "";
-        public float maxPierce { get; set; } = -1f;
+        public float maxPierce { get; set; } = 0;
         public float pierce { get; set; } = 1f;
         public float scale { get; set; } = 1f;
         public bool ignoreBlockers { get; set; } = false;

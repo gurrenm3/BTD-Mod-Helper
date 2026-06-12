@@ -7,13 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Updated Create extensions for v55.2
 - Made it so that the `DisableMonkeyKnowledgeModModel` will actually have an effect for `ModGameMode`s (even though it apparently has no actual effect in the base game, it's all hardcoded)
 - Fixed error when trying to prime a `ModCustomInput` without an associated Tower
 - Added an override `ModCommand.SuggestionsForValue` that lets you populate custom autocomplete suggestion strings for your `[Value]` arguments
 - Improved the loading for `ModSetting`s that are manually added late into the `ModContent` Registration phase
 - Added a `ModHelper.LoadPhase` enum in case anyone needs to check what load phase ModHelper is in
   - PreLoading -> Loading -> PreRegistration -> Registration -> PostRegistration
-- Added a new Source Generator that will keep `.github/workflows/build.yml` updated with new features and populated using info from your project / ModHelperData
+- Added a new Source Generator that will keep `.github/workflows/build.yml` updated with new features, populated using info from your project / ModHelperData
   - If you don't want a GitHub actions workflow, you can delete the file and it won't be regenerated
   - If you don't want Mod Helper to overwrite any manual changes to this file, set `<GenerateActionsWorkflow>false</GenerateActionsWorkflow>`
 - The new actions workflow now supports manually dispatching a release from GitHub

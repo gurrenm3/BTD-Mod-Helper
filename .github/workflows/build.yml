@@ -114,8 +114,7 @@ jobs:
         uses: baynezy/ChangeLogger.Action@1.2.4.10
         with:
           tag: ${{ github.ref_name }}
-          log-path: ${{ env.PROJECT_NAME }}/CHANGELOG.md
-          repo-path: ${{ env.PROJECT_NAME }}
+          log-path: "${{ env.PROJECT_NAME }}/CHANGELOG.md"
 
       - name: Commit changelog changes if needed
         if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'

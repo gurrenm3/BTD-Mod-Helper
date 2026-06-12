@@ -161,8 +161,8 @@ public class ModHelperComponent : MonoBehaviour
     /// Gets a descendent component with the given name
     /// </summary>
     public T GetDescendent<T>(string s = "") where T : Component => string.IsNullOrEmpty(s)
-                                                                        ? gameObject.GetComponentInChildren<T>()
-                                                                        : gameObject.GetComponentInChildrenByName<T>(s);
+        ? gameObject.GetComponentInChildren<T>()
+        : gameObject.GetComponentInChildrenByName<T>(s);
 
     /// <summary>
     /// Sets whether or not this is active
@@ -172,7 +172,13 @@ public class ModHelperComponent : MonoBehaviour
         gameObject.SetActive(active);
     }
 
-    internal static T Create<T>(Info info) where T : ModHelperComponent
+    /// <summary>
+    /// Creates a new ModHelperComponent of type T with the given info
+    /// </summary>
+    /// <param name="info">Info struct</param>
+    /// <typeparam name="T">ModHelperComponent type</typeparam>
+    /// <returns>new ModHelperComponent</returns>
+    public static T Create<T>(Info info) where T : ModHelperComponent
     {
         var newGameObject = new GameObject(info.Name, Il2CppType.Of<RectTransform>())
         {
@@ -508,6 +514,15 @@ public static class ModHelperComponentExt
         where T : ModHelperComponent
     {
         color.Apply(component.gameObject, type);
+        return component;
+    }
+
+    /// <summary>
+    /// Applies the properties of an info struct to this
+    /// </summary>
+    public static T WithInfo<T>(this T component, Info newInfo) where T : ModHelperComponent
+    {
+        component.SetInfo(newInfo);
         return component;
     }
 }

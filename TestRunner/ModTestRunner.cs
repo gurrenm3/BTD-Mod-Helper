@@ -109,7 +109,7 @@ public static partial class ModTestRunner
             workingDirectory: projectDirectory,
             cancellationToken: cancellationToken);
 
-    private static readonly HttpClient HttpClient = new(new HttpClientHandler {AllowAutoRedirect = true});
+    private static readonly HttpClient HttpClient = new();
 
     /// <summary>
     /// Downloads the DLL from the GitHub repo's latest release into <paramref name="destination"/>,

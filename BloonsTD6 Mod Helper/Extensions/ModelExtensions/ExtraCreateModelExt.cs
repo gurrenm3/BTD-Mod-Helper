@@ -88,6 +88,11 @@ public partial class CreateAttackModelExt
             result.weapons = weapons;
             result.AddChildDependant(weapon);
         }
+
+        if (result.targetProvider != null && !result.behaviors.Contains(result.targetProvider))
+        {
+            result.AddBehavior(result.targetProvider);
+        }
     }
 }
 
