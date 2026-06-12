@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.5] - 2026-06-12
+
 - Updated Create extensions for v55.2
 - Made it so that the `DisableMonkeyKnowledgeModModel` will actually have an effect for `ModGameMode`s (even though it apparently has no actual effect in the base game, it's all hardcoded)
 - Fixed error when trying to prime a `ModCustomInput` without an associated Tower
@@ -1085,7 +1087,8 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 
 Initial release of the new Mod Helper
 
-[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.4...HEAD
+[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...HEAD
+[3.6.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.4...3.6.5
 
 [3.6.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.3...3.6.4
 
