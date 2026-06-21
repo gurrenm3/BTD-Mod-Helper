@@ -57,7 +57,7 @@ public static class GameModelExporter
         var gameData = GameData.Instance;
 
         Export("Towers", gameModel.towers, tower => $"{tower.baseId}/{tower.name}");
-        Export("Upgrades", gameModel.upgrades, upgrade => $"{upgrade.name.Replace("/", "")}");
+        Export("Upgrades", gameModel.upgrades, upgrade => $"{upgrade.name.Replace("/", "").Replace(":", "")}");
         Export("Bloons", gameModel.bloons, bloon => $"{bloon.baseId}/{bloon.name}");
         Export("Powers", gameModel.powers, power => $"{power.name}");
         Export("Mods", gameData.mods, mod => $"{mod.name}");
