@@ -165,6 +165,15 @@ public abstract class BloonsTD6Mod : BloonsMod
     }
 
     /// <summary>
+    /// OnNewGameModel but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
+    /// <br />
+    /// Equivalent to a HarmonyPostFix on CosmeticHelper.ApplyCosmeticsToGameModel
+    /// </summary>
+    public virtual void LateOnNewGameModel(GameModel result)
+    {
+    }
+
+    /// <summary>
     /// Called when the TowerInventory is initialized for a game
     /// </summary>
     /// <param name="towerInventory"></param>

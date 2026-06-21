@@ -177,3 +177,13 @@ public virtual void ModifyModeButton(ModeButton modeButton);
 `modeButton` [Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect.ModeButton](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect.ModeButton 'Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect.ModeButton')
 
 mode button
+
+<a name='BTD_Mod_Helper.Api.Scenarios.ModGameMode.OnMatchStart()'></a>
+
+## ModGameMode.OnMatchStart() Method
+
+Runs when a match starts for your mode. Useful if you want to do a custom [Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ShowEventPopup(Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.Placement,System.String,System.String,System.String,Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ReturnCallback,System.String,Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ReturnCallback,Il2CppAssets.Scripts.Unity.UI_New.Popups.Popup.TransitionAnim,System.Int32,Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.BackGround,UnityEngine.Sprite)](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ShowEventPopup#Il2CppAssets_Scripts_Unity_UI_New_Popups_PopupScreen_ShowEventPopup_Il2CppAssets_Scripts_Unity_UI_New_Popups_PopupScreen_Placement,System_String,System_String,System_String,Il2CppAssets_Scripts_Unity_UI_New_Popups_PopupScreen_ReturnCallback,System_String,Il2CppAssets_Scripts_Unity_UI_New_Popups_PopupScreen_ReturnCallback,Il2CppAssets_Scripts_Unity_UI_New_Popups_Popup_TransitionAnim,System_Int32,Il2CppAssets_Scripts_Unity_UI_New_Popups_PopupScreen_BackGround,UnityEngine_Sprite_ 'Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ShowEventPopup(Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.Placement,System.String,System.String,System.String,Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ReturnCallback,System.String,Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.ReturnCallback,Il2CppAssets.Scripts.Unity.UI_New.Popups.Popup.TransitionAnim,System.Int32,Il2CppAssets.Scripts.Unity.UI_New.Popups.PopupScreen.BackGround,UnityEngine.Sprite)')
+
+```csharp
+public virtual void OnMatchStart();
+```

@@ -386,6 +386,12 @@ public abstract class BloonsMod : MelonMod, IModSettings
     public void SaveModSettings() => ModSettingsHandler.SaveModSettings(this);
 
     /// <summary>
+    /// Saves the current mod settings for this mod
+    /// </summary>
+    /// <param name="logSuccess">whether a message is logged in the console about this save</param>
+    public void SaveModSettings(bool logSuccess) => ModSettingsHandler.SaveModSettings(this, logSuccess: logSuccess);
+
+    /// <summary>
     /// Loads any existing mod settings for this mod
     /// </summary>
     public void LoadModSettings() => ModSettingsHandler.LoadModSettings(this);

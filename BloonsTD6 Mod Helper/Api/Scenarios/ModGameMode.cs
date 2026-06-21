@@ -10,6 +10,7 @@ using Il2CppAssets.Scripts.Models.Gameplay.Mods;
 using Il2CppAssets.Scripts.Models.ServerEvents;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.Main.ModeSelect;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Scenarios;
@@ -159,6 +160,14 @@ public abstract class ModGameMode : NamedModContent, IHasDefaultTest
     /// <param name="modeButton">mode button</param>
     public virtual void ModifyModeButton(ModeButton modeButton)
     {
+    }
+
+    /// <summary>
+    /// Runs when a match starts for your mode. Useful if you want to do a custom <see cref="PopupScreen.ShowEventPopup"/>
+    /// </summary>
+    public virtual void OnMatchStart()
+    {
+
     }
 
     internal static void ModifyDefaultGameModes(GameData gameData)

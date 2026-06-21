@@ -105,8 +105,8 @@
 
 | Classes | |
 | :--- | :--- |
-| [MatchAnchoredPosition](BTD_Mod_Helper.Api.Components.MatchAnchoredPosition.md 'BTD_Mod_Helper.Api.Components.MatchAnchoredPosition') | Component to make this transform continuously match the position of another transform |
-| [MatchLocalPosition](BTD_Mod_Helper.Api.Components.MatchLocalPosition.md 'BTD_Mod_Helper.Api.Components.MatchLocalPosition') | Component to make this transform continuously match the position of another transform |
+| [MatchAnchoredPosition](BTD_Mod_Helper.Api.Components.MatchAnchoredPosition.md 'BTD_Mod_Helper.Api.Components.MatchAnchoredPosition') | Component to make this transform continuously match the anchored position of another transform |
+| [MatchLocalPosition](BTD_Mod_Helper.Api.Components.MatchLocalPosition.md 'BTD_Mod_Helper.Api.Components.MatchLocalPosition') | Component to make this transform continuously match the local position of another transform |
 | [ModGameMenuTracker](BTD_Mod_Helper.Api.Components.ModGameMenuTracker.md 'BTD_Mod_Helper.Api.Components.ModGameMenuTracker') | Component to track that a instance of a GameMenu's gameObject actually is the same ModGameMenu as was opened,<br/>as direct comparison on the Unity Objects does not work reliably |
 | [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton') | ModHelperComponent for a button |
 | [ModHelperCategory](BTD_Mod_Helper.Api.Components.ModHelperCategory.md 'BTD_Mod_Helper.Api.Components.ModHelperCategory') | ModHelperComponent for a category in the mod settings menu |
@@ -388,6 +388,7 @@
 | Classes | |
 | :--- | :--- |
 | [AspectRatios](BTD_Mod_Helper.Api.UI.AspectRatios.md 'BTD_Mod_Helper.Api.UI.AspectRatios') | The aspect ratios BTD6 runs at natively |
+| [ModPopupImage](BTD_Mod_Helper.Api.UI.ModPopupImage.md 'BTD_Mod_Helper.Api.UI.ModPopupImage') | Registers an image that can be used within hint / event popups |
 | [ModStartMenuEntry](BTD_Mod_Helper.Api.UI.ModStartMenuEntry.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry') | ModContent representing an entry that will be added to the custom "Start Menu" in game, primarily used to open custom Windows |
 | [ModStartMenuEntry&lt;T&gt;](BTD_Mod_Helper.Api.UI.ModStartMenuEntry_T_.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry<T>') | Helper class for a ModStartMenuEntry that is nested beneath another entry |
 | [ModWindow](BTD_Mod_Helper.Api.UI.ModWindow.md 'BTD_Mod_Helper.Api.UI.ModWindow') | Defines a kind of Window that can be opened in game from the custom Mod Helper start menu with specific name and content |

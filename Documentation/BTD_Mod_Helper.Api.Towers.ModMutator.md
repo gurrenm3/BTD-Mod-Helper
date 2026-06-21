@@ -15,6 +15,20 @@ Derived
 &#8627; [ModMutator&lt;T&gt;](BTD_Mod_Helper.Api.Towers.ModMutator_T_.md 'BTD_Mod_Helper.Api.Towers.ModMutator<T>')
 ### Properties
 
+<a name='BTD_Mod_Helper.Api.Towers.ModMutator.BaseMutator'></a>
+
+## ModMutator.BaseMutator Property
+
+The base mutator to hijack. If you override this you should also override [Create(JToken)](BTD_Mod_Helper.Api.Towers.ModMutator.md#BTD_Mod_Helper.Api.Towers.ModMutator.Create(JToken) 'BTD_Mod_Helper.Api.Towers.ModMutator.Create(JToken)'), and for custom data to  
+work you will also need to override [GetData(BehaviorMutator)](BTD_Mod_Helper.Api.Towers.ModMutator.md#BTD_Mod_Helper.Api.Towers.ModMutator.GetData(BehaviorMutator) 'BTD_Mod_Helper.Api.Towers.ModMutator.GetData(BehaviorMutator)')
+
+```csharp
+public virtual System.Type BaseMutator { get; }
+```
+
+#### Property Value
+[System.Type](https://docs.microsoft.com/en-us/dotnet/api/System.Type 'System.Type')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModMutator.BuffIcon'></a>
 
 ## ModMutator.BuffIcon Property
@@ -94,6 +108,19 @@ public virtual int Priority { get; }
 #### Property Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModMutator.RunBaseMutator'></a>
+
+## ModMutator.RunBaseMutator Property
+
+Whether to still perform the original mutation of the base mutator
+
+```csharp
+public virtual bool RunBaseMutator { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModMutator.Saved'></a>
 
 ## ModMutator.Saved Property
@@ -115,7 +142,7 @@ public virtual bool Saved { get; }
 Creates a BehaviorMutator for use with the specified custom data
 
 ```csharp
-public BehaviorMutator Create(JToken data=null);
+public virtual BehaviorMutator Create(JToken data=null);
 ```
 #### Parameters
 

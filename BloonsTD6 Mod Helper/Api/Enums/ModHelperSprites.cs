@@ -8,6 +8,66 @@ public static class ModHelperSprites
 {
 
     /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/Btn.png?raw=true">Btn.png</see>
+    /// </summary>
+    public const string Btn = "Ui[BloonsTD6 Mod Helper-Btn]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnCircle.png?raw=true">BtnCircle.png</see>
+    /// </summary>
+    public const string BtnCircle = "Ui[BloonsTD6 Mod Helper-BtnCircle]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnCircleHighlight.png?raw=true">BtnCircleHighlight.png</see>
+    /// </summary>
+    public const string BtnCircleHighlight = "Ui[BloonsTD6 Mod Helper-BtnCircleHighlight]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnHighlight.png?raw=true">BtnHighlight.png</see>
+    /// </summary>
+    public const string BtnHighlight = "Ui[BloonsTD6 Mod Helper-BtnHighlight]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnLong.png?raw=true">BtnLong.png</see>
+    /// </summary>
+    public const string BtnLong = "Ui[BloonsTD6 Mod Helper-BtnLong]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnLongHighlight.png?raw=true">BtnLongHighlight.png</see>
+    /// </summary>
+    public const string BtnLongHighlight = "Ui[BloonsTD6 Mod Helper-BtnLongHighlight]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnRound.png?raw=true">BtnRound.png</see>
+    /// </summary>
+    public const string BtnRound = "Ui[BloonsTD6 Mod Helper-BtnRound]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnRoundHighlight.png?raw=true">BtnRoundHighlight.png</see>
+    /// </summary>
+    public const string BtnRoundHighlight = "Ui[BloonsTD6 Mod Helper-BtnRoundHighlight]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnSmall.png?raw=true">BtnSmall.png</see>
+    /// </summary>
+    public const string BtnSmall = "Ui[BloonsTD6 Mod Helper-BtnSmall]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnSmallHighlight.png?raw=true">BtnSmallHighlight.png</see>
+    /// </summary>
+    public const string BtnSmallHighlight = "Ui[BloonsTD6 Mod Helper-BtnSmallHighlight]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnSquare.png?raw=true">BtnSquare.png</see>
+    /// </summary>
+    public const string BtnSquare = "Ui[BloonsTD6 Mod Helper-BtnSquare]";
+
+    /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/BtnSquareHighlight.png?raw=true">BtnSquareHighlight.png</see>
+    /// </summary>
+    public const string BtnSquareHighlight = "Ui[BloonsTD6 Mod Helper-BtnSquareHighlight]";
+
+    /// <summary>
     /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/DownloadBtn.png?raw=true">DownloadBtn.png</see>
     /// </summary>
     public const string DownloadBtn = "Ui[BloonsTD6 Mod Helper-DownloadBtn]";

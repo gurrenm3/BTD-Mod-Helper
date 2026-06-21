@@ -1,4 +1,5 @@
 ﻿using BTD_Mod_Helper.Api.Components;
+using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.UI.Modded;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 
@@ -14,5 +15,9 @@ internal class InGame_StartMatch
         ModHelper.PerformHook(mod => mod.OnMatchStart());
         NotificationMgr.Initialise();
         ModHelperDock.Setup();
+        if (ModGameMode.Cache.TryGetValue(InGameData.CurrentGame?.selectedMode ?? "", out var mode))
+        {
+            mode.OnMatchStart();
+        }
     }
 }

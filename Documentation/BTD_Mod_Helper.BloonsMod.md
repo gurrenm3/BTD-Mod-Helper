@@ -386,3 +386,20 @@ Saves the current mod settings for this mod
 ```csharp
 public void SaveModSettings();
 ```
+
+<a name='BTD_Mod_Helper.BloonsMod.SaveModSettings(bool)'></a>
+
+## BloonsMod.SaveModSettings(bool) Method
+
+Saves the current mod settings for this mod
+
+```csharp
+public void SaveModSettings(bool logSuccess);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.SaveModSettings(bool).logSuccess'></a>
+
+`logSuccess` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+whether a message is logged in the console about this save

@@ -24,5 +24,6 @@ internal static class CosmeticHelper_ApplyCosmeticsToGameModel
             }
         }
 
+        ModHelper.PerformHook(mod => mod.LateOnNewGameModel(result));
     }
 }

@@ -97,6 +97,7 @@
         <EmbeddedResource Condition="Exists('ModHelperData.txt')" Include="ModHelperData.txt"/>
         <EmbeddedResource Remove="**/Screenshot*.png"/>
         <EmbeddedResource Include="Localization/**/*.json"/>
+        <None Remove="**/LICENSE"/>
     </ItemGroup>
 
     <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false'">

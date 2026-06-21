@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Profile;
@@ -58,6 +60,17 @@ public abstract class ModMutator : ModContent
     /// </summary>
     public virtual int StackCount(JToken data) => 1;
 
+    /// <summary>
+    /// The base mutator to hijack. If you override this you should also override <see cref="Create"/>, and for custom data to
+    /// work you will also need to override <see cref="GetData"/>
+    /// </summary>
+    public virtual Type BaseMutator => typeof(AddTagToBloonModel.Mutator);
+
+    /// <summary>
+    /// Whether to still perform the original mutation of the base mutator
+    /// </summary>
+    public virtual bool RunBaseMutator => false;
+
     /// <inheritdoc />
     public override void Register()
     {
@@ -78,7 +91,7 @@ public abstract class ModMutator : ModContent
     /// </summary>
     /// <param name="data">custom data</param>
     /// <returns>BehaviorMutator</returns>
-    public BehaviorMutator Create(JToken data = null) =>
+    public virtual BehaviorMutator Create(JToken data = null) =>
         new AddTagToBloonModel.Mutator(data?.ToString(Formatting.None), MutatorId, IsUnique, "")
         {
             cantBeAbsorbed = CantBeAbsorbed,
@@ -92,7 +105,7 @@ public abstract class ModMutator : ModContent
     /// <param name="mutator">BehaviorMutator</param>
     /// <returns>json token of custom data</returns>
     public virtual JToken GetData(BehaviorMutator mutator) =>
-        JToken.Parse(mutator.Cast<AddTagToBloonModel.Mutator>().bloonTag ?? "null");
+        JToken.Parse(mutator.TryCast<AddTagToBloonModel.Mutator>()?.bloonTag ?? "null");
 
     /// <summary>
     /// Saves this mutator to a MutatorSaveDataModel
@@ -160,6 +173,41 @@ public abstract class ModMutator : ModContent
     /// <param name="mutable">mutated entity</param>
     /// <returns>TimedMutator</returns>
     public TimedMutator Get(Mutable mutable) => Get(mutable, out _);
+
+    internal static void PatchAllTheMutates(HarmonyLib.Harmony harmony)
+    {
+        var types = GetContent<ModMutator>().Select(mutator => mutator.BaseMutator).ToHashSet();
+
+        foreach (var type in types)
+        {
+            try
+            {
+                harmony.PatchPrefix(type, nameof(BehaviorMutator.Mutate), typeof(ModMutator), nameof(Prefix));
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning($"Failed to apply Open patch for {type.Name}");
+                ModHelper.Warning(e);
+            }
+        }
+    }
+
+    private static bool Prefix(BehaviorMutator __instance, Model baseModel, Model model, ref bool __result)
+    {
+        if (!Cache.TryGetValue(__instance.id, out var modMutator)) return true;
+
+        try
+        {
+            __result = modMutator.Mutate(baseModel, model, modMutator.GetData(__instance));
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to apply ModMutator {modMutator.Id} on {model.name}");
+            ModHelper.Warning(e);
+        }
+
+        return modMutator.RunBaseMutator;
+    }
 }
 
 /// <summary>
@@ -208,3 +256,24 @@ public abstract class ModMutator<T> : ModMutator
         return mutator;
     }
 }
+
+/*
+/// <summary>
+/// A ModMutator setup to use a different underlying base mutator
+/// </summary>
+/// <typeparam name="T">BaseMutator type</typeparam>
+public abstract class ModCustomMutator<T> : ModMutator where T : BehaviorMutator
+{
+    /// <inheritdoc />
+    public override Type BaseMutator => typeof(T);
+
+    /// <inheritdoc />
+    public abstract override T Create(JToken data = null);
+
+    /// <inheritdoc />
+    public sealed override JToken GetData(BehaviorMutator mutator) => GetData(mutator.Cast<T>());
+
+    /// <inheritdoc cref="GetData(BehaviorMutator)" />
+    public virtual JToken GetData(T mutator) => base.GetData(mutator);
+}
+*/

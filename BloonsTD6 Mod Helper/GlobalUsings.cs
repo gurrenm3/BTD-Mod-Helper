@@ -43,3 +43,16 @@ public sealed class CollectionBuilderAttribute(Type builderType, string methodNa
     public Type BuilderType { get; } = builderType;
     public string MethodName { get; } = methodName;
 }
+
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, Inherited = false)]
+public sealed class RequiredMemberAttribute : Attribute
+{
+}
+
+[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
+public sealed class CompilerFeatureRequiredAttribute : Attribute
+{
+    public string FeatureName { get; }
+    public bool IsOptional { get; init; }
+    public CompilerFeatureRequiredAttribute(string featureName) => FeatureName = featureName;
+}

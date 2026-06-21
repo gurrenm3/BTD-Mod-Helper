@@ -27,7 +27,7 @@ public abstract class ModBuffIcon : NamedModContent
     public sealed override string Description => null;
 
     /// <summary>
-    /// The Icon for to display for the buff
+    /// The Icon to display for the buff
     /// <br />
     /// (Name of .png or .jpg, not including file extension)
     /// </summary>

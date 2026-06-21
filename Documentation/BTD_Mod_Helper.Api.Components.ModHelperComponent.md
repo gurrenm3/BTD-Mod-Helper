@@ -977,6 +977,35 @@ The text to display
 [ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
 The created ModHelperText
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.Create_T_(BTD_Mod_Helper.Api.Components.Info)'></a>
+
+## ModHelperComponent.Create<T>(Info) Method
+
+Creates a new ModHelperComponent of type T with the given info
+
+```csharp
+public static T Create<T>(BTD_Mod_Helper.Api.Components.Info info)
+    where T : BTD_Mod_Helper.Api.Components.ModHelperComponent;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.Create_T_(BTD_Mod_Helper.Api.Components.Info).T'></a>
+
+`T`
+
+ModHelperComponent type
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.Create_T_(BTD_Mod_Helper.Api.Components.Info).info'></a>
+
+`info` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+Info struct
+
+#### Returns
+[T](BTD_Mod_Helper.Api.Components.ModHelperComponent.md#BTD_Mod_Helper.Api.Components.ModHelperComponent.Create_T_(BTD_Mod_Helper.Api.Components.Info).T 'BTD_Mod_Helper.Api.Components.ModHelperComponent.Create<T>(BTD_Mod_Helper.Api.Components.Info).T')  
+new ModHelperComponent
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.DeleteObject()'></a>
 
 ## ModHelperComponent.DeleteObject() Method

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Added a new `BloonsTD6Mod` override `LateOnNewGameModel` that's like `OnNewGameModel` but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
+
 ## [3.6.5] - 2026-06-12
 
 - Updated Create extensions for v55.2

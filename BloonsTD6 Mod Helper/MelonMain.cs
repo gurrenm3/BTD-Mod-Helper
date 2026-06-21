@@ -78,6 +78,9 @@ internal partial class MelonMain : BloonsTD6Mod
         // Utility to patch all valid UI "Open" methods for custom UI
         ModGameMenu.PatchAllTheOpens(HarmonyInstance);
 
+        // Utility to patch all .Mutate methods needed by custom mutators
+        ModMutator.PatchAllTheMutates(HarmonyInstance);
+
 #if DEBUG
         // Start loading json files in the background
         JsonTowers.LoadAllAsync();

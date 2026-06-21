@@ -69,6 +69,23 @@ the text the hint will have, passed as a ref to allow changes
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.BloonsTD6Mod.LateOnNewGameModel(GameModel)'></a>
+
+## BloonsTD6Mod.LateOnNewGameModel(GameModel) Method
+
+OnNewGameModel but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules  
+<br/>  
+Equivalent to a HarmonyPostFix on CosmeticHelper.ApplyCosmeticsToGameModel
+
+```csharp
+public virtual void LateOnNewGameModel(GameModel result);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsTD6Mod.LateOnNewGameModel(GameModel).result'></a>
+
+`result` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
+
 <a name='BTD_Mod_Helper.BloonsTD6Mod.OnAbilityCast(Ability)'></a>
 
 ## BloonsTD6Mod.OnAbilityCast(Ability) Method

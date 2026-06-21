@@ -3,7 +3,7 @@
 
 ## MatchLocalPosition Class
 
-Component to make this transform continuously match the position of another transform
+Component to make this transform continuously match the local position of another transform
 
 ```csharp
 public class MatchLocalPosition
@@ -42,7 +42,7 @@ public Vector3 scale;
 
 ## MatchLocalPosition.transformToCopy Field
 
-Other transform to constantly copy the scale from
+Other transform to constantly copy the local position from
 
 ```csharp
 public Transform transformToCopy;

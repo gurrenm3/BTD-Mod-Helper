@@ -3,7 +3,7 @@
 
 ## MatchAnchoredPosition Class
 
-Component to make this transform continuously match the position of another transform
+Component to make this transform continuously match the anchored position of another transform
 
 ```csharp
 public class MatchAnchoredPosition
@@ -42,7 +42,7 @@ public Vector2 scale;
 
 ## MatchAnchoredPosition.transformToCopy Field
 
-Other transform to constantly copy the scale from
+Other transform to constantly copy the anchored position from
 
 ```csharp
 public RectTransform transformToCopy;

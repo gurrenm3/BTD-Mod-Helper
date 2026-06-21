@@ -74,6 +74,7 @@ public partial class CreateAttackModelExt
         if (camoFilter == null)
         {
             camoFilter = new FilterInvisibleModel("", !canSeeCamo, false);
+            filter.filters = filter.filters.AddTo(camoFilter);
             filter.AddChildDependant(camoFilter);
         }
         else
@@ -162,6 +163,7 @@ public partial class CreateProjectileModelExt
             if (camoFilter == null)
             {
                 camoFilter = new FilterInvisibleModel("", !CanHitCamo, false);
+                filter.filters = filter.filters.AddTo(camoFilter);
                 filter.AddChildDependant(camoFilter);
             }
             else

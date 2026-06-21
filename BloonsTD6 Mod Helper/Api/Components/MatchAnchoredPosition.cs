@@ -3,13 +3,13 @@ using UnityEngine;
 namespace BTD_Mod_Helper.Api.Components;
 
 /// <summary>
-/// Component to make this transform continuously match the position of another transform
+/// Component to make this transform continuously match the anchored position of another transform
 /// </summary>
 [RegisterTypeInIl2Cpp(false)]
 public class MatchAnchoredPosition : MonoBehaviour
 {
     /// <summary>
-    /// Other transform to constantly copy the scale from
+    /// Other transform to constantly copy the anchored position from
     /// </summary>
     public RectTransform transformToCopy;
 

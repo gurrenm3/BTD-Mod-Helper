@@ -134,7 +134,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "CHANGELOG.md on $DEFAULT_BRANCH is already up to date; nothing to commit."
           else
-            git commit -m "Release ${{ env.RELEASE_TAG }}"
+            git commit -m "Release ${{ github.ref_name }}"
             git push origin "$DEFAULT_BRANCH"
             echo "RELEASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           fi

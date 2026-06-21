@@ -142,3 +142,31 @@ Its new name
 
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.Duplicate_T_(thisT,string).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.Duplicate<T>(this T, string).T')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo_T_(thisT,BTD_Mod_Helper.Api.Components.Info)'></a>
+
+## ModHelperComponentExt.WithInfo<T>(this T, Info) Method
+
+Applies the properties of an info struct to this
+
+```csharp
+public static T WithInfo<T>(this T component, BTD_Mod_Helper.Api.Components.Info newInfo)
+    where T : BTD_Mod_Helper.Api.Components.ModHelperComponent;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo_T_(thisT,BTD_Mod_Helper.Api.Components.Info).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo_T_(thisT,BTD_Mod_Helper.Api.Components.Info).component'></a>
+
+`component` [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo_T_(thisT,BTD_Mod_Helper.Api.Components.Info).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo<T>(this T, BTD_Mod_Helper.Api.Components.Info).T')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo_T_(thisT,BTD_Mod_Helper.Api.Components.Info).newInfo'></a>
+
+`newInfo` [Info](BTD_Mod_Helper.Api.Components.Info.md 'BTD_Mod_Helper.Api.Components.Info')
+
+#### Returns
+[T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo_T_(thisT,BTD_Mod_Helper.Api.Components.Info).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.WithInfo<T>(this T, BTD_Mod_Helper.Api.Components.Info).T')

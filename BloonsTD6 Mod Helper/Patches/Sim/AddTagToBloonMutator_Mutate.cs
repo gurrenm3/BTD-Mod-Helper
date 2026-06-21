@@ -2,6 +2,7 @@ using System;
 using BTD_Mod_Helper.Api.Towers;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
+using Il2CppAssets.Scripts.Simulation.Objects;
 
 namespace BTD_Mod_Helper.Patches.Sim;
 
@@ -12,7 +13,7 @@ namespace BTD_Mod_Helper.Patches.Sim;
 internal static class AddTagToBloonMutator_Mutate
 {
     [HarmonyPrefix]
-    private static bool Prefix(AddTagToBloonModel.Mutator __instance, Model baseModel, Model model, ref bool __result)
+    private static bool Prefix(BehaviorMutator __instance, Model baseModel, Model model, ref bool __result)
     {
         if (!ModMutator.Cache.TryGetValue(__instance.id, out var modMutator)) return true;
 
