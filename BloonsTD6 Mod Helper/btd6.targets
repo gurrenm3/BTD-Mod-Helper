@@ -84,6 +84,8 @@
     <ItemGroup Condition="'$(AutoEmbed)' != 'false'">
         <EmbeddedResource Include="**/*.png"/>
         <EmbeddedResource Include="**/*.jpg"/>
+        <EmbeddedResource Include="**/*.png.json"/>
+        <EmbeddedResource Include="**/*.jpg.json"/>
         <EmbeddedResource Include="**/*.wav"/>
         <EmbeddedResource Include="**/*.mp3"/>
         <EmbeddedResource Include="**/*.ogg"/>

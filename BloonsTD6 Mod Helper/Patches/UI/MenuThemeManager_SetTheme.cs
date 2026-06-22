@@ -13,18 +13,22 @@ internal class MenuThemeManager_SetTheme
     [HarmonyPostfix]
     internal static void Postfix(MenuThemeManager __instance, BaseTSMTheme newTheme)
     {
-        if (__instance.PlayerContext.towerSelectionMenu.Is(out TowerSelectionMenu menu) &&
-            menu.selectedTower.Def.GetModTower()?.ModTowerSet is ModTowerSet modTowerSet &&
-            !menu.selectedTower.IsParagon &&
-            newTheme.Is(out TSMThemeDefault defaultTheme))
+        if (!__instance.PlayerContext.towerSelectionMenu.Is(out TowerSelectionMenu menu) ||
+            menu.selectedTower.Def.GetModTower()?.ModTowerSet is not ModTowerSet modTowerSet ||
+            menu.selectedTower.IsParagon ||
+            !newTheme.Is(out TSMThemeDefault defaultTheme)) return;
+
+        var id = ModContent.GetId(modTowerSet.mod, modTowerSet.Portrait);
+        var texture = ResourceHandler.GetTexture(id);
+
+        if (!ResourceHandler.SpriteCache.TryGetValue(id, out var sprite) || sprite == null || sprite.border == Vector4.zero)
         {
-            var texture = ResourceHandler.GetTexture(ModContent.GetId(modTowerSet.mod, modTowerSet.Portrait));
-            if (texture != null)
-            {
-                var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
-                    new Vector2(0.5f, 0.5f), 5.4f, 0, SpriteMeshType.FullRect, new Vector4(22.5f, 22.5f, 22.5f, 22.5f));
-                defaultTheme.towerBackgroundImage.sprite = sprite;
-            }
+            var factor = texture.width / 256f;
+            sprite = ResourceHandler.SpriteCache[id] = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f), 10.8f * factor, 0, SpriteMeshType.FullRect,
+                factor * 45 * Vector4.one);
         }
+
+        TaskScheduler.ScheduleTask(() => defaultTheme.towerBackgroundImage.sprite = sprite);
     }
 }

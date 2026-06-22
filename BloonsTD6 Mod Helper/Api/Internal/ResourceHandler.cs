@@ -2,6 +2,7 @@
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.UI;
 using Il2CppAssets.Scripts.Unity.Audio;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using Il2CppSystem.IO;
@@ -20,27 +21,27 @@ public static class ResourceHandler
     /// <summary>
     /// Map of raw embedded resource data by Id
     /// </summary>
-    public static readonly Dictionary<string, byte[]> Resources = new();
+    public static readonly Dictionary<string, byte[]> Resources = [];
 
     /// <summary>
     /// Map of created Audio Clips by Id
     /// </summary>
-    public static readonly Dictionary<string, AudioClip> AudioClips = new();
+    public static readonly Dictionary<string, AudioClip> AudioClips = [];
 
     /// <summary>
     /// Map of loaded Asset Bundles by Id
     /// </summary>
-    public static readonly Dictionary<string, AssetBundle> Bundles = new();
+    public static readonly Dictionary<string, AssetBundle> Bundles = [];
 
     /// <summary>
     /// Cache of created Textures by Id
     /// </summary>
-    public static readonly Dictionary<string, Texture2D> TextureCache = new();
+    public static readonly Dictionary<string, Texture2D> TextureCache = [];
 
     /// <summary>
     /// Cache of created Sprites by Id
     /// </summary>
-    public static readonly Dictionary<string, Sprite> SpriteCache = new();
+    public static readonly Dictionary<string, Sprite> SpriteCache = [];
 
     /// <summary>
     /// Defines a list of IDs that can be used for AudioClipReferences to refer to a random audio clip from the list
@@ -56,6 +57,11 @@ public static class ResourceHandler
     /// Allowed file extensions for audio
     /// </summary>
     public static readonly string[] AudioExtensions = [".wav", ".mp3", ".ogg", ".flac", ".aac", ".wma", ".m4a"];
+
+    /// <summary>
+    /// ImageSettings for mod images
+    /// </summary>
+    public static readonly Dictionary<string, ImageSettings> ImageSettings = [];
 
     internal static readonly List<RenderTexture> RenderTexturesToRelease = [];
 
@@ -76,9 +82,12 @@ public static class ResourceHandler
 
             var split = fileName.Split('.');
             var name = split[^2];
+            var ext = split[^1];
             var id = ModContent.GetId(mod, name);
             Resources[id] = resource;
             mod.Resources[name] = resource;
+
+            ImageSettings[id] = mod.GetImageSettings(name, ext);
         }
     }
 
@@ -283,13 +292,18 @@ public static class ResourceHandler
     public static AudioClip CreateAudioClip(VorbisWaveReader reader, string id) => CreateAudioClip(reader as WaveStream, id);
 
 
-    internal static Texture2D CreateTexture(string guid)
+    internal static Texture2D CreateTexture(string id, ImageSettings imageSettings = null)
     {
-        if (Resources.TryGetValue(guid, out var bytes))
+        imageSettings ??= ImageSettings.GetValueOrDefault(id, new());
+        if (Resources.TryGetValue(id, out var bytes))
         {
-            var texture = new Texture2D(2, 2) {filterMode = FilterMode.Bilinear, mipMapBias = -.5f};
+            var texture = new Texture2D(2, 2)
+            {
+                filterMode = imageSettings.FilterMode,
+                mipMapBias = imageSettings.MipMapBias
+            };
             texture.LoadImage(bytes);
-            AddTexture(guid, texture);
+            AddTexture(id, texture);
             return texture;
         }
 
@@ -305,7 +319,20 @@ public static class ResourceHandler
     {
         if (TextureCache.TryGetValue(id, out var texture2d) && texture2d != null) return texture2d;
 
-        return CreateTexture(id);
+        return CreateTexture(id, ImageSettings.GetValueOrDefault(id, new()));
+    }
+
+    /// <summary>
+    /// Creates or gets a texture from its Id
+    /// </summary>
+    /// <param name="id">Texture id "ModName-FileName" (no file extension)</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>The texture</returns>
+    public static Texture2D GetTexture(string id, ImageSettings imageSettings)
+    {
+        if (TextureCache.TryGetValue(id, out var texture2d) && texture2d != null) return texture2d;
+
+        return CreateTexture(id, imageSettings);
     }
 
     /// <summary>
@@ -326,14 +353,29 @@ public static class ResourceHandler
     /// <param name="texture">Texture</param>
     /// <param name="pixelsPerUnit">Pixels per Unit to use</param>
     /// <returns>new Sprite</returns>
-    public static Sprite CreateSprite(this Texture2D texture, float pixelsPerUnit = 10.8f) => Sprite.Create(texture,
-        new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f), pixelsPerUnit);
+    public static Sprite CreateSprite(this Texture2D texture, float pixelsPerUnit) =>
+        texture.CreateSprite(new ImageSettings {PixelsPerUnit = pixelsPerUnit});
 
-    internal static Sprite CreateSprite(string id, float pixelsPerUnit = 10.8f)
+    /// <summary>
+    /// Creates a Sprite from a Texture2D
+    /// </summary>
+    /// <param name="texture">Texture</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>new Sprite</returns>
+    public static Sprite CreateSprite(this Texture2D texture, ImageSettings imageSettings = null)
     {
-        if (GetTexture(id) is Texture2D texture)
+        imageSettings ??= new();
+        return Sprite.Create(
+            texture, new Rect(0, 0, texture.width, texture.height), imageSettings.Pivot, imageSettings.PixelsPerUnit,
+            imageSettings.Extrude, imageSettings.MeshType, imageSettings.Border);
+    }
+
+    internal static Sprite CreateSprite(string id, ImageSettings imageSettings = null)
+    {
+        imageSettings ??= ImageSettings.GetValueOrDefault(id, new());
+        if (GetTexture(id, imageSettings) is Texture2D texture)
         {
-            var sprite = SpriteCache[id] = CreateSprite(texture, pixelsPerUnit);
+            var sprite = SpriteCache[id] = texture.CreateSprite(imageSettings);
             sprite.name = id;
             return sprite;
         }
@@ -347,11 +389,25 @@ public static class ResourceHandler
     /// <param name="id">Sprite id "ModName-FileName" (no file extension)</param>
     /// <param name="pixelsPerUnit">Pixels per Unit to use</param>
     /// <returns>The texture </returns>
-    public static Sprite GetSprite(string id, float pixelsPerUnit = 10.8f)
+    public static Sprite GetSprite(string id, float pixelsPerUnit)
     {
         if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;
 
-        return CreateSprite(id, pixelsPerUnit);
+        return CreateSprite(id, new ImageSettings {PixelsPerUnit = pixelsPerUnit});
+    }
+
+    /// <summary>
+    /// Creates or gets a sprite from its Id
+    /// </summary>
+    /// <param name="id">Sprite id "ModName-FileName" (no file extension)</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>The texture </returns>
+    public static Sprite GetSprite(string id, ImageSettings imageSettings = null)
+    {
+        imageSettings ??= ImageSettings.GetValueOrDefault(id, new());
+        if (SpriteCache.TryGetValue(id, out var sprite) && sprite != null) return sprite;
+
+        return CreateSprite(id, imageSettings);
     }
 
     internal static void PopulateAudioFactory(AudioFactory audioFactory)

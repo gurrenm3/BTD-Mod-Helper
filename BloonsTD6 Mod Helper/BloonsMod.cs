@@ -9,6 +9,8 @@ using BTD_Mod_Helper.Api.Data;
 using BTD_Mod_Helper.Api.Hooks;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModOptions;
+using BTD_Mod_Helper.Api.UI;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using BindingFlags = System.Reflection.BindingFlags;
@@ -457,5 +459,30 @@ public abstract class BloonsMod : MelonMod, IModSettings
         {
             ResourceHandler.RandomAudioClipIds[id] = clipNames.Select(clipName => AudioClips[clipName]).ToArray();
         }
+    }
+
+    /// <summary>
+    /// Controls the <see cref="ImageSettings"/> used for a particular image embedded in this mod
+    /// </summary>
+    /// <param name="imageName">image name being loaded (no file ext)</param>
+    /// <param name="ext">file extension (including the "." eg ".png"</param>
+    /// <returns>ImageSettings</returns>
+    public virtual ImageSettings GetImageSettings(string imageName, string ext)
+    {
+        var settings = ImageSettings.Default;
+
+        if (MelonAssembly.Assembly.TryGetEmbeddedText(imageName + ext + ".json", out var json))
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<ImageSettings>(json);
+            }
+            catch (Exception e)
+            {
+                ModHelper.Warning(e);
+            }
+        }
+
+        return settings;
     }
 }

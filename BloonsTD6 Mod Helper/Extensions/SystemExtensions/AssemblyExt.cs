@@ -22,7 +22,7 @@ public static class AssemblyExt
     /// <inheritdoc cref="GetEmbeddedResource" />
     public static bool TryGetEmbeddedResource(this Assembly assembly, string endsWith, out Stream stream)
     {
-        stream = GetEmbeddedResource(assembly, endsWith);
+        stream = assembly.GetEmbeddedResource(endsWith);
         return stream != null;
     }
 
@@ -31,10 +31,27 @@ public static class AssemblyExt
     /// </summary>
     public static string GetEmbeddedText(this Assembly assembly, string endsWith)
     {
-        using var stream = GetEmbeddedResource(assembly, endsWith);
+        using var stream = assembly.GetEmbeddedResource(endsWith);
         using var reader = new StreamReader(stream, Encoding.UTF8);
 
         return reader.ReadToEnd();
+    }
+
+    /// <summary>
+    /// Gets the contents of an embedded file in this assembly as plain text (UTF8)
+    /// </summary>
+    public static bool TryGetEmbeddedText(this Assembly assembly, string endsWith, out string text)
+    {
+        text = null;
+        if (!assembly.TryGetEmbeddedResource(endsWith, out var stream)) return false;
+
+        using (stream)
+        {
+            using var reader = new StreamReader(stream, Encoding.UTF8);
+            text = reader.ReadToEnd();
+        }
+
+        return true;
     }
 
     /// <summary>
@@ -43,5 +60,17 @@ public static class AssemblyExt
     public static JObject GetEmbeddedJson(this Assembly assembly, string endsWith)
     {
         return JObject.Parse(assembly.GetEmbeddedText(endsWith));
+    }
+
+    /// <summary>
+    /// Gets the contents of an embedded file in this assembly as json object
+    /// </summary>
+    public static bool TryGetEmbeddedJson(this Assembly assembly, string endsWith, out JObject jObject)
+    {
+        jObject = null;
+        if (!assembly.TryGetEmbeddedText(endsWith, out var text)) return false;
+        jObject = JObject.Parse(text);
+
+        return true;
     }
 }
