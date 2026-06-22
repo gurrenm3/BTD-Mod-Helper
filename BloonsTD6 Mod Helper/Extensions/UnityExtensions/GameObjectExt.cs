@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BTD_Mod_Helper.Api.Components;
@@ -221,16 +222,31 @@ public static class GameObjectExt
     {
         var modHelperButton = gameObject.AddButton(info, sprite, null);
 
+        var sound = new AudioClipReference(VanillaAudioClips.UIReturn01);
+
         var button = modHelperButton.AddComponent<TSMButton>();
         button.buttonId = buttonId;
         button.canInvokeCustomInput = true;
         button.customInputId = customInputId;
         button.sounds = new Il2CppSystem.Collections.Generic.List<AudioClip>();
-        button.soundsRef = new[] {new AudioClipReference(VanillaAudioClips.UIReturn01)}.ToIl2CppList();
+        button.soundsRef = new[] {sound}.ToIl2CppList();
 
         modHelperButton.Button.onClick.SetListener(button.OnButtonPressed);
 
+        PopulateSound().StartCoroutine();
+
         return button;
+
+        IEnumerator PopulateSound()
+        {
+            var getSound = ResourceLoader.LoadAsync<AudioClip>(sound.AssetGUID);
+            yield return getSound;
+
+            if (getSound.IsDone)
+            {
+                button.sounds.Add(getSound.Result);
+            }
+        }
     }
 
     /// <inheritdoc cref="ModHelperComponent.AddPanel(BTD_Mod_Helper.Api.Components.Info)" />
