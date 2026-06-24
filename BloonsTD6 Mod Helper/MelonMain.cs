@@ -123,6 +123,7 @@ internal partial class MelonMain : BloonsTD6Mod
 
     public override void OnUpdate()
     {
+        Tween.Update();
         ModByteLoader.OnUpdate();
         RoundSetChanger.OnUpdate();
         ConsoleHandler.OnUpdate();

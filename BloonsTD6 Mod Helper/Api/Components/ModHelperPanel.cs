@@ -72,4 +72,9 @@ public class ModHelperPanel : ModHelperComponent
 
         return modHelperPanel;
     }
+
+    /// <summary>
+    /// Implicitly get the Background
+    /// </summary>
+    public static implicit operator Image(ModHelperPanel component) => component.Background;
 }

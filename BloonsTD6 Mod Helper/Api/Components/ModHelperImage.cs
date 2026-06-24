@@ -62,4 +62,9 @@ public class ModHelperImage : ModHelperComponent
 
         return modHelperImage;
     }
+
+    /// <summary>
+    /// Implicitly get the Image
+    /// </summary>
+    public static implicit operator Image(ModHelperImage component) => component.Image;
 }

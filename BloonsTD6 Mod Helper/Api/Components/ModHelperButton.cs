@@ -38,7 +38,7 @@ public class ModHelperButton : ModHelperComponent
     /// <param name="sprite">The button's visuals</param>
     /// <param name="onClick">What should happen when the button is clicked</param>
     /// <returns></returns>
-    public static ModHelperButton Create(Info info, string sprite, Action onClick)
+    public static ModHelperButton Create(Info info, string sprite, Action onClick = null)
     {
         var modHelperButton = Create<ModHelperButton>(info);
 
@@ -67,4 +67,15 @@ public class ModHelperButton : ModHelperComponent
 
         return modHelperButton;
     }
+
+
+    /// <summary>
+    /// Implicitly get the Image
+    /// </summary>
+    public static implicit operator Image(ModHelperButton component) => component.Image;
+
+    /// <summary>
+    /// Implicitly get the Button
+    /// </summary>
+    public static implicit operator Button(ModHelperButton component) => component.Button;
 }
