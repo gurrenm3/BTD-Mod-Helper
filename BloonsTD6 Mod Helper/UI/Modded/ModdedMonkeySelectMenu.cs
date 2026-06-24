@@ -248,7 +248,7 @@ internal class ModdedMonkeySelectMenu
 
         var monkeyGroupButtons = new List<MonkeyGroupButton>(__instance.monkeyGroupButtons);
         var horizontalLayoutGroup = __instance.monkeyGroupButtons[0].GetComponentInParent<HorizontalLayoutGroup>();
-        foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
+        foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>().Where(set => set.ShowInMonkeysScreen))
         {
             horizontalLayoutGroup.enabled = true;
             var index = modTowerSet.GetTowerSetIndex(monkeyGroupButtons.Select(b => FromString(b.groupName)).ToList());
@@ -337,7 +337,7 @@ internal class ModdedMonkeySelectMenu
             if (!reOpening)
             {
                 var towerSets = new List<TowerSet>(MonkeySelectMenu.TowerSets);
-                foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>())
+                foreach (var modTowerSet in ModContent.GetContent<ModTowerSet>().Where(set => set.ShowInMonkeysScreen))
                 {
                     if (towerSets.Contains(modTowerSet.Set)) continue;
 

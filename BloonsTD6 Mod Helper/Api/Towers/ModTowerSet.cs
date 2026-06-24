@@ -100,6 +100,11 @@ public abstract class ModTowerSet : NamedModContent
     /// </summary>
     public virtual bool AllowInRestrictedModes => false;
 
+    /// <summary>
+    /// Whether this Tower Set should be a visible category within the Monkeys Screen
+    /// </summary>
+    public virtual bool ShowInMonkeysScreen => true;
+
     /// <inheritdoc />
     public override void Register()
     {
