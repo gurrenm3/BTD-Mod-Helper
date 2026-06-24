@@ -7,6 +7,7 @@ using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.Scenarios;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Api.UI;
 using Il2CppAssets.Scripts.Models.Towers;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppAssets.Scripts.Simulation.Objects;
@@ -304,11 +305,30 @@ public abstract partial class ModContent
         ResourceHandler.GetTexture(GetId(bloonsMod, fileName));
 
     /// <summary>
+    /// Constructs a Texture2D for a given texture name within a mod
+    /// </summary>
+    /// <param name="bloonsMod">The mod that adds this texture</param>
+    /// <param name="fileName">The file name of your texture, without the extension</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>A Texture2D</returns>
+    public static Texture2D GetTexture([SpriteName] BloonsMod bloonsMod, string fileName,
+        ImageSettings imageSettings) => ResourceHandler.GetTexture(GetId(bloonsMod, fileName), imageSettings);
+
+    /// <summary>
     /// Constructs a Texture2D for a given texture name within this mod
     /// </summary>
     /// <param name="fileName">The file name of your texture, without the extension</param>
     /// <returns>A Texture2D</returns>
     protected Texture2D GetTexture([SpriteName] string fileName) => GetTexture(mod, fileName);
+
+    /// <summary>
+    /// Constructs a Texture2D for a given texture name within this mod
+    /// </summary>
+    /// <param name="fileName">The file name of your texture, without the extension</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>A Texture2D</returns>
+    protected Texture2D GetTexture([SpriteName] string fileName, ImageSettings imageSettings) =>
+        GetTexture(mod, fileName, imageSettings);
 
     /// <summary>
     /// Constructs a Texture2D for a given texture name within a mod
@@ -317,6 +337,15 @@ public abstract partial class ModContent
     /// <returns>A Texture2D</returns>
     public static Texture2D GetTexture<T>([SpriteName] string fileName) where T : BloonsMod =>
         GetTexture(GetInstance<T>(), fileName);
+
+    /// <summary>
+    /// Constructs a Texture2D for a given texture name within a mod
+    /// </summary>
+    /// <param name="fileName">The file name of your texture, without the extension</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>A Texture2D</returns>
+    public static Texture2D GetTexture<T>([SpriteName] string fileName, ImageSettings imageSettings)
+        where T : BloonsMod => GetTexture(GetInstance<T>(), fileName, imageSettings);
 
     /// <summary>
     /// Returns the Bytes associated with a texture.
@@ -355,11 +384,30 @@ public abstract partial class ModContent
     /// <summary>
     /// Constructs a Sprite for a given texture name within a given mod
     /// </summary>
+    /// <param name="mod"></param>
+    /// <param name="name">The file name of your texture, without the extension</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>A Sprite</returns>
+    public static Sprite GetSprite(BloonsMod mod, [SpriteName] string name, ImageSettings imageSettings) =>
+        ResourceHandler.GetSprite(GetId(mod, name), imageSettings);
+
+    /// <summary>
+    /// Constructs a Sprite for a given texture name within a given mod
+    /// </summary>
     /// <param name="name">The file name of your texture, without the extension</param>
     /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
     /// <returns>A Sprite</returns>
     public static Sprite GetSprite<T>([SpriteName] string name, float pixelsPerUnit = 10f) where T : BloonsMod =>
         GetSprite(GetInstance<T>(), name, pixelsPerUnit);
+
+    /// <summary>
+    /// Constructs a Sprite for a given texture name within a given mod
+    /// </summary>
+    /// <param name="name">The file name of your texture, without the extension</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>A Sprite</returns>
+    public static Sprite GetSprite<T>([SpriteName] string name, ImageSettings imageSettings) where T : BloonsMod =>
+        GetSprite(GetInstance<T>(), name, imageSettings);
 
     /// <summary>
     /// Constructs a Sprite for a given texture name within this mod
@@ -368,6 +416,14 @@ public abstract partial class ModContent
     /// <param name="pixelsPerUnit">The pixels per unit for the Sprite to have</param>
     /// <returns>A Sprite</returns>
     protected Sprite GetSprite([SpriteName] string name, float pixelsPerUnit = 10f) => GetSprite(mod, name, pixelsPerUnit);
+
+    /// <summary>
+    /// Constructs a Sprite for a given texture name within this mod
+    /// </summary>
+    /// <param name="name">The file name of your texture, without the extension</param>
+    /// <param name="imageSettings">ImageSettings to use</param>
+    /// <returns>A Sprite</returns>
+    protected Sprite GetSprite([SpriteName] string name, ImageSettings imageSettings) => GetSprite(mod, name, imageSettings);
 
     /// <summary>
     /// Gets a bundle from a mod with the specified name (no file extension)

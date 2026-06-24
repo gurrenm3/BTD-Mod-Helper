@@ -30,7 +30,10 @@ public static class Il2CppJsonConvert
     public static readonly JsonSerializerSettings Settings = new()
     {
         ContractResolver = new ModelContractResolver(),
-        Converters = {new Il2CppConverter(), new UnityColorConverter(), new NegativeZeroConverter()},
+        Converters =
+        {
+            new Il2CppConverter(), new UnityColorConverter(), new UnityVectorConverter(), new NegativeZeroConverter()
+        },
         TypeNameHandling = TypeNameHandling.Objects,
         SerializationBinder = new Il2CppSerializationBinder(),
         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
@@ -46,10 +49,10 @@ public static class Il2CppJsonConvert
     public static string SerializeObject(Object obj) => JsonConvert.SerializeObject(obj, Settings);
 
     /// <inheritdoc cref="JsonConvert.DeserializeObject(string)"/>
-    public static object DeserializeObject(string value) => JsonConvert.DeserializeObject(value);
+    public static object DeserializeObject(string value) => JsonConvert.DeserializeObject(value, Settings);
 
     /// <inheritdoc cref="JsonConvert.DeserializeObject{T}(string)"/>
-    public static object DeserializeObject<T>(string value) => (T) DeserializeObject(value);
+    public static T DeserializeObject<T>(string value) => JsonConvert.DeserializeObject<T>(value, Settings);
 
     internal class Il2CppConverter : JsonConverter
     {
@@ -184,6 +187,99 @@ public static class Il2CppJsonConvert
         }
     }
 
+    internal class UnityVectorConverter : JsonConverter
+    {
+        public override bool CanWrite => false;
+
+        public override bool CanConvert(Type objectType)
+        {
+            var type = Nullable.GetUnderlyingType(objectType) ?? objectType;
+            return type == typeof(Vector2) || type == typeof(Vector3) || type == typeof(Vector4);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotSupportedException($"{nameof(UnityVectorConverter)} is only used for reading.");
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+            JsonSerializer serializer)
+        {
+            var type = Nullable.GetUnderlyingType(objectType) ?? objectType;
+            var nullable = Nullable.GetUnderlyingType(objectType) != null;
+
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return nullable ? null : Activator.CreateInstance(type);
+            }
+
+            var token = JToken.Load(reader);
+            return token switch
+            {
+                JArray array => ReadArray(array, type),
+                JObject obj => ReadObject(obj, type),
+                _ => throw new JsonSerializationException($"Unexpected token {token.Type} when parsing {type}.")
+            };
+        }
+
+        private static object ReadArray(JArray array, Type type)
+        {
+            if (type == typeof(Vector2))
+            {
+                RequireCount(array, 2, type);
+                return new Vector2(array[0].Value<float>(), array[1].Value<float>());
+            }
+
+            if (type == typeof(Vector3))
+            {
+                RequireCount(array, 3, type);
+                return new Vector3(array[0].Value<float>(), array[1].Value<float>(), array[2].Value<float>());
+            }
+
+            if (type == typeof(Vector4))
+            {
+                RequireCount(array, 4, type);
+                return new Vector4(array[0].Value<float>(), array[1].Value<float>(), array[2].Value<float>(),
+                    array[3].Value<float>());
+            }
+
+            throw new JsonSerializationException($"Unsupported vector type {type}.");
+        }
+
+        private static object ReadObject(JObject obj, Type type)
+        {
+            if (type == typeof(Vector2))
+            {
+                return new Vector2(ReadFloat(obj, "x"), ReadFloat(obj, "y"));
+            }
+
+            if (type == typeof(Vector3))
+            {
+                return new Vector3(ReadFloat(obj, "x"), ReadFloat(obj, "y"), ReadFloat(obj, "z"));
+            }
+
+            if (type == typeof(Vector4))
+            {
+                return new Vector4(ReadFloat(obj, "x"), ReadFloat(obj, "y"), ReadFloat(obj, "z"),
+                    ReadFloat(obj, "w"));
+            }
+
+            throw new JsonSerializationException($"Unsupported vector type {type}.");
+        }
+
+        private static void RequireCount(JArray array, int count, Type type)
+        {
+            if (array.Count < count)
+            {
+                throw new JsonSerializationException(
+                    $"Expected at least {count} values when parsing {type}, got {array.Count}.");
+            }
+        }
+
+        private static float ReadFloat(JObject obj, string name) =>
+            obj.TryGetValue(name, out var value) ? value.Value<float>() : 0f;
+    }
+
     internal class Il2CppSerializationBinder : DefaultSerializationBinder
     {
         public override Type BindToType(string assemblyName, string typeName)
@@ -230,7 +326,7 @@ public static class Il2CppJsonConvert
 
             if (il2cppType == null)
             {
-                return [];
+                return base.GetSerializableMembers(objectType);
             }
 
             var memberNames = il2cppType

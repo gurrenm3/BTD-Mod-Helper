@@ -299,6 +299,33 @@ The parameters that another mod has provided
 [T](BTD_Mod_Helper.BloonsMod.md#BTD_Mod_Helper.BloonsMod.Call_T_(string,object[]).T 'BTD_Mod_Helper.BloonsMod.Call<T>(string, object[]).T')  
 A possible result of this call
 
+<a name='BTD_Mod_Helper.BloonsMod.GetImageSettings(string,string)'></a>
+
+## BloonsMod.GetImageSettings(string, string) Method
+
+Controls the [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings') used for a particular image embedded in this mod
+
+```csharp
+public virtual BTD_Mod_Helper.Api.UI.ImageSettings GetImageSettings(string imageName, string ext);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.BloonsMod.GetImageSettings(string,string).imageName'></a>
+
+`imageName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+image name being loaded (no file ext)
+
+<a name='BTD_Mod_Helper.BloonsMod.GetImageSettings(string,string).ext'></a>
+
+`ext` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+file extension (not including the "." eg "png"
+
+#### Returns
+[ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')  
+ImageSettings
+
 <a name='BTD_Mod_Helper.BloonsMod.LoadModSettings()'></a>
 
 ## BloonsMod.LoadModSettings() Method

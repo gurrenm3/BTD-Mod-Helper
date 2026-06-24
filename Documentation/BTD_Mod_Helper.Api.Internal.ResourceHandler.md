@@ -64,6 +64,19 @@ public static readonly string[] ImageExtensions;
 #### Field Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.ImageSettings'></a>
+
+## ResourceHandler.ImageSettings Field
+
+ImageSettings for mod images
+
+```csharp
+public static readonly Dictionary<string,ImageSettings> ImageSettings;
+```
+
+#### Field Value
+[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.RandomAudioClipIds'></a>
 
 ## ResourceHandler.RandomAudioClipIds Field
@@ -248,6 +261,33 @@ Id for AudioClip
 [UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
 new AudioClip, or null if unsuccessful
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateSprite(thisTexture2D,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ResourceHandler.CreateSprite(this Texture2D, ImageSettings) Method
+
+Creates a Sprite from a Texture2D
+
+```csharp
+public static Sprite CreateSprite(this Texture2D texture, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateSprite(thisTexture2D,BTD_Mod_Helper.Api.UI.ImageSettings).texture'></a>
+
+`texture` [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')
+
+Texture
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateSprite(thisTexture2D,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
+new Sprite
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateSprite(thisTexture2D,float)'></a>
 
 ## ResourceHandler.CreateSprite(this Texture2D, float) Method
@@ -255,7 +295,7 @@ new AudioClip, or null if unsuccessful
 Creates a Sprite from a Texture2D
 
 ```csharp
-public static Sprite CreateSprite(this Texture2D texture, float pixelsPerUnit=10.8f);
+public static Sprite CreateSprite(this Texture2D texture, float pixelsPerUnit);
 ```
 #### Parameters
 
@@ -275,6 +315,33 @@ Pixels per Unit to use
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
 new Sprite
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ResourceHandler.GetSprite(string, ImageSettings) Method
+
+Creates or gets a sprite from its Id
+
+```csharp
+public static Sprite GetSprite(string id, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Sprite id "ModName-FileName" (no file extension)
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
+The texture
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetSprite(string,float)'></a>
 
 ## ResourceHandler.GetSprite(string, float) Method
@@ -282,7 +349,7 @@ new Sprite
 Creates or gets a sprite from its Id
 
 ```csharp
-public static Sprite GetSprite(string id, float pixelsPerUnit=10.8f);
+public static Sprite GetSprite(string id, float pixelsPerUnit);
 ```
 #### Parameters
 
@@ -300,6 +367,33 @@ Pixels per Unit to use
 
 #### Returns
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
+The texture
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ResourceHandler.GetTexture(string, ImageSettings) Method
+
+Creates or gets a texture from its Id
+
+```csharp
+public static Texture2D GetTexture(string id, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Texture id "ModName-FileName" (no file extension)
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
 The texture
 
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string)'></a>

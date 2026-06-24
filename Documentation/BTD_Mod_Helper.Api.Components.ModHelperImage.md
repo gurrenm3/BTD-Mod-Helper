@@ -79,3 +79,22 @@ The sprite to display
 #### Returns
 [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
 The created ModHelperImage
+### Operators
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperImage)'></a>
+
+## ModHelperImage.implicit operator Image(ModHelperImage) Operator
+
+Implicitly get the Image
+
+```csharp
+public static Image implicit operator Image(BTD_Mod_Helper.Api.Components.ModHelperImage component);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperImage).component'></a>
+
+`component` [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')
+
+#### Returns
+[UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')

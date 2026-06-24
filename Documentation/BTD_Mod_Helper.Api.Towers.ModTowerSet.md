@@ -194,6 +194,19 @@ public TowerSet Set { get; }
 #### Property Value
 [Il2CppAssets.Scripts.Models.TowerSets.TowerSet](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.TowerSets.TowerSet 'Il2CppAssets.Scripts.Models.TowerSets.TowerSet')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.ShowInMonkeysScreen'></a>
+
+## ModTowerSet.ShowInMonkeysScreen Property
+
+Whether this Tower Set should be a visible category within the Monkeys Screen
+
+```csharp
+public virtual bool ShowInMonkeysScreen { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTowerSet.TowerSetInt'></a>
 
 ## ModTowerSet.TowerSetInt Property

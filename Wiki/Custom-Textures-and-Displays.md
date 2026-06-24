@@ -30,6 +30,46 @@ For all of those methods, the `name` parameter is the file name of your image wi
 
 If you're working somewhere outside of a class extending `ModContent`, then you'll use the equivalent static `ModContent` methods like `ModContent.GetTexture<T>(string name)` where T is your `BloonsTD6Mod` extending class. You have to specify the Mod class for these static methods in order for it to get to the correct internal ID for it.
 
+## Image Settings
+
+If you need more control over how an embedded image becomes a Unity `Texture2D` / `Sprite`, add a JSON file next to the image with the same name plus `.json`.
+
+For example, for `MyIcon.png`, add `MyIcon.png.json` as an embedded resource:
+
+```json
+{
+  "FilterMode": "Trilinear",
+  "PixelsPerUnit": 20,
+  "Pivot": [0.5, 0.5],
+  "Border": [20, 20, 20, 20]
+}
+```
+
+Supported settings are:
+
+- `FilterMode`: Unity `FilterMode`, such as `"Point"`, `"Bilinear"`, or `"Trilinear"`
+- `MipMapBias`: texture mip map bias
+- `Pivot`: sprite pivot as `[x, y]`
+- `PixelsPerUnit`: sprite pixels per unit
+- `Extrude`: sprite extrude amount
+- `MeshType`: Unity `SpriteMeshType`, such as `"FullRect"` or `"Tight"`
+- `Border`: sliced sprite border as `[left, bottom, right, top]`
+
+You can also pass settings directly when getting a texture or sprite:
+
+```csharp
+var sprite = GetSprite("MyIcon", new ImageSettings
+{
+    PixelsPerUnit = 20,
+    Border = new Vector4(20, 20, 20, 20)
+});
+
+var texture = ModContent.GetTexture<MyMod>("MyIcon", new ImageSettings
+{
+    FilterMode = FilterMode.Point
+});
+```
+
 # ModDisplay
 
 The `ModDisplay` class provides for an easy way to use modified versions of existing 3d Display Models, or fully custom 2D Display Models.

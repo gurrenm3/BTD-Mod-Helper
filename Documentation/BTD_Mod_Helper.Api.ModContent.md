@@ -886,6 +886,37 @@ public static PrefabReference GetPrefabReference<T>()
 #### Returns
 [Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference 'Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference')
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ModContent.GetSprite(BloonsMod, string, ImageSettings) Method
+
+Constructs a Sprite for a given texture name within a given mod
+
+```csharp
+public static Sprite GetSprite(BTD_Mod_Helper.BloonsMod mod, string name, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings).mod'></a>
+
+`mod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
+A Sprite
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetSprite(BTD_Mod_Helper.BloonsMod,string,float)'></a>
 
 ## ModContent.GetSprite(BloonsMod, string, float) Method
@@ -917,6 +948,33 @@ The pixels per unit for the Sprite to have
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
 A Sprite
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ModContent.GetSprite(string, ImageSettings) Method
+
+Constructs a Sprite for a given texture name within this mod
+
+```csharp
+protected Sprite GetSprite(string name, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
+A Sprite
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetSprite(string,float)'></a>
 
 ## ModContent.GetSprite(string, float) Method
@@ -939,6 +997,39 @@ The file name of your texture, without the extension
 `pixelsPerUnit` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 The pixels per unit for the Sprite to have
+
+#### Returns
+[UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
+A Sprite
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ModContent.GetSprite<T>(string, ImageSettings) Method
+
+Constructs a Sprite for a given texture name within a given mod
+
+```csharp
+public static Sprite GetSprite<T>(string name, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings).name'></a>
+
+`name` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetSprite_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
 
 #### Returns
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
@@ -1214,6 +1305,39 @@ The file name of your texture, without the extension
 [Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference](https://docs.microsoft.com/en-us/dotnet/api/Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference 'Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference')  
 A new SpriteReference
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ModContent.GetTexture(BloonsMod, string, ImageSettings) Method
+
+Constructs a Texture2D for a given texture name within a mod
+
+```csharp
+public static Texture2D GetTexture(BTD_Mod_Helper.BloonsMod bloonsMod, string fileName, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings).bloonsMod'></a>
+
+`bloonsMod` [BloonsMod](BTD_Mod_Helper.BloonsMod.md 'BTD_Mod_Helper.BloonsMod')
+
+The mod that adds this texture
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings).fileName'></a>
+
+`fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
+A Texture2D
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetTexture(BTD_Mod_Helper.BloonsMod,string)'></a>
 
 ## ModContent.GetTexture(BloonsMod, string) Method
@@ -1241,6 +1365,33 @@ The file name of your texture, without the extension
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
 A Texture2D
 
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ModContent.GetTexture(string, ImageSettings) Method
+
+Constructs a Texture2D for a given texture name within this mod
+
+```csharp
+protected Texture2D GetTexture(string fileName, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings).fileName'></a>
+
+`fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
+
+#### Returns
+[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
+A Texture2D
+
 <a name='BTD_Mod_Helper.Api.ModContent.GetTexture(string)'></a>
 
 ## ModContent.GetTexture(string) Method
@@ -1257,6 +1408,39 @@ protected Texture2D GetTexture(string fileName);
 `fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The file name of your texture, without the extension
+
+#### Returns
+[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
+A Texture2D
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
+
+## ModContent.GetTexture<T>(string, ImageSettings) Method
+
+Constructs a Texture2D for a given texture name within a mod
+
+```csharp
+public static Texture2D GetTexture<T>(string fileName, BTD_Mod_Helper.Api.UI.ImageSettings imageSettings)
+    where T : BTD_Mod_Helper.BloonsMod;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings).fileName'></a>
+
+`fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The file name of your texture, without the extension
+
+<a name='BTD_Mod_Helper.Api.ModContent.GetTexture_T_(string,BTD_Mod_Helper.Api.UI.ImageSettings).imageSettings'></a>
+
+`imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
+
+ImageSettings to use
 
 #### Returns
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  

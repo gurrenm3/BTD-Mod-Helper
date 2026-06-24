@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Added a new `BloonsTD6Mod` override `LateOnNewGameModel` that's like `OnNewGameModel` but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
+- Added `ImageSettings` options for configuring mod image loading behavior
+  - Can control `FilterMode`, `MipMapBias`, `Pivot`, `PixelsPerUnit`, `Extrude`, `MeshType` and `Border`
+  - ModHelper `GetSprite` and `GetTexture` methods now accept the class as an additional parameter
+  - You can also set default settings for an image, for example if you had `TestPanel.png`, you could then also include `TestPanel.png.json` with content `{ "Border": [20,20,20,20] }` and now TestPanel would work to properly resize with the Sliced image type that `ModHelperPanel` uses
+- Added a new `Tween` animation helper for animating transforms, UI positions / sizes, etc
+- Added a `ModTowerSet.ShowInMonkeysScreen` override for controlling whether custom tower sets appear in the modded monkey select menu
+- Fixed `AddTsmButton` sound behavior
 
 ## [3.6.5] - 2026-06-12
 
@@ -27,7 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - You can add new sections for released versions manually or let the workflow automatically turn the Unreleased section into that version's section
 - Added new ModHelperData fields `PrevRepoName` (string) and `PrevRepoOwner` (string)
   - If you rename or transfer ownership of your mod repository, these values can be set to ensure that users' mods will still auto update correctly, and any other mods that list yours as a dependency will still work even before they update their `Dependencies` string.
-
 
 ## [3.6.4] - 2026-06-03
 
@@ -1090,6 +1096,7 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 Initial release of the new Mod Helper
 
 [unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...HEAD
+
 [3.6.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.4...3.6.5
 
 [3.6.4]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.3...3.6.4

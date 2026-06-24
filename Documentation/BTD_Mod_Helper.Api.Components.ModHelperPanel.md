@@ -33,3 +33,22 @@ public Image Background { get; }
 
 #### Property Value
 [UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
+### Operators
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPanel.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperPanel)'></a>
+
+## ModHelperPanel.implicit operator Image(ModHelperPanel) Operator
+
+Implicitly get the Background
+
+```csharp
+public static Image implicit operator Image(BTD_Mod_Helper.Api.Components.ModHelperPanel component);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPanel.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperPanel).component'></a>
+
+`component` [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
+
+#### Returns
+[UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')

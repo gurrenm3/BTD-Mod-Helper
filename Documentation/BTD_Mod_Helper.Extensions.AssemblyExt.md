@@ -78,6 +78,32 @@ public static string GetEmbeddedText(this System.Reflection.Assembly assembly, s
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedJson(thisSystem.Reflection.Assembly,string,JObject)'></a>
+
+## AssemblyExt.TryGetEmbeddedJson(this Assembly, string, JObject) Method
+
+Gets the contents of an embedded file in this assembly as json object
+
+```csharp
+public static bool TryGetEmbeddedJson(this System.Reflection.Assembly assembly, string endsWith, out JObject jObject);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedJson(thisSystem.Reflection.Assembly,string,JObject).assembly'></a>
+
+`assembly` [System.Reflection.Assembly](https://docs.microsoft.com/en-us/dotnet/api/System.Reflection.Assembly 'System.Reflection.Assembly')
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedJson(thisSystem.Reflection.Assembly,string,JObject).endsWith'></a>
+
+`endsWith` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedJson(thisSystem.Reflection.Assembly,string,JObject).jObject'></a>
+
+`jObject` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedResource(thisSystem.Reflection.Assembly,string,System.IO.Stream)'></a>
 
 ## AssemblyExt.TryGetEmbeddedResource(this Assembly, string, Stream) Method
@@ -100,6 +126,32 @@ public static bool TryGetEmbeddedResource(this System.Reflection.Assembly assemb
 <a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedResource(thisSystem.Reflection.Assembly,string,System.IO.Stream).stream'></a>
 
 `stream` [System.IO.Stream](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Stream 'System.IO.Stream')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedText(thisSystem.Reflection.Assembly,string,string)'></a>
+
+## AssemblyExt.TryGetEmbeddedText(this Assembly, string, string) Method
+
+Gets the contents of an embedded file in this assembly as plain text (UTF8)
+
+```csharp
+public static bool TryGetEmbeddedText(this System.Reflection.Assembly assembly, string endsWith, out string text);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedText(thisSystem.Reflection.Assembly,string,string).assembly'></a>
+
+`assembly` [System.Reflection.Assembly](https://docs.microsoft.com/en-us/dotnet/api/System.Reflection.Assembly 'System.Reflection.Assembly')
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedText(thisSystem.Reflection.Assembly,string,string).endsWith'></a>
+
+`endsWith` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+<a name='BTD_Mod_Helper.Extensions.AssemblyExt.TryGetEmbeddedText(thisSystem.Reflection.Assembly,string,string).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

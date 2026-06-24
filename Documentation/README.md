@@ -37,9 +37,17 @@
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |
 
+| Structs | |
+| :--- | :--- |
+| [Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween') | Helper for performing animation Tweens |
+
 | Interfaces | |
 | :--- | :--- |
 | [IModContent](BTD_Mod_Helper.Api.IModContent.md 'BTD_Mod_Helper.Api.IModContent') | Dummy interface to unite ModContent and BloonsTD6Mod |
+
+| Enums | |
+| :--- | :--- |
+| [Ease](BTD_Mod_Helper.Api.Ease.md 'BTD_Mod_Helper.Api.Ease') | Easing functions supported by [Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween'). |
 
 <a name='BTD_Mod_Helper.Api.Attributes'></a>
 
@@ -388,6 +396,7 @@
 | Classes | |
 | :--- | :--- |
 | [AspectRatios](BTD_Mod_Helper.Api.UI.AspectRatios.md 'BTD_Mod_Helper.Api.UI.AspectRatios') | The aspect ratios BTD6 runs at natively |
+| [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings') | Settings to use when automatically creating unity Textures and Sprites for an image |
 | [ModPopupImage](BTD_Mod_Helper.Api.UI.ModPopupImage.md 'BTD_Mod_Helper.Api.UI.ModPopupImage') | Registers an image that can be used within hint / event popups |
 | [ModStartMenuEntry](BTD_Mod_Helper.Api.UI.ModStartMenuEntry.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry') | ModContent representing an entry that will be added to the custom "Start Menu" in game, primarily used to open custom Windows |
 | [ModStartMenuEntry&lt;T&gt;](BTD_Mod_Helper.Api.UI.ModStartMenuEntry_T_.md 'BTD_Mod_Helper.Api.UI.ModStartMenuEntry<T>') | Helper class for a ModStartMenuEntry that is nested beneath another entry |

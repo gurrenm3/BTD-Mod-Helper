@@ -60,7 +60,7 @@ public Image Image { get; }
 Creates a new ModHelperButton
 
 ```csharp
-public static BTD_Mod_Helper.Api.Components.ModHelperButton Create(BTD_Mod_Helper.Api.Components.Info info, string sprite, Action onClick);
+public static BTD_Mod_Helper.Api.Components.ModHelperButton Create(BTD_Mod_Helper.Api.Components.Info info, string sprite, Action onClick=null);
 ```
 #### Parameters
 
@@ -84,3 +84,40 @@ What should happen when the button is clicked
 
 #### Returns
 [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+### Operators
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.op_ImplicitButton(BTD_Mod_Helper.Api.Components.ModHelperButton)'></a>
+
+## ModHelperButton.implicit operator Button(ModHelperButton) Operator
+
+Implicitly get the Button
+
+```csharp
+public static Button implicit operator Button(BTD_Mod_Helper.Api.Components.ModHelperButton component);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.op_ImplicitButton(BTD_Mod_Helper.Api.Components.ModHelperButton).component'></a>
+
+`component` [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+
+#### Returns
+[UnityEngine.UI.Button](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Button 'UnityEngine.UI.Button')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperButton)'></a>
+
+## ModHelperButton.implicit operator Image(ModHelperButton) Operator
+
+Implicitly get the Image
+
+```csharp
+public static Image implicit operator Image(BTD_Mod_Helper.Api.Components.ModHelperButton component);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperButton).component'></a>
+
+`component` [ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+
+#### Returns
+[UnityEngine.UI.Image](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.Image 'UnityEngine.UI.Image')
