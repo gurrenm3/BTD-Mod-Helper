@@ -27,11 +27,26 @@ public class ModHelperImage : ModHelperComponent
     /// <param name="info">The name/position/size info</param>
     /// <param name="sprite">The sprite to display</param>
     /// <returns>The created ModHelperImage</returns>
-    public static ModHelperImage Create(Info info, string sprite)
-    {
-        var modHelperImage = Create<ModHelperImage>(info);
+    public static ModHelperImage Create(Info info, string sprite) =>
+        Create<ModHelperImage>(info).Init(sprite);
 
-        var image = modHelperImage.AddComponent<Image>();
+    /// <summary>
+    /// Creates a new ModHelperImage
+    /// </summary>
+    /// <param name="info">The name/position/size info</param>
+    /// <param name="sprite">The sprite to display</param>
+    /// <returns>The created ModHelperImage</returns>
+    public static ModHelperImage Create(Info info, Sprite sprite) =>
+        Create<ModHelperImage>(info).Init(sprite);
+
+    /// <summary>
+    /// Initializes this ModHelperImage
+    /// </summary>
+    /// <param name="sprite">The sprite to display</param>
+    /// <returns>the ModHelperImage</returns>
+    public ModHelperImage Init(string sprite)
+    {
+        var image = AddComponent<Image>();
         if (sprite != null)
         {
             image.SetSprite(sprite);
@@ -41,26 +56,23 @@ public class ModHelperImage : ModHelperComponent
             image.enabled = false;
         }
 
-        return modHelperImage;
+        return this;
     }
 
     /// <summary>
-    /// Creates a new ModHelperImage
+    /// Initializes this ModHelperImage
     /// </summary>
-    /// <param name="info">The name/position/size info</param>
     /// <param name="sprite">The sprite to display</param>
-    /// <returns>The created ModHelperImage</returns>
-    public static ModHelperImage Create(Info info, Sprite sprite)
+    /// <returns>the ModHelperImage</returns>
+    public ModHelperImage Init(Sprite sprite)
     {
-        var modHelperImage = Create<ModHelperImage>(info);
-
-        var image = modHelperImage.AddComponent<Image>();
+        var image = AddComponent<Image>();
         if (sprite != null)
         {
             image.SetSprite(sprite);
         }
 
-        return modHelperImage;
+        return this;
     }
 
     /// <summary>

@@ -67,32 +67,43 @@ public class ModHelperCheckbox : ModHelperComponent
     /// <param name="padding">How much space around the outside of the check there is</param>
     /// <returns>The new ModHelperCheckbox</returns>
     public static ModHelperCheckbox Create(Info info, bool defaultValue, string background,
+        UnityAction<bool> onValueChanged = null, string checkImage = null, int padding = 0) =>
+        Create<ModHelperCheckbox>(info).Init(defaultValue, background, onValueChanged, checkImage, padding);
+
+    /// <summary>
+    /// Initializes this ModHelperCheckbox
+    /// </summary>
+    /// <param name="defaultValue">If it starts out checked or not</param>
+    /// <param name="background">The background behind the check, or null for nothing</param>
+    /// <param name="onValueChanged">Action to perform when it is checked/unchecked, or null</param>
+    /// <param name="checkImage">The checkmark itself, or null for the default checkmark</param>
+    /// <param name="padding">How much space around the outside of the check there is</param>
+    /// <returns>the ModHelperCheckbox</returns>
+    public ModHelperCheckbox Init(bool defaultValue, string background,
         UnityAction<bool> onValueChanged = null, string checkImage = null, int padding = 0)
     {
-        var modHelperCheckbox = Create<ModHelperCheckbox>(info);
-
-        var backgroundImage = modHelperCheckbox.AddComponent<Image>();
+        var backgroundImage = AddComponent<Image>();
         backgroundImage.type = Image.Type.Sliced;
         backgroundImage.SetSprite(background);
 
-        var check = modHelperCheckbox.AddImage(new Info("Check", InfoPreset.FillParent)
+        var check = AddImage(new Info("Check", InfoPreset.FillParent)
         {
             Size = padding * -2
         }, checkImage ?? VanillaSprites.TickGreenIcon);
 
-        var toggle = modHelperCheckbox.AddComponent<Toggle>();
+        var toggle = AddComponent<Toggle>();
         toggle.graphic = check.Image;
         toggle.onValueChanged.AddListener(value =>
         {
-            if (modHelperCheckbox.UnCheck != null)
+            if (UnCheck != null)
             {
-                modHelperCheckbox.UnCheck.SetActive(!value);
+                UnCheck.SetActive(!value);
             }
             onValueChanged?.Invoke(value);
         });
 
         toggle.isOn = defaultValue;
 
-        return modHelperCheckbox;
+        return this;
     }
 }

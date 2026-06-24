@@ -284,32 +284,50 @@ public class ModHelperPopupOption : ModHelperPanel
                 Height = 75
             };
         }
-        var option = Create<ModHelperPopupOption>(info, VanillaSprites.SmallSquareWhiteGradient,
+        return ModHelperComponent.Create<ModHelperPopupOption>(info)
+            .Init(text, icon, action, subMenu, isSelected, isHidden);
+    }
+
+    /// <summary>
+    /// Initializes this ModHelperPopupOption
+    /// </summary>
+    /// <param name="text">Option label, if null then uses the Name from the info</param>
+    /// <param name="icon">Option icon, null for no icon, empty string for still creating the icon but it being empty</param>
+    /// <param name="action">Action to perform when this option is clicked</param>
+    /// <param name="subMenu">Sub menu that this option opens</param>
+    /// <param name="isSelected">Function to determine if this option should display as selected or not</param>
+    /// <param name="isHidden">Function to determine if this option should be visible or should be hidden</param>
+    /// <returns>this ModHelperPopupOption</returns>
+    public ModHelperPopupOption Init(string text = null, string icon = null, UnityAction action = null,
+        ModHelperPopupMenu subMenu = null, Il2CppSystem.Func<bool> isSelected = null,
+        Il2CppSystem.Func<bool> isHidden = null)
+    {
+        base.Init(VanillaSprites.SmallSquareWhiteGradient,
             RectTransform.Axis.Horizontal, ModHelperWindow.Margin);
-        option.LayoutGroup.padding = new RectOffset
+
+        LayoutGroup.padding = new RectOffset
         {
             left = ModHelperWindow.Margin,
             bottom = ModHelperWindow.Margin,
             top = ModHelperWindow.Margin,
             right = ModHelperWindow.Margin
         };
-        var itemHeight = info.Height - ModHelperWindow.Margin;
+        var itemHeight = initialInfo.Height - ModHelperWindow.Margin;
 
-        var toggle = option.AddComponent<Toggle>();
-        option.toggle = toggle;
+        var toggle = this.toggle = AddComponent<Toggle>();
         toggle.onValueChanged.AddListener(new Action<bool>(_ =>
         {
             if (action is not null)
             {
                 action.Invoke();
-                if (option.hideParentOnClick)
+                if (hideParentOnClick)
                 {
-                    option.parentMenu?.Hide(option.hideAllParentsOnClick);
+                    parentMenu?.Hide(hideAllParentsOnClick);
                 }
             }
-            else if (option.subMenu is not null)
+            else if (this.subMenu is not null)
             {
-                option.ShowSubMenu();
+                ShowSubMenu();
             }
         }));
 
@@ -321,35 +339,35 @@ public class ModHelperPopupOption : ModHelperPanel
 
         if (icon != null)
         {
-            var image = option.icon = option.AddImage(new Info("Icon", itemHeight), icon);
+            var image = this.icon = AddImage(new Info("Icon", itemHeight), icon);
             image.Image.type = Image.Type.Sliced;
             image.Image.enabled = !string.IsNullOrWhiteSpace(icon);
         }
 
-        option.text = option.AddText(new Info("Text")
+        this.text = AddText(new Info("Text")
         {
             Height = itemHeight,
-            FlexWidth = info.Width > 0 ? 1 : 0
-        }, text ?? info.Name);
-        option.text.Text.horizontalAlignment = HorizontalAlignmentOptions.Left;
-        option.text.Text.lineSpacing = 0;
-        if (info.Width > 0)
+            FlexWidth = initialInfo.Width > 0 ? 1 : 0
+        }, text ?? initialInfo.Name);
+        this.text.Text.horizontalAlignment = HorizontalAlignmentOptions.Left;
+        this.text.Text.lineSpacing = 0;
+        if (initialInfo.Width > 0)
         {
-            option.text.EnableAutoSizing(42f);
+            this.text.EnableAutoSizing(42f);
         }
         else
         {
-            option.text.SizeWidthToText();
+            this.text.SizeWidthToText();
         }
 
         if (subMenu is not null)
         {
-            option.AddSubMenu(subMenu);
+            AddSubMenu(subMenu);
         }
 
-        option.getSelected = isSelected;
-        option.getHidden = isHidden;
+        getSelected = isSelected;
+        getHidden = isHidden;
 
-        return option;
+        return this;
     }
 }

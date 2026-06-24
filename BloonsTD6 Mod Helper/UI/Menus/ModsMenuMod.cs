@@ -17,13 +17,8 @@ using UnityEngine.Events;
 namespace BTD_Mod_Helper.UI.Menus;
 
 [RegisterTypeInIl2Cpp(false)]
-internal class ModsMenuMod : ModHelperComponent
+internal class ModsMenuMod(IntPtr ptr) : ModHelperComponent(ptr)
 {
-
-    public ModsMenuMod(IntPtr ptr) : base(ptr)
-    {
-    }
-
     public ModHelperButton MainButton => GetDescendent<ModHelperButton>("MainButton");
     public ModHelperImage Icon => GetDescendent<ModHelperImage>("Icon");
     public ModHelperText Name => GetDescendent<ModHelperText>("Name");

@@ -89,29 +89,48 @@ public class ModHelperSlider : ModHelperComponent
     /// <returns></returns>
     public static ModHelperSlider Create(Info info, float defaultValue, float minValue, float maxValue,
         float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
+        string labelSuffix = "", float? startingValue = null) =>
+        Create<ModHelperSlider>(info).Init(defaultValue, minValue, maxValue, stepSize, handleSize,
+            onValueChanged, fontSize, labelSuffix, startingValue);
+
+    /// <summary>
+    /// Initializes this ModHelperSlider
+    /// </summary>
+    /// <param name="defaultValue">The default slider amount</param>
+    /// <param name="minValue">The minimum value of the slider</param>
+    /// <param name="maxValue">The maximum value of the slider</param>
+    /// <param name="stepSize">What value the slider should increase by per tick</param>
+    /// <param name="handleSize">The height and width of the pip</param>
+    /// <param name="onValueChanged">Action should happen when the slider changes value, or null</param>
+    /// <param name="fontSize">The size of the label text</param>
+    /// <param name="labelSuffix">String to add to the end of the label, e.g. "%"</param>
+    /// <param name="startingValue">If not null, the value that this should start as instead of the default</param>
+    /// <returns>the ModHelperSlider</returns>
+    public ModHelperSlider Init(float defaultValue, float minValue, float maxValue,
+        float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged = null, float fontSize = 42f,
         string labelSuffix = "", float? startingValue = null)
     {
-        var modHelperSlider = Create<ModHelperSlider>(info);
-        var slider = modHelperSlider.AddComponent<Slider>();
+        var height = initialInfo.Height;
+        var slider = AddComponent<Slider>();
         slider.direction = Slider.Direction.LeftToRight;
 
         if (stepSize > 0)
         {
-            modHelperSlider.ScaleFactor = 1 / stepSize;
+            ScaleFactor = 1 / stepSize;
             slider.wholeNumbers = true;
         }
 
-        modHelperSlider.defaultValue = defaultValue;
-        slider.minValue = minValue * modHelperSlider.ScaleFactor;
-        slider.maxValue = maxValue * modHelperSlider.ScaleFactor;
-        var background = modHelperSlider.AddPanel(new Info("Background", InfoPreset.FillParent),
+        this.defaultValue = defaultValue;
+        slider.minValue = minValue * ScaleFactor;
+        slider.maxValue = maxValue * ScaleFactor;
+        var background = AddPanel(new Info("Background", InfoPreset.FillParent),
             VanillaSprites.SmallSquareWhite);
         background.Background.color = new Color(.219f, .125f, .058f);
 
-        var fillPanel = modHelperSlider.AddPanel(new Info("FillPanel", InfoPreset.FillParent)
+        var fillPanel = AddPanel(new Info("FillPanel", InfoPreset.FillParent)
         {
-            Width = info.Height / -4f,
-            Height = info.Height / -4f
+            Width = height / -4f,
+            Height = height / -4f
         });
 
         var fill = fillPanel.AddPanel(new Info("Fill", InfoPreset.FillParent), VanillaSprites.SmallSquareWhite);
@@ -121,13 +140,13 @@ public class ModHelperSlider : ModHelperComponent
 
         var anchorPos = (defaultValue - minValue) / (maxValue - minValue);
 
-        modHelperSlider.AddImage(new Info("DefaultNotch", 64, 136, new Vector2(anchorPos, 0.5f)),
+        AddImage(new Info("DefaultNotch", 64, 136, new Vector2(anchorPos, 0.5f)),
             VanillaSprites.SliderMarker);
 
-        var handleContainer = modHelperSlider.AddPanel(new Info("HandleContainer", InfoPreset.FillParent));
+        var handleContainer = AddPanel(new Info("HandleContainer", InfoPreset.FillParent));
 
         var pip = handleContainer.AddImage(
-            new Info("Handle", handleSize.x, handleSize.y - info.Height), VanillaSprites.BlueBtnCircleSmall
+            new Info("Handle", handleSize.x, handleSize.y - height), VanillaSprites.BlueBtnCircleSmall
         );
         slider.handleRect = pip;
         slider.m_HandleContainerRect = handleContainer;
@@ -136,13 +155,13 @@ public class ModHelperSlider : ModHelperComponent
             (startingValue ?? defaultValue).ToString(CultureInfo.InvariantCulture) + labelSuffix, fontSize);
 
         slider.onValueChanged.AddListener(new Action<float>(value =>
-            label.SetText((value / modHelperSlider.ScaleFactor).ToString(CultureInfo.InvariantCulture) + labelSuffix)));
+            label.SetText((value / ScaleFactor).ToString(CultureInfo.InvariantCulture) + labelSuffix)));
 
-        modHelperSlider.SetCurrentValue(startingValue ?? defaultValue);
+        SetCurrentValue(startingValue ?? defaultValue);
 
         slider.onValueChanged.AddListener(new Action<float>(value =>
-            onValueChanged?.Invoke(value / modHelperSlider.ScaleFactor)));
+            onValueChanged?.Invoke(value / ScaleFactor)));
 
-        return modHelperSlider;
+        return this;
     }
 }

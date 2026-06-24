@@ -116,7 +116,7 @@ internal partial class MelonMain
 
             var menu = ModHelperWindow.CreateColorsMenu(color =>
             {
-                inputField.SetText(color.Name);
+                inputField.SetText(color);
 
                 foreach (var setter in Object.FindObjectsOfType<WindowColorSetter>(true))
                 {

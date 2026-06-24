@@ -64,19 +64,36 @@ public class ModHelperInputField : ModHelperComponent
     public static ModHelperInputField Create(Info info, string defaultValue, string background,
         UnityAction<string> onValueChanged = null, float fontSize = 42,
         TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
+        TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0) =>
+        Create<ModHelperInputField>(info).Init(defaultValue, background, onValueChanged, fontSize, validation,
+            align, placeholder, padding);
+
+    /// <summary>
+    /// Initializes this ModHelperInputField
+    /// </summary>
+    /// <param name="defaultValue">The default text that's in the field</param>
+    /// <param name="background">The sprite for the background panel</param>
+    /// <param name="onValueChanged">An action to be called when the text is changed</param>
+    /// <param name="fontSize">The size of the displayed text</param>
+    /// <param name="validation">The type of validation used on user input</param>
+    /// <param name="align">The alignment of the text</param>
+    /// <param name="placeholder"></param>
+    /// <param name="padding"></param>
+    /// <returns>the ModHelperInputField</returns>
+    public ModHelperInputField Init(string defaultValue, string background,
+        UnityAction<string> onValueChanged = null, float fontSize = 42,
+        TMP_InputField.CharacterValidation validation = TMP_InputField.CharacterValidation.None,
         TextAlignmentOptions align = TextAlignmentOptions.Capline, string placeholder = null, int padding = 0)
     {
-        var modHelperInputField = Create<ModHelperInputField>(info);
-
         if (background != null)
         {
-            modHelperInputField.AddComponent<Mask>();
-            var backgroundImage = modHelperInputField.AddComponent<Image>();
+            AddComponent<Mask>();
+            var backgroundImage = AddComponent<Image>();
             backgroundImage.type = Image.Type.Sliced;
             backgroundImage.SetSprite(background);
         }
 
-        var textViewPort = modHelperInputField.AddPanel(new Info("TextViewport", InfoPreset.FillParent));
+        var textViewPort = AddPanel(new Info("TextViewport", InfoPreset.FillParent));
 
         var text = textViewPort.AddText(new Info("Text", InfoPreset.FillParent)
         {
@@ -86,7 +103,7 @@ public class ModHelperInputField : ModHelperComponent
         text.Text.font = Fonts.Btd6FontBody;
 
 
-        var inputField = modHelperInputField.AddComponent<NK_TextMeshProInputField>();
+        var inputField = AddComponent<NK_TextMeshProInputField>();
         inputField.characterValidation = validation;
         inputField.textComponent = text.Text;
         inputField.textViewport = textViewPort;
@@ -113,7 +130,7 @@ public class ModHelperInputField : ModHelperComponent
 
         inputField.enabled = false;
 
-        return modHelperInputField;
+        return this;
     }
 
 

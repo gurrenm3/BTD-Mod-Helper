@@ -63,23 +63,33 @@ public class ModHelperDropdown : ModHelperComponent
     /// <param name="labelFontSize">Text size of label</param>
     /// <returns>The created ModHelperDropdown</returns>
     public static ModHelperDropdown Create(Info info, List<string> options, float windowHeight,
+        UnityAction<int> onValueChanged, string background = null, float labelFontSize = 42f) =>
+        Create<ModHelperDropdown>(info).Init(options, windowHeight, onValueChanged, background, labelFontSize);
+
+    /// <summary>
+    /// Initializes this ModHelperDropdown
+    /// </summary>
+    /// <param name="options">The list of options</param>
+    /// <param name="windowHeight">Height of the created dropdown window</param>
+    /// <param name="onValueChanged">Action that should happen when an option of the given index is selected</param>
+    /// <param name="background">The background image</param>
+    /// <param name="labelFontSize">Text size of label</param>
+    /// <returns>the ModHelperDropdown</returns>
+    public ModHelperDropdown Init(List<string> options, float windowHeight,
         UnityAction<int> onValueChanged, string background = null, float labelFontSize = 42f)
     {
-        var (width, height) = info.SizeDelta;
+        var (width, height) = initialInfo.SizeDelta;
 
         var contentHeight = options.Count * height;
         var realHeight = Math.Min(windowHeight, contentHeight);
 
-        var modHelperDropdown = Create<ModHelperDropdown>(info);
-
-
-        modHelperDropdown.AddImage(
+        AddImage(
             new Info("Arrow", -64, 0, 64, 40, new Vector2(1, 0.5f)), VanillaSprites.MonkeyKnowledgeArrow
         );
 
-        var text = modHelperDropdown.AddText(new Info("DropdownText", InfoPreset.FillParent), "", labelFontSize);
+        var text = AddText(new Info("DropdownText", InfoPreset.FillParent), "", labelFontSize);
 
-        var dropdown = modHelperDropdown.AddComponent<TMP_Dropdown>();
+        var dropdown = AddComponent<TMP_Dropdown>();
         dropdown.captionText = text.Text;
         dropdown.ClearOptions();
         dropdown.AddOptions(options.ToArray().Select(o => o.Localize()).ToIl2CppList());
@@ -91,13 +101,13 @@ public class ModHelperDropdown : ModHelperComponent
 
         if (background != null)
         {
-            var image = dropdown.image = modHelperDropdown.AddComponent<Image>();
+            var image = dropdown.image = AddComponent<Image>();
             image.SetSprite(background);
             image.type = Image.Type.Sliced;
         }
 
 
-        var template = modHelperDropdown.AddScrollPanel(
+        var template = AddScrollPanel(
             new Info("Template", 0, height / -2 - realHeight / 2, width, realHeight),
             RectTransform.Axis.Vertical, "");
 
@@ -123,9 +133,9 @@ public class ModHelperDropdown : ModHelperComponent
         dropdown.itemText = itemLabel.Text;
 
         template.AddScrollContent(item);
-        
+
         template.ScrollRect.SetVerticalNormalizedPosition(0);
 
-        return modHelperDropdown;
+        return this;
     }
 }

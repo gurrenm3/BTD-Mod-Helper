@@ -275,7 +275,7 @@ public sealed class ModHelperDock : ModHelperPanel
                     )
                     .AddOption(new Info("Default Color"), subMenu: ModHelperWindow.CreateColorsMenu(color =>
                         {
-                            MelonMain.DefaultWindowColor.SetValueAndSave(color.Name);
+                            MelonMain.DefaultWindowColor.SetValueAndSave(color);
                             foreach (var setter in FindObjectsOfType<WindowColorSetter>(true))
                             {
                                 if (setter.window is null)

@@ -17,18 +17,13 @@ using UnityEngine.UI;
 namespace BTD_Mod_Helper.UI.Menus;
 
 [RegisterTypeInIl2Cpp(false)]
-internal class ModBrowserMenuMod : ModHelperPanel
+internal class ModBrowserMenuMod(IntPtr ptr) : ModHelperPanel(ptr)
 {
-
     public bool descriptionShowing;
     public string modName;
     public Action iconAction;
 
     public Task task;
-
-    public ModBrowserMenuMod(IntPtr ptr) : base(ptr)
-    {
-    }
 
     public ModHelperData mod;
 

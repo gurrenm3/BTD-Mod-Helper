@@ -78,22 +78,33 @@ public class ModHelperOption : ModHelperComponent
     /// <param name="icon">The icon of the mod setting, if any</param>
     /// <returns>The created ModHelperOption</returns>
     public static ModHelperOption Create(string displayName, string description = null, string icon = null) =>
-        Create<ModHelperOption>(displayName, description, icon);
+        ModHelperComponent.Create<ModHelperOption>(new Info(displayName, PanelWidth, PanelHeight))
+            .Init(displayName, description, icon);
 
     /// <inheritdoc cref="Create" />
     protected static T Create<T>(string displayName, string description = null, string icon = null)
         where T : ModHelperOption
     {
-        var modHelperOption = Create<T>(
-            new Info(displayName, PanelWidth, PanelHeight)
-        );
+        var modHelperOption = Create<T>(new Info(displayName, PanelWidth, PanelHeight));
+        modHelperOption.Init(displayName, description, icon);
+        return modHelperOption;
+    }
 
-        modHelperOption.AddComponent<VerticalLayoutGroup>();
-        modHelperOption.LayoutGroup.childAlignment = TextAnchor.UpperCenter;
-        modHelperOption.LayoutGroup.childForceExpandHeight = false;
-        modHelperOption.LayoutGroup.childForceExpandWidth = false;
+    /// <summary>
+    /// Initializes this ModHelperOption
+    /// </summary>
+    /// <param name="displayName">The displayed name of the mod setting</param>
+    /// <param name="description">The description of the mod setting, if any</param>
+    /// <param name="icon">The icon of the mod setting, if any</param>
+    /// <returns>this ModHelperOption</returns>
+    public ModHelperOption Init(string displayName, string description = null, string icon = null)
+    {
+        AddComponent<VerticalLayoutGroup>();
+        LayoutGroup.childAlignment = TextAnchor.UpperCenter;
+        LayoutGroup.childForceExpandHeight = false;
+        LayoutGroup.childForceExpandWidth = false;
 
-        var topRow = modHelperOption.TopRow = modHelperOption.AddPanel(new Info("TopRow")
+        var topRow = TopRow = AddPanel(new Info("TopRow")
         {
             Height = RowHeight, FlexWidth = 1
         }, null, RectTransform.Axis.Horizontal, 100);
@@ -101,16 +112,16 @@ public class ModHelperOption : ModHelperComponent
 
 
         var iconPanel = topRow.AddPanel(new Info("IconPanel", RowHeight));
-        modHelperOption.Icon = iconPanel.AddImage(new Info("Icon", RowHeight), icon);
-        modHelperOption.Icon.Image.color = Color.white;
-        modHelperOption.Icon.gameObject.SetActive(!string.IsNullOrEmpty(icon));
+        Icon = iconPanel.AddImage(new Info("Icon", RowHeight), icon);
+        Icon.Image.color = Color.white;
+        Icon.gameObject.SetActive(!string.IsNullOrEmpty(icon));
 
-        var restart = modHelperOption.RestartIcon =
+        var restart = RestartIcon =
             iconPanel.AddImage(new Info("Restart", RowHeight), VanillaSprites.RestartIcon);
         restart.SetActive(false);
 
 
-        var text = modHelperOption.Name = topRow.AddText(new Info("Name")
+        var text = Name = topRow.AddText(new Info("Name")
         {
             Height = TextHeight
         }, displayName, 80f);
@@ -119,7 +130,7 @@ public class ModHelperOption : ModHelperComponent
         var infoPanel = topRow.AddPanel(new Info("InfoPanel", RowHeight));
         if (description != null)
         {
-            modHelperOption.InfoButton = infoPanel.AddButton(
+            InfoButton = infoPanel.AddButton(
                 new Info("Info", TextHeight + 25),
                 VanillaSprites.InfoBtn2,
                 string.IsNullOrEmpty(description)
@@ -129,7 +140,7 @@ public class ModHelperOption : ModHelperComponent
             );
         }
 
-        var bottomRow = modHelperOption.BottomRow = modHelperOption.AddPanel(new Info("BottomRow")
+        var bottomRow = BottomRow = AddPanel(new Info("BottomRow")
         {
             Height = RowHeight,
             FlexWidth = 1
@@ -139,13 +150,13 @@ public class ModHelperOption : ModHelperComponent
         bottomRow.LayoutGroup.reverseArrangement = true;
 
         // Below is what needs to be ported to BloonsAT
-        modHelperOption.ResetButton = bottomRow.AddButton(new Info("Reset", ResetSize), VanillaSprites.RestartBtn,
+        ResetButton = bottomRow.AddButton(new Info("Reset", ResetSize), VanillaSprites.RestartBtn,
             new Action(() =>
             {
                 MenuManager.instance.returnSound.Play("ClickSounds");
             }));
 
 
-        return modHelperOption;
+        return this;
     }
 }

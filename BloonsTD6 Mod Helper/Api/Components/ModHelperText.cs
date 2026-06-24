@@ -67,11 +67,20 @@ public class ModHelperText : ModHelperComponent
     /// <param name="align">Alignment of text</param>
     /// <returns>The created ModHelperText</returns>
     public static ModHelperText Create(Info info, string text, float fontSize = 42,
+        TextAlignmentOptions align = DefaultTextAlignment) =>
+        Create<ModHelperText>(info).Init(text, fontSize, align);
+
+    /// <summary>
+    /// Initializes this ModHelperText
+    /// </summary>
+    /// <param name="text">The text to display</param>
+    /// <param name="fontSize">Size of font</param>
+    /// <param name="align">Alignment of text</param>
+    /// <returns>this ModHelperText</returns>
+    public ModHelperText Init(string text, float fontSize = 42,
         TextAlignmentOptions align = DefaultTextAlignment)
     {
-        var modHelperText = Create<ModHelperText>(info);
-
-        var textMesh = modHelperText.AddComponent<NK_TextMeshProUGUI>();
+        var textMesh = AddComponent<NK_TextMeshProUGUI>();
 
         textMesh.AutoLocalize = true;
         textMesh.localizeKey = text;
@@ -83,7 +92,7 @@ public class ModHelperText : ModHelperComponent
         textMesh.lineSpacing = fontSize / 2;
         textMesh.parseCtrlCharacters = false;
 
-        return modHelperText;
+        return this;
     }
 
 

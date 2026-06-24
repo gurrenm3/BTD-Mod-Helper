@@ -169,25 +169,33 @@ public class ModHelperPopupMenu : ModHelperPanel
     /// <param name="info">the initial info for the menu</param>
     /// <param name="fitSize">whether to use a <see cref="ContentSizeFitter"/></param>
     /// <returns>the created menu</returns>
-    public static ModHelperPopupMenu Create(Info info, bool fitSize = true)
+    public static ModHelperPopupMenu Create(Info info, bool fitSize = true) =>
+        ModHelperComponent.Create<ModHelperPopupMenu>(info).Init(fitSize);
+
+    /// <summary>
+    /// Initializes this ModHelperPopupMenu
+    /// </summary>
+    /// <param name="fitSize">whether to use a <see cref="ContentSizeFitter"/></param>
+    /// <returns>this ModHelperPopupMenu</returns>
+    public ModHelperPopupMenu Init(bool fitSize = true)
     {
-        var menu = Create<ModHelperPopupMenu>(info, MelonMain.CurrentDefaultWindowColor.MainPanelSprite,
+        base.Init(MelonMain.CurrentDefaultWindowColor.MainPanelSprite,
             RectTransform.Axis.Vertical, ModHelperWindow.Margin, ModHelperWindow.Margin);
 
-        menu.Background.pixelsPerUnitMultiplier = 2;
+        Background.pixelsPerUnitMultiplier = 2;
 
-        menu.LayoutGroup.childForceExpandWidth = true;
+        LayoutGroup.childForceExpandWidth = true;
 
         if (fitSize)
         {
-            var fitter = menu.AddComponent<ContentSizeFitter>();
+            var fitter = AddComponent<ContentSizeFitter>();
             fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
             fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         }
 
-        menu.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
-        return menu;
+        return this;
     }
 
 }

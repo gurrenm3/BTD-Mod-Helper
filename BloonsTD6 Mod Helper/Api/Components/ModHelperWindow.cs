@@ -271,18 +271,32 @@ public class ModHelperWindow : ModHelperPanel
     /// <param name="dockTitle">title for the dock button</param>
     /// <returns>the created ModHelperWindow</returns>
     public static ModHelperWindow Create(Info info, int topBarHeight = 50, string icon = null, string title = null,
+        float iconScale = 1f, string dockTitle = null) =>
+        ModHelperComponent.Create<ModHelperWindow>(info).Init(topBarHeight, icon, title, iconScale, dockTitle);
+
+    /// <summary>
+    /// Initializes this ModHelperWindow
+    /// </summary>
+    /// <param name="topBarHeight">the height of the top bar</param>
+    /// <param name="icon">the icon to display, or null for none</param>
+    /// <param name="title">the title to display, or null for none</param>
+    /// <param name="iconScale">visual scale for the icon</param>
+    /// <param name="dockTitle">title for the dock button</param>
+    /// <returns>this ModHelperWindow</returns>
+    public ModHelperWindow Init(int topBarHeight = 50, string icon = null, string title = null,
         float iconScale = 1f, string dockTitle = null)
     {
-        var window = Create<ModHelperWindow>(info, "");
-        window.SetParent(ModHelperDock.WindowParent);
+        base.Init("");
 
-        window.Background.pixelsPerUnitMultiplier = 2;
-        window.ApplyWindowColor(window, ModWindowColor.PanelType.Main);
+        SetParent(ModHelperDock.WindowParent);
 
-        window.rootCanvas = window.AddComponent<CanvasGroup>();
+        Background.pixelsPerUnitMultiplier = 2;
+        ApplyWindowColor(this, ModWindowColor.PanelType.Main);
 
-        window.topBarHeight = topBarHeight;
-        var topBar = window.topBar = window.AddPanel(new Info("TopBar")
+        rootCanvas = AddComponent<CanvasGroup>();
+
+        this.topBarHeight = topBarHeight;
+        topBar = AddPanel(new Info("TopBar")
         {
             AnchorMin = new Vector2(0, 1),
             AnchorMax = new Vector2(1, 1),
@@ -290,7 +304,7 @@ public class ModHelperWindow : ModHelperPanel
             Height = topBarHeight + Margin
         });
 
-        var topLeftGroup = window.topLeftGroup = topBar.AddPanel(new Info("LeftGroup")
+        topLeftGroup = topBar.AddPanel(new Info("LeftGroup")
         {
             Anchor = new Vector2(0, 1),
             Pivot = new Vector2(0, 1)
@@ -304,15 +318,15 @@ public class ModHelperWindow : ModHelperPanel
 
         if (icon != null)
         {
-            var image = window.icon = topLeftGroup.AddImage(new Info("Icon", topBarHeight), icon);
+            var image = this.icon = topLeftGroup.AddImage(new Info("Icon", topBarHeight), icon);
             image.Image.enabled = !string.IsNullOrWhiteSpace(icon);
-            window.icon.transform.localScale = Vector3.one * iconScale;
+            this.icon.transform.localScale = Vector3.one * iconScale;
         }
 
         if (title != null)
         {
-            window.title = topLeftGroup.AddText(new Info("Title", 1000, topBarHeight), title);
-            window.title.SizeWidthToText();
+            this.title = topLeftGroup.AddText(new Info("Title", 1000, topBarHeight), title);
+            this.title.SizeWidthToText();
         }
 
         var fitter = topLeftGroup.AddComponent<ContentSizeFitter>();
@@ -320,7 +334,7 @@ public class ModHelperWindow : ModHelperPanel
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
 
-        var topCenterGroup = window.topCenterGroup = topBar.AddPanel(new Info("CenterGroup")
+        topCenterGroup = topBar.AddPanel(new Info("CenterGroup")
         {
             Anchor = new Vector2(0.5f, 1)
         }, null, RectTransform.Axis.Horizontal, Margin);
@@ -335,7 +349,7 @@ public class ModHelperWindow : ModHelperPanel
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
 
-        var topRightGroup = window.topRightGroup = topBar.AddPanel(new Info("RightGroup")
+        topRightGroup = topBar.AddPanel(new Info("RightGroup")
         {
             Anchor = new Vector2(1, 1),
             Pivot = new Vector2(1, 1)
@@ -353,72 +367,72 @@ public class ModHelperWindow : ModHelperPanel
         fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
         fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-        var closeButton = window.closeButton = topRightGroup.AddButton(new Info("Close", topBarHeight),
-                              VanillaSprites.SmallSquareWhiteGradient, new Action(window.Close));
+        closeButton = topRightGroup.AddButton(new Info("Close", topBarHeight),
+            VanillaSprites.SmallSquareWhiteGradient, new Action(Close));
         closeButton.AddImage(new Info("Image", InfoPreset.FillParent), VanillaSprites.CloseIcon);
         closeButton.Button.UseBackgroundTint();
 
-        var settingsButton = window.settingsButton = topRightGroup.AddButton(new Info("SettingsButton", topBarHeight),
-                                 VanillaSprites.SmallSquareWhiteGradient, new Action(() =>
-                                 {
-                                     window.nonRightClickOpened = true;
-                                     window.OpenRightClickMenu();
-                                 }));
+        settingsButton = topRightGroup.AddButton(new Info("SettingsButton", topBarHeight),
+            VanillaSprites.SmallSquareWhiteGradient, new Action(() =>
+            {
+                nonRightClickOpened = true;
+                OpenRightClickMenu();
+            }));
         settingsButton.AddImage(new Info("Image", InfoPreset.FillParent), VanillaSprites.SettingsIcon);
         settingsButton.Button.UseBackgroundTint();
 
-        var minButton = window.minButton = topRightGroup.AddButton(new Info("Minimize", topBarHeight),
-                            VanillaSprites.SmallSquareWhiteGradient, new Action(window.ToggleMinimized));
+        minButton = topRightGroup.AddButton(new Info("Minimize", topBarHeight),
+            VanillaSprites.SmallSquareWhiteGradient, new Action(ToggleMinimized));
         minButton.AddImage(new Info("Image", InfoPreset.FillParent), ModHelperSprites.Minus);
         minButton.Button.UseBackgroundTint();
 
-        var main = window.main = window.AddPanel(new Info("Main")
+        main = AddPanel(new Info("Main")
         {
             AnchorMin = new Vector2(0, 0),
             AnchorMax = new Vector2(1, 1),
             Pivot = new Vector2(0.5f, 1)
         }, "");
-        window.ApplyWindowColor(main, ModWindowColor.PanelType.Insert);
+        ApplyWindowColor(main, ModWindowColor.PanelType.Insert);
         main.RectTransform.offsetMin = new Vector2(0, 0);
         main.RectTransform.offsetMax = new Vector2(0, -Margin - topBarHeight);
 
-        var content = window.content = main.AddPanel(new Info("Content", InfoPreset.FillParent)
+        content = main.AddPanel(new Info("Content", InfoPreset.FillParent)
         {
             Pivot = new Vector2(0.5f, 1)
         });
-        var contentCanvas = window.contentCanvas = content.AddComponent<CanvasGroup>();
+        contentCanvas = content.AddComponent<CanvasGroup>();
         contentCanvas.ignoreParentGroups = true;
 
 
-        var resizeIndicators = window.resizeIndicators = window.AddPanel(new Info("ResizeIndicators"));
+        resizeIndicators = AddPanel(new Info("ResizeIndicators"));
         resizeIndicators.SetActive(false);
 
-        window.resizeRight = resizeIndicators.AddImage(new Info("Right", 25, 0, 50), VanillaSprites.NextArrowSmall);
-        window.resizeRight.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        resizeRight = resizeIndicators.AddImage(new Info("Right", 25, 0, 50), VanillaSprites.NextArrowSmall);
+        resizeRight.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-        window.resizeLeft = resizeIndicators.AddImage(new Info("Left", -25, 0, 50), VanillaSprites.NextArrowSmall);
-        window.resizeLeft.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        resizeLeft = resizeIndicators.AddImage(new Info("Left", -25, 0, 50), VanillaSprites.NextArrowSmall);
+        resizeLeft.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
-        window.resizeTop = resizeIndicators.AddImage(new Info("Top", 0, 25, 50), VanillaSprites.NextArrowSmall);
-        window.resizeTop.transform.localRotation = Quaternion.Euler(0, 0, 90);
+        resizeTop = resizeIndicators.AddImage(new Info("Top", 0, 25, 50), VanillaSprites.NextArrowSmall);
+        resizeTop.transform.localRotation = Quaternion.Euler(0, 0, 90);
 
-        window.resizeBot = resizeIndicators.AddImage(new Info("Bot", 0, 25, 50), VanillaSprites.NextArrowSmall);
-        window.resizeBot.transform.localRotation = Quaternion.Euler(0, 0, -90);
+        resizeBot = resizeIndicators.AddImage(new Info("Bot", 0, 25, 50), VanillaSprites.NextArrowSmall);
+        resizeBot.transform.localRotation = Quaternion.Euler(0, 0, -90);
 
 
-        window.rightClickMenu = ModHelperPopupMenu.Create(new Info("RightClickMenu"));
-        window.Add(window.rightClickMenu);
-        window.ApplyWindowColor(window.rightClickMenu, ModWindowColor.PanelType.Main);
+        rightClickMenu = ModHelperPopupMenu.Create(new Info("RightClickMenu"));
+        Add(rightClickMenu);
+        ApplyWindowColor(rightClickMenu, ModWindowColor.PanelType.Main);
 
-        var colorsMenu = CreateColorsMenu(color => window.UpdateWindowColor(color), color => window.WindowColor == color);
-        window.ApplyWindowColor(colorsMenu, ModWindowColor.PanelType.Main);
+        var colorsMenu = CreateColorsMenu(UpdateWindowColor, color => WindowColor == color);
+        ApplyWindowColor(colorsMenu, ModWindowColor.PanelType.Main);
 
-        window.rightClickMenu.AddOption(new Info("Color"), icon: window.WindowColor.MainPanelSprite, subMenu: colorsMenu);
-        window.rightClickMenu.AddOption(new Info("Lock"), icon: VanillaSprites.LockIcon,
-            action: new Action(window.ToggleLocked));
+        rightClickMenu.AddOption(new Info("Color"), icon: WindowColor.MainPanelSprite, subMenu: colorsMenu);
+        rightClickMenu.AddOption(new Info("Lock"), icon: VanillaSprites.LockIcon,
+            action: new Action(ToggleLocked));
 
         var opacityMenu = ModHelperPopupMenu.Create(new Info("Opacity"));
-        foreach (var (kind, canvas) in new[] {("Background", window.rootCanvas), ("Foreground", window.contentCanvas)})
+        foreach (var (kind, canvas) in new[] {("Background", rootCanvas), ("Foreground", contentCanvas)})
         {
             foreach (var opacity in (float[]) [1f, .75f, .5f, .25f])
             {
@@ -431,24 +445,24 @@ public class ModHelperWindow : ModHelperPanel
                 opacityMenu.AddSeparator();
             }
         }
-        window.ApplyWindowColor(opacityMenu, ModWindowColor.PanelType.Main);
+        ApplyWindowColor(opacityMenu, ModWindowColor.PanelType.Main);
 
-        window.rightClickMenu.AddOption(new Info("Opacity"), icon: ModHelperSprites.Transparency, subMenu: opacityMenu);
+        rightClickMenu.AddOption(new Info("Opacity"), icon: ModHelperSprites.Transparency, subMenu: opacityMenu);
 
-        window.rightClickMenu.AddComponent<CanvasGroup>().ignoreParentGroups = true;
+        rightClickMenu.AddComponent<CanvasGroup>().ignoreParentGroups = true;
 
-        window.dockButton = ModHelperDockButton.Create(ModHelperDock.Instance, window, icon, iconScale, dockTitle);
+        dockButton = ModHelperDockButton.Create(ModHelperDock.Instance, this, icon, iconScale, dockTitle);
 
-        window.id = Guid.NewGuid();
+        id = Guid.NewGuid();
 
-        ActiveWindows.Add(window);
+        ActiveWindows.Add(this);
 
-        return window;
+        return this;
     }
 
     [HideFromIl2Cpp]
-    internal static ModHelperPopupMenu CreateColorsMenu(Action<ModWindowColor> colorCallback,
-        Func<ModWindowColor, bool> isSelected)
+    internal static ModHelperPopupMenu CreateColorsMenu(Action<string> colorCallback,
+        Func<string, bool> isSelected)
     {
         var colorsMenu = ModHelperPopupMenu.Create(new Info("Colors"));
 

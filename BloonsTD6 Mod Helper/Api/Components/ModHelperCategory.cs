@@ -35,18 +35,30 @@ public class ModHelperCategory : ModHelperOption
     /// <param name="collapsed">Whether it's collapsed by default or not</param>
     /// <param name="icon">The icon for the category, if any</param>
     /// <returns>The created ModHelperCategory</returns>
-    public static ModHelperCategory Create(string displayName, bool collapsed, string icon = null)
+    public static ModHelperCategory Create(string displayName, bool collapsed, string icon = null) =>
+        ModHelperComponent.Create<ModHelperCategory>(new Info(displayName, PanelWidth, PanelHeight))
+            .Init(displayName, collapsed, icon);
+
+    /// <summary>
+    /// Initializes this ModHelperCategory
+    /// </summary>
+    /// <param name="displayName">The name of the category</param>
+    /// <param name="collapsed">Whether it's collapsed by default or not</param>
+    /// <param name="icon">The icon for the category, if any</param>
+    /// <returns>this ModHelperCategory</returns>
+    public ModHelperCategory Init(string displayName, bool collapsed, string icon = null)
     {
-        var category = Create<ModHelperCategory>(displayName, "", icon);
-        category.collapsed = collapsed;
-        category.FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
+        base.Init(displayName, "", icon);
 
-        category.BottomRow.gameObject.active = false;
+        this.collapsed = collapsed;
+        FitContent(vertical: ContentSizeFitter.FitMode.PreferredSize);
+
+        BottomRow.gameObject.active = false;
 
 
-        category.Name.Text.fontStyle = FontStyles.Underline;
+        Name.Text.fontStyle = FontStyles.Underline;
 
-        var content = category.AddPanel(new Info("CategoryContent")
+        var content = AddPanel(new Info("CategoryContent")
         {
             AnchorMinX = 0, AnchorMaxX = 0
         }, null, RectTransform.Axis.Vertical, 150);
@@ -54,23 +66,23 @@ public class ModHelperCategory : ModHelperOption
 
         var action = new Action<bool>(collapse =>
         {
-            category.collapsed = collapse;
+            this.collapsed = collapse;
             content.gameObject.active = !collapse;
-            var localScale = category.InfoButton.parent.RectTransform.localScale;
-            localScale.y = category.collapsed ? -1 : 1;
-            category.InfoButton.parent.RectTransform.localScale = localScale;
+            var localScale = InfoButton.parent.RectTransform.localScale;
+            localScale.y = this.collapsed ? -1 : 1;
+            InfoButton.parent.RectTransform.localScale = localScale;
         });
         action(collapsed);
 
 
-        category.InfoButton.Image.SetSprite(VanillaSprites.ArrowHideBtn);
+        InfoButton.Image.SetSprite(VanillaSprites.ArrowHideBtn);
 
-        category.InfoButton.Button.AddOnClick(() =>
+        InfoButton.Button.AddOnClick(() =>
         {
-            action(!category.collapsed);
+            action(!this.collapsed);
             MenuManager.instance.buttonClick2Sound.Play("ClickSounds");
         });
 
-        return category;
+        return this;
     }
 }

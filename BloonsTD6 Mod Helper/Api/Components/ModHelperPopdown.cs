@@ -91,19 +91,40 @@ public class ModHelperPopdown : ModHelperPanel
     /// <returns>the created popdown</returns>
     public static ModHelperPopdown Create(Info info, Vector2 itemSize, List<string> options,
         UnityAction<int> onValueChanged, Vector2 direction = default, float labelFontSize = 42f,
+        string background = null, Vector2 menuOffset = default, List<string> images = null, bool autosize = false) =>
+        ModHelperComponent.Create<ModHelperPopdown>(info)
+            .Init(itemSize, options, onValueChanged, direction, labelFontSize, background, menuOffset, images, autosize);
+
+    /// <summary>
+    /// Initializes this ModHelperPopdown
+    /// </summary>
+    /// <param name="itemSize">size of each option in the popup menu (before margins/padding)</param>
+    /// <param name="options">the labels for the options</param>
+    /// <param name="onValueChanged">called when an option is selected, index passed in</param>
+    /// <param name="direction">the direction of the dropdown, Vector2.down or Vector2.up will be the most used</param>
+    /// <param name="labelFontSize">text size for label</param>
+    /// <param name="background">background image, or null</param>
+    /// <param name="menuOffset">position offset for the menu</param>
+    /// <param name="images">images guids to use for the options</param>
+    /// <param name="autosize"><see cref="autosize"/></param>
+    /// <returns>this ModHelperPopdown</returns>
+    public ModHelperPopdown Init(Vector2 itemSize, List<string> options,
+        UnityAction<int> onValueChanged, Vector2 direction = default, float labelFontSize = 42f,
         string background = null, Vector2 menuOffset = default, List<string> images = null, bool autosize = false)
     {
-        var popdown = Create<ModHelperPopdown>(info, background ?? VanillaSprites.SmallSquareWhiteGradient);
-        popdown.autosize = autosize;
+        base.Init(background ?? VanillaSprites.SmallSquareWhiteGradient);
 
-        var text = popdown.AddText(new Info("DropdownText", InfoPreset.FillParent), "", labelFontSize,
+        var height = initialInfo.Height;
+        this.autosize = autosize;
+
+        var text = AddText(new Info("DropdownText", InfoPreset.FillParent), "", labelFontSize,
             TextAlignmentOptions.MidlineLeft);
         text.RectTransform.offsetMin = new Vector2(ModHelperWindow.Margin / 2f, 0);
 
-        var arrow = popdown.AddImage(new Info("Arrow", info.Height * 1.5f)
+        var arrow = AddImage(new Info("Arrow", height * 1.5f)
         {
             Anchor = new Vector2(1, 0.5f),
-            X = info.Height * -.75f
+            X = height * -.75f
         }, VanillaSprites.NextArrowSmall);
 
         if (direction == default)
@@ -112,13 +133,13 @@ public class ModHelperPopdown : ModHelperPanel
         }
         arrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
-        var menu = popdown.menu = ModHelperPopupMenu.Create(new Info("Template")
+        var menu = this.menu = ModHelperPopupMenu.Create(new Info("Template")
         {
             Position = menuOffset,
             Anchor = new Vector2(0.5f, 0.5f) + direction / 2,
             Pivot = new Vector2(0.5f, 0.5f) - direction / 2,
         });
-        menu.parentComponent = popdown;
+        menu.parentComponent = this;
         menu.autoHide = false;
         menu.disableNextFrame = true;
 
@@ -129,12 +150,12 @@ public class ModHelperPopdown : ModHelperPanel
         option.text.Text.fontSize = labelFontSize;
         menu.AddOption(option);
 
-        var dropdown = popdown.dropdown = popdown.AddComponent<TMP_Dropdown>();
+        var dropdown = this.dropdown = AddComponent<TMP_Dropdown>();
         dropdown.captionText = text.Text;
         dropdown.template = menu;
         dropdown.itemText = option.text.Text;
         dropdown.itemImage = option.icon?.Image;
-        dropdown.image = popdown.Background;
+        dropdown.image = Background;
         dropdown.UseBackgroundTint();
         dropdown.alphaFadeSpeed = 0;
 
@@ -143,13 +164,13 @@ public class ModHelperPopdown : ModHelperPanel
 
         if (images != null)
         {
-            dropdown.captionImage = popdown.AddImage(new Info("Icon", info.Height)
+            dropdown.captionImage = AddImage(new Info("Icon", height)
             {
                 Anchor = new Vector2(0, 0.5f),
                 Pivot = new Vector2(0, 0.5f)
             }, "").Image;
-            text.RectTransform.offsetMin = new Vector2(info.Height + ModHelperWindow.Margin, 0);
-            popdown.images = images.ToArray();
+            text.RectTransform.offsetMin = new Vector2(height + ModHelperWindow.Margin, 0);
+            this.images = images.ToArray();
         }
 
         dropdown.onValueChanged.AddListener(new Action<int>(i =>
@@ -160,16 +181,16 @@ public class ModHelperPopdown : ModHelperPanel
                 dropdown.captionImage.SetSprite(images.Get(i));
             }
 
-            if (!popdown.autosize) return;
+            if (!this.autosize) return;
 
             TaskScheduler.ScheduleTask(() =>
             {
                 var desiredWidth =
                     dropdown.captionText.preferredWidth +
-                    info.Height * 1.5f +
+                    height * 1.5f +
                     ModHelperWindow.Margin +
-                    (dropdown.captionImage == null ? 0 : info.Height + ModHelperWindow.Margin / 2f);
-                popdown.LayoutElement.preferredWidth = popdown.LayoutElement.minWidth = desiredWidth;
+                    (dropdown.captionImage == null ? 0 : height + ModHelperWindow.Margin / 2f);
+                LayoutElement.preferredWidth = LayoutElement.minWidth = desiredWidth;
             });
         }));
 
@@ -178,8 +199,8 @@ public class ModHelperPopdown : ModHelperPanel
             dropdown.onValueChanged.Invoke(dropdown.value);
         }, () => dropdown.transform.parent != null && dropdown.isActiveAndEnabled, stopCondition: () => dropdown == null);
 
-        popdown.Add(menu);
+        Add(menu);
 
-        return popdown;
+        return this;
     }
 }

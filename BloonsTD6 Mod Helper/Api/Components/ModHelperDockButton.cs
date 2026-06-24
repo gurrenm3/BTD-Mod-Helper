@@ -58,18 +58,33 @@ public sealed class ModHelperDockButton : ModHelperPanel
     public static ModHelperDockButton Create(ModHelperPanel parent, ModHelperWindow window, string icon = null,
         float iconScale = 1f, string dockTitle = null)
     {
+        var width = window.ModWindow?.DockButtonWidth ?? 200;
+        return Create<ModHelperDockButton>(new Info(window.name, Size, width))
+            .Init(parent, window, icon, iconScale, dockTitle);
+    }
+
+    /// <summary>
+    /// Initializes this Dock button for a window
+    /// </summary>
+    /// <param name="parent">Parent panel of the button</param>
+    /// <param name="window">window the button will correspond to</param>
+    /// <param name="icon">icon to use for the button</param>
+    /// <param name="iconScale">visual scale for the icon</param>
+    /// <param name="dockTitle">title for the dock button</param>
+    /// <returns>the ModHelperDockButton</returns>
+    public ModHelperDockButton Init(ModHelperPanel parent, ModHelperWindow window, string icon = null,
+        float iconScale = 1f, string dockTitle = null)
+    {
         var modWindow = window.ModWindow;
+        var w = modWindow?.DockButtonWidth ?? 200;
 
-        var width = modWindow?.DockButtonWidth ?? 200;
+        SetParent(parent);
+        this.window = window;
+        width = w;
+        iconRotated = modWindow?.RotateDockIcon ?? false;
 
-        var dockButton = Create<ModHelperDockButton>(new Info(window.name, Size, width));
-        dockButton.SetParent(parent);
-        dockButton.window = window;
-        dockButton.width = width;
-        dockButton.iconRotated = modWindow?.RotateDockIcon ?? false;
-
-        var button = dockButton.button = dockButton.AddButton(new Info("Button", width, Size),
-                         VanillaSprites.BlueBtnLong, new Action(dockButton.OnClick));
+        var button = this.button = AddButton(new Info("Button", w, Size),
+                         VanillaSprites.BlueBtnLong, new Action(OnClick));
         button.Image.type = Image.Type.Sliced;
         button.Image.pixelsPerUnitMultiplier = 3;
         button.Button.transition = Selectable.Transition.ColorTint;
@@ -78,7 +93,7 @@ public sealed class ModHelperDockButton : ModHelperPanel
 
         if (modWindow?.ShowIconInDock != false && icon != null)
         {
-            var image = dockButton.icon = button.AddImage(new Info("Icon", Size)
+            var image = this.icon = button.AddImage(new Info("Icon", Size)
             {
                 Anchor = new Vector2(0, 0.5f),
                 X = Size / 2f
@@ -89,14 +104,14 @@ public sealed class ModHelperDockButton : ModHelperPanel
 
         if (!string.IsNullOrEmpty(dockTitle))
         {
-            var text = dockButton.text = button.AddText(new Info("Text", InfoPreset.FillParent), dockTitle, 32);
+            var text = this.text = button.AddText(new Info("Text", InfoPreset.FillParent), dockTitle, 32);
             text.EnableAutoSizing(32);
             text.Text.margin = text.Text.margin with
             {
                 z = 10
             };
 
-            if (dockButton.icon is not null)
+            if (this.icon is not null)
             {
                 text.RectTransform.offsetMin = new Vector2(Size, 0);
             }
@@ -104,9 +119,9 @@ public sealed class ModHelperDockButton : ModHelperPanel
 
 
         var screenSize = FindObjectOfType<ScreenResizeDetector>();
-        dockButton.UpdatePosition(screenSize.currentWidth, screenSize.currentHeight);
+        UpdatePosition(screenSize.currentWidth, screenSize.currentHeight);
 
-        return dockButton;
+        return this;
     }
 
     internal static float Scale(AspectRatio aspectRatio) => aspectRatio switch

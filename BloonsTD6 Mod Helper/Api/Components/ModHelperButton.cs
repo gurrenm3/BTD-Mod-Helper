@@ -37,12 +37,21 @@ public class ModHelperButton : ModHelperComponent
     /// <param name="info">The name/position/size info</param>
     /// <param name="sprite">The button's visuals</param>
     /// <param name="onClick">What should happen when the button is clicked</param>
-    /// <returns></returns>
+    /// <returns>the ModHelperButton</returns>
     public static ModHelperButton Create(Info info, string sprite, Action onClick = null)
     {
-        var modHelperButton = Create<ModHelperButton>(info);
+        return Create<ModHelperButton>(info).Init(sprite, onClick);
+    }
 
-        var image = modHelperButton.AddComponent<Image>();
+    /// <summary>
+    /// Initializes this ModHelperButton
+    /// </summary>
+    /// <param name="sprite">The button's visuals</param>
+    /// <param name="onClick">What should happen when the button is clicked</param>
+    /// <returns>the ModHelperButton</returns>
+    public ModHelperButton Init(string sprite, Action onClick)
+    {
+        var image = AddComponent<Image>();
         image.type = Image.Type.Sliced;
         if (sprite != null)
         {
@@ -53,7 +62,7 @@ public class ModHelperButton : ModHelperComponent
             image.enabled = false;
         }
 
-        var button = modHelperButton.AddComponent<Button>();
+        var button = AddComponent<Button>();
         if (onClick != null)
         {
             button.onClick.AddListener(onClick.Invoke);
@@ -61,11 +70,11 @@ public class ModHelperButton : ModHelperComponent
 
         button.transition = Selectable.Transition.Animation;
 
-        var animator = modHelperButton.AddComponent<Animator>();
+        var animator = AddComponent<Animator>();
         animator.runtimeAnimatorController = Animations.GlobalButtonAnimation;
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
 
-        return modHelperButton;
+        return this;
     }
 
 

@@ -31,7 +31,7 @@ public class ModHelperPanel : ModHelperComponent
     /// <returns>The created ModHelperPanel</returns>
     public static ModHelperPanel Create(Info info, string backgroundSprite = null,
         RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0) =>
-        Create<ModHelperPanel>(info, backgroundSprite, layoutAxis, spacing, padding);
+        ModHelperComponent.Create<ModHelperPanel>(info).Init(backgroundSprite, layoutAxis, spacing, padding);
 
     /// <inheritdoc cref="Create" />
     protected static T Create<T>(Info info, string backgroundSprite = null,
@@ -39,10 +39,24 @@ public class ModHelperPanel : ModHelperComponent
         where T : ModHelperPanel
     {
         var modHelperPanel = ModHelperComponent.Create<T>(info);
+        modHelperPanel.Init(backgroundSprite, layoutAxis, spacing, padding);
+        return modHelperPanel;
+    }
 
+    /// <summary>
+    /// Initializes this ModHelperPanel
+    /// </summary>
+    /// <param name="backgroundSprite">The panel's background sprite</param>
+    /// <param name="layoutAxis">If present, creates this panel with a Horizontal/Vertical layout group</param>
+    /// <param name="spacing">The layout group's spacing</param>
+    /// <param name="padding">The layout group's padding</param>
+    /// <returns>this ModHelperPanel</returns>
+    public ModHelperPanel Init(string backgroundSprite = null,
+        RectTransform.Axis? layoutAxis = null, float spacing = 0, int padding = 0)
+    {
         if (backgroundSprite != null)
         {
-            var background = modHelperPanel.AddComponent<Image>();
+            var background = AddComponent<Image>();
             background.type = Image.Type.Sliced;
             background.SetSprite(ModContent.CreateSpriteReference(backgroundSprite));
         }
@@ -51,26 +65,26 @@ public class ModHelperPanel : ModHelperComponent
         {
             if (layoutAxis == RectTransform.Axis.Horizontal)
             {
-                modHelperPanel.AddComponent<HorizontalLayoutGroup>();
-                modHelperPanel.LayoutGroup.childAlignment = TextAnchor.MiddleLeft;
+                AddComponent<HorizontalLayoutGroup>();
+                LayoutGroup.childAlignment = TextAnchor.MiddleLeft;
             }
             else
             {
-                modHelperPanel.AddComponent<VerticalLayoutGroup>();
-                modHelperPanel.LayoutGroup.childAlignment = TextAnchor.UpperCenter;
+                AddComponent<VerticalLayoutGroup>();
+                LayoutGroup.childAlignment = TextAnchor.UpperCenter;
             }
 
-            modHelperPanel.LayoutGroup.spacing = spacing;
-            modHelperPanel.LayoutGroup.childForceExpandHeight = false;
-            modHelperPanel.LayoutGroup.childForceExpandWidth = false;
+            LayoutGroup.spacing = spacing;
+            LayoutGroup.childForceExpandHeight = false;
+            LayoutGroup.childForceExpandWidth = false;
 
             if (padding > 0)
             {
-                modHelperPanel.LayoutGroup.SetPadding(padding);
+                LayoutGroup.SetPadding(padding);
             }
         }
 
-        return modHelperPanel;
+        return this;
     }
 
     /// <summary>

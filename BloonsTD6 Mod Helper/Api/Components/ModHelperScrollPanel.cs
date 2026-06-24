@@ -171,11 +171,6 @@ public class ModHelperScrollPanel : ModHelperPanel
         return scrollbar;
     }
 
-    /// <inheritdoc cref="Create{T}" />
-    public static ModHelperScrollPanel Create(Info info, RectTransform.Axis? axis,
-        string backgroundSprite = null, float spacing = 0, int padding = 0) =>
-        Create<ModHelperScrollPanel>(info, axis, backgroundSprite, spacing, padding);
-
     /// <summary>
     /// Creates a new ModHelperScrollPanel
     /// </summary>
@@ -185,13 +180,35 @@ public class ModHelperScrollPanel : ModHelperPanel
     /// <param name="spacing">If axis is not null, then the layout spacing for the items</param>
     /// <param name="padding"></param>
     /// <returns>The created ModHelperScrollPanel</returns>
+    public static ModHelperScrollPanel Create(Info info, RectTransform.Axis? axis, string backgroundSprite = null,
+        float spacing = 0, int padding = 0) =>
+        ModHelperComponent.Create<ModHelperScrollPanel>(info).Init(axis, backgroundSprite, spacing, padding);
+
+    /// <inheritdoc cref="Create" />
     public static T Create<T>(Info info, RectTransform.Axis? axis,
         string backgroundSprite = null, float spacing = 0, int padding = 0) where T : ModHelperScrollPanel
     {
-        var newPanel = Create<T>(info, backgroundSprite);
-        var scrollRect = newPanel.AddComponent<ScrollRect>();
+        var newPanel = ModHelperComponent.Create<T>(info);
+        newPanel.Init(axis, backgroundSprite, spacing, padding);
+        return newPanel;
+    }
 
-        var scrollContent = newPanel.AddPanel(new Info("ScrollContent")
+    /// <summary>
+    /// Initializes this ModHelperScrollPanel
+    /// </summary>
+    /// <param name="axis">The axis that it scrolls in, or null for both directions</param>
+    /// <param name="backgroundSprite">The panel's background sprite</param>
+    /// <param name="spacing">If axis is not null, then the layout spacing for the items</param>
+    /// <param name="padding"></param>
+    /// <returns>The created ModHelperScrollPanel</returns>
+    public ModHelperScrollPanel Init(RectTransform.Axis? axis,
+        string backgroundSprite = null, float spacing = 0, int padding = 0)
+    {
+        base.Init(backgroundSprite);
+
+        var scrollRect = AddComponent<ScrollRect>();
+
+        var scrollContent = AddPanel(new Info("ScrollContent")
         {
             AnchorMin = new Vector2(
                 axis == RectTransform.Axis.Vertical ? 0 : 0.5f,
@@ -200,20 +217,20 @@ public class ModHelperScrollPanel : ModHelperPanel
                 axis == RectTransform.Axis.Vertical ? 1 : 0.5f,
                 axis == RectTransform.Axis.Horizontal ? 1 : 0.5f)
         }, null, axis, spacing, padding);
-        scrollContent.SetParent(newPanel);
+        scrollContent.SetParent(this);
 
 
         scrollContent.AddComponent<NK_TextMeshProUGUI>(); // so that everywhere in the content window is draggable
         scrollRect.content = scrollContent.RectTransform;
         scrollRect.content.pivot = new Vector2(0.5f, 1);
-        scrollRect.viewport = newPanel.RectTransform;
+        scrollRect.viewport = RectTransform;
         scrollRect.scrollSensitivity = 100;
 
-        newPanel.AddComponent<Mask>();
+        AddComponent<Mask>();
 
         if (axis != null)
         {
-            var contentSizeFitter = newPanel.contentSizeFitter = scrollContent.AddComponent<ContentSizeFitter>();
+            contentSizeFitter = scrollContent.AddComponent<ContentSizeFitter>();
             if (axis == RectTransform.Axis.Horizontal)
             {
                 scrollRect.vertical = false;
@@ -228,7 +245,6 @@ public class ModHelperScrollPanel : ModHelperPanel
             }
         }
 
-
-        return newPanel;
+        return this;
     }
 }

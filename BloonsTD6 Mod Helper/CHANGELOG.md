@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a new `Tween` animation helper for animating transforms, UI positions / sizes, etc
 - Added a `ModTowerSet.ShowInMonkeysScreen` override for controlling whether custom tower sets appear in the modded monkey select menu
 - Fixed `AddTsmButton` sound behavior
+- `ModHelperComponent`s now all have separate static `Create` methods and instance `Init` methods, making it easier to make other custom components that inherit from `ModHelperComponents` and to apply `ModHelperComponent`s to existing gameobjects
 
 ## [3.6.5] - 2026-06-12
 
