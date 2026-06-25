@@ -300,7 +300,8 @@ public static class ResourceHandler
             var texture = new Texture2D(2, 2)
             {
                 filterMode = imageSettings.FilterMode,
-                mipMapBias = imageSettings.MipMapBias
+                mipMapBias = imageSettings.MipMapBias,
+                wrapMode = imageSettings.WrapMode
             };
             texture.LoadImage(bytes);
             AddTexture(id, texture);

@@ -4,7 +4,6 @@ This guide will cover both the inclusion of custom .png files to your mod and cu
 
 ## Including the PNGs
 
-
 <details>
 <summary>This section only applies anymore if you aren't following the mod template / didn't use the Create Mod button</summary>
 
@@ -26,7 +25,7 @@ The best way to access your textures once you've included them as resources is u
 
 If you're working in a class that extends `ModContent`, then you can use some of the non-static methods like `GetTextureGUID(string name)`, `GetSpriteReference(string name)`, `GetTexture(string name)`, and `GetSprite(string name)` that return your texture in various forms that you might need it in.
 
-For all of those methods, the `name` parameter is the file name of your image without the .png file extension. 
+For all of those methods, the `name` parameter is the file name of your image without the .png file extension.
 
 If you're working somewhere outside of a class extending `ModContent`, then you'll use the equivalent static `ModContent` methods like `ModContent.GetTexture<T>(string name)` where T is your `BloonsTD6Mod` extending class. You have to specify the Mod class for these static methods in order for it to get to the correct internal ID for it.
 
@@ -40,8 +39,16 @@ For example, for `MyIcon.png`, add `MyIcon.png.json` as an embedded resource:
 {
   "FilterMode": "Trilinear",
   "PixelsPerUnit": 20,
-  "Pivot": [0.5, 0.5],
-  "Border": [20, 20, 20, 20]
+  "Pivot": [
+    0.5,
+    0.5
+  ],
+  "Border": [
+    20,
+    20,
+    20,
+    20
+  ]
 }
 ```
 
@@ -49,6 +56,7 @@ Supported settings are:
 
 - `FilterMode`: Unity `FilterMode`, such as `"Point"`, `"Bilinear"`, or `"Trilinear"`
 - `MipMapBias`: texture mip map bias
+- `WrapMode`: texture wrap mode, such as `"Repeat"`, `"Clamp"`, `"Mirror"`, `"MirrorOnce"`
 - `Pivot`: sprite pivot as `[x, y]`
 - `PixelsPerUnit`: sprite pixels per unit
 - `Extrude`: sprite extrude amount
@@ -97,7 +105,6 @@ To get the .png files to edit for custom mesh textures, you can either use somet
 The easiest way to use your display is through our `ApplyDisplay<T>()` extension methods present on things that you'd be using them for like `TowerModel`s, `ProjectileModel`s or just `DisplayModel`s.
 
 Note that for Towers, there's a special `ModTowerDisplay` class you ought to use that you can read about [here](https://github.com/gurrenm3/BTD-Mod-Helper/wiki/Common-Extension-Methods).
-
 
 # Fully Custom Displays
 

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BTD_Mod_Helper.Api.Internal;
+using BTD_Mod_Helper.Api.UI;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models.TowerSets;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
+using UnityEngine;
 
 namespace BTD_Mod_Helper.Api.Towers;
 
@@ -81,7 +84,6 @@ public abstract class ModTowerSet : NamedModContent
     /// <summary>
     /// SpriteReference for the portrait
     /// </summary>
-    [Obsolete("Only the Portrait property used")]
     public virtual SpriteReference PortraitReference => GetSpriteReference(Portrait);
 
     /// <summary>
@@ -111,6 +113,16 @@ public abstract class ModTowerSet : NamedModContent
         Cache[Id] = this;
         TowerSetInt = NextTowerSet;
         NextTowerSet *= 2;
+
+        if (TextureExists(Portrait))
+        {
+            var portrait = GetId(Portrait);
+            ResourceHandler.SpriteCache.Remove(portrait);
+            ResourceHandler.ImageSettings[portrait] = new ImageSettings
+            {
+                Border = new Vector4(45, 45, 45, 45)
+            };
+        }
     }
 
     /*public virtual string Icon => GetType().Name + "-Icon";

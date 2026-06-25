@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added a new `BloonsTD6Mod` override `LateOnNewGameModel` that's like `OnNewGameModel` but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
 - Added `ImageSettings` options for configuring mod image loading behavior
-  - Can control `FilterMode`, `MipMapBias`, `Pivot`, `PixelsPerUnit`, `Extrude`, `MeshType` and `Border`
+  - Can control `FilterMode`, `MipMapBias`, `WrapMode`, `Pivot`, `PixelsPerUnit`, `Extrude`, `MeshType` and `Border`
   - ModHelper `GetSprite` and `GetTexture` methods now accept the class as an additional parameter
   - You can also set default settings for an image, for example if you had `TestPanel.png`, you could then also include `TestPanel.png.json` with content `{ "Border": [20,20,20,20] }` and now TestPanel would work to properly resize with the Sliced image type that `ModHelperPanel` uses
 - Added a new `Tween` animation helper for animating transforms, UI positions / sizes, etc

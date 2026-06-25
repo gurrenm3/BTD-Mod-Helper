@@ -1,6 +1,7 @@
 ﻿using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.Towers;
+using BTD_Mod_Helper.Api.UI;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenuThemes;
@@ -18,17 +19,6 @@ internal class MenuThemeManager_SetTheme
             menu.selectedTower.IsParagon ||
             !newTheme.Is(out TSMThemeDefault defaultTheme)) return;
 
-        var id = ModContent.GetId(modTowerSet.mod, modTowerSet.Portrait);
-        var texture = ResourceHandler.GetTexture(id);
-
-        if (!ResourceHandler.SpriteCache.TryGetValue(id, out var sprite) || sprite == null || sprite.border == Vector4.zero)
-        {
-            var factor = texture.width / 256f;
-            sprite = ResourceHandler.SpriteCache[id] = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height),
-                new Vector2(0.5f, 0.5f), 10.8f * factor, 0, SpriteMeshType.FullRect,
-                factor * 45 * Vector4.one);
-        }
-
-        TaskScheduler.ScheduleTask(() => defaultTheme.towerBackgroundImage.sprite = sprite);
+        TaskScheduler.ScheduleTask(() => defaultTheme.towerBackgroundImage.LoadSprite(modTowerSet.PortraitReference));
     }
 }

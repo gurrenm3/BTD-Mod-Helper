@@ -24,6 +24,11 @@ public record ImageSettings
     public float MipMapBias { get; init; } = -.5f;
 
     /// <summary>
+    /// <see cref="Texture.wrapMode"/>
+    /// </summary>
+    public TextureWrapMode WrapMode {get; init; } = TextureWrapMode.Clamp;
+
+    /// <summary>
     /// <see cref="Sprite.pivot"/>
     /// </summary>
     public Vector2 Pivot { get; init; } = new(0.5f, 0.5f);

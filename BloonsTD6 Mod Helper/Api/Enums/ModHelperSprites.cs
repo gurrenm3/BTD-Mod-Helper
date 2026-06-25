@@ -78,6 +78,11 @@ public static class ModHelperSprites
     public const string DownloadBtnLong = "Ui[BloonsTD6 Mod Helper-DownloadBtnLong]";
 
     /// <summary>
+    /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/Gradient.png?raw=true">Gradient.png</see>
+    /// </summary>
+    public const string Gradient = "Ui[BloonsTD6 Mod Helper-Gradient]";
+
+    /// <summary>
     /// GUID for image <see href="https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/IconMinimal.png?raw=true">IconMinimal.png</see>
     /// </summary>
     public const string IconMinimal = "Ui[BloonsTD6 Mod Helper-IconMinimal]";
