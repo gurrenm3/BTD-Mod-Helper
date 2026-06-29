@@ -23,6 +23,9 @@ env:
   UPDATER_PLUGIN_NAME: UpdaterPlugin
   SOURCE_GENERATORS_NAME: SourceGenerators
 
+  IS_RELEASE: ${{ startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.tag != '') }}
+  RELEASE_TAG: ${{ inputs.tag || (startsWith(github.ref, 'refs/tags/') && github.ref_name) || '' }}
+
 jobs:
   build:
     
@@ -76,14 +79,12 @@ jobs:
         run: dotnet build -c Release -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj"
 
       - name: Upload Mod DLL
-        if: env.ACT != 'true'
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.MOD_HELPER_NAME }}.dll
           path: ${{ env.BLOONSTD6 }}/Mods/${{ env.MOD_HELPER_NAME }}.dll
 
       - name: Upload Mod Documentation
-        if: env.ACT != 'true'
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.MOD_HELPER_NAME }}.xml
@@ -93,7 +94,6 @@ jobs:
         run: dotnet build -c Release -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.UPDATER_PLUGIN_NAME }}/${{ env.UPDATER_PLUGIN_NAME }}.csproj"
 
       - name: Upload Plugin DLL
-        if: env.ACT != 'true'
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.UPDATER_PLUGIN_NAME }}.dll
@@ -103,17 +103,17 @@ jobs:
         run: dotnet build -c Release -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.SOURCE_GENERATORS_NAME }}/${{ env.SOURCE_GENERATORS_NAME }}.csproj"
 
       - name: Publish Source Generators
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: dotnet nuget push "./${{ env.SOURCE_GENERATORS_NAME }}/bin/Release/*.nupkg" --api-key "$NUGET_API_KEY" --source nuget.org --skip-duplicate
 
       - name: Rotate changelog Unreleased section to ${{ github.ref_name }}
         id: changelog
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
         uses: baynezy/ChangeLogger.Action@1.2.4.10
         with:
-          tag: ${{ github.ref_name }}
+          tag: ${{ env.RELEASE_TAG }}
           log-path: "${{ env.PROJECT_NAME }}/CHANGELOG.md"
 
       - name: Commit changelog changes if needed
@@ -134,15 +134,112 @@ jobs:
           if git diff --cached --quiet; then
             echo "CHANGELOG.md on $DEFAULT_BRANCH is already up to date; nothing to commit."
           else
-            git commit -m "Release ${{ github.ref_name }}"
+            git commit -m "Release ${{ env.RELEASE_TAG }}"
             git push origin "$DEFAULT_BRANCH"
             echo "RELEASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           fi
+
+      - name: Build Mod Thunderstore
+        run: dotnet build -c ReleaseLite -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj"
+
+      - name: Install Thunderstore CLI
+        run: |
+          dotnet tool install -g tcli --version 0.2.4
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Prepare README and icon for Thunderstore
+        env:
+          LINK_BASE: "https://github.com/${{ github.repository }}/blob/HEAD"
+          IMAGE_BASE: "https://raw.githubusercontent.com/${{ github.repository }}/HEAD"
+          ICON_PATH: "${{ env.PROJECT_NAME }}/Icon.png"
+          SCRIPT: |
+            import sharp from 'sharp';
+            import fs from 'fs';
+
+            const IMAGE_BASE = process.env.IMAGE_BASE;
+            const LINK_BASE = process.env.LINK_BASE;
+            const isAbsolute = (u) => /^(?:https?:)?\/\/|^\/|^mailto:|^data:/.test(u);
+            const absolutize = (url, base) => {
+              if (!url || isAbsolute(url) || url.startsWith('#')) return url;
+              return `${base}/${url.replace(/^\.\//, '')}`;
+            };
+
+            let content = fs.readFileSync('README.md', 'utf8');
+
+            // Remove sections that should not appear on Thunderstore
+            content = content.replace(/<!-{2,}\s*THUNDERSTORE\s+EXCLUDE\s+START\s*-{2,}>[\s\S]*?<!-{2,}\s*THUNDERSTORE\s+EXCLUDE\s+END\s*-{2,}>/gi, '');
+
+            // Remove <a href="….dll">…</a> download banners
+            content = content.replace(/<a\b[^>]*\bhref=(["'])[^"']*\.dll\1[^>]*>[\s\S]*?<\/a>/gi, '');
+
+            // Rewrite URLs to be absolute
+            content = content
+              .replace(/(<img\b[^>]*\bsrc=)(["'])([^"']+)\2/gi,
+                (_, p, q, u) => `${p}${q}${absolutize(u, IMAGE_BASE)}${q}`)
+              .replace(/(<a\b[^>]*\bhref=)(["'])([^"']+)\2/gi,
+                (_, p, q, u) => `${p}${q}${absolutize(u, LINK_BASE)}${q}`)
+              .replace(/(!\[[^\]]*\]\()([^\s)]+)(\s+"[^"]*")?(\))/g,
+                (_, p, u, t, e) => `${p}${absolutize(u, IMAGE_BASE)}${t || ''}${e}`)
+              .replace(/(?<!!)(\[[^\]]*\]\()([^\s)]+)(\s+"[^"]*")?(\))/g,
+                (_, p, u, t, e) => `${p}${absolutize(u, LINK_BASE)}${t || ''}${e}`);
+
+            fs.writeFileSync('README.md', content);
+
+            // Resize the mod icon to exactly 256x256 (Thunderstore requirement).
+            const iconPath = process.env.ICON_PATH;
+            if (fs.existsSync(iconPath)) {
+              const buffer = await sharp(iconPath).resize(256, 256, {fit: 'cover'}).toBuffer();
+              fs.writeFileSync(iconPath, buffer);
+              console.log(`Resized ${iconPath} to 256x256`);
+            } else {
+              console.warn(`Icon not found at ${iconPath}, skipping resize`);
+            }
+        run: |
+          npm install --no-save --silent sharp
+          node --input-type=module <<<"$SCRIPT"
+          cat README.md
+
+      - name: Build Thunderstore Package
+        if: startsWith(github.ref, 'refs/tags/')
+        working-directory: ${{ env.PROJECT_NAME }}
+        run: |
+          tcli build --package-version ${{ env.RELEASE_TAG }} | tee tcli.log
+          sed -i 's|\x1B\[[0-9;]*m||g' tcli.log # get rid of ansi colors
+          path=$(grep '^Output path ' tcli.log | sed 's|^Output path ||')
+          if [ -z "$path" ]; then
+            echo "tcli build did not produce an Output path" >&2
+            exit 1
+          fi
+          echo "THUNDERSTORE_PACKAGE_PATH=$path" >> "$GITHUB_ENV"
+          name=$(basename "$path")
+          echo "THUNDERSTORE_PACKAGE_NAME=$name" >> "$GITHUB_ENV"
+
+      - name: Upload Thunderstore Package
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.THUNDERSTORE_PACKAGE_NAME }}
+          path: ${{ env.THUNDERSTORE_PACKAGE_PATH }}
+
+      - name: Publish Thunderstore Package
+        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+        working-directory: ${{ env.PROJECT_NAME }}
+        run: tcli publish --file ${{ env.THUNDERSTORE_PACKAGE_PATH }}
+
 
       - name: Release
         uses: softprops/action-gh-release@v3
         if: startsWith(github.ref, 'refs/tags/')
         with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          target_commitish: ${{ env.RELEASE_SHA || github.sha }}
           files: |
             ${{ env.BLOONSTD6 }}/Mods/${{ env.MOD_HELPER_NAME }}.dll
             ${{ env.BLOONSTD6 }}/Mods/${{ env.MOD_HELPER_NAME }}.xml

@@ -1,0 +1,31 @@
+[package]
+name = "Btd6ModHelper"
+namespace = "doombubbles"
+description = "A powerful and easy to use API for modding BTD6."
+websiteUrl = "https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Home"
+
+[package.dependencies]
+LavaGang-MelonLoader = "0.7.3"
+
+[build]
+icon = "./Icon.png"
+readme = "../README.md"
+outdir = "bin"
+
+[[build.copy]]
+source = "./bin/ReleaseLite/BloonsTD6 Mod Helper.dll"
+target = "Btd6ModHelper.dll"
+
+[[build.copy]]
+source = "./CHANGELOG.md"
+target = "./CHANGELOG.md"
+
+[[build.copy]]
+source = "../LICENSE"
+target = "./LICENSE"
+
+[publish]
+repository = "https://thunderstore.io"
+communities = ["bloons-td-6"]
+categories = ["mods", "libraries", "tools"]
+

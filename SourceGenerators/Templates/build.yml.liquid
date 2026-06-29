@@ -129,7 +129,6 @@ jobs:
         run: dotnet build -c Release -p:BloonsTD6="../${\{ env.BLOONSTD6 }}" "${\{ env.PROJECT_NAME }}/${\{ env.PROJECT_NAME }}.csproj"
 
       - name: Upload Mod DLL
-        if: env.ACT != 'true'
         uses: actions/upload-artifact@v7
         with:
           name: ${\{ env.DLL_NAME }}
@@ -166,7 +165,7 @@ jobs:
 
       - name: Rotate changelog Unreleased section to ${\{ env.RELEASE_TAG }}
         id: changelog_rotate
-        if: env.IS_RELEASE == 'true' && steps.changelog_check.outputs.has_section != 'true'
+        if: env.IS_RELEASE == 'true' && steps.changelog_check.outputs.has_section != 'true' && env.ACT != 'true'
         uses: baynezy/ChangeLogger.Action@1.2.4.10
         with:
           tag: ${\{ env.RELEASE_TAG }}
@@ -233,6 +232,9 @@ jobs:
 
             let content = fs.readFileSync('README.md', 'utf8');
 
+            // Remove sections that should not appear on Thunderstore
+            content = content.replace(/<!-{2,}\s*THUNDERSTORE\s+EXCLUDE\s+START\s*-{2,}>[\s\S]*?<!-{2,}\s*THUNDERSTORE\s+EXCLUDE\s+END\s*-{2,}>/gi, '');
+
             // Remove <a href="….dll">…</a> download banners
             content = content.replace(/<a\b[^>]*\bhref=(["'])[^"']*\.dll\1[^>]*>[\s\S]*?<\/a>/gi, '');
 
@@ -275,10 +277,11 @@ jobs:
             exit 1
           fi
           echo "THUNDERSTORE_PACKAGE_PATH=$path" >> "$GITHUB_ENV"
-          echo "THUNDERSTORE_PACKAGE_NAME=$(basename $path)" >> "$GITHUB_ENV"
+          name=$(basename "$path")
+          echo "THUNDERSTORE_PACKAGE_NAME=$name" >> "$GITHUB_ENV"
 
       - name: Upload Thunderstore Package
-        if: env.IS_RELEASE == 'true' && env.ACT != 'true'
+        if: env.IS_RELEASE == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: ${\{ env.THUNDERSTORE_PACKAGE_NAME }}

@@ -27,6 +27,9 @@
     <PropertyGroup Condition="'$(Configuration)' != 'Release' Or '$(CI)' != ''">
         <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'ReleaseLite'">
+        <OutputFolder>Lite</OutputFolder>
+    </PropertyGroup>
 
 
     <ItemGroup>
