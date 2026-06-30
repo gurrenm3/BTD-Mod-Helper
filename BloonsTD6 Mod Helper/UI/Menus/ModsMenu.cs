@@ -4,27 +4,30 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.UI.BTD6;
-using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using Il2CppTMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI.Extensions;
 using Color = UnityEngine.Color;
 using Image = UnityEngine.UI.Image;
 using ModHelperData = BTD_Mod_Helper.Api.Data.ModHelperData;
 using Object = Il2CppSystem.Object;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
+#if !RELEASELITE
+using System.Threading.Tasks;
+using Il2CppAssets.Scripts.Unity.Menu;
+using UnityEngine.EventSystems;
+#endif
+
 namespace BTD_Mod_Helper.UI.Menus;
 
 /// <summary>
@@ -234,6 +237,7 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         modBrowserButton.AddImage(new Info("ComputerMonkey", InfoPreset.FillParent), VanillaSprites.BenjaminIcon);
         modBrowserButton.AddText(new Info("Text", 0, -200, 500, 150), BrowseMods, 60f);
         modBrowserButton.SetActive(InGame.instance == null);
+#endif
 
         var createModButton = bottomButtonGroup.AddButton(new Info("CreateModButton", 225, Padding, 400)
         {
@@ -241,13 +245,16 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
             Pivot = new Vector2(0.5f, 0)
         }, VanillaSprites.EditChallengeIcon, new Action(() =>
         {
+            if (!Directory.Exists(MelonMain.ModSourcesFolder))
+            {
+                Directory.CreateDirectory(MelonMain.ModSourcesFolder);
+                ModHelperFiles.CreateSourcesFiles(MelonMain.ModSourcesFolder);
+            }
             PopupScreen.instance.SafelyQueue(screen => screen.ShowSetNamePopup(CreateMod.Localize(),
                 CreateModDescription.Localize(), new Action<string>(s =>
                 {
-                    if (!string.IsNullOrEmpty(s))
-                    {
-                        TemplateMod.CreateModButtonClicked(s);
-                    }
+                    if (string.IsNullOrEmpty(s)) return;
+                    TemplateMod.CreateModButtonClicked(s);
                 }), null));
             PopupScreen.instance.SafelyQueue(screen => screen.ModifyField(tmpInputField =>
             {
@@ -260,7 +267,6 @@ internal class ModsMenu : ModGameMenu<ExtraSettingsScreen>
         createModButton.AddText(new Info("Text", 0, -200, 500, 100), CreateMod, 60f);
 
         createModButton.SetActive(InGame.instance == null);
-#endif
 
 
         restartPanel = gameMenu.gameObject.AddModHelperPanel(new Info("RestartPanel", -50, -50, 350)

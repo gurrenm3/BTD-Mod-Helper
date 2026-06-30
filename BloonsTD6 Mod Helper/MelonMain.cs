@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using BTD_Mod_Helper;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Data;
@@ -17,13 +16,16 @@ using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Models;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
-using Il2CppAssets.Scripts.Unity.UI_New.Popups;
-using MelonLoader.Utils;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using TaskScheduler = BTD_Mod_Helper.Api.TaskScheduler;
 #if DEBUG
 using BTD_Mod_Helper.Api.Internal.JsonTowers;
+#endif
+#if !RELEASELITE
+using System.Threading.Tasks;
+using Il2CppAssets.Scripts.Unity.UI_New.Popups;
+using MelonLoader.Utils;
 #endif
 
 [assembly: MelonInfo(typeof(MelonMain), ModHelper.Name, ModHelper.Version, ModHelper.Author)]
@@ -98,7 +100,6 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
 
-#if !RELEASELITE
         try
         {
             // Create the files for mod sources
@@ -111,6 +112,7 @@ internal partial class MelonMain : BloonsTD6Mod
             ModHelper.Warning(e);
         }
 
+#if !RELEASELITE
         if (AutoUpdate)
         {
             // ReSharper disable once ConstantNullCoalescingCondition

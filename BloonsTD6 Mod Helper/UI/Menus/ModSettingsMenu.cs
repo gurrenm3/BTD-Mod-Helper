@@ -2,7 +2,6 @@
 using System.Linq;
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Components;
-using BTD_Mod_Helper.Api.ModMenu;
 using BTD_Mod_Helper.Api.ModOptions;
 using Il2CppAssets.Scripts.Unity.UI_New.Settings;
 using UnityEngine;
@@ -106,11 +105,6 @@ public class ModSettingsMenu : ModGameMenu<HotkeysScreen>
     {
         animator?.Play("PopupSlideOut");
         ModSettingsHandler.SaveModSettings(Melon);
-
-        if (Melon is MelonMain && !ModHelper.IsNet6)
-        {
-            ModHelperHttp.UpdateSettings();
-        }
     }
 
     /// <summary>

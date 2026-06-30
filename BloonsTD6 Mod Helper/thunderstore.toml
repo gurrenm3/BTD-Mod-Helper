@@ -17,6 +17,10 @@ source = "./bin/ReleaseLite/BloonsTD6 Mod Helper.dll"
 target = "Btd6ModHelper.dll"
 
 [[build.copy]]
+source = "./bin/ReleaseLite/Btd6ModHelper.xml"
+target = "Btd6ModHelper.xml"
+
+[[build.copy]]
 source = "./CHANGELOG.md"
 target = "./CHANGELOG.md"
 

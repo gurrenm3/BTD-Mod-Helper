@@ -319,7 +319,6 @@ internal partial class MelonMain
         icon = ShareIosIcon
     };
 
-#if !RELEASELITE
     public static readonly ModSettingFolder ModSourcesFolder =
         new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "BTD6 Mod Sources"))
         {
@@ -334,7 +333,6 @@ internal partial class MelonMain
         category = ModMaking,
         description = "Location of Mod Helper Source code for development purposes"
     };
-#endif
 
     public static readonly ModSettingHotkey QuickEditTowerModel = new(KeyCode.Backslash, HotkeyModifier.Shift)
     {

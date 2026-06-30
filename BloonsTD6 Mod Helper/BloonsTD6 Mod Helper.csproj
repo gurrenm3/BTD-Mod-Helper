@@ -59,6 +59,7 @@
         <EmbeddedResource Include="btd6.targets"/>
         <EmbeddedResource Include="Resources\nfd.dll"/>
         <EmbeddedResource Include="Resources\launchSettings.json"/>
+        <EmbeddedResource Include="Resources\*.zip"/>
         <Compile Condition="'$(Configuration)' != 'Debug'" Remove="Api/Internal/JsonTowers/**/*"/>
         <None Remove="BloonsTD6 Mod Helper.csproj.DotSettings"/>
         <Compile Condition="'$(Configuration)' == 'ReleaseLite'" Remove="Api/Internal/Generators/*"/>

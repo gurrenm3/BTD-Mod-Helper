@@ -139,6 +139,9 @@ jobs:
             echo "RELEASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           fi
 
+      - name: Download Template Mod Zip
+        run: curl -L "https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip" -o "${{ env.PROJECT_NAME }}/Resources/btd6-template-mod-main.zip"
+
       - name: Build Mod Thunderstore
         run: dotnet build -c ReleaseLite -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj"
 

@@ -1,14 +1,15 @@
-#if !RELEASELITE
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Helpers;
-using BTD_Mod_Helper.Api.ModMenu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using SearchOption = System.IO.SearchOption;
+#if !RELEASELITE
+using BTD_Mod_Helper.Api.ModMenu;
+#endif
+
 #pragma warning disable CS4014
 namespace BTD_Mod_Helper.Api.Internal;
 
@@ -17,10 +18,9 @@ namespace BTD_Mod_Helper.Api.Internal;
 /// </summary>
 internal static class TemplateMod
 {
-    private const string ZipURL = "https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip";
-    private const string ZipArchivePrefix = "btd6-template-mod-main/";
-    private static readonly string[] ValidExtensions = {".cs", ".csproj", ".sln", ".md", ".yml", ".yaml"};
-
+    private const string ZipArchiveName = "btd6-template-mod-main";
+    private const string ZipArchivePrefix = ZipArchiveName + "/";
+    private static readonly string[] ValidExtensions = [".cs", ".csproj", ".sln", ".md", ".yml", ".yaml", ".toml"];
 
     /// <summary>
     /// Creates an empty mod with the given name
@@ -51,41 +51,52 @@ internal static class TemplateMod
         }
     }
 
+    private static Task<ZipArchive> GetTemplateZip()
+    {
+#if RELEASELITE
+        const string zipFileName = ZipArchiveName + ".zip";
+        var stream = ModHelper.MainAssembly.GetEmbeddedResource(zipFileName);
+        return stream == null
+            ? throw new FileNotFoundException("Could not find embedded template zip resource.", zipFileName)
+            : Task.FromResult(new ZipArchive(stream));
+#else
+        const string zipURL = "https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip";
+        return ModHelperHttp.GetZip(zipURL);
+#endif
+    }
+
     private static async Task CreateProject(string path, string name)
     {
-        var result = await ModHelperHttp.DownloadZip(ZipURL);
-        if (result == null)
-        {
-            FailPopup();
-            return;
-        }
-
-        ModHelper.Msg($"Successfully downloaded template from {ZipURL}");
-
         try
         {
-            var directory = result.EnumerateDirectories().First();
+            using var zipArchive = await GetTemplateZip();
+
+            if (zipArchive == null) throw new FileNotFoundException();
 
             if (Directory.Exists(path))
             {
                 Directory.Delete(path);
             }
 
-            try
+            Directory.CreateDirectory(path);
+            var destinationRoot = Path.GetFullPath(path + Path.DirectorySeparatorChar);
+
+            foreach (var entry in zipArchive.Entries)
             {
-                directory.MoveTo(path);
-            }
-            catch (IOException e)
-            {
-                if (e.Message.Contains("across volumes"))
+                if (!entry.FullName.StartsWith(ZipArchivePrefix) || string.IsNullOrEmpty(entry.Name))
                 {
-                    FileIOHelper.CopyDirectory(directory.FullName, path);
-                    directory.Delete(true);
+                    continue;
                 }
-                else
+
+                var relativePath = entry.FullName[ZipArchivePrefix.Length..];
+                var destination = Path.GetFullPath(Path.Combine(path, relativePath));
+                if (!destination.StartsWith(destinationRoot, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw;
+                    throw new IOException($"Zip entry would extract outside the target directory: {entry.FullName}");
                 }
+
+                Directory.CreateDirectory(Path.GetDirectoryName(destination)!);
+                entry.ExtractToFile(destination, true);
             }
 
             await ReplaceInAllFiles(path, name);
@@ -104,7 +115,7 @@ internal static class TemplateMod
     {
         try
         {
-            using var zipArchive = await ModHelperHttp.GetZip(ZipURL);
+            using var zipArchive = await GetTemplateZip();
 
             if (zipArchive == null) throw new FileNotFoundException();
 
@@ -189,11 +200,14 @@ internal static class TemplateMod
         if (!File.Exists(file)) return;
 
         var text = File.ReadAllText(file);
-        File.Delete(file);
-        File.WriteAllText(
-            file.Replace(nameof(TemplateMod), name),
-            text.Replace(nameof(TemplateMod), name)
-        );
+        var newFile = file.Replace(nameof(TemplateMod), name);
+        var newText = text.Replace(nameof(TemplateMod), name);
+
+        if (file != newFile || text != newText)
+        {
+            File.Delete(file);
+            File.WriteAllText(newFile, newText);
+        }
     }
 
     private static async Task ReplaceInAllFiles(string path, string name)
@@ -206,13 +220,16 @@ internal static class TemplateMod
         );
     }
 
-    // TODO LINUX VERSION OF THIS
     private static void OpenProject(string path, string name)
     {
-        using var fileOpener = new Process();
-        fileOpener.StartInfo.FileName = "explorer";
-        fileOpener.StartInfo.Arguments = $"{Path.Combine(path, $"{name}.sln")}";
-        fileOpener.Start();
+        var slnPath = Path.Combine(path, $"{name}.sln");
+        if (File.Exists(slnPath))
+        {
+            ProcessHelper.OpenFile(slnPath);
+        }
+        else
+        {
+            ProcessHelper.OpenFolder(path);
+        }
     }
 }
-#endif

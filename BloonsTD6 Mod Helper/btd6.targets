@@ -63,22 +63,34 @@
         <Reference Include="$(ManagedFolder)\Il2CppInterop.Runtime.dll" Private="false"/>
     </ItemGroup>
 
-    <!--Mod Helper dependency-->
-    <ItemGroup Condition="$(DontReferenceModHelper) != 'true'">
-        <Reference Include="BloonsTD6 Mod Helper" Condition="Exists('$(BloonsTD6)\Mods\Btd6ModHelper.dll')" Private="false">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>$(BloonsTD6)\Mods\Btd6ModHelper.dll</HintPath>
-        </Reference>
-    </ItemGroup>
+    <!--Referencing mod dependencies, supporting subfolders-->
+    <Target Name="ResolveModReferences" BeforeTargets="ResolveAssemblyReferences">
+        <!--Mod Helper dependency-->
+        <ItemGroup Condition="$(DontReferenceModHelper) != 'true'">
+            <_ModHelperDll Include="$(BloonsTD6)\Mods\**\Btd6ModHelper.dll"/>
+            <Reference Condition="'@(_ModHelperDll)' != ''"
+                       Include="BloonsTD6 Mod Helper"
+                       HintPath="%(_ModHelperDll.FullPath)"
+                       SpecificVersion="false"
+                       Private="false"/>
+        </ItemGroup>
 
-    <!--Other mod dependencies, listed in <Dependencies> as a list of dll names without extension-->
-    <ItemGroup Condition="'$(Dependencies)' != ''">
-        <Reference Include="$(Dependencies)" Private="false">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath Condition="Exists('$(BloonsTD6)\Mods\%(Identity).dll')">$(BloonsTD6)\Mods\%(Identity).dll</HintPath>
-            <HintPath Condition="!Exists('$(BloonsTD6)\Mods\%(Identity).dll')">$(BloonsTD6)\Disabled Mods\%(Identity).dll</HintPath>
-        </Reference>
-    </ItemGroup>
+        <!--Other mod dependencies, listed in <Dependencies> as a list of dll names without extension-->
+        <ItemGroup Condition="'$(Dependencies)' != ''">
+            <_Dependency Include="$(Dependencies)"/>
+            <_ActiveDependencyDll Include="$(BloonsTD6)\Mods\**\%(_Dependency.Identity).dll"/>
+            <_DisabledDependencyDll Include="$(BloonsTD6)\Disabled Mods\**\%(_Dependency.Identity).dll"
+                                    Exclude="@(_ActiveDependencyDll->'$(BloonsTD6)\Disabled Mods\**\%(Filename).dll')"/>
+
+            <_DependencyDll Include="@(_ActiveDependencyDll)"/>
+            <_DependencyDll Include="@(_DisabledDependencyDll)"/>
+
+            <Reference Include="@(_DependencyDll->'%(Filename)')"
+                       HintPath="%(_DependencyDll.FullPath)"
+                       SpecificVersion="False"
+                       Private="false"/>
+        </ItemGroup>
+    </Target>
 
     <!--Automatic embeds-->
     <ItemGroup Condition="'$(AutoEmbed)' != 'false'">

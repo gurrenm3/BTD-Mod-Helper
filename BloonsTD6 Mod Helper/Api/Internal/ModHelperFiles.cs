@@ -1,9 +1,10 @@
-#if !RELEASELITE
 using System;
 using System.IO;
+using MelonLoader.Utils;
+#if !RELEASELITE
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.ModMenu;
-using MelonLoader.Utils;
+#endif
 
 namespace BTD_Mod_Helper.Api.Internal;
 
@@ -11,26 +12,17 @@ internal static class ModHelperFiles
 {
     public static void CreateSourcesFiles(string path)
     {
-        if (!Directory.Exists(path))
-        {
-            try
-            {
-                Directory.CreateDirectory(path);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-        }
+        if (!Directory.Exists(path)) return;
 
         foreach (var file in new[] {"btd6.targets", "launchSettings.json"})
         {
             var text = ModHelper.MainAssembly.GetEmbeddedText(file)
-                .Replace(@"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6", MelonEnvironment.GameRootDirectory);
+                .Replace(@"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6", MelonEnvironment.MelonBaseDirectory);
             File.WriteAllText(Path.Combine(path, file), text);
         }
     }
 
+#if !RELEASELITE
     private static bool downloaded;
 
     internal static void DownloadDocumentationXml(Action onComplete = null)
@@ -56,5 +48,5 @@ internal static class ModHelperFiles
             }
         });
     }
-}
 #endif
+}

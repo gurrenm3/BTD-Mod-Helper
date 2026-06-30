@@ -7,11 +7,13 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 #if MOD_BROWSER
 using BTD_Mod_Helper.Api.Helpers;
-using BTD_Mod_Helper.Api.ModMenu;
 using Semver;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
+#if !RELEASELITE
+using BTD_Mod_Helper.Api.ModMenu;
+#endif
 #endif
 #if MOD_HELPER
 using BTD_Mod_Helper.Api.Internal;
