@@ -112,7 +112,7 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      {%- assign deps = mod.Dependencies | default: "" | split: ";" %}
+      {%- assign deps = mod.Dependencies | default: "" |  replace: ";", "," | split: "," %}
       {%- for dep in deps %}
 
       - name: Download {{ dep }}

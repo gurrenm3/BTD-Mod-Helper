@@ -199,6 +199,27 @@ public void Hide(bool propagate=false);
 
 `propagate` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.Init(bool)'></a>
+
+## ModHelperPopupMenu.Init(bool) Method
+
+Initializes this ModHelperPopupMenu
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperPopupMenu Init(bool fitSize=true);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.Init(bool).fitSize'></a>
+
+`fitSize` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+whether to use a [UnityEngine.UI.ContentSizeFitter](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.UI.ContentSizeFitter 'UnityEngine.UI.ContentSizeFitter')
+
+#### Returns
+[ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu')  
+this ModHelperPopupMenu
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.Show()'></a>
 
 ## ModHelperPopupMenu.Show() Method

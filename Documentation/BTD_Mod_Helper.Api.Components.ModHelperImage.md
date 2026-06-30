@@ -79,6 +79,48 @@ The sprite to display
 #### Returns
 [ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
 The created ModHelperImage
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Init(Sprite)'></a>
+
+## ModHelperImage.Init(Sprite) Method
+
+Initializes this ModHelperImage
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperImage Init(Sprite sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Init(Sprite).sprite'></a>
+
+`sprite` [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')
+
+The sprite to display
+
+#### Returns
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
+the ModHelperImage
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Init(string)'></a>
+
+## ModHelperImage.Init(string) Method
+
+Initializes this ModHelperImage
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperImage Init(string sprite);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperImage.Init(string).sprite'></a>
+
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The sprite to display
+
+#### Returns
+[ModHelperImage](BTD_Mod_Helper.Api.Components.ModHelperImage.md 'BTD_Mod_Helper.Api.Components.ModHelperImage')  
+the ModHelperImage
 ### Operators
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperImage.op_ImplicitImage(BTD_Mod_Helper.Api.Components.ModHelperImage)'></a>

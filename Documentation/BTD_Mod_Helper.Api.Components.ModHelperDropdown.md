@@ -141,3 +141,48 @@ Text size of label
 #### Returns
 [ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
 The created ModHelperDropdown
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Init(List_string_,float,UnityAction_int_,string,float)'></a>
+
+## ModHelperDropdown.Init(List<string>, float, UnityAction<int>, string, float) Method
+
+Initializes this ModHelperDropdown
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperDropdown Init(List<string> options, float windowHeight, UnityAction<int> onValueChanged, string background=null, float labelFontSize=42f);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Init(List_string_,float,UnityAction_int_,string,float).options'></a>
+
+`options` [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
+
+The list of options
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Init(List_string_,float,UnityAction_int_,string,float).windowHeight'></a>
+
+`windowHeight` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Height of the created dropdown window
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Init(List_string_,float,UnityAction_int_,string,float).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action that should happen when an option of the given index is selected
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Init(List_string_,float,UnityAction_int_,string,float).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background image
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDropdown.Init(List_string_,float,UnityAction_int_,string,float).labelFontSize'></a>
+
+`labelFontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Text size of label
+
+#### Returns
+[ModHelperDropdown](BTD_Mod_Helper.Api.Components.ModHelperDropdown.md 'BTD_Mod_Helper.Api.Components.ModHelperDropdown')  
+the ModHelperDropdown

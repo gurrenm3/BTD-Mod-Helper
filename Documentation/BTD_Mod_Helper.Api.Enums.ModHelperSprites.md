@@ -194,6 +194,19 @@ public const string DownloadBtnLong = "Ui[BloonsTD6 Mod Helper-DownloadBtnLong]"
 #### Field Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Enums.ModHelperSprites.Gradient'></a>
+
+## ModHelperSprites.Gradient Field
+
+GUID for image [Gradient.png](https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/Gradient.png?raw=true 'https://github.com/gurrenm3/BTD-Mod-Helper/blob/master/BloonsTD6%20Mod%20Helper/Resources/Gradient.png?raw=true')
+
+```csharp
+public const string Gradient = "Ui[BloonsTD6 Mod Helper-Gradient]";
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
 <a name='BTD_Mod_Helper.Api.Enums.ModHelperSprites.IconMinimal'></a>
 
 ## ModHelperSprites.IconMinimal Field

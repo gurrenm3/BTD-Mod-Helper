@@ -220,6 +220,57 @@ Hides the sub menu for this option, if there is one
 public void HideSubMenu();
 ```
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_)'></a>
+
+## ModHelperPopupOption.Init(string, string, UnityAction, ModHelperPopupMenu, Func<bool>, Func<bool>) Method
+
+Initializes this ModHelperPopupOption
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperPopupOption Init(string text=null, string icon=null, UnityAction action=null, BTD_Mod_Helper.Api.Components.ModHelperPopupMenu subMenu=null, Func<bool> isSelected=null, Func<bool> isHidden=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Option label, if null then uses the Name from the info
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_).icon'></a>
+
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Option icon, null for no icon, empty string for still creating the icon but it being empty
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_).action'></a>
+
+`action` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action to perform when this option is clicked
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_).subMenu'></a>
+
+`subMenu` [ModHelperPopupMenu](BTD_Mod_Helper.Api.Components.ModHelperPopupMenu.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupMenu')
+
+Sub menu that this option opens
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_).isSelected'></a>
+
+`isSelected` [Il2CppSystem.Func](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Func 'Il2CppSystem.Func')
+
+Function to determine if this option should display as selected or not
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.Init(string,string,UnityAction,BTD_Mod_Helper.Api.Components.ModHelperPopupMenu,Func_bool_,Func_bool_).isHidden'></a>
+
+`isHidden` [Il2CppSystem.Func](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Func 'Il2CppSystem.Func')
+
+Function to determine if this option should be visible or should be hidden
+
+#### Returns
+[ModHelperPopupOption](BTD_Mod_Helper.Api.Components.ModHelperPopupOption.md 'BTD_Mod_Helper.Api.Components.ModHelperPopupOption')  
+this ModHelperPopupOption
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperPopupOption.SetSelected(bool)'></a>
 
 ## ModHelperPopupOption.SetSelected(bool) Method

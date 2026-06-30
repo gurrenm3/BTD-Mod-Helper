@@ -83,7 +83,35 @@ The button's visuals
 What should happen when the button is clicked
 
 #### Returns
-[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')  
+the ModHelperButton
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Init(string,Action)'></a>
+
+## ModHelperButton.Init(string, Action) Method
+
+Initializes this ModHelperButton
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperButton Init(string sprite, Action onClick);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Init(string,Action).sprite'></a>
+
+`sprite` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The button's visuals
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperButton.Init(string,Action).onClick'></a>
+
+`onClick` [Il2CppSystem.Action](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Action 'Il2CppSystem.Action')
+
+What should happen when the button is clicked
+
+#### Returns
+[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')  
+the ModHelperButton
 ### Operators
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperButton.op_ImplicitButton(BTD_Mod_Helper.Api.Components.ModHelperButton)'></a>

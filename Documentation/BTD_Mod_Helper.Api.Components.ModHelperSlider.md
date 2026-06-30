@@ -205,6 +205,75 @@ If not null, the value that this should start as instead of the default
 #### Returns
 [ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_)'></a>
+
+## ModHelperSlider.Init(float, float, float, float, Vector2, UnityAction<float>, float, string, Nullable<float>) Method
+
+Initializes this ModHelperSlider
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperSlider Init(float defaultValue, float minValue, float maxValue, float stepSize, Vector2 handleSize, UnityAction<float> onValueChanged=null, float fontSize=42f, string labelSuffix="", System.Nullable<float> startingValue=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).defaultValue'></a>
+
+`defaultValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The default slider amount
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).minValue'></a>
+
+`minValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The minimum value of the slider
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).maxValue'></a>
+
+`maxValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The maximum value of the slider
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).stepSize'></a>
+
+`stepSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+What value the slider should increase by per tick
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).handleSize'></a>
+
+`handleSize` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
+
+The height and width of the pip
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action should happen when the slider changes value, or null
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+The size of the label text
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).labelSuffix'></a>
+
+`labelSuffix` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+String to add to the end of the label, e.g. "%"
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.Init(float,float,float,float,Vector2,UnityAction_float_,float,string,System.Nullable_float_).startingValue'></a>
+
+`startingValue` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
+
+If not null, the value that this should start as instead of the default
+
+#### Returns
+[ModHelperSlider](BTD_Mod_Helper.Api.Components.ModHelperSlider.md 'BTD_Mod_Helper.Api.Components.ModHelperSlider')  
+the ModHelperSlider
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperSlider.SetCurrentValue(float,bool)'></a>
 
 ## ModHelperSlider.SetCurrentValue(float, bool) Method

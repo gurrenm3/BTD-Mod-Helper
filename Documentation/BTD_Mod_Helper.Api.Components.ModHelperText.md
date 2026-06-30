@@ -137,6 +137,39 @@ public void EnableAutoSizing(float fontSizeMax);
 
 `fontSizeMax` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.Init(string,float,TextAlignmentOptions)'></a>
+
+## ModHelperText.Init(string, float, TextAlignmentOptions) Method
+
+Initializes this ModHelperText
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperText Init(string text, float fontSize=42f, TextAlignmentOptions align=4098);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.Init(string,float,TextAlignmentOptions).text'></a>
+
+`text` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The text to display
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.Init(string,float,TextAlignmentOptions).fontSize'></a>
+
+`fontSize` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+Size of font
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperText.Init(string,float,TextAlignmentOptions).align'></a>
+
+`align` [Il2CppTMPro.TextAlignmentOptions](https://docs.microsoft.com/en-us/dotnet/api/Il2CppTMPro.TextAlignmentOptions 'Il2CppTMPro.TextAlignmentOptions')
+
+Alignment of text
+
+#### Returns
+[ModHelperText](BTD_Mod_Helper.Api.Components.ModHelperText.md 'BTD_Mod_Helper.Api.Components.ModHelperText')  
+this ModHelperText
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperText.OnUpdate()'></a>
 
 ## ModHelperText.OnUpdate() Method

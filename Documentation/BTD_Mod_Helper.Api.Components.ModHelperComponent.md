@@ -196,7 +196,8 @@ The button's visuals
 What should happen when the button is clicked
 
 #### Returns
-[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')  
+the ModHelperButton
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.AddCheckbox(BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int)'></a>
 
@@ -1135,6 +1136,16 @@ public void SetParent(Transform newParent);
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.SetParent(Transform).newParent'></a>
 
 `newParent` [UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.UpdateLayoutElement()'></a>
+
+## ModHelperComponent.UpdateLayoutElement() Method
+
+Updates the LayoutElement of this component with values from the initial Info
+
+```csharp
+public void UpdateLayoutElement();
+```
 ### Operators
 
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponent.op_ImplicitGameObject(BTD_Mod_Helper.Api.Components.ModHelperComponent)'></a>

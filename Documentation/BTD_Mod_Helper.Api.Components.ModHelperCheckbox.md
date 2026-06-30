@@ -131,6 +131,51 @@ How much space around the outside of the check there is
 [ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
 The new ModHelperCheckbox
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Init(bool,string,UnityAction_bool_,string,int)'></a>
+
+## ModHelperCheckbox.Init(bool, string, UnityAction<bool>, string, int) Method
+
+Initializes this ModHelperCheckbox
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperCheckbox Init(bool defaultValue, string background, UnityAction<bool> onValueChanged=null, string checkImage=null, int padding=0);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Init(bool,string,UnityAction_bool_,string,int).defaultValue'></a>
+
+`defaultValue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+If it starts out checked or not
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Init(bool,string,UnityAction_bool_,string,int).background'></a>
+
+`background` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The background behind the check, or null for nothing
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Init(bool,string,UnityAction_bool_,string,int).onValueChanged'></a>
+
+`onValueChanged` [UnityEngine.Events.UnityAction](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Events.UnityAction 'UnityEngine.Events.UnityAction')
+
+Action to perform when it is checked/unchecked, or null
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Init(bool,string,UnityAction_bool_,string,int).checkImage'></a>
+
+`checkImage` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The checkmark itself, or null for the default checkmark
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.Init(bool,string,UnityAction_bool_,string,int).padding'></a>
+
+`padding` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+How much space around the outside of the check there is
+
+#### Returns
+[ModHelperCheckbox](BTD_Mod_Helper.Api.Components.ModHelperCheckbox.md 'BTD_Mod_Helper.Api.Components.ModHelperCheckbox')  
+the ModHelperCheckbox
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperCheckbox.SetChecked(bool,bool)'></a>
 
 ## ModHelperCheckbox.SetChecked(bool, bool) Method

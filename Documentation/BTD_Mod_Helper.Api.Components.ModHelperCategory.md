@@ -72,3 +72,36 @@ The icon for the category, if any
 #### Returns
 [ModHelperCategory](BTD_Mod_Helper.Api.Components.ModHelperCategory.md 'BTD_Mod_Helper.Api.Components.ModHelperCategory')  
 The created ModHelperCategory
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Init(string,bool,string)'></a>
+
+## ModHelperCategory.Init(string, bool, string) Method
+
+Initializes this ModHelperCategory
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperCategory Init(string displayName, bool collapsed, string icon=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Init(string,bool,string).displayName'></a>
+
+`displayName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The name of the category
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Init(string,bool,string).collapsed'></a>
+
+`collapsed` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether it's collapsed by default or not
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperCategory.Init(string,bool,string).icon'></a>
+
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The icon for the category, if any
+
+#### Returns
+[ModHelperCategory](BTD_Mod_Helper.Api.Components.ModHelperCategory.md 'BTD_Mod_Helper.Api.Components.ModHelperCategory')  
+this ModHelperCategory

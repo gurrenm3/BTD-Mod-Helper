@@ -179,6 +179,39 @@ The icon of the mod setting, if any
 [T](BTD_Mod_Helper.Api.Components.ModHelperOption.md#BTD_Mod_Helper.Api.Components.ModHelperOption.Create_T_(string,string,string).T 'BTD_Mod_Helper.Api.Components.ModHelperOption.Create<T>(string, string, string).T')  
 The created ModHelperOption
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Init(string,string,string)'></a>
+
+## ModHelperOption.Init(string, string, string) Method
+
+Initializes this ModHelperOption
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperOption Init(string displayName, string description=null, string icon=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Init(string,string,string).displayName'></a>
+
+`displayName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The displayed name of the mod setting
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Init(string,string,string).description'></a>
+
+`description` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The description of the mod setting, if any
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperOption.Init(string,string,string).icon'></a>
+
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The icon of the mod setting, if any
+
+#### Returns
+[ModHelperOption](BTD_Mod_Helper.Api.Components.ModHelperOption.md 'BTD_Mod_Helper.Api.Components.ModHelperOption')  
+this ModHelperOption
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperOption.SetResetAction(UnityAction)'></a>
 
 ## ModHelperOption.SetResetAction(UnityAction) Method

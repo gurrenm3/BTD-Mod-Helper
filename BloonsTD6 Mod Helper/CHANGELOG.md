@@ -16,6 +16,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a `ModTowerSet.ShowInMonkeysScreen` override for controlling whether custom tower sets appear in the modded monkey select menu
 - Fixed `AddTsmButton` sound behavior
 - `ModHelperComponent`s now all have separate static `Create` methods and instance `Init` methods, making it easier to make other custom components that inherit from `ModHelperComponents` and to apply `ModHelperComponent`s to existing gameobjects
+- Added a `ModPopupImage` class that registers an image so that it can be used easily used within hint / event popups
+  - ```csharp
+    public class MyPopupImage : ModPopupImage 
+    {
+        // the default, aka MyPopupImage.png
+        public override string Image => Name;
+    }
+    ```
+  - ```csharp
+    // You can then do the following
+    InGame.instance.ShowEventPopup("EventName", GetInstance<MyPopupImage>(), title: "Title", body: "Body", showEverytime:true, showHintPopup:true);
+    // showHintPopup controls whether its just a hint at the bottom instead of a full screen popup
+    ```
 
 ## [3.6.5] - 2026-06-12
 

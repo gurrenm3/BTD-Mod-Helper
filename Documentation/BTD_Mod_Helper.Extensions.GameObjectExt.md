@@ -46,7 +46,8 @@ The button's visuals
 What should happen when the button is clicked
 
 #### Returns
-[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')
+[ModHelperButton](BTD_Mod_Helper.Api.Components.ModHelperButton.md 'BTD_Mod_Helper.Api.Components.ModHelperButton')  
+the ModHelperButton
 
 <a name='BTD_Mod_Helper.Extensions.GameObjectExt.AddCheckbox(thisGameObject,BTD_Mod_Helper.Api.Components.Info,bool,string,UnityAction_bool_,string,int)'></a>
 

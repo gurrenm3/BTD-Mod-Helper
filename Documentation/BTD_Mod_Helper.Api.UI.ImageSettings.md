@@ -119,3 +119,16 @@ public float PixelsPerUnit { get; set; }
 
 #### Property Value
 [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.UI.ImageSettings.WrapMode'></a>
+
+## ImageSettings.WrapMode Property
+
+[UnityEngine.Texture.wrapMode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture.wrapMode 'UnityEngine.Texture.wrapMode')
+
+```csharp
+public TextureWrapMode WrapMode { get; set; }
+```
+
+#### Property Value
+[UnityEngine.TextureWrapMode](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.TextureWrapMode 'UnityEngine.TextureWrapMode')

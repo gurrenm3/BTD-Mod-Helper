@@ -121,6 +121,51 @@ title for the dock button
 [ModHelperDockButton](BTD_Mod_Helper.Api.Components.ModHelperDockButton.md 'BTD_Mod_Helper.Api.Components.ModHelperDockButton')  
 the created dock button
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.Init(BTD_Mod_Helper.Api.Components.ModHelperPanel,BTD_Mod_Helper.Api.Components.ModHelperWindow,string,float,string)'></a>
+
+## ModHelperDockButton.Init(ModHelperPanel, ModHelperWindow, string, float, string) Method
+
+Initializes this Dock button for a window
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperDockButton Init(BTD_Mod_Helper.Api.Components.ModHelperPanel parent, BTD_Mod_Helper.Api.Components.ModHelperWindow window, string icon=null, float iconScale=1f, string dockTitle=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.Init(BTD_Mod_Helper.Api.Components.ModHelperPanel,BTD_Mod_Helper.Api.Components.ModHelperWindow,string,float,string).parent'></a>
+
+`parent` [ModHelperPanel](BTD_Mod_Helper.Api.Components.ModHelperPanel.md 'BTD_Mod_Helper.Api.Components.ModHelperPanel')
+
+Parent panel of the button
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.Init(BTD_Mod_Helper.Api.Components.ModHelperPanel,BTD_Mod_Helper.Api.Components.ModHelperWindow,string,float,string).window'></a>
+
+`window` [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')
+
+window the button will correspond to
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.Init(BTD_Mod_Helper.Api.Components.ModHelperPanel,BTD_Mod_Helper.Api.Components.ModHelperWindow,string,float,string).icon'></a>
+
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+icon to use for the button
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.Init(BTD_Mod_Helper.Api.Components.ModHelperPanel,BTD_Mod_Helper.Api.Components.ModHelperWindow,string,float,string).iconScale'></a>
+
+`iconScale` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+visual scale for the icon
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.Init(BTD_Mod_Helper.Api.Components.ModHelperPanel,BTD_Mod_Helper.Api.Components.ModHelperWindow,string,float,string).dockTitle'></a>
+
+`dockTitle` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+title for the dock button
+
+#### Returns
+[ModHelperDockButton](BTD_Mod_Helper.Api.Components.ModHelperDockButton.md 'BTD_Mod_Helper.Api.Components.ModHelperDockButton')  
+the ModHelperDockButton
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperDockButton.OnClick()'></a>
 
 ## ModHelperDockButton.OnClick() Method

@@ -1,8 +1,8 @@
 #if DEBUG
+using System.Collections.Generic;
 using BTD_Mod_Helper.Api.Enums;
 using BTD_Mod_Helper.Api.Internal;
 using CommandLine;
-using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
 using UnityEngine;
 namespace BTD_Mod_Helper.Api.Commands;
@@ -13,7 +13,8 @@ internal class PlaySoundCommand : ModCommand
 
     public override string Help => "Plays a sound";
 
-    [Value(0, Default = null, HelpText = "Sound id, either guid from resource.json, the name within VanillaAudioClips.cs, or mod sound GUID",
+    [Value(0, Default = null,
+        HelpText = "Sound id, either guid from resource.json, the name within VanillaAudioClips.cs, or mod sound GUID",
         MetaName = "SoundGUID")]
     public string SoundId { get; set; }
 
@@ -37,39 +38,12 @@ internal class PlaySoundCommand : ModCommand
 
         return true;
     }
-}
 
-internal abstract class PlaySoundUICommand : ModCommand<PlaySoundCommand>
-{
-    protected static MenuManager MenuManager => MenuManager.instance;
-
-    public abstract AudioClip Sound { get; }
-
-    public override string Help => $"Plays the {Command} sound from the menu manager";
-
-    public override bool Execute(ref string resultText)
+    public override IEnumerable<string> SuggestionsForValue(int index) => index switch
     {
-        Sound.Play("ButtonClickSounds");
-        return true;
-    }
-}
-
-internal class PlaySoundButtonClick1 : PlaySoundUICommand
-{
-    public override string Command => nameof(MenuManager.buttonClickSound).Replace("Sound", "");
-    public override AudioClip Sound => MenuManager.buttonClickSound;
-}
-
-internal class PlaySoundButtonClick2 : PlaySoundUICommand
-{
-    public override string Command => nameof(MenuManager.buttonClick2Sound).Replace("Sound", "");
-    public override AudioClip Sound => MenuManager.buttonClick2Sound;
-}
-
-internal class PlaySoundButtonClick3 : PlaySoundUICommand
-{
-    public override string Command => nameof(MenuManager.buttonClick3Sound).Replace("Sound", "");
-    public override AudioClip Sound => MenuManager.buttonClick3Sound;
+        0 => VanillaAudioClips.ByName.Keys,
+        _ => base.SuggestionsForValue(index)
+    };
 }
 
 #endif

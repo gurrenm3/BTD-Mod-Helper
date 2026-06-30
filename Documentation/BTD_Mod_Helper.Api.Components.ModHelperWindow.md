@@ -510,6 +510,51 @@ ModWindow definition
 [ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')  
 the created ModHelperWindow
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Init(int,string,string,float,string)'></a>
+
+## ModHelperWindow.Init(int, string, string, float, string) Method
+
+Initializes this ModHelperWindow
+
+```csharp
+public BTD_Mod_Helper.Api.Components.ModHelperWindow Init(int topBarHeight=50, string icon=null, string title=null, float iconScale=1f, string dockTitle=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Init(int,string,string,float,string).topBarHeight'></a>
+
+`topBarHeight` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+the height of the top bar
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Init(int,string,string,float,string).icon'></a>
+
+`icon` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+the icon to display, or null for none
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Init(int,string,string,float,string).title'></a>
+
+`title` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+the title to display, or null for none
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Init(int,string,string,float,string).iconScale'></a>
+
+`iconScale` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+visual scale for the icon
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.Init(int,string,string,float,string).dockTitle'></a>
+
+`dockTitle` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+title for the dock button
+
+#### Returns
+[ModHelperWindow](BTD_Mod_Helper.Api.Components.ModHelperWindow.md 'BTD_Mod_Helper.Api.Components.ModHelperWindow')  
+this ModHelperWindow
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperWindow.OnDestroy()'></a>
 
 ## ModHelperWindow.OnDestroy() Method

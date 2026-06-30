@@ -130,12 +130,22 @@ public class ModHelperComponent : MonoBehaviour
             AddComponent<LayoutElement>();
         }
 
-        LayoutElement!.minWidth = LayoutElement.preferredWidth = initialInfo.SizeDelta.x;
+        UpdateLayoutElement();
+
+        return LayoutElement;
+    }
+
+    /// <summary>
+    /// Updates the LayoutElement of this component with values from the initial Info
+    /// </summary>
+    public void UpdateLayoutElement()
+    {
+        if (LayoutElement == null) return;
+
+        LayoutElement.minWidth = LayoutElement.preferredWidth = initialInfo.SizeDelta.x;
         LayoutElement.minHeight = LayoutElement.preferredHeight = initialInfo.SizeDelta.y;
         LayoutElement.flexibleWidth = initialInfo.FlexWidth;
         LayoutElement.flexibleHeight = initialInfo.FlexHeight;
-
-        return LayoutElement;
     }
 
     /// <summary>
@@ -198,6 +208,7 @@ public class ModHelperComponent : MonoBehaviour
     {
         initialInfo = newInfo;
         newInfo.Apply(this);
+        UpdateLayoutElement();
     }
 
     /// <summary>

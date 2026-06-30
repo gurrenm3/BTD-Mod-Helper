@@ -42,13 +42,39 @@ public static T AddModHelperComponent<T>(this BTD_Mod_Helper.Api.Components.ModH
 #### Returns
 [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddModHelperComponent_T_(thisBTD_Mod_Helper.Api.Components.ModHelperComponent,T).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddModHelperComponent<T>(this BTD_Mod_Helper.Api.Components.ModHelperComponent, T).T')
 
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,BTD_Mod_Helper.Api.Components.ModHelperComponent)'></a>
+
+## ModHelperComponentExt.AddTo<T>(this T, ModHelperComponent) Method
+
+Adds the ModHelperComponent to a parent, returning the ModHelperComponent
+
+```csharp
+public static T AddTo<T>(this T modHelperComponent, BTD_Mod_Helper.Api.Components.ModHelperComponent parent)
+    where T : BTD_Mod_Helper.Api.Components.ModHelperComponent;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,BTD_Mod_Helper.Api.Components.ModHelperComponent).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,BTD_Mod_Helper.Api.Components.ModHelperComponent).modHelperComponent'></a>
+
+`modHelperComponent` [T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,BTD_Mod_Helper.Api.Components.ModHelperComponent).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, BTD_Mod_Helper.Api.Components.ModHelperComponent).T')
+
+<a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,BTD_Mod_Helper.Api.Components.ModHelperComponent).parent'></a>
+
+`parent` [ModHelperComponent](BTD_Mod_Helper.Api.Components.ModHelperComponent.md 'BTD_Mod_Helper.Api.Components.ModHelperComponent')
+
+#### Returns
+[T](BTD_Mod_Helper.Api.Components.ModHelperComponentExt.md#BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,BTD_Mod_Helper.Api.Components.ModHelperComponent).T 'BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo<T>(this T, BTD_Mod_Helper.Api.Components.ModHelperComponent).T')
+
 <a name='BTD_Mod_Helper.Api.Components.ModHelperComponentExt.AddTo_T_(thisT,Transform)'></a>
 
 ## ModHelperComponentExt.AddTo<T>(this T, Transform) Method
 
-Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent  
-<br/>  
-(This is an extension method just so that we can return the type generically)
+Adds the ModHelperComponent to a parent Transform, returning the ModHelperComponent
 
 ```csharp
 public static T AddTo<T>(this T modHelperComponent, Transform parent)
