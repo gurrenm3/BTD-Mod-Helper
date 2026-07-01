@@ -1,6 +1,8 @@
 ##### [Home](/wiki/Home)
 
-##### [Install Guide](/wiki/Install-Guide)
+##### [Manual Install Guide](/wiki/Install-Guide)
+
+##### [Thunderstore Guide](/wiki/Thunderstore)
 
 ##### [Getting Started Modding](/wiki/Getting-Started-Modding)
 

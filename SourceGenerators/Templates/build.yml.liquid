@@ -288,7 +288,7 @@ jobs:
           path: ${\{ env.THUNDERSTORE_PACKAGE_PATH }}
 
       - name: Publish Thunderstore Package
-        if: env.IS_RELEASE == 'true' && env.ACT != 'true'
+        if: env.IS_RELEASE == 'true' && env.TCLI_AUTH_TOKEN != '' && env.ACT != 'true'
         env:
           TCLI_AUTH_TOKEN: ${\{ secrets.TCLI_AUTH_TOKEN }}
         working-directory: ${\{ env.PROJECT_NAME }}

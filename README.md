@@ -19,9 +19,9 @@ A powerful and easy to use API for modding Bloons Tower Defense 6.
 
 ## Instructions
 
-### [Get BTD6 on Steam](https://store.steampowered.com/app/960090/Bloons_TD_6/)
+### [Manual Install Guide](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Install-Guide)
 
-### [Installing BTD Mod Helper](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Install-Guide)
+### [Thunderstore Guide](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Thunderstore)
 
 ### [Creating Mods with BTD Mod Helper](https://gurrenm3.github.io/BTD-Mod-Helper/wiki/Home)
 
@@ -73,14 +73,11 @@ A powerful and easy to use API for modding Bloons Tower Defense 6.
     , `ModSettingHotKey`, `ModSettingEnum` etc
   - Make your Harmony Patches not brick your whole mod if one of them fails after a game update
 
-<!--THUNDERSTORE EXCLUDE START-->
 - ### A dedicated BTD6 Mod Sources folder with standardized btd6.targets file
-
   - Develop your mods with referential dependencies that would work on anyone else's machine
   - Automatically copies your .dll to the Mods folder on build, even while the game is running
   - Automatically includes your .png, .bundle etc files as embedded resources
   - Create a new Mod from an empty template from In Game
-<!--THUNDERSTORE EXCLUDE END-->
 
 - ### Even more
   - New strongly typed enum-like classes for base BTD6 types like `UpgradeType`, `BloonType`, `BloonTag` etc

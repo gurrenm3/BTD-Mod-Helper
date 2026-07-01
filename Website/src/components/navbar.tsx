@@ -22,10 +22,11 @@ import DropdownMenu from "react-bootstrap/DropdownMenu";
 import maps from "../data/maps.json";
 import DropdownItem from "react-bootstrap/DropdownItem";
 import { BackgroundContext } from "./background-image";
-import { List } from "react-bootstrap-icons";
+import { Github, List } from "react-bootstrap-icons";
 import cx from "classnames";
 import { useUpdate } from "react-use";
 import { ThemeContext } from "../pages/_app";
+import { ModHelperRepoName, ModHelperRepoOwner } from "../lib/mod-helper-data";
 
 const ModHelperNavItem: FunctionComponent<
   Omit<NavLinkProps, "active"> & LinkProps & { path: string; active?: string }
@@ -84,7 +85,7 @@ export const ModHelperNavBar: FunctionComponent<{
         >
           BTD Mod Helper
         </NavbarBrand>
-        <div className={"ms-auto me-4"}>
+        <div className={"ms-auto me-4 d-flex align-items-center gap-4"}>
           <DarkModeSwitch
             className={"dark-mode-switch"}
             checked={theme === "dark"}
@@ -99,6 +100,16 @@ export const ModHelperNavBar: FunctionComponent<{
             size={"2rem"}
             style={{ userSelect: "none" }}
           />
+          <a
+            href={`https://github.com/${ModHelperRepoOwner}/${ModHelperRepoName}`}
+            className={"text-white d-inline-flex"}
+            title={"View BTD Mod Helper on GitHub"}
+            aria-label={"View BTD Mod Helper on GitHub"}
+            target={"_blank"}
+            rel={"noreferrer"}
+          >
+            <Github size={"2rem"} />
+          </a>
         </div>
         <NavbarToggle label={"toggle"} className={"btd6-button blue p-2"}>
           <List size={"2rem"} className={"text-white"} />
