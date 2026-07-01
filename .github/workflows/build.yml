@@ -14,6 +14,16 @@ on:
   pull_request:
     branches:
       - '*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version to release (e.g. 1.0.0), leave empty to check builds without pushing any new release.'
+        required: false
+        type: string
+      description:
+        description: "Description of new release, if you haven't already changed CHANGELOG.md."
+        required: false
+        type: string
 
 env:
   PROJECT_NAME: BloonsTD6 Mod Helper
@@ -25,6 +35,7 @@ env:
 
   IS_RELEASE: ${{ startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.tag != '') }}
   RELEASE_TAG: ${{ inputs.tag || (startsWith(github.ref, 'refs/tags/') && github.ref_name) || '' }}
+  RELEASE_DESC: ${{ inputs.description || '' }}
 
 jobs:
   build:
@@ -103,21 +114,44 @@ jobs:
         run: dotnet build -c Release -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.SOURCE_GENERATORS_NAME }}/${{ env.SOURCE_GENERATORS_NAME }}.csproj"
 
       - name: Publish Source Generators
-        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
+        if: env.IS_RELEASE == 'true' && env.ACT != 'true'
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: dotnet nuget push "./${{ env.SOURCE_GENERATORS_NAME }}/bin/Release/*.nupkg" --api-key "$NUGET_API_KEY" --source nuget.org --skip-duplicate
 
-      - name: Rotate changelog Unreleased section to ${{ github.ref_name }}
-        id: changelog
-        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
+      - name: Process description input
+        if: env.IS_RELEASE == 'true' && env.RELEASE_DESC != ''
+        working-directory: ${{ env.PROJECT_NAME }}
+        run: |
+          perl -i -pe 's{^## \[Unreleased\]$}{"## [Unreleased]\n\n" . $ENV{RELEASE_DESC}}e' CHANGELOG.md
+
+      - name: Check changelog for ${{ env.RELEASE_TAG }} section
+        id: changelog_check
+        if: env.IS_RELEASE == 'true'
+        working-directory: ${{ env.PROJECT_NAME }}
+        run: |
+          if grep -qE "^## \[${{ env.RELEASE_TAG }}\]" CHANGELOG.md; then
+            echo "has_section=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Read changelog entry for ${{ env.RELEASE_TAG }}
+        id: changelog_read
+        if: steps.changelog_check.outputs.has_section == 'true'
+        uses: mindsers/changelog-reader-action@v2.4.0
+        with:
+          version: ${{ env.RELEASE_TAG }}
+          path: ${{ env.PROJECT_NAME }}/CHANGELOG.md
+
+      - name: Rotate changelog Unreleased section to ${{ env.RELEASE_TAG }}
+        id: changelog_rotate
+        if: env.IS_RELEASE == 'true' && steps.changelog_check.outputs.has_section != 'true' && env.ACT != 'true'
         uses: baynezy/ChangeLogger.Action@1.2.4.10
         with:
           tag: ${{ env.RELEASE_TAG }}
           log-path: "${{ env.PROJECT_NAME }}/CHANGELOG.md"
 
       - name: Commit changelog changes if needed
-        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
+        if: steps.changelog_rotate.outcome == 'success' && env.ACT != 'true'
         continue-on-error: true
         working-directory: ${{ env.PROJECT_NAME }}
         env:
@@ -208,10 +242,10 @@ jobs:
           cat README.md
 
       - name: Build Thunderstore Package
-        if: startsWith(github.ref, 'refs/tags/')
+        if: env.IS_RELEASE == 'true'
         working-directory: ${{ env.PROJECT_NAME }}
         run: |
-          tcli build --package-version ${{ env.RELEASE_TAG }} | tee tcli.log
+          tcli build --package-version "${{ env.RELEASE_TAG }}" | tee tcli.log
           sed -i 's|\x1B\[[0-9;]*m||g' tcli.log # get rid of ansi colors
           path=$(grep '^Output path ' tcli.log | sed 's|^Output path ||')
           if [ -z "$path" ]; then
@@ -223,14 +257,14 @@ jobs:
           echo "THUNDERSTORE_PACKAGE_NAME=$name" >> "$GITHUB_ENV"
 
       - name: Upload Thunderstore Package
-        if: startsWith(github.ref, 'refs/tags/')
+        if: env.IS_RELEASE == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: ${{ env.THUNDERSTORE_PACKAGE_NAME }}
           path: ${{ env.THUNDERSTORE_PACKAGE_PATH }}
 
       - name: Publish Thunderstore Package
-        if: startsWith(github.ref, 'refs/tags/') && env.ACT != 'true'
+        if: env.IS_RELEASE == 'true' && env.ACT != 'true'
         env:
           TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
         working-directory: ${{ env.PROJECT_NAME }}
@@ -239,7 +273,7 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v3
-        if: startsWith(github.ref, 'refs/tags/')
+        if: env.IS_RELEASE == 'true'
         with:
           tag_name: ${{ env.RELEASE_TAG }}
           target_commitish: ${{ env.RELEASE_SHA || github.sha }}
@@ -247,6 +281,6 @@ jobs:
             ${{ env.BLOONSTD6 }}/Mods/${{ env.MOD_HELPER_NAME }}.dll
             ${{ env.BLOONSTD6 }}/Mods/${{ env.MOD_HELPER_NAME }}.xml
             ${{ env.BLOONSTD6 }}/Plugins/${{ env.UPDATER_PLUGIN_NAME }}.dll
-          body: ${{ steps.changelog.outputs.release-notes }}
+          body: ${{ steps.changelog_read.outputs.changes || steps.changelog_rotate.outputs.release-notes }}
           fail_on_unmatched_files: true
           draft: ${{ env.ACT == 'true' }}
