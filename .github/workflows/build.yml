@@ -234,7 +234,7 @@ jobs:
         env:
           TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
         working-directory: ${{ env.PROJECT_NAME }}
-        run: tcli publish --file ${{ env.THUNDERSTORE_PACKAGE_PATH }}
+        run: tcli publish --file "${{ env.THUNDERSTORE_PACKAGE_PATH }}"
 
 
       - name: Release
