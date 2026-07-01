@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `ImageSettings` options for configuring mod image loading behavior
   - Can control `FilterMode`, `MipMapBias`, `WrapMode`, `Pivot`, `PixelsPerUnit`, `Extrude`, `MeshType` and `Border`
   - ModHelper `GetSprite` and `GetTexture` methods now accept the class as an additional parameter
-  - You can also set default settings for an image, for example if you had `TestPanel.png`, you could then also include `TestPanel.png.json` with content `{ "Border": [20,20,20,20] }` and now TestPanel would work to properly resize with the Sliced image type that `ModHelperPanel` uses
+  - You can also use json files to set default settings for an image, for example if you had `TestPanel.png`, you could then also include `TestPanel.png.json` with content `{ "Border": [20,20,20,20] }` and now TestPanel would work to properly resize with the Sliced image type that `ModHelperPanel` uses
 - Added a new `Tween` animation helper for animating transforms, UI positions / sizes, etc
 - Added a `ModTowerSet.ShowInMonkeysScreen` override for controlling whether custom tower sets appear in the modded monkey select menu
 - Fixed `AddTsmButton` sound behavior

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -70,12 +71,12 @@ public enum Ease
 /// <summary>
 /// Helper for performing animation Tweens
 /// </summary>
-public readonly struct Tween
+public abstract class Tween
 {
-    private static readonly List<TweenState> Tweens = [];
+    private static readonly Dictionary<int, Tween> Tweens = [];
     private static int nextId;
 
-    private enum TweenProperty
+    internal enum TweenProperty
     {
         None,
         Position,
@@ -90,11 +91,38 @@ public readonly struct Tween
         CanvasGroupAlpha
     }
 
-    private readonly int id;
+    private protected readonly int id;
+    private protected readonly Object target;
+    private protected readonly float duration;
+    private protected readonly Ease ease;
+    private protected readonly bool useUnscaledTime;
+    private protected readonly TweenProperty property;
+    private readonly bool hasTarget;
+    private float elapsedTime;
 
-    private Tween(int id)
+    // ReSharper disable once InconsistentNaming
+    private event Action onComplete;
+
+    // ReSharper disable once InconsistentNaming
+    private event Action<Tween> onUpdate;
+
+    private protected Tween
+    (
+        int id,
+        Object target,
+        float duration,
+        Ease ease,
+        bool useUnscaledTime,
+        TweenProperty property
+    )
     {
         this.id = id;
+        this.target = target;
+        hasTarget = target is not null;
+        this.duration = duration;
+        this.ease = ease;
+        this.useUnscaledTime = useUnscaledTime;
+        this.property = property;
     }
 
     #region State
@@ -102,20 +130,20 @@ public readonly struct Tween
     /// <summary>
     /// Whether this handle still points to a currently running tween.
     /// </summary>
-    public bool IsAlive => TryGetState(out _);
+    public bool IsAlive => Tweens.ContainsKey(id);
 
     /// <summary>
     /// The elapsed time, in seconds, for the current tween cycle.
     /// </summary>
     public float ElapsedTime
     {
-        get => TryGetState(out var state) ? state.ElapsedTime : 0;
+        get => IsAlive ? elapsedTime : 0;
         set
         {
-            if (TryGetState(out var state))
+            if (IsAlive)
             {
-                state.ElapsedTime = Mathf.Clamp(value, 0, state.Duration);
-                state.Apply();
+                elapsedTime = Mathf.Clamp(value, 0, duration);
+                Apply();
             }
         }
     }
@@ -125,13 +153,13 @@ public readonly struct Tween
     /// </summary>
     public float Progress
     {
-        get => TryGetState(out var state) ? state.Progress : 0;
+        get => IsAlive ? duration <= 0 ? 1 : Mathf.Clamp01(elapsedTime / duration) : 0;
         set
         {
-            if (TryGetState(out var state))
+            if (IsAlive)
             {
-                state.ElapsedTime = Mathf.Clamp01(value) * state.Duration;
-                state.Apply();
+                elapsedTime = Mathf.Clamp01(value) * duration;
+                Apply();
             }
         }
     }
@@ -141,12 +169,12 @@ public readonly struct Tween
     /// </summary>
     public bool IsPaused
     {
-        get => TryGetState(out var state) && state.IsPaused;
+        get => IsAlive && field;
         set
         {
-            if (TryGetState(out var state))
+            if (IsAlive)
             {
-                state.IsPaused = value;
+                field = value;
             }
         }
     }
@@ -276,23 +304,6 @@ public readonly struct Tween
     }
 
     /// <summary>
-    /// Sets a transform's local position to a starting value, then tweens back to its current local position.
-    /// </summary>
-    public static Tween FromLocalPosition
-    (
-        Transform target,
-        Vector3 startValue,
-        float duration,
-        Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
-    )
-    {
-        var endValue = target.localPosition;
-        target.localPosition = startValue;
-        return LocalPosition(target, endValue, duration, ease, useUnscaledTime);
-    }
-
-    /// <summary>
     /// Tweens a transform's local scale.
     /// </summary>
     public static Tween Scale
@@ -306,36 +317,6 @@ public readonly struct Tween
     {
         return Create(target, TweenProperty.Scale, target.localScale, endValue, duration, Vector3.LerpUnclamped,
             value => target.localScale = value, ease, useUnscaledTime);
-    }
-
-    /// <summary>
-    /// Sets a transform's local scale to a starting value, then tweens back to its current local scale.
-    /// </summary>
-    public static Tween FromScale
-    (
-        Transform target,
-        Vector3 startValue,
-        float duration,
-        Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
-    )
-    {
-        var endValue = target.localScale;
-        target.localScale = startValue;
-        return Scale(target, endValue, duration, ease, useUnscaledTime);
-    }
-
-    /// <inheritdoc cref="FromScale(Transform, Vector3, float, Ease, bool)" />
-    public static Tween FromScale
-    (
-        Transform target,
-        float startValue,
-        float duration,
-        Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
-    )
-    {
-        return FromScale(target, Vector3.one * startValue, duration, ease, useUnscaledTime);
     }
 
     /// <summary>
@@ -410,23 +391,6 @@ public readonly struct Tween
     }
 
     /// <summary>
-    /// Sets a RectTransform's anchored position to a starting value, then tweens back to its current anchored position.
-    /// </summary>
-    public static Tween FromAnchoredPosition
-    (
-        RectTransform target,
-        Vector2 startValue,
-        float duration,
-        Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
-    )
-    {
-        var endValue = target.anchoredPosition;
-        target.anchoredPosition = startValue;
-        return AnchoredPosition(target, endValue, duration, ease, useUnscaledTime);
-    }
-
-    /// <summary>
     /// Tweens a RectTransform's size delta.
     /// </summary>
     public static Tween SizeDelta
@@ -455,8 +419,7 @@ public readonly struct Tween
     )
     {
         return Create(target, TweenProperty.GraphicColor, target.color, endValue, duration,
-            UnityEngine.Color.LerpUnclamped,
-            value => target.color = value, ease, useUnscaledTime);
+            UnityEngine.Color.LerpUnclamped, value => target.color = value, ease, useUnscaledTime);
     }
 
     /// <summary>
@@ -475,49 +438,24 @@ public readonly struct Tween
             value => target.alpha = value, ease, useUnscaledTime);
     }
 
-    /// <summary>
-    /// Sets a CanvasGroup's alpha to a starting value, then tweens back to its current alpha.
-    /// </summary>
-    public static Tween FromAlpha
-    (
-        CanvasGroup target,
-        float startValue,
-        float duration,
-        Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
-    )
-    {
-        var endValue = target.alpha;
-        target.alpha = startValue;
-        return Alpha(target, endValue, duration, ease, useUnscaledTime);
-    }
-
     #endregion
 
     #region Controls
 
     /// <summary>
-    /// Stops this tween without applying the end value.
-    /// </summary>
-    public void Stop()
-    {
-        Stop(false);
-    }
-
-    /// <summary>
     /// Stops this tween, optionally completing it first.
     /// </summary>
-    public void Stop(bool complete)
+    public void Stop(bool complete = false)
     {
-        if (!TryGetState(out var state)) return;
+        if (!IsAlive) return;
 
         if (complete)
         {
-            state.Complete();
+            Complete();
         }
         else
         {
-            Remove(state);
+            Remove(this);
         }
     }
 
@@ -526,7 +464,12 @@ public readonly struct Tween
     /// </summary>
     public void Complete()
     {
-        Stop(true);
+        if (!IsAlive) return;
+
+        elapsedTime = duration;
+        Apply();
+        Remove(this);
+        onComplete?.Invoke();
     }
 
     /// <summary>
@@ -534,11 +477,7 @@ public readonly struct Tween
     /// </summary>
     public Tween OnComplete(Action onComplete)
     {
-        if (TryGetState(out var state))
-        {
-            state.OnComplete += onComplete;
-        }
-
+        this.onComplete += onComplete;
         return this;
     }
 
@@ -547,11 +486,7 @@ public readonly struct Tween
     /// </summary>
     public Tween OnUpdate(Action<Tween> onUpdate)
     {
-        if (TryGetState(out var state))
-        {
-            state.OnUpdate += onUpdate;
-        }
-
+        this.onUpdate += onUpdate;
         return this;
     }
 
@@ -562,10 +497,10 @@ public readonly struct Tween
     {
         if (target == null) return;
 
-        for (var i = Tweens.Count - 1; i >= 0; i--)
+        foreach (var state in Tweens.Values.ToArray())
         {
-            var state = Tweens[i];
-            if (state.Target != target) continue;
+            if (!state.IsAlive) continue;
+            if (state.target != target) continue;
 
             if (complete)
             {
@@ -573,7 +508,7 @@ public readonly struct Tween
             }
             else
             {
-                RemoveAt(i);
+                Remove(state);
             }
         }
     }
@@ -585,9 +520,10 @@ public readonly struct Tween
     {
         if (complete)
         {
-            for (var i = Tweens.Count - 1; i >= 0; i--)
+            foreach (var state in Tweens.Values.ToArray())
             {
-                Tweens[i].Complete();
+                if (!state.IsAlive) continue;
+                state.Complete();
             }
         }
         else
@@ -596,35 +532,42 @@ public readonly struct Tween
         }
     }
 
+    /// <summary>
+    /// Swaps the start and end values of this tween. Works if called right after Tween creation to effectively do
+    /// "tween from the specified value back to its current value"
+    /// </summary>
+    public abstract Tween Reverse();
+
     #endregion
 
     #region Internal
 
     internal static void Update()
     {
-        for (var i = Tweens.Count - 1; i >= 0; i--)
+        foreach (var state in Tweens.Values.ToArray())
         {
-            var state = Tweens[i];
+            if (!state.IsAlive) continue;
 
-            if (state.TargetWasDestroyed)
+            if (state.hasTarget && !state.target)
             {
-                RemoveAt(i);
+                Remove(state);
                 continue;
             }
 
             if (state.IsPaused) continue;
 
-            var deltaTime = state.UseUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+            var deltaTime = state.useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
             if (deltaTime <= 0) continue;
 
-            state.ElapsedTime += deltaTime;
+            state.elapsedTime += deltaTime;
             state.Apply();
 
-            if (state.ElapsedTime >= state.Duration)
+            if (state.elapsedTime >= state.duration)
             {
                 state.Complete();
             }
         }
+
     }
 
     private static Tween Create<T>
@@ -664,60 +607,41 @@ public readonly struct Tween
         StopConflicting(target, property);
 
         var id = nextId++;
-        var state = new TweenState<T>(id, target, startValue, endValue, Mathf.Max(0, duration), lerp, onValueChange,
+        var state = new Tween<T>(id, target, startValue, endValue, Mathf.Max(0, duration), lerp, onValueChange,
             ease, useUnscaledTime, property);
 
-        Tweens.Add(state);
+        Tweens[id] = state;
         state.Apply();
 
-        if (state.Duration == 0)
+        if (state.duration == 0)
         {
             state.Complete();
         }
 
-        return new Tween(id);
+        return state;
     }
 
-    private bool TryGetState(out TweenState state)
+    private static void Remove(Tween state)
     {
-        foreach (var tween in Tweens)
-        {
-            if (tween.Id != id) continue;
-
-            state = tween;
-            return true;
-        }
-
-        state = null;
-        return false;
-    }
-
-    private static void Remove(TweenState state)
-    {
-        Tweens.Remove(state);
-    }
-
-    private static void RemoveAt(int index)
-    {
-        Tweens.RemoveAt(index);
+        Tweens.Remove(state.id);
     }
 
     private static void StopConflicting(Object target, TweenProperty property)
     {
         if (target == null || property == TweenProperty.None) return;
 
-        for (var i = Tweens.Count - 1; i >= 0; i--)
+        foreach (var tween in Tweens.Values.ToArray())
         {
-            var tween = Tweens[i];
-            if (tween.Target == target && tween.Property == property)
+            if (!tween.IsAlive) continue;
+            if (tween.target == target && tween.property == property)
             {
-                RemoveAt(i);
+                Remove(tween);
             }
         }
     }
 
     // Easing formulas are based on common Robert Penner easing equations, using the standard 1.70158 back overshoot.
-    private static float Evaluate(Ease ease, float value)
+    private protected static float Evaluate(Ease ease, float value)
     {
         value = Mathf.Clamp01(value);
 
@@ -737,102 +661,63 @@ public readonly struct Tween
         };
     }
 
-    private abstract class TweenState
+    private protected abstract void Apply();
+
+    private protected void InvokeOnUpdate()
     {
-        protected TweenState
-        (
-            int id,
-            Object target,
-            float duration,
-            Ease ease,
-            bool useUnscaledTime,
-            TweenProperty property
-        )
-        {
-            Id = id;
-            Target = target;
-            HasTarget = target is not null;
-            Duration = duration;
-            Ease = ease;
-            UseUnscaledTime = useUnscaledTime;
-            Property = property;
-        }
-
-        public int Id { get; }
-
-        public Object Target { get; }
-
-        internal TweenProperty Property { get; }
-
-        private bool HasTarget { get; }
-
-        public float Duration { get; }
-
-        public Ease Ease { get; }
-
-        public bool UseUnscaledTime { get; }
-
-        public bool IsPaused { get; set; }
-
-        public float ElapsedTime { get; set; }
-
-        public float Progress => Duration <= 0 ? 1 : Mathf.Clamp01(ElapsedTime / Duration);
-
-        public bool TargetWasDestroyed => HasTarget && !Target;
-
-        public event Action OnComplete;
-
-        public event Action<Tween> OnUpdate;
-
-        public abstract void Apply();
-
-        public void Complete()
-        {
-            ElapsedTime = Duration;
-            Apply();
-            Remove(this);
-            OnComplete?.Invoke();
-        }
-
-        protected void InvokeOnUpdate()
-        {
-            OnUpdate?.Invoke(new Tween(Id));
-        }
-    }
-
-    private sealed class TweenState<T> : TweenState
-    {
-        private readonly T startValue;
-        private readonly T endValue;
-        private readonly Func<T, T, float, T> lerp;
-        private readonly Action<T> onValueChange;
-
-        public TweenState
-        (
-            int id,
-            Object target,
-            T startValue,
-            T endValue,
-            float duration,
-            Func<T, T, float, T> lerp,
-            Action<T> onValueChange,
-            Ease ease,
-            bool useUnscaledTime,
-            TweenProperty property
-        ) : base(id, target, duration, ease, useUnscaledTime, property)
-        {
-            this.startValue = startValue;
-            this.endValue = endValue;
-            this.lerp = lerp;
-            this.onValueChange = onValueChange;
-        }
-
-        public override void Apply()
-        {
-            onValueChange(lerp(startValue, endValue, Evaluate(Ease, Progress)));
-            InvokeOnUpdate();
-        }
+        onUpdate?.Invoke(this);
     }
 
     #endregion
+}
+
+/// <summary>
+/// Helper for performing typed animation Tweens
+/// </summary>
+public sealed class Tween<T> : Tween
+{
+    private T startValue;
+    private T endValue;
+    private readonly Func<T, T, float, T> lerp;
+    private readonly Action<T> onValueChange;
+
+    internal Tween
+    (
+        int id,
+        Object target,
+        T startValue,
+        T endValue,
+        float duration,
+        Func<T, T, float, T> lerp,
+        Action<T> onValueChange,
+        Ease ease,
+        bool useUnscaledTime,
+        TweenProperty property
+    ) : base(id, target, duration, ease, useUnscaledTime, property)
+    {
+        this.startValue = startValue;
+        this.endValue = endValue;
+        this.lerp = lerp;
+        this.onValueChange = onValueChange;
+    }
+
+    private protected override void Apply()
+    {
+        if (!IsAlive) return;
+
+        onValueChange(lerp(startValue, endValue, Evaluate(ease, Progress)));
+        InvokeOnUpdate();
+    }
+
+    /// <inheritdoc />
+    public override Tween Reverse()
+    {
+        var newEnd = startValue;
+        var newStart = endValue;
+        onValueChange(newStart);
+        startValue = newStart;
+        endValue = newEnd;
+
+        return this;
+    }
 }
