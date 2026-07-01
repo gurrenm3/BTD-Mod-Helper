@@ -146,9 +146,7 @@ export const downloadMod = async (
     return;
   }
 
-  if (!mod.DllName) return;
-
-  window.open(getContentUrl(mod, mod.DllName), "_blank");
+  await downloadDllFromModHelperData(mod);
 
   if (mod.Dependencies && setSelectedMod) {
     setSelectedMod(mod);
@@ -167,6 +165,34 @@ export const downloadMod = async (
   }*/
 };
 
+const toPascalCaseDllName = (value?: string) => {
+  const pascalCase = value
+    ?.replace(/([a-z])([A-Z])/g, "$1 $2")
+    .split(/[^a-zA-Z0-9]+/)
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join("");
+
+  return pascalCase ? `${pascalCase}.dll` : undefined;
+};
+
+const getLatestReleaseDownloadUrl = (mod: ModHelperData, dllName: string) =>
+  `https://github.com/${mod.RepoOwner}/${
+    mod.RepoName
+  }/releases/latest/download/${encodeURIComponent(dllName)}`;
+
+const downloadDllFromModHelperData = async (mod: ModHelperData) => {
+  const dllName =
+    mod.DllName ||
+    toPascalCaseDllName(mod.Namespace) ||
+    toPascalCaseDllName(mod.RepoName) ||
+    toPascalCaseDllName(mod.Name);
+
+  if (dllName) {
+    window.open(getLatestReleaseDownloadUrl(mod, dllName), "_blank");
+  }
+};
+
 export const downloadRelease = (release: ReleaseWithMod) => {
   if (!release) return;
   const mod = release.mod;
@@ -176,5 +202,9 @@ export const downloadRelease = (release: ReleaseWithMod) => {
       (asset) => asset.name === mod.DllName || asset.name === mod.ZipName
     ) ?? release.assets[0];
 
-  window.open(asset.browser_download_url, "_blank");
+  if (asset) {
+    window.open(asset.browser_download_url, "_blank");
+  } else {
+    void downloadDllFromModHelperData(mod);
+  }
 };

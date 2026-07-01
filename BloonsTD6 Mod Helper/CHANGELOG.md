@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Fixed a recent change to the Mod Browser that was causing it to run into GitHub API rate restrictions too quickly
+  - Also improved the fallback downloading behavior when the Mod Browser is unable to retrieve direct information about the GitHub release
 - Added a new `BloonsTD6Mod` override `LateOnNewGameModel` that's like `OnNewGameModel` but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
 - Added `ImageSettings` options for configuring mod image loading behavior
   - Can control `FilterMode`, `MipMapBias`, `WrapMode`, `Pivot`, `PixelsPerUnit`, `Extrude`, `MeshType` and `Border`
@@ -30,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     InGame.instance.ShowEventPopup("EventName", GetInstance<MyPopupImage>(), title: "Title", body: "Body", showEverytime:true, showHintPopup:true);
     // showHintPopup controls whether its just a hint at the bottom instead of a full screen popup
     ```
-- The BTD6 Mod Sources folder no longer always gets created automatically, it instead gets created the first time you press the Create Mod button or manually change the folder location in settings
+- The BTD6 Mod Sources folder no longer always gets created automatically for everyone, it instead gets created the first time you press the Create Mod button or manually change the folder location in settings
 
 ## [3.6.5] - 2026-06-12
 

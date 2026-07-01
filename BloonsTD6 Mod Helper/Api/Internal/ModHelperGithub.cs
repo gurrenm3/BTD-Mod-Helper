@@ -108,7 +108,9 @@ internal static class ModHelperGithub
             {
                 // Start initial GitHub searches
                 var repoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                    {PerPage = 100, Page = page++, SortField = RepoSearchSort.Updated});
+                {
+                    PerPage = 100, Page = page++, SortField = RepoSearchSort.Updated
+                });
                 var monoRepoSearchTask = Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{MonoRepoTopic}"));
                 var modHelperRepoSearchTask = Client.Repository.Get(ModHelper.RepoOwner, ModHelper.RepoName);
 
@@ -125,7 +127,9 @@ internal static class ModHelperGithub
                         .Append(new ModHelperData(await modHelperRepoSearchTask)));
 
                     searchResult = await Client.Search.SearchRepo(new SearchRepositoriesRequest($"topic:{RepoTopic}")
-                        {PerPage = 100, Page = page++, SortField = RepoSearchSort.Updated});
+                    {
+                        PerPage = 100, Page = page++, SortField = RepoSearchSort.Updated
+                    });
                 }
 
                 // Finish getting monorepo mods
@@ -220,6 +224,7 @@ internal static class ModHelperGithub
     {
         Release latestRelease = null;
         GitHubCommit latestCommit = null;
+        ReleaseAsset fallbackAsset = null;
         if (mod.SubPath != null)
         {
             latestCommit = mod.LatestCommit ?? await mod.GetLatestCommit();
@@ -240,17 +245,22 @@ internal static class ModHelperGithub
             latestRelease = mod.LatestRelease ?? await mod.GetLatestRelease();
             if (latestRelease == null)
             {
-                const string errorMessage = $"Failed to get latest release from the GitHub API. {GenericSorry}";
-                ModHelper.Error(errorMessage);
-                if (!bypassPopup)
+                ModHelper.Warning(
+                    $"Failed to get latest release from the GitHub API for {mod.DisplayName}. Falling back to direct latest-release download URLs.");
+                fallbackAsset = await GetLatestReleaseDownloadAsset(mod);
+                if (fallbackAsset == null)
                 {
-                    PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
+                    const string errorMessage = $"Failed to get latest release from the GitHub API. {GenericSorry}";
+                    ModHelper.Error(errorMessage);
+                    if (!bypassPopup)
+                    {
+                        PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(errorMessage));
+                    }
+
+                    return null;
                 }
-
-                return null;
             }
-
-            if (latestRelease.TagName != mod.RepoVersion)
+            else if (latestRelease.TagName != mod.RepoVersion)
             {
                 ModHelper.Warning(
                     $"Latest Release Tag '{latestRelease.TagName}' didn't exactly match listed mod version '{mod.RepoVersion}'. " +
@@ -262,7 +272,7 @@ internal static class ModHelperGithub
 
         if (bypassPopup)
         {
-            var downloadTask = Download(mod, filePathCallback, latestRelease, false);
+            var downloadTask = Download(mod, filePathCallback, latestRelease, false, fallbackAsset);
             taskCallback?.Invoke(downloadTask);
             var resultFile = await downloadTask;
 
@@ -280,11 +290,12 @@ internal static class ModHelperGithub
             screen.ShowPopup(PopupScreen.Placement.menuCenter,
                 $"{DoYouWantToDownload.Localize()}\n{mod.DisplayName} v{latestRelease?.TagName ?? mod.RepoVersion}?",
                 ParseReleaseMessage(mod.SubPath == null
-                    ? latestRelease!.Body
+                    ? latestRelease?.Body
                     : latestCommit!.Commit.Message),
                 new Action(async () =>
                 {
-                    var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any());
+                    var downloadTask = Download(mod, filePathCallback, latestRelease, !dependencies.Any(),
+                        fallbackAsset);
                     taskCallback?.Invoke(downloadTask);
                     var resultFile = await downloadTask;
 
@@ -335,19 +346,72 @@ internal static class ModHelperGithub
     private static string ParseReleaseMessage(string body) =>
         Regex.Split(body ?? "", @"<!--Mod Browser Message Start-->[\r\n\s]*").LastOrDefault() ?? "";
 
+    private static string ToPascalCaseDllName(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return null;
+
+        var words = Regex
+            .Replace(value, "([a-z])([A-Z])", "$1 $2")
+            .Split([' ', '-', '_', '.', '/'], StringSplitOptions.RemoveEmptyEntries);
+        var pascalCase = string.Concat(words.Select(word => char.ToUpperInvariant(word[0]) + word[1..]));
+
+        return string.IsNullOrEmpty(pascalCase) ? null : $"{pascalCase}.dll";
+    }
+
+    private static IEnumerable<string> GetDllNameCandidates(ModHelperData mod) => new[]
+    {
+        mod.DllName,
+        ToPascalCaseDllName(mod.Namespace),
+        ToPascalCaseDllName(mod.RepoName),
+        ToPascalCaseDllName(mod.Name)
+    }.Where(name => !string.IsNullOrWhiteSpace(name)).Distinct();
+
+    private static string GetLatestReleaseDownloadUrl(ModHelperData mod, string dllName) =>
+        $"https://github.com/{mod.RepoOwner}/{mod.RepoName}/releases/latest/download/{Uri.EscapeDataString(dllName)}";
+
+    private static async Task<ReleaseAsset> GetLatestReleaseDownloadAsset(ModHelperData mod)
+    {
+        foreach (var dllName in GetDllNameCandidates(mod))
+        {
+            var url = GetLatestReleaseDownloadUrl(mod, dllName);
+            try
+            {
+                using var request = new HttpRequestMessage(HttpMethod.Head, url);
+                using var response = await ModHelperHttp.Client.SendAsync(request);
+                if (response.IsSuccessStatusCode)
+                {
+                    return new ReleaseAsset("", 0, "", dllName, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
+                        DateTimeOffset.Now, url, null);
+                }
+            }
+            catch
+            {
+                // Try the next likely dll name.
+            }
+        }
+
+        return null;
+    }
+
     private static async Task<string> Download(ModHelperData mod, Action<string> callback, Release latestRelease,
-        bool showPopup)
+        bool showPopup, ReleaseAsset fallbackAsset = null)
     {
         Exception exception = null;
         try
         {
             var asset = mod.SubPath == null
-                ? latestRelease!.Assets.FirstOrDefault(asset =>
+                ? latestRelease?.Assets.FirstOrDefault(asset =>
                       asset.Name == mod.DllName || asset.Name == mod.ZipName || asset.Name == mod.Mod?.FileName()
                   ) ??
-                  latestRelease.Assets[0]
+                  latestRelease?.Assets.FirstOrDefault() ??
+                  fallbackAsset ??
+                  await GetLatestReleaseDownloadAsset(mod)
                 : new ReleaseAsset("", 0, "", mod.Name, "", "", DllContentType, 0, 0, DateTimeOffset.Now,
                     DateTimeOffset.Now, mod.GetContentURL(mod.ZipName ?? mod.DllName), null);
+            if (asset == null)
+            {
+                throw new FileNotFoundException("No release asset or fallback download URL was found.");
+            }
             var resultFile = await DownloadAsset(mod, asset, showPopup);
             if (resultFile != null)
             {
@@ -379,6 +443,9 @@ internal static class ModHelperGithub
         return null;
     }
 
+    private static bool IsLatestReleaseDownloadUrl(string url) =>
+        url?.Contains("/releases/latest/download/", StringComparison.OrdinalIgnoreCase) == true;
+
     public static async Task<string> DownloadAsset(ModHelperData mod, ReleaseAsset releaseAsset, bool showPopup = true)
     {
         if (mod.ManualDownload)
@@ -387,7 +454,9 @@ internal static class ModHelperGithub
             return "";
         }
 
-        var name = mod.DllName ?? releaseAsset.Name;
+        var name = IsLatestReleaseDownloadUrl(releaseAsset.BrowserDownloadUrl)
+            ? releaseAsset.Name
+            : mod.DllName ?? releaseAsset.Name;
         if (mod.Mod != null && name == null)
         {
             name = $"{mod.Mod.GetAssembly().GetName().Name}.dll";
@@ -495,18 +564,6 @@ internal static class ModHelperGithub
                 ModHelper.Warning(e);
             }
         });
-    }
-
-    public static void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
-    {
-        foreach (var dir in source.GetDirectories())
-        {
-            CopyFilesRecursively(dir, target.CreateSubdirectory(dir.Name));
-        }
-        foreach (var file in source.GetFiles())
-        {
-            file.CopyTo(Path.Combine(target.FullName, file.Name), true);
-        }
     }
 }
 #endif

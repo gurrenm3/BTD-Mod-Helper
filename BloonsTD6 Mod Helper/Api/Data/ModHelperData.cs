@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using BTD_Mod_Helper.Api.Helpers;
 using BTD_Mod_Helper.Api.Internal;
+using MelonLoader.Utils;
 using Semver;
 using UnityEngine;
 
@@ -168,8 +169,12 @@ internal partial class ModHelperData
     public bool ModInstalledLocally(out ModHelperData modHelperData)
     {
         var result = All.FirstOrDefault(data =>
-            (data.RepoName?.Equals(RepoName) == true || data.RepoName?.Equals(PrevRepoName) == true || data.PrevRepoName?.Equals(RepoName) == true) &&
-            (data.RepoOwner?.Equals(RepoOwner) == true || data.RepoOwner?.Equals(PrevRepoOwner) == true || data.PrevRepoOwner?.Equals(RepoOwner) == true) &&
+            (data.RepoName?.Equals(RepoName) == true ||
+             data.RepoName?.Equals(PrevRepoName) == true ||
+             data.PrevRepoName?.Equals(RepoName) == true) &&
+            (data.RepoOwner?.Equals(RepoOwner) == true ||
+             data.RepoOwner?.Equals(PrevRepoOwner) == true ||
+             data.PrevRepoOwner?.Equals(RepoOwner) == true) &&
             data.SubPath == SubPath ||
             data.DllName?.Equals(DllName) == true && RepoName == null && RepoOwner == null
         );
@@ -260,26 +265,25 @@ internal partial class ModHelperData
                 try
                 {
                     var contents = File.ReadAllText(dataFile);
-                    var data1 = new ModHelperData();
-                    data1.ReadValuesFromJson(contents);
+                    var data = new ModHelperData();
+                    data.ReadValuesFromJson(contents);
 
-                    if (!data1.ModInstalledLocally(out _))
+                    if (!data.ModInstalledLocally(out _) &&
+                        !File.Exists(Path.Combine(MelonEnvironment.ModsDirectory, file.Name)))
                     {
                         var iconFile = Path.Combine(ModHelper.DataDirectory, file.Name.Replace(".dll", ".png"));
                         if (File.Exists(iconFile))
                         {
-                            data1.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
+                            data.IconBytes = new FileStream(iconFile, FileMode.Open).GetByteArray();
                         }
                         else
                         {
-                            data1.HasNoIcon = true;
+                            data.HasNoIcon = true;
                         }
 
-                        data1.SetFilePath(file.FullName);
-                        Inactive.Add(data1);
-                        // ModHelper.Msg($"Found disabled mod {file.FullName}");
+                        data.SetFilePath(file.FullName);
+                        Inactive.Add(data);
                     }
-                    // ModHelper.Msg($"{data.DisplayName} is already enabled?");
                 }
                 catch (Exception e1)
                 {

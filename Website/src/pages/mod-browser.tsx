@@ -541,27 +541,33 @@ export default () => {
         <Modal.Header closeButton={true} closeVariant={"white"}>
           README.md for {modDisplayName(modsById[selectedMod])}
         </Modal.Header>
-        <Modal.Body>{selectedModBody}</Modal.Body>
-        {selectedModDependencies.length > 0 && (
-          <Modal.Footer className={"flex-column"}>
-            <div className={"fs-2 m-0"}>Dependencies</div>
-            <div>
-              This mod has the following dependencies. It may not function
-              properly if you don't download them as well.
-            </div>
-            <div className={"w-100 d-flex flex-column gap-3"}>
-              {selectedModDependencies.map((id) => {
-                const mod = modsById[id];
+        <Modal.Body>
+          {selectedModDependencies.length > 0 && (
+            <div className={"flex-column text-center"}>
+              <div className={"fs-2 m-0"}>Dependencies</div>
+              <div className={"mb-3"}>
+                This mod has the following dependencies. It will likely not
+                function properly if you don't download them as well.
+              </div>
+              <div className={"w-100 d-flex flex-column gap-3"}>
+                {selectedModDependencies.map((id) => {
+                  const mod = modsById[id];
 
-                return mod ? (
-                  <ModEntry mod={mod} data={moddersData.current} mini={true} />
-                ) : (
-                  <div className={"w-100 text-center"}>{id}</div>
-                );
-              })}
+                  return mod ? (
+                    <ModEntry
+                      mod={mod}
+                      data={moddersData.current}
+                      mini={true}
+                    />
+                  ) : (
+                    <div className={"w-100 text-center"}>{id}</div>
+                  );
+                })}
+              </div>
             </div>
-          </Modal.Footer>
-        )}
+          )}
+        </Modal.Body>
+        <Modal.Body>{selectedModBody}</Modal.Body>
       </Modal>
     </Layout>
   );

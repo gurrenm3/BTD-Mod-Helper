@@ -30,6 +30,8 @@ const WorksOnVersionRegex = '\\bWorksOnVersion\\s*=\\s*"(.+)";?[\n\r]+';
 const DependenciesRegex = '\\bDependencies\\s*=\\s*"(.+)";?[\n\r]+';
 const PrevRepoNameRegex = '\\bPrevRepoName\\s*=\\s*"(.+)";?[\n\r]+';
 const PrevRepoOwnerRegex = '\\bPrevRepoOwner\\s*=\\s*"(.+)";?[\n\r]+';
+const NamespaceRegex =
+  "^[\\s\\S]*?\\bnamespace\\s+([A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*)\\s*[;{]";
 
 const ModHelperDataCs = "ModHelperData.cs";
 const ModHelperDataJson = "ModHelperData.json";
@@ -77,6 +79,7 @@ export type ModHelperData = {
   Identifier: string;
   CountOfMonoRepo?: number;
   PrevIdentifier?: string;
+  Namespace?: string;
 };
 
 type Types = {
@@ -128,6 +131,7 @@ const readValuesFromString = (
   result.Version = getRegexMatch("string", data, VersionRegex);
   result.PrevRepoName = getRegexMatch("string", data, PrevRepoNameRegex);
   result.PrevRepoOwner = getRegexMatch("string", data, PrevRepoOwnerRegex);
+  result.Namespace = getRegexMatch("string", data, NamespaceRegex);
 
   if (allowRepo) {
     result.RepoName = getRegexMatch("string", data, RepoNameRegex);
