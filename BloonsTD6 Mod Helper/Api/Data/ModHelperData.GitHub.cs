@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Internal;
 using BTD_Mod_Helper.Api.ModMenu;
@@ -322,19 +323,26 @@ internal partial class ModHelperData
 
     private async Task CheckPrev()
     {
+        var prevRepoOwner = PrevRepoOwner ?? RepoOwner;
+        var prevRepoName = PrevRepoName ?? RepoName;
+
         try
         {
-            var resolved = await ModHelperGithub.Client.Repository.Get(PrevRepoOwner ?? RepoOwner, PrevRepoName ?? RepoName);
-            if (string.Equals(resolved.Owner.Login, RepoOwner, StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(resolved.Name, RepoName, StringComparison.OrdinalIgnoreCase))
+            using var request = new HttpRequestMessage(HttpMethod.Head, $"https://github.com/{prevRepoOwner}/{prevRepoName}");
+            using var response = await ModHelperHttp.Client.SendAsync(request);
+            var resolved = response.RequestMessage?.RequestUri;
+            if (resolved != null &&
+                string.Equals(resolved.Host, "github.com", StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(resolved.AbsolutePath.Trim('/'), $"{RepoOwner}/{RepoName}", StringComparison.OrdinalIgnoreCase))
             {
                 return;
             }
         }
-        catch (NotFoundException)
+        catch
         {
             // Not a valid previous repo
         }
+
         PrevRepoOwner = null;
         PrevRepoName = null;
     }

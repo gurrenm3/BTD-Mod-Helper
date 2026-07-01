@@ -302,20 +302,24 @@ internal partial class ModHelperData
                 data ??= await RetrieveData(DataPath, ct);
             }
 
-            try
+            Exception dataException = null;
+            foreach (var name in new[] {ModHelperDataCs, ModHelperDataJson, ModHelperDataTxt})
             {
-                data ??= await WhenFirstSucceededOrAllFailed([
-                    RetrieveData(ModHelperDataCs, ct),
-                    RetrieveData(ModHelperDataJson, ct),
-                    RetrieveData(ModHelperDataTxt, ct)
-                ]);
-            }
-            catch (Exception e)
-            {
-                if (RepoOwner == ModHelper.MyGithubUsername)
+                if (data != null) break;
+
+                try
                 {
-                    ModHelper.Warning(e);
+                    data = await RetrieveData(name, ct);
                 }
+                catch (Exception e)
+                {
+                    dataException = e;
+                }
+            }
+
+            if (data == null && dataException != null && RepoOwner == ModHelper.MyGithubUsername)
+            {
+                ModHelper.Warning(dataException);
             }
 
             if (data == null)
@@ -347,23 +351,6 @@ internal partial class ModHelperData
 
             return null;
         }
-    }
-
-    private static async Task<T> WhenFirstSucceededOrAllFailed<T>(IEnumerable<Task<T>> tasks)
-    {
-        var taskList = new List<Task<T>>(tasks);
-        while (taskList.Count > 0)
-        {
-            var firstCompleted = await Task.WhenAny(taskList).ConfigureAwait(false);
-            if (firstCompleted.Status == TaskStatus.RanToCompletion)
-            {
-                return firstCompleted.Result;
-            }
-
-            taskList.Remove(firstCompleted);
-        }
-
-        return default;
     }
 
     public void SaveToJson(string folderPath)

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Fixed a recent change to the Mod Browser that was causing it to run into GitHub API rate restrictions too quickly
 - Added a new `BloonsTD6Mod` override `LateOnNewGameModel` that's like `OnNewGameModel` but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
 - Added `ImageSettings` options for configuring mod image loading behavior
   - Can control `FilterMode`, `MipMapBias`, `WrapMode`, `Pivot`, `PixelsPerUnit`, `Extrude`, `MeshType` and `Border`

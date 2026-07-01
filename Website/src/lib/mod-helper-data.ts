@@ -258,6 +258,7 @@ export const loadDataFromRepo = async (
   }
 
   let data: string | undefined;
+  let dataName: string | undefined;
 
   if (
     modHelperData.SubPath &&
@@ -266,20 +267,22 @@ export const loadDataFromRepo = async (
       modHelperData.SubPath.endsWith(".cs"))
   ) {
     data = await getString(getContentUrl(modHelperData, modHelperData.SubPath));
+    dataName = modHelperData.SubPath;
   } else if (modHelperData.DataPath) {
     data = await getString(
       getContentUrl(modHelperData, modHelperData.DataPath)
     );
+    dataName = modHelperData.DataPath;
   }
 
   if (!data) {
-    try {
-      data = await Promise.any([
-        getString(getContentUrl(modHelperData, ModHelperDataCs)),
-        getString(getContentUrl(modHelperData, ModHelperDataJson)),
-        getString(getContentUrl(modHelperData, ModHelperDataTxt)),
-      ]);
-    } catch (e) {}
+    for (const name of [ModHelperDataCs, ModHelperDataJson, ModHelperDataTxt]) {
+      try {
+        data = await getString(getContentUrl(modHelperData, name));
+        dataName = name;
+        break;
+      } catch (e) {}
+    }
   }
 
   if (!data) {
@@ -321,14 +324,29 @@ export const loadDataFromRepo = async (
     const prevName = modHelperData.PrevRepoName ?? modHelperData.RepoName;
 
     try {
-      const resolved = await getJson<{
-        owner: { login: string };
-        name: string;
-      }>(`https://api.github.com/repos/${prevOwner}/${prevName}`);
+      const response = await fetch(
+        getContentUrl(
+          {
+            ...modHelperData,
+            RepoOwner: prevOwner,
+            RepoName: prevName,
+          },
+          dataName
+        ),
+        {
+          method: "HEAD",
+          redirect: "follow",
+        }
+      );
+      const resolved = new URL(response.url);
+      const [, resolvedOwner, resolvedName] = resolved.pathname.split("/");
       if (
-        resolved.owner.login.toLowerCase() ===
+        response.ok &&
+        resolved.hostname.toLowerCase() ===
+          new URL(RawUserContent).hostname.toLowerCase() &&
+        resolvedOwner?.toLowerCase() ===
           modHelperData.RepoOwner.toLowerCase() &&
-        resolved.name.toLowerCase() === modHelperData.RepoName.toLowerCase()
+        resolvedName?.toLowerCase() === modHelperData.RepoName.toLowerCase()
       ) {
         modHelperData.PrevIdentifier =
           `${prevOwner}/${prevName}` +
