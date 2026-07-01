@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.6] - 2026-07-01
+
 - Fixed a recent change to the Mod Browser that was causing it to run into GitHub API rate restrictions too quickly
   - Also improved the fallback downloading behavior when the Mod Browser is unable to retrieve direct information about the GitHub release
 - Added a new `BloonsTD6Mod` override `LateOnNewGameModel` that's like `OnNewGameModel` but applying after almost all other base game modifications to the GameModel, such as cosmetic changes and Challenge Rules
@@ -1112,7 +1114,8 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 
 Initial release of the new Mod Helper
 
-[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...HEAD
+[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.6...HEAD
+[3.6.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...3.6.6
 
 [3.6.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.4...3.6.5
 
