@@ -193,7 +193,7 @@ public abstract class Tween
         float duration,
         Action<float> onValueChange,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(null, startValue, endValue, duration, Mathf.LerpUnclamped, onValueChange, ease, useUnscaledTime);
@@ -210,7 +210,7 @@ public abstract class Tween
         float duration,
         Action<float> onValueChange,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.None, startValue, endValue, duration, Mathf.LerpUnclamped, onValueChange,
@@ -227,7 +227,7 @@ public abstract class Tween
         float duration,
         Action<Vector2> onValueChange,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(null, startValue, endValue, duration, Vector2.LerpUnclamped, onValueChange, ease, useUnscaledTime);
@@ -243,7 +243,7 @@ public abstract class Tween
         float duration,
         Action<Vector3> onValueChange,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(null, startValue, endValue, duration, Vector3.LerpUnclamped, onValueChange, ease, useUnscaledTime);
@@ -259,7 +259,7 @@ public abstract class Tween
         float duration,
         Action<Color> onValueChange,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(null, startValue, endValue, duration, UnityEngine.Color.LerpUnclamped, onValueChange, ease,
@@ -279,7 +279,7 @@ public abstract class Tween
         Vector3 endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.Position, target.position, endValue, duration, Vector3.LerpUnclamped,
@@ -295,7 +295,7 @@ public abstract class Tween
         Vector3 endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.LocalPosition, target.localPosition, endValue, duration,
@@ -312,7 +312,7 @@ public abstract class Tween
         Vector3 endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.Scale, target.localScale, endValue, duration, Vector3.LerpUnclamped,
@@ -328,7 +328,7 @@ public abstract class Tween
         Quaternion endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.Rotation, target.rotation, endValue, duration, Quaternion.LerpUnclamped,
@@ -344,7 +344,7 @@ public abstract class Tween
         Quaternion endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.LocalRotation, target.localRotation, endValue, duration,
@@ -361,7 +361,7 @@ public abstract class Tween
         Vector3 endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.EulerAngles, target.localEulerAngles, endValue, duration,
@@ -382,7 +382,7 @@ public abstract class Tween
         Vector2 endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.AnchoredPosition, target.anchoredPosition, endValue, duration,
@@ -399,7 +399,7 @@ public abstract class Tween
         Vector2 endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.SizeDelta, target.sizeDelta, endValue, duration, Vector2.LerpUnclamped,
@@ -415,7 +415,7 @@ public abstract class Tween
         Color endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.GraphicColor, target.color, endValue, duration,
@@ -431,7 +431,7 @@ public abstract class Tween
         float endValue,
         float duration,
         Ease ease = Ease.Linear,
-        bool useUnscaledTime = false
+        bool useUnscaledTime = true
     )
     {
         return Create(target, TweenProperty.CanvasGroupAlpha, target.alpha, endValue, duration, Mathf.LerpUnclamped,

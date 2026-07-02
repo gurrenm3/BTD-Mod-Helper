@@ -124,7 +124,7 @@ internal static class TemplateMod
             File.Move(csProjPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.csproj"), true);
             var csProj = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".csproj")!;
             csProj.ExtractToFile(csProjPath);
-            ReplaceFileText(csProjPath, name);
+            await ReplaceFileText(csProjPath, name);
 
 
             var slnPath = Path.Combine(path, $"{name}.sln");
@@ -133,7 +133,7 @@ internal static class TemplateMod
                 File.Move(slnPath, Path.Combine(ModHelper.ReplacedFilesDirectory, $"{name}.sln"), true);
                 var sln = zipArchive.GetEntry(ZipArchivePrefix + nameof(TemplateMod) + ".sln");
                 sln?.ExtractToFile(slnPath);
-                ReplaceFileText(slnPath, name);
+                await ReplaceFileText(slnPath, name);
             }
 
             var properties = Path.Combine(path, "Properties");
@@ -147,7 +147,7 @@ internal static class TemplateMod
             {
                 var modHelperData = zipArchive.GetEntry(ZipArchivePrefix + "ModHelperData.cs");
                 modHelperData?.ExtractToFile(modHelperDataPath);
-                ReplaceFileText(modHelperDataPath, name);
+                await ReplaceFileText(modHelperDataPath, name);
             }
 
             zipArchive.GetEntry(ZipArchivePrefix + ".gitignore")
@@ -169,7 +169,7 @@ internal static class TemplateMod
                 Directory.CreateDirectory(workflowsPath);
                 var buildYml = zipArchive.GetEntry(ZipArchivePrefix + ".github/workflows/build.yml");
                 buildYml?.ExtractToFile(buildYmlPath);
-                ReplaceFileText(buildYmlPath, name);
+                await ReplaceFileText(buildYmlPath, name);
             }
 
             SuccessPopup(path, name, "Upgraded");
@@ -195,18 +195,22 @@ internal static class TemplateMod
             screen.ShowOkPopup("Something seems to have gone wrong. Check the console for details."));
     }
 
-    private static void ReplaceFileText(string file, string name)
+    private static async Task ReplaceFileText(string file, string name)
     {
         if (!File.Exists(file)) return;
 
-        var text = File.ReadAllText(file);
+        var text = await File.ReadAllTextAsync(file);
         var newFile = file.Replace(nameof(TemplateMod), name);
         var newText = text.Replace(nameof(TemplateMod), name);
+        if (!string.IsNullOrEmpty(MelonMain.GitHubUsername))
+        {
+            newText = newText.Replace(nameof(MelonMain.GitHubUsername), MelonMain.GitHubUsername);
+        }
 
         if (file != newFile || text != newText)
         {
             File.Delete(file);
-            File.WriteAllText(newFile, newText);
+            await File.WriteAllTextAsync(newFile, newText);
         }
     }
 
@@ -215,7 +219,7 @@ internal static class TemplateMod
         var files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
         await Task.WhenAll(files
             .Where(file => Enumerable.Any(ValidExtensions, file.EndsWith))
-            .Select(file => Task.Run(() => ReplaceFileText(file, name)))
+            .Select(file => Task.Run(async () => await ReplaceFileText(file, name)))
             .ToArray()
         );
     }

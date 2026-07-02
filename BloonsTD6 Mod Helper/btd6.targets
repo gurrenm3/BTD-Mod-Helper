@@ -64,7 +64,7 @@
     </ItemGroup>
 
     <!--Referencing mod dependencies, supporting subfolders-->
-    <Target Name="ResolveModReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Target Name="ResolveModReferences" BeforeTargets="ResolveAssemblyReferences;ResolveAssemblyReferencesDesignTime">
         <!--Mod Helper dependency-->
         <ItemGroup Condition="$(DontReferenceModHelper) != 'true'">
             <_ModHelperDll Include="$(BloonsTD6)\Mods\**\Btd6ModHelper.dll"/>
