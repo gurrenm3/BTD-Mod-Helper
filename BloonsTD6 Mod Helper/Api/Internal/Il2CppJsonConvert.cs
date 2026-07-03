@@ -68,7 +68,8 @@ public static class Il2CppJsonConvert
                 return false;
             }
 
-            return objectType.IsAssignableTo(typeof(Il2CppObjectBase));
+            return objectType.IsAssignableTo(typeof(Il2CppObjectBase)) &&
+                   !objectType.IsAssignableTo(typeof(GameObject));
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -339,7 +340,10 @@ public static class Il2CppJsonConvert
             return base
                 .GetSerializableMembers(objectType)
                 .Where(member => memberNames.Contains(member.Name) &&
-                                 member.GetUnderlyingType() != typeof(IntPtr))
+                                 member.GetUnderlyingType() != typeof(IntPtr) &&
+                                 !member.GetUnderlyingType().ContainsType<GameObject>() &&
+                                 !member.GetUnderlyingType().ContainsType<Component>() &&
+                                 !member.GetUnderlyingType().ContainsType<Il2CppSystem.Delegate>())
                 .ToList();
         }
 
@@ -424,6 +428,9 @@ public static class Il2CppJsonConvert
         protected virtual bool AllowedMemberType(Type type) =>
             !type.IsAssignableTo(typeof(BehaviorMutator)) &&
             !type.IsAssignableTo(typeof(Il2CppAssets.Scripts.ObjectId)) &&
+            !type.ContainsType<GameObject>() &&
+            !type.ContainsType<Component>() &&
+            !type.ContainsType<Il2CppSystem.Delegate>() &&
             !(type.IsGenericType && type.GenericTypeArguments.Any(t => !AllowedMemberType(t)));
 
         protected virtual bool AllowedMember(MemberInfo member) =>
@@ -469,4 +476,9 @@ public static class Il2CppJsonConvert
         type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Il2CppSystem.Collections.Generic.Dictionary<,>);
 
     internal static bool IsIl2CppValueType(this Type type) => type.IsAssignableTo(typeof(ValueType));
+
+    internal static bool ContainsType<T>(this Type type) =>
+        type.IsAssignableTo(typeof(T)) ||
+        (type.HasElementType && type.GetElementType() is { } elementType && elementType.ContainsType<T>()) ||
+        (type.IsGenericType && type.GenericTypeArguments.Any(ContainsType<T>));
 }

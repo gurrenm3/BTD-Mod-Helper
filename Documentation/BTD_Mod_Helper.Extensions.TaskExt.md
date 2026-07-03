@@ -12,6 +12,42 @@ public static class TaskExt
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; TaskExt
 ### Methods
 
+<a name='BTD_Mod_Helper.Extensions.TaskExt.Await(thisSystem.Threading.Tasks.Task)'></a>
+
+## TaskExt.Await(this Task) Method
+
+Awaits a task as a coroutine
+
+```csharp
+public static System.Collections.IEnumerator Await(this System.Threading.Tasks.Task task);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TaskExt.Await(thisSystem.Threading.Tasks.Task).task'></a>
+
+`task` [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')
+
+#### Returns
+[System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
+
+<a name='BTD_Mod_Helper.Extensions.TaskExt.Await(thisTask)'></a>
+
+## TaskExt.Await(this Task) Method
+
+Awaits a task as a coroutine
+
+```csharp
+public static System.Collections.IEnumerator Await(this Task task);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.TaskExt.Await(thisTask).task'></a>
+
+`task` [Il2CppSystem.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Threading.Tasks.Task 'Il2CppSystem.Threading.Tasks.Task')
+
+#### Returns
+[System.Collections.IEnumerator](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerator 'System.Collections.IEnumerator')
+
 <a name='BTD_Mod_Helper.Extensions.TaskExt.ContinueWithIl2Cpp_T_(thisTask_T_,System.Action_Task_T__)'></a>
 
 ## TaskExt.ContinueWithIl2Cpp<T>(this Task<T>, Action<Task<T>>) Method

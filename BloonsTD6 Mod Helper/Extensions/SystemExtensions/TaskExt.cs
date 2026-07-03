@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Il2CppSystem.Threading.Tasks;
 
 namespace BTD_Mod_Helper.Extensions;
@@ -33,5 +34,27 @@ public static class TaskExt
                 error(t.Exception);
             }
         }));
+    }
+
+    /// <summary>
+    /// Awaits a task as a coroutine
+    /// </summary>
+    public static IEnumerator Await(this Task task)
+    {
+        while (!task.IsCompleted)
+        {
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Awaits a task as a coroutine
+    /// </summary>
+    public static IEnumerator Await(this System.Threading.Tasks.Task task)
+    {
+        while (!task.IsCompleted)
+        {
+            yield return null;
+        }
     }
 }

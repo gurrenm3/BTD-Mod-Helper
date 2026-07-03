@@ -174,22 +174,27 @@ jobs:
           fi
 
       - name: Download Template Mod Zip
+        if: env.IS_RELEASE == 'true'
         run: curl -L "https://github.com/doombubbles/btd6-template-mod/archive/refs/heads/main.zip" -o "${{ env.PROJECT_NAME }}/Resources/btd6-template-mod-main.zip"
 
       - name: Build Mod Thunderstore
+        if: env.IS_RELEASE == 'true'
         run: dotnet build -c ReleaseLite -p:BloonsTD6="../${{ env.BLOONSTD6 }}" "${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj"
 
       - name: Install Thunderstore CLI
+        if: env.IS_RELEASE == 'true'
         run: |
           dotnet tool install -g tcli --version 0.2.4
           echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Setup Node
+        if: env.IS_RELEASE == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Prepare README and icon for Thunderstore
+        if: env.IS_RELEASE == 'true'
         env:
           LINK_BASE: "https://github.com/${{ github.repository }}/blob/HEAD"
           IMAGE_BASE: "https://raw.githubusercontent.com/${{ github.repository }}/HEAD"

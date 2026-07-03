@@ -310,9 +310,7 @@ internal partial class MelonMain
             "vanilla content was implemented by Ninja Kiwi.",
         action = () =>
         {
-            GameModelExporter.ExportAll();
-            PopupScreen.instance.SafelyQueue(screen =>
-                screen.ShowOkPopup($"Finished exporting Game Model to {FileIOHelper.sandboxRoot}"));
+            GameModelExporter.ExportAll().StartCoroutine();
         },
         buttonText = "Export",
         category = ModMaking,

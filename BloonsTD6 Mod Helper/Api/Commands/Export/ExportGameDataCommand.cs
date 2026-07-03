@@ -1,3 +1,4 @@
+using System.Collections;
 using BTD_Mod_Helper.Api.Helpers;
 using CommandLine;
 namespace BTD_Mod_Helper.Api.Commands.Export;
@@ -17,12 +18,10 @@ internal class ExportGameDataCommand : ModCommand<ExportCommand>
     )]
     public bool Consistent { get; set; }
 
-    public override bool Execute(ref string resultText)
+    public override IEnumerator Execute(Output output)
     {
         GameModelExporter.clean = Clean;
         GameModelExporter.consistent = Consistent;
-        GameModelExporter.ExportAll();
-
-        return true;
+        return GameModelExporter.ExportAll();
     }
 }

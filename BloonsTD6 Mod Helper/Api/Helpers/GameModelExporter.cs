@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -6,7 +7,10 @@ using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Legends;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Rounds;
+using Il2CppAssets.Scripts.SimulationTests;
 using Il2CppAssets.Scripts.Unity;
+using Il2CppAssets.Scripts.Unity.Map;
 using Il2CppInterop.Runtime;
 using Il2CppNinjaKiwi.Common;
 using Il2CppNinjaKiwi.Localization;
@@ -14,9 +18,12 @@ using Il2CppSystem;
 using Il2CppSystem.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using Exception = System.Exception;
+using Object = Il2CppSystem.Object;
+using Path = System.IO.Path;
 using Type = System.Type;
 
 namespace BTD_Mod_Helper.Api.Helpers;
@@ -47,7 +54,7 @@ public static class GameModelExporter
     /// <summary>
     /// Exports every bit of GameModel and GameData info of note to the local folder
     /// </summary>
-    internal static void ExportAll()
+    internal static IEnumerator ExportAll()
     {
         ModHelper.Msg("Exporting game data, this will take a little bit...");
 
@@ -61,7 +68,7 @@ public static class GameModelExporter
         Export("Bloons", gameModel.bloons, bloon => $"{bloon.baseId}/{bloon.name}");
         Export("Powers", gameModel.powers, power => $"{power.name}");
         Export("Mods", gameData.mods, mod => $"{mod.name}");
-        Export("Rounds", gameData.roundSets, r => r.rounds, (r, _, i) => $"{r.name}/{i + 1}");
+        Export("Rounds", gameData.roundSets, r => r.rounds, (r, _, i) => $"{r.name}/{i + 1}", o => o.Remove("emissions"));
         Export("Maps", gameData.mapSet.Maps.items, map => $"{map.difficulty}/{map.id}");
         Export("Buffs", gameModel.buffIndicatorModels, buff => $"{buff.name}");
         Export("Skins", gameData.skinsData.SkinList.items, skin => $"{skin.baseTowerName}/{skin.name}");
@@ -82,19 +89,38 @@ public static class GameModelExporter
         {
             o.Remove(nameof(RogueData.mapTemplates));
             o.Remove(nameof(RogueData.LegendsData));
-            o.Value<JObject>(nameof(RogueData.featsData))!.Remove(nameof(RogueData.featsData.activeFeats));
+            // o.Value<JObject>(nameof(RogueData.featsData))!.Remove(nameof(RogueData.featsData.activeFeats));
         });
         Export(gameData.frontierData, "frontierData.json", o =>
         {
             o.Remove(nameof(FrontierData.assetData));
             o.Remove(nameof(FrontierData.FrontierSaveData));
             o.Remove(nameof(FrontierData.LegendsData));
-            o.Value<JObject>(nameof(FrontierData.featsData))!.Remove(nameof(FrontierData.featsData.activeFeats));
+            // o.Value<JObject>(nameof(FrontierData.featsData))!.Remove(nameof(FrontierData.featsData.activeFeats));
         });
 
 #if DEBUG
         FileIOHelper.SaveFile(".gitignore", gitIgnore);
 #endif
+
+        /*foreach (var map in gameData.mapSet.Maps.items)
+        {
+            var path = $"Maps/{map.difficulty}/{map.id}.json";
+            var jobject = JObject.FromObject(map, Serializer);
+
+            var test = ScriptableObject.CreateInstance<SimulationTest>();
+            test.map = map.id;
+            ModHelper.Msg($"Loading model for map {map.id}...");
+            var loadEnv = SimulationTestUtilities.LoadEnvironmentForTest(test);
+            yield return loadEnv.Await();
+            var env = loadEnv.Result;
+            jobject["model"] = JObject.FromObject(env.gameModel.map, Serializer);
+            env.Dispose();
+            FileIOHelper.SaveFile(path, jobject.ToString(Formatting.Indented));
+        }*/
+
+
+        yield break;
     }
 
 
@@ -155,28 +181,31 @@ public static class GameModelExporter
         return resourcesJson;
     }
 
-    internal static void Export<T>(string folder, IEnumerable<T> items, System.Func<T, string> getPath)
+    internal static void Export<T>(string folder, IEnumerable<T> items, System.Func<T, string> getPath,
+        System.Action<JObject> modify = null)
         where T : Object =>
-        Export<T, T>(folder, items, o => [o], (o, _, _) => getPath(o));
+        Export<T, T>(folder, items, o => [o], (o, _, _) => getPath(o), modify);
 
     internal static void Export<T>(string folder, Il2CppSystem.Collections.Generic.List<T> items,
-        System.Func<T, string> getPath) where T : Object =>
-        Export<T, T>(folder, items.ToArray(), o => [o], (o, _, _) => getPath(o));
+        System.Func<T, string> getPath, System.Action<JObject> modify = null) where T : Object =>
+        Export<T, T>(folder, items.ToArray(), o => [o], (o, _, _) => getPath(o), modify);
 
     internal static void Export<T, R>(string folder, IEnumerable<T> items,
-        System.Func<T, R> subItems, System.Func<T, R, string> getPath) where R : Object =>
-        Export<T, R>(folder, items, o => [subItems(o)], (t, o, _) => getPath(t, o));
+        System.Func<T, R> subItems, System.Func<T, R, string> getPath, System.Action<JObject> modify = null)
+        where R : Object =>
+        Export<T, R>(folder, items, o => [subItems(o)], (t, o, _) => getPath(t, o), modify);
 
     internal static void Export<T, R>(string folder, SerializableDictionary<T, R> items,
-        System.Func<T, R, string> getPath) where R : Object =>
-        Export(folder, items.keys.ToArray(), key => items[key], getPath);
+        System.Func<T, R, string> getPath, System.Action<JObject> modify = null) where R : Object =>
+        Export(folder, items.keys.ToArray(), key => items[key], getPath, modify);
 
     internal static void Export<T, R>(string folder, Il2CppSystem.Collections.Generic.Dictionary<T, R> items,
-        System.Func<T, R, string> getPath) where R : Object =>
-        Export(folder, items.Keys(), key => items[key], getPath);
+        System.Func<T, R, string> getPath, System.Action<JObject> modify = null) where R : Object =>
+        Export(folder, items.Keys(), key => items[key], getPath, modify);
 
     internal static void Export<T, R>(string folder, IEnumerable<T> items,
-        System.Func<T, IEnumerable<R>> subItems, System.Func<T, R, int, string> getPath) where R : Object
+        System.Func<T, IEnumerable<R>> subItems, System.Func<T, R, int, string> getPath,
+        System.Action<JObject> modify = null) where R : Object
     {
         AddFolderToGitIgnore(folder);
 
@@ -192,7 +221,7 @@ public static class GameModelExporter
             var i = 0;
             foreach (var subItem in subItems(item))
             {
-                if (TryExport(subItem, Path.Combine(folder, getPath(item, subItem, i) + ".json"))) success++;
+                if (TryExport(subItem, Path.Combine(folder, getPath(item, subItem, i) + ".json"), modify)) success++;
                 total++;
                 i++;
             }
@@ -265,7 +294,13 @@ public static class GameModelExporter
     /// Exports a Model to the path, returning whether it was successful. Does not log anything.
     /// </summary>
     /// <returns></returns>
-    public static bool TryExport(Object data, string path)
+    public static bool TryExport(Object data, string path) => TryExport(data, path, null);
+
+    /// <summary>
+    /// Exports a Model to the path, returning whether it was successful. Does not log anything.
+    /// </summary>
+    /// <returns></returns>
+    public static bool TryExport(Object data, string path, System.Action<JObject> modify)
     {
         try
         {
@@ -274,7 +309,16 @@ public static class GameModelExporter
                 ModelSerializer.MakeConsistent(model);
             }
 
-            FileIOHelper.SaveObject(path, data);
+            if (modify == null)
+            {
+                FileIOHelper.SaveObject(path, data);
+            }
+            else
+            {
+                var jobject = JObject.FromObject(data, Serializer);
+                modify(jobject);
+                FileIOHelper.SaveFile(path, jobject.ToString(Formatting.Indented));
+            }
             return true;
         }
         catch (Exception)

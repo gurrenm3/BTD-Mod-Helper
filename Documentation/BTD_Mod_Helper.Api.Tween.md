@@ -1,13 +1,18 @@
 #### [BloonsTD6 Mod Helper](README.md 'README')
 ### [BTD_Mod_Helper.Api](README.md#BTD_Mod_Helper.Api 'BTD_Mod_Helper.Api')
 
-## Tween Struct
+## Tween Class
 
 Helper for performing animation Tweens
 
 ```csharp
-public readonly struct Tween
+public abstract class Tween
 ```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Tween
+
+Derived  
+&#8627; [Tween&lt;T&gt;](BTD_Mod_Helper.Api.Tween_T_.md 'BTD_Mod_Helper.Api.Tween<T>')
 ### Properties
 
 <a name='BTD_Mod_Helper.Api.Tween.ElapsedTime'></a>
@@ -70,7 +75,7 @@ public float Progress { get; set; }
 Tweens a CanvasGroup's alpha.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Alpha(CanvasGroup target, float endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Alpha(CanvasGroup target, float endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -104,7 +109,7 @@ public static BTD_Mod_Helper.Api.Tween Alpha(CanvasGroup target, float endValue,
 Tweens a RectTransform's anchored position.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween AnchoredPosition(RectTransform target, Vector2 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween AnchoredPosition(RectTransform target, Vector2 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -138,7 +143,7 @@ public static BTD_Mod_Helper.Api.Tween AnchoredPosition(RectTransform target, Ve
 Tweens a UI graphic's color.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Color(Graphic target, Color endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Color(Graphic target, Color endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -182,7 +187,7 @@ public void Complete();
 Creates a tween over a [UnityEngine.Color](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Color 'UnityEngine.Color') value.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Custom(Color startValue, Color endValue, float duration, System.Action<Color> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Custom(Color startValue, Color endValue, float duration, System.Action<Color> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -220,7 +225,7 @@ public static BTD_Mod_Helper.Api.Tween Custom(Color startValue, Color endValue, 
 Creates a tween over a float value.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Custom(float startValue, float endValue, float duration, System.Action<float> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Custom(float startValue, float endValue, float duration, System.Action<float> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -258,7 +263,7 @@ public static BTD_Mod_Helper.Api.Tween Custom(float startValue, float endValue, 
 Creates a tween over a float value, associated with a target object for cancellation and lifetime checks.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Custom(Object target, float startValue, float endValue, float duration, System.Action<float> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Custom(Object target, float startValue, float endValue, float duration, System.Action<float> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -300,7 +305,7 @@ public static BTD_Mod_Helper.Api.Tween Custom(Object target, float startValue, f
 Creates a tween over a [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2') value.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Custom(Vector2 startValue, Vector2 endValue, float duration, System.Action<Vector2> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Custom(Vector2 startValue, Vector2 endValue, float duration, System.Action<Vector2> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -338,7 +343,7 @@ public static BTD_Mod_Helper.Api.Tween Custom(Vector2 startValue, Vector2 endVal
 Creates a tween over a [UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3') value.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Custom(Vector3 startValue, Vector3 endValue, float duration, System.Action<Vector3> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Custom(Vector3 startValue, Vector3 endValue, float duration, System.Action<Vector3> onValueChange, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -376,7 +381,7 @@ public static BTD_Mod_Helper.Api.Tween Custom(Vector3 startValue, Vector3 endVal
 Tweens a transform's local Euler angles.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween EulerAngles(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween EulerAngles(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -403,176 +408,6 @@ public static BTD_Mod_Helper.Api.Tween EulerAngles(Transform target, Vector3 end
 #### Returns
 [Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
 
-<a name='BTD_Mod_Helper.Api.Tween.FromAlpha(CanvasGroup,float,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
-
-## Tween.FromAlpha(CanvasGroup, float, float, Ease, bool) Method
-
-Sets a CanvasGroup's alpha to a starting value, then tweens back to its current alpha.
-
-```csharp
-public static BTD_Mod_Helper.Api.Tween FromAlpha(CanvasGroup target, float startValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAlpha(CanvasGroup,float,float,BTD_Mod_Helper.Api.Ease,bool).target'></a>
-
-`target` [UnityEngine.CanvasGroup](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.CanvasGroup 'UnityEngine.CanvasGroup')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAlpha(CanvasGroup,float,float,BTD_Mod_Helper.Api.Ease,bool).startValue'></a>
-
-`startValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAlpha(CanvasGroup,float,float,BTD_Mod_Helper.Api.Ease,bool).duration'></a>
-
-`duration` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAlpha(CanvasGroup,float,float,BTD_Mod_Helper.Api.Ease,bool).ease'></a>
-
-`ease` [Ease](BTD_Mod_Helper.Api.Ease.md 'BTD_Mod_Helper.Api.Ease')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAlpha(CanvasGroup,float,float,BTD_Mod_Helper.Api.Ease,bool).useUnscaledTime'></a>
-
-`useUnscaledTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-#### Returns
-[Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAnchoredPosition(RectTransform,Vector2,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
-
-## Tween.FromAnchoredPosition(RectTransform, Vector2, float, Ease, bool) Method
-
-Sets a RectTransform's anchored position to a starting value, then tweens back to its current anchored position.
-
-```csharp
-public static BTD_Mod_Helper.Api.Tween FromAnchoredPosition(RectTransform target, Vector2 startValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAnchoredPosition(RectTransform,Vector2,float,BTD_Mod_Helper.Api.Ease,bool).target'></a>
-
-`target` [UnityEngine.RectTransform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.RectTransform 'UnityEngine.RectTransform')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAnchoredPosition(RectTransform,Vector2,float,BTD_Mod_Helper.Api.Ease,bool).startValue'></a>
-
-`startValue` [UnityEngine.Vector2](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector2 'UnityEngine.Vector2')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAnchoredPosition(RectTransform,Vector2,float,BTD_Mod_Helper.Api.Ease,bool).duration'></a>
-
-`duration` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAnchoredPosition(RectTransform,Vector2,float,BTD_Mod_Helper.Api.Ease,bool).ease'></a>
-
-`ease` [Ease](BTD_Mod_Helper.Api.Ease.md 'BTD_Mod_Helper.Api.Ease')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromAnchoredPosition(RectTransform,Vector2,float,BTD_Mod_Helper.Api.Ease,bool).useUnscaledTime'></a>
-
-`useUnscaledTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-#### Returns
-[Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromLocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
-
-## Tween.FromLocalPosition(Transform, Vector3, float, Ease, bool) Method
-
-Sets a transform's local position to a starting value, then tweens back to its current local position.
-
-```csharp
-public static BTD_Mod_Helper.Api.Tween FromLocalPosition(Transform target, Vector3 startValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Tween.FromLocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).target'></a>
-
-`target` [UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromLocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).startValue'></a>
-
-`startValue` [UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromLocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).duration'></a>
-
-`duration` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromLocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).ease'></a>
-
-`ease` [Ease](BTD_Mod_Helper.Api.Ease.md 'BTD_Mod_Helper.Api.Ease')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromLocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).useUnscaledTime'></a>
-
-`useUnscaledTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-#### Returns
-[Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,float,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
-
-## Tween.FromScale(Transform, float, float, Ease, bool) Method
-
-Sets a transform's local scale to a starting value, then tweens back to its current local scale.
-
-```csharp
-public static BTD_Mod_Helper.Api.Tween FromScale(Transform target, float startValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,float,float,BTD_Mod_Helper.Api.Ease,bool).target'></a>
-
-`target` [UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,float,float,BTD_Mod_Helper.Api.Ease,bool).startValue'></a>
-
-`startValue` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,float,float,BTD_Mod_Helper.Api.Ease,bool).duration'></a>
-
-`duration` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,float,float,BTD_Mod_Helper.Api.Ease,bool).ease'></a>
-
-`ease` [Ease](BTD_Mod_Helper.Api.Ease.md 'BTD_Mod_Helper.Api.Ease')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,float,float,BTD_Mod_Helper.Api.Ease,bool).useUnscaledTime'></a>
-
-`useUnscaledTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-#### Returns
-[Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
-
-## Tween.FromScale(Transform, Vector3, float, Ease, bool) Method
-
-Sets a transform's local scale to a starting value, then tweens back to its current local scale.
-
-```csharp
-public static BTD_Mod_Helper.Api.Tween FromScale(Transform target, Vector3 startValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).target'></a>
-
-`target` [UnityEngine.Transform](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Transform 'UnityEngine.Transform')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).startValue'></a>
-
-`startValue` [UnityEngine.Vector3](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Vector3 'UnityEngine.Vector3')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).duration'></a>
-
-`duration` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).ease'></a>
-
-`ease` [Ease](BTD_Mod_Helper.Api.Ease.md 'BTD_Mod_Helper.Api.Ease')
-
-<a name='BTD_Mod_Helper.Api.Tween.FromScale(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool).useUnscaledTime'></a>
-
-`useUnscaledTime` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-#### Returns
-[Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
-
 <a name='BTD_Mod_Helper.Api.Tween.LocalPosition(Transform,Vector3,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
 
 ## Tween.LocalPosition(Transform, Vector3, float, Ease, bool) Method
@@ -580,7 +415,7 @@ public static BTD_Mod_Helper.Api.Tween FromScale(Transform target, Vector3 start
 Tweens a transform's local position.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween LocalPosition(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween LocalPosition(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -614,7 +449,7 @@ public static BTD_Mod_Helper.Api.Tween LocalPosition(Transform target, Vector3 e
 Tweens a transform's local rotation.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween LocalRotation(Transform target, Quaternion endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween LocalRotation(Transform target, Quaternion endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -684,7 +519,7 @@ public BTD_Mod_Helper.Api.Tween OnUpdate(System.Action<BTD_Mod_Helper.Api.Tween>
 Tweens a transform's world position.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Position(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Position(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -711,6 +546,20 @@ public static BTD_Mod_Helper.Api.Tween Position(Transform target, Vector3 endVal
 #### Returns
 [Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
 
+<a name='BTD_Mod_Helper.Api.Tween.Reverse()'></a>
+
+## Tween.Reverse() Method
+
+Swaps the start and end values of this tween. Works if called right after Tween creation to effectively do  
+"tween from the specified value back to its current value"
+
+```csharp
+public abstract BTD_Mod_Helper.Api.Tween Reverse();
+```
+
+#### Returns
+[Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
+
 <a name='BTD_Mod_Helper.Api.Tween.Rotation(Transform,Quaternion,float,BTD_Mod_Helper.Api.Ease,bool)'></a>
 
 ## Tween.Rotation(Transform, Quaternion, float, Ease, bool) Method
@@ -718,7 +567,7 @@ public static BTD_Mod_Helper.Api.Tween Position(Transform target, Vector3 endVal
 Tweens a transform's rotation.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Rotation(Transform target, Quaternion endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Rotation(Transform target, Quaternion endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -752,7 +601,7 @@ public static BTD_Mod_Helper.Api.Tween Rotation(Transform target, Quaternion end
 Tweens a transform's local scale.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween Scale(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween Scale(Transform target, Vector3 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -786,7 +635,7 @@ public static BTD_Mod_Helper.Api.Tween Scale(Transform target, Vector3 endValue,
 Tweens a RectTransform's size delta.
 
 ```csharp
-public static BTD_Mod_Helper.Api.Tween SizeDelta(RectTransform target, Vector2 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=false);
+public static BTD_Mod_Helper.Api.Tween SizeDelta(RectTransform target, Vector2 endValue, float duration, BTD_Mod_Helper.Api.Ease ease=BTD_Mod_Helper.Api.Ease.Linear, bool useUnscaledTime=true);
 ```
 #### Parameters
 
@@ -813,16 +662,6 @@ public static BTD_Mod_Helper.Api.Tween SizeDelta(RectTransform target, Vector2 e
 #### Returns
 [Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween')
 
-<a name='BTD_Mod_Helper.Api.Tween.Stop()'></a>
-
-## Tween.Stop() Method
-
-Stops this tween without applying the end value.
-
-```csharp
-public void Stop();
-```
-
 <a name='BTD_Mod_Helper.Api.Tween.Stop(bool)'></a>
 
 ## Tween.Stop(bool) Method
@@ -830,7 +669,7 @@ public void Stop();
 Stops this tween, optionally completing it first.
 
 ```csharp
-public void Stop(bool complete);
+public void Stop(bool complete=false);
 ```
 #### Parameters
 

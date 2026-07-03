@@ -36,10 +36,8 @@
 | [MoreAccessTools](BTD_Mod_Helper.Api.MoreAccessTools.md 'BTD_Mod_Helper.Api.MoreAccessTools') | Further methods along the lines of Harmony's [HarmonyLib.AccessTools](https://docs.microsoft.com/en-us/dotnet/api/HarmonyLib.AccessTools 'HarmonyLib.AccessTools') |
 | [NamedModContent](BTD_Mod_Helper.Api.NamedModContent.md 'BTD_Mod_Helper.Api.NamedModContent') | ModContent with DisplayName and Description that registers values in the LocalizationManger's textTable |
 | [TaskScheduler](BTD_Mod_Helper.Api.TaskScheduler.md 'BTD_Mod_Helper.Api.TaskScheduler') | Class for scheduling Tasks using MelonCoroutines |
-
-| Structs | |
-| :--- | :--- |
 | [Tween](BTD_Mod_Helper.Api.Tween.md 'BTD_Mod_Helper.Api.Tween') | Helper for performing animation Tweens |
+| [Tween&lt;T&gt;](BTD_Mod_Helper.Api.Tween_T_.md 'BTD_Mod_Helper.Api.Tween<T>') | Helper for performing typed animation Tweens |
 
 | Interfaces | |
 | :--- | :--- |
