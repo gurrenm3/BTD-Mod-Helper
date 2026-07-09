@@ -351,6 +351,13 @@ public abstract class ModTower : NamedModContent, IHasDefaultTest
     }
 
     /// <summary>
+    /// Allows you to perform one-time actions in game when the tower is first placed
+    /// </summary>
+    public virtual void OnPlaced(Tower tower)
+    {
+    }
+
+    /// <summary>
     /// Gets the portrait reference this tower should use for the given tiers
     /// <br />
     /// Looks for the highest tier <see cref="ModUpgrade" /> this tower has that defined a

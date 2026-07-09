@@ -54,6 +54,22 @@ public static class MutableExt
     /// <summary>
     /// Calls <see cref="Mutable.GetMutator"/> for a <see cref="ModMutator"/>
     /// </summary>
+    public static bool HasMutator<T>(this Mutable mutable) where T : ModMutator
+    {
+        return mutable.GetMutator<T>() != null;
+    }
+
+    /// <summary>
+    /// Calls <see cref="Mutable.GetMutatorById"/> for a <see cref="ModMutator"/>
+    /// </summary>
+    public static bool HasMutatorById<T>(this Mutable mutable) where T : ModMutator
+    {
+        return mutable.GetMutatorById<T>() != null;
+    }
+
+    /// <summary>
+    /// Calls <see cref="Mutable.GetMutator"/> for a <see cref="ModMutator"/>
+    /// </summary>
     public static bool HasMutator<T>(this Mutable mutable, out BehaviorMutator behaviorMutator) where T : ModMutator
     {
         behaviorMutator = mutable.GetMutator<T>();

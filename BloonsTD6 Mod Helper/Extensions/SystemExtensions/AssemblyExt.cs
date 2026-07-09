@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using Newtonsoft.Json.Linq;
@@ -15,8 +17,24 @@ public static class AssemblyExt
     /// </summary>
     public static Stream GetEmbeddedResource(this Assembly assembly, string endsWith)
     {
-        var resource = Array.Find(assembly.GetManifestResourceNames(), s => s.EndsWith(endsWith));
-        return resource != null ? assembly.GetManifestResourceStream(resource) : null;
+        Stream stream = null;
+        if (assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(endsWith)) is { } resource)
+        {
+            stream = assembly.GetManifestResourceStream(resource);
+        }
+        else if (assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(endsWith + ".zip")) is { } zip)
+        {
+            using var zipStream = assembly.GetManifestResourceStream(zip);
+            using var zipArchive = new ZipArchive(zipStream!, ZipArchiveMode.Read);
+            using var entryStream = zipArchive.Entries.First().Open();
+
+            var memoryStream = new MemoryStream();
+            entryStream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
+            stream = memoryStream;
+        }
+
+        return stream;
     }
 
     /// <inheritdoc cref="GetEmbeddedResource" />

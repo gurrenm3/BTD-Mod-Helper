@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <RootNamespace>BTD_Mod_Helper.MSBuildTasks</RootNamespace>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+        <!--NuGet package metadata-->
+        <PackageId>Btd6ModHelper.MSBuildTasks</PackageId>
+        <Authors>doombubbles</Authors>
+        <Description>MSBuild tasks for BTD6 Mod Helper mod projects.</Description>
+        <PackageTags>btd6;bloons;modding;msbuild;tasks</PackageTags>
+        <PackageProjectUrl>https://github.com/doombubbles/BTD-Mod-Helper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/doombubbles/BTD-Mod-Helper</RepositoryUrl>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+        <!--Task package packaging conventions-->
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+    </PropertyGroup>
+
+    <!--Get version from btd6.targets, but don't want any other properties from there-->
+    <PropertyGroup>
+        <_TargetsXml>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)\..\BloonsTD6 Mod Helper\btd6.targets'))</_TargetsXml>
+        <MSBuildTasksVersion>$([System.Text.RegularExpressions.Regex]::Match($(_TargetsXml), '&lt;MSBuildTasksVersion&gt;([^&lt;]+)&lt;/MSBuildTasksVersion&gt;').Groups[1].Value)</MSBuildTasksVersion>
+        <Version>$(MSBuildTasksVersion)</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Build.Framework" Version="17.13.9" PrivateAssets="all" ExcludeAssets="runtime"/>
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.13.9" PrivateAssets="all" ExcludeAssets="runtime"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" Visible="true"/>
+        <None Include="Btd6ModHelper.MSBuildTasks.targets" Pack="true" PackagePath="buildTransitive\" Visible="true"/>
+        <None Include="$(OutputPath)\MSBuildTasks.dll" Pack="true" PackagePath="tasks\netstandard2.0\" Visible="false"/>
+    </ItemGroup>
+</Project>

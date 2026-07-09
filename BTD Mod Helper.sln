@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunner", "TestRunner\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGenerators", "SourceGenerators\SourceGenerators.csproj", "{B4BF81E7-459F-44B9-849D-E52103677775}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildTasks", "MSBuildTasks\MSBuildTasks.csproj", "{4FBEFA37-221C-4C0E-B8C8-F9A9361ED2E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,11 @@ Global
 		{B4BF81E7-459F-44B9-849D-E52103677775}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4BF81E7-459F-44B9-849D-E52103677775}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B4BF81E7-459F-44B9-849D-E52103677775}.ReleaseLite|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBEFA37-221C-4C0E-B8C8-F9A9361ED2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FBEFA37-221C-4C0E-B8C8-F9A9361ED2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FBEFA37-221C-4C0E-B8C8-F9A9361ED2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBEFA37-221C-4C0E-B8C8-F9A9361ED2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FBEFA37-221C-4C0E-B8C8-F9A9361ED2E3}.ReleaseLite|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Text.RegularExpressions;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppInterop.Runtime;
@@ -125,19 +126,17 @@ public abstract class ModByteLoader : ModContent
     /// <returns></returns>
     public sealed override IEnumerable<ModContent> Load()
     {
-        var streamName = Array.Find(mod.GetAssembly().GetManifestResourceNames(), s => s.EndsWith(BytesFileName));
-        if (streamName == null)
+        if (!mod.GetAssembly().TryGetEmbeddedResource(BytesFileName, out var bytesStream))
         {
             ModHelper.Warning($"Couldn't find bytes file {BytesFileName} in Assembly {mod.GetModName()}. " +
                               "Did you forget to include it as an embedded resource?");
+            yield break;
         }
-        else
+
+        Bytes = bytesStream.GetByteArray();
+        if (Bytes != null)
         {
-            Bytes = mod.GetAssembly().GetManifestResourceStream(streamName)?.GetByteArray();
-            if (Bytes != null)
-            {
-                yield return this;
-            }
+            yield return this;
         }
     }
 

@@ -186,6 +186,10 @@ public static class TowerModelExt
         {
             displayModel.display = display;
         }
+        else
+        {
+            towerModel.AddBehavior(new DisplayModel("TowerDisplay", display, 0, DisplayCategory.Tower));
+        }
     }
 
     /// <summary>

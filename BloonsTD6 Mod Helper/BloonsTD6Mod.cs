@@ -505,6 +505,13 @@ public abstract class BloonsTD6Mod : BloonsMod
     }
 
     /// <summary>
+    /// Called right after a Tower is placed
+    /// </summary>
+    public virtual void OnTowerPlaced(Tower tower)
+    {
+    }
+
+    /// <summary>
     /// Called right after a Tower's TowerModel is changed for any reason (creation, upgrading, etc.)
     /// <br />
     /// Equivalent to a HarmonyPostFix on Tower.UpdatedModel

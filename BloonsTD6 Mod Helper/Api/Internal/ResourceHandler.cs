@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Buffers;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using BTD_Mod_Helper.Api.UI;
 using Il2CppAssets.Scripts.Unity.Audio;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
-using Il2CppSystem.IO;
 using NAudio.Vorbis;
 using NAudio.Wave;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Stream = System.IO.Stream;
 namespace BTD_Mod_Helper.Api.Internal;
 
 /// <summary>
@@ -67,22 +68,64 @@ public static class ResourceHandler
 
     internal static void LoadEmbeddedResources(BloonsMod mod)
     {
-        LoadEmbeddedTextures(mod);
-        LoadEmbeddedAudio(mod);
-        LoadEmbeddedBundles(mod);
+        var zipArchives = LoadEmbeddedZipArchives(mod);
+        try
+        {
+            var zipEntries = zipArchives
+                .SelectMany(archive => archive.Entries)
+                .Where(entry => !string.IsNullOrEmpty(entry.Name))
+                .ToList();
+
+            LoadEmbeddedTextures(mod, zipEntries);
+            LoadEmbeddedAudio(mod, zipEntries);
+            LoadEmbeddedBundles(mod, zipEntries);
+        }
+        finally
+        {
+            foreach (var zipArchive in zipArchives)
+            {
+                zipArchive.Dispose();
+            }
+        }
     }
 
-    internal static void LoadEmbeddedTextures(BloonsMod mod)
+    private static List<ZipArchive> LoadEmbeddedZipArchives(BloonsMod mod)
+    {
+        var assembly = mod.GetAssembly();
+        var archives = new List<ZipArchive>();
+
+        foreach (var zipName in assembly.GetManifestResourceNames().Where(s => s.EndsWith(".zip")))
+        {
+            Stream zipStream = null;
+            try
+            {
+                zipStream = assembly.GetManifestResourceStream(zipName);
+                if (zipStream == null) continue;
+
+                archives.Add(new ZipArchive(zipStream, ZipArchiveMode.Read));
+                zipStream = null;
+            }
+            catch (Exception e)
+            {
+                zipStream?.Dispose();
+                ModHelper.Warning("Failed to load embedded resource zip " + zipName);
+                ModHelper.Warning(e);
+            }
+        }
+
+        return archives;
+    }
+
+    internal static void LoadEmbeddedTextures(BloonsMod mod, IEnumerable<ZipArchiveEntry> zipEntries = null)
     {
         mod.Resources = new Dictionary<string, byte[]>();
-        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames().Where(s => ImageExtensions.Any(s.EndsWith)))
+
+        foreach (var (name, ext, stream) in GetEmbeddedResourceStreams(
+                     mod.GetAssembly(), zipEntries, ImageExtensions))
         {
-            var resource = mod.GetAssembly().GetManifestResourceStream(fileName).GetByteArray();
+            var resource = stream.GetByteArray();
             if (resource == null) continue;
 
-            var split = fileName.Split('.');
-            var name = split[^2];
-            var ext = split[^1];
             var id = ModContent.GetId(mod, name);
             Resources[id] = resource;
             mod.Resources[name] = resource;
@@ -91,21 +134,18 @@ public static class ResourceHandler
         }
     }
 
-    internal static void LoadEmbeddedAudio(BloonsMod mod)
+    internal static void LoadEmbeddedAudio(BloonsMod mod, IEnumerable<ZipArchiveEntry> zipEntries = null)
     {
         mod.AudioClips = new Dictionary<string, AudioClip>();
 
-        foreach (var fileName in mod.GetAssembly().GetManifestResourceNames().Where(s => AudioExtensions.Any(s.EndsWith)))
+        foreach (var (name, ext, stream) in GetEmbeddedResourceStreams(
+                     mod.GetAssembly(), zipEntries, AudioExtensions))
         {
-            var split = fileName.Split('.');
-            var extension = split[^1];
-            var name = split[^2];
             var id = ModContent.GetId(mod, name);
 
             try
             {
-                using var stream = mod.GetAssembly().GetManifestResourceStream(fileName)!;
-                using var waveStream = GetWaveStream(stream, extension);
+                using var waveStream = GetWaveStream(stream, ext);
 
                 if (mod.NormalizeAllAudioVolume)
                 {
@@ -120,49 +160,85 @@ public static class ResourceHandler
             }
             catch (Exception e)
             {
-                ModHelper.Warning("Failed to load audio clip " + fileName);
+                ModHelper.Warning($"Failed to load audio clip {name}.{ext}");
                 ModHelper.Warning(e);
             }
         }
     }
 
-    internal static void LoadEmbeddedBundles(BloonsMod mod)
+    internal static void LoadEmbeddedBundles(BloonsMod mod, IEnumerable<ZipArchiveEntry> zipEntries = null)
     {
-        foreach (var name in mod.GetAssembly().GetManifestResourceNames().Where(s => s.EndsWith("bundle")))
+        foreach (var (name, _, stream) in GetEmbeddedResourceStreams(mod.GetAssembly(), zipEntries, [".bundle"]))
         {
-            var bytes = mod.GetAssembly().GetManifestResourceStream(name).GetByteArray();
+            var bytes = stream.GetByteArray();
             if (bytes == null) continue;
 
-            var stream = new MemoryStream(bytes);
-            var bundle = AssetBundle.LoadFromStream(stream);
-            stream.Dispose();
-            var guid = mod.IDPrefix;
-            if (bundle == null)
-            {
-                ModHelper.Log($"The bundle {name} is null!");
-                continue;
-            }
-
-            if (string.IsNullOrEmpty(bundle.name))
-            {
-                ModHelper.Log($"The bundle {name} has no name!");
-                continue;
-            }
-
-            if (bundle.name.EndsWith(".bundle"))
-            {
-                guid += bundle.name.Substring(0, bundle.name.LastIndexOf(".", StringComparison.Ordinal));
-            }
-            else
-            {
-                guid += bundle.name;
-            }
-
-            Bundles[guid] = bundle;
-            // ModHelper.Msg("Successfully loaded bundle " + guid);
+            LoadBundle(mod, name, bytes);
         }
     }
 
+    private static void LoadBundle(BloonsMod mod, string name, byte[] bytes)
+    {
+        var stream = new Il2CppSystem.IO.MemoryStream(bytes);
+        var bundle = AssetBundle.LoadFromStream(stream);
+        stream.Dispose();
+        var guid = mod.IDPrefix;
+        if (bundle == null)
+        {
+            ModHelper.Log($"The bundle {name} is null!");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(bundle.name))
+        {
+            ModHelper.Log($"The bundle {name} has no name!");
+            return;
+        }
+
+        if (bundle.name.EndsWith(".bundle"))
+        {
+            guid += bundle.name.Substring(0, bundle.name.LastIndexOf(".", StringComparison.Ordinal));
+        }
+        else
+        {
+            guid += bundle.name;
+        }
+
+        Bundles[guid] = bundle;
+        // ModHelper.Msg("Successfully loaded bundle " + guid);
+    }
+
+    private static IEnumerable<(string Name, string Ext, Stream Stream)> GetEmbeddedResourceStreams(
+        Assembly assembly, IEnumerable<ZipArchiveEntry> zipEntries, string[] extensions)
+    {
+        foreach (var fileName in assembly.GetManifestResourceNames().Where(s => extensions.Any(s.EndsWith)))
+        {
+            using var stream = assembly.GetManifestResourceStream(fileName);
+            if (stream == null) continue;
+
+            var split = fileName.Split('.');
+            yield return (split[^2], split[^1], stream);
+        }
+
+        if (zipEntries == null) yield break;
+
+        foreach (var entry in zipEntries.Where(entry => extensions.Any(entry.Name.EndsWith)))
+        {
+            using var stream = entry.Open();
+            var fileName = GetZipEntryFileName(entry);
+            yield return (
+                Path.GetFileNameWithoutExtension(fileName),
+                Path.GetExtension(fileName).TrimStart('.'),
+                stream);
+        }
+    }
+
+    private static string GetZipEntryFileName(ZipArchiveEntry entry)
+    {
+        var normalized = entry.FullName.Replace('\\', '/');
+        var index = normalized.LastIndexOf('/');
+        return index >= 0 ? normalized[(index + 1)..] : normalized;
+    }
 
     /// <summary>
     /// Turns a stream into a WaveStream based on file extension
