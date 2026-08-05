@@ -465,14 +465,16 @@ public abstract class ModTest : ModContent
     {
         var towers = bridge.GetAllTowers().ToArray();
 
-        var towerInventory = bridge.Simulation.GetTowerInventory(bridge.MyPlayerNumber);
+        var inputId = bridge.GetInputId();
+        var towerInventory = bridge.Simulation.GetTowerInventory(inputId);
         if (ignoreInventoryChecks && !towerInventory.HasInventory(towerModel))
         {
             // For some reason the ignoreInventoryChecks parameter doesn't actually do anything for the base method
             TowerInventory_HasInventory.overrideValue = true;
         }
 
-        bridge.CreateTowerAt(at, towerModel, ObjectId.Invalid, false, new Action<bool>(success => { }),
+        bridge.CreateTowerAt(inputId, at, towerModel, ObjectId.Invalid, false,
+            new Action<bool>(success => { }),
             ignoreInventoryChecks: ignoreInventoryChecks, ignorePlacementChecks: ignorePlacementChecks,
             costOverride: costOverride);
 
@@ -496,7 +498,7 @@ public abstract class ModTest : ModContent
     public static bool UpgradeTower(UnityToSimulation bridge, ObjectId tower, int path)
     {
         var result = false;
-        bridge.UpgradeTower(tower, path, 0, new Action<bool>(success => result = success));
+        bridge.UpgradeTower(bridge.GetInputId(), tower, path, 0, new Action<bool>(success => result = success));
         return result;
     }
 

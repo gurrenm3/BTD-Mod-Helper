@@ -317,6 +317,21 @@ public static class UpgradeType
     public const string AlluringMelody = "Alluring Melody";
     public const string SymphonicResonance = "Symphonic Resonance";
     public const string TheFinalHarmonic = "The Final Harmonic";
+    public const string Aerialattunement = "AerialAttunement";
+    public const string Zephyrsense = "ZephyrSense";
+    public const string Windweaver = "WindWeaver";
+    public const string Galesage = "Galesage";
+    public const string Farwindseer = "FarwindSeer";
+    public const string Stormspulse = "StormsPulse";
+    public const string Thunderingarc = "ThunderingArc";
+    public const string Galvanicconduit = "GalvanicConduit";
+    public const string Thundersdecree = "ThundersDecree";
+    public const string Stormwratharchon = "StormwrathArchon";
+    public const string Shatterpoint = "Shatterpoint";
+    public const string Icebore = "Icebore";
+    public const string Coldchain = "Coldchain";
+    public const string Frozenverdict = "FrozenVerdict";
+    public const string Wintersmercy = "WintersMercy";
     public const string IncreasedProduction = "Increased Production";
     public const string GreaterProduction = "Greater Production";
     public const string BananaPlantation = "Banana Plantation";
@@ -772,6 +787,15 @@ public static class UpgradeType
     public const string Droneambusnetwork = "DroneAmbusNetwork";
     public const string Triggerhappydrones = "TriggerHappyDrones";
     public const string Ohboyicantwait = "OhBoyICantWait";
+    public const string Luxurypool = "LuxuryPool";
+    public const string Pristinepool = "PristinePool";
+    public const string Jamminbassdropbasin = "JamminBassDropBasin";
+    public const string Cozyradiantbath = "CozyRadiantBath";
+    public const string Snugoozesurprise = "SnugOozeSurprise";
+    public const string Releasethequacken = "ReleasetheQuacken";
+    public const string Rejuvenatinghotspring = "RejuvenatingHotspring";
+    public const string Therapeuticmudbath = "TherapeuticMudBath";
+    public const string Soothinggeothermalspa = "SoothingGeothermalSpa";
 
     public static readonly Dictionary<string, string> ByName;
     static UpgradeType()
@@ -1089,6 +1113,21 @@ public static class UpgradeType
             ["AlluringMelody"] = AlluringMelody,
             ["SymphonicResonance"] = SymphonicResonance,
             ["TheFinalHarmonic"] = TheFinalHarmonic,
+            ["Aerialattunement"] = Aerialattunement,
+            ["Zephyrsense"] = Zephyrsense,
+            ["Windweaver"] = Windweaver,
+            ["Galesage"] = Galesage,
+            ["Farwindseer"] = Farwindseer,
+            ["Stormspulse"] = Stormspulse,
+            ["Thunderingarc"] = Thunderingarc,
+            ["Galvanicconduit"] = Galvanicconduit,
+            ["Thundersdecree"] = Thundersdecree,
+            ["Stormwratharchon"] = Stormwratharchon,
+            ["Shatterpoint"] = Shatterpoint,
+            ["Icebore"] = Icebore,
+            ["Coldchain"] = Coldchain,
+            ["Frozenverdict"] = Frozenverdict,
+            ["Wintersmercy"] = Wintersmercy,
             ["IncreasedProduction"] = IncreasedProduction,
             ["GreaterProduction"] = GreaterProduction,
             ["BananaPlantation"] = BananaPlantation,
@@ -1544,6 +1583,15 @@ public static class UpgradeType
             ["Droneambusnetwork"] = Droneambusnetwork,
             ["Triggerhappydrones"] = Triggerhappydrones,
             ["Ohboyicantwait"] = Ohboyicantwait,
+            ["Luxurypool"] = Luxurypool,
+            ["Pristinepool"] = Pristinepool,
+            ["Jamminbassdropbasin"] = Jamminbassdropbasin,
+            ["Cozyradiantbath"] = Cozyradiantbath,
+            ["Snugoozesurprise"] = Snugoozesurprise,
+            ["Releasethequacken"] = Releasethequacken,
+            ["Rejuvenatinghotspring"] = Rejuvenatinghotspring,
+            ["Therapeuticmudbath"] = Therapeuticmudbath,
+            ["Soothinggeothermalspa"] = Soothinggeothermalspa,
         };
     }
 }

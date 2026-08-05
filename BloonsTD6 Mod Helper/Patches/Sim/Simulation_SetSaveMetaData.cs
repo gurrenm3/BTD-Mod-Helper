@@ -13,7 +13,7 @@ internal static class Simulation_SetSaveMetaData
     [HarmonyPostfix]
     internal static void Postfix(Simulation __instance, Dictionary<string, string> metaData)
     {
-        var inventory = __instance.GetTowerInventory(InGame.Bridge.MyPlayerNumber);
+        var inventory = __instance.GetTowerInventory(InGame.Bridge.GetInputId());
 
         foreach (var modFakeTower in ModContent.GetContent<ModFakeTower>().Where(tower => tower.TowerInventoryEnabled))
         {

@@ -271,13 +271,19 @@ public abstract class ModArtifact : NamedModContent
     {
         if (model == null || model.childDependants is {Count: > 0}) return;
 
-        var behaviors = model.Is(out ArtifactModelBase artifactModelBase)
-            ? artifactModelBase.GetArtifactBehaviorModels()
-            : model.BehaviorModels() ?? Array.Empty<Model>();
+        var behaviors = new List<Model>();
+        if (model.Is(out ArtifactModelBase artifactModelBase))
+        {
+            behaviors = new List<Model>(artifactModelBase.GetArtifactBehaviorModels());
+        }
+        else if (model.BehaviorModels() is { } behaviorModels)
+        {
+            foreach (var behavior in behaviorModels) behaviors.Add(behavior);
+        }
 
         try
         {
-            artifactModelBase.AddChild(behaviors.Cast<ICollection<Model>>());
+            model.AddChild(behaviors.Cast<ICollection<Model>>());
 
             foreach (var behavior in behaviors)
             {

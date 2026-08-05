@@ -53,6 +53,8 @@ public static class VanillaAudioClips
     public const string Activated7RosaliaVO02 = "133f83633cfc10141809c3fd78b02961";
     public const string Activated7SilasVO01 = "52a84944932467f42b364d8a9eeba4e3";
     public const string Activated7SilasVO02 = "a13e985b44a80aa4ba1a25fa6287addd";
+    public const string ActivatedAbility10CorvusDecryptor01 = "1607c957bc3744a4fbec9839f3e5f882";
+    public const string ActivatedAbility10CorvusDecryptor02 = "0ae60d8b00828bd4abe0ad7d508e35e0";
     public const string ActivatedAbility10Dan01 = "1d2bec107f2259a45affb7289b2be069";
     public const string ActivatedAbility10Dan02 = "a9e11faae57f9b2478163313885b668e";
     public const string ActivatedAbility10DanAdam01 = "7ddd3d0f65c27784ca88a0984291f3b7";
@@ -63,6 +65,8 @@ public static class VanillaAudioClips
     public const string ActivatedAbility10DanMasked01 = "b3443f46d54f9d240b95bd4cdc4407b7";
     public const string ActivatedAbility10DanMasked02 = "a2863cff8bd30a248af4c8cede8ccbb4";
     public const string ActivatedAbility10DanNoVO = "018f2d749fabab64791c9ec32a07e158";
+    public const string ActivatedAbility3CorvusDecryptor01 = "07b35823995a34945827035b66ce9a8f";
+    public const string ActivatedAbility3CorvusDecryptor02 = "c5f74253da172824a892bb6793858201";
     public const string ActivatedAbility3Dan01 = "2bb470d65d48ad74889d0d14a465803a";
     public const string ActivatedAbility3Dan02 = "5843925d017833049b4cef95ba4a36a7";
     public const string ActivatedAbility3DanAdam01 = "8d33205605ac11744957a0403a4158d3";
@@ -75,6 +79,8 @@ public static class VanillaAudioClips
     public const string ActivatedAbility3DanMasked02 = "001a10807a361ae43ab41aaf91165713";
     public const string ActivatedAbility3DanMaskedNoVO = "9c1697e121c284349aac9d1df358fdd3";
     public const string ActivatedAbility3DanNoVO = "bf2e402b8e7488c498bc2d4f14afac55";
+    public const string ActivatedAbility7CorvusDecryptor01 = "8c89dc93d435d3d4c860f40e3c87c1a9";
+    public const string ActivatedAbility7CorvusDecryptor02 = "6f56384dd02f2ab419521e8956bbf55d";
     public const string ActivatedAbility7Dan01 = "4ff5951a6f8918c4a8b7606c29551421";
     public const string ActivatedAbility7Dan02 = "6240b31dd6b868b4b92ca90337975a2a";
     public const string ActivatedAbility7DanAdam01 = "af68e962770d47b4480dc6034a7576cb";
@@ -348,6 +354,7 @@ public static class VanillaAudioClips
     public const string AttackMeleeSmol02 = "73923a4b1efe1c64aa4b7f27983e7e5d";
     public const string AttackMeleeSmol03 = "bbc334c6e60ea06419d891307b0dbce0";
     public const string AttackMeleeSmol04 = "82a01d22cac97f54389926c78fbcff25";
+    public const string AttackProjectileLightning01 = "710e06f4f7c80f1489c16ecf5dc2d2df";
     public const string AttackRifle01 = "9f035cfbf5d00d246b9e3b4dbe36c1de";
     public const string AttackRifle02 = "537a15c253788264ca6c6869dde6fb35";
     public const string AttackRifle03 = "fa7ebd824b043b04e9326f3ce70966a4";
@@ -395,6 +402,7 @@ public static class VanillaAudioClips
     public const string BadWarningChurchillSentai = "067aef1c5c9749341a503e0e0bd05816";
     public const string BadWarningChurchillSleigh = "bd997f5ac8554c341b02bc55fe28bf74";
     public const string BadWarningCorvus = "6bb9b86175494994bb5dc7ea01a2131a";
+    public const string BadWarningCorvusDecryptor = "2b3754cd7a3529f498e6e4898d43cc99";
     public const string BadWarningDan = "3446e827bfc084348bf36a39da6b7d59";
     public const string BadWarningDanAdam = "4819355b308f29949a016ca65c660697";
     public const string BadWarningDanHeMan = "979a32a5419d3dc429e7165ca243f91a";
@@ -454,6 +462,7 @@ public static class VanillaAudioClips
     public const string BfbWarningChurchill = "83445b4a6f936f64093669916852adbc";
     public const string BfbWarningChurchillSleigh = "aad8c732b4c65d349b958608a09320a9";
     public const string BfbWarningCorvus = "dc9c914a6c5cf474397b4044d8c706a4";
+    public const string BfbWarningCorvusDecryptor = "04df6313588374c48b475d0e017b9318";
     public const string BfbWarningDan = "b02b7163bb8a7c549a8681b3644fad92";
     public const string BfbWarningDanAdam = "e4dc18fd1f43b704880e8d0b2caaa6ec";
     public const string BfbWarningDanHeMan = "13c935c7499deeb44a69235a4051a682";
@@ -552,6 +561,11 @@ public static class VanillaAudioClips
     public const string Constrict03 = "580c8d052172d2e48a2bee0548a7aee1";
     public const string Constrict04 = "025846e41823b2248bdb382648f8b126";
     public const string Constrict05 = "c4a4c3fbb9aadc840abbefcd6b02b9f3";
+    public const string CorvusDecryptorSpellAggression = "1abfd23b20f75c7458bd5a1089fac8a0";
+    public const string CorvusDecryptorSpellAncestralMight = "74157576e8f16844aaeb5f028c556b49";
+    public const string CorvusDecryptorSpellRecovery = "3cb554da3d1920d4ea9c7edb44c12c6d";
+    public const string CorvusDecryptorSpellTrample = "226db618831e8d44abf1efd68e6bdc5b";
+    public const string CorvusDecryptorSpellVision = "736b924a6ddf3c649be2240d1836cc87";
     public const string CorvusSpellAggression = "7462e5e10bfa8e84fb92ea5948c90759";
     public const string CorvusSpellAncestralMight = "626813d55d3d10e46becfe80de3428db";
     public const string CorvusSpellDeactivated = "ac0ee6abc2e13174d84e0f77bf66df69";
@@ -577,6 +591,7 @@ public static class VanillaAudioClips
     public const string DdtWarningChurchill = "5553dd176590d904388609875abe4496";
     public const string DdtWarningChurchillSleigh = "697b91847e70d6544948d8d507436fae";
     public const string DdtWarningCorvus = "2cc72352355c08f47b3c532d6abc95ea";
+    public const string DdtWarningCorvusDecryptor = "73a58105f632a6449b626b21f426c825";
     public const string DdtWarningDan = "2c0d57f9cba18ef498fdb3a6e048ed4c";
     public const string DdtWarningDanAdam = "a9b9319473f5f6d47a9b32370bf55608";
     public const string DdtWarningDanHeMan = "a1b98ead03d85804a918971ac7b9cfa5";
@@ -611,7 +626,6 @@ public static class VanillaAudioClips
     public const string DdtWarningSaudaViking = "4b0b7b3997fd20447b81364e57d172f5";
     public const string DdtWarningSilas = "f2ce647c46d083a46be632f870b25218";
     public const string DeactivatedSheriff = "22758bf922668f34eb5486568ba72bbd";
-    public const string EmoteSoundSiren = "54d1e2a912c76384faa256f5119a69dc";
     public const string EngineerTurretExplode = "8c508f492b4b3204cae7013aebfdd07a";
     public const string ExitBattleCat = "d2f73cd1402a77b49a6c4c3fcfdc4e8e";
     public const string ExitSwordOfProtection = "b2a01557dad229b489c91236dc3c012d";
@@ -739,6 +753,8 @@ public static class VanillaAudioClips
     public const string LeakChurchillSleigh = "404848d5cff96eb4590196657fb428d2";
     public const string LeakCorvus01 = "d26f3e44f4d87174190ea41af1b91602";
     public const string LeakCorvus02 = "feb17dd7d6b76ee4ab593431b0ecab62";
+    public const string LeakCorvusDecryptor01 = "64266160ce73ef549b852673c263f2a9";
+    public const string LeakCorvusDecryptor02 = "f9ec7fc5f441056429986ee12cff853e";
     public const string LeakDan01 = "b74447dd2ad5ee14c9edaed8e6c290e6";
     public const string LeakDan02 = "113b2100678143247a9cb3edfd64dc8f";
     public const string LeakDanAdam01 = "9c90e7abb3737844986e2c87367af361";
@@ -861,6 +877,8 @@ public static class VanillaAudioClips
     public const string MoabDestroyedChurchillSleigh02 = "a1a5fae2d2436d741b782929473c4969";
     public const string MoabDestroyedCorvus01 = "e98019b229d317b49b43b623fe2549ac";
     public const string MoabDestroyedCorvus02 = "84029733766161444b5127226afd9469";
+    public const string MoabDestroyedCorvusDecryptor01 = "c6624b38d050cdb4ab5825ce8b630a77";
+    public const string MoabDestroyedCorvusDecryptor02 = "2ccf7bbaefe0266428819e2a3d79086e";
     public const string MoabDestroyedDan01 = "bededd36085423540a9909e190878253";
     public const string MoabDestroyedDan02 = "e9ea51c1ef715fc458a36ebf4fad5f0a";
     public const string MoabDestroyedDanAdam01 = "db03ebab8ab77d7459a42b59a35f85ed";
@@ -953,6 +971,7 @@ public static class VanillaAudioClips
     public const string MoabWarningChurchillSentai = "106a3d146e40e864685bd46beeda2a06";
     public const string MoabWarningChurchillSleigh = "8c8a9398888550b4cb188d9af3f8784b";
     public const string MoabWarningCorvus = "077c1a31b5cb13d4a9e6baa8d944d233";
+    public const string MoabWarningCorvusDecryptor = "f41c9aeb56651eb4f88eb26f4ffdc3ac";
     public const string MoabWarningDan = "bb3afaf3e5fb2ee45b56b18a6e8a961a";
     public const string MoabWarningDanAdam = "7760a353121f19544bc54758f7d03bf0";
     public const string MoabWarningDanHeMan = "3bdd24fdc5932ed418390538a8be6f77";
@@ -1071,6 +1090,11 @@ public static class VanillaAudioClips
     public const string PetDadIdle03 = "3789da58a748276449d528261b28baed";
     public const string PetDadIdle04 = "68f1a669446fb534b96859aea5eacc73";
     public const string PetDadSpawn = "009a8c2c03e8cfc4cae7187b8d49e1d5";
+    public const string PetDiscordWumpusIdle01 = "c76cdc63605162f4c9f4de1cff089de5";
+    public const string PetDiscordWumpusIdle02 = "0ca5e7aa9d83a9646a1b5ab31eb5908d";
+    public const string PetDiscordWumpusIdle03 = "2a37de1a76835dc4ab5b4f6c15811aca";
+    public const string PetDiscordWumpusIdle04 = "a49dfe749e1133547bae13fec8c0b389";
+    public const string PetDiscordWumpusSpawn = "6b321aff7f14b7b42acfce1edc324a7b";
     public const string PetDogIdle01 = "9f5a6d59dee66c7468d39437769cb92d";
     public const string PetDogIdle02 = "8dd58ff3c69268b419cf2dbdf0b451d8";
     public const string PetDogIdle03 = "51c6614a2fa9dee4fadb9526fa4119c0";
@@ -1286,6 +1310,8 @@ public static class VanillaAudioClips
     public const string PlaceCoffinDrop = "0d0e6041cdb31474b9185a53d64029fe";
     public const string PlaceCorvus01 = "a85f508832c1b444aa8135fdcddc3bba";
     public const string PlaceCorvus02 = "6cc70aacac951e844bb0bf7634ee616d";
+    public const string PlaceCorvusDecryptor01 = "c15efeae857fd5c4f8eecaf615f085d5";
+    public const string PlaceCorvusDecryptor02 = "d554ea02660da804780bc92b42b95d03";
     public const string PlaceCrate = "2c9e6427fd402e048a9cf31152387d03";
     public const string PlaceDan01 = "9604795e9516ae1418adf95ba0657431";
     public const string PlaceDan02 = "47e4bc410c3c25146a7aee72d259e0e0";
@@ -1337,6 +1363,8 @@ public static class VanillaAudioClips
     public const string PlaceMOABMine = "6d7c6b060c67fbb4eba2f9f942494391";
     public const string PlaceMOABMineBauble = "0e98840596fbf9841b717f64de5d344f";
     public const string PlaceMoneybags = "2f03dbe7f86e4384d9d9c1e14ec74498";
+    public const string PlaceMonkeyMud01 = "62e59ddd24f08e345afa59ea151af426";
+    public const string PlaceMonkeyMud02 = "619e26a7dac6d2544bb1f7e2eb63a1db";
     public const string PlaceMonkeyStorm = "3d81b1e6b8340a64ab49a555d5f27773";
     public const string PlaceObyn01 = "17b51ac693f1ff0438ed0062e5b110cd";
     public const string PlaceObyn02 = "d89d1288dd8971b4fabe74ecc0f27403";
@@ -1531,6 +1559,9 @@ public static class VanillaAudioClips
     public const string PotionBuff03 = "14cc37a7948c962438e79b9eed6b9a42";
     public const string PotionBuff04 = "1ef2c1d54d4857f47b18c9721b5c1a6a";
     public const string PotionBuff05 = "e4513cf32bb362e4586e6cdb3deedbd5";
+    public const string Quack = "7ff64970ebc443f41905efba550da9db";
+    public const string Quack2 = "992840ed1990858498d9001c990ade93";
+    public const string QuackWaterSplash = "03fd478758b4c0d42b9e87751f9941c0";
     public const string QuestNotification = "ebe6152e20f78764bb95c559c81efdc1";
     public const string ReactBattleCatDanAdam = "8c034152d4c827e4c881eb7c65b0d721";
     public const string ReactBattleCatDanHeMan = "7ea72ab2b492a2943b9760f3e8453695";
@@ -1603,6 +1634,8 @@ public static class VanillaAudioClips
     public const string SelectAltChurchillSleigh02 = "cacef27095f436e4a9539b9447383dee";
     public const string SelectAltCorvus01 = "ab497dbaf7a7d6b4d9764bc7c018bae8";
     public const string SelectAltCorvus02 = "00a9de159edf6a7438eb46e0d8861ecb";
+    public const string SelectAltCorvusDecryptor01 = "df55af206b07d8044bae2bb36db70bb7";
+    public const string SelectAltCorvusDecryptor02 = "f07a9b25b3a764f4aa1560e28e9a237a";
     public const string SelectAltDan01 = "73181e4c862f975418da60627cd44bf1";
     public const string SelectAltDan02 = "7f2b4c76167fb1f4ea413a2c32bec855";
     public const string SelectAltDanAdam01 = "5e7a15beed8d56c40b0d76cdf97ea2ed";
@@ -1754,6 +1787,12 @@ public static class VanillaAudioClips
     public const string SelectCorvus04 = "53c4fe3739b93114ca994a3f8c6b46fb";
     public const string SelectCorvus05 = "0218487e902b5cd4c97a332fa936c9c2";
     public const string SelectCorvus06 = "cf18fb2af2cb86e4a96c0c01b680bbe9";
+    public const string SelectCorvusDecryptor01 = "69dd1439b1d8f704e97ed09890dc61b9";
+    public const string SelectCorvusDecryptor02 = "d6c59ac242016e847a242ac16b8d2899";
+    public const string SelectCorvusDecryptor03 = "ee19ea51efebed441876589f67d5ef1b";
+    public const string SelectCorvusDecryptor04 = "ea8dc1f58f11a434da6f0d44f75db2a2";
+    public const string SelectCorvusDecryptor05 = "deb4976340a3f6943893febdecc8de24";
+    public const string SelectCorvusDecryptor06 = "0a01810d0e74eeb40aec5b80e965db18";
     public const string SelectDan01 = "c7c75787e78006144881d0525da4455b";
     public const string SelectDan02 = "827eda6bd39206148b17827aa038b454";
     public const string SelectDan03 = "20520919bece2154a961d689cb003efe";
@@ -2008,6 +2047,8 @@ public static class VanillaAudioClips
     public const string SpawnGolden = "33ba35edd6af27c4e945f73b1d35dd2b";
     public const string SpellbookOpenCorvus01 = "d56703063ede72f4dab9d63d96bdf338";
     public const string SpellbookOpenCorvus02 = "8f828655fd4f8ad4fb07a72dd4e00970";
+    public const string SpellbookOpenCorvusDecryptor01 = "59357e7a439e5074d847442387ba3024";
+    public const string SpellbookOpenCorvusDecryptor02 = "d86400f9e60fb1a42876e734577d67ff";
     public const string SwapGrenadesRosaliaTinkerVO01 = "bf166173e37733a45a88cdc492cb8a04";
     public const string SwapGrenadesRosaliaTinkerVO02 = "ddb791e2d9b4959468ad0066daca90f3";
     public const string SwapGrenadesRosaliaVO01 = "67533acb8223c3d468cc64d2e6a9efcf";
@@ -2068,6 +2109,7 @@ public static class VanillaAudioClips
     public const string UIPropKiwiFoot04 = "d15f15306a4138f4bb8861a6222861c9";
     public const string UIPropKiwiFoot05 = "44d2414131b566745b6ffe6029791f39";
     public const string UIPropMagicImpact = "2a691e93856337a4991c917357486a97";
+    public const string UIPropMud = "75de53cc0b5e7894f877dccf9fac4665";
     public const string UIPropSmallGlitch01 = "74916fa13412cfd49a02e767a922c0bc";
     public const string UIPropSmallGlitch02 = "f47e3bca56ddccb428bbda74af688b77";
     public const string UIPropSmallGlitch03 = "f6717312be63a4549b766e19cc790de1";
@@ -2095,6 +2137,7 @@ public static class VanillaAudioClips
     public const string UnlockChurchillSentai = "1da0d54a4404dfd479cfc5d02514cc38";
     public const string UnlockChurchillSleigh = "0e1d104f0ee8de2409ecfd426ad86d34";
     public const string UnlockCorvus = "aa052ce188d759743a4a7016ecb1fb67";
+    public const string UnlockCorvusDecryptor = "8001cf145b4d09b4ead1639211c8e108";
     public const string UnlockDan = "61cdd1e2d4ba4844ab09c704b0dc1cf7";
     public const string UnlockDanAdam = "4f3ea740aaddd444089b8449955a24ae";
     public const string UnlockEtienne = "dc7882b2a5a315a458cbb4c67a319330";
@@ -2226,6 +2269,15 @@ public static class VanillaAudioClips
     public const string UpgradeCorvus06 = "51b43f2fa5156c2498698096cd5328b3";
     public const string UpgradeCorvus07 = "a79de3f0f4f711d4880fda269f504d9a";
     public const string UpgradeCorvus08 = "9d0b174f8744de0438c353898c3ad111";
+    public const string UpgradeCorvusDecryptor01 = "cefb32d53ef20c24fb4e4a6dca4715ea";
+    public const string UpgradeCorvusDecryptor02 = "f73874da536976e41ad8a8303a6eb250";
+    public const string UpgradeCorvusDecryptor03 = "d2f640480ec1ddd48b1011c20a7d7266";
+    public const string UpgradeCorvusDecryptor04 = "116d602c06f08e14c88a93f8b9873db3";
+    public const string UpgradeCorvusDecryptor05 = "0da10ee4d15f5324e95562e6ad0c18c5";
+    public const string UpgradeCorvusDecryptor06 = "498fa14898ca7a845b30b1d363a4d803";
+    public const string UpgradeCorvusDecryptor07 = "55a666efc8f1cfe4993b7d11e465c43f";
+    public const string UpgradeCorvusDecryptor08 = "625b212c32226824096a1ebf6e3c5d2e";
+    public const string UpgradeCorvusDecryptorMaxLevel = "683ec6dfb11625842b556287c45e5105";
     public const string UpgradeCorvusMaxLevel = "db300e1b25afd9343a16859cc257b203";
     public const string UpgradeDan01 = "575bd427d400e984a976639638ad7d64";
     public const string UpgradeDan02 = "e88e3504dd24374448b52a6733f1156a";
@@ -2569,6 +2621,7 @@ public static class VanillaAudioClips
     public const string ZomgWarningChurchill = "fb8afa31d25808c479cd7c4d6b217876";
     public const string ZomgWarningChurchillSleigh = "8bb3363c9da408944b3b6912f2c96f99";
     public const string ZomgWarningCorvus = "8ef8f469e3fc72b4c9f529c3e1f3dbdb";
+    public const string ZomgWarningCorvusDecryptor = "be02a6b4170b58049bccd62e11def580";
     public const string ZomgWarningDan = "d66817ba754d2bb4b9a892f46c33d9bb";
     public const string ZomgWarningDanAdam = "8c921bdb8efa4cd43a9499b22027a777";
     public const string ZomgWarningDanHeMan = "39ddc3a81e0564049946cd3482d01f66";
@@ -2659,6 +2712,8 @@ public static class VanillaAudioClips
             ["Activated7RosaliaVO02"] = Activated7RosaliaVO02,
             ["Activated7SilasVO01"] = Activated7SilasVO01,
             ["Activated7SilasVO02"] = Activated7SilasVO02,
+            ["ActivatedAbility10CorvusDecryptor01"] = ActivatedAbility10CorvusDecryptor01,
+            ["ActivatedAbility10CorvusDecryptor02"] = ActivatedAbility10CorvusDecryptor02,
             ["ActivatedAbility10Dan01"] = ActivatedAbility10Dan01,
             ["ActivatedAbility10Dan02"] = ActivatedAbility10Dan02,
             ["ActivatedAbility10DanAdam01"] = ActivatedAbility10DanAdam01,
@@ -2669,6 +2724,8 @@ public static class VanillaAudioClips
             ["ActivatedAbility10DanMasked01"] = ActivatedAbility10DanMasked01,
             ["ActivatedAbility10DanMasked02"] = ActivatedAbility10DanMasked02,
             ["ActivatedAbility10DanNoVO"] = ActivatedAbility10DanNoVO,
+            ["ActivatedAbility3CorvusDecryptor01"] = ActivatedAbility3CorvusDecryptor01,
+            ["ActivatedAbility3CorvusDecryptor02"] = ActivatedAbility3CorvusDecryptor02,
             ["ActivatedAbility3Dan01"] = ActivatedAbility3Dan01,
             ["ActivatedAbility3Dan02"] = ActivatedAbility3Dan02,
             ["ActivatedAbility3DanAdam01"] = ActivatedAbility3DanAdam01,
@@ -2681,6 +2738,8 @@ public static class VanillaAudioClips
             ["ActivatedAbility3DanMasked02"] = ActivatedAbility3DanMasked02,
             ["ActivatedAbility3DanMaskedNoVO"] = ActivatedAbility3DanMaskedNoVO,
             ["ActivatedAbility3DanNoVO"] = ActivatedAbility3DanNoVO,
+            ["ActivatedAbility7CorvusDecryptor01"] = ActivatedAbility7CorvusDecryptor01,
+            ["ActivatedAbility7CorvusDecryptor02"] = ActivatedAbility7CorvusDecryptor02,
             ["ActivatedAbility7Dan01"] = ActivatedAbility7Dan01,
             ["ActivatedAbility7Dan02"] = ActivatedAbility7Dan02,
             ["ActivatedAbility7DanAdam01"] = ActivatedAbility7DanAdam01,
@@ -2954,6 +3013,7 @@ public static class VanillaAudioClips
             ["AttackMeleeSmol02"] = AttackMeleeSmol02,
             ["AttackMeleeSmol03"] = AttackMeleeSmol03,
             ["AttackMeleeSmol04"] = AttackMeleeSmol04,
+            ["AttackProjectileLightning01"] = AttackProjectileLightning01,
             ["AttackRifle01"] = AttackRifle01,
             ["AttackRifle02"] = AttackRifle02,
             ["AttackRifle03"] = AttackRifle03,
@@ -3001,6 +3061,7 @@ public static class VanillaAudioClips
             ["BadWarningChurchillSentai"] = BadWarningChurchillSentai,
             ["BadWarningChurchillSleigh"] = BadWarningChurchillSleigh,
             ["BadWarningCorvus"] = BadWarningCorvus,
+            ["BadWarningCorvusDecryptor"] = BadWarningCorvusDecryptor,
             ["BadWarningDan"] = BadWarningDan,
             ["BadWarningDanAdam"] = BadWarningDanAdam,
             ["BadWarningDanHeMan"] = BadWarningDanHeMan,
@@ -3060,6 +3121,7 @@ public static class VanillaAudioClips
             ["BfbWarningChurchill"] = BfbWarningChurchill,
             ["BfbWarningChurchillSleigh"] = BfbWarningChurchillSleigh,
             ["BfbWarningCorvus"] = BfbWarningCorvus,
+            ["BfbWarningCorvusDecryptor"] = BfbWarningCorvusDecryptor,
             ["BfbWarningDan"] = BfbWarningDan,
             ["BfbWarningDanAdam"] = BfbWarningDanAdam,
             ["BfbWarningDanHeMan"] = BfbWarningDanHeMan,
@@ -3158,6 +3220,11 @@ public static class VanillaAudioClips
             ["Constrict03"] = Constrict03,
             ["Constrict04"] = Constrict04,
             ["Constrict05"] = Constrict05,
+            ["CorvusDecryptorSpellAggression"] = CorvusDecryptorSpellAggression,
+            ["CorvusDecryptorSpellAncestralMight"] = CorvusDecryptorSpellAncestralMight,
+            ["CorvusDecryptorSpellRecovery"] = CorvusDecryptorSpellRecovery,
+            ["CorvusDecryptorSpellTrample"] = CorvusDecryptorSpellTrample,
+            ["CorvusDecryptorSpellVision"] = CorvusDecryptorSpellVision,
             ["CorvusSpellAggression"] = CorvusSpellAggression,
             ["CorvusSpellAncestralMight"] = CorvusSpellAncestralMight,
             ["CorvusSpellDeactivated"] = CorvusSpellDeactivated,
@@ -3183,6 +3250,7 @@ public static class VanillaAudioClips
             ["DdtWarningChurchill"] = DdtWarningChurchill,
             ["DdtWarningChurchillSleigh"] = DdtWarningChurchillSleigh,
             ["DdtWarningCorvus"] = DdtWarningCorvus,
+            ["DdtWarningCorvusDecryptor"] = DdtWarningCorvusDecryptor,
             ["DdtWarningDan"] = DdtWarningDan,
             ["DdtWarningDanAdam"] = DdtWarningDanAdam,
             ["DdtWarningDanHeMan"] = DdtWarningDanHeMan,
@@ -3217,7 +3285,6 @@ public static class VanillaAudioClips
             ["DdtWarningSaudaViking"] = DdtWarningSaudaViking,
             ["DdtWarningSilas"] = DdtWarningSilas,
             ["DeactivatedSheriff"] = DeactivatedSheriff,
-            ["EmoteSoundSiren"] = EmoteSoundSiren,
             ["EngineerTurretExplode"] = EngineerTurretExplode,
             ["ExitBattleCat"] = ExitBattleCat,
             ["ExitSwordOfProtection"] = ExitSwordOfProtection,
@@ -3345,6 +3412,8 @@ public static class VanillaAudioClips
             ["LeakChurchillSleigh"] = LeakChurchillSleigh,
             ["LeakCorvus01"] = LeakCorvus01,
             ["LeakCorvus02"] = LeakCorvus02,
+            ["LeakCorvusDecryptor01"] = LeakCorvusDecryptor01,
+            ["LeakCorvusDecryptor02"] = LeakCorvusDecryptor02,
             ["LeakDan01"] = LeakDan01,
             ["LeakDan02"] = LeakDan02,
             ["LeakDanAdam01"] = LeakDanAdam01,
@@ -3467,6 +3536,8 @@ public static class VanillaAudioClips
             ["MoabDestroyedChurchillSleigh02"] = MoabDestroyedChurchillSleigh02,
             ["MoabDestroyedCorvus01"] = MoabDestroyedCorvus01,
             ["MoabDestroyedCorvus02"] = MoabDestroyedCorvus02,
+            ["MoabDestroyedCorvusDecryptor01"] = MoabDestroyedCorvusDecryptor01,
+            ["MoabDestroyedCorvusDecryptor02"] = MoabDestroyedCorvusDecryptor02,
             ["MoabDestroyedDan01"] = MoabDestroyedDan01,
             ["MoabDestroyedDan02"] = MoabDestroyedDan02,
             ["MoabDestroyedDanAdam01"] = MoabDestroyedDanAdam01,
@@ -3559,6 +3630,7 @@ public static class VanillaAudioClips
             ["MoabWarningChurchillSentai"] = MoabWarningChurchillSentai,
             ["MoabWarningChurchillSleigh"] = MoabWarningChurchillSleigh,
             ["MoabWarningCorvus"] = MoabWarningCorvus,
+            ["MoabWarningCorvusDecryptor"] = MoabWarningCorvusDecryptor,
             ["MoabWarningDan"] = MoabWarningDan,
             ["MoabWarningDanAdam"] = MoabWarningDanAdam,
             ["MoabWarningDanHeMan"] = MoabWarningDanHeMan,
@@ -3677,6 +3749,11 @@ public static class VanillaAudioClips
             ["PetDadIdle03"] = PetDadIdle03,
             ["PetDadIdle04"] = PetDadIdle04,
             ["PetDadSpawn"] = PetDadSpawn,
+            ["PetDiscordWumpusIdle01"] = PetDiscordWumpusIdle01,
+            ["PetDiscordWumpusIdle02"] = PetDiscordWumpusIdle02,
+            ["PetDiscordWumpusIdle03"] = PetDiscordWumpusIdle03,
+            ["PetDiscordWumpusIdle04"] = PetDiscordWumpusIdle04,
+            ["PetDiscordWumpusSpawn"] = PetDiscordWumpusSpawn,
             ["PetDogIdle01"] = PetDogIdle01,
             ["PetDogIdle02"] = PetDogIdle02,
             ["PetDogIdle03"] = PetDogIdle03,
@@ -3892,6 +3969,8 @@ public static class VanillaAudioClips
             ["PlaceCoffinDrop"] = PlaceCoffinDrop,
             ["PlaceCorvus01"] = PlaceCorvus01,
             ["PlaceCorvus02"] = PlaceCorvus02,
+            ["PlaceCorvusDecryptor01"] = PlaceCorvusDecryptor01,
+            ["PlaceCorvusDecryptor02"] = PlaceCorvusDecryptor02,
             ["PlaceCrate"] = PlaceCrate,
             ["PlaceDan01"] = PlaceDan01,
             ["PlaceDan02"] = PlaceDan02,
@@ -3943,6 +4022,8 @@ public static class VanillaAudioClips
             ["PlaceMOABMine"] = PlaceMOABMine,
             ["PlaceMOABMineBauble"] = PlaceMOABMineBauble,
             ["PlaceMoneybags"] = PlaceMoneybags,
+            ["PlaceMonkeyMud01"] = PlaceMonkeyMud01,
+            ["PlaceMonkeyMud02"] = PlaceMonkeyMud02,
             ["PlaceMonkeyStorm"] = PlaceMonkeyStorm,
             ["PlaceObyn01"] = PlaceObyn01,
             ["PlaceObyn02"] = PlaceObyn02,
@@ -4137,6 +4218,9 @@ public static class VanillaAudioClips
             ["PotionBuff03"] = PotionBuff03,
             ["PotionBuff04"] = PotionBuff04,
             ["PotionBuff05"] = PotionBuff05,
+            ["Quack"] = Quack,
+            ["Quack2"] = Quack2,
+            ["QuackWaterSplash"] = QuackWaterSplash,
             ["QuestNotification"] = QuestNotification,
             ["ReactBattleCatDanAdam"] = ReactBattleCatDanAdam,
             ["ReactBattleCatDanHeMan"] = ReactBattleCatDanHeMan,
@@ -4209,6 +4293,8 @@ public static class VanillaAudioClips
             ["SelectAltChurchillSleigh02"] = SelectAltChurchillSleigh02,
             ["SelectAltCorvus01"] = SelectAltCorvus01,
             ["SelectAltCorvus02"] = SelectAltCorvus02,
+            ["SelectAltCorvusDecryptor01"] = SelectAltCorvusDecryptor01,
+            ["SelectAltCorvusDecryptor02"] = SelectAltCorvusDecryptor02,
             ["SelectAltDan01"] = SelectAltDan01,
             ["SelectAltDan02"] = SelectAltDan02,
             ["SelectAltDanAdam01"] = SelectAltDanAdam01,
@@ -4360,6 +4446,12 @@ public static class VanillaAudioClips
             ["SelectCorvus04"] = SelectCorvus04,
             ["SelectCorvus05"] = SelectCorvus05,
             ["SelectCorvus06"] = SelectCorvus06,
+            ["SelectCorvusDecryptor01"] = SelectCorvusDecryptor01,
+            ["SelectCorvusDecryptor02"] = SelectCorvusDecryptor02,
+            ["SelectCorvusDecryptor03"] = SelectCorvusDecryptor03,
+            ["SelectCorvusDecryptor04"] = SelectCorvusDecryptor04,
+            ["SelectCorvusDecryptor05"] = SelectCorvusDecryptor05,
+            ["SelectCorvusDecryptor06"] = SelectCorvusDecryptor06,
             ["SelectDan01"] = SelectDan01,
             ["SelectDan02"] = SelectDan02,
             ["SelectDan03"] = SelectDan03,
@@ -4614,6 +4706,8 @@ public static class VanillaAudioClips
             ["SpawnGolden"] = SpawnGolden,
             ["SpellbookOpenCorvus01"] = SpellbookOpenCorvus01,
             ["SpellbookOpenCorvus02"] = SpellbookOpenCorvus02,
+            ["SpellbookOpenCorvusDecryptor01"] = SpellbookOpenCorvusDecryptor01,
+            ["SpellbookOpenCorvusDecryptor02"] = SpellbookOpenCorvusDecryptor02,
             ["SwapGrenadesRosaliaTinkerVO01"] = SwapGrenadesRosaliaTinkerVO01,
             ["SwapGrenadesRosaliaTinkerVO02"] = SwapGrenadesRosaliaTinkerVO02,
             ["SwapGrenadesRosaliaVO01"] = SwapGrenadesRosaliaVO01,
@@ -4674,6 +4768,7 @@ public static class VanillaAudioClips
             ["UIPropKiwiFoot04"] = UIPropKiwiFoot04,
             ["UIPropKiwiFoot05"] = UIPropKiwiFoot05,
             ["UIPropMagicImpact"] = UIPropMagicImpact,
+            ["UIPropMud"] = UIPropMud,
             ["UIPropSmallGlitch01"] = UIPropSmallGlitch01,
             ["UIPropSmallGlitch02"] = UIPropSmallGlitch02,
             ["UIPropSmallGlitch03"] = UIPropSmallGlitch03,
@@ -4701,6 +4796,7 @@ public static class VanillaAudioClips
             ["UnlockChurchillSentai"] = UnlockChurchillSentai,
             ["UnlockChurchillSleigh"] = UnlockChurchillSleigh,
             ["UnlockCorvus"] = UnlockCorvus,
+            ["UnlockCorvusDecryptor"] = UnlockCorvusDecryptor,
             ["UnlockDan"] = UnlockDan,
             ["UnlockDanAdam"] = UnlockDanAdam,
             ["UnlockEtienne"] = UnlockEtienne,
@@ -4832,6 +4928,15 @@ public static class VanillaAudioClips
             ["UpgradeCorvus06"] = UpgradeCorvus06,
             ["UpgradeCorvus07"] = UpgradeCorvus07,
             ["UpgradeCorvus08"] = UpgradeCorvus08,
+            ["UpgradeCorvusDecryptor01"] = UpgradeCorvusDecryptor01,
+            ["UpgradeCorvusDecryptor02"] = UpgradeCorvusDecryptor02,
+            ["UpgradeCorvusDecryptor03"] = UpgradeCorvusDecryptor03,
+            ["UpgradeCorvusDecryptor04"] = UpgradeCorvusDecryptor04,
+            ["UpgradeCorvusDecryptor05"] = UpgradeCorvusDecryptor05,
+            ["UpgradeCorvusDecryptor06"] = UpgradeCorvusDecryptor06,
+            ["UpgradeCorvusDecryptor07"] = UpgradeCorvusDecryptor07,
+            ["UpgradeCorvusDecryptor08"] = UpgradeCorvusDecryptor08,
+            ["UpgradeCorvusDecryptorMaxLevel"] = UpgradeCorvusDecryptorMaxLevel,
             ["UpgradeCorvusMaxLevel"] = UpgradeCorvusMaxLevel,
             ["UpgradeDan01"] = UpgradeDan01,
             ["UpgradeDan02"] = UpgradeDan02,
@@ -5175,6 +5280,7 @@ public static class VanillaAudioClips
             ["ZomgWarningChurchill"] = ZomgWarningChurchill,
             ["ZomgWarningChurchillSleigh"] = ZomgWarningChurchillSleigh,
             ["ZomgWarningCorvus"] = ZomgWarningCorvus,
+            ["ZomgWarningCorvusDecryptor"] = ZomgWarningCorvusDecryptor,
             ["ZomgWarningDan"] = ZomgWarningDan,
             ["ZomgWarningDanAdam"] = ZomgWarningDanAdam,
             ["ZomgWarningDanHeMan"] = ZomgWarningDanHeMan,

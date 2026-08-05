@@ -15,7 +15,7 @@ internal static class MapSaveLoader_GetMutatorSaveData
         Il2CppSystem.Collections.Generic.Dictionary<string, Il2CppSystem.Collections.Generic.List<MutatorSaveDataModel>>
             __result)
     {
-        foreach (var mutable in sim.factory.GetUncast<Mutable>().ToArray())
+        foreach (var mutable in sim.factory.Get<Mutable>().ToArray())
         {
             foreach (var timedMutator in mutable.mutators.ToArray())
             {

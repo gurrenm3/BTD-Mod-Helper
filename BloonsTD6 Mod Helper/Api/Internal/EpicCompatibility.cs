@@ -71,7 +71,7 @@ internal static class EpicCompatibility
         PopupScreen.instance.SafelyQueue(screen =>
             screen.ShowPopup(PopupScreen.Placement.menuCenter, LocalizationHelper.Success.Localize(),
                 CompatibilityPluginSuccess.Localize(),
-                new Action(() => MenuManager.instance.QuitGame()), "Quit", null, "Cancel", Popup.TransitionAnim.Scale));
+                new Action(Il2CppAssets.Scripts.Main.QuitGame), "Quit", null, "Cancel", Popup.TransitionAnim.Scale));
     }
 #endif
 }

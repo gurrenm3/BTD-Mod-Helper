@@ -118,7 +118,7 @@ public abstract class ModFakeTower : ModTower
 
     internal float GetCost(TowerModel towerModelFake, Vector2 at)
     {
-        var owner = InGame.Bridge.MyPlayerNumber;
+        var owner = InGame.Bridge.GetInputId();
         var sim = InGame.Bridge.Simulation;
 
         var height = sim.Map.GetTerrainHeight(new Il2CppAssets.Scripts.Simulation.SMath.Vector2(at));
@@ -138,7 +138,7 @@ public abstract class ModFakeTower : ModTower
     /// <param name="hoveredTower">tower being hovered, or null if none</param>
     public void Purchase(Vector2 at, TowerModel towerModelFake, Tower hoveredTower)
     {
-        var owner = InGame.Bridge.MyPlayerNumber;
+        var owner = InGame.Bridge.GetInputId();
         var sim = InGame.Bridge.Simulation;
         var height = sim.Map.GetTerrainHeight(new Il2CppAssets.Scripts.Simulation.SMath.Vector2(at));
         var pos = new Vector3(at.x, at.y, height);
@@ -161,7 +161,7 @@ public abstract class ModFakeTower : ModTower
 
         if (TowerInventoryEnabled)
         {
-            var inventory = InGame.Bridge.Simulation.GetTowerInventory(InGame.Bridge.MyPlayerNumber);
+            var inventory = InGame.Bridge.Simulation.GetTowerInventory(InGame.Bridge.GetInputId());
             if (inventory.towerCounts.TryGetValue(Id, out var count))
             {
                 inventory.towerCounts[Id]++;

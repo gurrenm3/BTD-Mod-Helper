@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppAssets.Scripts.Simulation.Towers;
 using Il2CppAssets.Scripts.Unity.Bridge;
@@ -20,7 +21,7 @@ public class Lists : MonoBehaviour
     /// <summary>
     /// All towers currently placed in the game, or null if not in a game
     /// </summary>
-    public static Tower[] AllTowers => Instances.TowerManager?.GetTowers().ToIl2CppList().ToArray() ?? Array.Empty<Tower>();
+    public static Tower[] AllTowers => Instances.TowerManager?.GetTowers().ToIl2CppList().ToArray<Tower>() ?? Array.Empty<Tower>();
 
     /// <summary>
     /// All TowerToSimulation objects currently placed in the game, or null if not in a game
@@ -30,5 +31,11 @@ public class Lists : MonoBehaviour
     /// <summary>
     /// All Entities in the current game, or null if not in a game
     /// </summary>
-    public static Entity[] AllEntities => Instances.FactoryFactory?.GetUncast<Entity>().ToArray()?? Array.Empty<Entity>();
+    public static Entity[] AllEntities
+    {
+        get
+        {
+            return Instances.FactoryFactory?.Get<Entity>().ToArray() ?? Array.Empty<Entity>();
+        }
+    }
 }

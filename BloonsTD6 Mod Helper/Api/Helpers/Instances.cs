@@ -94,12 +94,12 @@ public class Instances : MonoBehaviour
     /// <summary>
     /// The InputManager for the current player. 
     /// </summary>
-    public static InputManager InputManager => Simulation?.GetInputManager(Bridge.MyPlayerNumber);
+    public static InputManager InputManager => Simulation?.GetInputManager(Bridge.GetInputId());
 
     /// <summary>
     /// The CashManager for the current player. 
     /// </summary>
-    public static Simulation.CashManager CashManager => Simulation?.GetCashManager(Bridge.MyPlayerNumber);
+    public static Simulation.CashManager CashManager => Simulation?.GetCashManager(Bridge.GetInputId());
 
     /// <summary>
     /// The current Btd6Player

@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Il2CppAssets.Scripts.Unity.Menu;
 using Il2CppAssets.Scripts.Unity.UI_New.Popups;
 using MelonLoader.Utils;
+using Btd6Main = Il2CppAssets.Scripts.Main;
 namespace BTD_Mod_Helper.Api.Helpers;
 
 /// <summary>
@@ -27,7 +27,7 @@ public static class ProcessHelper
         {
             PopupScreen.instance.SafelyQueue(screen => screen.ShowOkPopup(
                 EpicLauncherWarning.Localize(),
-                new Action(() => MenuManager.instance.QuitGame())));
+                new Action(Btd6Main.QuitGame)));
             return;
         }
 
@@ -44,7 +44,7 @@ public static class ProcessHelper
             UseShellExecute = true
         });
 
-        MenuManager.instance.QuitGame();
+        Btd6Main.QuitGame();
     }
 
     /// <summary>

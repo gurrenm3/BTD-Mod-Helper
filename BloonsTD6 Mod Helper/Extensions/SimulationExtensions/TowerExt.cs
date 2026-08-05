@@ -45,7 +45,7 @@ public static class TowerExt
     /// </summary>
     public static void SellTower(this Tower tower)
     {
-        InGame.instance.SellTower(tower.GetTowerToSim());
+        InGame.instance.SellTower(InGame.Bridge.GetInputId(), tower.GetTowerToSim());
     }
 
     /// <summary>

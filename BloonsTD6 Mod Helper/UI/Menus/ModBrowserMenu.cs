@@ -134,10 +134,8 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
         GameMenu.requiresInternetObj.SetActive(ModHelperGithub.VerifiedModders.Count == 0);
 
         GameMenu.refreshBtn.SetOnClick(() => RefreshMods().StartCoroutine());
-        GameMenu.firstPageBtn.SetOnClick(() => SetPage(0));
         GameMenu.previousPageBtn.SetOnClick(() => SetPage(currentPage - 1));
         GameMenu.nextPageBtn.SetOnClick(() => SetPage(currentPage + 1));
-        GameMenu.lastPageBtn.SetOnClick(() => SetPage(TotalPages - 1));
     }
 
     public void AddNewElements()
@@ -273,11 +271,9 @@ internal class ModBrowserMenu : ModGameMenu<ContentBrowser>
 
     private void UpdatePagination()
     {
-        GameMenu.firstPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
         GameMenu.previousPageBtn.interactable = TotalPages >= 2 && currentPage > 0;
 
         GameMenu.nextPageBtn.interactable = TotalPages >= 2 && currentPage < TotalPages - 1;
-        GameMenu.lastPageBtn.interactable = TotalPages >= 2 && currentPage < TotalPages - 1;
 
         GameMenu.totalPages = TotalPages;
         GameMenu.SetCurrentPage(currentPage + 1);

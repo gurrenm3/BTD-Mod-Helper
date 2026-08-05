@@ -22,6 +22,12 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
 {
     private static readonly Il2CppJsonConvert.Il2CppContractResolver Resolver = new();
 
+    private static readonly Dictionary<(Type, string), string> ConstructorParameterOverrides = new()
+    {
+        [(typeof(Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel),
+            "angleIncreases")] = "angleIncreaseString"
+    };
+
     internal static readonly Dictionary<(Type, string), string> DefaultValueOverrides = new()
     {
         [(typeof(DamageModel), nameof(DamageModel.distributeToChildren))] = "true",
@@ -112,7 +118,9 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
         var propDefaultValues = properties.ToDictionary(p => p, p => "args." + p.Name);
         foreach (var param in ctor.GetParameters())
         {
-            var property = properties.FirstOrDefault(p => p.Name.Equals(param.Name, StringComparison.OrdinalIgnoreCase));
+            var propertyName = ConstructorParameterOverrides.GetValueOrDefault((type, param.Name!)) ?? param.Name;
+            var property = properties.FirstOrDefault(p =>
+                p.Name.Equals(propertyName, StringComparison.OrdinalIgnoreCase));
 
             if (property == null && ModelSerializer.ParamFixes.TryGetValue(param.Name!, out var fix))
             {

@@ -1,12 +1,13 @@
 using BTD_Mod_Helper.Api;
 using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu;
 namespace BTD_Mod_Helper.Patches.UI;
 
-[HarmonyPatch(typeof(Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenu), nameof(Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenu.Awake))]
+[HarmonyPatch(typeof(TowerSelectionMenu), nameof(TowerSelectionMenu.Awake))]
 internal static class TowerSelectionMenu_Awake
 {
     [HarmonyPrefix]
-    internal static void Prefix(Il2CppAssets.Scripts.Unity.UI_New.InGame.TowerSelectionMenu.TowerSelectionMenu __instance)
+    internal static void Prefix(TowerSelectionMenu __instance)
     {
         TaskScheduler.ScheduleTask(() =>
         {

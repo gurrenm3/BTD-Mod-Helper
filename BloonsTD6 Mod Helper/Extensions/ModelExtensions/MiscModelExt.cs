@@ -24,7 +24,7 @@ public static class MiscModelExt
     /// <summary>
     /// Applies the given ModDisplay to this effect
     /// </summary>
-    public static T ApplyDisplay<T>(this T effectModel, ModDisplay display) where T : EffectModel
+    public static EffectModel ApplyDisplay(this EffectModel effectModel, ModDisplay display)
     {
         display.Apply(effectModel);
         return effectModel;

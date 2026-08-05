@@ -20,7 +20,7 @@ internal static class InputManager_Update
         string fake = null;
         var applies = fakeTower.CanPlaceAt(at, tower, ref fake);
 
-        InGameObjects.instance.IconUpdate(InputManager.GetCursorPosition(), applies);
+        InGameObjects.instance.IconUpdate(__instance.GetCursorPosition(), applies);
 
         if (!fakeTower.HighlightTowers)
         {

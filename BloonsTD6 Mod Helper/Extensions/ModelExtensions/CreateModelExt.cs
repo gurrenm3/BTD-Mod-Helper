@@ -301,6 +301,35 @@ public static partial class CreateAbilityModelExt
     }
 }
 
+public static partial class CreateAbilityOverchargeModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityOverchargeModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityOverchargeModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityOverchargeModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityOverchargeModel>
+    {
+        public float damageIncreaseAdditive { get; set; } = 0;
+        public float damageIncreaseMultiplier { get; set; } = 0;
+        public float attackSpeedIncreaseAdditive { get; set; } = 0;
+        public float attackSpeedMultiplier { get; set; } = 0;
+        public float buffDuration { get; set; } = 0;
+        public int buffDurationFrames { get; set; } = 0;
+        public float BuffDuration { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityOverchargeModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AbilityOverchargeModel(args.name, args.damageIncreaseAdditive, args.damageIncreaseMultiplier, args.attackSpeedIncreaseAdditive, args.attackSpeedMultiplier, args.buffDuration);
+            if (args.buffDurationFrames != default) result.buffDurationFrames = args.buffDurationFrames;
+            if (args.BuffDuration != default) result.BuffDuration = args.BuffDuration;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateAbilityReduceCooldownOnLivesLostModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.AbilityReduceCooldownOnLivesLostModel) 
@@ -821,6 +850,44 @@ public static partial class CreateActivateControlledZoneModelExt
     }
 }
 
+public static partial class CreateActivateDamageBypassSupportZoneModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageBypassSupportZoneModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageBypassSupportZoneModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageBypassSupportZoneModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageBypassSupportZoneModel>
+    {
+        public float range { get; set; } = 0;
+        public float maxNumTowersModified { get; set; } = 0;
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public bool canEffectThisTower { get; set; } = default;
+        public float lifespan { get; set; } = 0;
+        public float lifespanFrames { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        public bool useTowerRange { get; set; } = default;
+        public string properties { get; set; } = "";
+        public bool showBuffIcon { get; set; } = default;
+        public bool isGlobal { get; set; } = default;
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageBypassSupportZoneModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageBypassSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.properties, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
+            if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateActivateDamageModifierSupportZoneModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateDamageModifierSupportZoneModel) 
@@ -894,6 +961,34 @@ public static partial class CreateActivateIgnoreStunSupportZoneModelExt
             if (args.stunMutators != default) result.stunMutators = args.stunMutators;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateActivateLightningRodZapModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateLightningRodZapModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateLightningRodZapModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateLightningRodZapModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateLightningRodZapModel>
+    {
+        public float rate { get; set; } = 0;
+        public float damage { get; set; } = 0;
+        public float piercePerJump { get; set; } = 0;
+        public float delayPerJump { get; set; } = 0;
+        public float duration { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel lightningRod { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel lineEmission { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateLightningRodZapModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateLightningRodZapModel(args.name, args.rate, args.damage, args.piercePerJump, args.delayPerJump, args.duration, args.lightningRod, args.lineEmission);
+            
             args.OnCreate(result);
             return result;   
         }
@@ -982,6 +1077,45 @@ public static partial class CreateActivatePierceSupportZoneModelExt
     }
 }
 
+public static partial class CreateActivateProjectileSpeedSupportZoneModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateProjectileSpeedSupportZoneModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateProjectileSpeedSupportZoneModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateProjectileSpeedSupportZoneModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateProjectileSpeedSupportZoneModel>
+    {
+        public float range { get; set; } = 0;
+        public float speedIncrease { get; set; } = 0;
+        public float maxNumTowersModified { get; set; } = 0;
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public bool canEffectThisTower { get; set; } = default;
+        public float lifespan { get; set; } = 0;
+        public float lifespanFrames { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        public bool useTowerRange { get; set; } = default;
+        public bool oneShotInRange { get; set; } = default;
+        public bool showBuffIcon { get; set; } = default;
+        public bool isGlobal { get; set; } = default;
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateProjectileSpeedSupportZoneModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateProjectileSpeedSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.speedIncrease, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.oneShotInRange, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
+            if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateActivateRangeSupportZoneModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRangeSupportZoneModel) 
@@ -1051,6 +1185,49 @@ public static partial class CreateActivateRateSupportZoneModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRateSupportZoneModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRateSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.rateModifier, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.oneShotInRange, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
+            if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            if (args.isGlobal != default) result.isGlobal = args.isGlobal;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateActivateRicochetSupportZoneModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRicochetSupportZoneModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRicochetSupportZoneModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRicochetSupportZoneModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRicochetSupportZoneModel>
+    {
+        public float range { get; set; } = 0;
+        public float maxNumTowersModified { get; set; } = 0;
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public bool canEffectThisTower { get; set; } = default;
+        public float lifespan { get; set; } = 0;
+        public float lifespanFrames { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel displayModel { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        public bool useTowerRange { get; set; } = default;
+        public float distance { get; set; } = 0;
+        public float minDistance { get; set; } = 0;
+        public int maxBounces { get; set; } = 0;
+        public string targetType { get; set; } = "";
+        public float delay { get; set; } = 0;
+        public bool expireIfNoTargetFound { get; set; } = default;
+        public bool showBuffIcon { get; set; } = default;
+        public bool isGlobal { get; set; } = default;
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRicochetSupportZoneModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.ActivateRicochetSupportZoneModel(args.name, args.mutatorId, args.isUnique, args.range, args.maxNumTowersModified, args.canEffectThisTower, args.lifespan, args.distance, args.minDistance, args.maxBounces, args.targetType, args.delay, args.expireIfNoTargetFound, args.displayModel, args.buffLocsName, args.buffIconName, args.filters, args.useTowerRange);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
             if (args.isGlobal != default) result.isGlobal = args.isGlobal;
@@ -1838,6 +2015,35 @@ public static partial class CreateAddBonusDamagePerHitToBloonModelExt
     }
 }
 
+public static partial class CreateAddBonusDegreeToPlacedParagonModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.SimulationBehaviors.AddBonusDegreeToPlacedParagonModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.SimulationBehaviors.AddBonusDegreeToPlacedParagonModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.SimulationBehaviors.AddBonusDegreeToPlacedParagonModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.SimulationBehaviors.AddBonusDegreeToPlacedParagonModel>
+    {
+        public int bonusDegrees { get; set; } = 0;
+        public bool firstPlaced { get; set; } = default;
+        public bool perPlayer { get; set; } = default;
+        public string[] towerTypes { get; set; } = default;
+        public bool inverseTowerTypes { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.TowerSets.TowerSet[] towerSets { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.TowerSets.TowerSet towerSet { get; set; } = default;
+        public bool inverseTowerSets { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.AddBonusDegreeToPlacedParagonModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.AddBonusDegreeToPlacedParagonModel(args.name, args.bonusDegrees, args.firstPlaced, args.perPlayer, args.towerTypes, args.inverseTowerTypes, args.towerSets, args.inverseTowerSets);
+            if (args.towerSet != default) result.towerSet = args.towerSet;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateAddCashOnProjectileExpireModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddCashOnProjectileExpireModel) 
@@ -2077,10 +2283,11 @@ public static partial class CreateAddMakeshiftAreaModelExt
         public bool destroyTowersOnAreaWhenSold { get; set; } = false;
         public bool dontDestroyTowersWhenAreaChanges { get; set; } = false;
         public bool lockedArea { get; set; } = false;
+        public bool prohibitTrackPlacement { get; set; } = false;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.AddMakeshiftAreaModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddMakeshiftAreaModel(args.name, args.points, args.newAreaType, args.filterInTowerSizes, args.renderHeightOffset, args.ignoreZAxisTowerCollision, args.filterOutSpecificTowers, args.destroyTowersOnAreaWhenSold, args.filterInTowerSets, args.dontDestroyTowersWhenAreaChanges, args.lockedArea);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.AddMakeshiftAreaModel(args.name, args.points, args.newAreaType, args.filterInTowerSizes, args.renderHeightOffset, args.ignoreZAxisTowerCollision, args.filterOutSpecificTowers, args.destroyTowersOnAreaWhenSold, args.filterInTowerSets, args.dontDestroyTowersWhenAreaChanges, args.lockedArea, args.prohibitTrackPlacement);
             
             args.OnCreate(result);
             return result;   
@@ -2600,6 +2807,7 @@ public static partial class CreateAdoraTrackTargetModelExt
         public float accelerationFrames { get; set; } = 0;
         public float accelerateInAngle { get; set; } = 0;
         public float startDeceleratingIfAngleGreaterThan { get; set; } = 0;
+        public bool hasSingleTarget { get; set; } = default;
         public float lifespan { get; set; } = 0;
         public int lifespanFrames { get; set; } = 0;
         public float Lifespan { get; set; } = 0;
@@ -2611,6 +2819,7 @@ public static partial class CreateAdoraTrackTargetModelExt
             if (args.minimumSpeedFrames != default) result.minimumSpeedFrames = args.minimumSpeedFrames;
             if (args.maximumSpeedFrames != default) result.maximumSpeedFrames = args.maximumSpeedFrames;
             if (args.accelerationFrames != default) result.accelerationFrames = args.accelerationFrames;
+            if (args.hasSingleTarget != default) result.hasSingleTarget = args.hasSingleTarget;
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
@@ -3701,10 +3910,12 @@ public static partial class CreateAreaModelExt
         public int customAreaCategoryLayerId { get; set; } = -1;
         public bool doesNotHighlight { get; set; } = false;
         public bool lockedArea { get; set; } = false;
+        public bool prohibitTrackPlacement { get; set; } = false;
+        public bool dontRemoveExistingTowers { get; set; } = false;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.AreaModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.AreaModel(args.name, args.polygon, args.holes, args.height, args.type, args.renderHeightOffset, args.filterInTowerSizes, args.filterInTowerSets, args.filterOutSpecificTowers, args.isBlocker, args.isDisabled, args.isInputBlocking, args.pivotPoint, args.buffs, args.blockerCircles, args.customAreaCategoryLayerId, args.doesNotHighlight, args.lockedArea);
+            var result = new Il2CppAssets.Scripts.Models.Map.AreaModel(args.name, args.polygon, args.holes, args.height, args.type, args.renderHeightOffset, args.filterInTowerSizes, args.filterInTowerSets, args.filterOutSpecificTowers, args.isBlocker, args.isDisabled, args.isInputBlocking, args.pivotPoint, args.buffs, args.blockerCircles, args.customAreaCategoryLayerId, args.doesNotHighlight, args.lockedArea, args.prohibitTrackPlacement, args.dontRemoveExistingTowers);
             if (args.id != default) result.id = args.id;
             if (args.ignoreZAxisTowerCollision != default) result.ignoreZAxisTowerCollision = args.ignoreZAxisTowerCollision;
             args.OnCreate(result);
@@ -5170,6 +5381,33 @@ public static partial class CreateBloonSpeedUpZoneModelExt
     }
 }
 
+public static partial class CreateBloonTagDamageOverrideModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BloonTagDamageOverrideModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BloonTagDamageOverrideModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BloonTagDamageOverrideModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BloonTagDamageOverrideModel>
+    {
+        public string bloonId { get; set; } = "";
+        public string[] bloonIds { get; set; } = default;
+        public float damageAdditive { get; set; } = 0;
+        public bool includeChildren { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BloonTagDamageOverrideModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.BloonTagDamageOverrideModel(args.name, args.bloonId, args.damageAdditive, args.includeChildren);
+            if (args.bloonIds != default) result.bloonIds = args.bloonIds;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateBloonTagOnlySplitterModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Map.Spawners.BloonTagOnlySplitterModel) 
@@ -5967,6 +6205,34 @@ public static partial class CreateBurstWeaponBehaviorModelExt
     }
 }
 
+public static partial class CreateBurstWeaponIncreasingArcBehaviorModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel>
+    {
+        public float interval { get; set; } = 0;
+        public int intervalFrames { get; set; } = 0;
+        public int count { get; set; } = 0;
+        public bool alwaysEmptyClip { get; set; } = default;
+        public string angleIncreaseString { get; set; } = "";
+        public Il2CppSystem.Collections.Generic.List<float> angleIncreases { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.BurstWeaponIncreasingArcBehaviorModel(args.name, args.interval, args.count, args.alwaysEmptyClip, args.angleIncreaseString);
+            if (args.intervalFrames != default) result.intervalFrames = args.intervalFrames;
+            if (args.angleIncreases != default) result.angleIncreases = args.angleIncreases;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateCallToArmsModModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Mods.CallToArmsModModel) 
@@ -6013,6 +6279,33 @@ public static partial class CreateCallToArmsModelExt
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.CallToArmsModel(args.name, args.lifespan, args.multiplier, args.useRadius, args.buffLocsName, args.buffIconName, args._mutator);
             if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
             if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateCamoBlockZoneModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel>
+    {
+        public string mutationId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Filters.FilterModel[] filters { get; set; } = default;
+        public bool isDisabled { get; set; } = false;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel.RemoveCamoMutator mutator { get; set; } = default;
+        public string overlayType { get; set; } = "";
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CamoBlockZoneModel(args.name, args.mutationId, args.isUnique, args.filters, args.overlayType, args.isDisabled);
+            if (args.mutator != default) result.mutator = args.mutator;
             args.OnCreate(result);
             return result;   
         }
@@ -6422,6 +6715,30 @@ public static partial class CreateCashPerRoundModModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Mods.CashPerRoundModModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Mods.CashPerRoundModModel(args.name, args.additionalMoney);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateCashPerTowerInMakeshiftAreaModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.CashPerTowerInMakeshiftAreaModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.CashPerTowerInMakeshiftAreaModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.CashPerTowerInMakeshiftAreaModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.CashPerTowerInMakeshiftAreaModel>
+    {
+        public int cashAmount { get; set; } = 0;
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference cashTxtAssetId { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public float assetLifespan { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.CashPerTowerInMakeshiftAreaModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.CashPerTowerInMakeshiftAreaModel(args.name, args.cashAmount, args.cashTxtAssetId, args.assetLifespan);
             
             args.OnCreate(result);
             return result;   
@@ -6933,6 +7250,77 @@ public static partial class CreateCheckTempleUnderLevelModelExt
     }
 }
 
+public static partial class CreateChilledBehaviorModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChilledBehaviorModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChilledBehaviorModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChilledBehaviorModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChilledBehaviorModel>
+    {
+        public float duration { get; set; } = 0;
+        public float slowDuration { get; set; } = 0;
+        public int stage { get; set; } = 0;
+        public bool affectMoab { get; set; } = default;
+        public Il2CppAssets.Scripts.ObjectId tower { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChilledBehaviorModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.ChilledBehaviorModel(args.name, args.tower, default, args.slowDuration, args.affectMoab, args.stage);
+            if (args.duration != default) result.duration = args.duration;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateChilledModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel>
+    {
+        public float chilledDuration { get; set; } = 0;
+        public float slowDuration { get; set; } = 0;
+        public float pierceCost { get; set; } = 0;
+        public float multiplier { get; set; } = 0;
+        public float radiusMultiplier { get; set; } = 0;
+        public float slowRadius { get; set; } = 0;
+        public bool affectMoab { get; set; } = default;
+        public float moabStageOneSlowMod { get; set; } = 0;
+        public float moabStageTwoSlowMod { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Effects.EffectModel effect { get; set; } = default;
+        public string overlayStageTwo { get; set; } = "";
+        public string overlayStageThree { get; set; } = "";
+        public Il2CppAssets.Scripts.Models.Effects.EffectModel pierceEffect { get; set; } = default;
+        public int lifespanFrames { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel.SlowMutator slowMutator { get; set; } = default;
+        public float Lifespan { get; set; } = 0;
+        public string overlayType { get; set; } = "";
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.ChilledModel(args.name, args.chilledDuration, args.slowDuration, args.multiplier, args.pierceCost, args.radiusMultiplier, args.slowRadius, args.overlayType, args.overlayStageTwo, args.overlayStageThree, default, args.moabStageOneSlowMod, args.moabStageTwoSlowMod, args.projectile, args.emission, args.effect, args.pierceEffect);
+            if (args.affectMoab != default) result.affectMoab = args.affectMoab;
+            if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            if (args.slowMutator != default) result.slowMutator = args.slowMutator;
+            if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateChimpsModModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Gameplay.Mods.ChimpsModModel) 
@@ -7286,6 +7674,29 @@ public static partial class CreateCloseTargetTrackModelExt
     }
 }
 
+public static partial class CreateColdChainBuffModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel>
+    {
+        public string[] bloonTypes { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel.ColdChainBuffMutator coldChainBuffMutator { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ColdChainBuffModel(args.name, args.bloonTypes);
+            if (args.coldChainBuffMutator != default) result.coldChainBuffMutator = args.coldChainBuffMutator;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateColdFrontModModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Mods.ColdFrontModModel) 
@@ -7425,6 +7836,34 @@ public static partial class CreateCollideOnlyWithTargetModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideOnlyWithTargetModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideOnlyWithTargetModel(args.name, args.collideWithFirstIfInvalidTarget);
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateCollideReducePierceForBloonStateModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideReducePierceForBloonStateModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideReducePierceForBloonStateModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideReducePierceForBloonStateModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideReducePierceForBloonStateModel>
+    {
+        public string[] bloonStates { get; set; } = default;
+        public int extraPierce { get; set; } = 0;
+        public bool mustIncludeAllStates { get; set; } = default;
+        public bool mustBeModified { get; set; } = default;
+        public float percentChanceOfPierceReduce { get; set; } = 0;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideReducePierceForBloonStateModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CollideReducePierceForBloonStateModel(args.name, args.bloonStates, args.extraPierce, args.mustIncludeAllStates, args.mustBeModified, default);
+            if (args.percentChanceOfPierceReduce != default) result.percentChanceOfPierceReduce = args.percentChanceOfPierceReduce;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
             args.OnCreate(result);
             return result;   
@@ -8008,6 +8447,38 @@ public static partial class CreateCreateAreasActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Actions.CreateAreasActionModel(args.name, args.areaNames);
             if (args.saveId != default) result.saveId = args.saveId;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateCreateDistanceProjectileOnExhaustFractionModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateDistanceProjectileOnExhaustFractionModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateDistanceProjectileOnExhaustFractionModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateDistanceProjectileOnExhaustFractionModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateDistanceProjectileOnExhaustFractionModel>
+    {
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public float fraction { get; set; } = 0;
+        public float durationfraction { get; set; } = 0;
+        public bool canCreateInBetweenRounds { get; set; } = default;
+        public bool collideOnSubProjectile { get; set; } = default;
+        public bool passOnCollidedWith { get; set; } = default;
+        public float distanceInterval { get; set; } = 0;
+        public float piercePerInterval { get; set; } = 0;
+        public float radiusPerInterval { get; set; } = 0;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateDistanceProjectileOnExhaustFractionModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.CreateDistanceProjectileOnExhaustFractionModel(args.name, args.projectile, args.emission, args.fraction, args.durationfraction, args.distanceInterval, args.piercePerInterval, args.radiusPerInterval, args.canCreateInBetweenRounds, args.collideOnSubProjectile, args.passOnCollidedWith);
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
             args.OnCreate(result);
             return result;   
         }
@@ -8760,6 +9231,30 @@ public static partial class CreateCreatePlacementCircleActionModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Entities.Events.Actions.CreatePlacementCircleActionModel(args.name, args.placementId, args.position, args.radius, args.blockPlacementOutsideCircle, args.hideOverlayIcon);
             if (args.entityEventIndex != default) result.entityEventIndex = args.entityEventIndex;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateCreateProjectileAfterProjectilesCreatedModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateProjectileAfterProjectilesCreatedModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateProjectileAfterProjectilesCreatedModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateProjectileAfterProjectilesCreatedModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateProjectileAfterProjectilesCreatedModel>
+    {
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public int projectilesCreatedAmount { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateProjectileAfterProjectilesCreatedModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.CreateProjectileAfterProjectilesCreatedModel(args.name, args.projectile, args.emission, args.projectilesCreatedAmount);
+            
             args.OnCreate(result);
             return result;   
         }
@@ -10499,11 +10994,11 @@ public static partial class CreateCtConditionalTowerDiscountModModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.ContestedTerritory.CtConditionalTowerDiscountModModel>
     {
-        public Il2CppSystem.Func<Il2CppAssets.Scripts.Models.Towers.TowerModel, bool> condition { get; set; } = default;
+        
         
         public static implicit operator Il2CppAssets.Scripts.Models.ContestedTerritory.CtConditionalTowerDiscountModModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtConditionalTowerDiscountModModel(args.name, args.condition);
+            var result = new Il2CppAssets.Scripts.Models.ContestedTerritory.CtConditionalTowerDiscountModModel(args.name, default);
             
             args.OnCreate(result);
             return result;   
@@ -11022,6 +11517,29 @@ public static partial class CreateDamageBloonsInRadiusActionModelExt
     }
 }
 
+public static partial class CreateDamageImmunityBypassModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageImmunityBypassModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageImmunityBypassModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageImmunityBypassModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageImmunityBypassModel>
+    {
+        public string properties { get; set; } = "";
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageImmunityBypassModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageImmunityBypassModel(args.name, args.properties);
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateDamageInRingRadiusModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageInRingRadiusModel) 
@@ -11108,6 +11626,37 @@ public static partial class CreateDamageModelExt
     }
 }
 
+public static partial class CreateDamageModifierForBloonStateAndTypeModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateAndTypeModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateAndTypeModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateAndTypeModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateAndTypeModel>
+    {
+        public string[] bloonStates { get; set; } = default;
+        public string[] bloonTypes { get; set; } = default;
+        public float damageMultiplier { get; set; } = 1;
+        public float damageAdditive { get; set; } = 0;
+        public bool mustIncludeAllStates { get; set; } = default;
+        public bool applyOverMaxDamage { get; set; } = default;
+        public bool mustBeModified { get; set; } = default;
+        public bool includeChildren { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateAndTypeModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateAndTypeModel(args.name, default, args.bloonTypes, args.damageMultiplier, args.damageAdditive, args.mustIncludeAllStates, args.applyOverMaxDamage, args.mustBeModified, args.includeChildren);
+            if (args.bloonStates != default) result.bloonStates = args.bloonStates;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateDamageModifierForBloonStateModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonStateModel) 
@@ -11174,6 +11723,7 @@ public static partial class CreateDamageModifierForBloonTypeModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonTypeModel>
     {
         public string bloonId { get; set; } = "";
+        public string[] bloonIds { get; set; } = default;
         public float damageMultiplier { get; set; } = 1;
         public float damageAdditive { get; set; } = 0;
         public bool includeChildren { get; set; } = default;
@@ -11182,6 +11732,7 @@ public static partial class CreateDamageModifierForBloonTypeModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonTypeModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.DamageModifierForBloonTypeModel(args.name, args.bloonId, args.damageMultiplier, args.damageAdditive, args.includeChildren);
+            if (args.bloonIds != default) result.bloonIds = args.bloonIds;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
             args.OnCreate(result);
             return result;   
@@ -12171,13 +12722,11 @@ public static partial class CreateDarkDungeonsStatueActiveTriggerModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Map.Triggers.DarkDungeonsStatueActiveTriggerModel>
     {
-        public Il2CppSystem.EventHandler onActive { get; set; } = default;
         public string saveId { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Triggers.DarkDungeonsStatueActiveTriggerModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Triggers.DarkDungeonsStatueActiveTriggerModel(args.name);
-            if (args.onActive != default) result.onActive = args.onActive;
             if (args.saveId != default) result.saveId = args.saveId;
             args.OnCreate(result);
             return result;   
@@ -12198,13 +12747,11 @@ public static partial class CreateDarkDungeonsStatueModelExt
         public int cost { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Map.Actions.MapActionModel createTowerModel { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Map.Triggers.DarkDungeonsStatueActiveTriggerModel statueActiveTriggerModel { get; set; } = default;
-        public Il2CppSystem.EventHandler<Il2CppAssets.Scripts.Models.Map.Gizmos.FireActivatedEventArgs> OnFireActivated { get; set; } = default;
         public float costMultiplier { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Gizmos.DarkDungeonsStatueModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.DarkDungeonsStatueModel(args.name, args.cost, args.createTowerModel, args.statueActiveTriggerModel);
-            if (args.OnFireActivated != default) result.OnFireActivated = args.OnFireActivated;
             if (args.costMultiplier != default) result.costMultiplier = args.costMultiplier;
             args.OnCreate(result);
             return result;   
@@ -13533,11 +14080,13 @@ public static partial class CreateDoorGunnerModelExt
         public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference isSelectableGameObject { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
         public Il2CppAssets.Scripts.Models.Audio.SoundModel activateSound { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Audio.SoundModel pickupSound { get; set; } = default;
+        public bool dontHideTower { get; set; } = default;
+        public string messageLocKey { get; set; } = "";
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel.DoorGunnerMutator mutator { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel(args.name, args.selectionObjectPath, args.isSelectableGameObject, args.activateSound, args.pickupSound);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.DoorGunnerModel(args.name, args.selectionObjectPath, args.isSelectableGameObject, args.activateSound, args.pickupSound, args.dontHideTower, args.messageLocKey);
             if (args.mutator != default) result.mutator = args.mutator;
             args.OnCreate(result);
             return result;   
@@ -14822,11 +15371,42 @@ public static partial class CreateEmitOnDamageModelExt
     {
         public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public float cooldown { get; set; } = 0;
         public int collisionPass { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageModel(args.name, args.emission, args.projectile);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageModel(args.name, args.emission, args.projectile, args.cooldown);
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateEmitOnDamageWithStateModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageWithStateModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageWithStateModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageWithStateModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageWithStateModel>
+    {
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public string[] bloonStates { get; set; } = default;
+        public bool mustBePopped { get; set; } = default;
+        public bool mustIncludeAllStates { get; set; } = default;
+        public bool mustBeModified { get; set; } = default;
+        public string[] bloonIds { get; set; } = default;
+        public bool includeChildren { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageWithStateModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.EmitOnDamageWithStateModel(args.name, args.bloonStates, args.mustBePopped, args.mustIncludeAllStates, args.mustBeModified, args.includeChildren, args.bloonIds, args.emission, args.projectile);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
             args.OnCreate(result);
             return result;   
@@ -17467,6 +18047,31 @@ public static partial class CreateFrontierGiveRewardsOnHitChanceModelExt
     }
 }
 
+public static partial class CreateFrontierManagerSimModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierManagerSimModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierManagerSimModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierManagerSimModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierManagerSimModel>
+    {
+        public int maxSheriffMorale { get; set; } = 0;
+        public int maxInstaStamina { get; set; } = 0;
+        public float enterGameStaminaPercentMax { get; set; } = 0;
+        public int enterMapStaminaCost { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierManagerSimModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.FrontierManagerSimModel(args.name, args.maxSheriffMorale, args.maxInstaStamina, args.enterGameStaminaPercentMax, args.enterMapStaminaCost);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateFrontierMapArtifactModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Artifacts.FrontierMapArtifactModel) 
@@ -17620,6 +18225,35 @@ public static partial class CreateFrozenCascadeModelExt
     }
 }
 
+public static partial class CreateFrozenRemainsExplosionModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrozenRemainsExplosionModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrozenRemainsExplosionModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrozenRemainsExplosionModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrozenRemainsExplosionModel>
+    {
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public float fraction { get; set; } = 0;
+        public float durationfraction { get; set; } = 0;
+        public bool canCreateInBetweenRounds { get; set; } = default;
+        public bool collideOnSubProjectile { get; set; } = default;
+        public bool passOnCollidedWith { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrozenRemainsExplosionModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.FrozenRemainsExplosionModel(args.name, args.projectile, args.emission, args.fraction, args.durationfraction, args.canCreateInBetweenRounds, args.collideOnSubProjectile, args.passOnCollidedWith);
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateGainCashActionModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Entities.Events.Actions.GainCashActionModel) 
@@ -17732,6 +18366,80 @@ public static partial class CreateGainShieldPerRoundModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.GainShieldPerRoundModel(args.name, args.shieldAmount, args.maxShield);
             
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateGalvanizedBehaviorModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Bloons.Behaviors.GalvanizedBehaviorModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.GalvanizedBehaviorModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.GalvanizedBehaviorModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.GalvanizedBehaviorModel>
+    {
+        public float duration { get; set; } = 0;
+        public float radius { get; set; } = 0;
+        public float turnStrength { get; set; } = 0;
+        public float maxAngle { get; set; } = 0;
+        public int stage { get; set; } = 0;
+        public string[] magnetBloonPropertiesRaw { get; set; } = default;
+        public Il2CppSystem.Collections.Generic.HashSet<Il2Cpp.BloonProperties> magnetBloonProperties { get; set; } = default;
+        public string[] chainLightningDamageTypes { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Effects.EffectModel effect { get; set; } = default;
+        public Il2CppAssets.Scripts.ObjectId tower { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.GalvanizedBehaviorModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.GalvanizedBehaviorModel(args.name, args.tower, args.duration, args.radius, args.turnStrength, args.maxAngle, args.magnetBloonPropertiesRaw, args.chainLightningDamageTypes, args.emission, args.projectile, args.effect, args.stage);
+            if (args.magnetBloonProperties != default) result.magnetBloonProperties = args.magnetBloonProperties;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateGalvanizedModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GalvanizedModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GalvanizedModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GalvanizedModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GalvanizedModel>
+    {
+        public float duration { get; set; } = 0;
+        public float radius { get; set; } = 0;
+        public float turnStrength { get; set; } = 0;
+        public float maxAngle { get; set; } = 0;
+        public string[] magnetBloonProperties { get; set; } = default;
+        public string[] chainLightningDamageTypes { get; set; } = default;
+        public string overlayStageTwo { get; set; } = "";
+        public string overlayStageThree { get; set; } = "";
+        public float stunDuration { get; set; } = 0;
+        public float stunSpeedMultiplier { get; set; } = 0;
+        public float stunDamage { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Effects.EffectModel effect { get; set; } = default;
+        public int lifespanFrames { get; set; } = 0;
+        public float Lifespan { get; set; } = 0;
+        public string overlayType { get; set; } = "";
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GalvanizedModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.GalvanizedModel(args.name, args.duration, args.radius, args.turnStrength, args.maxAngle, args.magnetBloonProperties, args.chainLightningDamageTypes, args.overlayType, args.overlayStageTwo, args.overlayStageThree, args.stunDuration, args.stunSpeedMultiplier, args.stunDamage, args.projectile, args.emission, args.effect);
+            if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
             args.OnCreate(result);
             return result;   
         }
@@ -19283,6 +19991,41 @@ public static partial class CreateHeroXpScaleSupportModelExt
     }
 }
 
+public static partial class CreateHeroesWrathModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroesWrathModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroesWrathModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroesWrathModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroesWrathModel>
+    {
+        public float rangeIncreaseAdditive { get; set; } = 0;
+        public float rangeIncreaseMultiplier { get; set; } = 0;
+        public float attackSpeedIncreaseAdditive { get; set; } = 0;
+        public float attackSpeedMultiplier { get; set; } = 0;
+        public bool resetAbilitiesCooldown { get; set; } = default;
+        public float buffDuration { get; set; } = 0;
+        public int buffDurationFrames { get; set; } = 0;
+        public float triggerCooldownDuration { get; set; } = 0;
+        public int triggerCooldownDurationFrames { get; set; } = 0;
+        public float BuffDuration { get; set; } = 0;
+        public float TriggerCooldownDuration { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroesWrathModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.HeroesWrathModel(args.name, args.rangeIncreaseAdditive, args.rangeIncreaseMultiplier, args.attackSpeedIncreaseAdditive, args.attackSpeedMultiplier, args.buffDuration, args.resetAbilitiesCooldown, args.triggerCooldownDuration);
+            if (args.buffDurationFrames != default) result.buffDurationFrames = args.buffDurationFrames;
+            if (args.triggerCooldownDurationFrames != default) result.triggerCooldownDurationFrames = args.triggerCooldownDurationFrames;
+            if (args.BuffDuration != default) result.BuffDuration = args.BuffDuration;
+            if (args.TriggerCooldownDuration != default) result.TriggerCooldownDuration = args.TriggerCooldownDuration;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateHexManagerModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.HexManagerModel) 
@@ -20349,13 +21092,15 @@ public static partial class CreateJuggernautModelExt
         public float upgradeCostAdditive { get; set; } = 0;
         public float upgradeCostMultiplier { get; set; } = 0;
         public float xpAmountMultiplier { get; set; } = 0;
+        public string excludeTowersFromRangeBuff { get; set; } = "";
+        public string[] towerFilterArray { get; set; } = default;
         public float sizeAdditive { get; set; } = 0;
         public float sizeMultiplier { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.JuggernautModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.JuggernautModel(args.name, args.rangeAdditive, args.rangeMultiplier, args.damageAdditive, args.damageMultiplier, args.upgradeCostAdditive, args.upgradeCostMultiplier, args.xpAmountMultiplier, args.sizeAdditive, args.sizeMultiplier);
-            
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.JuggernautModel(args.name, args.rangeAdditive, args.rangeMultiplier, args.damageAdditive, args.damageMultiplier, args.upgradeCostAdditive, args.upgradeCostMultiplier, args.xpAmountMultiplier, args.sizeAdditive, args.sizeMultiplier, args.excludeTowersFromRangeBuff);
+            if (args.towerFilterArray != default) result.towerFilterArray = args.towerFilterArray;
             args.OnCreate(result);
             return result;   
         }
@@ -20523,6 +21268,55 @@ public static partial class CreateKineticChargeProjectileModelExt
             if (args.singleEmissionModel != default) result.singleEmissionModel = args.singleEmissionModel;
             if (args.bloonDisplayMutator != default) result.bloonDisplayMutator = args.bloonDisplayMutator;
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateKnockBloonOutOfBoundsModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockBloonOutOfBoundsModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockBloonOutOfBoundsModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockBloonOutOfBoundsModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockBloonOutOfBoundsModel>
+    {
+        public float bloonTravelSpeed { get; set; } = 0;
+        public float bloonSpinSpeed { get; set; } = 0;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockOutOfBoundsMutator mutator { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockBloonOutOfBoundsModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.KnockBloonOutOfBoundsModel(args.name, args.bloonTravelSpeed, args.bloonSpinSpeed);
+            if (args.mutator != default) result.mutator = args.mutator;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateKnockOutOfBoundsModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Bloons.Behaviors.KnockOutOfBoundsModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.KnockOutOfBoundsModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.KnockOutOfBoundsModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.KnockOutOfBoundsModel>
+    {
+        public float bloonTravelSpeed { get; set; } = 0;
+        public float bloonSpinSpeed { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.KnockOutOfBoundsModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.KnockOutOfBoundsModel(args.name, args.bloonTravelSpeed, args.bloonSpinSpeed);
+            
             args.OnCreate(result);
             return result;   
         }
@@ -20815,12 +21609,92 @@ public static partial class CreateLightningModelExt
         public float splitRange { get; set; } = 0;
         public float delay { get; set; } = 0;
         public int delayFrames { get; set; } = 0;
+        public bool targetLast { get; set; } = default;
         public int collisionPass { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningModel(args.name, args.splits, args.emissionModel, args.splitRange, args.delay);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningModel(args.name, args.splits, args.emissionModel, args.splitRange, args.delay, args.targetLast);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateLightningRodEmitModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodEmitModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodEmitModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodEmitModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodEmitModel>
+    {
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public float cooldown { get; set; } = 0;
+        public float minEmitDistance { get; set; } = 0;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodEmitModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodEmitModel(args.name, args.emission, args.projectile, args.cooldown, default);
+            if (args.minEmitDistance != default) result.minEmitDistance = args.minEmitDistance;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateLightningRodManagerModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.LightningRodManagerModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.LightningRodManagerModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.LightningRodManagerModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.LightningRodManagerModel>
+    {
+        public string[] damageTypesToZap { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.LightningRodManagerModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.LightningRodManagerModel(args.name, args.damageTypesToZap);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateLightningRodModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodModel>
+    {
+        public float radius { get; set; } = 0;
+        public bool scaleWithTowerRadius { get; set; } = default;
+        public float towerBaseRadius { get; set; } = 0;
+        public float zapCooldown { get; set; } = 0;
+        public float damageAmount { get; set; } = 0;
+        public string damageType { get; set; } = "";
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel projectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.LightningRodModel(args.name, args.radius, args.scaleWithTowerRadius, args.towerBaseRadius, args.zapCooldown, args.damageAmount, args.damageType, args.projectile, args.emission);
             if (args.collisionPass != default) result.collisionPass = args.collisionPass;
             args.OnCreate(result);
             return result;   
@@ -21613,6 +22487,127 @@ public static partial class CreateMakeTowerModModelGlobalModModelExt
     }
 }
 
+public static partial class CreateMakeshiftAreaAcidicMixtureSupportModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaAcidicMixtureSupportModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaAcidicMixtureSupportModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaAcidicMixtureSupportModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaAcidicMixtureSupportModel>
+    {
+        public Il2CppAssets.Scripts.Models.Towers.Weapons.Behaviors.AcidicMixtureModel acidicMixtureModel { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.AcidicMixtureCheckModel acidicMixtureCheckModel { get; set; } = default;
+        public int maxAmmo { get; set; } = 0;
+        public bool canRefreshOnCooldown { get; set; } = default;
+        public float refreshCooldown { get; set; } = 0;
+        public bool showBuffIcon { get; set; } = default;
+        public string restrictToAreas { get; set; } = "";
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaAcidicMixtureSupportModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaAcidicMixtureSupportModel(args.name, args.filters, args.restrictToAreas, args.buffLocsName, args.buffIconName, args.mutatorId, args.isUnique, args.acidicMixtureModel, args.acidicMixtureCheckModel, args.maxAmmo, args.canRefreshOnCooldown, args.refreshCooldown);
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateMakeshiftAreaFootprintSupportModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaFootprintSupportModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaFootprintSupportModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaFootprintSupportModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaFootprintSupportModel>
+    {
+        public float sizeMultiplier { get; set; } = 0;
+        public bool showBuffIcon { get; set; } = default;
+        public string restrictToAreas { get; set; } = "";
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaFootprintSupportModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaFootprintSupportModel(args.name, args.filters, args.restrictToAreas, args.buffLocsName, args.buffIconName, args.mutatorId, args.isUnique, args.sizeMultiplier);
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateMakeshiftAreaRangeSupportModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaRangeSupportModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaRangeSupportModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaRangeSupportModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaRangeSupportModel>
+    {
+        public float rangeMultiplier { get; set; } = 0;
+        public bool showBuffIcon { get; set; } = default;
+        public string restrictToAreas { get; set; } = "";
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaRangeSupportModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaRangeSupportModel(args.name, args.filters, args.restrictToAreas, args.buffLocsName, args.buffIconName, args.mutatorId, args.isUnique, args.rangeMultiplier);
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateMakeshiftAreaTowerDisplayModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaTowerDisplayModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaTowerDisplayModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaTowerDisplayModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaTowerDisplayModel>
+    {
+        public Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference towerDisplay { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference { guidRef = "" };
+        public float towerPositionHeightOffset { get; set; } = 0;
+        public bool showBuffIcon { get; set; } = default;
+        public string restrictToAreas { get; set; } = "";
+        public string buffLocsName { get; set; } = "";
+        public string buffIconName { get; set; } = "";
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaTowerDisplayModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.MakeshiftAreaTowerDisplayModel(args.name, args.filters, args.restrictToAreas, args.buffLocsName, args.buffIconName, args.mutatorId, args.isUnique, args.towerDisplay, args.towerPositionHeightOffset);
+            if (args.showBuffIcon != default) result.showBuffIcon = args.showBuffIcon;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateMalevolenceModelExt
 {
     extension(Il2CppAssets.Scripts.Models.CorvusSpells.Continuous.MalevolenceModel) 
@@ -22062,11 +23057,10 @@ public static partial class CreateMapEventModelExt
         public int trackArrowAmountOverride { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Map.Triggers.MapTriggerModel[] triggers { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Map.Actions.MapActionModel[] actions { get; set; } = default;
-        public Il2CppAssets.Scripts.Unity.Map.Triggers.MapUnityAction[] unityActions { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Triggers.MapEventModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Triggers.MapEventModel(args.name, args.oneTimeEvent, args.allTriggersRequired, args.inactiveByDefault, args.triggers, args.actions, args.unityActions, args.trackArrowsOnTrigger, args.trackArrowDistanceOverride, args.trackArrowAmountOverride);
+            var result = new Il2CppAssets.Scripts.Models.Map.Triggers.MapEventModel(args.name, args.oneTimeEvent, args.allTriggersRequired, args.inactiveByDefault, args.triggers, args.actions, default, args.trackArrowsOnTrigger, args.trackArrowDistanceOverride, args.trackArrowAmountOverride);
             if (args.saveId != default) result.saveId = args.saveId;
             args.OnCreate(result);
             return result;   
@@ -22087,14 +23081,10 @@ public static partial class CreateMapGizmoModelExt
         public string areaName { get; set; } = "";
         public UnityEngine.Vector3 position { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Map.Gizmos.MapGizmoBehaviorModel[] behaviors { get; set; } = default;
-        public Il2CppAssets.Scripts.Unity.Map.Triggers.MapUnityAction[] activateActions { get; set; } = default;
-        public Il2CppAssets.Scripts.Unity.Map.Triggers.MapUnityAction[] deactivateActions { get; set; } = default;
-        public Il2CppAssets.Scripts.Unity.Map.Triggers.MapUnityAction[] refreshCooldownsActions { get; set; } = default;
-        public Il2CppAssets.Scripts.Unity.Map.Gizmos.GizmoTimeDisplay timeDisplay { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Gizmos.MapGizmoModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.MapGizmoModel(args.name, args.areaName, args.position, args.behaviors, args.activateActions, args.deactivateActions, args.refreshCooldownsActions, args.timeDisplay);
+            var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.MapGizmoModel(args.name, args.areaName, args.position, args.behaviors, default, default, default, default);
             
             args.OnCreate(result);
             return result;   
@@ -23294,7 +24284,6 @@ public static partial class CreateMovingPlatformActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Map.Actions.MovingPlatformActionModel>
     {
         public string[] areaNames { get; set; } = default;
-        public UnityEngine.Animator animator { get; set; } = default;
         public UnityEngine.AnimationClip animClip { get; set; } = default;
         public int startingState { get; set; } = 0;
         public int[] triggerNumToStateNum { get; set; } = default;
@@ -23306,7 +24295,7 @@ public static partial class CreateMovingPlatformActionModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Actions.MovingPlatformActionModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Actions.MovingPlatformActionModel(args.name, args.areaNames, args.animator, args.animClip, args.startingState, args.triggerNumToStateNum, args.stateTimes, args.xPosCurve, args.zPosCurve, args.yRotCurve);
+            var result = new Il2CppAssets.Scripts.Models.Map.Actions.MovingPlatformActionModel(args.name, args.areaNames, default, args.animClip, args.startingState, args.triggerNumToStateNum, args.stateTimes, args.xPosCurve, args.zPosCurve, args.yRotCurve);
             if (args.saveId != default) result.saveId = args.saveId;
             args.OnCreate(result);
             return result;   
@@ -23810,8 +24799,7 @@ public static partial class CreateNourishmentModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.CorvusSpells.NourishmentModel>
     {
-        public float xpPerMana { get; set; } = 0;
-        public float cashPerManaAtMaxLevel { get; set; } = 0;
+        public float cashPerMana { get; set; } = 0;
         public float duration { get; set; } = 0;
         public float cooldown { get; set; } = 0;
         public int initialManaCost { get; set; } = 0;
@@ -23832,7 +24820,7 @@ public static partial class CreateNourishmentModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.CorvusSpells.NourishmentModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.CorvusSpells.NourishmentModel(args.name, args.unlocksAtLevel, args.defaultIcon, args.initialManaCost, args.placingPrefabReference, args.corvusAnimationState, args.spiritAnimationState, args.corvusEffectModel, args.spiritEffectModel, args.soundModel, args.effectDuringCorvusModel, args.effectDuringSpiritModel, args.duration, args.cooldown, args.xpPerMana, args.cashPerManaAtMaxLevel);
+            var result = new Il2CppAssets.Scripts.Models.CorvusSpells.NourishmentModel(args.name, args.unlocksAtLevel, args.defaultIcon, args.initialManaCost, args.placingPrefabReference, args.corvusAnimationState, args.spiritAnimationState, args.corvusEffectModel, args.spiritEffectModel, args.soundModel, args.effectDuringCorvusModel, args.effectDuringSpiritModel, args.duration, args.cooldown, args.cashPerMana);
             if (args.spellType != default) result.spellType = args.spellType;
             if (args.locsId != default) result.locsId = args.locsId;
             if (args.iconSwapLevels != default) result.iconSwapLevels = args.iconSwapLevels;
@@ -23903,6 +24891,7 @@ public static partial class CreateObynGlobalSupportModelExt
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.ObynGlobalSupportModel.DamageTypeMutatorClass damageTypeMutator { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.ObynGlobalSupportModel.AbilityCooldownMutatorClass abilityCooldownMutator { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.Behaviors.ObynGlobalSupportModel.TornadoRateMutatorClass tornadoRateMutator { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.ObynGlobalSupportModel.AttackRateMutatorClass attackRateMutator { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.ObynGlobalSupportModel(Args args)
         {
@@ -23913,6 +24902,7 @@ public static partial class CreateObynGlobalSupportModelExt
             if (args.damageTypeMutator != default) result.damageTypeMutator = args.damageTypeMutator;
             if (args.abilityCooldownMutator != default) result.abilityCooldownMutator = args.abilityCooldownMutator;
             if (args.tornadoRateMutator != default) result.tornadoRateMutator = args.tornadoRateMutator;
+            if (args.attackRateMutator != default) result.attackRateMutator = args.attackRateMutator;
             args.OnCreate(result);
             return result;   
         }
@@ -26320,6 +27310,37 @@ public static partial class CreatePierceFromLivesGainedModelExt
     }
 }
 
+public static partial class CreatePierceModifierForBloonStateModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel>
+    {
+        public string bloonState { get; set; } = "";
+        public string[] bloonStates { get; set; } = default;
+        public float pierceMultiplier { get; set; } = 0;
+        public float duration { get; set; } = 0;
+        public bool mustIncludeAllStates { get; set; } = default;
+        public bool mustBeModified { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel.Mutator _mutator { get; set; } = default;
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.PierceModifierForBloonStateModel(args.name, args.bloonState, args.pierceMultiplier, args.duration, args.mustIncludeAllStates, args.mustBeModified);
+            if (args.bloonStates != default) result.bloonStates = args.bloonStates;
+            if (args._mutator != default) result._mutator = args._mutator;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreatePiercePercentageSupportModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.PiercePercentageSupportModel) 
@@ -26693,6 +27714,32 @@ public static partial class CreatePointEmissionModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.PointEmissionModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.PointEmissionModel(args.name, args.checkLineOfSight, args.behaviors);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreatePointLineEffectModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.PointLineEffectModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.PointLineEffectModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.PointLineEffectModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.PointLineEffectModel>
+    {
+        public Il2CppAssets.Scripts.Models.Effects.AssetPathModel lineDisplayPath { get; set; } = default;
+        public float lineDisplayLength { get; set; } = 0;
+        public bool ignoreBlockers { get; set; } = default;
+        public bool useLineProjectileEmissionShowEffect { get; set; } = default;
+        public float effectDuration { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.PointLineEffectModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.PointLineEffectModel(args.name, args.lineDisplayPath, args.lineDisplayLength, args.ignoreBlockers, args.useLineProjectileEmissionShowEffect, args.effectDuration);
             
             args.OnCreate(result);
             return result;   
@@ -28802,6 +29849,7 @@ public static partial class CreateRangeSupportModelExt
         public float additive { get; set; } = 0;
         public string mutatorId { get; set; } = "";
         public bool isUnique { get; set; } = default;
+        public int maxStacks { get; set; } = 0;
         public Il2CppAssets.Scripts.Models.Towers.TowerFilters.TowerFilterModel[] filters { get; set; } = default;
         public bool isGlobal { get; set; } = default;
         public bool isCustomRadius { get; set; } = default;
@@ -28816,7 +29864,7 @@ public static partial class CreateRangeSupportModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.RangeSupportModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RangeSupportModel(args.name, args.isUnique, args.multiplier, args.additive, args.mutatorId, args.filters, args.isGlobal, args.buffLocsName, args.buffIconName);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.RangeSupportModel(args.name, args.isUnique, args.maxStacks, args.multiplier, args.additive, args.mutatorId, args.filters, args.isGlobal, args.buffLocsName, args.buffIconName);
             if (args.isCustomRadius != default) result.isCustomRadius = args.isCustomRadius;
             if (args.customRadius != default) result.customRadius = args.customRadius;
             if (args.appliesToOwningTower != default) result.appliesToOwningTower = args.appliesToOwningTower;
@@ -29482,13 +30530,11 @@ public static partial class CreateRegenRemovableModelExt
         public bool setInactiveOnRemoved { get; set; } = default;
         public string popupTextLocKey { get; set; } = "";
         public float costMultiplier { get; set; } = 0;
-        public Il2CppSystem.Action OnRemoved { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.RegenRemovableModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Map.RegenRemovableModel(args.name, args.isActive, args.position, args.costFormula, args.setInactiveOnRemoved, args.costMultiplier, args.popupTextLocKey);
             if (args.areaId != default) result.areaId = args.areaId;
-            if (args.OnRemoved != default) result.OnRemoved = args.OnRemoved;
             args.OnCreate(result);
             return result;   
         }
@@ -29582,19 +30628,11 @@ public static partial class CreateRemovableCostMultiplierModModelExt
         public float removeableCostMultiplier { get; set; } = 0;
         public float removeableCostAdditive { get; set; } = 0;
         public int removeableCostMaxDiscount { get; set; } = 0;
-        public float roundRemoveableDurationMultiplier { get; set; } = 0;
-        public float roundRemoveableDurationAdditive { get; set; } = 0;
-        public float mapGizmoCooldownMultiplier { get; set; } = 0;
-        public float mapGizmoCostMultiplier { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Perks.Mods.RemovableCostMultiplierModModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Perks.Mods.RemovableCostMultiplierModModel(args.name, args.removeableCostMultiplier, args.removeableCostAdditive);
+            var result = new Il2CppAssets.Scripts.Models.Perks.Mods.RemovableCostMultiplierModModel(args.name, args.removeableCostMultiplier, args.removeableCostAdditive, default);
             if (args.removeableCostMaxDiscount != default) result.removeableCostMaxDiscount = args.removeableCostMaxDiscount;
-            if (args.roundRemoveableDurationMultiplier != default) result.roundRemoveableDurationMultiplier = args.roundRemoveableDurationMultiplier;
-            if (args.roundRemoveableDurationAdditive != default) result.roundRemoveableDurationAdditive = args.roundRemoveableDurationAdditive;
-            if (args.mapGizmoCooldownMultiplier != default) result.mapGizmoCooldownMultiplier = args.mapGizmoCooldownMultiplier;
-            if (args.mapGizmoCostMultiplier != default) result.mapGizmoCostMultiplier = args.mapGizmoCostMultiplier;
             args.OnCreate(result);
             return result;   
         }
@@ -30475,10 +31513,11 @@ public static partial class CreateRogueGameManagerModelExt
         public Il2CppAssets.Scripts.Data.Boss.BossType boss { get; set; } = default;
         public int stage { get; set; } = 0;
         public bool isFinalBossGame { get; set; } = default;
+        public Il2CppSystem.Collections.Generic.Dictionary<string, int> artifactChargeData { get; set; } = default;
         
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.RogueGameManagerModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RogueGameManagerModel(args.name, args.upgradeCostMultipliers, args.boss, args.stage, args.isFinalBossGame);
+            var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.RogueGameManagerModel(args.name, args.upgradeCostMultipliers, args.boss, args.stage, args.isFinalBossGame, args.artifactChargeData);
             
             args.OnCreate(result);
             return result;   
@@ -30585,14 +31624,13 @@ public static partial class CreateRotateAreaActionModelExt
         public string areaName { get; set; } = "";
         public float rotation { get; set; } = 0;
         public float duration { get; set; } = 0;
-        public Il2Cpp.RotateModelAction[] rotationActions { get; set; } = default;
         public UnityEngine.AudioClip startSound { get; set; } = default;
         public UnityEngine.AudioClip stopSound { get; set; } = default;
         public string saveId { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Actions.RotateAreaActionModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Actions.RotateAreaActionModel(args.name, args.areaName, args.rotation, args.duration, args.rotationActions, args.startSound, args.stopSound);
+            var result = new Il2CppAssets.Scripts.Models.Map.Actions.RotateAreaActionModel(args.name, args.areaName, args.rotation, args.duration, default, args.startSound, args.stopSound);
             if (args.saveId != default) result.saveId = args.saveId;
             args.OnCreate(result);
             return result;   
@@ -31021,13 +32059,12 @@ public static partial class CreateRuleSplitterModelExt
 
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Map.Spawners.RuleSplitterModel>
     {
-        public Il2CppAssets.Scripts.Unity.Map.Spawners.SplitterRule[] splitterRules { get; set; } = default;
         public string[] paths { get; set; } = default;
         public string overriddenBossPath { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Spawners.RuleSplitterModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Spawners.RuleSplitterModel(args.name, args.paths, args.splitterRules, args.overriddenBossPath);
+            var result = new Il2CppAssets.Scripts.Models.Map.Spawners.RuleSplitterModel(args.name, args.paths, default, args.overriddenBossPath);
             
             args.OnCreate(result);
             return result;   
@@ -34454,6 +35491,33 @@ public static partial class CreateStartingShieldModModelExt
     }
 }
 
+public static partial class CreateStatePoppedBasedPierceModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.StatePoppedBasedPierceModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.StatePoppedBasedPierceModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.StatePoppedBasedPierceModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.StatePoppedBasedPierceModel>
+    {
+        public string[] bloonStates { get; set; } = default;
+        public float buffDuration { get; set; } = 0;
+        public float pierceMultiplier { get; set; } = 0;
+        public float pierceAdditive { get; set; } = 0;
+        public float pierceCap { get; set; } = 0;
+        public bool mustBeModified { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.StatePoppedBasedPierceModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.StatePoppedBasedPierceModel(args.name, args.bloonStates, args.buffDuration, args.pierceMultiplier, args.pierceAdditive, args.pierceCap, args.mustBeModified);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateStormModelExt
 {
     extension(Il2CppAssets.Scripts.Models.CorvusSpells.StormModel) 
@@ -37138,6 +38202,34 @@ public static partial class CreateToggleEffectWhileAbilityActiveModelExt
     }
 }
 
+public static partial class CreateToggleFocusStanceModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.ToggleFocusStanceModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.ToggleFocusStanceModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.ToggleFocusStanceModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.ToggleFocusStanceModel>
+    {
+        public float rangeMultiplier { get; set; } = 0;
+        public float rateMultiplier { get; set; } = 0;
+        public float projectilelifespanMultiplier { get; set; } = 0;
+        public float cooldown { get; set; } = 0;
+        public string mutatorId { get; set; } = "";
+        public bool isUnique { get; set; } = default;
+        public bool swapWeapon { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.ToggleFocusStanceModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ToggleFocusStanceModel(args.name, args.rangeMultiplier, args.rateMultiplier, args.projectilelifespanMultiplier, args.mutatorId, args.isUnique, args.swapWeapon, args.cooldown);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateToggleMapEditorLayerModelExt
 {
     extension(Il2CppAssets.Scripts.Models.MapEditorBehaviors.EditorLayerBehaviors.ToggleMapEditorLayerModel) 
@@ -37640,6 +38732,7 @@ public static partial class CreateTowerModelExt
         public Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference emoteSpriteLarge { get; set; } = new Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference { guidRef = "" };
         public bool doesntRotate { get; set; } = false;
         public bool hideInfoButton { get; set; } = false;
+        public float bonusSelectionRadius { get; set; } = 0f;
         public Il2CppAssets.Scripts.Models.Towers.Upgrades.UpgradePathModel[] upgrades { get; set; } = default;
         public string[] appliedUpgrades { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Towers.TargetType[] targetTypes { get; set; } = default;
@@ -37659,6 +38752,7 @@ public static partial class CreateTowerModelExt
         public bool ignoreMaxSellPercent { get; set; } = false;
         public bool isStunned { get; set; } = false;
         public bool ignoreStun { get; set; } = false;
+        public bool isPrimedForRedeploy { get; set; } = false;
         public string geraldoItemName { get; set; } = default;
         public float sellbackModifierAdd { get; set; } = 0f;
         public string skinName { get; set; } = default;
@@ -37685,7 +38779,7 @@ public static partial class CreateTowerModelExt
         
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.TowerModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.TowerModel(args.name, args.baseId, args.towerSet, args.towerTheme, args.display, args.cost, args.radius, args.range, args.ignoreBlockers, args.isGlobalRange, args.tier, args.tiers, args.appliedUpgrades, args.upgrades, args.paragonUpgrade, args.behaviors, args.areaTypes, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.icon), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference>.Unbox(args.icon3D), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.portrait), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.instaIcon), args.mods, args.ignoreTowerForSelection, args.isSubTower, args.isBakable, args.footprint, args.dontDisplayUpgrades, args.powerName, args.animationSpeed, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.emoteSpriteSmall), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.emoteSpriteLarge), args.doesntRotate, args.showPowerTowerBuffs, args.towerSelectionMenuThemeId, args.ignoreCoopAreas, args.canAlwaysBeSold, args.blockSelling, args.isParagon, args.sellbackModifierAdd, args.geraldoItemName, args.ignoreMaxSellPercent, args.isStunned, args.ignoreStun, args.dontAddMutatorsFromParent, args.displayScale, args.showBuffs, args.destroyTowerOnRedistribution, args.secondarySelectionMenu, args.useAirUnitHeight, args.skinName, args.frontierId, args.ignoreAreaChanges, args.hideInfoButton, args.isTransformedTower, default, args.cantBeStunned);
+            var result = new Il2CppAssets.Scripts.Models.Towers.TowerModel(args.name, args.baseId, args.towerSet, args.towerTheme, args.display, args.cost, args.radius, args.range, args.ignoreBlockers, args.isGlobalRange, args.tier, args.tiers, args.appliedUpgrades, args.upgrades, args.paragonUpgrade, args.behaviors, args.areaTypes, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.icon), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.PrefabReference>.Unbox(args.icon3D), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.portrait), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.instaIcon), args.mods, args.ignoreTowerForSelection, args.isSubTower, args.isBakable, args.footprint, args.dontDisplayUpgrades, args.powerName, args.animationSpeed, Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.emoteSpriteSmall), Il2CppSystem.Nullable<Il2CppNinjaKiwi.Common.ResourceUtils.SpriteReference>.Unbox(args.emoteSpriteLarge), args.doesntRotate, args.showPowerTowerBuffs, args.towerSelectionMenuThemeId, args.ignoreCoopAreas, args.canAlwaysBeSold, args.blockSelling, args.isParagon, args.sellbackModifierAdd, args.geraldoItemName, args.ignoreMaxSellPercent, args.isStunned, args.ignoreStun, args.dontAddMutatorsFromParent, args.displayScale, args.showBuffs, args.destroyTowerOnRedistribution, args.secondarySelectionMenu, args.useAirUnitHeight, args.skinName, args.frontierId, args.ignoreAreaChanges, args.hideInfoButton, args.isTransformedTower, default, args.cantBeStunned, args.isPrimedForRedeploy, args.bonusSelectionRadius);
             if (args.targetTypes != default) result.targetTypes = args.targetTypes;
             if (args.isBeastHandlerPet != default) result.isBeastHandlerPet = Il2CppSystem.Nullable<bool>.Unbox(args.isBeastHandlerPet!.Value);
             if (args.selectParentOnSelected != default) result.selectParentOnSelected = Il2CppSystem.Nullable<bool>.Unbox(args.selectParentOnSelected!.Value);
@@ -37764,6 +38858,31 @@ public static partial class CreateTowerRadiusModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRadiusModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRadiusModel(args.name);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateTowerRangeDamageBuffModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRangeDamageBuffModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRangeDamageBuffModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRangeDamageBuffModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRangeDamageBuffModel>
+    {
+        public float baseRange { get; set; } = 0;
+        public float bonusTierRange { get; set; } = 0;
+        public float bonusAmount { get; set; } = 0;
+        public float damageCap { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRangeDamageBuffModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.TowerRangeDamageBuffModel(args.name, args.baseRange, args.bonusTierRange, args.bonusAmount, args.damageCap);
             
             args.OnCreate(result);
             return result;   
@@ -38643,13 +39762,11 @@ public static partial class CreateTrickyTracksTrainControllerModelExt
         public int cooldownFrames { get; set; } = 0;
         public float cost { get; set; } = 0;
         public float costIncrease { get; set; } = 0;
-        public Il2CppSystem.Action resetBirdsAction { get; set; } = default;
-        public Il2CppSystem.Action scatterBirdsAction { get; set; } = default;
         public float costMultiplier { get; set; } = 0;
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Gizmos.TrickyTracksTrainControllerModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.TrickyTracksTrainControllerModel(args.name, args.trainProjectileModel, args.delay, args.wait, args.cooldown, args.cost, args.costIncrease, args.resetBirdsAction, args.scatterBirdsAction);
+            var result = new Il2CppAssets.Scripts.Models.Map.Gizmos.TrickyTracksTrainControllerModel(args.name, args.trainProjectileModel, args.delay, args.wait, args.cooldown, args.cost, args.costIncrease, default, default);
             if (args.delayFrames != default) result.delayFrames = args.delayFrames;
             if (args.waitFrames != default) result.waitFrames = args.waitFrames;
             if (args.cooldownFrames != default) result.cooldownFrames = args.cooldownFrames;
@@ -38812,12 +39929,11 @@ public static partial class CreateTriggerMapActionsActionModelExt
     public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Map.Actions.TriggerMapActionsActionModel>
     {
         public Il2CppAssets.Scripts.Models.Map.Actions.MapActionModel[] actions { get; set; } = default;
-        public Il2CppAssets.Scripts.Unity.Map.Triggers.MapUnityAction[] unityActions { get; set; } = default;
         public string saveId { get; set; } = "";
         
         public static implicit operator Il2CppAssets.Scripts.Models.Map.Actions.TriggerMapActionsActionModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Map.Actions.TriggerMapActionsActionModel(args.name, args.actions, args.unityActions);
+            var result = new Il2CppAssets.Scripts.Models.Map.Actions.TriggerMapActionsActionModel(args.name, args.actions, default);
             if (args.saveId != default) result.saveId = args.saveId;
             args.OnCreate(result);
             return result;   
@@ -39857,6 +40973,78 @@ public static partial class CreateWindModelExt
     }
 }
 
+public static partial class CreateWindlashBehaviorModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Bloons.Behaviors.WindlashBehaviorModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.WindlashBehaviorModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Bloons.Behaviors.WindlashBehaviorModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Bloons.Behaviors.WindlashBehaviorModel>
+    {
+        public float distanceMin { get; set; } = 0;
+        public float distanceMax { get; set; } = 0;
+        public float speedMultiplier { get; set; } = 0;
+        public float windInterval { get; set; } = 0;
+        public float comboDuration { get; set; } = 0;
+        public int stage { get; set; } = 0;
+        public bool affectMoab { get; set; } = default;
+        public bool applyWind { get; set; } = default;
+        public Il2CppAssets.Scripts.ObjectId tower { get; set; } = default;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Bloons.Behaviors.WindlashBehaviorModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Bloons.Behaviors.WindlashBehaviorModel(args.name, args.tower, args.distanceMin, args.distanceMax, args.speedMultiplier, args.windInterval, args.comboDuration, args.affectMoab, args.applyWind, args.stage);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateWindlashModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WindlashModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WindlashModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WindlashModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WindlashModel>
+    {
+        public float windlashDuration { get; set; } = 0;
+        public float distanceMin { get; set; } = 0;
+        public float distanceMax { get; set; } = 0;
+        public float windInterval { get; set; } = 0;
+        public float speedMultiplier { get; set; } = 0;
+        public bool affectMoab { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel windProjectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel emission { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Effects.EffectModel effect { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Projectiles.ProjectileModel vacuumProjectile { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Towers.Behaviors.Emissions.EmissionModel vacuumEmission { get; set; } = default;
+        public Il2CppAssets.Scripts.Models.Effects.EffectModel vacuumEffect { get; set; } = default;
+        public string overlayStageTwo { get; set; } = "";
+        public string overlayStageThree { get; set; } = "";
+        public int lifespanFrames { get; set; } = 0;
+        public float Lifespan { get; set; } = 0;
+        public string overlayType { get; set; } = "";
+        public int collisionPass { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WindlashModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.WindlashModel(args.name, args.windlashDuration, args.distanceMin, args.distanceMax, args.windInterval, args.speedMultiplier, args.overlayType, args.overlayStageTwo, args.overlayStageThree, default, args.windProjectile, args.emission, args.effect, args.vacuumProjectile, args.vacuumEmission, args.vacuumEffect);
+            if (args.affectMoab != default) result.affectMoab = args.affectMoab;
+            if (args.lifespanFrames != default) result.lifespanFrames = args.lifespanFrames;
+            if (args.Lifespan != default) result.Lifespan = args.Lifespan;
+            if (args.collisionPass != default) result.collisionPass = args.collisionPass;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
 public static partial class CreateWindyZoneModelExt
 {
     extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.WindyZoneModel) 
@@ -39970,6 +41158,31 @@ public static partial class CreateWingmonkeySimulationModelExt
         public static implicit operator Il2CppAssets.Scripts.Models.SimulationBehaviors.WingmonkeySimulationModel(Args args)
         {
             var result = new Il2CppAssets.Scripts.Models.SimulationBehaviors.WingmonkeySimulationModel(args.name, args.spacingX, args.spacingY);
+            
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateWintersMercyTowerBuffModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.WintersMercyTowerBuffModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.WintersMercyTowerBuffModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.WintersMercyTowerBuffModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.WintersMercyTowerBuffModel>
+    {
+        public float bloonInRangeDamageBuff { get; set; } = 0;
+        public float buffPerBloonAmount { get; set; } = 0;
+        public float maxDamageBonus { get; set; } = 0;
+        public float destroyFrozenBuffDuration { get; set; } = 0;
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.WintersMercyTowerBuffModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.WintersMercyTowerBuffModel(args.name, args.bloonInRangeDamageBuff, args.buffPerBloonAmount, args.maxDamageBonus, args.destroyFrozenBuffDuration);
             
             args.OnCreate(result);
             return result;   
@@ -40098,6 +41311,28 @@ public static partial class CreateWrappedMovementModelExt
         {
             var result = new Il2CppAssets.Scripts.Models.Behaviors.WrappedMovementModel(args.name, args.start, args.end);
             if (args.speed != default) result.speed = args.speed;
+            args.OnCreate(result);
+            return result;   
+        }
+    }
+}
+
+public static partial class CreateZephyrSenseToggleModelExt
+{
+    extension(Il2CppAssets.Scripts.Models.Towers.Behaviors.ZephyrSenseToggleModel) 
+    {
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.ZephyrSenseToggleModel Create() => new Args();
+        public static Il2CppAssets.Scripts.Models.Towers.Behaviors.ZephyrSenseToggleModel Create(Args args) => args;
+    }
+
+    public partial class Args : ModelArgs<Il2CppAssets.Scripts.Models.Towers.Behaviors.ZephyrSenseToggleModel>
+    {
+        
+        
+        public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.ZephyrSenseToggleModel(Args args)
+        {
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.ZephyrSenseToggleModel(args.name);
+            
             args.OnCreate(result);
             return result;   
         }

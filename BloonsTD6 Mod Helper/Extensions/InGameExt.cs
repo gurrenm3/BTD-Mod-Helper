@@ -124,7 +124,9 @@ public static class InGameExt
     /// <param name="inGame"></param>
     /// <returns></returns>
     public static List<AbilityToSimulation> GetAbilities(this InGame inGame) =>
-        inGame.GetUnityToSimulation()?.GetAllAbilities(false)?.ToList();
+        inGame.GetUnityToSimulation() is { } bridge
+            ? bridge.GetAllAbilities(bridge.GetInputId(), false).ToList()
+            : new List<AbilityToSimulation>();
 
     /// <summary>
     /// Get's the UnityToSimulation for this game
@@ -159,7 +161,7 @@ public static class InGameExt
     /// </summary>
     public static void SellTower(this InGame inGame, Tower tower)
     {
-        inGame.SellTower(tower.GetTowerToSim());
+        inGame.SellTower(inGame.bridge.GetInputId(), tower.GetTowerToSim());
     }
 
     /// <summary>

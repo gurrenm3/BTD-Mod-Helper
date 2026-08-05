@@ -7,7 +7,6 @@ using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppAssets.Scripts.Unity.UI_New;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.AbilitiesMenu;
-using Il2CppAssets.Scripts.Unity.UI_New.Utils;
 using Il2CppNinjaKiwi.Common;
 using UnityEngine;
 using UnityEngine.UI;
@@ -208,8 +207,10 @@ public sealed class ModHelperDock : ModHelperPanel
 
         Instance = dock;
 
-        var mapRect = InGame.instance.GetComponentInChildren<InGameMapRect>();
-        WindowParent = mapRect.transform.GetComponentFromChildrenByName<RectTransform>("--layer placeholder--");
+        var windowLayer = Create(new Info("Windows", InfoPreset.FillParent));
+        windowLayer.SetParent(InGame.instance.mapRect);
+        windowLayer.transform.SetAsFirstSibling();
+        WindowParent = windowLayer.RectTransform;
 
         WindowParent.gameObject.name = "Windows";
         WindowParent.anchorMin = new Vector2(0, 0);
