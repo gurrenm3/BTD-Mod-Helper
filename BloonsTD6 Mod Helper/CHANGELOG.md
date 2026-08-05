@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.7] - 2026-08-05
+
 - Initial fixes for BTD6 v56
 
 ## [3.6.6] - 2026-07-01
@@ -1116,7 +1118,8 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 
 Initial release of the new Mod Helper
 
-[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.6...HEAD
+[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.7...HEAD
+[3.6.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.6...3.6.7
 [3.6.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...3.6.6
 
 [3.6.5]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.4...3.6.5
