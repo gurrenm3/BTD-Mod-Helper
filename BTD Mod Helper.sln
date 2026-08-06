@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloonsTD6 Mod Helper", "Blo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdaterPlugin", "UpdaterPlugin\UpdaterPlugin.csproj", "{BCD644C3-83BB-447A-80FF-F9C78FF8C1CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunner", "TestRunner\TestRunner.csproj", "{5CDA223F-58BE-4770-85FC-64A602AA25EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5CDA223F-58BE-4770-85FC-64A602AA25EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourceGenerators", "SourceGenerators\SourceGenerators.csproj", "{B4BF81E7-459F-44B9-849D-E52103677775}"
 EndProject

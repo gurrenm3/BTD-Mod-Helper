@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace TestRunner;
+namespace Tests;
 
 /// <summary>
 /// Builds and runs Mod Helper's own game tests

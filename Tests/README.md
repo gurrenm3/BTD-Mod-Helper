@@ -1,4 +1,4 @@
-# Test Runner
+# Tests
 
 xUnit harness that builds and runs `ModTest`s for every mod in the parent **Mod Sources** folder (should be the folder containing this repo). Tests are discovered as standard xUnit theories and show up in Rider / VS / `dotnet test` per mod.
 

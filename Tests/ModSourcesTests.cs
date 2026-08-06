@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace TestRunner;
+namespace Tests;
 
 /// <summary>
 /// Builds and runs tests for every discovered mod in the Mod Sources folder.

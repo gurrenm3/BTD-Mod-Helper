@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace TestRunner;
+namespace Tests;
 
 [CollectionDefinition(nameof(Btd6Collection), DisableParallelization = true)]
 public class Btd6Collection; // Ensures BTD6 tests run serially

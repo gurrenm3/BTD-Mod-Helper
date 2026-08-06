@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using BTD_Mod_Helper.Api.Data;
 using Newtonsoft.Json.Linq;
 
-namespace TestRunner;
+namespace Tests;
 
 public enum DllLocation
 {
@@ -21,9 +21,9 @@ public static class ModSourcesDiscovery
     private const string DefaultBtd6Path = @"C:\Program Files (x86)\Steam\steamapps\common\BloonsTD6";
 
     public static string ThisProjectPath { get; } =
-        FindAncestorDirectory($"{nameof(TestRunner)}.csproj") ??
+        FindAncestorDirectory("Tests.csproj") ??
         throw new InvalidOperationException(
-            $"Could not find TestRunner.csproj above '{AppContext.BaseDirectory}'");
+            $"Could not find Tests.csproj above '{AppContext.BaseDirectory}'");
 
     public static string SolutionRoot { get; } =
         FindAncestorDirectory("*.sln") ??
