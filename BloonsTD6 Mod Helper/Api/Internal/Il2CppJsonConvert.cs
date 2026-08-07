@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading;
 using BTD_Mod_Helper.Api.Helpers;
 using Il2CppAssets.Scripts.Models;
+using Il2CppAssets.Scripts.Models.Towers.Mods;
 using Il2CppAssets.Scripts.Simulation.Objects;
 using Il2CppInterop.Runtime;
 using Il2CppSystem.Collections;
@@ -436,7 +437,8 @@ public static class Il2CppJsonConvert
         protected virtual bool AllowedMember(MemberInfo member) =>
             AllowedMemberType(member.GetUnderlyingType()) &&
             member.Name != nameof(Model.childDependants) &&
-            member.Name != nameof(Model.ImplementationType);
+            member.Name != nameof(Model.ImplementationType) &&
+            member.Name != nameof(ApplyModModel.TypeInfo);
 
         protected override List<MemberInfo> GetSerializableMembers(Type objectType) => base
             .GetSerializableMembers(objectType)

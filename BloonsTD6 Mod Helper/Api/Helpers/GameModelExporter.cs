@@ -209,7 +209,9 @@ public static class GameModelExporter
     {
         AddFolderToGitIgnore(folder);
 
-        if (clean) Directory.Delete(Path.Combine(FileIOHelper.sandboxRoot, folder), true);
+        var path = Path.Combine(FileIOHelper.sandboxRoot, folder);
+
+        if (clean && Directory.Exists(path)) Directory.Delete(path, true);
 
         var total = 0;
         var success = 0;
@@ -233,7 +235,7 @@ public static class GameModelExporter
             }
         }
 
-        ModHelper.Log($"Exported {success}/{total} {folder} to {Path.Combine(FileIOHelper.sandboxRoot, folder)}");
+        ModHelper.Log($"Exported {success}/{total} {folder} to {path}");
     }
 
     internal static void Export(JObject jobject, string path)
