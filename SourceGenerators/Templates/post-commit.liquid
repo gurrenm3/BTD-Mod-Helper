@@ -1,0 +1,11 @@
+#!/bin/sh
+# Managed by Btd6ModHelper.SourceGenerators
+
+if command -v btd6mh >/dev/null 2>&1 &&
+    btd6mh --version "{{ toolsVersion }}" >/dev/null 2>&1; then
+    btd6mh post-commit || :
+    exit 0
+fi
+
+dotnet tool exec Btd6ModHelper.Tools@{{ toolsVersion }} --verbosity quiet --ignore-failed-sources -- post-commit || :
+exit 0

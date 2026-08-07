@@ -2,6 +2,7 @@
     <PropertyGroup>
         <SourceGeneratorsVersion>1.1.1</SourceGeneratorsVersion>
         <MSBuildTasksVersion>1.0.0</MSBuildTasksVersion>
+        <ToolsVersion>1.0.0</ToolsVersion>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -123,10 +124,16 @@
         <CompilerVisibleProperty Include="MSBuildProjectName"/>
         <CompilerVisibleProperty Include="GenerateModResources"/>
         <CompilerVisibleProperty Include="GenerateActionsWorkflow"/>
+        <CompilerVisibleProperty Include="GenerateGitHooks"/>
+        <CompilerVisibleProperty Include="ToolsVersion"/>
+        <CompilerVisibleProperty Include="CI"/>
     </ItemGroup>
     <PropertyGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And '$(GenerateModResources)' != 'false'">
         <AdditionalFileItemNames Condition="'$(GenerateModResources)' != 'false'">$(AdditionalFileItemNames);EmbeddedResource;ZipEmbeddedResources</AdditionalFileItemNames>
     </PropertyGroup>
+    <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And Exists('$(MSBuildProjectDirectory)\CHANGELOG.md')">
+        <AdditionalFiles Include="$(MSBuildProjectDirectory)\CHANGELOG.md"/>
+    </ItemGroup>
     <ItemGroup Condition="'$(ModHelperSourceGenerators)' != 'false' And '$(GenerateActionsWorkflow)' != 'false' And Exists('$(MSBuildProjectDirectory)\.github\workflows\build.yml')">
         <AdditionalFiles Include="ModHelperData.*"/>
         <AdditionalFiles Include="**/CHANGELOG.md"/>

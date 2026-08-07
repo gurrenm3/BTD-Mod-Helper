@@ -26,6 +26,18 @@ If your project already has a `.github/workflows/build.yml`, the generator will 
 - The generator only touches files that already exist — delete `.github/workflows/build.yml` to opt out for the project.
 - Opt out at the csproj level with `<GenerateActionsWorkflow>false</GenerateActionsWorkflow>`.
 
+## Git hooks
+
+Projects with both a `CHANGELOG.md` and a Git repository get a managed pre-commit hook. The hook uses an installed
+`btd6mh` command when available, otherwise .NET 10 downloads and runs the pinned tool version with `dotnet tool exec`.
+Set `<GenerateGitHooks>false</GenerateGitHooks>` to opt out.
+
+All Git projects get a post-commit hook that adds an annotated local tag when a commit increases
+`ModHelperData.Version`, whether or not they have a changelog. Existing tags are never moved.
+
+Existing hooks are preserved unless they contain a `Managed by Btd6ModHelper` marker. Remove that marker before
+customizing a generated hook to take ownership of it and prevent future generator updates.
+
 ## Opt out
 
 Set `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj to skip all generators.
@@ -33,3 +45,5 @@ Set `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your cspro
 Set `<GenerateModResources>false</GenerateModResources>` to skip just the ModResources generator.
 
 Set `<GenerateActionsWorkflow>false</GenerateActionsWorkflow>` to skip just the workflow generator.
+
+Set `<GenerateGitHooks>false</GenerateGitHooks>` to skip Git hook generation.

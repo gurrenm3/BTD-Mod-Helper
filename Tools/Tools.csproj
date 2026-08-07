@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <RootNamespace>BTD_Mod_Helper.Tools</RootNamespace>
+
+        <!--NuGet package metadata-->
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>btd6mh</ToolCommandName>
+        <PackageId>Btd6ModHelper.Tools</PackageId>
+        <Authors>doombubbles</Authors>
+        <Description>Command-line tools for BTD6 Mod Helper projects, including staged changelog rotation and release validation.</Description>
+        <PackageTags>btd6;bloons;modding;dotnet-tool;changelog;git-hooks</PackageTags>
+        <PackageProjectUrl>https://github.com/doombubbles/BTD-Mod-Helper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/doombubbles/BTD-Mod-Helper</RepositoryUrl>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <_TargetsXml>$([System.IO.File]::ReadAllText('$(MSBuildThisFileDirectory)\..\BloonsTD6 Mod Helper\btd6.targets'))</_TargetsXml>
+        <ToolsVersion>$([System.Text.RegularExpressions.Regex]::Match($(_TargetsXml), '&lt;ToolsVersion&gt;([^&lt;]+)&lt;/ToolsVersion&gt;').Groups[1].Value)</ToolsVersion>
+        <Version>$(ToolsVersion)</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" Visible="true"/>
+    </ItemGroup>
+</Project>

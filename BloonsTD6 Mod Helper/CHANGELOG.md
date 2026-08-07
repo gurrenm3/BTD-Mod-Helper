@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Updated the il2cpp json converter to omit the very bloated TypeInfo objects that now appear in v56+
+- Updated the btd6.targets source generator to set up some simple git hooks in mod repositories that take effect when you increase your ModHelperData Version in a commit
+  - pre-commit: Update CHANGELOG.md with a new dated entry for the version based on content within the Unreleased section
+  - post-commit: Automatically add the corresponding git tag for that version
+  - These can be disabled by setting `<GenerateGitHooks>false</GenerateGitHooks>` or `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj
+
 ## [3.6.7] - 2026-08-05
 
 - Initial fixes for BTD6 v56

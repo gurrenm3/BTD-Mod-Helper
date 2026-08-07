@@ -44,7 +44,7 @@ public class ModResourcesGenerator : IIncrementalGenerator
             options.GlobalOptions.TryGetValue("build_property.ProjectDir", out var dir);
             options.GlobalOptions.TryGetValue("build_property.GenerateModResources", out var enabled);
             return (
-                Enabled: !string.Equals(enabled, "false", StringComparison.OrdinalIgnoreCase),
+                Enabled: Helpers.IsEnabled(enabled),
                 RootNamespace: string.IsNullOrWhiteSpace(ns) ? "GeneratedResources" : ns!,
                 ProjectDir: dir ?? ""
             );

@@ -12,7 +12,7 @@
         <!--NuGet package metadata-->
         <PackageId>Btd6ModHelper.SourceGenerators</PackageId>
         <Authors>doombubbles</Authors>
-        <Description>Source generators for BTD6 Mod Helper mods: a strongly-typed ModResources class for embedded resources, plus an auto-updating GitHub Actions build workflow.</Description>
+        <Description>Source generators for BTD6 Mod Helper mods: strongly typed resources, managed Git hooks, and an auto-updating GitHub Actions workflow.</Description>
         <PackageTags>btd6;bloons;modding;source-generator;analyzer</PackageTags>
         <PackageProjectUrl>https://github.com/doombubbles/BTD-Mod-Helper</PackageProjectUrl>
         <RepositoryUrl>https://github.com/doombubbles/BTD-Mod-Helper</RepositoryUrl>

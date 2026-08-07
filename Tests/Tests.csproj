@@ -18,6 +18,8 @@
 
     <ItemGroup>
         <Compile Include="..\BloonsTD6 Mod Helper\Api\Data\ModHelperData.Shared.cs"/>
+        <ProjectReference Include="..\SourceGenerators\SourceGenerators.csproj" Aliases="SourceGenerators"/>
+        <ProjectReference Include="..\Tools\Tools.csproj"/>
     </ItemGroup>
 
 </Project>

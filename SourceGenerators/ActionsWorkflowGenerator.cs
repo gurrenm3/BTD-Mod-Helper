@@ -2,9 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using BTD_Mod_Helper.Api.Data;
-using Fluid;
 using Microsoft.CodeAnalysis;
 
 namespace BTD_Mod_Helper.SourceGenerators;
@@ -21,6 +19,8 @@ public class ActionsWorkflowGenerator : IIncrementalGenerator
     private const string ThunderstoreFile = "thunderstore.toml";
     private const string LatestMd = "LATEST.md";
     private const string ChangelogMd = "CHANGELOG.md";
+    private const string OwnerMarker =
+        "# This workflow file is automatically updated by Mod Helper via btd6.targets";
     private const string FluidTemplateResource = "BTD_Mod_Helper.SourceGenerators.Templates.build.yml.liquid";
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
@@ -32,7 +32,7 @@ public class ActionsWorkflowGenerator : IIncrementalGenerator
             options.GlobalOptions.TryGetValue("build_property.GenerateActionsWorkflow", out var enabled);
             var name = !string.IsNullOrEmpty(assemblyName) ? assemblyName! : projectName ?? "";
             return (
-                Enabled: !string.Equals(enabled, "false", StringComparison.OrdinalIgnoreCase),
+                Enabled: Helpers.IsEnabled(enabled),
                 ProjectName: name
             );
         });
@@ -91,14 +91,7 @@ public class ActionsWorkflowGenerator : IIncrementalGenerator
 
             try
             {
-                var source = LoadEmbedded(FluidTemplateResource) ??
-                             throw new InvalidOperationException($"Embedded resource not found: {FluidTemplateResource}");
-                var parser = new FluidParser();
-                if (!parser.TryParse(source, out var template, out var error))
-                    throw new InvalidOperationException("Fluid parse error: " + error);
-
-                var options = new TemplateOptions {MemberAccessStrategy = new UnsafeMemberAccessStrategy()};
-                var ctx = new TemplateContext(new
+                var rendered = Helpers.RenderFluidTemplate(FluidTemplateResource, new
                 {
                     projectName = build.ProjectName,
                     dllName,
@@ -106,16 +99,15 @@ public class ActionsWorkflowGenerator : IIncrementalGenerator
                     thunderstore = files.Thunderstore,
                     changelogMd = files.Changelog,
                     latestMd = files.Latest
-                }, options);
-                var rendered = template.Render(ctx);
+                });
 
                 output = modDataError is null ? rendered.Replace(@"${\{", "${{") : modDataError + "\n" + rendered;
             }
             catch (Exception ex)
             {
-                output = FormatError("RenderFluid", ex);
+                output = OwnerMarker + "\n" + FormatError("RenderFluid", ex);
             }
-            WriteIfChanged(files.WorkflowPath!, output);
+            UpdateWorkflow(files.WorkflowPath!, output);
         });
     }
 
@@ -131,15 +123,6 @@ public class ActionsWorkflowGenerator : IIncrementalGenerator
         return sb.ToString();
     }
 
-    private static string? LoadEmbedded(string resourceName)
-    {
-        var assembly = typeof(ActionsWorkflowGenerator).Assembly;
-        using var stream = assembly.GetManifestResourceStream(resourceName);
-        if (stream is null) return null;
-        using var reader = new StreamReader(stream, Encoding.UTF8);
-        return reader.ReadToEnd();
-    }
-
     private static bool IsModHelperDataFile(string path)
     {
         var name = Path.GetFileName(path);
@@ -148,23 +131,19 @@ public class ActionsWorkflowGenerator : IIncrementalGenerator
                string.Equals(name, ModHelperData.ModHelperDataTxt);
     }
 
-    private static string NormalizeLineEndings(string text) => text.Replace("\r\n", "\n");
-
 #pragma warning disable RS1035
-    private static void WriteIfChanged(string path, string content)
+    internal static void UpdateWorkflow(string path, string content)
     {
         try
         {
-            var existing = File.Exists(path) ? File.ReadAllText(path) : "";
-            if (NormalizeLineEndings(existing) == NormalizeLineEndings(content)) return;
-            File.WriteAllText(path, content);
+            Helpers.UpdateManagedFile(path, content, false, OwnerMarker);
         }
         catch (Exception ex)
         {
             try
             {
                 var fallback = path + ".generator-error.txt";
-                File.WriteAllText(fallback, FormatError("WriteIfChanged", ex));
+                File.WriteAllText(fallback, FormatError("UpdateWorkflow", ex));
             }
             catch
             {

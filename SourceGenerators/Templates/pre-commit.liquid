@@ -1,0 +1,15 @@
+#!/bin/sh
+# Managed by Btd6ModHelper.SourceGenerators
+
+warn() {
+    echo "warning: BTD6 Mod Helper pre-commit hook could not run; commit will continue." >&2
+}
+
+if command -v btd6mh >/dev/null 2>&1 &&
+    btd6mh --version "{{ toolsVersion }}" >/dev/null 2>&1; then
+    btd6mh pre-commit || warn
+    exit 0
+fi
+
+dotnet tool exec Btd6ModHelper.Tools@{{ toolsVersion }} --verbosity quiet --ignore-failed-sources -- pre-commit || warn
+exit 0
