@@ -123,6 +123,32 @@ The returned item, if it exists
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon)'></a>
+
+## WeaponBehaviorExt.HasWeaponBehavior<T>(this Weapon) Method
+
+Check if this has a specific Behavior
+
+```csharp
+public static bool HasWeaponBehavior<T>(this Weapon weapon)
+    where T : WeaponBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon).T'></a>
+
+`T`
+
+The Behavior you're checking for
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon).weapon'></a>
+
+`weapon` [Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon 'Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon,T)'></a>
 
 ## WeaponBehaviorExt.HasWeaponBehavior<T>(this Weapon, T) Method
@@ -155,31 +181,28 @@ The returned item, if it exists
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon)'></a>
+<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon)'></a>
 
-## WeaponBehaviorExt.HasWeaponBehavior<T>(this Weapon) Method
+## WeaponBehaviorExt.RemoveWeaponBehavior<T>(this Weapon) Method
 
-Check if this has a specific Behavior
+Remove the first Behavior of Type T
 
 ```csharp
-public static bool HasWeaponBehavior<T>(this Weapon weapon)
+public static void RemoveWeaponBehavior<T>(this Weapon weapon)
     where T : WeaponBehavior;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon).T'></a>
+<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon).T'></a>
 
 `T`
 
-The Behavior you're checking for
+The Behavior you want to remove
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.HasWeaponBehavior_T_(thisWeapon).weapon'></a>
+<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon).weapon'></a>
 
 `weapon` [Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon 'Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon,T)'></a>
 
@@ -207,29 +230,6 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.WeaponBehaviorExt.md#BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon,T).T 'BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior<T>(this Weapon, T).T')
-
-<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon)'></a>
-
-## WeaponBehaviorExt.RemoveWeaponBehavior<T>(this Weapon) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveWeaponBehavior<T>(this Weapon weapon)
-    where T : WeaponBehavior;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehavior_T_(thisWeapon).weapon'></a>
-
-`weapon` [Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon 'Il2CppAssets.Scripts.Simulation.Towers.Weapons.Weapon')
 
 <a name='BTD_Mod_Helper.Extensions.WeaponBehaviorExt.RemoveWeaponBehaviors_T_(thisWeapon)'></a>
 

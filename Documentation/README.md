@@ -569,6 +569,10 @@
 | :--- | :--- |
 | [Function()](BTD_Mod_Helper.Extensions.Function().md 'BTD_Mod_Helper.Extensions.Function()') | |
 | [Function&lt;T&gt;()](BTD_Mod_Helper.Extensions.Function_T_().md 'BTD_Mod_Helper.Extensions.Function<T>()') | |
+| [InputFieldOnValueChanged.Function(string)](BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldOnValueChanged.Function(string)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
+| [InputFieldSubmitEvent.Function(string)](BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function(string).md 'BTD_Mod_Helper.Extensions.InputFieldSubmitEvent.Function(string)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
+| [SliderEventExt.Function(float)](BTD_Mod_Helper.Extensions.SliderEventExt.Function(float).md 'BTD_Mod_Helper.Extensions.SliderEventExt.Function(float)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
+| [ToggleEventExt.Function(bool)](BTD_Mod_Helper.Extensions.ToggleEventExt.Function(bool).md 'BTD_Mod_Helper.Extensions.ToggleEventExt.Function(bool)') | Represents a multicast delegate; that is, a delegate that can have more than one element in its invocation list. |
 
 <a name='BTD_Mod_Helper.UI.BTD6'></a>
 

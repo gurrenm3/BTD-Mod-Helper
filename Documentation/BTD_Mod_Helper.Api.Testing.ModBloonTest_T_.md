@@ -16,3 +16,14 @@ public abstract class ModBloonTest<T> : BTD_Mod_Helper.Api.Testing.ModBloonTest
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') &#129106; [BTD_Mod_Helper.Api.Testing.ModContentDefaultTest&lt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>')[ModBloon](BTD_Mod_Helper.Api.Bloons.ModBloon.md 'BTD_Mod_Helper.Api.Bloons.ModBloon')[&gt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>') &#129106; [ModBloonTest](BTD_Mod_Helper.Api.Testing.ModBloonTest.md 'BTD_Mod_Helper.Api.Testing.ModBloonTest') &#129106; ModBloonTest<T>
+### Constructors
+
+<a name='BTD_Mod_Helper.Api.Testing.ModBloonTest_T_.ModBloonTest()'></a>
+
+## ModBloonTest() Constructor
+
+Initializes a new instance of the [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') class.
+
+```csharp
+protected ModBloonTest();
+```

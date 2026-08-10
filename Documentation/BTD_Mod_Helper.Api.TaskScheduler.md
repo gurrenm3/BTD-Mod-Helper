@@ -72,6 +72,29 @@ The amount you want to wait
 
 Wait for this to be true before executing task
 
+<a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_)'></a>
+
+## TaskScheduler.ScheduleTask(Action, Func<bool>) Method
+
+Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
+
+```csharp
+public static void ScheduleTask(System.Action action, System.Func<bool> waitCondition=null);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_).action'></a>
+
+`action` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
+
+The action you want to execute once it's time to run your task
+
+<a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_).waitCondition'></a>
+
+`waitCondition` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
+Wait for this to be true before executing task
+
 <a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_,System.Func_bool_)'></a>
 
 ## TaskScheduler.ScheduleTask(Action, Func<bool>, Func<bool>) Method
@@ -100,29 +123,6 @@ Wait for this to be true before executing task
 `stopCondition` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
 Stop waiting if this becomes true
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_)'></a>
-
-## TaskScheduler.ScheduleTask(Action, Func<bool>) Method
-
-Schedule a task to execute later on as a Coroutine. By default will wait until the end of this current frame
-
-```csharp
-public static void ScheduleTask(System.Action action, System.Func<bool> waitCondition=null);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_).action'></a>
-
-`action` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
-
-The action you want to execute once it's time to run your task
-
-<a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Action,System.Func_bool_).waitCondition'></a>
-
-`waitCondition` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
-
-Wait for this to be true before executing task
 
 <a name='BTD_Mod_Helper.Api.TaskScheduler.ScheduleTask(System.Collections.IEnumerator)'></a>
 

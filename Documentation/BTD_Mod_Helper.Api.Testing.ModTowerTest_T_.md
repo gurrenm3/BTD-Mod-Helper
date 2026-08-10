@@ -16,3 +16,14 @@ public abstract class ModTowerTest<T> : BTD_Mod_Helper.Api.Testing.ModTowerTest
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') &#129106; [BTD_Mod_Helper.Api.Testing.ModContentDefaultTest&lt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>')[ModTower](BTD_Mod_Helper.Api.Towers.ModTower.md 'BTD_Mod_Helper.Api.Towers.ModTower')[&gt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>') &#129106; [ModTowerTest](BTD_Mod_Helper.Api.Testing.ModTowerTest.md 'BTD_Mod_Helper.Api.Testing.ModTowerTest') &#129106; ModTowerTest<T>
+### Constructors
+
+<a name='BTD_Mod_Helper.Api.Testing.ModTowerTest_T_.ModTowerTest()'></a>
+
+## ModTowerTest() Constructor
+
+Initializes a new instance of the [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') class.
+
+```csharp
+protected ModTowerTest();
+```

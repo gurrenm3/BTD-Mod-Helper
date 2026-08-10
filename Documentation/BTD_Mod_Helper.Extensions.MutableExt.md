@@ -129,6 +129,30 @@ public static TimedMutator GetMutatorById<T>(this Mutable mutable)
 #### Returns
 [Il2CppAssets.Scripts.Simulation.Objects.TimedMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.TimedMutator 'Il2CppAssets.Scripts.Simulation.Objects.TimedMutator')
 
+<a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutator_T_(thisMutable)'></a>
+
+## MutableExt.HasMutator<T>(this Mutable) Method
+
+Calls [Il2CppAssets.Scripts.Simulation.Objects.Mutable.GetMutator(System.String)](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Mutable.GetMutator#Il2CppAssets_Scripts_Simulation_Objects_Mutable_GetMutator_System_String_ 'Il2CppAssets.Scripts.Simulation.Objects.Mutable.GetMutator(System.String)') for a [ModMutator](BTD_Mod_Helper.Api.Towers.ModMutator.md 'BTD_Mod_Helper.Api.Towers.ModMutator')
+
+```csharp
+public static bool HasMutator<T>(this Mutable mutable)
+    where T : BTD_Mod_Helper.Api.Towers.ModMutator;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutator_T_(thisMutable).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutator_T_(thisMutable).mutable'></a>
+
+`mutable` [Il2CppAssets.Scripts.Simulation.Objects.Mutable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Mutable 'Il2CppAssets.Scripts.Simulation.Objects.Mutable')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
 <a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutator_T_(thisMutable,BehaviorMutator)'></a>
 
 ## MutableExt.HasMutator<T>(this Mutable, BehaviorMutator) Method
@@ -153,6 +177,30 @@ public static bool HasMutator<T>(this Mutable mutable, out BehaviorMutator behav
 <a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutator_T_(thisMutable,BehaviorMutator).behaviorMutator'></a>
 
 `behaviorMutator` [Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator 'Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutatorById_T_(thisMutable)'></a>
+
+## MutableExt.HasMutatorById<T>(this Mutable) Method
+
+Calls [Il2CppAssets.Scripts.Simulation.Objects.Mutable.GetMutatorById(System.String)](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Mutable.GetMutatorById#Il2CppAssets_Scripts_Simulation_Objects_Mutable_GetMutatorById_System_String_ 'Il2CppAssets.Scripts.Simulation.Objects.Mutable.GetMutatorById(System.String)') for a [ModMutator](BTD_Mod_Helper.Api.Towers.ModMutator.md 'BTD_Mod_Helper.Api.Towers.ModMutator')
+
+```csharp
+public static bool HasMutatorById<T>(this Mutable mutable)
+    where T : BTD_Mod_Helper.Api.Towers.ModMutator;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutatorById_T_(thisMutable).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.MutableExt.HasMutatorById_T_(thisMutable).mutable'></a>
+
+`mutable` [Il2CppAssets.Scripts.Simulation.Objects.Mutable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Mutable 'Il2CppAssets.Scripts.Simulation.Objects.Mutable')
 
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

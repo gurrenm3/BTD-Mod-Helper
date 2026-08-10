@@ -156,6 +156,27 @@ custom data
 [Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator 'Il2CppAssets.Scripts.Simulation.Objects.BehaviorMutator')  
 BehaviorMutator
 
+<a name='BTD_Mod_Helper.Api.Towers.ModMutator.Get(Mutable)'></a>
+
+## ModMutator.Get(Mutable) Method
+
+Gets the TimedMutator for this ModMutator on an entity
+
+```csharp
+public TimedMutator Get(Mutable mutable);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModMutator.Get(Mutable).mutable'></a>
+
+`mutable` [Il2CppAssets.Scripts.Simulation.Objects.Mutable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Mutable 'Il2CppAssets.Scripts.Simulation.Objects.Mutable')
+
+mutated entity
+
+#### Returns
+[Il2CppAssets.Scripts.Simulation.Objects.TimedMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.TimedMutator 'Il2CppAssets.Scripts.Simulation.Objects.TimedMutator')  
+TimedMutator
+
 <a name='BTD_Mod_Helper.Api.Towers.ModMutator.Get(Mutable,JToken)'></a>
 
 ## ModMutator.Get(Mutable, JToken) Method
@@ -178,27 +199,6 @@ mutated entity
 `data` [Newtonsoft.Json.Linq.JToken](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JToken 'Newtonsoft.Json.Linq.JToken')
 
 custom data
-
-#### Returns
-[Il2CppAssets.Scripts.Simulation.Objects.TimedMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.TimedMutator 'Il2CppAssets.Scripts.Simulation.Objects.TimedMutator')  
-TimedMutator
-
-<a name='BTD_Mod_Helper.Api.Towers.ModMutator.Get(Mutable)'></a>
-
-## ModMutator.Get(Mutable) Method
-
-Gets the TimedMutator for this ModMutator on an entity
-
-```csharp
-public TimedMutator Get(Mutable mutable);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModMutator.Get(Mutable).mutable'></a>
-
-`mutable` [Il2CppAssets.Scripts.Simulation.Objects.Mutable](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.Mutable 'Il2CppAssets.Scripts.Simulation.Objects.Mutable')
-
-mutated entity
 
 #### Returns
 [Il2CppAssets.Scripts.Simulation.Objects.TimedMutator](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Objects.TimedMutator 'Il2CppAssets.Scripts.Simulation.Objects.TimedMutator')  

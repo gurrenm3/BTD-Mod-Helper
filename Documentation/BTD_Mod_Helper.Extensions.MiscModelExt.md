@@ -34,6 +34,28 @@ public static AssetPathModel ApplyDisplay(this AssetPathModel assetPathModel, BT
 #### Returns
 [Il2CppAssets.Scripts.Models.Effects.AssetPathModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.AssetPathModel 'Il2CppAssets.Scripts.Models.Effects.AssetPathModel')
 
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay(thisEffectModel,BTD_Mod_Helper.Api.Display.ModDisplay)'></a>
+
+## MiscModelExt.ApplyDisplay(this EffectModel, ModDisplay) Method
+
+Applies the given ModDisplay to this effect
+
+```csharp
+public static EffectModel ApplyDisplay(this EffectModel effectModel, BTD_Mod_Helper.Api.Display.ModDisplay display);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay(thisEffectModel,BTD_Mod_Helper.Api.Display.ModDisplay).effectModel'></a>
+
+`effectModel` [Il2CppAssets.Scripts.Models.Effects.EffectModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.EffectModel 'Il2CppAssets.Scripts.Models.Effects.EffectModel')
+
+<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay(thisEffectModel,BTD_Mod_Helper.Api.Display.ModDisplay).display'></a>
+
+`display` [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Effects.EffectModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.EffectModel 'Il2CppAssets.Scripts.Models.Effects.EffectModel')
+
 <a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisAssetPathModel)'></a>
 
 ## MiscModelExt.ApplyDisplay<T>(this AssetPathModel) Method
@@ -75,34 +97,6 @@ public static void ApplyDisplay<T>(this EffectModel effectModel)
 <a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisEffectModel).effectModel'></a>
 
 `effectModel` [Il2CppAssets.Scripts.Models.Effects.EffectModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Effects.EffectModel 'Il2CppAssets.Scripts.Models.Effects.EffectModel')
-
-<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisT,BTD_Mod_Helper.Api.Display.ModDisplay)'></a>
-
-## MiscModelExt.ApplyDisplay<T>(this T, ModDisplay) Method
-
-Applies the given ModDisplay to this effect
-
-```csharp
-public static T ApplyDisplay<T>(this T effectModel, BTD_Mod_Helper.Api.Display.ModDisplay display)
-    where T : EffectModel;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisT,BTD_Mod_Helper.Api.Display.ModDisplay).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisT,BTD_Mod_Helper.Api.Display.ModDisplay).effectModel'></a>
-
-`effectModel` [T](BTD_Mod_Helper.Extensions.MiscModelExt.md#BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisT,BTD_Mod_Helper.Api.Display.ModDisplay).T 'BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay<T>(this T, BTD_Mod_Helper.Api.Display.ModDisplay).T')
-
-<a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisT,BTD_Mod_Helper.Api.Display.ModDisplay).display'></a>
-
-`display` [ModDisplay](BTD_Mod_Helper.Api.Display.ModDisplay.md 'BTD_Mod_Helper.Api.Display.ModDisplay')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.MiscModelExt.md#BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay_T_(thisT,BTD_Mod_Helper.Api.Display.ModDisplay).T 'BTD_Mod_Helper.Extensions.MiscModelExt.ApplyDisplay<T>(this T, BTD_Mod_Helper.Api.Display.ModDisplay).T')
 
 <a name='BTD_Mod_Helper.Extensions.MiscModelExt.ApplyOverlay_T_(thisProjectileBehaviorWithOverlayModel)'></a>
 

@@ -255,6 +255,29 @@ The Base bloon model
 
 What GameModes are active for the match
 
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation)'></a>
+
+## ModBloon.Tick(int, Simulation) Method
+
+Runs each tick of the simulation assuming [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') is true (false by default).
+
+```csharp
+protected sealed override void Tick(int ticks, Simulation sim);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation).ticks'></a>
+
+`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The number of ticks run through the simulation (60/s)
+
+<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation).sim'></a>
+
+`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
+
+The current simulation.
+
 <a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation,Bloon)'></a>
 
 ## ModBloon.Tick(int, Simulation, Bloon) Method
@@ -283,26 +306,3 @@ The current simulation
 `bloon` [Il2CppAssets.Scripts.Simulation.Bloons.Bloon](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Bloons.Bloon 'Il2CppAssets.Scripts.Simulation.Bloons.Bloon')
 
 The current bloon
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation)'></a>
-
-## ModBloon.Tick(int, Simulation) Method
-
-Runs each tick of the simulation assuming [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') is true (false by default).
-
-```csharp
-protected sealed override void Tick(int ticks, Simulation sim);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation).ticks'></a>
-
-`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-The number of ticks run through the simulation (60/s)
-
-<a name='BTD_Mod_Helper.Api.Bloons.ModBloon.Tick(int,Simulation).sim'></a>
-
-`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
-
-The current simulation.

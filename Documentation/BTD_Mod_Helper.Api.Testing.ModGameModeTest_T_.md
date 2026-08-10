@@ -16,3 +16,14 @@ public abstract class ModGameModeTest<T> : BTD_Mod_Helper.Api.Testing.ModGameMod
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModContent](BTD_Mod_Helper.Api.ModContent.md 'BTD_Mod_Helper.Api.ModContent') &#129106; [ModTest](BTD_Mod_Helper.Api.Testing.ModTest.md 'BTD_Mod_Helper.Api.Testing.ModTest') &#129106; [BTD_Mod_Helper.Api.Testing.ModContentDefaultTest&lt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>')[ModGameMode](BTD_Mod_Helper.Api.Scenarios.ModGameMode.md 'BTD_Mod_Helper.Api.Scenarios.ModGameMode')[&gt;](BTD_Mod_Helper.Api.Testing.ModContentDefaultTest_T_.md 'BTD_Mod_Helper.Api.Testing.ModContentDefaultTest<T>') &#129106; [ModGameModeTest](BTD_Mod_Helper.Api.Testing.ModGameModeTest.md 'BTD_Mod_Helper.Api.Testing.ModGameModeTest') &#129106; ModGameModeTest<T>
+### Constructors
+
+<a name='BTD_Mod_Helper.Api.Testing.ModGameModeTest_T_.ModGameModeTest()'></a>
+
+## ModGameModeTest() Constructor
+
+Initializes a new instance of the [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') class.
+
+```csharp
+protected ModGameModeTest();
+```

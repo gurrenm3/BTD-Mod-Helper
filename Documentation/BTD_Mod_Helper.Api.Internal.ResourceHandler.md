@@ -369,6 +369,27 @@ Pixels per Unit to use
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
 The texture
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string)'></a>
+
+## ResourceHandler.GetTexture(string) Method
+
+Creates or gets a texture from its Id
+
+```csharp
+public static Texture2D GetTexture(string id);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Texture id "ModName-FileName" (no file extension)
+
+#### Returns
+[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
+The texture
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
 
 ## ResourceHandler.GetTexture(string, ImageSettings) Method
@@ -391,27 +412,6 @@ Texture id "ModName-FileName" (no file extension)
 `imageSettings` [ImageSettings](BTD_Mod_Helper.Api.UI.ImageSettings.md 'BTD_Mod_Helper.Api.UI.ImageSettings')
 
 ImageSettings to use
-
-#### Returns
-[UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  
-The texture
-
-<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string)'></a>
-
-## ResourceHandler.GetTexture(string) Method
-
-Creates or gets a texture from its Id
-
-```csharp
-public static Texture2D GetTexture(string id);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetTexture(string).id'></a>
-
-`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-Texture id "ModName-FileName" (no file extension)
 
 #### Returns
 [UnityEngine.Texture2D](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Texture2D 'UnityEngine.Texture2D')  

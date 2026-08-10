@@ -128,6 +128,21 @@ Build the file contents into a fresh [System.Text.StringBuilder](https://docs.mi
 public virtual void Generate();
 ```
 
+<a name='BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder)'></a>
+
+## ModSourceFileGenerator.Generate(StringBuilder) Method
+
+Append the file's contents to [sb](BTD_Mod_Helper.Api.ModSourceFileGenerator.md#BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder).sb 'BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder).sb')
+
+```csharp
+public virtual void Generate(System.Text.StringBuilder sb);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder).sb'></a>
+
+`sb` [System.Text.StringBuilder](https://docs.microsoft.com/en-us/dotnet/api/System.Text.StringBuilder 'System.Text.StringBuilder')
+
 <a name='BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder,string)'></a>
 
 ## ModSourceFileGenerator.Generate(StringBuilder, string) Method
@@ -146,18 +161,3 @@ public virtual void Generate(System.Text.StringBuilder sb, ref string fileName);
 <a name='BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder,string).fileName'></a>
 
 `fileName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder)'></a>
-
-## ModSourceFileGenerator.Generate(StringBuilder) Method
-
-Append the file's contents to [sb](BTD_Mod_Helper.Api.ModSourceFileGenerator.md#BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder).sb 'BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder).sb')
-
-```csharp
-public virtual void Generate(System.Text.StringBuilder sb);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.ModSourceFileGenerator.Generate(System.Text.StringBuilder).sb'></a>
-
-`sb` [System.Text.StringBuilder](https://docs.microsoft.com/en-us/dotnet/api/System.Text.StringBuilder 'System.Text.StringBuilder')

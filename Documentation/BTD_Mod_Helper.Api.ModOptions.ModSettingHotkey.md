@@ -10,6 +10,17 @@ public class ModSettingHotkey : BTD_Mod_Helper.Api.ModOptions.ModSetting<string>
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ModSetting](BTD_Mod_Helper.Api.ModOptions.ModSetting.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting') &#129106; [BTD_Mod_Helper.Api.ModOptions.ModSetting&lt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](BTD_Mod_Helper.Api.ModOptions.ModSetting_T_.md 'BTD_Mod_Helper.Api.ModOptions.ModSetting<T>') &#129106; ModSettingHotkey
+### Constructors
+
+<a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.ModSettingHotkey()'></a>
+
+## ModSettingHotkey() Constructor
+
+Initializes a new instance of the [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') class.
+
+```csharp
+public ModSettingHotkey();
+```
 ### Methods
 
 <a name='BTD_Mod_Helper.Api.ModOptions.ModSettingHotkey.IsPressed()'></a>

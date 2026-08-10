@@ -675,6 +675,21 @@ public virtual void ModifyTowerModelForMatch(TowerModel towerModel, System.Colle
 
 `gameModes` [System.Collections.Generic.IReadOnlyList&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')[Il2CppAssets.Scripts.Models.ModModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.ModModel 'Il2CppAssets.Scripts.Models.ModModel')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyList-1 'System.Collections.Generic.IReadOnlyList`1')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.OnPlaced(Tower)'></a>
+
+## ModTower.OnPlaced(Tower) Method
+
+Allows you to perform one-time actions in game when the tower is first placed
+
+```csharp
+public virtual void OnPlaced(Tower tower);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.OnPlaced(Tower).tower'></a>
+
+`tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.OnUpgraded(Tower,BTD_Mod_Helper.Api.Towers.ModUpgrade)'></a>
 
 ## ModTower.OnUpgraded(Tower, ModUpgrade) Method
@@ -712,6 +727,29 @@ public virtual bool ShouldUnlockTower(ProfileModel profileModel);
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation)'></a>
+
+## ModTower.Tick(int, Simulation) Method
+
+Runs each tick of the simulation assuming [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') is true (false by default).
+
+```csharp
+protected override void Tick(int ticks, Simulation sim);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation).ticks'></a>
+
+`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The number of ticks run through the simulation (60/s)
+
+<a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation).sim'></a>
+
+`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
+
+The current simulation.
+
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation,Tower)'></a>
 
 ## ModTower.Tick(int, Simulation, Tower) Method
@@ -740,29 +778,6 @@ The current simulation
 `tower` [Il2CppAssets.Scripts.Simulation.Towers.Tower](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Tower 'Il2CppAssets.Scripts.Simulation.Towers.Tower')
 
 The current tower
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation)'></a>
-
-## ModTower.Tick(int, Simulation) Method
-
-Runs each tick of the simulation assuming [DoesTick](BTD_Mod_Helper.Api.ModContent.md#BTD_Mod_Helper.Api.ModContent.DoesTick 'BTD_Mod_Helper.Api.ModContent.DoesTick') is true (false by default).
-
-```csharp
-protected override void Tick(int ticks, Simulation sim);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation).ticks'></a>
-
-`ticks` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-The number of ticks run through the simulation (60/s)
-
-<a name='BTD_Mod_Helper.Api.Towers.ModTower.Tick(int,Simulation).sim'></a>
-
-`sim` [Il2CppAssets.Scripts.Simulation.Simulation](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Simulation 'Il2CppAssets.Scripts.Simulation.Simulation')
-
-The current simulation.
 
 <a name='BTD_Mod_Helper.Api.Towers.ModTower.TowerTiers()'></a>
 

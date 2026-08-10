@@ -24,6 +24,21 @@ Derived
 &#8627; [ModVanillaUpgrade](BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade.md 'BTD_Mod_Helper.Api.Towers.ModVanillaUpgrade')
 ### Methods
 
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T)'></a>
+
+## ModVanillaContent<T>.Apply(T) Method
+
+Applies the modifications to the vanilla content
+
+```csharp
+public virtual void Apply(T model);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T).model'></a>
+
+`model` [T](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md#BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.T 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>.T')
+
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,GameModel)'></a>
 
 ## ModVanillaContent<T>.Apply(T, GameModel) Method
@@ -42,21 +57,6 @@ public virtual void Apply(T model, GameModel gameModel);
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T,GameModel).gameModel'></a>
 
 `gameModel` [Il2CppAssets.Scripts.Models.GameModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.GameModel 'Il2CppAssets.Scripts.Models.GameModel')
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T)'></a>
-
-## ModVanillaContent<T>.Apply(T) Method
-
-Applies the modifications to the vanilla content
-
-```csharp
-public virtual void Apply(T model);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.Apply(T).model'></a>
-
-`model` [T](BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.md#BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.T 'BTD_Mod_Helper.Api.Towers.ModVanillaContent<T>.T')
 
 <a name='BTD_Mod_Helper.Api.Towers.ModVanillaContent_T_.GetAffected(GameModel)'></a>
 
