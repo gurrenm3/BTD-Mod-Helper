@@ -1,4 +1,5 @@
 ﻿using Il2CppSystem;
+using Il2CppAssets.Scripts.Simulation.Factory;
 using Il2CppSystem.Collections.Generic;
 using Il2CppSystem.Linq;
 
@@ -21,6 +22,26 @@ public static class Il2CppGenericIEnumerable
 
         while (enumerator.MoveNext())
             action.Invoke(enumerator.Current);
+    }
+
+    /// <summary>
+    /// Performs the specified action on each non-destroyed factory element.
+    /// </summary>
+    public static void ForEach<T>(this Factory<T>.CheckDestroyedEnumerable source, System.Action<T> action)
+        where T : Object, new()
+    {
+        var enumerator = source.GetEnumerator();
+        try
+        {
+            while (enumerator.MoveNext())
+            {
+                action.Invoke(enumerator._current);
+            }
+        }
+        finally
+        {
+            enumerator.Dispose();
+        }
     }
 
     /// <summary>

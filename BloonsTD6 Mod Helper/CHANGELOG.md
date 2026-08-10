@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.8] - 2026-08-10
+
 - Updated the il2cpp json converter to omit the very bloated TypeInfo objects that now appear in v56+
+- Fixed a bug with ModTsmTheme's being able to have their setup code run multiple times
 - Updated the btd6.targets source generator to set up some simple git hooks in mod repositories that take effect when you increase your ModHelperData Version in a commit
-  - pre-commit: Update CHANGELOG.md with a new dated entry for the version based on content within the Unreleased section
-  - post-commit: Automatically add the corresponding git tag for that version
+  - pre-commit: If CHANGELOG.md is present, update it with a new dated entry for the version based on content within the Unreleased section
+  - post-commit: Automatically add the corresponding git tag for that version to the commit
   - These can be disabled by setting `<GenerateGitHooks>false</GenerateGitHooks>` or `<ModHelperSourceGenerators>false</ModHelperSourceGenerators>` in your csproj
 
 ## [3.6.7] - 2026-08-05
@@ -1124,7 +1127,8 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 
 Initial release of the new Mod Helper
 
-[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.7...HEAD
+[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.8...HEAD
+[3.6.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.7...3.6.8
 [3.6.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.6...3.6.7
 [3.6.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...3.6.6
 

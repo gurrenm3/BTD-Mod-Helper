@@ -438,7 +438,7 @@ public abstract class ModTest : ModContent
 
         Environment = loadSim.Result;
 
-        SetupBridge(UnityToSimulation.Current);
+        SetupBridge(Environment.simulation);
     }
 
     /// <summary>

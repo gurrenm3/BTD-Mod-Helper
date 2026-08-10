@@ -128,6 +128,8 @@ public abstract class ModBaseTsmTheme : ModContent
 
     internal static void Setup(BaseTSMTheme theme, TowerToSimulation towerToSimulation)
     {
+        if (theme.gameObject.HasComponent<ModTsmInfo>()) return;
+
         var themes = ThemeCache.Values
             .Where(t => t.AppliesTo(theme.ThemeId))
             .Select(t => (ModBaseTsmTheme) t.MemberwiseClone())
