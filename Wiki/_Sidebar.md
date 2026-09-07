@@ -26,6 +26,7 @@
 - [Custom Byte Loaders](/wiki/Custom-Byte-Loaders)
 - [Localization](/wiki/Localization)
 - [Automated Testing](/wiki/Automated-Testing)
+- [Saving Persistent Data](/wiki/Saving-Persistent-Data)
 
 ##### **BTD Modding Info**
 - [BTD6 Internal Structure](/wiki/BTD6-Internal-Structure)

@@ -1,4 +1,9 @@
-﻿using Il2CppAssets.Scripts.Models.Profile;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BTD_Mod_Helper.Api;
+using BTD_Mod_Helper.Api.Towers;
+using Il2CppAssets.Scripts.Models.Profile;
 using Il2CppAssets.Scripts.Simulation.Towers;
 namespace BTD_Mod_Helper.Patches.Towers;
 
@@ -10,5 +15,7 @@ internal class Tower_SetSaveData
     {
         if (__instance == null) return;
         ModHelper.PerformHook(mod => mod.OnTowerLoaded(__instance, towerData));
+
+        ModTowerSaveData.LoadAll(__instance, towerData);
     }
 }
