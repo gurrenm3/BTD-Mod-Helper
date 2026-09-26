@@ -91,32 +91,6 @@ The Behavior you want
 #### Returns
 [Il2CppSystem.Collections.Generic.List](https://docs.microsoft.com/en-us/dotnet/api/Il2CppSystem.Collections.Generic.List 'Il2CppSystem.Collections.Generic.List')
 
-<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission)'></a>
-
-## EmissionBehaviorExt.HasEmissionBehavior<T>(this Emission) Method
-
-Check if this has a specific Behavior
-
-```csharp
-public static bool HasEmissionBehavior<T>(this Emission emission)
-    where T : RootBehavior;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission).T'></a>
-
-`T`
-
-The Behavior you're checking for
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission).emission'></a>
-
-`emission` [Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission 'Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission')
-
-#### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
 <a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission,T)'></a>
 
 ## EmissionBehaviorExt.HasEmissionBehavior<T>(this Emission, T) Method
@@ -149,28 +123,31 @@ The returned item, if it exists
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission)'></a>
+<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission)'></a>
 
-## EmissionBehaviorExt.RemoveEmissionBehavior<T>(this Emission) Method
+## EmissionBehaviorExt.HasEmissionBehavior<T>(this Emission) Method
 
-Remove the first Behavior of Type T
+Check if this has a specific Behavior
 
 ```csharp
-public static void RemoveEmissionBehavior<T>(this Emission emission)
+public static bool HasEmissionBehavior<T>(this Emission emission)
     where T : RootBehavior;
 ```
 #### Type parameters
 
-<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission).T'></a>
+<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission).T'></a>
 
 `T`
 
-The Behavior you want to remove
+The Behavior you're checking for
 #### Parameters
 
-<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission).emission'></a>
+<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.HasEmissionBehavior_T_(thisEmission).emission'></a>
 
 `emission` [Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission 'Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission')
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 <a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission,T)'></a>
 
@@ -198,6 +175,29 @@ The Behavior you want to remove
 <a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.EmissionBehaviorExt.md#BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission,T).T 'BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior<T>(this Emission, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission)'></a>
+
+## EmissionBehaviorExt.RemoveEmissionBehavior<T>(this Emission) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveEmissionBehavior<T>(this Emission emission)
+    where T : RootBehavior;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehavior_T_(thisEmission).emission'></a>
+
+`emission` [Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission 'Il2CppAssets.Scripts.Simulation.Towers.Emissions.Emission')
 
 <a name='BTD_Mod_Helper.Extensions.EmissionBehaviorExt.RemoveEmissionBehaviors_T_(thisEmission)'></a>
 

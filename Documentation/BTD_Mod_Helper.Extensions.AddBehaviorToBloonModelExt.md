@@ -56,32 +56,6 @@ public static void AddBehavior<T>(AddBehaviorToBloonModel model, T behavior)
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md#BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.AddBehavior_T_(AddBehaviorToBloonModel,T).T 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.AddBehavior<T>(AddBehaviorToBloonModel, T).T')
 
-<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel)'></a>
-
-## AddBehaviorToBloonModelExt.GetBehavior<T>(AddBehaviorToBloonModel) Method
-
-Return the first Behavior of type T, or null if there isn't one
-
-```csharp
-public static T GetBehavior<T>(AddBehaviorToBloonModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel).T'></a>
-
-`T`
-
-The Behavior you want
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel')
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md#BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel).T 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior<T>(AddBehaviorToBloonModel).T')
-
 <a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel,int)'></a>
 
 ## AddBehaviorToBloonModelExt.GetBehavior<T>(AddBehaviorToBloonModel, int) Method
@@ -142,6 +116,32 @@ The Behavior you want
 #### Returns
 [T](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md#BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel,string).T 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior<T>(AddBehaviorToBloonModel, string).T')
 
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel)'></a>
+
+## AddBehaviorToBloonModelExt.GetBehavior<T>(AddBehaviorToBloonModel) Method
+
+Return the first Behavior of type T, or null if there isn't one
+
+```csharp
+public static T GetBehavior<T>(AddBehaviorToBloonModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel).T'></a>
+
+`T`
+
+The Behavior you want
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel')
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md#BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior_T_(AddBehaviorToBloonModel).T 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehavior<T>(AddBehaviorToBloonModel).T')
+
 <a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.GetBehaviors_T_(AddBehaviorToBloonModel)'></a>
 
 ## AddBehaviorToBloonModelExt.GetBehaviors<T>(AddBehaviorToBloonModel) Method
@@ -194,29 +194,6 @@ The Behavior you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel)'></a>
-
-## AddBehaviorToBloonModelExt.RemoveBehavior<T>(AddBehaviorToBloonModel) Method
-
-Remove the first Behavior of Type T
-
-```csharp
-public static void RemoveBehavior<T>(AddBehaviorToBloonModel model)
-    where T : Model;
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel).T'></a>
-
-`T`
-
-The Behavior you want to remove
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel).model'></a>
-
-`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel')
-
 <a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel,T)'></a>
 
 ## AddBehaviorToBloonModelExt.RemoveBehavior<T>(AddBehaviorToBloonModel, T) Method
@@ -241,6 +218,29 @@ public static void RemoveBehavior<T>(AddBehaviorToBloonModel model, T behavior)
 <a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel,T).behavior'></a>
 
 `behavior` [T](BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.md#BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel,T).T 'BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior<T>(AddBehaviorToBloonModel, T).T')
+
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel)'></a>
+
+## AddBehaviorToBloonModelExt.RemoveBehavior<T>(AddBehaviorToBloonModel) Method
+
+Remove the first Behavior of Type T
+
+```csharp
+public static void RemoveBehavior<T>(AddBehaviorToBloonModel model)
+    where T : Model;
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel).T'></a>
+
+`T`
+
+The Behavior you want to remove
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehavior_T_(AddBehaviorToBloonModel).model'></a>
+
+`model` [Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel 'Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors.AddBehaviorToBloonModel')
 
 <a name='BTD_Mod_Helper.Extensions.AddBehaviorToBloonModelExt.RemoveBehaviors(AddBehaviorToBloonModel)'></a>
 

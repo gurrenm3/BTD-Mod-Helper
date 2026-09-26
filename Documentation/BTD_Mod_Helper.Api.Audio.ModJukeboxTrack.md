@@ -81,6 +81,33 @@ public sealed override string DisplayNamePlural { get; }
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
+<a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LazyLoadClip'></a>
+
+## ModJukeboxTrack.LazyLoadClip Property
+
+Whether to hold off on creating this track's [AudioClip](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md#BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.AudioClip 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.AudioClip') until the game actually asks to play it,  
+instead of during loading.
+
+```csharp
+public virtual bool LazyLoadClip { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+<a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.MaxLoadedLazyClips'></a>
+
+## ModJukeboxTrack.MaxLoadedLazyClips Property
+
+How many lazily loaded clips to keep in memory at once across all mods.
+
+```csharp
+public static int MaxLoadedLazyClips { get; set; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
 <a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.MusicItem'></a>
 
 ## ModJukeboxTrack.MusicItem Property
@@ -108,3 +135,17 @@ public virtual MusicItem CreateMusicItem();
 #### Returns
 [Il2CppAssets.Scripts.Data.Audio.MusicItem](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Audio.MusicItem 'Il2CppAssets.Scripts.Data.Audio.MusicItem')  
 the MusicItem
+
+<a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LoadClip()'></a>
+
+## ModJukeboxTrack.LoadClip() Method
+
+Creates the AudioClip for a [LazyLoadClip](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md#BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LazyLoadClip 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LazyLoadClip') track. Called on the main thread the first time the  
+game asks for the clip, so it needs to be reasonably quick.
+
+```csharp
+protected virtual AudioClip LoadClip();
+```
+
+#### Returns
+[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')

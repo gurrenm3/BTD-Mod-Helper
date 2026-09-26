@@ -157,36 +157,6 @@ The Type you're checking for
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string)'></a>
-
-## ListExt.LoadFromFile<T>(this List<T>, string) Method
-
-Load a List from a FilePath
-
-```csharp
-public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath);
-```
-#### Type parameters
-
-<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).T'></a>
-
-`T`
-#### Parameters
-
-<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).list'></a>
-
-`list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).T 'BTD_Mod_Helper.Extensions.ListExt.LoadFromFile<T>(this System.Collections.Generic.List<T>, string).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
-
-<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).filePath'></a>
-
-`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-FilePath of the saved List
-
-#### Returns
-[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).T 'BTD_Mod_Helper.Extensions.ListExt.LoadFromFile<T>(this System.Collections.Generic.List<T>, string).T')  
-The loaded List if successful, otherwise default value
-
 <a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string,bool)'></a>
 
 ## ListExt.LoadFromFile<T>(this List<T>, string, bool) Method
@@ -221,6 +191,36 @@ Will be true if the List was successfully loaded, otherwise will be false
 
 #### Returns
 [T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string,bool).T 'BTD_Mod_Helper.Extensions.ListExt.LoadFromFile<T>(this System.Collections.Generic.List<T>, string, bool).T')  
+The loaded List if successful, otherwise default value
+
+<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string)'></a>
+
+## ListExt.LoadFromFile<T>(this List<T>, string) Method
+
+Load a List from a FilePath
+
+```csharp
+public static T LoadFromFile<T>(this System.Collections.Generic.List<T> list, string filePath);
+```
+#### Type parameters
+
+<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).T'></a>
+
+`T`
+#### Parameters
+
+<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).list'></a>
+
+`list` [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).T 'BTD_Mod_Helper.Extensions.ListExt.LoadFromFile<T>(this System.Collections.Generic.List<T>, string).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+
+<a name='BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).filePath'></a>
+
+`filePath` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+FilePath of the saved List
+
+#### Returns
+[T](BTD_Mod_Helper.Extensions.ListExt.md#BTD_Mod_Helper.Extensions.ListExt.LoadFromFile_T_(thisSystem.Collections.Generic.List_T_,string).T 'BTD_Mod_Helper.Extensions.ListExt.LoadFromFile<T>(this System.Collections.Generic.List<T>, string).T')  
 The loaded List if successful, otherwise default value
 
 <a name='BTD_Mod_Helper.Extensions.ListExt.RemoveItem_TSource,TCast_(thisSystem.Collections.Generic.List_TSource_,TCast)'></a>

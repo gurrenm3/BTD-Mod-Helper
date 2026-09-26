@@ -56,28 +56,6 @@ public static PathModel CreatePathModel(string pathName, System.Collections.Gene
 #### Returns
 [Il2CppAssets.Scripts.Models.Map.PathModel](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PathModel 'Il2CppAssets.Scripts.Models.Map.PathModel')
 
-<a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float)'></a>
-
-## MapHelper.CreatePointInfo(float, float) Method
-
-Create a [Il2CppAssets.Scripts.Models.Map.PointInfo](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PointInfo 'Il2CppAssets.Scripts.Models.Map.PointInfo') out of an X and Y coord.
-
-```csharp
-public static PointInfo CreatePointInfo(float x, float y);
-```
-#### Parameters
-
-<a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float).x'></a>
-
-`x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-<a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float).y'></a>
-
-`y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
-
-#### Returns
-[Il2CppAssets.Scripts.Models.Map.PointInfo](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PointInfo 'Il2CppAssets.Scripts.Models.Map.PointInfo')
-
 <a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float,float)'></a>
 
 ## MapHelper.CreatePointInfo(float, float, float) Method
@@ -100,6 +78,28 @@ public static PointInfo CreatePointInfo(float x, float y, float z);
 <a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float,float).z'></a>
 
 `z` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+#### Returns
+[Il2CppAssets.Scripts.Models.Map.PointInfo](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PointInfo 'Il2CppAssets.Scripts.Models.Map.PointInfo')
+
+<a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float)'></a>
+
+## MapHelper.CreatePointInfo(float, float) Method
+
+Create a [Il2CppAssets.Scripts.Models.Map.PointInfo](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PointInfo 'Il2CppAssets.Scripts.Models.Map.PointInfo') out of an X and Y coord.
+
+```csharp
+public static PointInfo CreatePointInfo(float x, float y);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float).x'></a>
+
+`x` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
+
+<a name='BTD_Mod_Helper.Api.Helpers.MapHelper.CreatePointInfo(float,float).y'></a>
+
+`y` [System.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System.Single')
 
 #### Returns
 [Il2CppAssets.Scripts.Models.Map.PointInfo](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Models.Map.PointInfo 'Il2CppAssets.Scripts.Models.Map.PointInfo')
