@@ -22,6 +22,8 @@ internal class ExportGameDataCommand : ModCommand<ExportCommand>
     {
         GameModelExporter.clean = Clean;
         GameModelExporter.consistent = Consistent;
-        return GameModelExporter.ExportAll();
+        yield return GameModelExporter.ExportAll();
+        output.success = !GameModelExporter.HadErrors;
+        if (!output.success) output.resultText = "Game data export failed; see the logged file errors.";
     }
 }

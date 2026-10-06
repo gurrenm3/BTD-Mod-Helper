@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Audio;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
@@ -43,6 +46,65 @@ public abstract class ModJukeboxTrack : NamedModContent
     public sealed override string Description => base.Description;
 
     /// <summary>
+    /// Whether to hold off on creating this track's <see cref="AudioClip"/> until the game actually asks to play it,
+    /// instead of during loading.
+    /// </summary>
+    public virtual bool LazyLoadClip => false;
+
+    /// <summary>
+    /// How many lazily loaded clips to keep in memory at once across all mods.
+    /// </summary>
+    public static int MaxLoadedLazyClips { get; set; } = 3;
+
+    /// <summary>
+    /// Creates the AudioClip for a <see cref="LazyLoadClip" /> track. Called on the main thread the first time the
+    /// game asks for the clip, so it needs to be reasonably quick.
+    /// </summary>
+    protected virtual AudioClip LoadClip() => AudioClip;
+
+    private static readonly Dictionary<string, ModJukeboxTrack> LazyTracks = [];
+    private static readonly LinkedList<ModJukeboxTrack> LoadedLazyClips = [];
+
+    private AudioClip lazyClip;
+
+    internal static ModJukeboxTrack GetLazyTrack(string id) =>
+        id != null && LazyTracks.TryGetValue(id, out var track) ? track : null;
+
+    internal AudioClip ResolveLazyClip()
+    {
+        if (lazyClip != null)
+        {
+            LoadedLazyClips.Remove(this);
+            LoadedLazyClips.AddFirst(this);
+            return lazyClip;
+        }
+
+        lazyClip = LoadClip();
+        if (lazyClip == null) return null;
+
+        MusicItem.Clip = lazyClip;
+        LoadedLazyClips.AddFirst(this);
+
+        while (LoadedLazyClips.Count > Mathf.Max(1, MaxLoadedLazyClips))
+        {
+            LoadedLazyClips.Last!.Value.UnloadLazyClip();
+        }
+
+        return lazyClip;
+    }
+
+    private void UnloadLazyClip()
+    {
+        LoadedLazyClips.Remove(this);
+        if (lazyClip == null) return;
+
+        MusicItem.Clip = null;
+        ResourceHandler.AudioClips.Remove(Id);
+        Object.Destroy(lazyClip);
+        lazyClip = null;
+    }
+
+    /// <summary>
     /// Creates the MusicItem for this track
     /// </summary>
     /// <returns>the MusicItem</returns>
@@ -54,7 +116,7 @@ public abstract class ModJukeboxTrack : NamedModContent
         musicItem.name = Id;
         musicItem.locKey = Id;
         musicItem.freeTrack = true;
-        musicItem.Clip = AudioClip;
+        musicItem.Clip = LazyLoadClip ? null : AudioClip;
         musicItem.clip = new AudioClipReference("");
 
 
@@ -66,7 +128,11 @@ public abstract class ModJukeboxTrack : NamedModContent
     {
         MusicItem ??= CreateMusicItem();
 
-        if (MusicItem.Clip == null)
+        if (LazyLoadClip)
+        {
+            LazyTracks[Id] = this;
+        }
+        else if (MusicItem.Clip == null)
         {
             ModHelper.Warning($"Failed to register {Id}, unable to find AudioClip {AudioClipName}");
             return;

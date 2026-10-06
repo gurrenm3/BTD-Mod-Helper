@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -263,6 +262,19 @@ public static class ResourceHandler
     };
 
 
+    private static long EstimateSampleCount(WaveStream reader)
+    {
+        try
+        {
+            var bytesPerSample = reader.WaveFormat.BitsPerSample / 8;
+            return bytesPerSample > 0 ? reader.Length / bytesPerSample : 0;
+        }
+        catch (Exception)
+        {
+            return 0;
+        }
+    }
+
     /// <summary>
     /// Create an AudioClip from a wavestream
     /// </summary>
@@ -275,33 +287,20 @@ public static class ResourceHandler
         {
             var sampleProvider = reader.ToSampleProvider();
 
-            var capacity = 4096;
-            var buffer = new float[capacity];
-            var array = ArrayPool<float>.Shared.Rent(capacity);
+            var array = new float[Math.Clamp(EstimateSampleCount(reader), 4096, int.MaxValue)];
             var count = 0;
-            int read;
 
-            while ((read = sampleProvider.Read(buffer, 0, buffer.Length)) > 0)
+            while (true)
             {
-                if (count + read > capacity)
-                {
-                    var newCap = capacity * 2;
-                    var newArray = ArrayPool<float>.Shared.Rent(newCap);
+                if (count == array.Length) Array.Resize(ref array, array.Length + array.Length / 2);
 
-                    Array.Copy(array, newArray, count);
-                    ArrayPool<float>.Shared.Return(array);
+                var read = sampleProvider.Read(array, count, array.Length - count);
+                if (read <= 0) break;
 
-                    array = newArray;
-                    capacity = newCap;
-                }
-
-                Array.Copy(buffer, 0, array, count, read);
                 count += read;
             }
 
-            var result = new float[count];
-            Array.Copy(array, result, count);
-            ArrayPool<float>.Shared.Return(array);
+            var result = count == array.Length ? array : array[..count];
 
             if (BloonsMod.NormalizeAudioVolume.Contains(id))
             {
