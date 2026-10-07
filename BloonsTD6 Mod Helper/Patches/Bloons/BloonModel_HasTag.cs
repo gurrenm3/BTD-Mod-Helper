@@ -1,7 +1,7 @@
 using Il2CppAssets.Scripts.Models.Bloons;
 namespace BTD_Mod_Helper.Patches.Bloons;
 
-[HarmonyPatch(typeof(BloonModel), nameof(BloonModel.HasTag))]
+[HarmonyPatch(typeof(BloonModel), nameof(BloonModel.HasTag), typeof(string))]
 internal static class BloonModel_HasTag
 {
     [HarmonyPrefix]

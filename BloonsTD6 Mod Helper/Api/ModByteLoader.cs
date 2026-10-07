@@ -260,10 +260,10 @@ public abstract class ModByteLoader : ModContent
 
         try
         {
-            if (File.Exists(bytesFileName))
+            if (File.Exists(bytesFilePath))
             {
                 if (File.Exists(backupBytesPath)) File.Delete(backupBytesPath);
-                File.Move(backupBytesPath, backupBytesPath);
+                File.Move(bytesFilePath, backupBytesPath);
             }
 
             flatFileCodeGen.Generate(model, bytesFilePath, unconvertedLoader);

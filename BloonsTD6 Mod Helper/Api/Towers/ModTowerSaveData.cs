@@ -111,5 +111,6 @@ public abstract class ModTowerSaveData : ModContent
 /// </summary>
 public abstract class ModTowerSaveData<T> : ModTowerSaveData where T : ModTower
 {
-    public override string TowerBaseId => ModContent.TowerID<T>();
+    /// <inheritdoc />
+    public override string TowerBaseId => TowerID<T>();
 }

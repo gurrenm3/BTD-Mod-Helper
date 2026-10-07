@@ -23,6 +23,7 @@ public static class RoundSetType
     public const string FrontierRush3 = "FrontierRush3";
     public const string FrontierRushFinal = "FrontierRushFinal";
     public const string HeManStage3 = "HeManStage3RoundSet";
+    public const string MasteryMode = "MasteryModeRoundSet";
     public const string MOABMadness = "MOABMadnessRoundSet";
     public const string QuestAdoraTrial = "QuestAdoraTrialRoundSet";
     public const string QuestBrickellTrial = "QuestBrickellTrialRoundSet";
@@ -77,6 +78,7 @@ public static class RoundSetType
             ["FrontierRush3"] = FrontierRush3,
             ["FrontierRushFinal"] = FrontierRushFinal,
             ["HeManStage3"] = HeManStage3,
+            ["MasteryMode"] = MasteryMode,
             ["MOABMadness"] = MOABMadness,
             ["QuestAdoraTrial"] = QuestAdoraTrial,
             ["QuestBrickellTrial"] = QuestBrickellTrial,

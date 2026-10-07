@@ -341,6 +341,7 @@ public static class Il2CppJsonConvert
             return base
                 .GetSerializableMembers(objectType)
                 .Where(member => memberNames.Contains(member.Name) &&
+                                 !(member is PropertyInfo && member.Name.Contains('.')) &&
                                  member.GetUnderlyingType() != typeof(IntPtr) &&
                                  !member.GetUnderlyingType().ContainsType<GameObject>() &&
                                  !member.GetUnderlyingType().ContainsType<Component>() &&

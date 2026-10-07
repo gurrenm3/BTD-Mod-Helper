@@ -49,6 +49,8 @@ public static class ModelSerializer
         {"id", "name"},
         {"damageAddative", "damageAdditive"},
         {"custonName", "customName"},
+        {"maximumShootingDelay", "maximumShotingDelay"},
+        {"amtOfAttacksUntillEnd", "amtOfAttacks"},
         {"mustIncludeAllTags", "mustIncludeAllStates"},
         {"roundsUntilManaDecay", "roundUntilManaDecay"},
         {"addBerserkerBrewToProjectile", "addBerserkerBrewToProjectileModel"},
@@ -631,7 +633,7 @@ public static class ModelSerializer
         model.GetDescendants<Model>().ForEach(m =>
         {
             var typeName = m.GetIl2CppType().Name;
-            if (!m.name.StartsWith(typeName))
+            if (m.name?.StartsWith(typeName) != true)
             {
                 m.name = $"{typeName}_{m.name}";
             }

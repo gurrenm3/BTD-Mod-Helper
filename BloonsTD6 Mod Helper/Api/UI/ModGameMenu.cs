@@ -29,7 +29,7 @@ public abstract class ModGameMenu : ModContent
     {
         {typeof(ExtraSettingsScreen), SceneNames.ExtraSettingsUI},
         {typeof(SettingsScreen), SceneNames.SettingsUI},
-        {typeof(PowersSelectScreen), SceneNames.PowersSelectUI},
+        {typeof(InstaPowersCollectionScreen), SceneNames.InstaPowersCollectionUI},
         //{typeof(TwitchSettingsUI), "TwitchSettingsUI"},
         {typeof(HotkeysScreen), SceneNames.HotkeysUI},
         {typeof(JukeBoxScreen), SceneNames.JukeboxUI},

@@ -131,6 +131,7 @@ public static class UpgradeType
     public const string SemiAutomatic = "Semi-Automatic";
     public const string FullAutoRifle = "Full Auto Rifle";
     public const string EliteDefender = "Elite Defender";
+    public const string SnipermonkeyParagon = "SniperMonkey Paragon";
     public const string LongerRange = "Longer Range";
     public const string AdvancedIntel = "Advanced Intel";
     public const string SubmergeAndSupport = "Submerge and Support";
@@ -927,6 +928,7 @@ public static class UpgradeType
             ["SemiAutomatic"] = SemiAutomatic,
             ["FullAutoRifle"] = FullAutoRifle,
             ["EliteDefender"] = EliteDefender,
+            ["SnipermonkeyParagon"] = SnipermonkeyParagon,
             ["LongerRange"] = LongerRange,
             ["AdvancedIntel"] = AdvancedIntel,
             ["SubmergeAndSupport"] = SubmergeAndSupport,

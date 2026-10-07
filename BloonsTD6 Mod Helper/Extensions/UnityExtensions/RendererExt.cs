@@ -88,7 +88,7 @@ public static class RendererExt
     /// <param name="submesh"></param>
     /// <returns></returns>
     public static List<int> GetTriangles(this SkinnedMeshRenderer skinnedMeshRenderer, int submesh = 0) =>
-        skinnedMeshRenderer.sharedMesh.GetTrianglesImpl(submesh, false).ToList();
+        skinnedMeshRenderer.sharedMesh.GetTrianglesImpl(submesh, false, 0).ToList();
 
     /// <summary>
     /// </summary>

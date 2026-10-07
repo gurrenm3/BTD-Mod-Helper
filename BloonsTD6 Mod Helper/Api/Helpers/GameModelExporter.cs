@@ -49,6 +49,7 @@ public static class GameModelExporter
 
     internal static bool clean;
     internal static bool consistent;
+    internal static bool HadErrors { get; private set; }
 
 
     /// <summary>
@@ -56,6 +57,7 @@ public static class GameModelExporter
     /// </summary>
     internal static IEnumerator ExportAll()
     {
+        HadErrors = false;
         ModHelper.Msg("Exporting game data, this will take a little bit...");
 
         gitIgnore = BaseGitIgnore;
@@ -223,7 +225,17 @@ public static class GameModelExporter
             var i = 0;
             foreach (var subItem in subItems(item))
             {
-                if (TryExport(subItem, Path.Combine(folder, getPath(item, subItem, i) + ".json"), modify)) success++;
+                var exportPath = Path.Combine(folder, getPath(item, subItem, i) + ".json");
+                if (TryExport(subItem, exportPath, modify, out var exception))
+                {
+                    success++;
+                }
+                else
+                {
+                    HadErrors = true;
+                    ModHelper.Error("Failed to export " + Path.Combine(FileIOHelper.sandboxRoot, exportPath));
+                    ModHelper.Warning(exception);
+                }
                 total++;
                 i++;
             }
@@ -249,6 +261,7 @@ public static class GameModelExporter
         }
         catch (Exception e)
         {
+            HadErrors = true;
             ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
             ModHelper.Warning(e);
         }
@@ -268,6 +281,7 @@ public static class GameModelExporter
         }
         catch (Exception e)
         {
+            HadErrors = true;
             ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
             ModHelper.Warning(e);
         }
@@ -287,6 +301,7 @@ public static class GameModelExporter
         }
         catch (Exception e)
         {
+            HadErrors = true;
             ModHelper.Error("Failed to save " + Path.Combine(FileIOHelper.sandboxRoot, path));
             ModHelper.Warning(e);
         }
@@ -302,8 +317,12 @@ public static class GameModelExporter
     /// Exports a Model to the path, returning whether it was successful. Does not log anything.
     /// </summary>
     /// <returns></returns>
-    public static bool TryExport(Object data, string path, System.Action<JObject> modify)
+    public static bool TryExport(Object data, string path, System.Action<JObject> modify) =>
+        TryExport(data, path, modify, out _);
+
+    private static bool TryExport(Object data, string path, System.Action<JObject> modify, out Exception exception)
     {
+        exception = null;
         try
         {
             if (consistent && data.Is(out Model model))
@@ -323,8 +342,9 @@ public static class GameModelExporter
             }
             return true;
         }
-        catch (Exception)
+        catch (Exception e)
         {
+            exception = e;
             return false;
         }
     }

@@ -188,7 +188,7 @@ public abstract class ModGameMode : NamedModContent, IHasDefaultTest
             foreach (var mutatorMod in gameMode.mutatorMods)
             {
                 var typeName = mutatorMod.GetIl2CppType().Name;
-                if (!mutatorMod.name.StartsWith(typeName))
+                if (mutatorMod.name?.StartsWith(typeName) != true)
                 {
                     mutatorMod.name = mutatorMod._name = typeName + "_" + mutatorMod.name;
                 }

@@ -519,7 +519,7 @@ public abstract class ModTest : ModContent
     public static bool UpgradeTowerParagon(UnityToSimulation bridge, ObjectId tower)
     {
         var result = false;
-        bridge.UpgradeTowerParagon(tower, 0, new Action<bool>(success => result = success));
+        bridge.UpgradeTowerParagon(bridge.GetInputId(), tower, 0, new Action<bool>(success => result = success));
         return result;
     }
 

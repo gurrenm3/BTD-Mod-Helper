@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.9] - 2026-10-06
+
+- Updated for BTD6 v57
 - Fixed ModMutators sometimes being applied twice
 - Fixed the game hard crashing when a map with a `Saved` ModMutator applied was reloaded
+- Added a `ModSaveData` and `ModTowerSaveData` system (thanks @DarkTerraYT !)
+- Added a `LazyLoadClip` for `ModJukeboxTrack`s
 
 ## [3.6.8] - 2026-08-10
 
@@ -1130,7 +1135,8 @@ This release comes with a Task Scheduler! You can use it to schedule code to run
 
 Initial release of the new Mod Helper
 
-[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.8...HEAD
+[unreleased]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.9...HEAD
+[3.6.9]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.8...3.6.9
 [3.6.8]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.7...3.6.8
 [3.6.7]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.6...3.6.7
 [3.6.6]: https://github.com/gurrenm3/BTD-Mod-Helper/compare/3.6.5...3.6.6

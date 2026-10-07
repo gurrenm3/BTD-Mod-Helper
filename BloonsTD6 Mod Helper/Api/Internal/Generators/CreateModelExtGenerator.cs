@@ -309,7 +309,7 @@ internal sealed class CreateModelExtGenerator : ModSourceFileGenerator
                          }
                      }
                  }
-                 """;
+                 """.Split('\n').Select(line => line.TrimEnd()).Join(delimiter: "\n");
     }
 
     private static string DefaultValue(object obj) => obj switch
