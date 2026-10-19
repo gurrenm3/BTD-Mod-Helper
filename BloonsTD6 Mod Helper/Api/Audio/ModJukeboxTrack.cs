@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BTD_Mod_Helper.Api.Internal;
 using Il2CppAssets.Scripts.Data;
 using Il2CppAssets.Scripts.Data.Audio;
@@ -62,13 +64,57 @@ public abstract class ModJukeboxTrack : NamedModContent
     /// </summary>
     protected virtual AudioClip LoadClip() => AudioClip;
 
+    /// <summary>
+    /// Decodes the samples for a <see cref="LazyLoadClip" /> track. Unlike <see cref="LoadClip" />, this will run on a background thread,
+    /// so it must not use any Unity or game APIs. Returning null means <see cref="LoadClip" /> is used instead.
+    /// </summary>
+    protected virtual AudioSamples DecodeClip() => null;
+
     private static readonly Dictionary<string, ModJukeboxTrack> LazyTracks = [];
     private static readonly LinkedList<ModJukeboxTrack> LoadedLazyClips = [];
+    private static ModJukeboxTrack prefetchedTrack;
 
     private AudioClip lazyClip;
+    private Task<AudioSamples> decoding;
 
     internal static ModJukeboxTrack GetLazyTrack(string id) =>
         id != null && LazyTracks.TryGetValue(id, out var track) ? track : null;
+
+    /// <summary>
+    /// Starts decoding this track in the background so that it's ready by the time the game asks for it
+    /// </summary>
+    internal void Prefetch()
+    {
+        if (lazyClip != null || decoding != null) return;
+
+        // Only hold on to one prefetched track's samples at a time
+        if (prefetchedTrack != null && prefetchedTrack != this) prefetchedTrack.decoding = null;
+        prefetchedTrack = this;
+
+        decoding = Task.Run(DecodeClip);
+    }
+
+    private AudioClip CreateLazyClip()
+    {
+        AudioSamples samples;
+        try
+        {
+            samples = decoding != null ? decoding.GetAwaiter().GetResult() : DecodeClip();
+        }
+        catch (Exception e)
+        {
+            ModHelper.Warning($"Failed to decode jukebox track {Id}");
+            ModHelper.Warning(e);
+            return null;
+        }
+        finally
+        {
+            decoding = null;
+            if (prefetchedTrack == this) prefetchedTrack = null;
+        }
+
+        return samples == null ? LoadClip() : ResourceHandler.CreateAudioClip(samples, Id);
+    }
 
     internal AudioClip ResolveLazyClip()
     {
@@ -79,7 +125,7 @@ public abstract class ModJukeboxTrack : NamedModContent
             return lazyClip;
         }
 
-        lazyClip = LoadClip();
+        lazyClip = CreateLazyClip();
         if (lazyClip == null) return null;
 
         MusicItem.Clip = lazyClip;
@@ -100,7 +146,7 @@ public abstract class ModJukeboxTrack : NamedModContent
 
         MusicItem.Clip = null;
         ResourceHandler.AudioClips.Remove(Id);
-        Object.Destroy(lazyClip);
+        UnityEngine.Object.Destroy(lazyClip);
         lazyClip = null;
     }
 

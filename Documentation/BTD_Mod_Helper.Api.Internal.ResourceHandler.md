@@ -153,6 +153,33 @@ Texture id "ModName-TextureName"
 
 The texture
 
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(BTD_Mod_Helper.Api.Audio.AudioSamples,string)'></a>
+
+## ResourceHandler.CreateAudioClip(AudioSamples, string) Method
+
+Create an AudioClip from already decoded samples
+
+```csharp
+public static AudioClip CreateAudioClip(BTD_Mod_Helper.Api.Audio.AudioSamples samples, string id);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(BTD_Mod_Helper.Api.Audio.AudioSamples,string).samples'></a>
+
+`samples` [AudioSamples](BTD_Mod_Helper.Api.Audio.AudioSamples.md 'BTD_Mod_Helper.Api.Audio.AudioSamples')
+
+Decoded samples
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(BTD_Mod_Helper.Api.Audio.AudioSamples,string).id'></a>
+
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Id for AudioClip
+
+#### Returns
+[UnityEngine.AudioClip](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.AudioClip 'UnityEngine.AudioClip')  
+new AudioClip, or null if unsuccessful
+
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.CreateAudioClip(NAudio.Vorbis.VorbisWaveReader,string)'></a>
 
 ## ResourceHandler.CreateAudioClip(VorbisWaveReader, string) Method
@@ -314,6 +341,33 @@ Pixels per Unit to use
 #### Returns
 [UnityEngine.Sprite](https://docs.microsoft.com/en-us/dotnet/api/UnityEngine.Sprite 'UnityEngine.Sprite')  
 new Sprite
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.DecodeAudioSamples(NAudio.Wave.WaveStream,bool)'></a>
+
+## ResourceHandler.DecodeAudioSamples(WaveStream, bool) Method
+
+Decodes all the samples from a wavestream. Doesn't use any Unity APIs, so it's safe to call off the main thread.
+
+```csharp
+public static BTD_Mod_Helper.Api.Audio.AudioSamples DecodeAudioSamples(NAudio.Wave.WaveStream reader, bool normalize);
+```
+#### Parameters
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.DecodeAudioSamples(NAudio.Wave.WaveStream,bool).reader'></a>
+
+`reader` [NAudio.Wave.WaveStream](https://docs.microsoft.com/en-us/dotnet/api/NAudio.Wave.WaveStream 'NAudio.Wave.WaveStream')
+
+Wave Stream
+
+<a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.DecodeAudioSamples(NAudio.Wave.WaveStream,bool).normalize'></a>
+
+`normalize` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Whether to scale the volume up to be as loud as possible without peaking
+
+#### Returns
+[AudioSamples](BTD_Mod_Helper.Api.Audio.AudioSamples.md 'BTD_Mod_Helper.Api.Audio.AudioSamples')  
+the decoded samples
 
 <a name='BTD_Mod_Helper.Api.Internal.ResourceHandler.GetSprite(string,BTD_Mod_Helper.Api.UI.ImageSettings)'></a>
 

@@ -5324,6 +5324,7 @@ public static partial class CreateBloonModelExt
         public float leakDamageMultiplier { get; set; } = 0;
         public int layerNumber { get; set; } = 0;
         public float bonusDamagePerHit { get; set; } = 0;
+        public int layerCountOffset { get; set; } = 0;
         public string[] currentOverlays { get; set; } = default;
         public bool dontShowInSandbox { get; set; } = default;
         public bool dontShowInSandboxOnRelease { get; set; } = default;
@@ -5344,7 +5345,7 @@ public static partial class CreateBloonModelExt
 
         public static implicit operator Il2CppAssets.Scripts.Models.Bloons.BloonModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Bloons.BloonModel(args.id, args.baseId, args.speed, args.radius, args.display, args.damageDisplayStates, args.icon, args.behaviors, args.overlayClass, args.tags, args.mods, args.collisionGroup, args.danger, args.hasChildrenWithDifferentTotalHealths, args.layerNumber, args.isCamo, args.isGrow, args.isFortified, args.depletionEffects, args.isMoab, args.isBoss, args.bloonProperties, args.leakDamage, args.leakDamageSet, args.maxHealth, args.distributeDamageToChildren, args.isInvulnerable, args.bonusDamagePerHit, args.disallowCosmetics, args.isSaved, args.currentOverlays, args.dontShowInSandbox, args.dontShowInSandboxOnRelease, args.alwaysRecordsDamage, args.isImmuneToSlow, args.isBossSegment, args.basicTypeFlags, args.propertyFlags, args.rotateToFollowPath, args.armourMultiplier, args.legendsType, args.variantName, args.variantPrefix, args.isFixedMaxHealth);
+            var result = new Il2CppAssets.Scripts.Models.Bloons.BloonModel(args.id, args.baseId, args.speed, args.radius, args.display, args.damageDisplayStates, args.icon, args.behaviors, args.overlayClass, args.tags, args.mods, args.collisionGroup, args.danger, args.hasChildrenWithDifferentTotalHealths, args.layerNumber, args.isCamo, args.isGrow, args.isFortified, args.depletionEffects, args.isMoab, args.isBoss, args.bloonProperties, args.leakDamage, args.leakDamageSet, args.maxHealth, args.distributeDamageToChildren, args.isInvulnerable, args.bonusDamagePerHit, args.disallowCosmetics, args.isSaved, args.currentOverlays, args.dontShowInSandbox, args.dontShowInSandboxOnRelease, args.alwaysRecordsDamage, args.isImmuneToSlow, args.isBossSegment, args.basicTypeFlags, args.propertyFlags, args.rotateToFollowPath, args.armourMultiplier, args.legendsType, args.variantName, args.variantPrefix, args.isFixedMaxHealth, args.layerCountOffset);
             if (args.isCamoBlocked != default) result.isCamoBlocked = args.isCamoBlocked;
             if (args.totalLeakDamage != default) result.totalLeakDamage = Il2CppSystem.Nullable<float>.Unbox(args.totalLeakDamage!.Value);
             if (args.storedLayers != default) result.storedLayers = Il2CppSystem.Nullable<float>.Unbox(args.storedLayers!.Value);
@@ -14070,10 +14071,11 @@ public static partial class CreateDisplayModelExt
         public float delayedReveal { get; set; } = 0f;
         public Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayCategory category { get; set; } = default;
         public bool isAnimationPaused { get; set; } = false;
+        public bool lockDisplayDelayModification { get; set; } = false;
 
         public static implicit operator Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel(args.name, args.display, args.layer, args.category, args.positionOffset, args.scale, args.ignoreRotation, args.delayedReveal, args.isAnimationPaused);
+            var result = new Il2CppAssets.Scripts.Models.GenericBehaviors.DisplayModel(args.name, args.display, args.layer, args.category, args.positionOffset, args.scale, args.ignoreRotation, args.delayedReveal, args.isAnimationPaused, args.lockDisplayDelayModification);
             if (args.animationChanges != default) result.animationChanges = args.animationChanges;
             args.OnCreate(result);
             return result;
@@ -16685,11 +16687,12 @@ public static partial class CreateFilterHighestTowerTierModelExt
     {
         public int minTier { get; set; } = 0;
         public int maxTier { get; set; } = 0;
+        public bool applyFilterToHeroLevel { get; set; } = default;
 
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterHighestTowerTierModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterHighestTowerTierModel(args.name, args.minTier, args.maxTier);
-
+            var result = new Il2CppAssets.Scripts.Models.Towers.TowerFilters.FilterHighestTowerTierModel(args.name, args.minTier, args.maxTier, default);
+            if (args.applyFilterToHeroLevel != default) result.applyFilterToHeroLevel = args.applyFilterToHeroLevel;
             args.OnCreate(result);
             return result;
         }
@@ -34677,12 +34680,13 @@ public static partial class CreateSniperAmmoSwapBehaviorModelExt
         public string buffIconName { get; set; } = "";
         public Il2CppAssets.Scripts.Models.Effects.EffectModel mainMonkeyAbilityEffect { get; set; } = default;
         public Il2CppAssets.Scripts.Models.Effects.EffectModel secondaryMonkeyAbilityEffect { get; set; } = default;
+        public bool isParagon { get; set; } = false;
         public float AbilityDuration { get; set; } = 0;
         public float Initialdelay { get; set; } = 0;
 
         public static implicit operator Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SniperAmmoSwapBehaviorModel(Args args)
         {
-            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SniperAmmoSwapBehaviorModel(args.name, args.mutationId, args.projectileDisplayToSwap, args.pierceIncrease, args.lifeSpanMultiplier, args.damageMultiplier, args.overrideDamageType, args.newImmuneBloonProperties, args.amtOfAttacksBeforeExpire, args.abilityDuration, args.appliesToSelf, args.effectRange, args.maxAmountOfTowersEffected, args.towerBaseIdToTarget, args.filterSpecificTowerPaths, args.towerTiers, args.includeHigherPaths, args.initialDelay, args.towerBehaviorsToAdd, args.buffLocsName, args.buffIconName, args.mainMonkeyAbilityEffect, args.secondaryMonkeyAbilityEffect, args.paragonProjectileBehaviorsToAdd);
+            var result = new Il2CppAssets.Scripts.Models.Towers.Behaviors.Abilities.Behaviors.SniperAmmoSwapBehaviorModel(args.name, args.mutationId, args.projectileDisplayToSwap, args.pierceIncrease, args.lifeSpanMultiplier, args.damageMultiplier, args.overrideDamageType, args.newImmuneBloonProperties, args.amtOfAttacksBeforeExpire, args.abilityDuration, args.appliesToSelf, args.effectRange, args.maxAmountOfTowersEffected, args.towerBaseIdToTarget, args.filterSpecificTowerPaths, args.towerTiers, args.includeHigherPaths, args.initialDelay, args.towerBehaviorsToAdd, args.buffLocsName, args.buffIconName, args.mainMonkeyAbilityEffect, args.secondaryMonkeyAbilityEffect, args.isParagon, args.paragonProjectileBehaviorsToAdd);
             if (args.abilityDurationFrames != default) result.abilityDurationFrames = args.abilityDurationFrames;
             if (args.initialDelayFrames != default) result.initialDelayFrames = args.initialDelayFrames;
             if (args.AbilityDuration != default) result.AbilityDuration = args.AbilityDuration;

@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using BTD_Mod_Helper.Api.Audio;
 using BTD_Mod_Helper.Api.UI;
 using Il2CppAssets.Scripts.Unity.Audio;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
@@ -276,6 +277,80 @@ public static class ResourceHandler
     }
 
     /// <summary>
+    /// Decodes all the samples from a wavestream. Doesn't use any Unity APIs, so it's safe to call off the main thread.
+    /// </summary>
+    /// <param name="reader">Wave Stream</param>
+    /// <param name="normalize">Whether to scale the volume up to be as loud as possible without peaking</param>
+    /// <returns>the decoded samples</returns>
+    public static AudioSamples DecodeAudioSamples(WaveStream reader, bool normalize)
+    {
+        var sampleProvider = reader.ToSampleProvider();
+
+        // Sample providers convert these counts back to bytes, so every read must contain whole audio frames.
+        var channels = sampleProvider.WaveFormat.Channels;
+        var capacity = Math.Clamp(EstimateSampleCount(reader), Math.Max(4096, channels), int.MaxValue);
+        var array = new float[capacity / channels * channels];
+        var count = 0;
+
+        while (true)
+        {
+            if (count == array.Length)
+            {
+                var growth = Math.Max(channels, array.Length / 2 / channels * channels);
+                Array.Resize(ref array, checked(array.Length + growth));
+            }
+
+            var read = sampleProvider.Read(array, count, array.Length - count);
+            if (read <= 0) break;
+
+            count += read;
+        }
+
+        var result = count == array.Length ? array : array[..count];
+
+        if (normalize)
+        {
+            var peak = 0f;
+            for (var i = 0; i < count; i++)
+            {
+                var abs = Math.Abs(result[i]);
+                if (abs > peak) peak = abs;
+            }
+            if (peak is > 0f and < 0.99f)
+            {
+                var scale = 0.99f / peak;
+                for (var i = 0; i < count; i++)
+                {
+                    result[i] *= scale;
+                }
+            }
+        }
+
+        var format = reader.WaveFormat;
+        return new AudioSamples(result, format.Channels, format.SampleRate);
+    }
+
+    /// <summary>
+    /// Create an AudioClip from already decoded samples
+    /// </summary>
+    /// <param name="samples">Decoded samples</param>
+    /// <param name="id">Id for AudioClip</param>
+    /// <returns>new AudioClip, or null if unsuccessful</returns>
+    public static AudioClip CreateAudioClip(AudioSamples samples, string id)
+    {
+        var audioClip = AudioClip.Create(id, samples.Data.Length / samples.Channels, samples.Channels,
+            samples.SampleRate, false);
+
+        if (audioClip.SetData(samples.Data, 0))
+        {
+            return AudioClips[id] = audioClip;
+        }
+
+        ModHelper.Warning($"Failed to set data for audio clip {id}");
+        return null;
+    }
+
+    /// <summary>
     /// Create an AudioClip from a wavestream
     /// </summary>
     /// <param name="reader">Wave Stream</param>
@@ -285,50 +360,7 @@ public static class ResourceHandler
     {
         try
         {
-            var sampleProvider = reader.ToSampleProvider();
-
-            var array = new float[Math.Clamp(EstimateSampleCount(reader), 4096, int.MaxValue)];
-            var count = 0;
-
-            while (true)
-            {
-                if (count == array.Length) Array.Resize(ref array, array.Length + array.Length / 2);
-
-                var read = sampleProvider.Read(array, count, array.Length - count);
-                if (read <= 0) break;
-
-                count += read;
-            }
-
-            var result = count == array.Length ? array : array[..count];
-
-            if (BloonsMod.NormalizeAudioVolume.Contains(id))
-            {
-                var peak = 0f;
-                for (var i = 0; i < count; i++)
-                {
-                    var abs = Math.Abs(result[i]);
-                    if (abs > peak) peak = abs;
-                }
-                if (peak is > 0f and < 0.99f)
-                {
-                    var scale = 0.99f / peak;
-                    for (var i = 0; i < count; i++)
-                    {
-                        result[i] *= scale;
-                    }
-                }
-            }
-
-            var format = reader.WaveFormat;
-            var audioClip = AudioClip.Create(id, result.Length / format.Channels, format.Channels, format.SampleRate, false);
-
-            if (audioClip.SetData(result, 0))
-            {
-                return AudioClips[id] = audioClip;
-            }
-
-            ModHelper.Warning($"Failed to set data for audio clip {id}");
+            return CreateAudioClip(DecodeAudioSamples(reader, BloonsMod.NormalizeAudioVolume.Contains(id)), id);
         }
         catch (Exception e)
         {

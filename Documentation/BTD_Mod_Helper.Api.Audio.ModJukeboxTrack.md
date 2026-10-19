@@ -136,6 +136,20 @@ public virtual MusicItem CreateMusicItem();
 [Il2CppAssets.Scripts.Data.Audio.MusicItem](https://docs.microsoft.com/en-us/dotnet/api/Il2CppAssets.Scripts.Data.Audio.MusicItem 'Il2CppAssets.Scripts.Data.Audio.MusicItem')  
 the MusicItem
 
+<a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.DecodeClip()'></a>
+
+## ModJukeboxTrack.DecodeClip() Method
+
+Decodes the samples for a [LazyLoadClip](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md#BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LazyLoadClip 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LazyLoadClip') track. Unlike [LoadClip()](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md#BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LoadClip() 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LoadClip()'), this will run on a background thread,  
+so it must not use any Unity or game APIs. Returning null means [LoadClip()](BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.md#BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LoadClip() 'BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LoadClip()') is used instead.
+
+```csharp
+protected virtual BTD_Mod_Helper.Api.Audio.AudioSamples DecodeClip();
+```
+
+#### Returns
+[AudioSamples](BTD_Mod_Helper.Api.Audio.AudioSamples.md 'BTD_Mod_Helper.Api.Audio.AudioSamples')
+
 <a name='BTD_Mod_Helper.Api.Audio.ModJukeboxTrack.LoadClip()'></a>
 
 ## ModJukeboxTrack.LoadClip() Method

@@ -1038,7 +1038,7 @@ public virtual void OnTowerInventoryInitialized(TowerInventory towerInventory, S
 
 Called when you load a save file and a Tower's save data get loaded for the tower  
 <br/>  
-Use saveData.metaData to load custom information  
+Use saveData.metaData to load custom information. You can also use a ModTowerSaveData to make this easier.  
 <br/>  
 Equivalent to a HarmonyPostFix on Tower.SetSaveData
 
@@ -1097,7 +1097,7 @@ public virtual void OnTowerPlaced(Tower tower);
 
 Called at the end of each round when a Tower's data is saved  
 <br/>  
-Use saveData.metaData to save custom information  
+Use saveData.metaData to save custom information. You can also use a ModTowerSaveData to make this easier.  
 <br/>  
 Equivalent to a HarmonyPostFix on Tower.GetSaveData
 
