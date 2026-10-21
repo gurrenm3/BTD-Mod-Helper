@@ -1,3 +1,4 @@
+
 {
   "forceVerifiedOnly": false,
   "verified": [
@@ -34,7 +35,8 @@
     "LynxCGames",
     "Myself-Bloons",
     "RedBlooN-YT",
-    "Minecool"
+    "Minecool",
+    "Kamil2371"
   ],
   "banned": [
     "Interesting-exe",
@@ -43,7 +45,7 @@
     "frogNBGTZ",
     "BoneheadBreaker"
   ],
-  "bannedMods" : [
+  "bannedMods": [
     "Jonyboylovespie/EverythingIsFree",
     "MaliciousFiles/EditPlayerData",
     "GrahamKracker/BTD6EpicGamesModCompat",
@@ -70,5 +72,3 @@
     "0.7.1"
   ]
 }
-
-
